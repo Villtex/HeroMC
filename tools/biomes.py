@@ -86,7 +86,7 @@ def biome(temperature=0.5, rainfall=0.5, rain=True, creatures=CREATURES, monster
                 water=water, water_multiplier=water_multiplier, grass=grass, foliage=foliage)
 
 
-def swamp_tint(color):
+def swamp_tint(color, maps):
     return ((color & 0xFEFEFE) + 5115470) // 2
 
 
@@ -115,8 +115,57 @@ VANILLA = {
     "jungle_hills": biome(1.2, 0.9, creatures=CREATURES + [spawn("chicken", 10, 4, 4)], monsters=MONSTERS + [spawn("ocelot", 20, 1, 1)]),
 }
 
+WOLF_5 = CREATURES + [spawn("wolf", 5, 4, 4)]
+WOLF_8 = CREATURES + [spawn("wolf", 8, 4, 4)]
+JUNGLE_CREATURES = CREATURES + [spawn("chicken", 10, 4, 4)]
+JUNGLE_MONSTERS = MONSTERS + [spawn("ocelot", 20, 1, 1)]
+FOREST_T, FOREST_R = 0.7, 0.8
+
+
+def fixed(temperature, rainfall, colormap):
+    """ExtrabiomesXL biomes that looked their grass/foliage colour up at a fixed climate point."""
+    return lambda color, maps: getattr(maps, colormap)(temperature, rainfall)
+
+
+def tinted(temperature, rainfall):
+    return dict(grass=fixed(temperature, rainfall, "grass_color"), foliage=fixed(temperature, rainfall, "foliage_color"))
+
+
+# Temperatures like "forest - 0.1" are float arithmetic in the original; f32 keeps the same values.
+EXTRABIOMES = {
+    "alpine": biome(0.0, 0.1, creatures=WOLF_8),
+    "autumn_woods": biome(FOREST_T, FOREST_R, creatures=WOLF_5, **tinted(1.0, 0.1)),
+    "birch_forest": biome(0.4, 0.7, creatures=WOLF_5),
+    "extreme_jungle": biome(1.2, 0.9, creatures=JUNGLE_CREATURES, monsters=JUNGLE_MONSTERS),
+    "forested_hills": biome(f32(f32(FOREST_T) - f32(0.1)), FOREST_R, creatures=WOLF_5, **tinted(0.8, 1.0)),
+    "forested_island": biome(f32(f32(FOREST_T) + f32(0.1)), FOREST_R, creatures=WOLF_5, **tinted(0.4, 0.7)),
+    "glacier": biome(0.0, 0.0, creatures=[]),
+    "green_hills": biome(f32(f32(FOREST_T) - f32(0.1)), f32(f32(FOREST_R) + f32(0.1)), **tinted(0.7, 0.8)),
+    "green_swamp": biome(f32(f32(0.8) - f32(0.1)), 0.9, monsters=MONSTERS + [spawn("slime", 10, 1, 1)]),
+    "ice_wasteland": biome(0.0, 0.1, creatures=[]),
+    "marsh": biome(0.8, 0.9),
+    "meadow": biome(**tinted(1.0, 1.0)),
+    "mini_jungle": biome(1.2, 0.9, creatures=JUNGLE_CREATURES, monsters=JUNGLE_MONSTERS, water_multiplier=2404380),
+    "mountain_desert": biome(2.0, 0.0, rain=False, creatures=[]),
+    "mountain_ridge": biome(2.0, 0.0, rain=False, creatures=[]),
+    "mountain_taiga": biome(0.0, 0.8, creatures=WOLF_8),
+    "pine_forest": biome(FOREST_T, FOREST_R, creatures=WOLF_5, **tinted(0.4, 0.6)),
+    "rainforest": biome(1.1, 1.4),
+    "redwood_forest": biome(1.1, 1.4),
+    "redwood_lush": biome(1.1, 1.4),
+    "savanna": biome(2.0, 0.0),
+    "shrubland": biome(0.4, 0.6),
+    "snowy_forest": biome(0.05, 0.8, creatures=WOLF_5, **tinted(0.0, 0.2)),
+    "snowy_rainforest": biome(0.05, 1.3, **tinted(0.0, 0.1)),
+    "temperate_rainforest": biome(0.6, 0.9, creatures=WOLF_5),
+    "tundra": biome(0.0, 0.0),
+    "wasteland": biome(2.0, 0.0, rain=False, creatures=[], water_multiplier=15761408),
+    "woodlands": biome(FOREST_T, FOREST_R, creatures=WOLF_5, **tinted(1.0, 0.2)),
+}
+
 MODS = {
     "worldgen152": ("mods/worldgen152/src/main/resources/data/worldgen152/worldgen/biome", VANILLA),
+    "extrabiomesxl": ("mods/ebxl/src/main/resources/data/extrabiomesxl/worldgen/biome", EXTRABIOMES),
 }
 
 
@@ -124,9 +173,9 @@ def to_json(spec, maps):
     t, r = spec["temperature"], spec["rainfall"]
     grass, foliage = maps.grass_color(t, r), maps.foliage_color(t, r)
     if spec["grass"]:
-        grass = spec["grass"](grass)
+        grass = spec["grass"](grass, maps)
     if spec["foliage"]:
-        foliage = spec["foliage"](foliage)
+        foliage = spec["foliage"](foliage, maps)
     spawns = {"ambient": AMBIENT}
     for category, entries in (("creature", spec["creatures"]), ("monster", spec["monsters"]), ("water_creature", spec["water"])):
         if entries:

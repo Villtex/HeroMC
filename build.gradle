@@ -34,6 +34,35 @@ subprojects {
         }
     }
 
+    // Other mods of the pack this one builds on: "mod_requires=<directory>,<directory>" in gradle.properties.
+    def required = (findProperty('mod_requires') ?: '').tokenize(',')*.trim()
+    required.each { evaluationDependsOn(":${it}") }
+    dependencies {
+        required.each { implementation project(":${it}") }
+    }
+    def requiredToml = required.collect { name ->
+        """
+[[dependencies.${mod_id}]]
+modId="${project(":${name}").mod_id}"
+type="required"
+versionRange="[${project(":${name}").mod_version},)"
+ordering="AFTER"
+side="BOTH"
+"""
+    }.join('')
+
+    // Textures and sounds of the 1.5.2 original are pulled in at build time, see original-assets.txt.
+    if (file('original-assets.txt').exists()) {
+        def importOriginalAssets = tasks.register('importOriginalAssets', hexxit.ImportOriginalAssets) {
+            manifest = rootProject.file('pack/hexxit-1.0.11.json')
+            mapping = file('original-assets.txt')
+            archive = project.name
+            cacheDir = rootProject.file(rootProject.findProperty('hexxit.cache') ?: '.cache').toPath().resolve('zips').toFile()
+            outputDir = layout.buildDirectory.dir('generated/original-assets')
+        }
+        sourceSets.main.resources.srcDir(importOriginalAssets.flatMap { it.outputDir })
+    }
+
     // neoforge.mods.toml is generated from one shared template + the mod's gradle.properties.
     def metadata = [
             mod_id           : mod_id,
@@ -44,6 +73,7 @@ subprojects {
             mod_description  : mod_description,
             minecraft_version: minecraft_version,
             neo_version      : neo_version,
+            mod_requires     : requiredToml,
     ]
     tasks.named('processResources') {
         inputs.properties(metadata)

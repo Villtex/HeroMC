@@ -1,0 +1,23 @@
+{
+  "biome.worldgen152.ocean": "Ocean",
+  "biome.worldgen152.plains": "Plains",
+  "biome.worldgen152.desert": "Desert",
+  "biome.worldgen152.extreme_hills": "Extreme Hills",
+  "biome.worldgen152.forest": "Forest",
+  "biome.worldgen152.taiga": "Taiga",
+  "biome.worldgen152.swampland": "Swampland",
+  "biome.worldgen152.river": "River",
+  "biome.worldgen152.frozen_ocean": "FrozenOcean",
+  "biome.worldgen152.frozen_river": "FrozenRiver",
+  "biome.worldgen152.ice_plains": "Ice Plains",
+  "biome.worldgen152.ice_mountains": "Ice Mountains",
+  "biome.worldgen152.mushroom_island": "MushroomIsland",
+  "biome.worldgen152.mushroom_island_shore": "MushroomIslandShore",
+  "biome.worldgen152.beach": "Beach",
+  "biome.worldgen152.desert_hills": "DesertHills",
+  "biome.worldgen152.forest_hills": "ForestHills",
+  "biome.worldgen152.taiga_hills": "TaigaHills",
+  "biome.worldgen152.extreme_hills_edge": "Extreme Hills Edge",
+  "biome.worldgen152.jungle": "Jungle",
+  "biome.worldgen152.jungle_hills": "JungleHills"
+}

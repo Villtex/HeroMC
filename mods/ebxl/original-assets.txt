@@ -1,0 +1,5 @@
+# path in ExtrabiomesXL-universal-1.5.2-3.13.4.jar -> path in the ported jar
+mods/ExtrabiomesXL/textures/blocks/redrock.png -> assets/extrabiomesxl/textures/block/red_rock.png
+mods/ExtrabiomesXL/textures/blocks/redrockcobble.png -> assets/extrabiomesxl/textures/block/red_cobblestone.png
+mods/ExtrabiomesXL/textures/blocks/redrockbrick.png -> assets/extrabiomesxl/textures/block/red_rock_brick.png
+mods/ExtrabiomesXL/textures/blocks/crackedsand.png -> assets/extrabiomesxl/textures/block/cracked_sand.png

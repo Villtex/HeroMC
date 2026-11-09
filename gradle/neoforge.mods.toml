@@ -22,3 +22,4 @@ type="required"
 versionRange="[${minecraft_version}]"
 ordering="NONE"
 side="BOTH"
+${mod_requires}

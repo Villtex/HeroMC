@@ -23,6 +23,8 @@ Jeder Mod wird deshalb gegen das dekompilierte Original als Referenz **neu gesch
 | Pfad | Inhalt |
 |---|---|
 | `mods/<name>/` | ein portierter Mod = ein Gradle-Teilprojekt (Name wie im Technic-Manifest) |
+| `mods/<name>/original-assets.txt` | welche Texturen/Sounds der Mod beim Bauen aus dem Original-Archiv übernimmt |
+| `buildSrc/` | Gradle-Task, der diese Dateien lädt (MD5-geprüft) und in das gebaute Jar legt |
 | `pack/hexxit-1.0.11.json` | exaktes Manifest des Originalpacks: Mods, Versionen, Prüfsummen, Download-URLs |
 | `tools/reference.py` | lädt das Original und erzeugt lesbare Referenzquellen (lokal, wird nicht eingecheckt) |
 | `tools/biomes.py` | erzeugt die Biom-Daten (Klima, Farben aus den 1.5.2-Farbkarten, Mob-Spawns) |
@@ -51,6 +53,10 @@ MCP-Mappings für 1.5.2 und dekompiliert nach `.reference/<mod>/src`; Texturen, 
 `.reference/<mod>/res`. `.cache/` und `.reference/` stehen in `.gitignore`: Die Originale gehören ihren
 Autoren und werden hier nicht weiterverteilt.
 
+Aus demselben Grund liegen keine Original-Texturen im Repository. Sie werden erst beim Bauen aus dem
+Technic-Archiv in das Jar übernommen. Die gebauten Jars enthalten also fremdes Material und sind für den
+eigenen Gebrauch gedacht; eine Veröffentlichung braucht die Zustimmung der jeweiligen Autoren.
+
 ## Weltgenerierung wie in 1.5.2
 
 `mods/worldgen152` bildet den Overworld-Generator von Minecraft 1.5.2 nach: Biom-Schichten, Geländeform,
@@ -60,9 +66,12 @@ dieselbe Welt ergibt. Die Welt ist wie damals 256 Blöcke hoch (y 0–255), das 
 Meeresspiegel liegt bei 63. Der Generator ersetzt die Standard-Welt (`minecraft:normal`).
 
 Mods, die damals Biome oder Geländeblöcke beisteuerten, melden sie über `OldBiomes` und `OldBlockStates` an.
+Im Pack war das ExtrabiomesXL: Mit seinen 28 Biomen wählt die Biom-Schicht aus 35 statt 7 Land-Biomen, und
+Mountain Ridge und Wasteland bestehen aus Red Rock bzw. Cracked Sand.
 
-Stand der Prüfung: Die Einbindung ins Spiel ist am Server verifiziert (Blöcke und Biome stimmen mit dem Kern
-überein). Der Abgleich des Kerns mit einer Welt des Original-Packs steht noch aus.
+Stand der Prüfung: Die Einbindung ins Spiel ist am Server verifiziert. Für Seed 1234 stimmen je ein Chunk
+aller 49 Biome (37.632 Blöcke, 784 Biom-Proben) mit dem Kern überein. Der Abgleich des Kerns mit einer Welt
+des Original-Packs steht noch aus.
 
 Noch nicht enthalten: Dekoration (Bäume, Gras, Erze, Seen, Schnee), Strukturen und die 1.5.2-Spawnsuche.
 
@@ -110,7 +119,7 @@ Noch nicht enthalten: Dekoration (Bäume, Gras, Erze, Seen, Schnee), Strukturen 
 | BetterStorage | `betterstorage` 0.6.2.23.h2 | copygirl, copyboy | 9.015 | offen |
 | ChocoCraft | `chococraft` 2.8.8 | Torojima | 9.331 | offen |
 | Dimensional Doors | `dimensional-doors` 1.4.1.194 | StevenRS11, SenseiKiwi | 10.746 | offen |
-| ExtrabiomesXL | `ebxl` 3.13.4 | ScottKillen u. a. | 10.762 | offen |
+| ExtrabiomesXL | `ebxl` 3.13.4 | ScottKillen u. a. | 10.762 | in Arbeit: 28 Biome, Red Rock, Cracked Sand samt Rezepten |
 | LegendGear | `legendgear` 1.5.2 | NMcCoy | 11.590 | offen |
 | NEI Plugins | `nei-plugins` 1.0.9.3 | mistaqur | 11.790 | entfällt, stattdessen JEI |
 | Xeno's Reliquary | `xreliquary` 1.0.6d | x3n0ph0b3 | 11.868 | offen |
