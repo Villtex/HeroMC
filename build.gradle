@@ -1,0 +1,84 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.moddev' version '2.0.148'
+}
+
+// Every subproject (mods/<name>) is one mod of the original Hexxit 1.0.11 pack, ported to NeoForge.
+// The root project is the assembled pack: its client/server runs load all of them together.
+evaluationDependsOnChildren()
+
+allprojects {
+    apply plugin: 'java-library'
+    apply plugin: 'net.neoforged.moddev'
+
+    group = 'hexxit'
+
+    java.toolchain.languageVersion = JavaLanguageVersion.of(25)
+    tasks.withType(JavaCompile).configureEach {
+        options.encoding = 'UTF-8'
+        options.release = 25
+    }
+
+    neoForge {
+        version = neo_version
+    }
+}
+
+subprojects {
+    version = mod_version
+    base.archivesName = "${mod_id}-neoforge-${minecraft_version}"
+
+    neoForge.mods {
+        "${mod_id}" {
+            sourceSet sourceSets.main
+        }
+    }
+
+    // neoforge.mods.toml is generated from one shared template + the mod's gradle.properties.
+    def metadata = [
+            mod_id           : mod_id,
+            mod_name         : mod_name,
+            mod_version      : mod_version,
+            mod_authors      : mod_authors,
+            mod_license      : mod_license,
+            mod_description  : mod_description,
+            minecraft_version: minecraft_version,
+            neo_version      : neo_version,
+    ]
+    tasks.named('processResources') {
+        inputs.properties(metadata)
+        from(rootProject.file('gradle/neoforge.mods.toml')) {
+            into 'META-INF'
+            expand(metadata)
+        }
+    }
+}
+
+neoForge {
+    mods {
+        subprojects.each { mod ->
+            "${mod.mod_id}" {
+                sourceSet mod.sourceSets.main
+            }
+        }
+    }
+    runs {
+        client {
+            client()
+            gameDirectory = file('run/client')
+        }
+        server {
+            server()
+            gameDirectory = file('run/server')
+            programArgument '--nogui'
+        }
+    }
+}
+
+// All mod jars in one place: build/pack/mods
+tasks.register('pack', Copy) {
+    group = 'build'
+    description = 'Builds every ported mod and collects the jars in build/pack/mods.'
+    from(subprojects.collect { it.tasks.named('jar') })
+    into layout.buildDirectory.dir('pack/mods')
+}

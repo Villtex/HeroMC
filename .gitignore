@@ -1,0 +1,19 @@
+# Gradle / IDE
+.gradle/
+build/
+run/
+runs/
+out/
+*.iml
+.idea/
+.vscode/
+.eclipse/
+bin/
+
+# Original Hexxit 1.5.2 archives and decompiled reference sources.
+# Fetched/generated locally by tools/reference.py - never committed.
+.cache/
+.reference/
+
+# Assets imported from the original jars at build time (see buildSrc / tools).
+**/src/generated/

@@ -1,0 +1,394 @@
+{
+  "pack": "hexxit",
+  "build": "1.0.11",
+  "minecraft": "1.5.2",
+  "forge": "7.8.1.737",
+  "source": "https://solder.technicpack.net/api/modpack/hexxit/1.0.11",
+  "mods": [
+    {
+      "name": "armorbar",
+      "version": "v0.7.1",
+      "md5": "f323a8d582302ea0abd615a223f8a68b",
+      "url": "https://mirror-mods.technicpack.net/mods/armorbar/armorbar-v0.7.1.zip",
+      "filesize": 24143
+    },
+    {
+      "name": "artifice",
+      "version": "v1.1.2.182",
+      "md5": "128defb209f6d735b2143e402e2d49c6",
+      "url": "https://mirror-mods.technicpack.net/mods/artifice/artifice-v1.1.2.182.zip",
+      "filesize": 323234
+    },
+    {
+      "name": "asgardshield",
+      "version": "v2.0.4",
+      "md5": "a602b0bcd8b82e1bb32d38f1ce163a2b",
+      "url": "https://mirror-mods.technicpack.net/mods/asgardshield/asgardshield-v2.0.4.zip",
+      "filesize": 82541
+    },
+    {
+      "name": "asgardshield-addons",
+      "version": "v2.0.0",
+      "md5": "495f4bbbc0e82d2521fa41c3286c5711",
+      "url": "https://mirror-mods.technicpack.net/mods/asgardshield-addons/asgardshield-addons-v2.0.0.zip",
+      "filesize": 7742
+    },
+    {
+      "name": "backpacks",
+      "version": "v1.12.13",
+      "md5": "a88370173e405f0045bf27b73e8b5d1a",
+      "url": "https://mirror-mods.technicpack.net/mods/backpacks/backpacks-v1.12.13.zip",
+      "filesize": 86898
+    },
+    {
+      "name": "backtools",
+      "version": "v1.5.2.v01",
+      "md5": "9ece64de3e11a0f15f55ef34f2194760",
+      "url": "https://mirror-mods.technicpack.net/mods/backtools/backtools-v1.5.2.v01.zip",
+      "filesize": 18384
+    },
+    {
+      "name": "basemods",
+      "version": "hexxit-v1.0.0",
+      "md5": "2ddfcb9305ad9d3d4a325337fabfcae5",
+      "url": "https://mirror-mods.technicpack.net/mods/basemods/basemods-hexxit-v1.0.0.zip",
+      "filesize": 1948764
+    },
+    {
+      "name": "battletowers",
+      "version": "v1.5.2",
+      "md5": "270d4a4d21646ee810160db7932b2bb4",
+      "url": "https://mirror-mods.technicpack.net/mods/battletowers/battletowers-v1.5.2.zip",
+      "filesize": 801097
+    },
+    {
+      "name": "betterdungeons",
+      "version": "v1.09b",
+      "md5": "7f23d39e90f6376b209bbfd982c088a3",
+      "url": "https://mirror-mods.technicpack.net/mods/betterdungeons/betterdungeons-v1.09b.zip",
+      "filesize": 862233
+    },
+    {
+      "name": "betterdungeons-data1",
+      "version": "v1.09a",
+      "md5": "5a60a3dc0b1d3a26b29dbbc908c24d75",
+      "url": "https://mirror-mods.technicpack.net/mods/betterdungeons-data1/betterdungeons-data1-v1.09a.zip",
+      "filesize": 4401682
+    },
+    {
+      "name": "betterdungeons-data2",
+      "version": "v1.09a",
+      "md5": "673fe8868c1805c55891065eccbeb8d6",
+      "url": "https://mirror-mods.technicpack.net/mods/betterdungeons-data2/betterdungeons-data2-v1.09a.zip",
+      "filesize": 4820134
+    },
+    {
+      "name": "betterstorage",
+      "version": "v0.6.2.23.h2",
+      "md5": "fc6fe1958a3b204b9ce7db0565b7ed1d",
+      "url": "https://mirror-mods.technicpack.net/mods/betterstorage/betterstorage-v0.6.2.23.h2.zip",
+      "filesize": 282940
+    },
+    {
+      "name": "bibliocraft",
+      "version": "v1.3.3",
+      "md5": "3109f61ffe758f166f13009d344e0caf",
+      "url": "https://mirror-mods.technicpack.net/mods/bibliocraft/bibliocraft-v1.3.3.zip",
+      "filesize": 678153
+    },
+    {
+      "name": "bspkrscore",
+      "version": "v2.09",
+      "md5": "4bbe9c0ad6b89d13b492bdd96c6de5f3",
+      "url": "https://mirror-mods.technicpack.net/mods/bspkrscore/bspkrscore-v2.09.zip",
+      "filesize": 56188
+    },
+    {
+      "name": "buffbar",
+      "version": "v0.7.1",
+      "md5": "19209719bd5018a298fd1d172586350d",
+      "url": "https://mirror-mods.technicpack.net/mods/buffbar/buffbar-v0.7.1.zip",
+      "filesize": 7290
+    },
+    {
+      "name": "chesttransporter",
+      "version": "v1.1.6",
+      "md5": "60623f88b1c642288e3a0afc6cd9bb77",
+      "url": "https://mirror-mods.technicpack.net/mods/chesttransporter/chesttransporter-v1.1.6.zip",
+      "filesize": 12742
+    },
+    {
+      "name": "chococraft",
+      "version": "v2.8.8",
+      "md5": "cbb3e93f8a6dd5fd86d96b2841da7521",
+      "url": "https://mirror-mods.technicpack.net/mods/chococraft/chococraft-v2.8.8.zip",
+      "filesize": 396887
+    },
+    {
+      "name": "codechickencore",
+      "version": "v0.8.7.3",
+      "md5": "2da535707de34a48091bd4850330ac04",
+      "url": "https://mirror-mods.technicpack.net/mods/codechickencore/codechickencore-v0.8.7.3.zip",
+      "filesize": 286902
+    },
+    {
+      "name": "cofhcore",
+      "version": "v1.5.2.5",
+      "md5": "dc5074cd716c52a37b7082f7d4264ef9",
+      "url": "https://mirror-mods.technicpack.net/mods/cofhcore/cofhcore-v1.5.2.5.zip",
+      "filesize": 264655
+    },
+    {
+      "name": "customport",
+      "version": "v1.5.2",
+      "md5": "d696670c95b8d2538f6ce0f16cb605cd",
+      "url": "https://mirror-mods.technicpack.net/mods/customport/customport-v1.5.2.zip",
+      "filesize": 112077
+    },
+    {
+      "name": "damageindicators",
+      "version": "v2.7.0.1",
+      "md5": "35ab54aff0006cf653077dab960641bb",
+      "url": "https://mirror-mods.technicpack.net/mods/damageindicators/damageindicators-v2.7.0.1.zip",
+      "filesize": 280771
+    },
+    {
+      "name": "dimensional-doors",
+      "version": "v1.4.1.194",
+      "md5": "227a99c4825fa8ebd2bf62fe383f999b",
+      "url": "https://mirror-mods.technicpack.net/mods/dimensional-doors/dimensional-doors-v1.4.1.194.zip",
+      "filesize": 3910244
+    },
+    {
+      "name": "ebxl",
+      "version": "v3.13.4",
+      "md5": "fe46ac24fb2cd476f8bcaaa30b92b78e",
+      "url": "https://mirror-mods.technicpack.net/mods/ebxl/ebxl-v3.13.4.zip",
+      "filesize": 354518
+    },
+    {
+      "name": "enchantingplus",
+      "version": "v1.15.4",
+      "md5": "d0ac89c4a6c0224631e959c1b150cbc4",
+      "url": "https://mirror-mods.technicpack.net/mods/enchantingplus/enchantingplus-v1.15.4.zip",
+      "filesize": 88076
+    },
+    {
+      "name": "flesh2leather",
+      "version": "v1.5.1",
+      "md5": "8e59adc0681bea250adcfc05b30a1c61",
+      "url": "https://mirror-mods.technicpack.net/mods/flesh2leather/flesh2leather-v1.5.1.zip",
+      "filesize": 1561
+    },
+    {
+      "name": "harkenscythe",
+      "version": "v2.1.6",
+      "md5": "d9bbdc45c46c6027bfa9f15d89431018",
+      "url": "https://mirror-mods.technicpack.net/mods/harkenscythe/harkenscythe-v2.1.6.zip",
+      "filesize": 604946
+    },
+    {
+      "name": "hexxitgear",
+      "version": "v1.0.23",
+      "md5": "b01ba8e31450f6253077fd8ee183f42c",
+      "url": "https://mirror-mods.technicpack.net/mods/hexxitgear/hexxitgear-v1.0.23.zip",
+      "filesize": 155749
+    },
+    {
+      "name": "immibiscore",
+      "version": "v55.1.6",
+      "md5": "02c973e995d76e54d63a42694e258124",
+      "url": "https://mirror-mods.technicpack.net/mods/immibiscore/immibiscore-v55.1.6.zip",
+      "filesize": 205025
+    },
+    {
+      "name": "immibismicroblocks",
+      "version": "v55.0.7",
+      "md5": "224d501494e252d62ca02945ade14f97",
+      "url": "https://mirror-mods.technicpack.net/mods/immibismicroblocks/immibismicroblocks-v55.0.7.zip",
+      "filesize": 185416
+    },
+    {
+      "name": "infernalmobs",
+      "version": "v1.5.2",
+      "md5": "d15e0a9241bcc762ab57501466938e01",
+      "url": "https://mirror-mods.technicpack.net/mods/infernalmobs/infernalmobs-v1.5.2.zip",
+      "filesize": 105620
+    },
+    {
+      "name": "inventorytweaks",
+      "version": "v1.54b",
+      "md5": "5450a9731e43f1c3ce41daac5890e0af",
+      "url": "https://mirror-mods.technicpack.net/mods/inventorytweaks/inventorytweaks-v1.54b.zip",
+      "filesize": 172803
+    },
+    {
+      "name": "legendgear",
+      "version": "v1.5.2",
+      "md5": "7befc6956ac73d1073147ecc45c84aca",
+      "url": "https://mirror-mods.technicpack.net/mods/legendgear/legendgear-v1.5.2.zip",
+      "filesize": 2223403
+    },
+    {
+      "name": "lumyskinpatch",
+      "version": "1.0.13-mc1.3.2-mc1.4-mc1.5",
+      "md5": "f3e001362f694a34fc3120a21e99e453",
+      "url": "https://mirror-mods.technicpack.net/mods/lumyskinpatch/lumyskinpatch-1.0.13-mc1.3.2-mc1.4-mc1.5.zip",
+      "filesize": 262148
+    },
+    {
+      "name": "mapwriter",
+      "version": "v2.0.5",
+      "md5": "476ae4c09bda0809ba5b7ed85df3a7e3",
+      "url": "https://mirror-mods.technicpack.net/mods/mapwriter/mapwriter-v2.0.5.zip",
+      "filesize": 102750
+    },
+    {
+      "name": "meteorsmod",
+      "version": "v2.10.2a",
+      "md5": "39572b82f16462a3b76d9dd11fa4dd21",
+      "url": "https://mirror-mods.technicpack.net/mods/meteorsmod/meteorsmod-v2.10.2a.zip",
+      "filesize": 752806
+    },
+    {
+      "name": "morebows",
+      "version": "v1.5.2.2",
+      "md5": "5150eff1a4d1fb4272fcb12572daa414",
+      "url": "https://mirror-mods.technicpack.net/mods/morebows/morebows-v1.5.2.2.zip",
+      "filesize": 78128
+    },
+    {
+      "name": "natura",
+      "version": "v2.1.5.1",
+      "md5": "f4221d9d007c88cb4c99232c7ced1f42",
+      "url": "https://mirror-mods.technicpack.net/mods/natura/natura-v2.1.5.1.zip",
+      "filesize": 704488
+    },
+    {
+      "name": "nei",
+      "version": "v1.5.2.28",
+      "md5": "ba5d03b1cd903201df3d81592c50e2c9",
+      "url": "https://mirror-mods.technicpack.net/mods/nei/nei-v1.5.2.28.zip",
+      "filesize": 354160
+    },
+    {
+      "name": "nei-plugins",
+      "version": "v1.0.9.3",
+      "md5": "b4877c583ce4259a26a5cba46f174c9c",
+      "url": "https://mirror-mods.technicpack.net/mods/nei-plugins/nei-plugins-v1.0.9.3.zip",
+      "filesize": 309928
+    },
+    {
+      "name": "obsidiplates",
+      "version": "v1.5.0.13",
+      "md5": "58cb78422137365bbdb64cfb00446bb9",
+      "url": "https://mirror-mods.technicpack.net/mods/obsidiplates/obsidiplates-v1.5.0.13.zip",
+      "filesize": 21901
+    },
+    {
+      "name": "offlawn",
+      "version": "v1.5.1.r02",
+      "md5": "02112f43e6b28baeaa2c1ecf9fff7206",
+      "url": "https://mirror-mods.technicpack.net/mods/offlawn/offlawn-v1.5.1.r02.zip",
+      "filesize": 41307
+    },
+    {
+      "name": "projectzulu",
+      "version": "v1.0.3.8",
+      "md5": "704fbc5de4dd09250d900bd90263ad7d",
+      "url": "https://mirror-mods.technicpack.net/mods/projectzulu/projectzulu-v1.0.3.8.zip",
+      "filesize": 2328934
+    },
+    {
+      "name": "qcraft",
+      "version": "v1.0.1",
+      "md5": "6f2d28dcb5fdf9ba1ca82602f5e16edb",
+      "url": "https://mirror-mods.technicpack.net/mods/qcraft/qcraft-v1.0.1.zip",
+      "filesize": 133403
+    },
+    {
+      "name": "ruins",
+      "version": "v1.5.2",
+      "md5": "51cb0484cc4d880aadc20eb4722c1dd9",
+      "url": "https://mirror-mods.technicpack.net/mods/ruins/ruins-v1.5.2.zip",
+      "filesize": 43531
+    },
+    {
+      "name": "ruins-data1",
+      "version": "v1.5.2",
+      "md5": "f55ed33375fcce7f6ed4678f76ca37c0",
+      "url": "https://mirror-mods.technicpack.net/mods/ruins-data1/ruins-data1-v1.5.2.zip",
+      "filesize": 580979
+    },
+    {
+      "name": "ruins-data2",
+      "version": "v1.5.2",
+      "md5": "28a3e9ab3871fc94699f868b81a2766a",
+      "url": "https://mirror-mods.technicpack.net/mods/ruins-data2/ruins-data2-v1.5.2.zip",
+      "filesize": 382406
+    },
+    {
+      "name": "ruins-data3",
+      "version": "v1.5.2",
+      "md5": "c79a4c63c69403c24ca7709dbd95b31d",
+      "url": "https://mirror-mods.technicpack.net/mods/ruins-data3/ruins-data3-v1.5.2.zip",
+      "filesize": 412561
+    },
+    {
+      "name": "secretrooms",
+      "version": "v4.6.0.283",
+      "md5": "8fe0475a5b7cdfb6732498084ba70ebb",
+      "url": "https://mirror-mods.technicpack.net/mods/secretrooms/secretrooms-v4.6.0.283.zip",
+      "filesize": 112050
+    },
+    {
+      "name": "soulshards",
+      "version": "v1.36",
+      "md5": "bae2eaecbf815abe7cb7ce4cb4bfee2c",
+      "url": "https://mirror-mods.technicpack.net/mods/soulshards/soulshards-v1.36.zip",
+      "filesize": 37625
+    },
+    {
+      "name": "tconstruct",
+      "version": "v1.4.3",
+      "md5": "640db26832c1adab7804d04e6aa9dd54",
+      "url": "https://mirror-mods.technicpack.net/mods/tconstruct/tconstruct-v1.4.3.zip",
+      "filesize": 2662990
+    },
+    {
+      "name": "treecapitator",
+      "version": "v1.5.2.r14",
+      "md5": "3a9d98f65bf7babde5304a1ed94d0c9a",
+      "url": "https://mirror-mods.technicpack.net/mods/treecapitator/treecapitator-v1.5.2.r14.zip",
+      "filesize": 78221
+    },
+    {
+      "name": "twilightforest",
+      "version": "v1.18.1",
+      "md5": "9a2e3470dbd7bf13753c26387ed1d4f8",
+      "url": "https://mirror-mods.technicpack.net/mods/twilightforest/twilightforest-v1.18.1.zip",
+      "filesize": 2661736
+    },
+    {
+      "name": "wildcaves3",
+      "version": "v0.4.2",
+      "md5": "c400b636d62cc08b43a1085dcc8d6846",
+      "url": "https://mirror-mods.technicpack.net/mods/wildcaves3/wildcaves3-v0.4.2.zip",
+      "filesize": 71989
+    },
+    {
+      "name": "xreliquary",
+      "version": "v1.0.6d",
+      "md5": "1decb32e42730f054a381d66a21e5d76",
+      "url": "https://mirror-mods.technicpack.net/mods/xreliquary/xreliquary-v1.0.6d.zip",
+      "filesize": 366370
+    },
+    {
+      "name": "z-hexxit-configs",
+      "version": "v1.0.10",
+      "md5": "cf3a0b020d9dd27ab8f1644e0294b8bf",
+      "url": "https://mirror-mods.technicpack.net/mods/z-hexxit-configs/z-hexxit-configs-v1.0.10.zip",
+      "filesize": 89955
+    }
+  ]
+}
