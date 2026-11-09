@@ -25,6 +25,7 @@ Jeder Mod wird deshalb gegen das dekompilierte Original als Referenz **neu gesch
 | `mods/<name>/` | ein portierter Mod = ein Gradle-Teilprojekt (Name wie im Technic-Manifest) |
 | `pack/hexxit-1.0.11.json` | exaktes Manifest des Originalpacks: Mods, Versionen, Prüfsummen, Download-URLs |
 | `tools/reference.py` | lädt das Original und erzeugt lesbare Referenzquellen (lokal, wird nicht eingecheckt) |
+| `tools/biomes.py` | erzeugt die Biom-Daten (Klima, Farben aus den 1.5.2-Farbkarten, Mob-Spawns) |
 | `tools/rcon.py` | kleiner RCON-Client für Verhaltenstests am laufenden Testserver |
 | `gradle/neoforge.mods.toml` | gemeinsame Vorlage für die Mod-Metadaten |
 
@@ -49,6 +50,21 @@ Lädt die 55 Archive vom Technic-Mirror (MD5-geprüft), übersetzt die verschlei
 MCP-Mappings für 1.5.2 und dekompiliert nach `.reference/<mod>/src`; Texturen, Sounds und Modelle landen in
 `.reference/<mod>/res`. `.cache/` und `.reference/` stehen in `.gitignore`: Die Originale gehören ihren
 Autoren und werden hier nicht weiterverteilt.
+
+## Weltgenerierung wie in 1.5.2
+
+`mods/worldgen152` bildet den Overworld-Generator von Minecraft 1.5.2 nach: Biom-Schichten, Geländeform,
+Deckschichten, Grundgestein, Höhlen und Schluchten. Der Kern (`hexxit.worldgen152.core`) ist reines Java
+ohne Spielklassen und verbraucht seine Zufallszahlen in der Reihenfolge des Originals, damit derselbe Seed
+dieselbe Welt ergibt. Die Welt ist wie damals 256 Blöcke hoch (y 0–255), das Gelände reicht bis y 127, der
+Meeresspiegel liegt bei 63. Der Generator ersetzt die Standard-Welt (`minecraft:normal`).
+
+Mods, die damals Biome oder Geländeblöcke beisteuerten, melden sie über `OldBiomes` und `OldBlockStates` an.
+
+Stand der Prüfung: Die Einbindung ins Spiel ist am Server verifiziert (Blöcke und Biome stimmen mit dem Kern
+überein). Der Abgleich des Kerns mit einer Welt des Original-Packs steht noch aus.
+
+Noch nicht enthalten: Dekoration (Bäume, Gras, Erze, Seen, Schnee), Strukturen und die 1.5.2-Spawnsuche.
 
 ## Wann ein Mod als portiert gilt
 

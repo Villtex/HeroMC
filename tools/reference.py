@@ -12,6 +12,7 @@ The port in this repository is a rewrite against NeoForge; this script only prod
   4. unpacks its non-class resources to <out>/<mod>/res
 
 Usage:  python3 tools/reference.py [--cache DIR] [--out DIR] [--only name,name] [--jobs N]
+        (--only minecraft decompiles Forge-patched Minecraft 1.5.2 itself: the reference for world generation)
 Needs:  a JDK (17+) on PATH or JAVA_HOME.
 """
 import argparse, csv, hashlib, io, json, os, re, shutil, subprocess, sys, time, urllib.request, zipfile
@@ -134,8 +135,6 @@ def process(mod, args, tools, maps):
         unpack_resources(z, os.path.join(out, "pack-files"))
     report = []
     for inner_name, data in inner_archives(archive):
-        if name == "basemods":  # Forge + patched vanilla: classpath only, nothing to port
-            continue
         work = os.path.join(args.cache, "work", name)
         os.makedirs(work, exist_ok=True)
         raw = os.path.join(work, "in.jar")
@@ -164,6 +163,39 @@ def process(mod, args, tools, maps):
     return f"{name}: " + "; ".join(report or ["data only"])
 
 
+def minecraft_reference(args, tools, maps):
+    """Decompile Minecraft 1.5.2 as the pack ran it (vanilla client jar overlaid with the Forge-patched classes)."""
+    out = os.path.join(args.out, "minecraft")
+    if os.path.exists(os.path.join(out, ".done")):
+        return "minecraft: up to date"
+    shutil.rmtree(out, ignore_errors=True)
+    work = os.path.join(args.cache, "work", "minecraft")
+    os.makedirs(work, exist_ok=True)
+    merged = os.path.join(work, "in.jar")
+    with zipfile.ZipFile(merged, "w", zipfile.ZIP_DEFLATED) as dst:
+        seen = set()
+        for jar in (tools["forge_runtime"], tools["mc"]):  # first one wins
+            with zipfile.ZipFile(jar) as src:
+                for n in src.namelist():
+                    if n.endswith(".class") and n not in seen and not n.startswith(("paulscode/", "ibxm/", "com/jcraft/")):
+                        seen.add(n)
+                        dst.writestr(n, src.read(n))
+    remapped = os.path.join(work, "remapped.jar")
+    cp = os.pathsep.join([tools["specialsource"], tools["forge_runtime"], tools["mc"]])
+    r = subprocess.run([java(), "-cp", cp, "net.md_5.specialsource.SpecialSource", "--live", "-q",
+                        "-m", maps[0], "-i", merged, "-o", remapped], capture_output=True, text=True)
+    if r.returncode != 0:
+        return f"minecraft: remap FAILED: {r.stderr.strip()[-300:]}"
+    src = os.path.join(out, "src")
+    os.makedirs(src)
+    subprocess.run([java(), "-jar", tools["vineflower"], "-log=ERROR", "-nls=1", "-din=1", "-rsy=1", "-dgs=1",
+                    remapped, src], capture_output=True, text=True)
+    rename_sources(src, maps[1])
+    n = sum(len([f for f in fs if f.endswith(".java")]) for _, _, fs in os.walk(src))
+    open(os.path.join(out, ".done"), "w").write("1")
+    return f"minecraft: {n} source files"
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--cache", default=os.path.join(ROOT, ".cache"))
@@ -174,7 +206,7 @@ def main():
     manifest = json.load(open(os.path.join(ROOT, "pack", "hexxit-1.0.11.json")))
     mods = {m["name"]: m for m in manifest["mods"]}
     wanted = [n for n in args.only.split(",") if n] or sorted(mods)
-    unknown = [n for n in wanted if n not in mods]
+    unknown = [n for n in wanted if n not in mods and n != "minecraft"]
     if unknown:
         raise SystemExit(f"unknown mod(s): {', '.join(unknown)}")
 
@@ -193,6 +225,10 @@ def main():
     with zipfile.ZipFile(base_zip) as z, open(tools["forge_runtime"], "wb") as f:
         f.write(z.read("bin/modpack.jar"))
     maps = build_mappings(forge_src, t)
+
+    if "minecraft" in wanted:  # pseudo entry: vanilla 1.5.2 with the Forge patches applied on top
+        wanted.remove("minecraft")
+        print(minecraft_reference(args, tools, maps), flush=True)
 
     with ThreadPoolExecutor(max_workers=args.jobs) as pool:
         for line in pool.map(lambda n: process(mods[n], args, tools, maps), wanted):
