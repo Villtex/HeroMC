@@ -16,6 +16,7 @@ Projektüberblick und Bauen/Starten stehen in `README.md`.
 - JDK 25 liegt in der Umgebung "HeroMC" unter `/opt/jdks/jdk25` (Setup-Skript der Umgebung). Bauen mit `CI=true ./gradlew ...`.
 - Original-Quellen als Vorlage: `python3 tools/reference.py --only <mod>` (bzw. `--only minecraft` für Vanilla 1.5.2) dekompiliert nach `.reference/<mod>/src`. Nicht committen.
 - 26.3-APIs nachschlagen: `javap -p` gegen `mods/*/build/moddev/artifacts/minecraft-patched-26.3*.jar` (Skill `minecraft-modding`, Datei `references/version-bump-method.md`).
+- NeoForge-Doku über den Context7-Connector: `/neoforged/documentation`, `/neoforged/moddevgradle`, Javadoc `/websites/nekoyue_github_io_forgejavadocs-ng_javadoc_1_21_x-neoforge`. Die Doku endet vor 26.3: Signaturen immer mit `javap` gegenprüfen.
 - Terrain-Prüfung: `tools/expect.sh 1234 find 260 > expect.txt`, Server mit `level-seed=1234` starten, `python3 tools/verify_blocks.py expect.txt`. Muss 0 Abweichungen ergeben.
 - Verhalten am Server per `python3 tools/rcon.py "<befehl>"` prüfen (RCON-Daten in `run/server/server.properties`).
 
