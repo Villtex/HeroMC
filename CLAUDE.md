@@ -10,6 +10,8 @@ Projektüberblick und Bauen/Starten stehen in `README.md`.
 
 ## Arbeitsweise beim Portieren
 
+- Die Arbeit ist in Teile aufgeteilt: `docs/PLAN.md`. Sagt der Nutzer „starte Teil N“, den Abschnitt „Regeln für jeden Teil“ und den Abschnitt von Teil N lesen und genau diesen Teil abarbeiten. Am Ende den Status in `docs/PLAN.md` und `README.md` eintragen, committen, pushen.
+
 - Ziel: Hexxit 1.0.11 (MC 1.5.2) 1:1 auf NeoForge 26.3. Zurückgestellt: Twilight Forest, Tinkers' Construct. NEI entfällt, stattdessen JEI-Kompatibilität für alle portierten Mods.
 - JDK 25 liegt in der Umgebung "HeroMC" unter `/opt/jdks/jdk25` (Setup-Skript der Umgebung). Bauen mit `CI=true ./gradlew ...`.
 - Original-Quellen als Vorlage: `python3 tools/reference.py --only <mod>` (bzw. `--only minecraft` für Vanilla 1.5.2) dekompiliert nach `.reference/<mod>/src`. Nicht committen.

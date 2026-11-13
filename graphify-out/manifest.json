@@ -648,15 +648,15 @@
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1794603725.2808466,
-    "seen": 1794603730.9213989,
-    "ast_hash": "455a07ea71e863db3ca0146291272204",
+    "mtime": 1794604247.0651176,
+    "seen": 1794604248.420589,
+    "ast_hash": "e55c8d86a5e539da86de1a56862d05c7",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1794603147.7337189,
-    "seen": 1794603730.9213998,
-    "ast_hash": "a162aa9b5e9d5d6c55ce768c114c26f4",
+    "mtime": 1794604247.066554,
+    "seen": 1794604248.4205906,
+    "ast_hash": "3a7b2859062f69ab6054fb99f85afc14",
     "semantic_hash": ""
   },
   "mods/ebxl/original-assets.txt": {
@@ -687,6 +687,12 @@
     "mtime": 1794603147.7291648,
     "seen": 1794603730.921398,
     "ast_hash": "1d91ff4bd6c5ee6e6a023539e249f341",
+    "semantic_hash": ""
+  },
+  "docs/PLAN.md": {
+    "mtime": 1794604238.8688974,
+    "seen": 1794604248.420592,
+    "ast_hash": "dd92be6ac63397b83f4a13a932ca0bec",
     "semantic_hash": ""
   }
 }

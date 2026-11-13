@@ -18,6 +18,10 @@ Jeder Mod wird deshalb gegen das dekompilierte Original als Referenz **neu gesch
   **JEI** kompatibel; eigene Rezepttypen bekommen ein JEI-Plugin.
 - **Twilight Forest** und **Tinkers' Construct** sind vorerst zurückgestellt.
 
+## Arbeitsplan
+
+Der Port ist in Teile aufgeteilt, die je in eine Session passen: [`docs/PLAN.md`](docs/PLAN.md).
+
 ## Aufbau
 
 | Pfad | Inhalt |
