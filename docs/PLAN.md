@@ -6,6 +6,7 @@ Jeder Teil ist so geschnitten, dass er in **eine Session** passt. Start in einem
 ## Regeln für jeden Teil
 
 1. **Vorbereitung**
+   - **Zuerst den Nutzer an das empfohlene Modell erinnern** (Spalte „Modell“ in der Übersicht). Läuft die Session auf einem anderen Modell, kurz darauf hinweisen. Er wechselt mit `/model`. Erst danach anfangen. Faustregel: Opus 5.5 als Standard; Fable 5.2 für bitgenaue Weltgenerierung, schweres Rendering und festgefahrene Fehler; Sonnet 5.5 für kleine, mechanische Teile.
    - `git pull`, danach den Abschnitt des Teils lesen und prüfen, ob die Voraussetzungen erledigt sind (Status unten).
    - Original-Quellen holen: `python3 tools/reference.py --only <archiv>[,<archiv>...]`.
 2. **Port**
@@ -32,34 +33,34 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 
 ## Übersicht
 
-| Teil | Inhalt | Zeilen (Original) | Braucht | Status |
-|---:|---|---:|---|---|
-| 0 | Grundgerüst, RottenFleshToLeather, 1.5.2-Gelände, ExtrabiomesXL-Biome | – | – | ✅ erledigt |
-| 1 | Vanilla-1.5.2-Dekoration und Schnittstelle für Mod-Weltgeneratoren | ~3.000 | 0 | offen |
-| 2 | Vanilla-1.5.2-Strukturen, Spawnpunkt, Abgleich mit Original-Welt | ~6.000 | 1 | offen |
-| 3 | JEI-Grundlage, ExtrabiomesXL fertig (Bäume, Pflanzen, Holz, Scarecrow) | ~9.000 | 1 | offen |
-| 4 | Kleine Mods: Obsidian Plates, Chest Transporter, ArmorBar, BuffBar, Back Tools, Soul Shards | ~5.000 | 3 | offen |
-| 5 | Hexxit Gear, More Bows, Enchanting Plus, offLawn, Wild Caves 3 | ~13.000 | 1, 3 | offen |
-| 6 | bspkrsCore, TreeCapitator, Inventory Tweaks, Custom LAN Ports | ~19.000 | 3 | offen |
-| 7 | Natura | ~20.000 | 1, 3 | offen |
-| 8 | Artifice, CoFHCore (nur was das Pack nutzt) | ~27.000 | 1, 3 | offen |
-| 9 | Harken Scythe, Asgard Shield, Asgard Shield Addons | ~30.000 | 3 | offen |
-| 10 | Project Zulu A: Kreaturen | ~25.000 | 3 | offen |
-| 11 | Project Zulu B: Blöcke, Items, Weltgenerierung, Spawns | ~18.000 | 10 | offen |
-| 12 | Better Dungeons A: Bau-Engine und Gebäude-Import | ~18.000 | 1 | offen |
-| 13 | Better Dungeons B: Dungeon-Typen, Mobs, Loot | ~18.000 | 12 | offen |
-| 14 | Battle Towers, Ruins (mit allen Ruinen-Vorlagen) | ~5.000 + Vorlagen | 1 | offen |
-| 15 | Dimensional Doors | ~11.000 | 2 | offen |
-| 16 | BiblioCraft | ~21.000 | 3 | offen |
-| 17 | BetterStorage, Backpacks, qCraft | ~17.000 | 3 | offen |
-| 18 | ChocoCraft, Infernal Mobs | ~16.000 | 1, 3 | offen |
-| 19 | LegendGear, Falling Meteors | ~19.000 | 1, 3 | offen |
-| 20 | Xeno's Reliquary, Secret Rooms | ~18.000 | 3 | offen |
-| 21 | Immibis Core, Immibis's Microblocks | ~26.000 | 3 | offen |
-| 22 | Client-Mods: Damage Indicators, MapWriter | ~12.000 | – | offen |
-| 23 | Gesamttest und Modpack-Export | – | alle | offen |
-| 24 | später: Twilight Forest | ~50.000 | – | zurückgestellt |
-| 25 | später: Tinkers' Construct | ~60.000 | – | zurückgestellt |
+| Teil | Inhalt | Zeilen (Original) | Braucht | Modell | Status |
+|---:|---|---:|---|---|---|
+| 0 | Grundgerüst, RottenFleshToLeather, 1.5.2-Gelände, ExtrabiomesXL-Biome | – | – | – | ✅ erledigt |
+| 1 | Vanilla-1.5.2-Dekoration und Schnittstelle für Mod-Weltgeneratoren | ~3.000 | Fable 5.2 | 0 | offen |
+| 2 | Vanilla-1.5.2-Strukturen, Spawnpunkt, Abgleich mit Original-Welt | ~6.000 | Fable 5.2 | 1 | offen |
+| 3 | JEI-Grundlage, ExtrabiomesXL fertig (Bäume, Pflanzen, Holz, Scarecrow) | ~9.000 | Opus 5.5 | 1 | offen |
+| 4 | Kleine Mods: Obsidian Plates, Chest Transporter, ArmorBar, BuffBar, Back Tools, Soul Shards | ~5.000 | Sonnet 5.5 | 3 | offen |
+| 5 | Hexxit Gear, More Bows, Enchanting Plus, offLawn, Wild Caves 3 | ~13.000 | Opus 5.5 | 1, 3 | offen |
+| 6 | bspkrsCore, TreeCapitator, Inventory Tweaks, Custom LAN Ports | ~19.000 | Opus 5.5 | 3 | offen |
+| 7 | Natura | ~20.000 | Opus 5.5 | 1, 3 | offen |
+| 8 | Artifice, CoFHCore (nur was das Pack nutzt) | ~27.000 | Opus 5.5 | 1, 3 | offen |
+| 9 | Harken Scythe, Asgard Shield, Asgard Shield Addons | ~30.000 | Opus 5.5 | 3 | offen |
+| 10 | Project Zulu A: Kreaturen | ~25.000 | Fable 5.2 | 3 | offen |
+| 11 | Project Zulu B: Blöcke, Items, Weltgenerierung, Spawns | ~18.000 | Opus 5.5 | 10 | offen |
+| 12 | Better Dungeons A: Bau-Engine und Gebäude-Import | ~18.000 | Fable 5.2 | 1 | offen |
+| 13 | Better Dungeons B: Dungeon-Typen, Mobs, Loot | ~18.000 | Fable 5.2 | 12 | offen |
+| 14 | Battle Towers, Ruins (mit allen Ruinen-Vorlagen) | ~5.000 + Vorlagen | Opus 5.5 | 1 | offen |
+| 15 | Dimensional Doors | ~11.000 | Opus 5.5 | 2 | offen |
+| 16 | BiblioCraft | ~21.000 | Fable 5.2 | 3 | offen |
+| 17 | BetterStorage, Backpacks, qCraft | ~17.000 | Opus 5.5 | 3 | offen |
+| 18 | ChocoCraft, Infernal Mobs | ~16.000 | Opus 5.5 | 1, 3 | offen |
+| 19 | LegendGear, Falling Meteors | ~19.000 | Opus 5.5 | 1, 3 | offen |
+| 20 | Xeno's Reliquary, Secret Rooms | ~18.000 | Opus 5.5 | 3 | offen |
+| 21 | Immibis Core, Immibis's Microblocks | ~26.000 | Fable 5.2 | 3 | offen |
+| 22 | Client-Mods: Damage Indicators, MapWriter | ~12.000 | Sonnet 5.5 | – | offen |
+| 23 | Gesamttest und Modpack-Export | – | Opus 5.5 | alle | offen |
+| 24 | später: Twilight Forest | ~50.000 | Fable 5.2 | – | zurückgestellt |
+| 25 | später: Tinkers' Construct | ~60.000 | Fable 5.2 | – | zurückgestellt |
 
 Entfallen ganz: Not Enough Items, NEI Plugins, CodeChickenCore (durch JEI ersetzt), Lumy Skin Patch,
 `basemods` (Forge 1.5.2 selbst).
