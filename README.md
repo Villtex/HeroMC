@@ -16,7 +16,7 @@ Jeder Mod wird deshalb gegen das dekompilierte Original als Referenz **neu gesch
   (`mods/worldgen152`) und gegen Welten des Original-Servers geprüft wird.
 - **Rezeptanzeige:** Not Enough Items wird nicht portiert. Stattdessen sind alle portierten Mods mit
   **JEI** kompatibel; eigene Rezepttypen bekommen ein JEI-Plugin.
-- **Twilight Forest** ist vorerst zurückgestellt.
+- **Twilight Forest** und **Tinkers' Construct** sind vorerst zurückgestellt.
 
 ## Aufbau
 
@@ -84,8 +84,8 @@ Noch nicht enthalten: Dekoration (Bäume, Gras, Erze, Seen, Schnee), Strukturen 
 
 ## Status
 
-47 Mods im Original. Zu portieren sind rund 408.000 Zeilen dekompilierter Referenzcode
-(ohne Twilight Forest, NEI, NEI Plugins und CodeChickenCore).
+47 Mods im Original. Zu portieren sind rund 348.000 Zeilen dekompilierter Referenzcode
+(ohne Twilight Forest, Tinkers' Construct, NEI, NEI Plugins und CodeChickenCore).
 
 | Mod | Archiv, Version | Autor (Original) | Zeilen | Status |
 |---|---|---|---:|---|
@@ -135,7 +135,7 @@ Noch nicht enthalten: Dekoration (Bäume, Gras, Erze, Seen, Schnee), Strukturen 
 | Better Dungeons (Chocolate Quest) | `betterdungeons` 1.09b | Chocolatin | 36.118 | offen |
 | Project Zulu | `projectzulu` 1.0.3.8 | — | 42.845 | offen |
 | The Twilight Forest | `twilightforest` 1.18.1 | Benimatic | 50.329 | zurückgestellt |
-| Tinkers' Construct | `tconstruct` 1.4.3 | mDiyo | 59.808 | offen |
+| Tinkers' Construct | `tconstruct` 1.4.3 | mDiyo | 59.808 | zurückgestellt |
 
 Weitere Archive des Packs, die kein eigener Mod sind:
 
