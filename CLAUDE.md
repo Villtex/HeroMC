@@ -8,6 +8,15 @@ Projektüberblick und Bauen/Starten stehen in `README.md`.
 - Testläufe (Server-Start, `./gradlew runServer`) nur starten, wenn die Änderung dafür fertig ist, nicht nach jeder Kleinigkeit.
 - Neue, unabhängige Aufgabe = neue Session. Lange Sessions werden mit jedem Schritt teurer.
 
+## Arbeitsweise beim Portieren
+
+- Ziel: Hexxit 1.0.11 (MC 1.5.2) 1:1 auf NeoForge 26.3. Zurückgestellt: Twilight Forest, Tinkers' Construct. NEI entfällt, stattdessen JEI-Kompatibilität für alle portierten Mods.
+- JDK 25 liegt in der Umgebung "HeroMC" unter `/opt/jdks/jdk25` (Setup-Skript der Umgebung). Bauen mit `CI=true ./gradlew ...`.
+- Original-Quellen als Vorlage: `python3 tools/reference.py --only <mod>` (bzw. `--only minecraft` für Vanilla 1.5.2) dekompiliert nach `.reference/<mod>/src`. Nicht committen.
+- 26.3-APIs nachschlagen: `javap -p` gegen `mods/*/build/moddev/artifacts/minecraft-patched-26.3*.jar` (Skill `minecraft-modding`, Datei `references/version-bump-method.md`).
+- Terrain-Prüfung: `tools/expect.sh 1234 find 260 > expect.txt`, Server mit `level-seed=1234` starten, `python3 tools/verify_blocks.py expect.txt`. Muss 0 Abweichungen ergeben.
+- Verhalten am Server per `python3 tools/rcon.py "<befehl>"` prüfen (RCON-Daten in `run/server/server.properties`).
+
 ## graphify
 
 This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.
