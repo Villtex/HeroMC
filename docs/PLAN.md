@@ -6,7 +6,7 @@ Jeder Teil ist so geschnitten, dass er in **eine Session** passt. Start in einem
 ## Regeln für jeden Teil
 
 1. **Vorbereitung**
-   - **Zuerst den Nutzer an das empfohlene Modell erinnern** (Spalte „Modell“ in der Übersicht). Läuft die Session auf einem anderen Modell, kurz darauf hinweisen. Er wechselt mit `/model`. Erst danach anfangen. Faustregel: Opus 5.5 als Standard; Fable 5.2 für bitgenaue Weltgenerierung, schweres Rendering und festgefahrene Fehler; Sonnet 5.5 für kleine, mechanische Teile.
+   - **Zuerst den Nutzer an das empfohlene Modell erinnern** und den Aufwand (Spalte „Modell, Aufwand“ in der Übersicht). Läuft die Session auf einem anderen Modell, kurz darauf hinweisen. Er wechselt mit `/model`. Den Aufwand stellt er im selben Menü ein. Bleibt ein Fehler nach zwei, drei Versuchen hängen, eine Stufe höher gehen. Erst danach anfangen. Faustregel: Opus 5.5 als Standard; Fable 5.2 für bitgenaue Weltgenerierung, schweres Rendering und festgefahrene Fehler; Sonnet 5.5 für kleine, mechanische Teile.
    - `git pull`, danach den Abschnitt des Teils lesen und prüfen, ob die Voraussetzungen erledigt sind (Status unten).
    - Original-Quellen holen: `python3 tools/reference.py --only <archiv>[,<archiv>...]`.
 2. **Port**
@@ -33,34 +33,34 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 
 ## Übersicht
 
-| Teil | Inhalt | Zeilen (Original) | Braucht | Modell | Status |
+| Teil | Inhalt | Zeilen (Original) | Braucht | Modell, Aufwand | Status |
 |---:|---|---:|---|---|---|
 | 0 | Grundgerüst, RottenFleshToLeather, 1.5.2-Gelände, ExtrabiomesXL-Biome | – | – | – | ✅ erledigt |
-| 1 | Vanilla-1.5.2-Dekoration und Schnittstelle für Mod-Weltgeneratoren | ~3.000 | 0 | Fable 5.2 | offen |
-| 2 | Vanilla-1.5.2-Strukturen, Spawnpunkt, Abgleich mit Original-Welt | ~6.000 | 1 | Fable 5.2 | offen |
-| 3 | JEI-Grundlage, ExtrabiomesXL fertig (Bäume, Pflanzen, Holz, Scarecrow) | ~9.000 | 1 | Opus 5.5 | offen |
-| 4 | Kleine Mods: Obsidian Plates, Chest Transporter, ArmorBar, BuffBar, Back Tools, Soul Shards | ~5.000 | 3 | Sonnet 5.5 | offen |
-| 5 | Hexxit Gear, More Bows, Enchanting Plus, offLawn, Wild Caves 3 | ~13.000 | 1, 3 | Opus 5.5 | offen |
-| 6 | bspkrsCore, TreeCapitator, Inventory Tweaks, Custom LAN Ports | ~19.000 | 3 | Opus 5.5 | offen |
-| 7 | Natura | ~20.000 | 1, 3 | Opus 5.5 | offen |
-| 8 | Artifice, CoFHCore (nur was das Pack nutzt) | ~27.000 | 1, 3 | Opus 5.5 | offen |
-| 9 | Harken Scythe, Asgard Shield, Asgard Shield Addons | ~30.000 | 3 | Opus 5.5 | offen |
-| 10 | Project Zulu A: Kreaturen | ~25.000 | 3 | Fable 5.2 | offen |
-| 11 | Project Zulu B: Blöcke, Items, Weltgenerierung, Spawns | ~18.000 | 10 | Opus 5.5 | offen |
-| 12 | Better Dungeons A: Bau-Engine und Gebäude-Import | ~18.000 | 1 | Fable 5.2 | offen |
-| 13 | Better Dungeons B: Dungeon-Typen, Mobs, Loot | ~18.000 | 12 | Fable 5.2 | offen |
-| 14 | Battle Towers, Ruins (mit allen Ruinen-Vorlagen) | ~5.000 + Vorlagen | 1 | Opus 5.5 | offen |
-| 15 | Dimensional Doors | ~11.000 | 2 | Opus 5.5 | offen |
-| 16 | BiblioCraft | ~21.000 | 3 | Fable 5.2 | offen |
-| 17 | BetterStorage, Backpacks, qCraft | ~17.000 | 3 | Opus 5.5 | offen |
-| 18 | ChocoCraft, Infernal Mobs | ~16.000 | 1, 3 | Opus 5.5 | offen |
-| 19 | LegendGear, Falling Meteors | ~19.000 | 1, 3 | Opus 5.5 | offen |
-| 20 | Xeno's Reliquary, Secret Rooms | ~18.000 | 3 | Opus 5.5 | offen |
-| 21 | Immibis Core, Immibis's Microblocks | ~26.000 | 3 | Fable 5.2 | offen |
-| 22 | Client-Mods: Damage Indicators, MapWriter | ~12.000 | – | Sonnet 5.5 | offen |
-| 23 | Gesamttest und Modpack-Export | – | alle | Opus 5.5 | offen |
-| 24 | später: Twilight Forest | ~50.000 | – | Fable 5.2 | zurückgestellt |
-| 25 | später: Tinkers' Construct | ~60.000 | – | Fable 5.2 | zurückgestellt |
+| 1 | Vanilla-1.5.2-Dekoration und Schnittstelle für Mod-Weltgeneratoren | ~3.000 | 0 | Fable 5.2, extra hoch | offen |
+| 2 | Vanilla-1.5.2-Strukturen, Spawnpunkt, Abgleich mit Original-Welt | ~6.000 | 1 | Fable 5.2, extra hoch | offen |
+| 3 | JEI-Grundlage, ExtrabiomesXL fertig (Bäume, Pflanzen, Holz, Scarecrow) | ~9.000 | 1 | Opus 5.5, mittel | offen |
+| 4 | Kleine Mods: Obsidian Plates, Chest Transporter, ArmorBar, BuffBar, Back Tools, Soul Shards | ~5.000 | 3 | Sonnet 5.5, niedrig | offen |
+| 5 | Hexxit Gear, More Bows, Enchanting Plus, offLawn, Wild Caves 3 | ~13.000 | 1, 3 | Opus 5.5, mittel | offen |
+| 6 | bspkrsCore, TreeCapitator, Inventory Tweaks, Custom LAN Ports | ~19.000 | 3 | Opus 5.5, mittel | offen |
+| 7 | Natura | ~20.000 | 1, 3 | Opus 5.5, mittel | offen |
+| 8 | Artifice, CoFHCore (nur was das Pack nutzt) | ~27.000 | 1, 3 | Opus 5.5, mittel | offen |
+| 9 | Harken Scythe, Asgard Shield, Asgard Shield Addons | ~30.000 | 3 | Opus 5.5, mittel | offen |
+| 10 | Project Zulu A: Kreaturen | ~25.000 | 3 | Fable 5.2, hoch | offen |
+| 11 | Project Zulu B: Blöcke, Items, Weltgenerierung, Spawns | ~18.000 | 10 | Opus 5.5, mittel | offen |
+| 12 | Better Dungeons A: Bau-Engine und Gebäude-Import | ~18.000 | 1 | Fable 5.2, hoch | offen |
+| 13 | Better Dungeons B: Dungeon-Typen, Mobs, Loot | ~18.000 | 12 | Fable 5.2, hoch | offen |
+| 14 | Battle Towers, Ruins (mit allen Ruinen-Vorlagen) | ~5.000 + Vorlagen | 1 | Opus 5.5, mittel | offen |
+| 15 | Dimensional Doors | ~11.000 | 2 | Opus 5.5, mittel | offen |
+| 16 | BiblioCraft | ~21.000 | 3 | Fable 5.2, hoch | offen |
+| 17 | BetterStorage, Backpacks, qCraft | ~17.000 | 3 | Opus 5.5, mittel | offen |
+| 18 | ChocoCraft, Infernal Mobs | ~16.000 | 1, 3 | Opus 5.5, mittel | offen |
+| 19 | LegendGear, Falling Meteors | ~19.000 | 1, 3 | Opus 5.5, mittel | offen |
+| 20 | Xeno's Reliquary, Secret Rooms | ~18.000 | 3 | Opus 5.5, mittel | offen |
+| 21 | Immibis Core, Immibis's Microblocks | ~26.000 | 3 | Fable 5.2, extra hoch | offen |
+| 22 | Client-Mods: Damage Indicators, MapWriter | ~12.000 | – | Sonnet 5.5, niedrig | offen |
+| 23 | Gesamttest und Modpack-Export | – | alle | Opus 5.5, mittel | offen |
+| 24 | später: Twilight Forest | ~50.000 | – | Fable 5.2, hoch | zurückgestellt |
+| 25 | später: Tinkers' Construct | ~60.000 | – | Fable 5.2, hoch | zurückgestellt |
 
 Entfallen ganz: Not Enough Items, NEI Plugins, CodeChickenCore (durch JEI ersetzt), Lumy Skin Patch,
 `basemods` (Forge 1.5.2 selbst).
