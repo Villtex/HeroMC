@@ -16,6 +16,8 @@ Projektüberblick und Bauen/Starten stehen in `README.md`.
 - JDK 25 liegt in der Umgebung "HeroMC" unter `/opt/jdks/jdk25` (Setup-Skript der Umgebung). Bauen mit `CI=true ./gradlew ...`.
 - Original-Quellen als Vorlage: `python3 tools/reference.py --only <mod>` (bzw. `--only minecraft` für Vanilla 1.5.2) dekompiliert nach `.reference/<mod>/src`. Nicht committen.
 - 26.3-APIs nachschlagen: `javap -p` gegen `mods/*/build/moddev/artifacts/minecraft-patched-26.3*.jar` (Skill `minecraft-modding`, Datei `references/version-bump-method.md`).
+- MCP-Server `minecraft-dev` (`.mcp.json`, Paket `@mcdxai/minecraft-dev-mcp`): 26.3-Quellen lesen und durchsuchen statt `javap`. Einmal pro Umgebung `decompile_minecraft_version` mit `jarPath` = das patched-Jar oben, `version` `26.3-neoforge-26.3.0.102`, `mapping` `mojmap`; danach `get_minecraft_source` / `search_minecraft_code` mit derselben Version. Ohne MCP geht dasselbe über `minecraft-dev-cli <tool> --key value`.
+- `run/server` ist nicht eingecheckt. Vor dem ersten Start `eula.txt` (`eula=true`) und `server.properties` mit `level-seed=1234`, `enable-rcon=true`, `rcon.password=hexxit`, `rcon.port=25575`, `online-mode=false` anlegen.
 - Terrain-Prüfung: `tools/expect.sh 1234 find 260 > expect.txt`, Server mit `level-seed=1234` starten, `python3 tools/verify_blocks.py expect.txt`. Muss 0 Abweichungen ergeben.
 - Verhalten am Server per `python3 tools/rcon.py "<befehl>"` prüfen (RCON-Daten in `run/server/server.properties`).
 

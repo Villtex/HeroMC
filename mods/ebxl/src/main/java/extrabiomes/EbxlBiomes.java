@@ -3,6 +3,7 @@ package extrabiomes;
 import hexxit.worldgen152.core.OldBiome;
 import hexxit.worldgen152.core.OldBiomes;
 import hexxit.worldgen152.core.OldBlocks;
+import hexxit.worldgen152.core.populate.OldBlockInfo;
 
 /**
  * The ExtrabiomesXL biomes as the 1.5.2 terrain generator saw them: ids, height ranges, climate and surface
@@ -22,6 +23,8 @@ public final class EbxlBiomes {
 
     /** Adds the biomes to the 1.5.2 biome table and to the overworld layout. Uses no game classes. */
     public static void register() {
+        OldBlockInfo.registerCube(RED_ROCK_ID, OldBlockInfo.Material.ROCK);
+        OldBlockInfo.registerCube(CRACKED_SAND_ID, OldBlockInfo.Material.ROCK);
         float forestTemp = OldBiomes.FOREST.temperature;
         float forestRain = OldBiomes.FOREST.rainfall;
         float swampTemp = OldBiomes.SWAMPLAND.temperature;

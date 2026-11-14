@@ -6,6 +6,7 @@ import hexxit.worldgen152.core.BiomeLayout;
 import hexxit.worldgen152.core.OldBiomes;
 import hexxit.worldgen152.core.OldChunk;
 import hexxit.worldgen152.core.OldTerrain;
+import hexxit.worldgen152.core.populate.OldDecoration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.server.level.WorldGenRegion;
@@ -14,6 +15,7 @@ import net.minecraft.world.level.LevelHeightAccessor;
 import net.minecraft.world.level.NaturalSpawner;
 import net.minecraft.world.level.NoiseColumn;
 import net.minecraft.world.level.StructureManager;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeManager;
 import net.minecraft.world.level.biome.BiomeSource;
@@ -37,8 +39,10 @@ import java.util.concurrent.CompletableFuture;
 
 /**
  * Chunk generator that lays down the 1.5.2 overworld: 128 blocks of terrain from y=0, sea level 63.
- * All shaping (surface layers, caves, ravines) happens in {@link OldTerrain}; this class only writes the
- * result into the chunk and answers height queries from the same data.
+ * All shaping (surface layers, caves, ravines) happens in {@link OldTerrain} and the population of chunks
+ * (lakes, ores, trees, plants, snow) in {@link OldDecoration}; this class only writes the results into the
+ * chunk - bare terrain in the noise step, population in the feature step - and answers height queries from
+ * the bare terrain.
  */
 public final class OldChunkGenerator extends ChunkGenerator {
     public static final MapCodec<OldChunkGenerator> CODEC = RecordCodecBuilder.mapCodec(instance -> instance
@@ -46,10 +50,11 @@ public final class OldChunkGenerator extends ChunkGenerator {
             .apply(instance, OldChunkGenerator::new));
 
     private static final int SEA_LEVEL = 63;
-    private static final int CACHE_SIZE = 512;
+    private static final int CACHE_SIZE = 1024;
 
     private final OldBiomeSource oldBiomes;
     private volatile OldTerrain terrain;
+    private volatile OldDecoration decoration;
     private final Map<Long, OldChunk> chunkCache = new LinkedHashMap<>(64, 0.75F, true) {
         @Override
         protected boolean removeEldestEntry(Map.Entry<Long, OldChunk> eldest) {
@@ -79,6 +84,7 @@ public final class OldChunkGenerator extends ChunkGenerator {
                 if (current == null || current.layout() != layout) {
                     this.chunkCache.clear();
                     current = new OldTerrain(layout);
+                    this.decoration = new OldDecoration(layout.seed(), this::oldChunk);
                     this.terrain = current;
                 }
             }
@@ -130,6 +136,16 @@ public final class OldChunkGenerator extends ChunkGenerator {
             }
         }
         return CompletableFuture.completedFuture(chunk);
+    }
+
+    /** The feature step: what 1.5.2 did when it populated chunks, then whatever today's biomes and structures add. */
+    @Override
+    public void applyBiomeDecoration(WorldGenLevel level, ChunkAccess chunk, StructureManager structureManager) {
+        this.oldBiomes.bind(level.getSeed());
+        ChunkPos pos = chunk.getPos();
+        OldChunk bare = this.oldChunk(pos.x(), pos.z());
+        OldChunkWriter.write(chunk, bare, this.decoration.chunk(pos.x(), pos.z()), level.registryAccess());
+        super.applyBiomeDecoration(level, chunk, structureManager);
     }
 
     @Override
