@@ -1,5 +1,12 @@
 package hexxit.worldgen152.core;
 
+import hexxit.worldgen152.core.populate.OldDecorator;
+import hexxit.worldgen152.core.populate.OldGen;
+import hexxit.worldgen152.core.populate.OldLakeGens;
+import hexxit.worldgen152.core.populate.OldOreGens;
+import hexxit.worldgen152.core.populate.OldPlantGens;
+import hexxit.worldgen152.core.populate.OldTreeGens;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -46,6 +53,104 @@ public final class OldBiomes {
     static {
         // WorldType.base12Biomes, in this order.
         Collections.addAll(OVERWORLD, DESERT, FOREST, EXTREME_HILLS, SWAMPLAND, PLAINS, TAIGA, JUNGLE);
+    }
+
+    static {
+        // Decoration settings of the BiomeGen* classes.
+        PLAINS.decorator.treesPerChunk = -999;
+        PLAINS.decorator.flowersPerChunk = 4;
+        PLAINS.decorator.grassPerChunk = 10;
+        for (OldBiome desert : new OldBiome[] {DESERT, DESERT_HILLS}) {
+            desert.decorator.treesPerChunk = -999;
+            desert.decorator.deadBushPerChunk = 2;
+            desert.decorator.reedsPerChunk = 50;
+            desert.decorator.cactiPerChunk = 10;
+            desert.afterDecoration((biome, world, random, x, z) -> {
+                if (random.nextInt(1000) == 0) {
+                    int bx = x + random.nextInt(16) + 8;
+                    int bz = z + random.nextInt(16) + 8;
+                    new OldLakeGens.DesertWell().generate(world, random, bx, world.getHeightValue(bx, bz) + 1, bz);
+                }
+            });
+        }
+        OldGen silverfish = new OldOreGens.Minable(97, 8);
+        for (OldBiome hills : new OldBiome[] {EXTREME_HILLS, EXTREME_HILLS_EDGE}) {
+            hills.afterDecoration((biome, world, random, x, z) -> {
+                int emeralds = 3 + random.nextInt(6);
+                for (int i = 0; i < emeralds; i++) {
+                    int bx = x + random.nextInt(16);
+                    int by = random.nextInt(28) + 4;
+                    int bz = z + random.nextInt(16);
+                    if (world.getBlockId(bx, by, bz) == 1) {
+                        world.setBlock(bx, by, bz, 129, 0);
+                    }
+                }
+                for (int i = 0; i < 7; i++) {
+                    int bx = x + random.nextInt(16);
+                    int by = random.nextInt(64);
+                    int bz = z + random.nextInt(16);
+                    silverfish.generate(world, random, bx, by, bz);
+                }
+            });
+        }
+        for (OldBiome forest : new OldBiome[] {FOREST, FOREST_HILLS}) {
+            forest.decorator.treesPerChunk = 10;
+            forest.decorator.grassPerChunk = 2;
+            forest.trees = (world, random) -> {
+                if (random.nextInt(5) == 0) {
+                    return OldBiome.BIRCH;
+                }
+                return random.nextInt(10) == 0 ? world.bigTree() : OldBiome.OAK;
+            };
+        }
+        for (OldBiome taiga : new OldBiome[] {TAIGA, TAIGA_HILLS}) {
+            taiga.decorator.treesPerChunk = 10;
+            taiga.decorator.grassPerChunk = 1;
+            taiga.trees = (world, random) -> random.nextInt(3) == 0 ? new OldTreeGens.Pine() : new OldTreeGens.Spruce();
+        }
+        OldDecorator swamp = SWAMPLAND.decorator;
+        swamp.treesPerChunk = 2;
+        swamp.flowersPerChunk = -999;
+        swamp.deadBushPerChunk = 1;
+        swamp.mushroomsPerChunk = 8;
+        swamp.reedsPerChunk = 10;
+        swamp.clayPerChunk = 1;
+        swamp.waterlilyPerChunk = 4;
+        SWAMPLAND.trees = (world, random) -> OldBiome.SWAMP_OAK;
+        for (OldBiome jungle : new OldBiome[] {JUNGLE, JUNGLE_HILLS}) {
+            jungle.decorator.treesPerChunk = 50;
+            jungle.decorator.grassPerChunk = 25;
+            jungle.decorator.flowersPerChunk = 4;
+            jungle.trees = (world, random) -> {
+                if (random.nextInt(10) == 0) {
+                    return world.bigTree();
+                } else if (random.nextInt(2) == 0) {
+                    return new OldTreeGens.Shrub(3, 0);
+                }
+                return random.nextInt(3) == 0 ? new OldTreeGens.Huge(10 + random.nextInt(20), 3, 3)
+                        : new OldTreeGens.Trees(4 + random.nextInt(7), 3, 3, true);
+            };
+            jungle.grass = random -> random.nextInt(4) == 0 ? new OldPlantGens.TallGrass(2) : new OldPlantGens.TallGrass(1);
+            jungle.afterDecoration((biome, world, random, x, z) -> {
+                OldGen vines = new OldPlantGens.Vines();
+                for (int i = 0; i < 50; i++) {
+                    int bx = x + random.nextInt(16) + 8;
+                    int bz = z + random.nextInt(16) + 8;
+                    vines.generate(world, random, bx, 64, bz);
+                }
+            });
+        }
+        for (OldBiome mushroom : new OldBiome[] {MUSHROOM_ISLAND, MUSHROOM_ISLAND_SHORE}) {
+            mushroom.decorator.treesPerChunk = -100;
+            mushroom.decorator.flowersPerChunk = -100;
+            mushroom.decorator.grassPerChunk = -100;
+            mushroom.decorator.mushroomsPerChunk = 1;
+            mushroom.decorator.bigMushroomsPerChunk = 1;
+        }
+        BEACH.decorator.treesPerChunk = -999;
+        BEACH.decorator.deadBushPerChunk = 0;
+        BEACH.decorator.reedsPerChunk = 0;
+        BEACH.decorator.cactiPerChunk = 0;
     }
 
     private OldBiomes() {

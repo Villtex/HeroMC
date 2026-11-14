@@ -37,8 +37,8 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | Teil | Inhalt | Zeilen (Original) | Braucht | Modell, Aufwand | Status |
 |---:|---|---:|---|---|---|
 | 0 | Grundgerüst, RottenFleshToLeather, 1.5.2-Gelände, ExtrabiomesXL-Biome | – | – | – | ✅ erledigt |
-| 1 | Vanilla-1.5.2-Dekoration und Schnittstelle für Mod-Weltgeneratoren | ~3.000 | 0 | Fable 5.2, extra hoch | offen |
-| 2 | Vanilla-1.5.2-Strukturen, Spawnpunkt, Abgleich mit Original-Welt | ~6.000 | 1 | Fable 5.2, extra hoch | offen |
+| 1 | Vanilla-1.5.2-Dekoration und Schnittstelle für Mod-Weltgeneratoren | ~3.000 | 0 | Fable 5.2, extra hoch | ✅ erledigt |
+| 2 | Vanilla-1.5.2-Strukturen, Spawnpunkt, Abgleich mit Original-Welt | ~6.000 | 1 | Fable 5.2, extra hoch | ✅ erledigt |
 | 3 | JEI-Grundlage, ExtrabiomesXL fertig (Bäume, Pflanzen, Holz, Scarecrow) | ~9.000 | 1 | Opus 5.5, mittel | offen |
 | 4 | Kleine Mods: Obsidian Plates, Chest Transporter, ArmorBar, BuffBar, Back Tools, Soul Shards | ~5.000 | 3 | Sonnet 5.5, niedrig | offen |
 | 5 | Hexxit Gear, More Bows, Enchanting Plus, offLawn, Wild Caves 3 | ~13.000 | 1, 3 | Opus 5.5, mittel | offen |
@@ -97,6 +97,39 @@ Die Reihenfolge ab Teil 4 ist frei wählbar, solange „Braucht“ erfüllt ist.
 
 In der Beschreibung des Skills soll stehen, wann er greift: beim Portieren von Weltgenerierung eines Hexxit-Mods. Nichts doppeln, was in `CLAUDE.md`, `docs/PLAN.md` oder im Skill `minecraft-modding` steht. Den Skill mitcommitten.
 
+**Status: erledigt.** Seed 1234, je ein Chunk aller 49 Biome: 132.102 Blöcke, 784 Biom-Proben, 5 Spawner/Truhen
+stimmen, 0 Abweichungen (2 Blöcke von fließendem Quellwasser erreicht, das zählt nicht als Abweichung).
+
+So ist es gebaut (`hexxit.worldgen152.core.populate`, reines Java):
+
+- `OldPopulator` = `ChunkProviderGenerate.populate` + `GameRegistry.generateWorld`, `OldDecorator` = `BiomeDecorator`,
+  `Old*Gens` = die `WorldGen*`-Klassen, `OldWorld` = der Teil von `World`, den die Generatoren benutzen.
+- Mod-Schnittstelle: `OldTerrainGen.registerWorldGenerator` (IWorldGenerator) und `OldTerrainGen.addListener`
+  (Populate-, Decorate- und OreGen-Events, `false` = `Result.DENY`). Dekorator ersetzen: `OldBiome.decorator`,
+  Baum-/Graswahl: `OldBiome.trees` / `.grass`, Zusatzschritt: `OldBiome.afterDecoration`.
+- Neue Blöcke brauchen zwei Einträge: `OldBlockInfo.register*` (Material, Lichtdurchlass) und
+  `OldBlockStates.register`/`registerMeta` (Blockzustand). Dungeon-Beute und -Mobs: `OldLoot`, Übersetzung der
+  alten Item-IDs und Mob-Namen: `OldGameIds`.
+- **Feste Reihenfolge statt Ladereihenfolge:** In 1.5.2 hing das Ergebnis davon ab, in welcher Reihenfolge Chunks
+  geladen wurden. `OldDecoration` rechnet in Kacheln von 8×8 Chunks mit Rand (4 davor, 2 danach) und populiert
+  x-aufsteigend, dann z-aufsteigend, wie der Original-Server sein Startgebiet. Gleicher Seed = gleiche Blöcke.
+
+**Offen / bewusst abweichend:**
+
+- Himmelslicht wird nur spaltenweise gerechnet (kein seitliches Ausbreiten, kein Blocklicht). Betrifft, wo Pilze
+  und Blumen stehen dürfen. In 1.5.2 war das beim Generieren meist genauso, aber nicht immer.
+- Der große Eichen-Generator merkt sich seine Höhengrenze nur innerhalb eines Chunks, nicht wie im Original über
+  die ganze Sitzung (sonst wäre das Ergebnis wieder von der Reihenfolge abhängig).
+- Quellen (`WorldGenLiquids`) werden als Quellblock gesetzt und fließen erst im Spiel los; der erste Fließschritt
+  des Originals beim Generieren fehlt.
+- Tiere beim Generieren kommen weiter von `NaturalSpawner` (gleicher Algorithmus, Spawn-Listen aus den Biom-Daten),
+  nicht aus der 1.5.2-Zufallsfolge.
+- ExtrabiomesXL-Biome benutzen bis Teil 3 den Standard-Dekorator (vereinzelte Eichen, Gras, Blumen).
+- Strukturen fehlen noch (Teil 2); die Stelle in `OldPopulator` ist markiert. Sie verbrauchen Zufallszahlen vor den
+  Seen, dadurch verschieben sich danach Seen und Dungeons in Chunks mit Strukturen.
+- Wie man Generatoren einhängt und prüft, steht im Skill `.claude/skills/worldgen152/SKILL.md`.
+- Client-Prüfung offen (Aussehen von Riesenpilzen, Ranken, Kakao, Kürbissen).
+
 ## Teil 2 – Vanilla-1.5.2-Strukturen und Abgleich
 
 - Dörfer, Minenschächte, Festungen, Wüsten- und Dschungeltempel, Hexenhütten im 1.5.2-Stil und an den 1.5.2-Positionen (`MapGen*`, `ComponentVillage*`, `ComponentStronghold*`, ...).
@@ -106,6 +139,90 @@ In der Beschreibung des Skills soll stehen, wann er greift: beim Portieren von W
   - In einer früheren Session hat das Sicherheitssystem den Start des Original-Servers blockiert. Wenn das wieder passiert, den Nutzer um Freigabe bitten. Alternative: die Region-Dateien (`.mca`, altes Format) einer Welt lesen, die der Nutzer selbst erzeugt hat.
 
 **Fertig wenn:** Gelände, Dekoration und Strukturen einer Original-Welt stimmen mit dem Port überein. Erwartete Unterschiede (Zufall aus Mods, die noch fehlen) sind dokumentiert.
+
+**Status: erledigt.** Der Port ist gegen Welten des echten Originals geprüft (Seed 1234), `tools/compare_original.py`:
+
+| Original | verglichen | Ergebnis |
+|---|---|---|
+| Vanilla-Server 1.5.2: Spawngebiet, ein Dorf, eine Festung, Minenschächte | 1.023 Chunks, 67,0 Mio. Blöcke | 0,0046 % weichen ab (3.086 Blöcke), 932 Chunks ohne jede Abweichung; Spawnpunkt 293/58 gleich |
+| Hexxit-Server 1.0.10: Spawngebiet | 331 Chunks, 84.736 Biom-Spalten | Biome 100 % gleich, Spawnpunkt 329/60 gleich; Blöcke siehe „Erwartete Unterschiede“ |
+| Hexxit-Server 1.0.10: Gebiet des vorhergesagten Dorfs (Chunk -20/-28) | 49 Chunks | Dorf steht an der vorhergesagten Stelle, einzelne Häuser decken sich; der Grundriss weicht ab, siehe unten |
+
+Im Vanilla-Abgleich stimmen Dorf, Festung und Minenschacht Block für Block, die Dungeon-Truhen Slot für Slot
+(Gegenstand, Anzahl, Verzauberung). Was abweicht:
+
+- große Eichen (Höhengrenze hängt im Original an der Sitzung, siehe Teil 1) und die Chunks, die das Original
+  schon bei der Spawnsuche geladen hat (andere Reihenfolge, dadurch stehen einzelne Bäume anders);
+- nicht mitgezählt, weil erst das laufende Spiel sie bewegt: fließendes Wasser und Lava samt Obsidian und
+  Bruchstein, gefallener Sand und Kies, Schnee (28.128 Blöcke);
+- am Rand des erzeugten Gebiets fehlen dem Original Nachbarn, die der Port zuerst populiert. Verglichen wird
+  deshalb erst 3 Chunks innerhalb des populierten Gebiets (`--interior`).
+
+Vanilla ohne Forge füllte Truhen anders als Forge 7.8 (Dungeon-Beute per `pickCheckLootItem`, Stapelgröße einmal
+statt zweimal gewürfelt). Das Pack läuft mit Forge, der Port folgt Forge. Für den Vanilla-Abgleich schaltet
+`tools/expect.sh <seed> vanilla ...` auf das Vanilla-Verhalten um (`OldDungeonGen.vanillaLoot`,
+`OldLoot.vanillaDraws`) und lässt die Mod-Biome weg.
+
+**Erwartete Unterschiede zur Hexxit-Welt** (Zufall aus Mods, die noch fehlen): Im Spawngebiet weichen 8,8 % der
+Blöcke ab. Artifice ersetzt Stein schichtweise durch Basalt und Marmor (IDs 1004/1005, zusammen rund 800.000
+Blöcke), CoFHWorld ersetzt die Vanilla-Erze, und jeder Mod-Generator verbraucht Zufallszahlen, wodurch auch
+Erde-, Kies- und Erzadern der Vanilla-Dekoration woanders liegen. Das löst sich erst mit den Teilen 3, 5, 7, 8,
+11–14, 18 und 19 auf; `compare_original.py` gegen `.cache/original/hexxit/world` ist dafür der Maßstab.
+
+**Dörfer in der Hexxit-Welt haben einen anderen Grundriss als im Port,** solange die Dorf-Bauteile der Mods
+fehlen: Tinkers' Construct (Werkzeugschmiede, Schmelzerei; zurückgestellt als Teil 25) und Better Dungeons
+(Teil 12/13) hängen eigene Bauteile in die Auswahl. Schon deren Gewichte verbrauchen Zufallszahlen des Dorfs,
+danach wählt das Dorf andere Häuser. Die Schnittstelle dafür ist da (`OldStructures.VILLAGE_HANDLERS`). Wer die
+Dörfer vor Teil 25 originalgetreu haben will, muss die zwei Tinkers-Bauteile vorziehen. Forge hielt diese
+Handler in einer Hash-Tabelle nach Klasse; ihre Reihenfolge wechselte im Original von Start zu Start.
+
+**Ladereihenfolge der Mods im Original** (FML-Log des Hexxit-Servers; in dieser Reihenfolge melden sie ihre
+Weltgeneratoren an): `mod_bspkrsCore`, `CoFHCore`, `CoFHWorld`, `TreeCapitator`, `ImmibisMicroblocksInstallCheck`, `DamageIndicatorsMod`, `AsgardShield_Core`, `ASAddon_Hallowed`, `HarkenScythe_Core`, `ASAddon_HarkenScythe`, `ASAddon_NetherEnder`, `ASAddon_ColorAPI`, `Artifice`, `ArtificeCompat|Chisel`, `ArtificeCompat|EE3`, `ArtificeCompat|Forestry`, `ArtificeCompat|MFR`, `ArtificeCompat|Railcraft`, `ArtificeCompat|Vanilla`, `BattleTowers`, `BetterDungeons`, `BiblioCraft`, `DimDoors`, `eplus`, `ExtrabiomesXL`, `hexxitgear`, `InfernalMobs`, `Meteors`, `More Bows`, `LegendGear`, `Natura`, `Natura|CompatMineFactoryReloaded`, `OffLawn`, `ProjectZulu|Core`, `ProjectZulu|Blocks`, `ProjectZulu|Dungeon`, `ProjectZulu|Mobs`, `ProjectZulu|World`, `xreliquary`, `rftl`, `AS_Ruins`, `secretroomsmod`, `SoulShards`, `TConstruct`, `TConstruct|CompatMineFactoryReloaded`, `WildCaves3`, `BetterStorage`, `Backpack`, `ChestTransporter`, `ImmibisCore`, `ObsidiPlates`, `QuantumCraft`, `TwilightForest`, `chococraft`.
+
+Kern gegen Testserver (Seed 1234): 36 Chunks an Dörfern, Festungen, Minenschächten, Wüsten- und Dschungeltempel
+(113.533 Blöcke, 35 Truhen/Spawner/Entitäten) und je ein Chunk aller 49 Biome (137.790 Blöcke): 0 Abweichungen.
+
+So ist es gebaut:
+
+- `hexxit.worldgen152.core.structure`: die Struktur-Klassen des Originals (`StructureComponent`, `ComponentVillage*`,
+  `ComponentStronghold*`, `ComponentMineshaft*`, `ComponentScatteredFeature*`, `Structure*Pieces`) mit einem Skript
+  aus der dekompilierten Vorlage umgesetzt. Klassen- und Methodennamen sind die des Originals, damit sich jede
+  Zeile gegen `.reference/minecraft/src` halten lässt; Parameter heißen deshalb `var1`, `par2` usw.
+- `OldStructures` = `MapGenStructure` + `MapGenVillage`/`Stronghold`/`Mineshaft`/`ScatteredFeature` und die
+  Biom-Fragen des `WorldChunkManager` (`areBiomesViable`, `findBiomePosition`), dazu die Spawnsuche
+  (`WorldServer.createSpawnPosition`). `OldPopulator` ruft sie vor den Seen auf, wie das Original.
+- `OldWorld` kann jetzt, was die Strukturen von der Welt brauchten: Türen setzen, Fackeln ausrichten oder fallen
+  lassen, Schienen verbinden (`OldRails` = `BlockBaseRailLogic`), Ofen und Werfer drehen, Entitäten ablegen.
+- Beute: `OldLoot` hat die acht Kategorien von `ChestGenHooks` (Mineshaft, Tempel, Festung, Schmied).
+- Spielseite: `OldBlockStates` kennt alle Struktur-Blöcke, `OldChunkWriter` setzt Türhälften zusammen, lässt Zäune,
+  Scheiben, Treppen und Drähte ihre Nachbarn finden und schreibt Werfer, Dorfbewohner, Hexen und Truhenloren.
+  Der Weltspawn kommt über `LevelEvent.CreateSpawnPosition`, Enderaugen und `/locate` finden die 1.5.2-Festungen.
+- ExtrabiomesXL meldet seine Biome wie im Pack als Dorf-, Festungs- und Spawn-Biome an (`EbxlBiomes`).
+- Prüfwerkzeuge: `tools/expect.sh <seed> structures <radius>` und `... spawn`, `vanilla` als zweites Argument
+  rechnet ohne Mod-Biome. `verify_blocks.py` lädt Chunks einzeln, hält die Welt mit `tick freeze` an und prüft
+  auch Entitäten.
+
+**Offen:**
+
+- Original-Server starten: `tools/original_server.sh <vanilla|hexxit> <sekunden>` (Java 8 und Server liegen unter
+  `.cache/original/`, in `.claude/settings.json` freigegeben). Der Server erzeugt ohne Spieler nur das Gebiet um den
+  Spawn; `tools/original_spawn.py <welt> <x> <z>` verlegt ihn vor dem nächsten Start. Server-Paket von Hexxit:
+  `https://servers.technicpack.net/Technic/servers/hexxit/Hexxit_Server_v1.0.10.zip` nach `.cache/original/hexxit/`
+  entpacken, `Hexxit.jar` als `server.jar` kopieren, `level-seed=1234` und `online-mode=false` setzen.
+- Reihenfolge: In 1.5.2 entstand ein Strukturanfang erst, wenn ein Chunk in seiner Nähe erzeugt war, und
+  überlappende Anfänge wurden in der Reihenfolge einer Hash-Tabelle gebaut. Hier gibt es alle Anfänge von Beginn
+  an, überlappende werden nach Chunk-x, dann -z gebaut.
+- Bauteile merken sich Zustand (Bodenhöhe eines Hauses, gesetzte Truhe, entferntes Festungsteil bei Wasser).
+  Jede Kachel von 8×8 Chunks rechnet mit frischen Bauteilen; an Kachelgrenzen kann ein Haus deshalb um einen
+  Block anders liegen, als es das Original bei seiner Ladereihenfolge gebaut hätte.
+- Die Spawnsuche sieht das nackte Gelände. Im Original waren einzelne Chunks dabei schon dekoriert.
+- Nachbar-Updates nach dem Setzen einer Tür und beim Stolperdraht sind nicht nachgebildet.
+- Dorfbewohner haben die Berufe von heute (Schmied = Waffenschmied) und deren Handel, nicht den Handel von 1.5.2.
+  Hexenhütten haben keine eigene Spawnliste für Hexen. Für eigene Dorfblöcke je Biom gibt es
+  `OldStructures.villageBlocks`.
+- Hexenhütte: im Umkreis von 220 Chunks um 0/0 gibt es mit den Pack-Biomen keine, sie ist nur über die
+  Blockzuordnung geprüft, nicht am Server.
+- Client-Prüfung offen (Aussehen von Türen, Schienen, Fackeln, Stolperdraht, Truhenloren).
 
 ## Teil 3 – JEI-Grundlage und ExtrabiomesXL fertig
 
@@ -172,6 +289,10 @@ Kein Tinkers vorhanden: Integrationen dazu weglassen und notieren.
 
 - **Teil 12:** Bau-Engine und Import der Gebäude- und Dungeon-Vorlagen aus `betterdungeons-data1/2` (`Chocolate/`).
 - **Teil 13:** Dungeon-Typen, Wächter, Mobs, Loot (`ChestConfig`), Platzierung in der Welt.
+- **Am Ende von Teil 13 den Nutzer erinnern** (von ihm so gewünscht): Die Dörfer haben erst dann den Grundriss
+  des Originals, wenn auch die zwei Dorf-Bauteile von Tinkers' Construct da sind (Werkzeugschmiede, Schmelzerei;
+  sonst erst Teil 25). Fragen, ob sie jetzt vorgezogen werden sollen, und das Dorf-Bauteil von Better Dungeons
+  (`VillageHandler`) über `OldStructures.VILLAGE_HANDLERS` einhängen. Hintergrund: Teil 2, „Dörfer in der Hexxit-Welt“.
 
 ## Teil 14 – Battle Towers, Ruins
 

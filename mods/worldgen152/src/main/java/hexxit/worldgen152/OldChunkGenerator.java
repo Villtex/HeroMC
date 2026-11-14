@@ -6,6 +6,7 @@ import hexxit.worldgen152.core.BiomeLayout;
 import hexxit.worldgen152.core.OldBiomes;
 import hexxit.worldgen152.core.OldChunk;
 import hexxit.worldgen152.core.OldTerrain;
+import hexxit.worldgen152.core.populate.OldDecoration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.server.level.WorldGenRegion;
@@ -14,6 +15,7 @@ import net.minecraft.world.level.LevelHeightAccessor;
 import net.minecraft.world.level.NaturalSpawner;
 import net.minecraft.world.level.NoiseColumn;
 import net.minecraft.world.level.StructureManager;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeManager;
 import net.minecraft.world.level.biome.BiomeSource;
@@ -29,6 +31,13 @@ import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.level.levelgen.blending.Blender;
 import net.minecraft.world.level.levelgen.densityfunction.SamplerContext;
 
+import com.mojang.datafixers.util.Pair;
+import hexxit.worldgen152.core.structure.OldStructures;
+import net.minecraft.core.HolderSet;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
+import net.minecraft.world.level.levelgen.structure.Structure;
+
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,8 +46,10 @@ import java.util.concurrent.CompletableFuture;
 
 /**
  * Chunk generator that lays down the 1.5.2 overworld: 128 blocks of terrain from y=0, sea level 63.
- * All shaping (surface layers, caves, ravines) happens in {@link OldTerrain}; this class only writes the
- * result into the chunk and answers height queries from the same data.
+ * All shaping (surface layers, caves, ravines) happens in {@link OldTerrain} and the population of chunks
+ * (structures, lakes, ores, trees, plants, snow) in {@link OldDecoration}; this class only writes the results into the
+ * chunk - bare terrain in the noise step, population in the feature step - and answers height queries from
+ * the bare terrain.
  */
 public final class OldChunkGenerator extends ChunkGenerator {
     public static final MapCodec<OldChunkGenerator> CODEC = RecordCodecBuilder.mapCodec(instance -> instance
@@ -46,10 +57,11 @@ public final class OldChunkGenerator extends ChunkGenerator {
             .apply(instance, OldChunkGenerator::new));
 
     private static final int SEA_LEVEL = 63;
-    private static final int CACHE_SIZE = 512;
+    private static final int CACHE_SIZE = 1024;
 
     private final OldBiomeSource oldBiomes;
     private volatile OldTerrain terrain;
+    private volatile OldDecoration decoration;
     private final Map<Long, OldChunk> chunkCache = new LinkedHashMap<>(64, 0.75F, true) {
         @Override
         protected boolean removeEldestEntry(Map.Entry<Long, OldChunk> eldest) {
@@ -79,6 +91,7 @@ public final class OldChunkGenerator extends ChunkGenerator {
                 if (current == null || current.layout() != layout) {
                     this.chunkCache.clear();
                     current = new OldTerrain(layout);
+                    this.decoration = new OldDecoration(layout.seed(), this::oldChunk, layout);
                     this.terrain = current;
                 }
             }
@@ -130,6 +143,54 @@ public final class OldChunkGenerator extends ChunkGenerator {
             }
         }
         return CompletableFuture.completedFuture(chunk);
+    }
+
+    /** The feature step: what 1.5.2 did when it populated chunks, then whatever today's biomes and structures add. */
+    @Override
+    public void applyBiomeDecoration(WorldGenLevel level, ChunkAccess chunk, StructureManager structureManager) {
+        this.oldBiomes.bind(level.getSeed());
+        ChunkPos pos = chunk.getPos();
+        OldChunk bare = this.oldChunk(pos.x(), pos.z());
+        OldChunkWriter.write(level, chunk, bare, this.decoration.chunk(pos.x(), pos.z()));
+        super.applyBiomeDecoration(level, chunk, structureManager);
+    }
+
+    /** The world spawn of 1.5.2 for this seed, on the ground. */
+    public BlockPos spawnPoint() {
+        BiomeLayout layout = this.oldBiomes.layout();
+        this.terrain();
+        int[] spawn = OldStructures.spawnPoint(layout.seed(), layout, this::oldChunk);
+        OldChunk old = this.oldChunk(spawn[0] >> 4, spawn[1] >> 4);
+        int y = OldChunk.HEIGHT - 1;
+        while (y > 0 && old.blockId(spawn[0] & 15, y, spawn[1] & 15) == 0) {
+            y--;
+        }
+        return new BlockPos(spawn[0], y + 1, spawn[1]);
+    }
+
+    /** Eyes of ender and /locate find the strongholds of 1.5.2; other structures of today do not exist here. */
+    @Override
+    public Pair<BlockPos, Holder<Structure>> findNearestMapStructure(ServerLevel level, HolderSet<Structure> structures, BlockPos pos,
+                                                                     int maxSearchRadius, boolean createReference) {
+        Holder<Structure> stronghold = null;
+        for (Holder<Structure> holder : structures) {
+            if (holder.is(BuiltinStructures.STRONGHOLD)) {
+                stronghold = holder;
+            }
+        }
+        if (stronghold == null) {
+            return null;
+        }
+        this.oldBiomes.bind(level.getSeed());
+        BiomeLayout layout = this.oldBiomes.layout();
+        BlockPos nearest = null;
+        for (int[] room : new OldStructures(layout.seed(), layout).strongholdPortalRooms()) {
+            BlockPos candidate = new BlockPos(room[0], room[1], room[2]);
+            if (nearest == null || candidate.distSqr(pos) < nearest.distSqr(pos)) {
+                nearest = candidate;
+            }
+        }
+        return nearest == null ? null : Pair.of(nearest, stronghold);
     }
 
     @Override

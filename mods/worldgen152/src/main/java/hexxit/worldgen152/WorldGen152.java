@@ -3,13 +3,18 @@ package hexxit.worldgen152;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.core.BlockPos;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.LevelData;
 import net.minecraft.world.level.biome.BiomeSource;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.dimension.LevelStem;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.level.LevelEvent;
 import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.slf4j.Logger;
@@ -37,6 +42,20 @@ public final class WorldGen152 {
         CHUNK_GENERATORS.register(modBus);
         BIOME_SOURCES.register(modBus);
         NeoForge.EVENT_BUS.addListener(WorldGen152::onServerAboutToStart);
+        NeoForge.EVENT_BUS.addListener(WorldGen152::onCreateSpawnPosition);
+    }
+
+    /** A new world gets the spawn point 1.5.2 would have chosen for its seed. */
+    private static void onCreateSpawnPosition(LevelEvent.CreateSpawnPosition event) {
+        if (event.getLevel() instanceof ServerLevel level && level.dimension() == Level.OVERWORLD
+                && level.getChunkSource().getGenerator() instanceof OldChunkGenerator generator
+                && generator.getBiomeSource() instanceof OldBiomeSource source) {
+            source.bind(level.getSeed());
+            BlockPos spawn = generator.spawnPoint();
+            event.getSettings().setSpawn(LevelData.RespawnData.of(Level.OVERWORLD, spawn, 0.0F, 0.0F));
+            event.setCanceled(true);
+            LOGGER.info("1.5.2 spawn point: {}", spawn);
+        }
     }
 
     /** Biome sources are created without knowing the world seed; hand it over before any chunk is generated. */
