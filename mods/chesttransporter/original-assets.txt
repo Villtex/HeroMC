@@ -1,0 +1,4 @@
+# path in chestTransporter_1.1.6_Universal.zip -> path in the ported jar
+# 0 = empty, 1 = with a chest (2-9 were Iron Chests and MultiPageChest, not in the pack)
+mods/chesttransporter/textures/items/0.png -> assets/chesttransporter/textures/item/chest_transporter.png
+mods/chesttransporter/textures/items/1.png -> assets/chesttransporter/textures/item/chest_transporter_chest.png

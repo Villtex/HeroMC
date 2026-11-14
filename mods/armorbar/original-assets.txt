@@ -1,0 +1,2 @@
+# path in ArmorBarv0.7.1.zip -> path in the ported jar
+armorbarresources/ArmorBarMod_Countdown.png -> assets/mod_armorbarmod/textures/gui/countdown.png

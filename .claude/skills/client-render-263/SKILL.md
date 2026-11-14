@@ -1,0 +1,76 @@
+---
+name: client-render-263
+description: Beim Portieren von Client-Darstellung eines Hexxit-Mods auf 26.3 benutzen. Greift bei HUD-Anzeigen (Tick-Handler mit TickType.RENDER, Overlays), Gegenständen oder Modellen am Spielermodell (Rücken, Schild, Rucksack), durchscheinenden oder halbtransparenten Blöcken (ISimpleBlockRenderingHandler mit Alpha), und bei Rechtsklick-Logik, die vor dem Block greifen muss (PlayerInteractEvent). Beispiele im Repo: armorbar, buffbar, backtools, obsidiplates, chesttransporter.
+---
+
+# Client-Darstellung in 26.3 (NeoForge 26.3.0.102)
+
+Ergänzt den Skill `minecraft-modding` („GUI / render cookbook“). Quellen nachlesen: MCP `minecraft-dev`
+(`get_minecraft_source`, Version `26.3-neoforge-26.3.0.102`, mojmap) und das NeoForge-Quell-Jar
+`~/.gradle/caches/modules-2/files-2.1/net.neoforged/neoforge/26.3.0.102/*/neoforge-26.3.0.102-sources.jar`
+(entpacken, dann `grep`).
+
+## Nur-Client-Mod sauber laden
+
+- Mod-Konstruktor `(IEventBus modBus, ModContainer container)`; Client-Klassen nur hinter
+  `if (FMLEnvironment.getDist() == Dist.CLIENT) client.X.register(modBus);` ansprechen. Der Server lädt den Mod dann ohne Fehler.
+- Einstellungen der alten `.cfg`: `ModConfigSpec` + `container.registerConfig(ModConfig.Type.CLIENT, SPEC)`. Standardwerte
+  aus `z-hexxit-configs`. Achtung: manche Originale lasen ihre Konfig nie (BuffBar: statische Felder vor `preInit`) – im Plan notieren.
+
+## HUD (statt `ITickHandler` mit `TickType.RENDER`)
+
+```java
+modBus.addListener(RegisterGuiLayersEvent.class, e -> e.registerAbove(VanillaGuiLayers.HOTBAR, id, MyHud::render));
+static void render(GuiGraphicsExtractor g, DeltaTracker delta) { ... }   // Minecraft.getInstance().gui.screen() != null -> nichts zeichnen
+```
+
+- `g.guiWidth()/guiHeight()` = `ScaledResolution`. 1.5.2-`drawTexturedModalRect(x,y,u,v,w,h)` mit 256er-Textur:
+  `g.blit(RenderPipelines.GUI_TEXTURED, tex, x, y, u, v, w, h, texW, texH[, argb])` (echte Texturgröße angeben).
+- Effektsymbole (früher `/gui/inventory.png` ab y=198): `g.blitSprite(RenderPipelines.GUI_TEXTURED, Hud.getMobEffectSprite(effect), x, y, 18, 18)`.
+- Text: `g.text(font, s, x, y, 0xFF000000 | rgb, false)` – Farbe braucht Alpha, `drawString` von 1.5.2 hatte keinen Schatten.
+- Gegenstand: `g.fakeItem(stack, x, y)`. Skalieren: `g.pose()` ist `Matrix3x2fStack` (`pushMatrix/translate/scale/popMatrix`).
+- Was „alle N Frames“ aktualisierte, auf `ClientTickEvent.Post` (NeoForge-Bus) legen.
+
+## Etwas am Spielermodell zeichnen (Rücken, Schultern)
+
+1. Zustand pro Spieler im Client-Tick führen (`mc.level.players()`, Map nach `getId()`, beim Weltwechsel leeren).
+2. In den Render-State bringen:
+   ```java
+   static final ContextKey<T> KEY = new ContextKey<>(Identifier.fromNamespaceAndPath(MOD, "name"));
+   modBus.addListener(RegisterRenderStateModifiersEvent.class, e -> e.registerAvatarEntityModifier(new AvatarRenderStateModifier() {
+       public <A extends Avatar & ClientAvatarEntity> void accept(A avatar, AvatarRenderState s) { s.setRenderData(KEY, ...); }
+   }));
+   ```
+   Item-Modell im Extract auflösen: `new ItemStackRenderState()` +
+   `Minecraft.getInstance().getItemModelResolver().updateForLiving(state, stack, ItemDisplayContext.NONE, avatar)`.
+   (`ClientAvatarEntity` liegt in `net.minecraft.client.entity`.)
+3. Ebene anhängen: `EntityRenderersEvent.AddLayers` → für jedes `event.getSkins()` `event.getPlayerRenderer(skin).addLayer(new MyLayer(r))`;
+   `MyLayer extends RenderLayer<AvatarRenderState, PlayerModel>`, `submit(PoseStack, SubmitNodeCollector, light, state, yRot, xRot)`.
+4. Im Layer: `getParentModel().body.translateAndRotate(poseStack)` (folgt Schleichen/Schwimmen). Modellraum: y nach unten,
+   +z = Rücken, Hals bei y=0, Füße 24 px tiefer, Spielerskala 0,9375. 1.5.2-Weltkoordinaten (y hoch, Rücken −z):
+   `poseStack.rotateDegrees(Axis.XP, 180)`. Drehen nur mit `poseStack.rotateDegrees(Axis.?, deg)` (`mulPose(Quaternion)` gibt es nicht mehr).
+   `ItemDisplayContext.NONE`-Modell liegt in 0..1 → `translate(-0.5,-0.5,-0.5)`; seine Vorderseite zeigt nach +z.
+   `item.submit(poseStack, collector, light, OverlayTexture.NO_OVERLAY, state.outlineColor)`. Body in try/catch, einmal loggen.
+   Umhang sichtbar: `state.showCape && state.skin.cape() != null`; unsichtbar: `state.isInvisible`.
+
+## Halbdurchsichtige Blöcke (Alpha im Renderer)
+
+Die Render-Schicht folgt der Textur. Erzwingen und Alpha setzen im Modell-JSON:
+```json
+"textures": { "top": { "sprite": "minecraft:block/obsidian", "force_translucent": true } },
+"elements": [ { "faces": { "up": { "texture": "#top", "neoforge_data": { "color": "1CFFFFFF" } } } } ]
+```
+`color` ist ARGB (hex, Alpha zuerst). Item-Modell getrennt, wenn das Inventar einen anderen Alpha hatte.
+
+## Rechtsklick vor dem Block (Original: `PlayerInteractEvent` mit `RIGHT_CLICK_BLOCK`)
+
+`Item.useOn` kommt erst nach `useWithoutItem` des Blocks (Truhe öffnet sich). Stattdessen auf dem NeoForge-Bus
+`PlayerInteractEvent.RightClickBlock`, auf **beiden** Seiten abbrechen (`setCancellationResult(InteractionResult.SUCCESS); setCanceled(true)`),
+Logik nur `!level.isClientSide()`. Entitäten: `PlayerInteractEvent.EntityInteract`. Ein Block wie ein Item setzen:
+`((BlockItem) Items.CHEST).place(new BlockPlaceContext(level, player, hand, stack, event.getHitVec()))`, Position = `context.getClickedPos()`.
+
+## Stolperfallen
+
+- `MobEffectInstance` klemmt Stufen auf 0..255: negative Stufen (Sprungkraft −2) → Attribut-Modifikator (`Attributes.JUMP_STRENGTH`).
+- `PushReaction.DESTROY` heißt `POPPED`. `BaseEntityBlock` braucht keinen `codec()` mehr.
+- `JAVA_TOOL_OPTIONS` nicht leeren: Er trägt den Proxy, sonst schlägt `createMinecraftArtifacts` fehl.

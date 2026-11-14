@@ -1,0 +1,4 @@
+# path in SoulShards-1.0.36-universal-srg.jar -> path in the ported jar
+textures/items/soulShard.png -> assets/soulshards/textures/item/soul_shard.png
+textures/items/blankSoulShard.png -> assets/soulshards/textures/item/blank_soul_shard.png
+textures/blocks/cage.png -> assets/soulshards/textures/block/soul_cage.png

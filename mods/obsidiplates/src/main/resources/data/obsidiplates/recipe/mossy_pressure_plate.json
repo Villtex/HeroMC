@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "minecraft:mossy_cobblestone"
+  },
+  "pattern": [
+    "##"
+  ],
+  "result": {
+    "id": "obsidiplates:mossy_pressure_plate"
+  }
+}

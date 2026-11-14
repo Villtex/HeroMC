@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "_": "obsidiplates:obsidian_pressure_plate",
+    "^": "minecraft:white_wool"
+  },
+  "pattern": [
+    "_",
+    "^"
+  ],
+  "result": {
+    "id": "obsidiplates:obsidian_pressure_plate_silent"
+  }
+}

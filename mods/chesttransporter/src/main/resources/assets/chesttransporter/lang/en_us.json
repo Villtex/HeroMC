@@ -1,0 +1,5 @@
+{
+  "item.chesttransporter.chest_transporter": "Chest Transporter",
+  "item.chesttransporter.chest_transporter.contains": "Contains %s items",
+  "jei.chesttransporter.chest_transporter": "Right-click a chest to pick it up with everything in it, and right-click a block to put it down again: the transporter breaks. It also takes the chest off a chest minecart and puts it on an empty one. Carrying a chest makes you slow, hungry and weak at mining and jumping."
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "_": "obsidiplates:mossy_pressure_plate_silent",
+    "g": "minecraft:glowstone_dust",
+    "q": "minecraft:quartz"
+  },
+  "pattern": [
+    "qgq",
+    "g_g",
+    "qgq"
+  ],
+  "result": {
+    "id": "obsidiplates:mossy_pressure_plate_shrouded_silent"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "parent": "minecraft:block/thin_block",
+  "textures": {
+    "top": {
+      "sprite": "minecraft:block/obsidian",
+      "force_translucent": true
+    },
+    "side": {
+      "sprite": "minecraft:block/obsidian",
+      "force_translucent": true
+    },
+    "bottom": {
+      "sprite": "minecraft:block/obsidian",
+      "force_translucent": true
+    },
+    "particle": "minecraft:block/obsidian"
+  },
+  "elements": [
+    {
+      "from": [
+        1,
+        0,
+        1
+      ],
+      "to": [
+        15,
+        1,
+        15
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            1,
+            1,
+            15,
+            15
+          ],
+          "texture": "#bottom",
+          "cullface": "down",
+          "neoforge_data": {
+            "color": "80FFFFFF"
+          }
+        },
+        "up": {
+          "uv": [
+            1,
+            1,
+            15,
+            15
+          ],
+          "texture": "#top",
+          "neoforge_data": {
+            "color": "80FFFFFF"
+          }
+        },
+        "north": {
+          "uv": [
+            1,
+            15,
+            15,
+            16
+          ],
+          "texture": "#side",
+          "neoforge_data": {
+            "color": "80FFFFFF"
+          }
+        },
+        "south": {
+          "uv": [
+            1,
+            15,
+            15,
+            16
+          ],
+          "texture": "#side",
+          "neoforge_data": {
+            "color": "80FFFFFF"
+          }
+        },
+        "west": {
+          "uv": [
+            1,
+            15,
+            15,
+            16
+          ],
+          "texture": "#side",
+          "neoforge_data": {
+            "color": "80FFFFFF"
+          }
+        },
+        "east": {
+          "uv": [
+            1,
+            15,
+            15,
+            16
+          ],
+          "texture": "#side",
+          "neoforge_data": {
+            "color": "80FFFFFF"
+          }
+        }
+      }
+    }
+  ]
+}

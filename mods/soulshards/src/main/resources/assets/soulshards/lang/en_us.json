@@ -1,0 +1,13 @@
+{
+  "block.soulshards.soul_cage": "Soul Cage",
+  "item.soulshards.blank_soul_shard": "Soul Shard",
+  "item.soulshards.soul_shard": "Soul Shard",
+  "item.soulshards.soul_shard.tier": "Tier: %s",
+  "item.soulshards.soul_shard.killed": "Killed: %s",
+  "item.soulshards.shadow_blade": "Shadow Blade",
+  "item.soulshards.shadow_pickaxe": "Shadow Pickaxe",
+  "enchantment.soulshards.soul_stealer": "Soul Stealer",
+  "jei.soulshards.blank_soul_shard": "Build the soul rune: a glowstone block with netherrack on its four sides and end stone on the next ring (two blocks out along the axes and on the four diagonals). Right-click the glowstone with a diamond: the cross turns into end stone and a soul shard appears.",
+  "jei.soulshards.soul_shard": "Keep a soul shard in the hotbar while killing mobs: the first kill binds it to that mob, every kill adds souls (more with Soul Stealer). Right-click a monster spawner of the same mob to add 200 souls. Tier 1 starts at 64 souls, tier 5 at 1024.",
+  "jei.soulshards.soul_cage": "Right-click with a soul shard of tier 1 or more to make the cage spawn its mob. Below tier 4 the cage only works in the mob's home dimension. A tier 5 cage spawns regardless of light and can be switched off with redstone."
+}

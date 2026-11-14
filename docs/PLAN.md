@@ -40,7 +40,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 1 | Vanilla-1.5.2-Dekoration und Schnittstelle für Mod-Weltgeneratoren | ~3.000 | 0 | Fable 5.2, extra hoch | ✅ erledigt |
 | 2 | Vanilla-1.5.2-Strukturen, Spawnpunkt, Abgleich mit Original-Welt | ~6.000 | 1 | Fable 5.2, extra hoch | ✅ erledigt |
 | 3 | JEI-Grundlage, ExtrabiomesXL fertig (Bäume, Pflanzen, Holz, Scarecrow) | ~9.000 | 1 | Opus 5.5, mittel | ✅ erledigt |
-| 4 | Kleine Mods: Obsidian Plates, Chest Transporter, ArmorBar, BuffBar, Back Tools, Soul Shards | ~5.000 | 3 | Sonnet 5.5, niedrig | offen |
+| 4 | Kleine Mods: Obsidian Plates, Chest Transporter, ArmorBar, BuffBar, Back Tools, Soul Shards | ~5.000 | 3 | Sonnet 5.5, niedrig | ✅ erledigt |
 | 5 | Hexxit Gear, More Bows, Enchanting Plus, offLawn, Wild Caves 3 | ~13.000 | 1, 3 | Opus 5.5, mittel | offen |
 | 6 | bspkrsCore, TreeCapitator, Inventory Tweaks, Custom LAN Ports | ~19.000 | 3 | Opus 5.5, mittel | offen |
 | 7 | Natura | ~20.000 | 1, 3 | Opus 5.5, mittel | offen |
@@ -291,6 +291,49 @@ So ist es gebaut:
 Obsidian Pressure Plates, Chest Transporter, ArmorBar, BuffBar, Back Tools, Soul Shards.
 
 Drei davon sind reine Client-HUDs: ArmorBar, BuffBar und Back Tools. Back Tools zeigt Werkzeuge am Rücken. Das braucht das neue Render-System, siehe Skill `minecraft-modding`, Abschnitt „GUI / render cookbook“.
+
+**Status: erledigt.** Sechs Teilprojekte, Mod-IDs wie im Original in Kleinbuchstaben (`obsidiplates`, `chesttransporter`,
+`soulshards`, `mod_armorbarmod`, `mod_buffbarmod`, `mod_backtools`). Werte der Pack-Konfiguration als Standard.
+
+- **Obsidian Pressure Plates**: acht Blöcke (Obsidian = nur Spieler, Moos = nur Mobs, je normal, still, verhüllt,
+  beides). Härte 12,5 bzw. 2, Erfassungsbereich und 20-Tick-Takt des Originals. Still: Wolle an Seiten und Unterseite,
+  kein Klick. Verhüllt: `force_translucent` + `neoforge_data.color` im Modell, Alpha 0,11 in der Welt (`shroudAlpha`),
+  0,5 im Inventar. Rezepte und Schmelzen (zurück zur normalen Platte) als Daten. Namen wie im Original
+  („Pressure Plate (Silent)“ …); JEI-Infoseiten sagen, wer die Platte drückt.
+- **Chest Transporter**: Inhalt als `CONTAINER`-Komponente (Slots bleiben), Rechtsklick über
+  `PlayerInteractEvent` vor dem Öffnen der Truhe, Ablegen wie ein Truhen-Item, danach bricht der Transporter. Truhenlore
+  auf- und abladen. Last: Langsamkeit III, Abbaulähmung IV, Hunger I.
+- **Soul Shards**: Seelensplitter mit Komponente `soulshards:soul` (Mob, Seelen), Stufen ab 64/128/256/512/1024,
+  Seelenrune (Glowstone, Netherrack, Endstein, Diamant), Spawner des Mobs geben 200 Seelen, Soul Cage als Block-Entity mit
+  der Spawn-Logik des Originals (Anzahl, Takt, Obergrenze, Spawnbedingungen, Redstone nur bei Stufe 5), Verzauberung
+  Soul Stealer (Daten, nicht am Verzauberungstisch), Shadow Blade und Shadow Pickaxe (3x3x3), JEI-Infoseiten.
+- **ArmorBar, BuffBar**: HUD-Ebenen über der Hotbar (`RegisterGuiLayersEvent`), alle Einstellungen der Pack-Konfiguration
+  als Client-Konfiguration; Texturen aus dem Original.
+- **Back Tools**: Zustand je Spieler wie `BT_EntityBackItem` (Client-Tick), über `registerAvatarEntityModifier` in den
+  Render-State, eigene `RenderLayer` am Spielermodell. Nicht unter einem Umhang, nicht unsichtbar, nicht im Bett.
+- **Prüfung**: `clean pack` grün, Server bis `Done` ohne Fehler und Warnungen der neuen Mods. Per RCON: Moos-Platte
+  geht bei einem Zombie an und nach 20 Ticks aus, Obsidian-Platte nicht; Soul Cage Stufe 5 spawnt Skelette bis zur
+  Obergrenze 12, mit Redstone keine, ohne wieder; Beute der Blöcke; Soul Stealer existiert im Register.
+
+**Offen / bewusst abweichend:**
+
+- Nicht ohne Spieler prüfbar (nur im Client): Obsidian-Platte mit Spieler, Truhe aufnehmen und ablegen, Truhenlore,
+  Seelen beim Töten, Seelenrune, Splitter in den Käfig und auf Spawner, Shadow Pickaxe.
+- Sprungkraft beim Truhentragen: Sprungkraft −2 gibt es als Effekt nicht mehr (Stufen < 0 werden 0). Ersatz: Attribut
+  `jump_strength` −0,1, solange ein voller Transporter im Inventar liegt (gleiche Sprunghöhe, kein Effekt-Symbol).
+- Soul Shards: Witherskelett und Zombiedorfbewohner sind eigene Mobs statt „spezieller“ Skelette/Zombies (gleiches
+  Verhalten). Twilight-Forest-Mobs der Liste fehlen bis Teil 24. Ein zweiter Splitter in einem Käfig ersetzt den ersten
+  (der erste geht verloren, wie im Original). Die Persistenz ab Stufe 3 endet nach 600 Ticks Lebenszeit (1.5.2: Alter
+  ohne Spieler in der Nähe). Shadow Blade und Shadow Pickaxe hatten keine Textur und kein Rezept: hier mit den Texturen
+  von Diamantschwert und -spitzhacke, nur im Kreativmodus.
+- Chest Transporter: Iron Chests und MultiPageChest waren nicht im Pack, nur die normale Truhe.
+- BuffBar: Die Effektsymbole von 26.3 oben rechts bleiben zusätzlich sichtbar (gab es 1.5.2 nicht). ArmorBar zeigt die
+  Gegenstände als Modell statt als flaches Symbol (bei Blöcken sichtbar). Die Konfigurationswerte des Originals wurden
+  wegen eines Fehlers nie gelesen; hier wirken sie.
+- Back Tools: Werkzeuge werden über Tags erkannt (Schwerter, Spitzhacken, Äxte, Schaufeln, Hacken) statt über Klassen;
+  die Liste der Fremd-Mod-Klassen (von einem Server geladen) entfällt, eigene Einträge über `item_support`.
+- Client-Prüfung offen: verhüllte Platten (Durchsichtigkeit), alle Item-Modelle, beide HUDs (Lage, Balken, Farben),
+  Lage und Drehung der Werkzeuge am Rücken (beim Schleichen, mit Brustpanzer), JEI-Infoseiten.
 
 ## Teil 5 – Hexxit Gear, More Bows, Enchanting Plus, offLawn, Wild Caves 3
 

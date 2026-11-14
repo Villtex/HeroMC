@@ -1,0 +1,12 @@
+{
+  "block.obsidiplates.obsidian_pressure_plate": "Pressure Plate",
+  "block.obsidiplates.obsidian_pressure_plate_shrouded": "Pressure Plate (Shrouded)",
+  "block.obsidiplates.obsidian_pressure_plate_silent": "Pressure Plate (Silent)",
+  "block.obsidiplates.obsidian_pressure_plate_shrouded_silent": "Pressure Plate (Shrouded, Silent)",
+  "block.obsidiplates.mossy_pressure_plate": "Pressure Plate",
+  "block.obsidiplates.mossy_pressure_plate_shrouded": "Pressure Plate (Shrouded)",
+  "block.obsidiplates.mossy_pressure_plate_silent": "Pressure Plate (Silent)",
+  "block.obsidiplates.mossy_pressure_plate_shrouded_silent": "Pressure Plate (Shrouded, Silent)",
+  "jei.obsidiplates.players": "Obsidian pressure plate: only players press it. Wool underneath makes it silent; glowstone and quartz make it shrouded (nearly invisible). Smelting turns it back into a plain plate.",
+  "jei.obsidiplates.mobs": "Mossy pressure plate: only mobs press it, never players. Wool underneath makes it silent; glowstone and quartz make it shrouded (nearly invisible). Smelting turns it back into a plain plate."
+}

@@ -37,6 +37,7 @@ Der Port ist in Teile aufgeteilt, die je in eine Session passen: [`docs/PLAN.md`
 | `gradle/neoforge.mods.toml` | gemeinsame Vorlage für die Mod-Metadaten |
 | `docs/JEI.md` | Vorlage für das JEI-Plugin eines Mods (JEI ersetzt NEI) |
 | `.claude/skills/worldgen152/` | Projekt-Skill: Weltgenerierung eines Mods in `worldgen152` einhängen, Setzlinge, Prüfung |
+| `.claude/skills/client-render-263/` | Projekt-Skill: HUD-Ebenen, Gegenstände am Spielermodell, durchscheinende Blockmodelle, Rechtsklick vor dem Block abfangen (26.3) |
 
 ## Bauen und Starten
 
@@ -129,12 +130,12 @@ Oak (30.158 Blöcke) mit dem Kern überein.
 |---|---|---|---:|---|
 | RottenFleshToLeather | `flesh2leather` 1.5.1 | thesbros | 38 | ✅ portiert, am Server verifiziert |
 | Asgard Shield Addons (Nether-Ender / Hallowed / HarkenScythe) | `asgardshield-addons` 2.0.0 | Jade Knightblazer | 169 | offen |
-| Chest Transporter | `chesttransporter` 1.1.6 | cubex2 | 488 | offen |
-| BuffBar | `buffbar` 0.7.1 | — | 571 | offen |
-| ArmorBar | `armorbar` 0.7.1 | — | 683 | offen |
-| Obsidian Pressure Plates | `obsidiplates` 1.5.0.13 | Myrathi | 752 | offen |
-| Back Tools | `backtools` 1.5.2.v01 | — | 956 | offen |
-| Soul Shards | `soulshards` 1.36 | ShadwDrgn | 1.503 | offen |
+| Chest Transporter | `chesttransporter` 1.1.6 | cubex2 | 488 | ✅ portiert, Server startet (Spieler-Aktionen und Client-Prüfung offen) |
+| BuffBar | `buffbar` 0.7.1 | — | 571 | ✅ portiert (nur Client, Client-Prüfung offen) |
+| ArmorBar | `armorbar` 0.7.1 | — | 683 | ✅ portiert (nur Client, Client-Prüfung offen) |
+| Obsidian Pressure Plates | `obsidiplates` 1.5.0.13 | Myrathi | 752 | ✅ portiert, am Server verifiziert (Client-Prüfung offen) |
+| Back Tools | `backtools` 1.5.2.v01 | — | 956 | ✅ portiert (nur Client, Client-Prüfung offen) |
+| Soul Shards | `soulshards` 1.36 | ShadwDrgn | 1.503 | ✅ portiert, am Server verifiziert (Spieler-Aktionen und Client-Prüfung offen) |
 | Hexxit Gear | `hexxitgear` 1.0.23 | sct | 1.536 | offen |
 | Battle Towers | `battletowers` 1.5.2 | AtomicStryker | 1.842 | offen |
 | offLawn | `offlawn` 1.5.1.r02 | Rhodox, Slinky | 1.850 | offen |

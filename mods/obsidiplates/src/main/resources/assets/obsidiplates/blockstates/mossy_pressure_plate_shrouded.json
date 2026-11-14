@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "obsidiplates:block/mossy_pressure_plate_shrouded"
+    },
+    "powered=true": {
+      "model": "obsidiplates:block/mossy_pressure_plate_shrouded_down"
+    }
+  }
+}
