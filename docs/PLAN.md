@@ -27,7 +27,7 @@ Jeder Teil ist so geschnitten, dass er in **eine Session** passt. Start in einem
 6. **Abschluss**
    - Status in dieser Datei und in der Tabelle in `README.md` eintragen.
    - **Skill-Check:** Prüfen, ob in diesem Teil Wissen entstanden ist, das ein späterer Teil wieder braucht (Muster, Werkzeug, Stolperfalle). Wenn ja, einen Projekt-Skill nach den Regeln in `CLAUDE.md` („Skills anlegen“) anlegen oder erweitern. Wenn nein, nichts anlegen.
-   - `graphify update .` ausführen, dann committen und pushen.
+   - `graphify update .` ausführen, dann committen, pushen und in den Hauptbranch mergen (Ablauf: `CLAUDE.md`, Abschnitt „Branches“).
    - Was offen bleibt, beim Teil unter „Offen“ notieren.
 
 Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Client-Prüfung offen“ vermerkt.

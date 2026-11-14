@@ -13,6 +13,17 @@ Projektüberblick und Bauen/Starten stehen in `README.md`.
 
 - Die Arbeit ist in Teile aufgeteilt: `docs/PLAN.md`. Sagt der Nutzer „starte Teil N“, den Abschnitt „Regeln für jeden Teil“ und den Abschnitt von Teil N lesen und genau diesen Teil abarbeiten. Am Ende den Status in `docs/PLAN.md` und `README.md` eintragen, committen, pushen.
 
+## Branches
+
+- Hauptbranch ist `ccr-83d04117-2w49l8` (es gibt kein `main`). Jede Session arbeitet auf ihrem eigenen Branch und startet vom aktuellen Hauptbranch (vorher `git fetch` und darauf aufsetzen).
+- Am Ende jeder Session, wenn Build und Prüfungen grün sind, mergt die Session ihre Arbeit selbst in den Hauptbranch und löscht danach ihren Branch auf GitHub. Diese Erlaubnis gilt dauerhaft, der Nutzer hat sie ausdrücklich gegeben.
+  1. `git fetch origin`, dann den aktuellen Hauptbranch in den eigenen Branch mergen. Konflikte auflösen, danach erneut `CI=true ./gradlew clean pack`.
+  2. Per Fast-Forward pushen: `git push origin HEAD:ccr-83d04117-2w49l8`. Kein Force-Push. Wird der Push abgelehnt, weil inzwischen jemand anderes gepusht hat, zurück zu Schritt 1.
+  3. Ein offener PR des Branches schließt GitHub dann selbst als gemergt; sonst den PR schließen.
+  4. Den eigenen Branch auf GitHub löschen: `git push origin --delete <branch>`.
+- Schlägt Build oder Prüfung fehl, nicht mergen. Den Branch stehen lassen, einen Entwurfs-PR öffnen und dem Nutzer sagen, was offen ist.
+- Keine Branches auf anderen Branches stapeln. Neue Teile immer vom Hauptbranch aus beginnen.
+
 - Ziel: Hexxit 1.0.11 (MC 1.5.2) 1:1 auf NeoForge 26.3. Zurückgestellt: Twilight Forest, Tinkers' Construct. NEI entfällt, stattdessen JEI-Kompatibilität für alle portierten Mods.
 - JDK 25 liegt in der Umgebung "HeroMC" unter `/opt/jdks/jdk25` (Setup-Skript der Umgebung). Bauen mit `CI=true ./gradlew ...`.
 - Original-Quellen als Vorlage: `python3 tools/reference.py --only <mod>` (bzw. `--only minecraft` für Vanilla 1.5.2) dekompiliert nach `.reference/<mod>/src`. Nicht committen.
