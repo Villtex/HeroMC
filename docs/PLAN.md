@@ -26,6 +26,7 @@ Jeder Teil ist so geschnitten, dass er in **eine Session** passt. Start in einem
    - Verhalten per RCON prüfen (Rezepte, Drops, Spawns).
 6. **Abschluss**
    - Status in dieser Datei und in der Tabelle in `README.md` eintragen.
+   - **Skill-Check:** Prüfen, ob in diesem Teil Wissen entstanden ist, das ein späterer Teil wieder braucht (Muster, Werkzeug, Stolperfalle). Wenn ja, einen Projekt-Skill nach den Regeln in `CLAUDE.md` („Skills anlegen“) anlegen oder erweitern. Wenn nein, nichts anlegen.
    - `graphify update .` ausführen, dann committen und pushen.
    - Was offen bleibt, beim Teil unter „Offen“ notieren.
 

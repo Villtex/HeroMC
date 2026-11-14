@@ -20,6 +20,16 @@ Projektüberblick und Bauen/Starten stehen in `README.md`.
 - Terrain-Prüfung: `tools/expect.sh 1234 find 260 > expect.txt`, Server mit `level-seed=1234` starten, `python3 tools/verify_blocks.py expect.txt`. Muss 0 Abweichungen ergeben.
 - Verhalten am Server per `python3 tools/rcon.py "<befehl>"` prüfen (RCON-Daten in `run/server/server.properties`).
 
+## Skills anlegen
+
+Wenn eine Arbeit Wissen hervorbringt, das künftige Sessions wieder brauchen, wird daraus selbstständig ein Projekt-Skill unter `.claude/skills/<name>/SKILL.md`, ohne Nachfrage. Gleich mitcommitten.
+
+- **Anlegen, wenn:** dasselbe Vorgehen in mindestens zwei späteren Teilen gebraucht wird (zum Beispiel Mod-Generator in `worldgen152` einhängen, JEI-Plugin, Mob mit neuem Render-System, Vorlagen-Import) oder eine Lösung lange gesucht werden musste und wieder auftreten kann.
+- **Nicht anlegen für:** Einmaliges, den Stand eines einzelnen Teils (gehört in `docs/PLAN.md`), oder was schon in `CLAUDE.md`, `docs/PLAN.md` oder im Skill `minecraft-modding` steht.
+- **Erst prüfen, ob ein vorhandener Skill passt.** Dann diesen erweitern statt einen neuen anzulegen.
+- **Form:** kurz, höchstens etwa 150 Zeilen, konkrete Schritte, Dateipfade und Befehle. Im Frontmatter `name` und eine `description`, die sagt, wann der Skill greift.
+- **Bestehende Projekt-Skills** in `README.md` unter „Aufbau“ kurz auflisten, damit der Nutzer sie sieht.
+
 ## graphify
 
 This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.
