@@ -19,5 +19,6 @@ JAVA=${JAVA_HOME:+$JAVA_HOME/bin/}java
 "$JAVAC" -nowarn -d "$OUT/classes" \
   $(find "$ROOT/mods/worldgen152/src/main/java/hexxit/worldgen152/core" -name '*.java') \
   "$ROOT/mods/ebxl/src/main/java/extrabiomes/EbxlBiomes.java" "$OUT/stub/extrabiomes/Extrabiomes.java" \
+  $(find "$ROOT/mods/ebxl/src/main/java/extrabiomes/gen" -name '*.java') \
   "$ROOT/tools/java/Expect.java"
 "$JAVA" -cp "$OUT/classes" Expect "$@"

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "extrabiomesxl:block/fir_slab"
+    },
+    "type=double": {
+      "model": "extrabiomesxl:block/fir_planks"
+    },
+    "type=top": {
+      "model": "extrabiomesxl:block/fir_slab_top"
+    }
+  }
+}

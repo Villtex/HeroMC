@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "extrabiomesxl:oak_quarter_log"
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft:oak_planks"
+  },
+  "group": "planks"
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "extrabiomesxl:block/redwood_planks",
+    "side": "extrabiomesxl:block/redwood_planks",
+    "top": "extrabiomesxl:block/redwood_planks"
+  }
+}

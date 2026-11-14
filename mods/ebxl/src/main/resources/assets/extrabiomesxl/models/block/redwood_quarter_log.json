@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "extrabiomesxl:block/redwood_quarter_bark_left",
+    "north": "extrabiomesxl:block/redwood_quarter_bark_right",
+    "west": "extrabiomesxl:block/redwood_quarter_bark_left",
+    "south": "extrabiomesxl:block/redwood_quarter_inner_left",
+    "east": "extrabiomesxl:block/redwood_quarter_inner_right",
+    "up": "extrabiomesxl:block/redwood_quarter_top",
+    "down": "extrabiomesxl:block/redwood_quarter_bottom"
+  }
+}

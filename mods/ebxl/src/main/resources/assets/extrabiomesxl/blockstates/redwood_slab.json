@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "extrabiomesxl:block/redwood_slab"
+    },
+    "type=double": {
+      "model": "extrabiomesxl:block/redwood_planks"
+    },
+    "type=top": {
+      "model": "extrabiomesxl:block/redwood_slab_top"
+    }
+  }
+}

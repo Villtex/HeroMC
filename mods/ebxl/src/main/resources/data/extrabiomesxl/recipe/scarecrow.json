@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "p": "minecraft:pumpkin",
+    "m": "minecraft:melon",
+    "s": "minecraft:stick"
+  },
+  "pattern": [
+    " p ",
+    "sms",
+    " s "
+  ],
+  "result": {
+    "count": 1,
+    "id": "extrabiomesxl:scarecrow"
+  }
+}

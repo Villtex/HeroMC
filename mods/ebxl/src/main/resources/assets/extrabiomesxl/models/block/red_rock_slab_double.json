@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "extrabiomesxl:block/red_rock_slab_top",
+    "side": "extrabiomesxl:block/red_rock_slab_side"
+  }
+}

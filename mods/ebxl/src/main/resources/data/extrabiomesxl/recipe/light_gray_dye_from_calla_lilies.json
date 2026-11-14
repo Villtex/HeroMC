@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "extrabiomesxl:calla_lilies"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:light_gray_dye"
+  },
+  "group": "light_gray_dye"
+}

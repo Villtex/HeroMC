@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "extrabiomesxl:buttercups"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:orange_dye"
+  },
+  "group": "orange_dye"
+}

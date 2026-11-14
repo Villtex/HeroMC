@@ -25,8 +25,8 @@ public final class OldDecoration {
     public static final int TILE = 8;
     /** Extra chunks populated before the tile (population reaches up to 2 chunks towards +x/+z). */
     private static final int MARGIN_LOW = 4;
-    /** Extra chunks populated after the tile. */
-    private static final int MARGIN_HIGH = 2;
+    /** Extra chunks populated after the tile (the branches of the ExtrabiomesXL legend oak reach 3 chunks towards -x/-z). */
+    private static final int MARGIN_HIGH = 3;
     private static final int CACHED_TILES = 12;
 
     private final long seed;

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "extrabiomesxl:block/yellow_autumn_sapling"
+  }
+}

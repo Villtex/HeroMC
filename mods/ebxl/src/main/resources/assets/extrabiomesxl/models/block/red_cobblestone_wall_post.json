@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_wall_post",
+  "textures": {
+    "wall": "extrabiomesxl:block/red_cobblestone"
+  }
+}

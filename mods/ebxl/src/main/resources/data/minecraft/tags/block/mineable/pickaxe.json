@@ -3,6 +3,12 @@
     "extrabiomesxl:red_rock",
     "extrabiomesxl:red_cobblestone",
     "extrabiomesxl:red_rock_brick",
-    "extrabiomesxl:cracked_sand"
+    "extrabiomesxl:cracked_sand",
+    "extrabiomesxl:red_cobblestone_stairs",
+    "extrabiomesxl:red_rock_brick_stairs",
+    "extrabiomesxl:red_cobblestone_slab",
+    "extrabiomesxl:red_rock_brick_slab",
+    "extrabiomesxl:red_rock_slab",
+    "extrabiomesxl:red_cobblestone_wall"
   ]
 }

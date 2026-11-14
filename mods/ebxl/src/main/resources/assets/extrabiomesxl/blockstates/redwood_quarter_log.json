@@ -1,0 +1,57 @@
+{
+  "variants": {
+    "axis=x,bark=nw": {
+      "model": "extrabiomesxl:block/redwood_quarter_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,bark=ne": {
+      "model": "extrabiomesxl:block/redwood_quarter_log",
+      "x": 90,
+      "y": 180
+    },
+    "axis=x,bark=se": {
+      "model": "extrabiomesxl:block/redwood_quarter_log",
+      "x": 90,
+      "y": 270
+    },
+    "axis=x,bark=sw": {
+      "model": "extrabiomesxl:block/redwood_quarter_log",
+      "x": 90
+    },
+    "axis=y,bark=nw": {
+      "model": "extrabiomesxl:block/redwood_quarter_log"
+    },
+    "axis=y,bark=ne": {
+      "model": "extrabiomesxl:block/redwood_quarter_log",
+      "y": 90
+    },
+    "axis=y,bark=se": {
+      "model": "extrabiomesxl:block/redwood_quarter_log",
+      "y": 180
+    },
+    "axis=y,bark=sw": {
+      "model": "extrabiomesxl:block/redwood_quarter_log",
+      "y": 270
+    },
+    "axis=z,bark=nw": {
+      "model": "extrabiomesxl:block/redwood_quarter_log",
+      "x": 90
+    },
+    "axis=z,bark=ne": {
+      "model": "extrabiomesxl:block/redwood_quarter_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=z,bark=se": {
+      "model": "extrabiomesxl:block/redwood_quarter_log",
+      "x": 90,
+      "y": 180
+    },
+    "axis=z,bark=sw": {
+      "model": "extrabiomesxl:block/redwood_quarter_log",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

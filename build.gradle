@@ -22,6 +22,17 @@ allprojects {
     neoForge {
         version = neo_version
     }
+
+    repositories {
+        // JEI (Just Enough Items) replaces NEI of the original pack
+        maven {
+            url = 'https://maven.blamejared.com'
+            content {
+                includeGroup 'mezz.jei'
+                includeGroup 'net.mezzdev.config'
+            }
+        }
+    }
 }
 
 subprojects {
@@ -39,6 +50,8 @@ subprojects {
     required.each { evaluationDependsOn(":${it}") }
     dependencies {
         required.each { implementation project(":${it}") }
+        // every mod may bring a JEI plugin; JEI itself is only on the runtime classpath of the pack runs
+        compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
     }
     def requiredToml = required.collect { name ->
         """
@@ -82,6 +95,10 @@ side="BOTH"
             expand(metadata)
         }
     }
+}
+
+dependencies {
+    runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 }
 
 neoForge {

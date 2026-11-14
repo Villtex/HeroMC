@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "extrabiomesxl:block/tall_dead_grass"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "extrabiomesxl:blocks/fir_leaves",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "condition": {
+                "type": "minecraft:any_of",
+                "terms": [
+                  "minecraft:tool/can_shear",
+                  "minecraft:tool/can_silk_touch"
+                ]
+              },
+              "name": "extrabiomesxl:fir_leaves"
+            },
+            {
+              "type": "minecraft:item",
+              "condition": {
+                "type": "minecraft:all_of",
+                "terms": [
+                  {
+                    "type": "minecraft:survives_explosion"
+                  },
+                  {
+                    "type": "minecraft:random_chance",
+                    "chance": 0.06055555555555556
+                  }
+                ]
+              },
+              "name": "extrabiomesxl:fir_sapling"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -83,5 +83,6 @@ public final class EbxlBiomes {
         for (OldBiome biome : new OldBiome[] {OldBiomes.EXTREME_HILLS, OldBiomes.FOREST, OldBiomes.JUNGLE, OldBiomes.SWAMPLAND, OldBiomes.TAIGA}) {
             OldStructures.VILLAGE_BIOMES.addIfAbsent(biome);
         }
+        extrabiomes.gen.EbxlWorldGen.register();
     }
 }

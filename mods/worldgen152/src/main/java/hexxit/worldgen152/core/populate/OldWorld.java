@@ -84,6 +84,7 @@ public final class OldWorld {
     private final Map<Long, Column> columns = new HashMap<>();
     private Column last;
     private OldTreeGens.BigTree bigTree;
+    private final Map<Object, Object> chunkState = new HashMap<>();
     private final OldStructures structures;
 
     /** A world without structures (mineshafts, villages, strongholds, temples). */
@@ -133,6 +134,17 @@ public final class OldWorld {
 
     void beginChunk() {
         this.bigTree = new OldTreeGens.BigTree();
+        this.chunkState.clear();
+    }
+
+    /**
+     * State a mod generator keeps for the chunk being populated, created on first use. For generators that
+     * 1.5.2 kept as one instance for the whole session (like the big oak, see {@link #bigTree()}): a fresh
+     * instance per chunk keeps the result independent of the order chunks are populated in.
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T chunkState(Object key, java.util.function.Supplier<T> create) {
+        return (T) this.chunkState.computeIfAbsent(key, k -> create.get());
     }
 
     // ---- blocks ----

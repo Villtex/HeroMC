@@ -48,10 +48,41 @@ def flag(value):
     return 'true' if value else 'false'
 
 
+# ExtrabiomesXL (ids of the pack configuration): sub-blocks by metadata
+EBXL = {902: ['brown_autumn_leaves', 'orange_autumn_leaves', 'purple_autumn_leaves', 'yellow_autumn_leaves'],
+        910: ['fir_leaves', 'redwood_leaves', 'acacia_leaves'],
+        908: ['autumn_shrub', 'hydrangea', 'buttercups', 'purple_flower', 'tiny_cactus', 'root', 'toadstool', 'calla_lilies'],
+        909: ['brown_grass', 'short_brown_grass', 'dead_grass', 'tall_dead_grass', 'dead_yellow_grass'],
+        912: ['redwood_planks', 'fir_planks', 'acacia_planks'],
+        922: ['brown_autumn_sapling', 'orange_autumn_sapling', 'purple_autumn_sapling', 'yellow_autumn_sapling', 'fir_sapling',
+              'redwood_sapling', 'acacia_sapling']}
+EBXL_SIMPLE = {903: 'cattail', 911: 'leaf_pile', 917: 'quicksand'}
+QUARTER = {913: 'nw', 914: 'ne', 915: 'sw', 916: 'se'}
+AXIS = {0: 'y', 4: 'x', 8: 'z', 12: 'y'}
+
+
+def ebxl(bid, meta):
+    if bid in (902, 910):
+        return f'extrabiomesxl:{EBXL[bid][meta & 3]}[persistent=false]'
+    if bid in EBXL:
+        return 'extrabiomesxl:' + EBXL[bid][meta & 7 if bid == 922 else meta]
+    if bid in EBXL_SIMPLE:
+        return 'extrabiomesxl:' + EBXL_SIMPLE[bid]
+    if bid == 904:
+        return f'extrabiomesxl:{["fir", "acacia"][meta & 3]}_log[axis={AXIS[meta & 12]}]'
+    if bid in QUARTER:
+        return f'extrabiomesxl:{["redwood", "fir", "oak"][meta & 3]}_quarter_log[axis={AXIS[meta & 12]},bark={QUARTER[bid]}]'
+    return None
+
+
 def block(bid, meta):
     """Block (with the states that matter) a 1.5.2 id and metadata must have become."""
     if bid in MODS:
         return MODS[bid]
+    if bid >= 256:
+        mod = ebxl(bid, meta)
+        if mod:
+            return mod
     if bid in SIMPLE:
         return 'minecraft:' + SIMPLE[bid]
     if bid == 17:
