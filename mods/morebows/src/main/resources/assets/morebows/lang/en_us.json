@@ -1,0 +1,19 @@
+{
+  "item.morebows.diamond_bow": "Crystal Bow",
+  "item.morebows.ender_bow": "Ender Bow",
+  "item.morebows.flame_bow": "Blazing Bow",
+  "item.morebows.frost_bow": "Frost Bow",
+  "item.morebows.gold_bow": "Golden Bow",
+  "item.morebows.iron_bow": "Iron Bow",
+  "item.morebows.multi_bow": "Legia Bow",
+  "item.morebows.stone_bow": "Reinforced Bow",
+  "entity.morebows.frost_arrow": "Frost Arrow",
+  "jei.morebows.diamond_bow": "Fully drawn in 0.3 seconds, arrows fly 20% faster and hit harder than from a normal bow. Very durable.",
+  "jei.morebows.ender_bow": "Fully drawn in 1.1 seconds. Shoots its arrow together with five more that appear around you, for the price of one arrow. None of the arrows can be picked up.",
+  "jei.morebows.flame_bow": "Fully drawn in 0.75 seconds, arrows fly 20% faster than from a normal bow and are always on fire.",
+  "jei.morebows.frost_bow": "Fully drawn in 1.3 seconds. Shoots frost arrows: they slow what they hit for 15 seconds, vanish in water, freeze water where they land and leave snow behind.",
+  "jei.morebows.gold_bow": "Fully drawn in 0.25 seconds, arrows fly 20% faster than from a normal bow. Breaks quickly.",
+  "jei.morebows.iron_bow": "Fully drawn in 0.85 seconds, arrows fly 20% faster than from a normal bow.",
+  "jei.morebows.multi_bow": "Fully drawn in 0.65 seconds. Shoots two arrows, sometimes three, which deal more damage than normal arrows.",
+  "jei.morebows.stone_bow": "Fully drawn in 0.85 seconds, arrows fly 20% faster than from a normal bow."
+}

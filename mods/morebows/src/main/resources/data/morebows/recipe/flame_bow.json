@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "G": "minecraft:gold_ingot",
+    "B": "minecraft:blaze_rod",
+    "I": "morebows:iron_bow",
+    "N": "minecraft:netherrack"
+  },
+  "pattern": [
+    "NB",
+    "GI",
+    "NB"
+  ],
+  "result": {
+    "id": "morebows:flame_bow"
+  }
+}

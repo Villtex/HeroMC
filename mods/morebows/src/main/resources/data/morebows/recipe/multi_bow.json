@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "*": "minecraft:string",
+    "#": "minecraft:iron_ingot",
+    "$": "morebows:iron_bow"
+  },
+  "pattern": [
+    " $*",
+    "# *",
+    " $*"
+  ],
+  "result": {
+    "id": "morebows:multi_bow"
+  }
+}
