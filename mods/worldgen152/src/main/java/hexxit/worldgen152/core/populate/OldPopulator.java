@@ -6,8 +6,8 @@ import hexxit.worldgen152.core.populate.OldTerrainGen.Populate;
 import java.util.Random;
 
 /**
- * Population of one chunk as in 1.5.2: {@code ChunkProviderGenerate.populate} (lakes, dungeons, the biome's
- * decoration, snow and ice) followed by the world generators of mods ({@code GameRegistry.generateWorld}).
+ * Population of one chunk as in 1.5.2: {@code ChunkProviderGenerate.populate} (structures, lakes, dungeons,
+ * the biome's decoration, snow and ice) followed by the world generators of mods ({@code GameRegistry.generateWorld}).
  * It works on the 16x16 area shifted 8 blocks into the positive x and z direction of the chunk.
  *
  * <p>Not ported here: the animals spawned with a new chunk. They used the chunk's random sequence after
@@ -33,7 +33,9 @@ public final class OldPopulator {
             listener.populatePre(world, random, chunkX, chunkZ);
         }
 
-        // Structures (mineshafts, villages, strongholds, temples) go here; a village sets `village`.
+        if (world.structures() != null) {
+            village = world.structures().generateStructuresInChunk(world, random, chunkX, chunkZ);
+        }
 
         if (OldTerrainGen.populate(world, random, chunkX, chunkZ, village, Populate.LAKE) && !village && random.nextInt(4) == 0) {
             int bx = x + random.nextInt(16) + 8;

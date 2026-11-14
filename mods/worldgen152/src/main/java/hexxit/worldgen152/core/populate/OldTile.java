@@ -9,6 +9,13 @@ public sealed interface OldTile {
         }
     }
 
+    /** Dispenser inventory, 9 slots. */
+    record Dispenser(OldStack[] slots) implements OldTile {
+        public Dispenser() {
+            this(new OldStack[9]);
+        }
+    }
+
     /** Mob spawner with the entity name of 1.5.2 ("Zombie", "Skeleton", ...). */
     record Spawner(String mob) implements OldTile {
     }

@@ -52,6 +52,7 @@ public final class OldBlockInfo {
     private static final int[] LIGHT_OPACITY = new int[MAX_ID];
     private static final boolean[] LEAVES = new boolean[MAX_ID];
     private static final boolean[] WOOD = new boolean[MAX_ID];
+    private static final boolean[] STAIRS = new boolean[MAX_ID];
 
     static {
         MATERIAL[0] = Material.AIR;
@@ -110,6 +111,11 @@ public final class OldBlockInfo {
             register(id, Material.WOOD, false, 0, false);
         }
         register(71, Material.IRON, false, 0, false);
+        // pistons, cauldron, end portal frame
+        register(29, Material.PISTON, false, 0, false);
+        register(33, Material.PISTON, false, 0, false);
+        register(118, Material.IRON, false, 0, false);
+        register(120, Material.ROCK, false, 0, false);
     }
 
     private OldBlockInfo() {
@@ -184,6 +190,16 @@ public final class OldBlockInfo {
 
     public static boolean wood(int id) {
         return WOOD[id];
+    }
+
+    /** BlockStairs. */
+    public static boolean stairs(int id) {
+        return id == 53 || id == 67 || id == 108 || id == 109 || id == 114 || id == 128 || id >= 134 && id <= 136 || id == 156 || STAIRS[id];
+    }
+
+    /** Marks a mod block as stairs (for the question which of its sides are solid). */
+    public static void registerStairs(int id) {
+        STAIRS[id] = true;
     }
 
     /** Block.isBlockNormalCube. */

@@ -1,5 +1,7 @@
 package hexxit.worldgen152.core.populate;
 
+import hexxit.worldgen152.core.BiomeLayout;
+
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -29,6 +31,7 @@ public final class OldDecoration {
 
     private final long seed;
     private final OldWorld.TerrainSource terrain;
+    private final BiomeLayout layout;
     private final Map<Long, FutureTask<OldDecoratedChunk[]>> tiles = new LinkedHashMap<>(16, 0.75F, true) {
         @Override
         protected boolean removeEldestEntry(Map.Entry<Long, FutureTask<OldDecoratedChunk[]>> eldest) {
@@ -36,9 +39,16 @@ public final class OldDecoration {
         }
     };
 
+    /** Population without structures. */
     public OldDecoration(long seed, OldWorld.TerrainSource terrain) {
+        this(seed, terrain, null);
+    }
+
+    /** Population with the structures of 1.5.2, which need to know where which biome lies. */
+    public OldDecoration(long seed, OldWorld.TerrainSource terrain, BiomeLayout layout) {
         this.seed = seed;
         this.terrain = terrain;
+        this.layout = layout;
     }
 
     public long seed() {
@@ -79,7 +89,7 @@ public final class OldDecoration {
     private OldDecoratedChunk[] populateTile(int tileX, int tileZ) {
         int x0 = tileX * TILE;
         int z0 = tileZ * TILE;
-        OldWorld world = new OldWorld(this.seed, this.terrain);
+        OldWorld world = new OldWorld(this.seed, this.terrain, this.layout);
         for (int x = x0 - MARGIN_LOW; x < x0 + TILE + MARGIN_HIGH; x++) {
             for (int z = z0 - MARGIN_LOW; z < z0 + TILE + MARGIN_HIGH; z++) {
                 OldPopulator.populate(world, x, z);

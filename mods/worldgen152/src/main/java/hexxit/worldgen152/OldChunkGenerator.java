@@ -31,6 +31,13 @@ import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.level.levelgen.blending.Blender;
 import net.minecraft.world.level.levelgen.densityfunction.SamplerContext;
 
+import com.mojang.datafixers.util.Pair;
+import hexxit.worldgen152.core.structure.OldStructures;
+import net.minecraft.core.HolderSet;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
+import net.minecraft.world.level.levelgen.structure.Structure;
+
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,7 +47,7 @@ import java.util.concurrent.CompletableFuture;
 /**
  * Chunk generator that lays down the 1.5.2 overworld: 128 blocks of terrain from y=0, sea level 63.
  * All shaping (surface layers, caves, ravines) happens in {@link OldTerrain} and the population of chunks
- * (lakes, ores, trees, plants, snow) in {@link OldDecoration}; this class only writes the results into the
+ * (structures, lakes, ores, trees, plants, snow) in {@link OldDecoration}; this class only writes the results into the
  * chunk - bare terrain in the noise step, population in the feature step - and answers height queries from
  * the bare terrain.
  */
@@ -84,7 +91,7 @@ public final class OldChunkGenerator extends ChunkGenerator {
                 if (current == null || current.layout() != layout) {
                     this.chunkCache.clear();
                     current = new OldTerrain(layout);
-                    this.decoration = new OldDecoration(layout.seed(), this::oldChunk);
+                    this.decoration = new OldDecoration(layout.seed(), this::oldChunk, layout);
                     this.terrain = current;
                 }
             }
@@ -144,8 +151,46 @@ public final class OldChunkGenerator extends ChunkGenerator {
         this.oldBiomes.bind(level.getSeed());
         ChunkPos pos = chunk.getPos();
         OldChunk bare = this.oldChunk(pos.x(), pos.z());
-        OldChunkWriter.write(chunk, bare, this.decoration.chunk(pos.x(), pos.z()), level.registryAccess());
+        OldChunkWriter.write(level, chunk, bare, this.decoration.chunk(pos.x(), pos.z()));
         super.applyBiomeDecoration(level, chunk, structureManager);
+    }
+
+    /** The world spawn of 1.5.2 for this seed, on the ground. */
+    public BlockPos spawnPoint() {
+        BiomeLayout layout = this.oldBiomes.layout();
+        this.terrain();
+        int[] spawn = OldStructures.spawnPoint(layout.seed(), layout, this::oldChunk);
+        OldChunk old = this.oldChunk(spawn[0] >> 4, spawn[1] >> 4);
+        int y = OldChunk.HEIGHT - 1;
+        while (y > 0 && old.blockId(spawn[0] & 15, y, spawn[1] & 15) == 0) {
+            y--;
+        }
+        return new BlockPos(spawn[0], y + 1, spawn[1]);
+    }
+
+    /** Eyes of ender and /locate find the strongholds of 1.5.2; other structures of today do not exist here. */
+    @Override
+    public Pair<BlockPos, Holder<Structure>> findNearestMapStructure(ServerLevel level, HolderSet<Structure> structures, BlockPos pos,
+                                                                     int maxSearchRadius, boolean createReference) {
+        Holder<Structure> stronghold = null;
+        for (Holder<Structure> holder : structures) {
+            if (holder.is(BuiltinStructures.STRONGHOLD)) {
+                stronghold = holder;
+            }
+        }
+        if (stronghold == null) {
+            return null;
+        }
+        this.oldBiomes.bind(level.getSeed());
+        BiomeLayout layout = this.oldBiomes.layout();
+        BlockPos nearest = null;
+        for (int[] room : new OldStructures(layout.seed(), layout).strongholdPortalRooms()) {
+            BlockPos candidate = new BlockPos(room[0], room[1], room[2]);
+            if (nearest == null || candidate.distSqr(pos) < nearest.distSqr(pos)) {
+                nearest = candidate;
+            }
+        }
+        return nearest == null ? null : Pair.of(nearest, stronghold);
     }
 
     @Override

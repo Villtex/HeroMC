@@ -33,7 +33,7 @@ public final class OldLoot {
         }
 
         /** ChestGenHooks.getItems: enchanted books pick their enchantment here, once per chest. */
-        private synchronized Entry[] roll(Random random) {
+        public synchronized Entry[] items(Random random) {
             Entry[] rolled = new Entry[this.entries.size()];
             for (int i = 0; i < rolled.length; i++) {
                 Entry entry = this.entries.get(i);
@@ -47,34 +47,46 @@ public final class OldLoot {
             return rolled;
         }
 
+        /** ChestGenHooks.getCount: how many draws a container of this category gets. */
+        public int count(Random random) {
+            return this.countMin < this.countMax ? this.countMin + random.nextInt(this.countMax - this.countMin) : this.countMin;
+        }
+
         /** Fills a chest: WeightedRandomChestContent.generateChestContents with this category's items and count. */
         public void fill(Random random, OldTile.Chest chest) {
-            Entry[] items = this.roll(random);
-            int count = this.countMin < this.countMax ? this.countMin + random.nextInt(this.countMax - this.countMin) : this.countMin;
-            int total = 0;
+            Entry[] items = this.items(random);
+            generate(random, items, chest.slots(), this.count(random));
+        }
+    }
+
+    /**
+     * WeightedRandomChestContent.generateChestContents / generateDispenserContents: {@code count} weighted draws,
+     * each put into a random slot of the container (a later draw may overwrite an earlier one).
+     */
+    public static void generate(Random random, Entry[] items, OldStack[] slots, int count) {
+        int total = 0;
+        for (Entry item : items) {
+            total += item.weight;
+        }
+        for (int i = 0; i < count; i++) {
+            int pick = random.nextInt(total);
+            Entry chosen = null;
             for (Entry item : items) {
-                total += item.weight;
+                pick -= item.weight;
+                if (pick < 0) {
+                    chosen = item;
+                    break;
+                }
             }
-            for (int i = 0; i < count; i++) {
-                int pick = random.nextInt(total);
-                Entry chosen = null;
-                for (Entry item : items) {
-                    pick -= item.weight;
-                    if (pick < 0) {
-                        chosen = item;
-                        break;
-                    }
+            random.nextInt(chosen.max - chosen.min + 1); // the original drew the count twice and used the second
+            int size = chosen.min + random.nextInt(chosen.max - chosen.min + 1);
+            int limit = stackLimit(chosen.stack.itemId());
+            if (size > limit) {
+                for (int n = 0; n < size; n++) {
+                    slots[random.nextInt(slots.length)] = chosen.stack.withCount(1);
                 }
-                random.nextInt(chosen.max - chosen.min + 1); // the original drew the count twice and used the second
-                int size = chosen.min + random.nextInt(chosen.max - chosen.min + 1);
-                int limit = stackLimit(chosen.stack.itemId());
-                if (size > limit) {
-                    for (int n = 0; n < size; n++) {
-                        chest.slots()[random.nextInt(chest.slots().length)] = chosen.stack.withCount(1);
-                    }
-                } else {
-                    chest.slots()[random.nextInt(chest.slots().length)] = chosen.stack.withCount(size);
-                }
+            } else {
+                slots[random.nextInt(slots.length)] = chosen.stack.withCount(size);
             }
         }
     }
@@ -90,6 +102,39 @@ public final class OldLoot {
 
     /** ChestGenHooks "dungeonChest": always 8 draws. */
     public static final Category DUNGEON_CHEST = new Category(8, 8);
+
+    public static final Category MINESHAFT_CORRIDOR = category(3, 7, new int[][] {
+            {265, 0, 1, 5, 10}, {266, 0, 1, 3, 5}, {331, 0, 4, 9, 5}, {351, 4, 4, 9, 5}, {264, 0, 1, 2, 3}, {263, 0, 3, 8, 10},
+            {297, 0, 1, 3, 15}, {257, 0, 1, 1, 1}, {66, 0, 4, 8, 1}, {362, 0, 2, 4, 10}, {361, 0, 2, 4, 10}, {ENCHANTED_BOOK, 0, 1, 1, 1}});
+    public static final Category PYRAMID_DESERT_CHEST = category(2, 7, new int[][] {
+            {264, 0, 1, 3, 3}, {265, 0, 1, 5, 10}, {266, 0, 2, 7, 15}, {388, 0, 1, 3, 2}, {352, 0, 4, 6, 20}, {367, 0, 3, 7, 16},
+            {ENCHANTED_BOOK, 0, 1, 1, 1}});
+    public static final Category PYRAMID_JUNGLE_CHEST = category(2, 7, new int[][] {
+            {264, 0, 1, 3, 3}, {265, 0, 1, 5, 10}, {266, 0, 2, 7, 15}, {388, 0, 1, 3, 2}, {352, 0, 4, 6, 20}, {367, 0, 3, 7, 16},
+            {ENCHANTED_BOOK, 0, 1, 1, 1}});
+    public static final Category PYRAMID_JUNGLE_DISPENSER = category(2, 2, new int[][] {{262, 0, 2, 7, 30}});
+    public static final Category STRONGHOLD_CORRIDOR = category(2, 4, new int[][] {
+            {368, 0, 1, 1, 10}, {264, 0, 1, 3, 3}, {265, 0, 1, 5, 10}, {266, 0, 1, 3, 5}, {331, 0, 4, 9, 5}, {297, 0, 1, 3, 15},
+            {260, 0, 1, 3, 15}, {257, 0, 1, 1, 5}, {267, 0, 1, 1, 5}, {307, 0, 1, 1, 5}, {306, 0, 1, 1, 5}, {308, 0, 1, 1, 5},
+            {309, 0, 1, 1, 5}, {322, 0, 1, 1, 1}, {ENCHANTED_BOOK, 0, 1, 1, 1}});
+    public static final Category STRONGHOLD_LIBRARY = category(1, 5, new int[][] {
+            {340, 0, 1, 3, 20}, {339, 0, 2, 7, 20}, {395, 0, 1, 1, 1}, {345, 0, 1, 1, 1}, {ENCHANTED_BOOK, 0, 1, 5, 2}});
+    public static final Category STRONGHOLD_CROSSING = category(1, 5, new int[][] {
+            {265, 0, 1, 5, 10}, {266, 0, 1, 3, 5}, {331, 0, 4, 9, 5}, {263, 0, 3, 8, 10}, {297, 0, 1, 3, 15}, {260, 0, 1, 3, 15},
+            {257, 0, 1, 1, 1}, {ENCHANTED_BOOK, 0, 1, 1, 1}});
+    public static final Category VILLAGE_BLACKSMITH = category(3, 9, new int[][] {
+            {264, 0, 1, 3, 3}, {265, 0, 1, 5, 10}, {266, 0, 1, 3, 5}, {297, 0, 1, 3, 15}, {260, 0, 1, 3, 15}, {257, 0, 1, 1, 5},
+            {267, 0, 1, 1, 5}, {307, 0, 1, 1, 5}, {306, 0, 1, 1, 5}, {308, 0, 1, 1, 5}, {309, 0, 1, 1, 5}, {49, 0, 3, 7, 5},
+            {6, 0, 3, 7, 5}});
+
+    /** A category from rows of {item id, damage, min, max, weight}. */
+    private static Category category(int countMin, int countMax, int[][] rows) {
+        Category category = new Category(countMin, countMax);
+        for (int[] row : rows) {
+            category.add(new OldStack(row[0], row[1], 1), row[2], row[3], row[4]);
+        }
+        return category;
+    }
 
     private static final List<String> DUNGEON_MOBS = new ArrayList<>();
     private static final List<Integer> DUNGEON_MOB_WEIGHTS = new ArrayList<>();
@@ -117,8 +162,14 @@ public final class OldLoot {
     }
 
     private static int stackLimit(int itemId) {
-        // of the items above only these do not stack; mods adding unstackable loot with max > 1 are not known
-        return itemId == 329 || itemId == 325 || itemId == 2256 || itemId == 2257 || itemId == ENCHANTED_BOOK ? 1 : 64;
+        // of the vanilla loot only these do not stack; mods adding unstackable loot with max > 1 are not known
+        if (itemId == 368) {
+            return 16; // ender pearl
+        }
+        return switch (itemId) {
+            case 329, 325, 2256, 2257, ENCHANTED_BOOK, 257, 267, 306, 307, 308, 309 -> 1;
+            default -> 64;
+        };
     }
 
     /** DungeonHooks.addDungeonMob: a known name gets the extra weight. */

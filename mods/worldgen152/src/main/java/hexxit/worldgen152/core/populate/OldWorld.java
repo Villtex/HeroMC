@@ -5,7 +5,12 @@ import hexxit.worldgen152.core.OldBiomes;
 import hexxit.worldgen152.core.OldChunk;
 import hexxit.worldgen152.core.populate.OldBlockInfo.Material;
 
+import hexxit.worldgen152.core.BiomeLayout;
+import hexxit.worldgen152.core.structure.OldStructures;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -32,6 +37,7 @@ public final class OldWorld {
         final char[][] sections = new char[16][];
         final byte[] biomes;
         final Map<Integer, OldTile> tiles = new HashMap<>();
+        final List<OldEntity> entities = new ArrayList<>();
         int topSection = -1;
 
         Column(OldChunk terrain) {
@@ -78,10 +84,23 @@ public final class OldWorld {
     private final Map<Long, Column> columns = new HashMap<>();
     private Column last;
     private OldTreeGens.BigTree bigTree;
+    private final OldStructures structures;
 
+    /** A world without structures (mineshafts, villages, strongholds, temples). */
     public OldWorld(long seed, TerrainSource terrain) {
+        this(seed, terrain, null);
+    }
+
+    /** A world whose structures are laid out on the given biomes. */
+    public OldWorld(long seed, TerrainSource terrain, BiomeLayout layout) {
         this.seed = seed;
         this.terrain = terrain;
+        this.structures = layout == null ? null : new OldStructures(seed, layout);
+    }
+
+    /** The structures of this world, or {@code null} if it has none. */
+    public OldStructures structures() {
+        return this.structures;
     }
 
     public long seed() {
@@ -173,6 +192,15 @@ public final class OldWorld {
             this.hardenLava(x, y, z);
         } else if (id == 54) {
             this.chestAdded(x, y, z);
+        } else if (id == 50) {
+            this.torchAdded(x, y, z);
+        } else if (id == 23 || id == 61) {
+            this.setBlockMetadata(x, y, z, this.facingAwayFromWalls(x, y, z));
+        } else if (id == 132) {
+            // BlockTripWire.onBlockAdded; "attached" is kept, the hooks at both ends are set with it already
+            this.setBlockMetadata(x, y, z, meta & 4 | (this.hasSolidTop(x, y - 1, z) ? 0 : 2));
+        } else if (OldRails.isRail(id)) {
+            OldRails.added(this, x, y, z);
         }
         return true;
     }
@@ -181,7 +209,8 @@ public final class OldWorld {
         return this.setBlock(x, y, z, 0, 0);
     }
 
-    private void setMetadata(int x, int y, int z, int meta) {
+    /** Changes only the metadata, without onBlockAdded. */
+    void setBlockMetadata(int x, int y, int z, int meta) {
         Column column = this.column(x >> 4, z >> 4);
         char[] section = column.sections[y >> 4];
         if (section != null) {
@@ -202,6 +231,114 @@ public final class OldWorld {
                 this.setBlock(x, y, z, 4, 0);
             }
         }
+    }
+
+    /** BlockTorch.onBlockAdded: a torch set without a side picks one; a torch nothing holds drops. */
+    private void torchAdded(int x, int y, int z) {
+        boolean west = this.isSolidOnSide(x - 1, y, z, 5);
+        boolean east = this.isSolidOnSide(x + 1, y, z, 4);
+        boolean north = this.isSolidOnSide(x, y, z - 1, 3);
+        boolean south = this.isSolidOnSide(x, y, z + 1, 2);
+        boolean floor = this.canPlaceTorchOn(x, y - 1, z);
+        if (this.getBlockMetadata(x, y, z) == 0) {
+            if (west) {
+                this.setBlockMetadata(x, y, z, 1);
+            } else if (east) {
+                this.setBlockMetadata(x, y, z, 2);
+            } else if (north) {
+                this.setBlockMetadata(x, y, z, 3);
+            } else if (south) {
+                this.setBlockMetadata(x, y, z, 4);
+            } else if (floor) {
+                this.setBlockMetadata(x, y, z, 5);
+            }
+        }
+        if (!west && !east && !north && !south && !floor) {
+            this.setBlock(x, y, z, 0, 0);
+        }
+    }
+
+    private boolean canPlaceTorchOn(int x, int y, int z) {
+        if (this.hasSolidTop(x, y, z)) {
+            return true;
+        }
+        int id = this.getBlockId(x, y, z);
+        return id == 85 || id == 113 || id == 20 || id == 139;
+    }
+
+    /** World.doesBlockHaveSolidTopSurface. */
+    public boolean hasSolidTop(int x, int y, int z) {
+        return this.isSolidOnSide(x, y, z, 1);
+    }
+
+    /** Block.isBlockSolidOnSide of Forge; side is 0 down, 1 up, 2 north, 3 south, 4 west, 5 east. */
+    public boolean isSolidOnSide(int x, int y, int z, int side) {
+        int id = this.getBlockId(x, y, z);
+        if (id == 0) {
+            return false;
+        }
+        int meta = this.getBlockMetadata(x, y, z);
+        if (id == 44 || id == 126) {
+            return (meta & 8) == 8 && side == 1;
+        }
+        if (id == 60) {
+            return side != 0 && side != 1;
+        }
+        if (OldBlockInfo.stairs(id)) {
+            return (meta & 3) + side == 5 || side == 1 && (meta & 4) != 0;
+        }
+        return OldBlockInfo.normalCube(id);
+    }
+
+    public boolean isBlockNormalCube(int x, int y, int z) {
+        return OldBlockInfo.normalCube(this.getBlockId(x, y, z));
+    }
+
+    /** BlockDispenser / BlockFurnace.onBlockAdded: the front turns away from an opaque block behind it. */
+    private int facingAwayFromWalls(int x, int y, int z) {
+        boolean north = opaque(this.getBlockId(x, y, z - 1));
+        boolean south = opaque(this.getBlockId(x, y, z + 1));
+        boolean west = opaque(this.getBlockId(x - 1, y, z));
+        boolean east = opaque(this.getBlockId(x + 1, y, z));
+        int facing = 3;
+        if (south && !north) {
+            facing = 2;
+        }
+        if (west && !east) {
+            facing = 5;
+        }
+        if (east && !west) {
+            facing = 4;
+        }
+        return facing;
+    }
+
+    /**
+     * ItemDoor.placeDoorBlock: both halves of a door; the hinge goes to the side with more solid blocks or
+     * next to another door. The neighbour updates the original sent afterwards are not modelled.
+     */
+    public void placeDoor(int x, int y, int z, int facing, int doorId) {
+        int dx = 0;
+        int dz = 0;
+        if (facing == 0) {
+            dz = 1;
+        }
+        if (facing == 1) {
+            dx = -1;
+        }
+        if (facing == 2) {
+            dz = -1;
+        }
+        if (facing == 3) {
+            dx = 1;
+        }
+        int left = (this.isBlockNormalCube(x - dx, y, z - dz) ? 1 : 0) + (this.isBlockNormalCube(x - dx, y + 1, z - dz) ? 1 : 0);
+        int right = (this.isBlockNormalCube(x + dx, y, z + dz) ? 1 : 0) + (this.isBlockNormalCube(x + dx, y + 1, z + dz) ? 1 : 0);
+        boolean doorLeft = this.getBlockId(x - dx, y, z - dz) == doorId || this.getBlockId(x - dx, y + 1, z - dz) == doorId;
+        boolean doorRight = this.getBlockId(x + dx, y, z + dz) == doorId || this.getBlockId(x + dx, y + 1, z + dz) == doorId;
+        boolean mirrored = doorLeft && !doorRight || right > left;
+        this.setBlock(x, y, z, doorId, facing);
+        this.setBlock(x, y + 1, z, doorId, 8 | (mirrored ? 1 : 0));
     }
 
     /** BlockChest.onBlockAdded: a chest turns its front away from walls and lines up with a neighbour chest. */
@@ -270,7 +407,7 @@ public final class OldWorld {
                 facing = 2;
             }
         }
-        this.setMetadata(x, y, z, facing);
+        this.setBlockMetadata(x, y, z, facing);
     }
 
     private static boolean opaque(int id) {
@@ -281,6 +418,11 @@ public final class OldWorld {
 
     public void setTile(int x, int y, int z, OldTile tile) {
         this.column(x >> 4, z >> 4).tiles.put(((x & 15) * 16 + (z & 15)) * HEIGHT + y, tile);
+    }
+
+    /** World.spawnEntityInWorld; the entity belongs to the chunk it stands in. */
+    public void spawnEntity(OldEntity entity) {
+        this.column((int) Math.floor(entity.x()) >> 4, (int) Math.floor(entity.z()) >> 4).entities.add(entity);
     }
 
     public OldTile getTile(int x, int y, int z) {

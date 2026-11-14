@@ -9,6 +9,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.npc.villager.VillagerProfession;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -43,6 +44,34 @@ public final class OldGameIds {
         item(2257, Items.MUSIC_DISC_CAT);
         registerItem(351, 3, BuiltInRegistries.ITEM.getKey(Items.COCOA_BEANS).toString());
         item(403, Items.ENCHANTED_BOOK);
+        // loot of structures
+        item(264, Items.DIAMOND);
+        item(266, Items.GOLD_INGOT);
+        item(388, Items.EMERALD);
+        item(352, Items.BONE);
+        item(367, Items.ROTTEN_FLESH);
+        item(262, Items.ARROW);
+        item(368, Items.ENDER_PEARL);
+        item(260, Items.APPLE);
+        item(257, Items.IRON_PICKAXE);
+        item(267, Items.IRON_SWORD);
+        item(307, Items.IRON_CHESTPLATE);
+        item(306, Items.IRON_HELMET);
+        item(308, Items.IRON_LEGGINGS);
+        item(309, Items.IRON_BOOTS);
+        item(340, Items.BOOK);
+        item(339, Items.PAPER);
+        item(395, Items.MAP);
+        item(345, Items.COMPASS);
+        item(263, Items.COAL);
+        item(49, Items.OBSIDIAN);
+        item(6, Items.OAK_SAPLING);
+        item(66, Items.RAIL);
+        item(362, Items.MELON_SEEDS);
+        item(361, Items.PUMPKIN_SEEDS);
+        registerItem(351, 4, BuiltInRegistries.ITEM.getKey(Items.LAPIS_LAZULI).toString());
+        registerEntity("CaveSpider", "minecraft:cave_spider");
+        registerEntity("Silverfish", "minecraft:silverfish");
         registerEntity("Skeleton", "minecraft:skeleton");
         registerEntity("Zombie", "minecraft:zombie");
         registerEntity("Spider", "minecraft:spider");
@@ -97,6 +126,17 @@ public final class OldGameIds {
             throw new IllegalStateException("1.5.2 entity name '" + oldName + "' has no entity type (OldGameIds.registerEntity)");
         }
         return BuiltInRegistries.ENTITY_TYPE.getValue(id);
+    }
+
+    /** Villager professions of 1.5.2 by number; the smith, who sold tools, weapons and armour, is a weaponsmith now. */
+    public static ResourceKey<VillagerProfession> profession(int oldProfession) {
+        return switch (oldProfession) {
+            case 1 -> VillagerProfession.LIBRARIAN;
+            case 2 -> VillagerProfession.CLERIC;
+            case 3 -> VillagerProfession.WEAPONSMITH;
+            case 4 -> VillagerProfession.BUTCHER;
+            default -> VillagerProfession.FARMER;
+        };
     }
 
     public static ItemStack stack(OldStack old, RegistryAccess registries) {

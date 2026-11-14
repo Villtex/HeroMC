@@ -1,5 +1,6 @@
 package hexxit.worldgen152.core.populate;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -13,6 +14,7 @@ public final class OldDecoratedChunk {
     private final byte[][] leafDistance;
     private final byte[] biomes;
     private final Map<Integer, OldTile> tiles;
+    private final List<OldEntity> entities;
 
     OldDecoratedChunk(OldWorld.Column column, byte[][] leafDistance) {
         this.chunkX = column.chunkX;
@@ -21,6 +23,7 @@ public final class OldDecoratedChunk {
         this.leafDistance = leafDistance;
         this.biomes = column.biomes;
         this.tiles = column.tiles;
+        this.entities = column.entities;
     }
 
     public int chunkX() {
@@ -69,6 +72,11 @@ public final class OldDecoratedChunk {
     /** Tile entity data by (x * 16 + z) * 256 + y. */
     public Map<Integer, OldTile> tiles() {
         return this.tiles;
+    }
+
+    /** Entities structures spawned in this chunk, with world coordinates. */
+    public List<OldEntity> entities() {
+        return this.entities;
     }
 
     public OldTile tile(int x, int y, int z) {
