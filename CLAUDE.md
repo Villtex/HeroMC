@@ -20,7 +20,7 @@ Projektüberblick und Bauen/Starten stehen in `README.md`.
   1. `git fetch origin`, dann den aktuellen Hauptbranch in den eigenen Branch mergen. Konflikte auflösen, danach erneut `CI=true ./gradlew clean pack`.
   2. Per Fast-Forward pushen: `git push origin HEAD:ccr-83d04117-2w49l8`. Kein Force-Push. Wird der Push abgelehnt, weil inzwischen jemand anderes gepusht hat, zurück zu Schritt 1.
   3. Ein offener PR des Branches schließt GitHub dann selbst als gemergt; sonst den PR schließen.
-  4. Den eigenen Branch auf GitHub löschen: `git push origin --delete <branch>`.
+  4. Den eigenen Branch auf GitHub löschen: einmal `git push origin --delete <branch>`. In Cloud-Sessions lehnt der Git-Proxy das mit 403 ab; dann nicht wiederholen, sondern dem Nutzer am Ende den Branchnamen nennen, damit er ihn auf GitHub löscht.
 - Schlägt Build oder Prüfung fehl, nicht mergen. Den Branch stehen lassen, einen Entwurfs-PR öffnen und dem Nutzer sagen, was offen ist.
 - Keine Branches auf anderen Branches stapeln. Neue Teile immer vom Hauptbranch aus beginnen.
 
