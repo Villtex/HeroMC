@@ -1,8 +1,9 @@
 package hexxit.worldgen152.core.populate;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Where mods hook into chunk population, as they did in Forge 7.8 for Minecraft 1.5.2:
@@ -15,7 +16,9 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * {@code Result.DENY}: the vanilla step is skipped (and draws no random numbers), so the mod can do its
  * own.</li>
  * </ul>
- * Register in the same order as the original mods loaded, otherwise the shared random sequences differ.
+ * Each registration names the FML mod id of the original mod. Generators and listeners run in the mod
+ * load order of the Hexxit 1.0.11 server ({@link #LOAD_ORDER}), and in registration order within one mod,
+ * whatever order the NeoForge mod constructors (which run in parallel) happen to call in.
  */
 public final class OldTerrainGen {
     /** IWorldGenerator. Chunk coordinates, not block coordinates. */
@@ -65,18 +68,52 @@ public final class OldTerrainGen {
         }
     }
 
-    private static final List<WorldGenerator> GENERATORS = new CopyOnWriteArrayList<>();
-    private static final List<Listener> LISTENERS = new CopyOnWriteArrayList<>();
+    /** FML log of the Hexxit 1.0.11 server: the order in which the mods loaded and registered their generators. */
+    public static final List<String> LOAD_ORDER = List.of("mod_bspkrsCore", "CoFHCore", "CoFHWorld", "TreeCapitator",
+            "ImmibisMicroblocksInstallCheck", "DamageIndicatorsMod", "AsgardShield_Core", "ASAddon_Hallowed",
+            "HarkenScythe_Core", "ASAddon_HarkenScythe", "ASAddon_NetherEnder", "ASAddon_ColorAPI", "Artifice",
+            "ArtificeCompat|Chisel", "ArtificeCompat|EE3", "ArtificeCompat|Forestry", "ArtificeCompat|MFR",
+            "ArtificeCompat|Railcraft", "ArtificeCompat|Vanilla", "BattleTowers", "BetterDungeons", "BiblioCraft",
+            "DimDoors", "eplus", "ExtrabiomesXL", "hexxitgear", "InfernalMobs", "Meteors", "More Bows", "LegendGear",
+            "Natura", "Natura|CompatMineFactoryReloaded", "OffLawn", "ProjectZulu|Core", "ProjectZulu|Blocks",
+            "ProjectZulu|Dungeon", "ProjectZulu|Mobs", "ProjectZulu|World", "xreliquary", "rftl", "AS_Ruins",
+            "secretroomsmod", "SoulShards", "TConstruct", "TConstruct|CompatMineFactoryReloaded", "WildCaves3",
+            "BetterStorage", "Backpack", "ChestTransporter", "ImmibisCore", "ObsidiPlates", "QuantumCraft",
+            "TwilightForest", "chococraft");
+
+    private record Entry<T>(int rank, int seq, T value) {
+    }
+
+    private static final List<Entry<WorldGenerator>> GENERATOR_ENTRIES = new ArrayList<>();
+    private static final List<Entry<Listener>> LISTENER_ENTRIES = new ArrayList<>();
+    private static volatile List<WorldGenerator> GENERATORS = List.of();
+    private static volatile List<Listener> LISTENERS = List.of();
 
     private OldTerrainGen() {
     }
 
-    public static void registerWorldGenerator(WorldGenerator generator) {
-        GENERATORS.add(generator);
+    private static int rank(String originalModId) {
+        int rank = LOAD_ORDER.indexOf(originalModId);
+        if (rank < 0) {
+            throw new IllegalArgumentException("Unknown original mod id " + originalModId + " (see OldTerrainGen.LOAD_ORDER)");
+        }
+        return rank;
     }
 
-    public static void addListener(Listener listener) {
-        LISTENERS.add(listener);
+    private static <T> List<T> insert(List<Entry<T>> entries, String originalModId, T value) {
+        entries.add(new Entry<>(rank(originalModId), entries.size(), value));
+        entries.sort(Comparator.<Entry<T>>comparingInt(Entry::rank).thenComparingInt(Entry::seq));
+        return entries.stream().map(Entry::value).toList();
+    }
+
+    /** {@code GameRegistry.registerWorldGenerator} of the original mod {@code originalModId} (its FML mod id). */
+    public static synchronized void registerWorldGenerator(String originalModId, WorldGenerator generator) {
+        GENERATORS = insert(GENERATOR_ENTRIES, originalModId, generator);
+    }
+
+    /** A terrain-event handler of the original mod {@code originalModId} (its FML mod id). */
+    public static synchronized void addListener(String originalModId, Listener listener) {
+        LISTENERS = insert(LISTENER_ENTRIES, originalModId, listener);
     }
 
     static List<WorldGenerator> generators() {
@@ -89,7 +126,7 @@ public final class OldTerrainGen {
 
     static boolean populate(OldWorld world, Random random, int chunkX, int chunkZ, boolean village, Populate type) {
         boolean allowed = true;
-        for (Listener listener : LISTENERS) {
+        for (Listener listener : listeners()) {
             allowed &= listener.populate(world, random, chunkX, chunkZ, village, type);
         }
         return allowed;
@@ -97,7 +134,7 @@ public final class OldTerrainGen {
 
     static boolean decorate(OldWorld world, Random random, int x, int z, Decorate type) {
         boolean allowed = true;
-        for (Listener listener : LISTENERS) {
+        for (Listener listener : listeners()) {
             allowed &= listener.decorate(world, random, x, z, type);
         }
         return allowed;
@@ -105,7 +142,7 @@ public final class OldTerrainGen {
 
     static boolean generateOre(OldWorld world, Random random, int x, int z, Ore type) {
         boolean allowed = true;
-        for (Listener listener : LISTENERS) {
+        for (Listener listener : listeners()) {
             allowed &= listener.generateOre(world, random, x, z, type);
         }
         return allowed;

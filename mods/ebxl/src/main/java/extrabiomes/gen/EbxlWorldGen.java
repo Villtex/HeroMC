@@ -449,6 +449,9 @@ public final class EbxlWorldGen {
         }
     }
 
+    /** FML mod id of the original, for the generator order ({@code OldTerrainGen.LOAD_ORDER}). */
+    public static final String FML_ID = "ExtrabiomesXL";
+
     /** Decoration and generators of all ExtrabiomesXL biomes. Called once, after the biomes are registered. */
     public static void register() {
         registerBlocks();
@@ -457,15 +460,15 @@ public final class EbxlWorldGen {
         grassChoices();
         // BlockHandler.createBlocks (cattail, flower, leaf pile), BiomeHandler.registerWorldGenerators, then
         // the cautia module. Forge kept them in a HashSet, so their order changed from start to start.
-        OldTerrainGen.registerWorldGenerator(EbxlWorldGen::catTails);
-        OldTerrainGen.registerWorldGenerator(EbxlWorldGen::flowers);
-        OldTerrainGen.registerWorldGenerator(EbxlWorldGen::leafPiles);
-        OldTerrainGen.registerWorldGenerator(EbxlWorldGen::marsh);
-        OldTerrainGen.registerWorldGenerator(EbxlWorldGen::mountainDesert);
-        OldTerrainGen.registerWorldGenerator(EbxlWorldGen::mountainRidge);
-        OldTerrainGen.registerWorldGenerator(EbxlWorldGen::vanillaFlora);
-        OldTerrainGen.registerWorldGenerator(EbxlWorldGen::legendOak);
-        OldTerrainGen.registerWorldGenerator(EbxlWorldGen::quicksand);
+        OldTerrainGen.registerWorldGenerator(FML_ID, EbxlWorldGen::catTails);
+        OldTerrainGen.registerWorldGenerator(FML_ID, EbxlWorldGen::flowers);
+        OldTerrainGen.registerWorldGenerator(FML_ID, EbxlWorldGen::leafPiles);
+        OldTerrainGen.registerWorldGenerator(FML_ID, EbxlWorldGen::marsh);
+        OldTerrainGen.registerWorldGenerator(FML_ID, EbxlWorldGen::mountainDesert);
+        OldTerrainGen.registerWorldGenerator(FML_ID, EbxlWorldGen::mountainRidge);
+        OldTerrainGen.registerWorldGenerator(FML_ID, EbxlWorldGen::vanillaFlora);
+        OldTerrainGen.registerWorldGenerator(FML_ID, EbxlWorldGen::legendOak);
+        OldTerrainGen.registerWorldGenerator(FML_ID, EbxlWorldGen::quicksand);
     }
 
     // ---- saplings ----
