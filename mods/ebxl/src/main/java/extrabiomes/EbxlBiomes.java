@@ -2,7 +2,9 @@ package extrabiomes;
 
 import hexxit.worldgen152.core.OldBiome;
 import hexxit.worldgen152.core.OldBiomes;
+import hexxit.worldgen152.core.structure.OldStructures;
 import hexxit.worldgen152.core.OldBlocks;
+import hexxit.worldgen152.core.populate.OldBlockInfo;
 
 /**
  * The ExtrabiomesXL biomes as the 1.5.2 terrain generator saw them: ids, height ranges, climate and surface
@@ -22,6 +24,8 @@ public final class EbxlBiomes {
 
     /** Adds the biomes to the 1.5.2 biome table and to the overworld layout. Uses no game classes. */
     public static void register() {
+        OldBlockInfo.registerCube(RED_ROCK_ID, OldBlockInfo.Material.ROCK);
+        OldBlockInfo.registerCube(CRACKED_SAND_ID, OldBlockInfo.Material.ROCK);
         float forestTemp = OldBiomes.FOREST.temperature;
         float forestRain = OldBiomes.FOREST.rainfall;
         float swampTemp = OldBiomes.SWAMPLAND.temperature;
@@ -70,6 +74,14 @@ public final class EbxlBiomes {
         };
         for (OldBiome biome : biomes) {
             OldBiomes.addToOverworld(biome);
+            // BiomeHelper.enableBiome, and "allowvillages" of the pack configuration (true for every biome)
+            OldStructures.SPAWN_BIOMES.addIfAbsent(biome);
+            OldStructures.STRONGHOLD_BIOMES.addIfAbsent(biome);
+            OldStructures.VILLAGE_BIOMES.addIfAbsent(biome);
+        }
+        // the pack configuration also allows villages in these vanilla biomes (plains and desert have them anyway)
+        for (OldBiome biome : new OldBiome[] {OldBiomes.EXTREME_HILLS, OldBiomes.FOREST, OldBiomes.JUNGLE, OldBiomes.SWAMPLAND, OldBiomes.TAIGA}) {
+            OldStructures.VILLAGE_BIOMES.addIfAbsent(biome);
         }
     }
 }

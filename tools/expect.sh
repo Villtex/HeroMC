@@ -1,7 +1,10 @@
 #!/bin/sh
 # Predicts the 1.5.2 terrain for a seed without starting the game, for tools/verify_blocks.py.
 #   tools/expect.sh <seed> find <radius-in-chunks> > expect.txt   (one chunk per biome found near 0,0)
+#   tools/expect.sh <seed> structures <radius-in-chunks> > expect.txt   (chunks of villages, strongholds, temples, mineshafts)
 #   tools/expect.sh <seed> <chunkX> <chunkZ> [...]   > expect.txt
+#   tools/expect.sh <seed> spawn                     (the world spawn)
+# "vanilla" after the seed leaves out the biomes of mods (to compare with a vanilla 1.5.2 world).
 # Compiles hexxit.worldgen152.core and the ExtrabiomesXL biome table with plain javac (JDK 21+).
 set -e
 ROOT=$(cd "$(dirname "$0")/.." && pwd)

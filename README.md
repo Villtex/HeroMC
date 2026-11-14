@@ -64,20 +64,44 @@ eigenen Gebrauch gedacht; eine Veröffentlichung braucht die Zustimmung der jewe
 ## Weltgenerierung wie in 1.5.2
 
 `mods/worldgen152` bildet den Overworld-Generator von Minecraft 1.5.2 nach: Biom-Schichten, Geländeform,
-Deckschichten, Grundgestein, Höhlen und Schluchten. Der Kern (`hexxit.worldgen152.core`) ist reines Java
-ohne Spielklassen und verbraucht seine Zufallszahlen in der Reihenfolge des Originals, damit derselbe Seed
-dieselbe Welt ergibt. Die Welt ist wie damals 256 Blöcke hoch (y 0–255), das Gelände reicht bis y 127, der
-Meeresspiegel liegt bei 63. Der Generator ersetzt die Standard-Welt (`minecraft:normal`).
+Deckschichten, Grundgestein, Höhlen und Schluchten, und die Population der Chunks: Seen, Dungeons, Erze, Sand
+und Ton, Bäume, Gras, Blumen, Pilze, Zuckerrohr, Kürbisse, Kakteen, Seerosen, Ranken, Quellen, Schnee und Eis.
+Der Kern (`hexxit.worldgen152.core`) ist reines Java ohne Spielklassen und verbraucht seine Zufallszahlen in
+der Reihenfolge des Originals, damit derselbe Seed dieselbe Welt ergibt. Die Welt ist wie damals 256 Blöcke
+hoch (y 0–255), das Gelände reicht bis y 127, der Meeresspiegel liegt bei 63. Der Generator ersetzt die
+Standard-Welt (`minecraft:normal`).
 
-Mods, die damals Biome oder Geländeblöcke beisteuerten, melden sie über `OldBiomes` und `OldBlockStates` an.
-Im Pack war das ExtrabiomesXL: Mit seinen 28 Biomen wählt die Biom-Schicht aus 35 statt 7 Land-Biomen, und
-Mountain Ridge und Wasteland bestehen aus Red Rock bzw. Cracked Sand.
+In 1.5.2 hing die Population davon ab, in welcher Reihenfolge Chunks geladen wurden. Hier ist die Reihenfolge
+fest (wie beim Erzeugen des Startgebiets auf dem Original-Server), sodass das Ergebnis nur vom Seed abhängt.
 
-Stand der Prüfung: Die Einbindung ins Spiel ist am Server verifiziert. Für Seed 1234 stimmen je ein Chunk
-aller 49 Biome (37.632 Blöcke, 784 Biom-Proben) mit dem Kern überein. Der Abgleich des Kerns mit einer Welt
-des Original-Packs steht noch aus.
+Mods melden an, was sie damals beisteuerten:
 
-Noch nicht enthalten: Dekoration (Bäume, Gras, Erze, Seen, Schnee), Strukturen und die 1.5.2-Spawnsuche.
+| Was | Wo |
+|---|---|
+| Biome, Gelände-Blöcke | `OldBiomes`, `OldBlockStates` |
+| Blöcke, die generiert werden | `OldBlockInfo` (Eigenschaften) und `OldBlockStates` (Blockzustand) |
+| Weltgeneratoren (`IWorldGenerator`), Terrain-Events | `OldTerrainGen` |
+| eigener Biom-Dekorator, Bäume, Gras | `OldBiome.decorator`, `.trees`, `.grass`, `.afterDecoration` |
+| Dungeon-Beute, Dungeon-Mobs | `OldLoot`, `OldGameIds` |
+
+Im Pack war das bisher ExtrabiomesXL: Mit seinen 28 Biomen wählt die Biom-Schicht aus 35 statt 7 Land-Biomen,
+und Mountain Ridge und Wasteland bestehen aus Red Rock bzw. Cracked Sand.
+
+Prüfung ohne Client:
+
+```
+tools/expect.sh 1234 find 260 > expect.txt     # Vorhersage aus dem Kern, ein Chunk je Biom
+./gradlew runServer                            # mit level-seed=1234 und RCON in run/server/server.properties
+python3 tools/verify_blocks.py expect.txt      # muss 0 Abweichungen melden
+```
+
+Stand der Prüfung: Für Seed 1234 stimmen je ein Chunk aller 49 Biome (137.790 Blöcke) und 36 Chunks an Dörfern,
+Festungen, Minenschächten und Tempeln (113.533 Blöcke, dazu Truhen, Spawner, Dorfbewohner, Truhenloren) mit dem
+Kern überein. Strukturen dafür: `tools/expect.sh 1234 structures 220`. Der Abgleich des Kerns mit einer Welt des
+Original-Packs steht noch aus (siehe Teil 2 in `docs/PLAN.md`).
+
+Enthalten sind auch die Strukturen von 1.5.2 und die Spawnsuche. Noch nicht enthalten: die eigene Dekoration der
+ExtrabiomesXL-Biome.
 
 ## Wann ein Mod als portiert gilt
 
@@ -124,6 +148,7 @@ Noch nicht enthalten: Dekoration (Bäume, Gras, Erze, Seen, Schnee), Strukturen 
 | ChocoCraft | `chococraft` 2.8.8 | Torojima | 9.331 | offen |
 | Dimensional Doors | `dimensional-doors` 1.4.1.194 | StevenRS11, SenseiKiwi | 10.746 | offen |
 | ExtrabiomesXL | `ebxl` 3.13.4 | ScottKillen u. a. | 10.762 | in Arbeit: 28 Biome, Red Rock, Cracked Sand samt Rezepten |
+| (Vanilla 1.5.2) Weltgenerierung | `worldgen152` | Mojang | – | Gelände, Dekoration, Strukturen und Spawnpunkt ✅ Kern gegen Spiel verifiziert; Abgleich mit Original-Welt offen (Teil 2) |
 | LegendGear | `legendgear` 1.5.2 | NMcCoy | 11.590 | offen |
 | NEI Plugins | `nei-plugins` 1.0.9.3 | mistaqur | 11.790 | entfällt, stattdessen JEI |
 | Xeno's Reliquary | `xreliquary` 1.0.6d | x3n0ph0b3 | 11.868 | offen |

@@ -1,698 +1,1154 @@
 {
   ".claude/settings.json": {
-    "mtime": 1794603431.0208292,
-    "seen": 1794603730.9212892,
-    "ast_hash": "694a4544d795634680ac516efcc5eba4",
+    "mtime": 1794604627.3460696,
+    "seen": 1794659108.639814,
+    "ast_hash": "384673bae7ffaa08c41692587e307091",
     "semantic_hash": ""
   },
   "build.gradle": {
-    "mtime": 1794265550.9680204,
-    "seen": 1794603104.2587912,
+    "mtime": 1794604627.3465292,
+    "seen": 1794659108.6398249,
     "ast_hash": "f7843ce10d6a65e2e9f215539c4e2df5",
     "semantic_hash": ""
   },
   "buildSrc/build.gradle": {
-    "mtime": 1794265550.955744,
-    "seen": 1794603104.258794,
+    "mtime": 1794604627.3465292,
+    "seen": 1794659108.639827,
     "ast_hash": "7a627f9365a99b1459d1a4ef691c8e2b",
     "semantic_hash": ""
   },
   "buildSrc/src/main/groovy/hexxit/ImportOriginalAssets.groovy": {
-    "mtime": 1794265699.4909577,
-    "seen": 1794603104.2587955,
+    "mtime": 1794604627.3471494,
+    "seen": 1794659108.6398284,
     "ast_hash": "85f5dd60b81cb924bcdcc210ee239a93",
     "semantic_hash": ""
   },
   "gradlew": {
-    "mtime": 1794258907.2425249,
-    "seen": 1794603104.2587967,
+    "mtime": 1794604627.347598,
+    "seen": 1794659108.63983,
     "ast_hash": "794669d78aef1dd5c7d889ef618b311a",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/java/extrabiomes/EbxlBiomes.java": {
-    "mtime": 1794265671.5069237,
-    "seen": 1794603104.25881,
-    "ast_hash": "925bf332cec82fbe155f442f4f4c9771",
+    "mtime": 1794658820.7189965,
+    "seen": 1794659108.6398315,
+    "ast_hash": "50cd5a2b379cb022da33c956c5dbe54a",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/java/extrabiomes/EbxlBlocks.java": {
-    "mtime": 1794265603.2821128,
-    "seen": 1794603104.2588122,
+    "mtime": 1794604627.350635,
+    "seen": 1794659108.639833,
     "ast_hash": "8582823324855d14c424b8dd764e49eb",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/java/extrabiomes/Extrabiomes.java": {
-    "mtime": 1794265671.5072687,
-    "seen": 1794603104.2588131,
+    "mtime": 1794604627.350635,
+    "seen": 1794659108.6398342,
     "ast_hash": "50b0b960262530c0d1f2437cfe8f52e6",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/assets/extrabiomesxl/blockstates/cracked_sand.json": {
-    "mtime": 1794265648.5624104,
-    "seen": 1794603104.258814,
+    "mtime": 1794604627.3507075,
+    "seen": 1794659108.6398356,
     "ast_hash": "102378be4750027a03f3e9887d42fc95",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/assets/extrabiomesxl/blockstates/red_cobblestone.json": {
-    "mtime": 1794265648.5619206,
-    "seen": 1794603104.2588155,
+    "mtime": 1794604627.3507302,
+    "seen": 1794659108.639837,
     "ast_hash": "df4b4e328e314ddeadce984732675175",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/assets/extrabiomesxl/blockstates/red_rock.json": {
-    "mtime": 1794265648.5617619,
-    "seen": 1794603104.2588165,
+    "mtime": 1794604627.3507302,
+    "seen": 1794659108.6398382,
     "ast_hash": "157e9c6fe6e832d77015b1f7b7749ac0",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/assets/extrabiomesxl/blockstates/red_rock_brick.json": {
-    "mtime": 1794265648.5620584,
-    "seen": 1794603104.2588181,
+    "mtime": 1794604627.3507302,
+    "seen": 1794659108.6398396,
     "ast_hash": "1bb57c6f628f549b5b0a8a40d425d81c",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/assets/extrabiomesxl/items/cracked_sand.json": {
-    "mtime": 1794265648.5624938,
-    "seen": 1794603104.258819,
+    "mtime": 1794604627.3507302,
+    "seen": 1794659108.639841,
     "ast_hash": "8c705d48d1e1e2c4daed441bdff8da79",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/assets/extrabiomesxl/items/red_cobblestone.json": {
-    "mtime": 1794265648.5620232,
-    "seen": 1794603104.25882,
+    "mtime": 1794604627.3508048,
+    "seen": 1794659108.639842,
     "ast_hash": "e97e0fb1db796c8fff630948cdfb02f3",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/assets/extrabiomesxl/items/red_rock.json": {
-    "mtime": 1794265648.5618832,
-    "seen": 1794603104.258821,
+    "mtime": 1794604627.3508048,
+    "seen": 1794659108.6398432,
     "ast_hash": "9ae6af18ae026bc6151733b887ae0c55",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/assets/extrabiomesxl/items/red_rock_brick.json": {
-    "mtime": 1794265648.5621147,
-    "seen": 1794603104.258822,
+    "mtime": 1794604627.3508048,
+    "seen": 1794659108.6398447,
     "ast_hash": "d11ce558ea3456d59e893308ee71b92f",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/assets/extrabiomesxl/lang/en_us.json": {
-    "mtime": 1794265648.5630662,
-    "seen": 1794603104.258823,
+    "mtime": 1794604627.3508048,
+    "seen": 1794659108.6398456,
     "ast_hash": "4817f2aeec64c418bfed3828b86ce604",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/assets/extrabiomesxl/models/block/cracked_sand.json": {
-    "mtime": 1794265648.5624604,
-    "seen": 1794603104.2588239,
+    "mtime": 1794604627.350874,
+    "seen": 1794659108.6398468,
     "ast_hash": "58305a766a6ff886971986528363fdb9",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/assets/extrabiomesxl/models/block/red_cobblestone.json": {
-    "mtime": 1794265648.5619783,
-    "seen": 1794603104.2588246,
+    "mtime": 1794604627.3508937,
+    "seen": 1794659108.639848,
     "ast_hash": "d791a411ec2788c0092cde0d7bfe5ecd",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/assets/extrabiomesxl/models/block/red_rock.json": {
-    "mtime": 1794265648.561839,
-    "seen": 1794603104.2588258,
+    "mtime": 1794604627.3508937,
+    "seen": 1794659108.639849,
     "ast_hash": "a4c175cae151b8b03b27827c386f0395",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/assets/extrabiomesxl/models/block/red_rock_brick.json": {
-    "mtime": 1794265648.5620875,
-    "seen": 1794603104.2588267,
+    "mtime": 1794604627.3508937,
+    "seen": 1794659108.63985,
     "ast_hash": "49ffdcfc1b52ff24167f86024e77b886",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/loot_table/blocks/cracked_sand.json": {
-    "mtime": 1794265648.5626783,
-    "seen": 1794603104.2588274,
+    "mtime": 1794604627.3509474,
+    "seen": 1794659108.6398509,
     "ast_hash": "52bf35d927ecee91e411b2e7cfc0e757",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/loot_table/blocks/red_cobblestone.json": {
-    "mtime": 1794265648.562593,
-    "seen": 1794603104.2588286,
+    "mtime": 1794604627.3509753,
+    "seen": 1794659108.6398518,
     "ast_hash": "8a6ab6b7669cfd6089dba7990f8d9ac4",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/loot_table/blocks/red_rock.json": {
-    "mtime": 1794265648.562731,
-    "seen": 1794603104.2588298,
+    "mtime": 1794604627.3509753,
+    "seen": 1794659108.639853,
     "ast_hash": "6e62d3f7f7296223e7d5eeeca3d788c1",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/loot_table/blocks/red_rock_brick.json": {
-    "mtime": 1794265648.562639,
-    "seen": 1794603104.2588305,
+    "mtime": 1794604627.3509753,
+    "seen": 1794659108.6398542,
     "ast_hash": "654e57d26e5dcfef92a47c6135eea329",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/recipe/clay_ball_from_red_cobblestone.json": {
-    "mtime": 1794265648.56285,
-    "seen": 1794603104.2588315,
+    "mtime": 1794604627.3509753,
+    "seen": 1794659108.6398551,
     "ast_hash": "ec78c3c45855603fc0c2edb08983844d",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/recipe/red_rock.json": {
-    "mtime": 1794265648.562816,
-    "seen": 1794603104.2588325,
+    "mtime": 1794604627.3510554,
+    "seen": 1794659108.639856,
     "ast_hash": "d3339ed70fe1982ead9db64a8a5de4c4",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/recipe/red_rock_brick.json": {
-    "mtime": 1794265648.5627782,
-    "seen": 1794603104.2588332,
+    "mtime": 1794604627.3510554,
+    "seen": 1794659108.6398573,
     "ast_hash": "bc620a25e3762a6c9065fd341f4e132e",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/recipe/sand_from_cracked_sand.json": {
-    "mtime": 1794265648.562885,
-    "seen": 1794603104.2588341,
+    "mtime": 1794604627.3510554,
+    "seen": 1794659108.6398582,
     "ast_hash": "3186eee8605239be3d257dd26206adc2",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/worldgen/biome/alpine.json": {
-    "mtime": 1794265648.651381,
-    "seen": 1794603104.2588348,
+    "mtime": 1794604627.3511102,
+    "seen": 1794659108.6398592,
     "ast_hash": "9161ac0a4ea229f4dec3e449f641b256",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/worldgen/biome/autumn_woods.json": {
-    "mtime": 1794265648.6514978,
-    "seen": 1794603104.258836,
+    "mtime": 1794604627.3511467,
+    "seen": 1794659108.6398602,
     "ast_hash": "d3ef0034a0473e4196f3161772f332f8",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/worldgen/biome/birch_forest.json": {
-    "mtime": 1794265648.6516037,
-    "seen": 1794603104.2588367,
+    "mtime": 1794604627.3511467,
+    "seen": 1794659108.6398613,
     "ast_hash": "53eacca3ccb5c82c77db61a970f5f78b",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/worldgen/biome/extreme_jungle.json": {
-    "mtime": 1794265648.6517117,
-    "seen": 1794603104.2588377,
+    "mtime": 1794604627.3511467,
+    "seen": 1794659108.6398623,
     "ast_hash": "e54d8acfc0cf2ae97784d92879c7419f",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/worldgen/biome/forested_hills.json": {
-    "mtime": 1794265648.6518354,
-    "seen": 1794603104.2588384,
+    "mtime": 1794604627.3511467,
+    "seen": 1794659108.6398635,
     "ast_hash": "4851b7df3ca8647ad23884316a20b866",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/worldgen/biome/forested_island.json": {
-    "mtime": 1794265648.651971,
-    "seen": 1794603104.2588396,
+    "mtime": 1794604627.3511467,
+    "seen": 1794659108.639865,
     "ast_hash": "87a0f871a935edc7f0044c8d47c23865",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/worldgen/biome/glacier.json": {
-    "mtime": 1794265648.6520708,
-    "seen": 1794603104.2588403,
+    "mtime": 1794604627.3511467,
+    "seen": 1794659108.639866,
     "ast_hash": "e995b533ce35a70fb0e6a43eb48a4e31",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/worldgen/biome/green_hills.json": {
-    "mtime": 1794265648.6521761,
-    "seen": 1794603104.2588415,
+    "mtime": 1794604627.3511467,
+    "seen": 1794659108.639867,
     "ast_hash": "fea304f7a2d9047529e4d6685d287d61",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/worldgen/biome/green_swamp.json": {
-    "mtime": 1794265648.65228,
-    "seen": 1794603104.2588425,
+    "mtime": 1794604627.3511467,
+    "seen": 1794659108.6398687,
     "ast_hash": "f06b05196c9aee6db1819232222f62fc",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/worldgen/biome/ice_wasteland.json": {
-    "mtime": 1794265648.652389,
-    "seen": 1794603104.2588437,
+    "mtime": 1794604627.3511467,
+    "seen": 1794659108.6398697,
     "ast_hash": "60da9114cb085b39b07a39779e9ea7bc",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/worldgen/biome/marsh.json": {
-    "mtime": 1794265648.652489,
-    "seen": 1794603104.2588444,
+    "mtime": 1794604627.3511467,
+    "seen": 1794659108.6398706,
     "ast_hash": "adec568a6c0ead1249d90879befeaa18",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/worldgen/biome/meadow.json": {
-    "mtime": 1794265648.6525943,
-    "seen": 1794603104.2588458,
+    "mtime": 1794604627.3511467,
+    "seen": 1794659108.6398718,
     "ast_hash": "45c7891f573abaac12548f368fb4e65c",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/worldgen/biome/mini_jungle.json": {
-    "mtime": 1794265648.6527026,
-    "seen": 1794603104.2588468,
+    "mtime": 1794604627.3511467,
+    "seen": 1794659108.6398728,
     "ast_hash": "9d749ef3badccec55d086c5f373e43de",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/worldgen/biome/mountain_desert.json": {
-    "mtime": 1794265648.6527941,
-    "seen": 1794603104.2588477,
+    "mtime": 1794604627.3511467,
+    "seen": 1794659108.6398737,
     "ast_hash": "329469c08dceb9e0460894eab863004a",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/worldgen/biome/mountain_ridge.json": {
-    "mtime": 1794265648.6528826,
-    "seen": 1794603104.2588496,
+    "mtime": 1794604627.3511467,
+    "seen": 1794659108.639875,
     "ast_hash": "329469c08dceb9e0460894eab863004a",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/worldgen/biome/mountain_taiga.json": {
-    "mtime": 1794265648.6530118,
-    "seen": 1794603104.2588506,
+    "mtime": 1794604627.3511467,
+    "seen": 1794659108.639876,
     "ast_hash": "605ec8c818a0f30b3c1af739dfa71e9c",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/worldgen/biome/pine_forest.json": {
-    "mtime": 1794265648.653126,
-    "seen": 1794603104.2588515,
+    "mtime": 1794604627.3511467,
+    "seen": 1794659108.639877,
     "ast_hash": "e62b736e2883982b4705c0586ff6be74",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/worldgen/biome/rainforest.json": {
-    "mtime": 1794265648.6532295,
-    "seen": 1794603104.2588527,
+    "mtime": 1794604627.3511467,
+    "seen": 1794659108.639878,
     "ast_hash": "add6ae67c231177f56505f197056dff2",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/worldgen/biome/redwood_forest.json": {
-    "mtime": 1794265648.6533325,
-    "seen": 1794603104.2588534,
+    "mtime": 1794604627.3511467,
+    "seen": 1794659108.6398792,
     "ast_hash": "add6ae67c231177f56505f197056dff2",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/worldgen/biome/redwood_lush.json": {
-    "mtime": 1794265648.6534324,
-    "seen": 1794603104.2588542,
+    "mtime": 1794604627.3511467,
+    "seen": 1794659108.6398802,
     "ast_hash": "add6ae67c231177f56505f197056dff2",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/worldgen/biome/savanna.json": {
-    "mtime": 1794265648.6535327,
-    "seen": 1794603104.258855,
+    "mtime": 1794604627.3511467,
+    "seen": 1794659108.6398811,
     "ast_hash": "2dbef74b29aa0aeeb855423f51cee452",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/worldgen/biome/shrubland.json": {
-    "mtime": 1794265648.6536329,
-    "seen": 1794603104.2588558,
+    "mtime": 1794604627.3511467,
+    "seen": 1794659108.6398826,
     "ast_hash": "b5933dcd56d05ce98b4c59a287f1b29a",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/worldgen/biome/snowy_forest.json": {
-    "mtime": 1794265648.6537755,
-    "seen": 1794603104.258857,
+    "mtime": 1794604627.3511467,
+    "seen": 1794659108.6398835,
     "ast_hash": "cf123f343c0e70a20d495e74a132e01c",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/worldgen/biome/snowy_rainforest.json": {
-    "mtime": 1794265648.6538837,
-    "seen": 1794603104.2588577,
+    "mtime": 1794604627.3511467,
+    "seen": 1794659108.6398847,
     "ast_hash": "a671f69397ba6189b4e997127526747f",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/worldgen/biome/temperate_rainforest.json": {
-    "mtime": 1794265648.6540098,
-    "seen": 1794603104.2588584,
+    "mtime": 1794604627.3511467,
+    "seen": 1794659108.6398857,
     "ast_hash": "4e1f4514105de81e11155f2ab037393e",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/worldgen/biome/tundra.json": {
-    "mtime": 1794265648.6541152,
-    "seen": 1794603104.2588592,
+    "mtime": 1794604627.3511467,
+    "seen": 1794659108.6398866,
     "ast_hash": "9a77233ef4dd48cd965e59fe7543f825",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/worldgen/biome/wasteland.json": {
-    "mtime": 1794265648.6542015,
-    "seen": 1794603104.2588603,
+    "mtime": 1794604627.3511467,
+    "seen": 1794659108.6398878,
     "ast_hash": "118d418069f85c306fc9fa2ee2a6edf4",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/extrabiomesxl/worldgen/biome/woodlands.json": {
-    "mtime": 1794265648.654313,
-    "seen": 1794603104.258861,
+    "mtime": 1794604627.3511467,
+    "seen": 1794659108.639889,
     "ast_hash": "38d8b796ceb9ceb8ca6a3147aaeac74f",
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/resources/data/minecraft/tags/block/mineable/pickaxe.json": {
-    "mtime": 1794265648.5629911,
-    "seen": 1794603104.2588618,
+    "mtime": 1794604627.351483,
+    "seen": 1794659108.63989,
     "ast_hash": "b2fe2f0f872fc2b0fc7b19f728fd2de4",
     "semantic_hash": ""
   },
   "mods/flesh2leather/src/main/java/thesbros/rftl/RFTL.java": {
-    "mtime": 1794258907.2533748,
-    "seen": 1794603104.2588625,
+    "mtime": 1794604627.3515677,
+    "seen": 1794659108.6398911,
     "ast_hash": "134bb43db7a54496209bd94c1472e6e8",
     "semantic_hash": ""
   },
   "mods/flesh2leather/src/main/resources/data/rftl/recipe/leather.json": {
-    "mtime": 1794259015.7778797,
-    "seen": 1794603104.2588634,
+    "mtime": 1794604627.3516238,
+    "seen": 1794659108.6398923,
     "ast_hash": "edc79d2fb63fe112aa9dee9eae812c5e",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/OldBiomeSource.java": {
-    "mtime": 1794265360.3825114,
-    "seen": 1794603104.2588644,
+    "mtime": 1794604627.3517053,
+    "seen": 1794659108.6398935,
     "ast_hash": "3a16ef6bf04ccf960ed481f8fcecce48",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/OldBlockStates.java": {
-    "mtime": 1794265198.0456858,
-    "seen": 1794603104.258865,
-    "ast_hash": "4c99b815bb4ec52ba90bf44cf85b3086",
+    "mtime": 1794640608.00571,
+    "seen": 1794659108.6398945,
+    "ast_hash": "c96ea913f8c4d96148a65f1e176b5921",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/OldChunkGenerator.java": {
-    "mtime": 1794265223.8726501,
-    "seen": 1794603104.2588658,
-    "ast_hash": "7d72a7dccc7db8f7facbcb04beb941b1",
+    "mtime": 1794640657.0915682,
+    "seen": 1794659108.639896,
+    "ast_hash": "bf019e998d7a1390bf2965ab94043af4",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/WorldGen152.java": {
-    "mtime": 1794265198.042813,
-    "seen": 1794603104.258867,
-    "ast_hash": "aafd6e700dbd2941eebc17d85ded4e6d",
+    "mtime": 1794659043.0157733,
+    "seen": 1794659108.6399004,
+    "ast_hash": "44f1bc8ccdd41ffab235a1cdddb35895",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/BiomeLayout.java": {
-    "mtime": 1794264862.9796724,
-    "seen": 1794603104.2588677,
+    "mtime": 1794604627.3517554,
+    "seen": 1794659108.6399014,
     "ast_hash": "135fdb2ef3c8c82e02b139a7ea68ec52",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/OctaveNoise.java": {
-    "mtime": 1794264676.774649,
-    "seen": 1794603104.2588685,
+    "mtime": 1794604627.3522053,
+    "seen": 1794659108.6399024,
     "ast_hash": "a24d25c7e2bb034918534bd6d2903935",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/OldBiome.java": {
-    "mtime": 1794265360.38221,
-    "seen": 1794603104.2588692,
-    "ast_hash": "1a23ec6c8b0a9c68c4e2dfbb81b7b320",
+    "mtime": 1794639744.4190342,
+    "seen": 1794659108.6399038,
+    "ast_hash": "c86bcdf978af4f2673ceb59154bcf03e",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/OldBiomes.java": {
-    "mtime": 1794265360.381936,
-    "seen": 1794603104.2588704,
-    "ast_hash": "99d8290b3aff5ed5facf806bf235a57b",
+    "mtime": 1794639744.4190342,
+    "seen": 1794659108.6399047,
+    "ast_hash": "2aab5cf9198b0b1272396e277c987f00",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/OldBlocks.java": {
-    "mtime": 1794264676.7718153,
-    "seen": 1794603104.2588713,
+    "mtime": 1794604627.3522053,
+    "seen": 1794659108.6399057,
     "ast_hash": "db96a56068d0cc0a12d45eeccd0b894a",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/OldCarver.java": {
-    "mtime": 1794264922.4566324,
-    "seen": 1794603104.258872,
+    "mtime": 1794604627.3522053,
+    "seen": 1794659108.639907,
     "ast_hash": "c1953cb184c1c47e091f666a401c0bf6",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/OldCaves.java": {
-    "mtime": 1794264922.45995,
-    "seen": 1794603104.258873,
+    "mtime": 1794604627.3522053,
+    "seen": 1794659108.6399078,
     "ast_hash": "97a99cb56ea76c3ccfd6ea5a35c3edc3",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/OldChunk.java": {
-    "mtime": 1794264862.9813342,
-    "seen": 1794603104.2588744,
+    "mtime": 1794604627.3522053,
+    "seen": 1794659108.639909,
     "ast_hash": "e8b95d7e6e81fee34166338488a0ed8c",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/OldMath.java": {
-    "mtime": 1794264676.7693653,
-    "seen": 1794603104.2588751,
+    "mtime": 1794604627.3522053,
+    "seen": 1794659108.6399105,
     "ast_hash": "84cd4fe9f46842f40d749d251b5391a3",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/OldRavines.java": {
-    "mtime": 1794264922.4616983,
-    "seen": 1794603104.258876,
+    "mtime": 1794604627.3522053,
+    "seen": 1794659108.6399114,
     "ast_hash": "c384c4fb027faa6e3cdf716c5e24b2df",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/OldTerrain.java": {
-    "mtime": 1794264862.9829626,
-    "seen": 1794603104.258877,
+    "mtime": 1794604627.3522053,
+    "seen": 1794659108.6399126,
     "ast_hash": "abd8aba8c6d5cea5a25c6466a852814c",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/PerlinNoise.java": {
-    "mtime": 1794264676.773202,
-    "seen": 1794603104.2588778,
+    "mtime": 1794604627.3522053,
+    "seen": 1794659108.639914,
     "ast_hash": "0c8868f0022d05caf44b113639af3435",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/layer/Layer.java": {
-    "mtime": 1794264717.0831065,
-    "seen": 1794603104.2588787,
+    "mtime": 1794604627.3522053,
+    "seen": 1794659108.6399152,
     "ast_hash": "93adc53bb5b6d22653d66ac66ec0a585",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/layer/Layers.java": {
-    "mtime": 1794264786.5526242,
-    "seen": 1794603104.2588794,
+    "mtime": 1794604627.3525956,
+    "seen": 1794659108.6399162,
     "ast_hash": "8299495aeeecb07115dc6a58676293aa",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/resources/assets/worldgen152/lang/en_us.json": {
-    "mtime": 1794265648.5631704,
-    "seen": 1794603104.2588809,
+    "mtime": 1794604627.3529966,
+    "seen": 1794659108.6399994,
     "ast_hash": "2e8b72288081d15858203446ff0c8b8d",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/resources/data/minecraft/worldgen/world_preset/normal.json": {
-    "mtime": 1794265287.0813446,
-    "seen": 1794603104.2588816,
+    "mtime": 1794604627.3530822,
+    "seen": 1794659108.6400008,
     "ast_hash": "2f8b272e434a1782a61bd825e5cef772",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/resources/data/worldgen152/dimension_type/overworld.json": {
-    "mtime": 1794265287.046551,
-    "seen": 1794603104.2588823,
+    "mtime": 1794604627.3531203,
+    "seen": 1794659108.6400018,
     "ast_hash": "cec6f13102380f424e84e7b8a898d4b3",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/resources/data/worldgen152/worldgen/biome/beach.json": {
-    "mtime": 1794265648.6497517,
-    "seen": 1794603104.2588832,
+    "mtime": 1794604627.3531582,
+    "seen": 1794659108.6400027,
     "ast_hash": "36d1eff03613a4c4fe4017a1f7830f29",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/resources/data/worldgen152/worldgen/biome/desert.json": {
-    "mtime": 1794265648.6469731,
-    "seen": 1794603104.2588844,
+    "mtime": 1794604627.3531842,
+    "seen": 1794659108.640004,
     "ast_hash": "329469c08dceb9e0460894eab863004a",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/resources/data/worldgen152/worldgen/biome/desert_hills.json": {
-    "mtime": 1794265648.6499805,
-    "seen": 1794603104.2588854,
+    "mtime": 1794604627.3531842,
+    "seen": 1794659108.6400049,
     "ast_hash": "329469c08dceb9e0460894eab863004a",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/resources/data/worldgen152/worldgen/biome/extreme_hills.json": {
-    "mtime": 1794265648.647325,
-    "seen": 1794603104.258886,
+    "mtime": 1794604627.3531842,
+    "seen": 1794659108.6400058,
     "ast_hash": "3c177320b495419d157090a62716f704",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/resources/data/worldgen152/worldgen/biome/extreme_hills_edge.json": {
-    "mtime": 1794265648.6506417,
-    "seen": 1794603104.258887,
+    "mtime": 1794604627.3531842,
+    "seen": 1794659108.640007,
     "ast_hash": "3c177320b495419d157090a62716f704",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/resources/data/worldgen152/worldgen/biome/forest.json": {
-    "mtime": 1794265648.647583,
-    "seen": 1794603104.2588892,
+    "mtime": 1794604627.3531842,
+    "seen": 1794659108.6400082,
     "ast_hash": "42074d9963c44202baa55ebbd58717bc",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/resources/data/worldgen152/worldgen/biome/forest_hills.json": {
-    "mtime": 1794265648.6502109,
-    "seen": 1794603104.2588902,
+    "mtime": 1794604627.3531842,
+    "seen": 1794659108.6400092,
     "ast_hash": "42074d9963c44202baa55ebbd58717bc",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/resources/data/worldgen152/worldgen/biome/frozen_ocean.json": {
-    "mtime": 1794265648.64849,
-    "seen": 1794603104.258891,
+    "mtime": 1794604627.3531842,
+    "seen": 1794659108.6400104,
     "ast_hash": "da275d34b09d8d68541b3b05f75c30d4",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/resources/data/worldgen152/worldgen/biome/frozen_river.json": {
-    "mtime": 1794265648.6487155,
-    "seen": 1794603104.258892,
+    "mtime": 1794604627.3531842,
+    "seen": 1794659108.6400113,
     "ast_hash": "da275d34b09d8d68541b3b05f75c30d4",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/resources/data/worldgen152/worldgen/biome/ice_mountains.json": {
-    "mtime": 1794265648.6491594,
-    "seen": 1794603104.2588928,
+    "mtime": 1794604627.3531842,
+    "seen": 1794659108.6400123,
     "ast_hash": "056f0254f9d8791e73960486f06f0214",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/resources/data/worldgen152/worldgen/biome/ice_plains.json": {
-    "mtime": 1794265648.6489396,
-    "seen": 1794603104.2588937,
+    "mtime": 1794604627.3531842,
+    "seen": 1794659108.6400132,
     "ast_hash": "056f0254f9d8791e73960486f06f0214",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/resources/data/worldgen152/worldgen/biome/jungle.json": {
-    "mtime": 1794265648.6508782,
-    "seen": 1794603104.2588947,
+    "mtime": 1794604627.3531842,
+    "seen": 1794659108.6400144,
     "ast_hash": "e54d8acfc0cf2ae97784d92879c7419f",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/resources/data/worldgen152/worldgen/biome/jungle_hills.json": {
-    "mtime": 1794265648.651136,
-    "seen": 1794603104.2588956,
+    "mtime": 1794604627.3531842,
+    "seen": 1794659108.6400154,
     "ast_hash": "e54d8acfc0cf2ae97784d92879c7419f",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/resources/data/worldgen152/worldgen/biome/mushroom_island.json": {
-    "mtime": 1794265648.6493464,
-    "seen": 1794603104.2588964,
+    "mtime": 1794604627.3531842,
+    "seen": 1794659108.6400166,
     "ast_hash": "c5aa5483976387e30c52601c2ea7e1ab",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/resources/data/worldgen152/worldgen/biome/mushroom_island_shore.json": {
-    "mtime": 1794265648.6495242,
-    "seen": 1794603104.258897,
+    "mtime": 1794604627.3531842,
+    "seen": 1794659108.6400177,
     "ast_hash": "c5aa5483976387e30c52601c2ea7e1ab",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/resources/data/worldgen152/worldgen/biome/ocean.json": {
-    "mtime": 1794265648.6461568,
-    "seen": 1794603104.258898,
+    "mtime": 1794604627.3531842,
+    "seen": 1794659108.6400187,
     "ast_hash": "17131da934b225751ce8e0a960883cdc",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/resources/data/worldgen152/worldgen/biome/plains.json": {
-    "mtime": 1794265648.6465478,
-    "seen": 1794603104.258899,
+    "mtime": 1794604627.3531842,
+    "seen": 1794659108.6400197,
     "ast_hash": "21b5f76e66dc2cfc9dfcc5b4cd3d60dd",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/resources/data/worldgen152/worldgen/biome/river.json": {
-    "mtime": 1794265648.648277,
-    "seen": 1794603104.2588997,
+    "mtime": 1794604627.3531842,
+    "seen": 1794659108.6400208,
     "ast_hash": "17131da934b225751ce8e0a960883cdc",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/resources/data/worldgen152/worldgen/biome/swampland.json": {
-    "mtime": 1794265648.6480622,
-    "seen": 1794603104.2589004,
+    "mtime": 1794604627.3531842,
+    "seen": 1794659108.6400218,
     "ast_hash": "3ab98ab4d8d7a6bbf137c4372b7baf34",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/resources/data/worldgen152/worldgen/biome/taiga.json": {
-    "mtime": 1794265648.6478176,
-    "seen": 1794603104.2589014,
+    "mtime": 1794604627.3531842,
+    "seen": 1794659108.640023,
     "ast_hash": "515b8ea9fe0c6f74d4449d3a977419a8",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/resources/data/worldgen152/worldgen/biome/taiga_hills.json": {
-    "mtime": 1794265648.6504304,
-    "seen": 1794603104.258902,
+    "mtime": 1794604627.3531842,
+    "seen": 1794659108.640024,
     "ast_hash": "515b8ea9fe0c6f74d4449d3a977419a8",
     "semantic_hash": ""
   },
   "pack/hexxit-1.0.11.json": {
-    "mtime": 1794258622.6646354,
-    "seen": 1794603104.258903,
+    "mtime": 1794604627.3531842,
+    "seen": 1794659108.6400251,
     "ast_hash": "8281a7616c02daafadb797b11c86ab28",
     "semantic_hash": ""
   },
   "settings.gradle": {
-    "mtime": 1794258907.2445674,
-    "seen": 1794603104.2589037,
+    "mtime": 1794604627.3531842,
+    "seen": 1794659108.640026,
     "ast_hash": "813c8298c8516bfdff7b831b88f73152",
     "semantic_hash": ""
   },
   "tools/biomes.py": {
-    "mtime": 1794265648.5775328,
-    "seen": 1794603104.2589045,
+    "mtime": 1794604627.3531842,
+    "seen": 1794659108.6400273,
     "ast_hash": "9b2bdd92f83bb9260bd8d30004a48d48",
     "semantic_hash": ""
   },
   "tools/rcon.py": {
-    "mtime": 1794259015.779296,
-    "seen": 1794603104.2589056,
+    "mtime": 1794604627.3535175,
+    "seen": 1794659108.6400304,
     "ast_hash": "8424f37b757bf5dddf876f147f7996fe",
     "semantic_hash": ""
   },
   "tools/reference.py": {
-    "mtime": 1794264362.1431208,
-    "seen": 1794603104.2589064,
+    "mtime": 1794604627.3535175,
+    "seen": 1794659108.6400316,
     "ast_hash": "9bcdfdfeca293a1bef61129dfb9b97c9",
     "semantic_hash": ""
   },
   ".claude/CLAUDE.md": {
-    "mtime": 1794603147.7322285,
-    "seen": 1794603730.9213972,
+    "mtime": 1794604627.345052,
+    "seen": 1794659108.640035,
     "ast_hash": "9b31786b637be3c13978bec4c2330752",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1794604247.0651176,
-    "seen": 1794604248.420589,
-    "ast_hash": "e55c8d86a5e539da86de1a56862d05c7",
+    "mtime": 1794659082.7736099,
+    "seen": 1794659108.6400385,
+    "ast_hash": "4d50b3f775acd772617d3143adc337d6",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1794604247.066554,
-    "seen": 1794604248.4205906,
-    "ast_hash": "3a7b2859062f69ab6054fb99f85afc14",
+    "mtime": 1794659082.773405,
+    "seen": 1794659108.6400394,
+    "ast_hash": "1278c88abcf45c47bb54cd79d9dd5ee1",
     "semantic_hash": ""
   },
   "mods/ebxl/original-assets.txt": {
-    "mtime": 1794265603.279803,
-    "seen": 1794603104.2589097,
+    "mtime": 1794604627.3505363,
+    "seen": 1794659108.6400418,
     "ast_hash": "b4ab706a27f8d8e2383cf63c3e19038a",
     "semantic_hash": ""
   },
   "tools/expect.sh": {
-    "mtime": 1794603717.001177,
-    "seen": 1794603730.9213922,
-    "ast_hash": "babc1b423d89992ee30fff38d4323fb8",
+    "mtime": 1794640706.7553868,
+    "seen": 1794659108.6400285,
+    "ast_hash": "f93e244508d27e6b979d9fcfc669fdd9",
     "semantic_hash": ""
   },
   "tools/java/Expect.java": {
-    "mtime": 1794603707.8568456,
-    "seen": 1794603730.9213934,
-    "ast_hash": "d9e618353730cdcf081096b92683b357",
+    "mtime": 1794640805.2998242,
+    "seen": 1794659108.6400294,
+    "ast_hash": "c1820c8a0431f2edd9d6f119edf3aa7b",
     "semantic_hash": ""
   },
   "tools/verify_blocks.py": {
-    "mtime": 1794603707.5817504,
-    "seen": 1794603730.9213963,
-    "ast_hash": "30ac21a1c4dff1d89875dc0c486db6ab",
+    "mtime": 1794658820.720369,
+    "seen": 1794659108.6400325,
+    "ast_hash": "dc74d3d9937483ffd5d149d3cf4720a3",
     "semantic_hash": ""
   },
   ".claude/agents/log-reader.md": {
-    "mtime": 1794603147.7291648,
-    "seen": 1794603730.921398,
+    "mtime": 1794604627.3460696,
+    "seen": 1794659108.640036,
     "ast_hash": "1d91ff4bd6c5ee6e6a023539e249f341",
     "semantic_hash": ""
   },
   "docs/PLAN.md": {
-    "mtime": 1794604238.8688974,
-    "seen": 1794604248.420592,
-    "ast_hash": "dd92be6ac63397b83f4a13a932ca0bec",
+    "mtime": 1794659082.7728121,
+    "seen": 1794659108.6400406,
+    "ast_hash": "b3219c655cd458ec0e8eb12f1a4a4a31",
+    "semantic_hash": ""
+  },
+  ".mcp.json": {
+    "mtime": 1794639744.411034,
+    "seen": 1794659108.6398213,
+    "ast_hash": "001267ec59fd1b9669d4cf2ce786f898",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/OldChunkWriter.java": {
+    "mtime": 1794640608.006075,
+    "seen": 1794659108.639897,
+    "ast_hash": "f71a2f18f78969bcf57bf856323b82f6",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/OldGameIds.java": {
+    "mtime": 1794640577.6340964,
+    "seen": 1794659108.6398988,
+    "ast_hash": "04e33b0b27aef39b43bc6d3b997e445a",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldBlockInfo.java": {
+    "mtime": 1794640237.3505747,
+    "seen": 1794659108.6399179,
+    "ast_hash": "aad0553b265edbd59109a50bc8a10abe",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldDecoratedChunk.java": {
+    "mtime": 1794640181.6663072,
+    "seen": 1794659108.639919,
+    "ast_hash": "f9265590ae4ea30aa9b734e24dd3ec34",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldDecoration.java": {
+    "mtime": 1794640181.6665137,
+    "seen": 1794659108.6399205,
+    "ast_hash": "c8c77e347150d0658a091afa9d86b5ac",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldDecorator.java": {
+    "mtime": 1794639744.420533,
+    "seen": 1794659108.6399214,
+    "ast_hash": "ea98a23543626a6968d980499099aeab",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldDungeonGen.java": {
+    "mtime": 1794639744.420533,
+    "seen": 1794659108.6399226,
+    "ast_hash": "4740273468885ef098165004525c0429",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldGen.java": {
+    "mtime": 1794639744.420533,
+    "seen": 1794659108.639926,
+    "ast_hash": "e33286cda3d2ce5dd0f4ddc4a319dc3c",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldLakeGens.java": {
+    "mtime": 1794639744.420533,
+    "seen": 1794659108.6399276,
+    "ast_hash": "5403380e4257592a7640890b2d17f599",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldLoot.java": {
+    "mtime": 1794640108.5042596,
+    "seen": 1794659108.6399286,
+    "ast_hash": "9e2ce2f11d7157422cf4e975e2759f7c",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldOreGens.java": {
+    "mtime": 1794639744.420533,
+    "seen": 1794659108.6399295,
+    "ast_hash": "a9fc270d8daecdae0a3776a6be42577b",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldPlantGens.java": {
+    "mtime": 1794639744.420533,
+    "seen": 1794659108.639931,
+    "ast_hash": "93f89ade61e2a5ab19622235a1df6522",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldPopulator.java": {
+    "mtime": 1794640366.9041197,
+    "seen": 1794659108.639932,
+    "ast_hash": "a67c6c0956ce8d41eb7f8948c8f597ad",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldStack.java": {
+    "mtime": 1794639744.420533,
+    "seen": 1794659108.6399343,
+    "ast_hash": "416720e687ce2b000b3974655c74ca99",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldTerrainGen.java": {
+    "mtime": 1794639744.420533,
+    "seen": 1794659108.6399353,
+    "ast_hash": "23f3b8e67630df48377b673e4ee6516a",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldTile.java": {
+    "mtime": 1794640108.5378366,
+    "seen": 1794659108.6399362,
+    "ast_hash": "f1957e15c7de0c4825a3adbd22ff0f0e",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldTreeGens.java": {
+    "mtime": 1794639744.420533,
+    "seen": 1794659108.6399376,
+    "ast_hash": "21a2eb29a13e9c0551eeef0190d40c9a",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldWorld.java": {
+    "mtime": 1794640181.6656094,
+    "seen": 1794659108.6399384,
+    "ast_hash": "26505fd63c1efbabb720906cc3d371a4",
+    "semantic_hash": ""
+  },
+  ".claude/skills/worldgen152/SKILL.md": {
+    "mtime": 1794659082.7738445,
+    "seen": 1794659108.640037,
+    "ast_hash": "93719c902378960dc0d691b359f45a69",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldEntity.java": {
+    "mtime": 1794640108.5153682,
+    "seen": 1794659108.6399245,
+    "ast_hash": "223649c8f128714a3fdec518a85e9b4c",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldRails.java": {
+    "mtime": 1794640181.6508684,
+    "seen": 1794659108.639933,
+    "ast_hash": "eaaaf66139cb9d24cda66b8219811f6f",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentMineshaftCorridor.java": {
+    "mtime": 1794640342.2212121,
+    "seen": 1794659108.6399395,
+    "ast_hash": "65f8c08099ea06269aeabce93437280d",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentMineshaftCross.java": {
+    "mtime": 1794640299.7895463,
+    "seen": 1794659108.639941,
+    "ast_hash": "11de26fc3a7757c97dd171b1bbb29d75",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentMineshaftRoom.java": {
+    "mtime": 1794640342.2236142,
+    "seen": 1794659108.639942,
+    "ast_hash": "569c0a8ecf8ff43871b62cc26e7fb4ac",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentMineshaftStairs.java": {
+    "mtime": 1794640299.7950058,
+    "seen": 1794659108.639943,
+    "ast_hash": "435f24418aa758ea70b4b65a9ad3527a",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentScatteredFeature.java": {
+    "mtime": 1794640237.3671043,
+    "seen": 1794659108.6399438,
+    "ast_hash": "8be24262b52f1b167655124b1dc832bd",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentScatteredFeatureDesertPyramid.java": {
+    "mtime": 1794640299.7991939,
+    "seen": 1794659108.639945,
+    "ast_hash": "a2f64e4212f6fe8a9bf5c083da8b742b",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentScatteredFeatureJunglePyramid.java": {
+    "mtime": 1794640342.223293,
+    "seen": 1794659108.639946,
+    "ast_hash": "17cf6fa1d61b8478e30f5539a43db513",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentScatteredFeatureSwampHut.java": {
+    "mtime": 1794640342.221564,
+    "seen": 1794659108.6399467,
+    "ast_hash": "1fae260559c66faabc7021c93e8c29f6",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentStronghold.java": {
+    "mtime": 1794640299.7920275,
+    "seen": 1794659108.639948,
+    "ast_hash": "a7694bfe85ad9068b32f290bf0c17791",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentStrongholdChestCorridor.java": {
+    "mtime": 1794640299.8031526,
+    "seen": 1794659108.6399488,
+    "ast_hash": "3f91d16b604d8ea57d98697fbc64cf9b",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentStrongholdCorridor.java": {
+    "mtime": 1794640011.0604172,
+    "seen": 1794659108.6399498,
+    "ast_hash": "dc1a8fd036d152912e50d988dc14ab47",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentStrongholdCrossing.java": {
+    "mtime": 1794640011.0606604,
+    "seen": 1794659108.6399508,
+    "ast_hash": "3341b5de855fdf9d1f6e457bd30f236c",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentStrongholdLeftTurn.java": {
+    "mtime": 1794640011.060765,
+    "seen": 1794659108.6399517,
+    "ast_hash": "c27aa18d086e4ce9dc32451ddc7070f6",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentStrongholdLibrary.java": {
+    "mtime": 1794640299.8003294,
+    "seen": 1794659108.6399527,
+    "ast_hash": "021632c716afeebbc6b664a287fad56c",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentStrongholdPortalRoom.java": {
+    "mtime": 1794640342.2207215,
+    "seen": 1794659108.6399536,
+    "ast_hash": "8f5823efa14d7e35e504ffe46f0f63b0",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentStrongholdPrison.java": {
+    "mtime": 1794640011.0614066,
+    "seen": 1794659108.6399543,
+    "ast_hash": "4060b9abaf3dbe64f8883f1f7b2bc0e3",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentStrongholdRightTurn.java": {
+    "mtime": 1794640342.2234466,
+    "seen": 1794659108.6399555,
+    "ast_hash": "b0a2817777ab55d395e6866e999e2f26",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentStrongholdRoomCrossing.java": {
+    "mtime": 1794640299.8026555,
+    "seen": 1794659108.6399562,
+    "ast_hash": "efb25aa47e7c0203ba7625bc3b33f5ac",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentStrongholdStairs.java": {
+    "mtime": 1794640011.061937,
+    "seen": 1794659108.6399572,
+    "ast_hash": "1b9f741b935e2fc3c574d68c6cf14025",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentStrongholdStairs2.java": {
+    "mtime": 1794640307.395285,
+    "seen": 1794659108.6399586,
+    "ast_hash": "cee9a65c3d36905155f8cf4f17c273ff",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentStrongholdStairsStraight.java": {
+    "mtime": 1794640011.0620778,
+    "seen": 1794659108.6399596,
+    "ast_hash": "c38f52b627851132beeb79aa72483d99",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentStrongholdStraight.java": {
+    "mtime": 1794640011.062167,
+    "seen": 1794659108.6399608,
+    "ast_hash": "4cc3431c94aaf3195cc3913094c18cf0",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentVillage.java": {
+    "mtime": 1794640342.2219074,
+    "seen": 1794659108.639962,
+    "ast_hash": "eec82556798875d97e0a46fd6a13ccde",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentVillageChurch.java": {
+    "mtime": 1794640011.062719,
+    "seen": 1794659108.639963,
+    "ast_hash": "9363a20a8d9c75f40a587e994180acc7",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentVillageField.java": {
+    "mtime": 1794640011.0628808,
+    "seen": 1794659108.6399639,
+    "ast_hash": "380e4f7644b70ffc297299c48598389a",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentVillageField2.java": {
+    "mtime": 1794640011.0630016,
+    "seen": 1794659108.6399646,
+    "ast_hash": "1ce9c6d7735292e00393b25f681f4dac",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentVillageHall.java": {
+    "mtime": 1794640011.0632217,
+    "seen": 1794659108.6399658,
+    "ast_hash": "f4d47a58a37d5d4f72b926c2d4961d0e",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentVillageHouse1.java": {
+    "mtime": 1794640011.0635283,
+    "seen": 1794659108.6399667,
+    "ast_hash": "e772bae5e1f908464425162a7d92bc72",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentVillageHouse2.java": {
+    "mtime": 1794640299.7982907,
+    "seen": 1794659108.6399677,
+    "ast_hash": "e70f01986dba0c804e40924dd5f24b55",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentVillageHouse3.java": {
+    "mtime": 1794640011.0641868,
+    "seen": 1794659108.6399689,
+    "ast_hash": "f8c59cb2f2e8bb2c4d869e20dbfce005",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentVillageHouse4_Garden.java": {
+    "mtime": 1794640011.064407,
+    "seen": 1794659108.6399698,
+    "ast_hash": "79ae2e72b35b65359ff2609879884a16",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentVillagePathGen.java": {
+    "mtime": 1794640011.0646207,
+    "seen": 1794659108.6399708,
+    "ast_hash": "2edc8f74301208a7cb09d7022d8e058e",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentVillageRoadPiece.java": {
+    "mtime": 1794640011.0646665,
+    "seen": 1794659108.6399717,
+    "ast_hash": "bb0bcad65be336774d148547c9171a92",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentVillageStartPiece.java": {
+    "mtime": 1794640347.9934323,
+    "seen": 1794659108.6399767,
+    "ast_hash": "a0016e26967cbc87afa182b71dea4b1e",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentVillageTorch.java": {
+    "mtime": 1794640299.7946308,
+    "seen": 1794659108.6399777,
+    "ast_hash": "c96992a0a2a074a3e2195d4a6cd5fd09",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentVillageWell.java": {
+    "mtime": 1794640011.0649352,
+    "seen": 1794659108.6399786,
+    "ast_hash": "b1fc708302b46e673c9376c9215a53ef",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/ComponentVillageWoodHut.java": {
+    "mtime": 1794640011.0650911,
+    "seen": 1794659108.6399798,
+    "ast_hash": "b84514439c8e8bc9b3e6cda7255f70df",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/EnumDoor.java": {
+    "mtime": 1794640011.0668514,
+    "seen": 1794659108.639981,
+    "ast_hash": "7629e8f89258b0fafff60f1c8ea84d53",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/OldStructures.java": {
+    "mtime": 1794658820.7194545,
+    "seen": 1794659108.6399817,
+    "ast_hash": "3ca57a55e3cd4f0135bb0980c21ccd3b",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/StructureBoundingBox.java": {
+    "mtime": 1794640011.0652165,
+    "seen": 1794659108.639983,
+    "ast_hash": "0b1975f2dfd00a4d56b3d9348356bcc4",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/StructureComponent.java": {
+    "mtime": 1794640315.6800768,
+    "seen": 1794659108.639984,
+    "ast_hash": "6ad25e70ba58124185c9efdd1458ec83",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/StructureMineshaftPieces.java": {
+    "mtime": 1794640299.8040867,
+    "seen": 1794659108.6399848,
+    "ast_hash": "2975faae642379a09b9686da13b26078",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/StructureMineshaftStart.java": {
+    "mtime": 1794640237.35661,
+    "seen": 1794659108.639986,
+    "ast_hash": "bf36b946771d38ab4addfb20468161d3",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/StructurePieceBlockSelector.java": {
+    "mtime": 1794640011.0659587,
+    "seen": 1794659108.639987,
+    "ast_hash": "af605eeb875a508e766584e236afbea3",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/StructureScatteredFeatureStart.java": {
+    "mtime": 1794640237.3622847,
+    "seen": 1794659108.639988,
+    "ast_hash": "6914b27e8e73889730f3079861c73d63",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/StructureScatteredFeatureStones.java": {
+    "mtime": 1794640342.2225933,
+    "seen": 1794659108.6399887,
+    "ast_hash": "5a233115ae78bc649eb2362bafc392fe",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/StructureStart.java": {
+    "mtime": 1794640299.8035152,
+    "seen": 1794659108.6399899,
+    "ast_hash": "814db54ba59f3a73581e58bf7d633201",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/StructureStrongholdPieceWeight.java": {
+    "mtime": 1794640011.0661676,
+    "seen": 1794659108.6399908,
+    "ast_hash": "07848e5eeeffcfb3b5f2b20b3a6a2839",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/StructureStrongholdPieces.java": {
+    "mtime": 1794640299.803822,
+    "seen": 1794659108.6399915,
+    "ast_hash": "8bde8fda8c802f98d862bf8f539f0e0a",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/StructureStrongholdStart.java": {
+    "mtime": 1794640237.357339,
+    "seen": 1794659108.6399925,
+    "ast_hash": "5e2ac514ad4a287bfc4df74845da7590",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/StructureStrongholdStones.java": {
+    "mtime": 1794640342.22238,
+    "seen": 1794659108.6399937,
+    "ast_hash": "60722bf4f34adff93ec2fb15d37b8b51",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/StructureVillagePieceWeight.java": {
+    "mtime": 1794640011.066457,
+    "seen": 1794659108.639996,
+    "ast_hash": "25d2b78bd7e1919af12cf2d390b6e0ee",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/StructureVillagePieces.java": {
+    "mtime": 1794640342.2237833,
+    "seen": 1794659108.6399975,
+    "ast_hash": "e55feb69cff3757f07a7b36491ba685c",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/StructureVillageStart.java": {
+    "mtime": 1794640237.357622,
+    "seen": 1794659108.6399984,
+    "ast_hash": "f63519b4423eb9a0eaacc10e229d92cb",
     "semantic_hash": ""
   }
 }
