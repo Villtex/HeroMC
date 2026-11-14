@@ -107,6 +107,12 @@ neu erzeugt. Mod-Biome für Dörfer, Festungen und Spawn: `OldStructures.VILLAGE
 OldEntity...)`, neue Arten brauchen einen Fall in `OldChunkWriter.entity`. Strukturen laufen vor den Seen und
 ziehen aus derselben Zufallsfolge wie die Population.
 
+## Bäume im Spiel (Setzlinge)
+
+`OldLiveGen.generate(level, gen, random, x, y, z, radius, height)` lässt einen `OldGen` in der echten Welt laufen
+(Vorbild mit 2x2-Suche: `extrabiomes/block/EbxlSaplingBlock`). Zustand über Bäume hinweg: beim Generieren je
+Chunk über `world.chunkState(key, Supplier)`. Laub weiter als 6 vom Stamm: `extrabiomes/block/EbxlLeavesBlock`.
+
 ## Prüfen
 
 ```
@@ -124,6 +130,10 @@ Das prüft Kern gegen Spiel. Kern gegen Original prüft `python3 tools/compare_o
 .cache/original/hexxit/world 1234`: Es liest die Region-Dateien einer Welt des echten Hexxit-Servers und zählt
 die Abweichungen je Block-ID. Nach dem Port eines Mod-Generators müssen dessen IDs dort aus der Liste fallen.
 Welt erzeugen: `tools/original_server.sh hexxit 420` (Einrichtung in `docs/PLAN.md`, Teil 2).
+
+Seltenes fehlt meist in der `find`-Auswahl: Kandidaten mit einer kleinen Klasse gegen `BiomeLayout` suchen, an
+`expect.sh` geben, in der Ausgabe nach der ID suchen (`awk '$4==917'`). Manche Originale fragen das Biom an (x, x).
+Testserver braucht `pause-when-empty-seconds=-1`, sonst lädt er ohne Spieler nach 60 s keine Chunks mehr.
 
 ## Stolperfallen
 
@@ -143,5 +153,9 @@ Welt erzeugen: `tools/original_server.sh hexxit 420` (Einrichtung in `docs/PLAN.
   und Laub), `getPrecipitationHeight`. Nicht verwechseln, das Original unterscheidet sie.
 - **Frische Welt.** Vor dem Abgleich `run/server/world` löschen. Der Abgleich friert die Welt ein (`tick freeze`);
   in einer Welt, die schon gelaufen ist, sind Kies gefallen, Lava geflossen und Türen geöffnet.
+- **Vanilla-IDs, die neu dazukommen** (Melone 103 aus einem Mod-Generator), brauchen ebenfalls einen Eintrag in
+  `OldBlockStates` und `verify_blocks.py`, sonst stürzt der Server beim Generieren ab.
+- **26.3-Tags:** `grass_block` steht nicht mehr in `#minecraft:dirt` (`#minecraft:grass_blocks`). Böden für
+  Pflanzen und Setzlinge ausdrücklich nennen.
 - **Vergleich am Server:** Der Abgleich stellt `random_tick_speed` auf 0. Blöcke, die fließendes Wasser erreicht,
   zählt er getrennt und nicht als Abweichung.

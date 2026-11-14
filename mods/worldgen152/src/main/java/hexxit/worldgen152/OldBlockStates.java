@@ -107,6 +107,7 @@ public final class OldBlockStates {
                 .setValue(BlockStateProperties.HORIZONTAL_FACING, DIRECTION[meta & 3])
                 .setValue(BlockStateProperties.AGE_2, Math.min(meta >> 2, 2)));
         block(129, Blocks.EMERALD_ORE);
+        block(103, Blocks.MELON);   // ExtrabiomesXL melon patches
         structureBlocks();
     }
 

@@ -53,7 +53,7 @@ public class EbxlSaplingBlock extends VegetationBlock implements BonemealableBlo
     /** TreeSoilRegistry: grass, dirt, farmland. */
     @Override
     protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
-        return state.is(BlockTags.DIRT) || state.is(Blocks.FARMLAND);
+        return state.is(BlockTags.GRASS_BLOCKS) || state.is(BlockTags.DIRT) || state.is(Blocks.FARMLAND);
     }
 
     @Override

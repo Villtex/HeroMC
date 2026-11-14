@@ -39,7 +39,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 0 | Grundgerüst, RottenFleshToLeather, 1.5.2-Gelände, ExtrabiomesXL-Biome | – | – | – | ✅ erledigt |
 | 1 | Vanilla-1.5.2-Dekoration und Schnittstelle für Mod-Weltgeneratoren | ~3.000 | 0 | Fable 5.2, extra hoch | ✅ erledigt |
 | 2 | Vanilla-1.5.2-Strukturen, Spawnpunkt, Abgleich mit Original-Welt | ~6.000 | 1 | Fable 5.2, extra hoch | ✅ erledigt |
-| 3 | JEI-Grundlage, ExtrabiomesXL fertig (Bäume, Pflanzen, Holz, Scarecrow) | ~9.000 | 1 | Opus 5.5, mittel | offen |
+| 3 | JEI-Grundlage, ExtrabiomesXL fertig (Bäume, Pflanzen, Holz, Scarecrow) | ~9.000 | 1 | Opus 5.5, mittel | ✅ erledigt |
 | 4 | Kleine Mods: Obsidian Plates, Chest Transporter, ArmorBar, BuffBar, Back Tools, Soul Shards | ~5.000 | 3 | Sonnet 5.5, niedrig | offen |
 | 5 | Hexxit Gear, More Bows, Enchanting Plus, offLawn, Wild Caves 3 | ~13.000 | 1, 3 | Opus 5.5, mittel | offen |
 | 6 | bspkrsCore, TreeCapitator, Inventory Tweaks, Custom LAN Ports | ~19.000 | 3 | Opus 5.5, mittel | offen |
@@ -124,7 +124,6 @@ So ist es gebaut (`hexxit.worldgen152.core.populate`, reines Java):
   des Originals beim Generieren fehlt.
 - Tiere beim Generieren kommen weiter von `NaturalSpawner` (gleicher Algorithmus, Spawn-Listen aus den Biom-Daten),
   nicht aus der 1.5.2-Zufallsfolge.
-- ExtrabiomesXL-Biome benutzen bis Teil 3 den Standard-Dekorator (vereinzelte Eichen, Gras, Blumen).
 - Strukturen fehlen noch (Teil 2); die Stelle in `OldPopulator` ist markiert. Sie verbrauchen Zufallszahlen vor den
   Seen, dadurch verschieben sich danach Seen und Dungeons in Chunks mit Strukturen.
 - Wie man Generatoren einhängt und prüft, steht im Skill `.claude/skills/worldgen152/SKILL.md`.
@@ -237,6 +236,55 @@ So ist es gebaut:
   - eigene Biom-Dekoratoren (Zahlen aus `extrabiomes.cfg` → decoration)
   - Generatoren: Marsh, Mountain Desert, Mountain Ridge, VanillaFlora, LegendOak
 - Abgleich mit der Terrain-Prüfung, jetzt inklusive Dekoration.
+
+**Status: erledigt.**
+
+- **JEI** 31.17.0.113 (`jei_version` in `gradle.properties`, Maven `maven.blamejared.com`, braucht dort auch die
+  Gruppe `net.mezzdev.config`): API als `compileOnly` in jedem Teilprojekt, JEI selbst in den Runs des Packs.
+  Vorlage: `docs/JEI.md`. ExtrabiomesXL hat nur Werkbank- und Ofenrezepte; sein Plugin
+  (`extrabiomes/compat/EbxlJeiPlugin.java`) zeigt Info-Seiten (Log Turner, 2x2-Setzlinge, Quicksand, Scarecrow).
+- **Weltgenerierung** (`extrabiomes/gen`, reines Java, auch in `tools/expect.sh`): Dekorator-Zahlen je Biom
+  (`DecorationSettings`, die Pack-Konfiguration wiederholt sie nur), gewichtete Baum- und Graswahl
+  (`BiomeManagerImpl`), alle Bäume (`EbxlTreeGens`), Kleinpflanzen und Generatoren (`EbxlPlantGens`,
+  `EbxlWorldGen`): Cattail, Flower, LeafPile, Marsh, MountainDesert, MountainRidge, VanillaFlora, LegendOak, Quicksand.
+- **Blöcke**: jede Metadaten-Variante ist ein eigener Block (Namen in `EbxlBlocks`, alte IDs in `Extrabiomes`
+  und `tools/verify_blocks.py`). Viertel-Stämme: ein Block je Holz mit `bark` (nw/ne/sw/se) und `axis`.
+  Doppelstufen sind der `double`-Zustand der Stufe. Laub hat `check_decay` (das Verrottungs-Bit von 1.5.2, siehe
+  unten). Rezepte, Beute, Tags und Übersetzungen als Daten; 62 Texturen aus dem Original.
+- **Setzlinge** wachsen mit den 1.5.2-Generatoren: `hexxit.worldgen152.OldLiveGen` kopiert die Umgebung als alte IDs
+  in eine `OldWorld`, lässt den Generator laufen und schreibt die Änderungen zurück. Fir und Redwood werden aus
+  2x2 Setzlingen zu den großen Bäumen, ein einzelner Redwood-Setzling wächst nicht (wie im Original).
+- **Scarecrow**: Entity (schaut Spieler und Mobs an, bleibt stehen), Item, Modell und Renderer.
+- **Prüfung**: Seed 1234, je ein Chunk aller 49 Biome: 150.400 Blöcke, 784 Biom-Proben, 8 Spawner/Truhen,
+  0 Abweichungen. Quicksand (Chunk -18/-24) und eine Legend Oak (Chunk 1095/20): 30.158 Blöcke, 0 Abweichungen;
+  25 Chunks Mini Jungle: 75.261 Blöcke, 0 Abweichungen. Am Server per RCON: alle Setzlinge wachsen, auch 2x2
+  Redwood und Fir; ein stehender Baum verliert kein Laub, ein gefällter verrottet; Beute und Scarecrow geprüft.
+  Server startet mit JEI ohne Fehler bis `Done`.
+
+**Offen / bewusst abweichend:**
+
+- Forge hielt die Weltgeneratoren in einem `HashSet`; ihre Reihenfolge (auch gegenüber anderen Mods) wechselte
+  im Original von Start zu Start. Hier: Registrierungsreihenfolge von ExtrabiomesXL (Cattail, Flower, LeafPile,
+  Marsh, MountainDesert, MountainRidge, VanillaFlora, LegendOak, Quicksand).
+- Cattail- und LegendOak-Generator fragen das Biom im Original an (x, x) statt (x, z) ab. Übernommen; dadurch
+  gibt es Rohrkolben nur in Chunks, deren Diagonal-Punkt im Green Swamp liegt: mit Seed 1234 auf 4.000 Chunks
+  Diagonale keiner, der Generator ist deshalb nicht am Server geprüft (nur die Blockzuordnung). Legend Oaks nur
+  in Chunks, deren Diagonal-Punkt Forest, Forested Hills/Island oder Rainforest ist (selten). Melonen
+  (VanillaFlora, 1 in 48 Chunks) kamen in keinem geprüften Chunk vor.
+- Die Äste der Legend Oak reichen bis 3 Chunks weit; `OldDecoration.MARGIN_HIGH` ist deshalb 3 statt 2 (etwa 15 %
+  mehr Rechenzeit je Kachel).
+- Big Autumn Tree hält wie die große Eiche seine Höhengrenze nur einen Chunk lang (`OldWorld.chunkState`).
+- WorldGenFirTreeHuge gab im Original neben nicht geladenen Chunks auf; hier sind alle Chunks da.
+- Laub verrottet nur mit `check_decay`: gesetzt, wenn ein Nachbar zu Luft wird, und weitergegeben an
+  angrenzendes markiertes Laub. Ohne das würden die äußeren Blätter großer Redwoods und Firs (bis 8 Blöcke vom
+  Stamm, heute reicht Laub 6) von selbst verrotten. Fallraten: Setzling 1/20 (grünes Laub zusätzlich 1/90),
+  Herbstlaub Apfel 1/200.
+- Viertel-Stämme per Hand: Die Rinde zeigt zum angeklickten Viertel; das Original suchte passende Nachbarn.
+  Log Turner dreht Stämme, bei Viertel-Stämmen die Rinden-Ecke.
+- Farben: Fir-Laub fest (Kiefernfarbe 1.5.2), Akazie fest (`0xAEA42A`, Farbkarte bei 0,9/0,1), Redwood und
+  Laubhaufen nach Biom; Herbstlaub ungefärbt.
+- Client-Prüfung offen: alle Modelle und Texturen, besonders Viertel-Stämme, Laubhaufen, Rohrkolben, Scarecrow
+  (Modell, Größe 1,25), Farben, JEI-Info-Seiten.
 
 ## Teil 4 – Kleine Mods
 

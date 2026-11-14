@@ -25,7 +25,7 @@ SIMPLE = {0: 'air', 1: 'stone', 2: 'grass_block', 3: 'dirt', 4: 'cobblestone', 7
           37: 'dandelion', 38: 'poppy', 39: 'brown_mushroom', 40: 'red_mushroom', 48: 'mossy_cobblestone', 49: 'obsidian',
           30: 'cobweb', 46: 'tnt', 47: 'bookshelf', 52: 'spawner', 58: 'crafting_table', 70: 'stone_pressure_plate',
           72: 'oak_pressure_plate', 85: 'oak_fence', 101: 'iron_bars', 102: 'glass_pane', 56: 'diamond_ore', 73: 'redstone_ore', 79: 'ice', 80: 'snow_block', 81: 'cactus', 82: 'clay',
-          83: 'sugar_cane', 110: 'mycelium', 111: 'lily_pad', 129: 'emerald_ore'}
+          83: 'sugar_cane', 110: 'mycelium', 111: 'lily_pad', 129: 'emerald_ore', 103: 'melon'}
 MODS = {254: 'extrabiomesxl:red_rock', 255: 'extrabiomesxl:cracked_sand'}
 WOOD = ['oak', 'spruce', 'birch', 'jungle']
 FACING = ['south', 'west', 'north', 'east']

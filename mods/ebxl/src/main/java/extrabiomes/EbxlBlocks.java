@@ -1,6 +1,7 @@
 package extrabiomes;
 
 import extrabiomes.block.CattailBlock;
+import extrabiomes.block.EbxlLeavesBlock;
 import extrabiomes.block.EbxlPlantBlock;
 import extrabiomes.block.EbxlSaplingBlock;
 import extrabiomes.block.LeafPileBlock;
@@ -24,7 +25,6 @@ import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.StairBlock;
-import net.minecraft.world.level.block.TintedParticleLeavesBlock;
 import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -156,16 +156,16 @@ public final class EbxlBlocks {
     public static final DeferredBlock<Block> ACACIA_PLANKS = simple("acacia_planks", wood(MapColor.COLOR_ORANGE, 2.0F, 1.0F));
 
     // ---- leaves: greenleaves 910 (fir, redwood, acacia), autumnleaves 902 (brown, orange, purple, yellow) ----
-    public static final DeferredBlock<TintedParticleLeavesBlock> FIR_LEAVES = leavesBlock("fir_leaves");
-    public static final DeferredBlock<TintedParticleLeavesBlock> REDWOOD_LEAVES = leavesBlock("redwood_leaves");
-    public static final DeferredBlock<TintedParticleLeavesBlock> ACACIA_LEAVES = leavesBlock("acacia_leaves");
-    public static final DeferredBlock<TintedParticleLeavesBlock> BROWN_AUTUMN_LEAVES = leavesBlock("brown_autumn_leaves");
-    public static final DeferredBlock<TintedParticleLeavesBlock> ORANGE_AUTUMN_LEAVES = leavesBlock("orange_autumn_leaves");
-    public static final DeferredBlock<TintedParticleLeavesBlock> PURPLE_AUTUMN_LEAVES = leavesBlock("purple_autumn_leaves");
-    public static final DeferredBlock<TintedParticleLeavesBlock> YELLOW_AUTUMN_LEAVES = leavesBlock("yellow_autumn_leaves");
+    public static final DeferredBlock<EbxlLeavesBlock> FIR_LEAVES = leavesBlock("fir_leaves");
+    public static final DeferredBlock<EbxlLeavesBlock> REDWOOD_LEAVES = leavesBlock("redwood_leaves");
+    public static final DeferredBlock<EbxlLeavesBlock> ACACIA_LEAVES = leavesBlock("acacia_leaves");
+    public static final DeferredBlock<EbxlLeavesBlock> BROWN_AUTUMN_LEAVES = leavesBlock("brown_autumn_leaves");
+    public static final DeferredBlock<EbxlLeavesBlock> ORANGE_AUTUMN_LEAVES = leavesBlock("orange_autumn_leaves");
+    public static final DeferredBlock<EbxlLeavesBlock> PURPLE_AUTUMN_LEAVES = leavesBlock("purple_autumn_leaves");
+    public static final DeferredBlock<EbxlLeavesBlock> YELLOW_AUTUMN_LEAVES = leavesBlock("yellow_autumn_leaves");
 
-    private static DeferredBlock<TintedParticleLeavesBlock> leavesBlock(String name) {
-        return block(name, p -> new TintedParticleLeavesBlock(0.01F, p), leaves(MapColor.PLANT));
+    private static DeferredBlock<EbxlLeavesBlock> leavesBlock(String name) {
+        return block(name, EbxlLeavesBlock::new, leaves(MapColor.PLANT));
     }
 
     // ---- saplings 922:0-6 ----

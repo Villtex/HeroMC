@@ -1,6 +1,7 @@
 package hexxit.worldgen152;
 
 import hexxit.worldgen152.core.OldChunk;
+import hexxit.worldgen152.core.populate.OldBlockInfo;
 import hexxit.worldgen152.core.populate.OldGen;
 import hexxit.worldgen152.core.populate.OldWorld;
 import net.minecraft.core.BlockPos;
@@ -93,7 +94,48 @@ public final class OldLiveGen {
         if (!gen.generate(world, random, x, y, z)) {
             return false;
         }
+        // leaf distance as the chunk writer sets it: steps through leaves to the nearest log, 7 = none in reach
+        int height2 = maxY - minY + 1;
+        int[] distance = new int[size * size * height2];
+        java.util.ArrayDeque<Integer> queue = new java.util.ArrayDeque<>();
+        i = 0;
+        for (int dx = -radius; dx <= radius; dx++) {
+            for (int dz = -radius; dz <= radius; dz++) {
+                for (int by = minY; by <= maxY; by++, i++) {
+                    int id = world.getBlockId(x + dx, by, z + dz);
+                    distance[i] = OldBlockInfo.wood(id) ? 0 : 7;
+                    if (distance[i] == 0) {
+                        queue.add(i);
+                    }
+                }
+            }
+        }
+        int strideX = size * height2;
+        while (!queue.isEmpty()) {
+            int at = queue.poll();
+            int d = distance[at] + 1;
+            if (d >= 7) {
+                continue;
+            }
+            int ax = at / strideX;
+            int az = at / height2 % size;
+            int ay = at % height2;
+            for (int[] step : new int[][] {{1, 0, 0}, {-1, 0, 0}, {0, 1, 0}, {0, -1, 0}, {0, 0, 1}, {0, 0, -1}}) {
+                int nx = ax + step[0];
+                int ny = ay + step[1];
+                int nz = az + step[2];
+                if (nx < 0 || nx >= size || nz < 0 || nz >= size || ny < 0 || ny >= height2) {
+                    continue;
+                }
+                int n = nx * strideX + nz * height2 + ny;
+                if (distance[n] > d && OldBlockInfo.leaves(world.getBlockId(x + nx - radius, minY + ny, z + nz - radius))) {
+                    distance[n] = d;
+                    queue.add(n);
+                }
+            }
+        }
         List<BlockPos> leaves = new ArrayList<>();
+        List<BlockState> leafStates = new ArrayList<>();
         i = 0;
         for (int dx = -radius; dx <= radius; dx++) {
             for (int dz = -radius; dz <= radius; dz++) {
@@ -110,17 +152,16 @@ public final class OldLiveGen {
                     BlockState state = id == 0 ? Blocks.AIR.defaultBlockState() : OldBlockStates.get(id, meta);
                     if (state.getBlock() instanceof LeavesBlock) {
                         leaves.add(at);
-                        level.setBlock(at, state, Block.UPDATE_CLIENTS);
+                        leafStates.add(state.setValue(LeavesBlock.DISTANCE, Math.max(1, distance[i])));
                     } else {
                         level.setBlock(at, state, Block.UPDATE_ALL);
                     }
                 }
             }
         }
-        // leaves last, so that they find the new logs for their distance
-        for (BlockPos at : leaves) {
-            BlockState state = level.getBlockState(at);
-            level.setBlock(at, Block.updateFromNeighbourShapes(state, level, at), Block.UPDATE_ALL);
+        // leaves last and without neighbour updates, as the 1.5.2 generators left them (see the chunk writer)
+        for (int n = 0; n < leaves.size(); n++) {
+            level.setBlock(leaves.get(n), leafStates.get(n), Block.UPDATE_CLIENTS);
         }
         return true;
     }

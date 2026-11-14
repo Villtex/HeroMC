@@ -35,6 +35,8 @@ Der Port ist in Teile aufgeteilt, die je in eine Session passen: [`docs/PLAN.md`
 | `tools/original_server.sh`, `tools/original_spawn.py`, `tools/compare_original.py` | Original-Server 1.5.2 (Vanilla oder Hexxit) einmal laufen lassen und seine Welt mit dem Kern vergleichen |
 | `tools/rcon.py` | kleiner RCON-Client für Verhaltenstests am laufenden Testserver |
 | `gradle/neoforge.mods.toml` | gemeinsame Vorlage für die Mod-Metadaten |
+| `docs/JEI.md` | Vorlage für das JEI-Plugin eines Mods (JEI ersetzt NEI) |
+| `.claude/skills/worldgen152/` | Projekt-Skill: Weltgenerierung eines Mods in `worldgen152` einhängen, Setzlinge, Prüfung |
 
 ## Bauen und Starten
 
@@ -85,14 +87,16 @@ Mods melden an, was sie damals beisteuerten:
 | eigener Biom-Dekorator, Bäume, Gras | `OldBiome.decorator`, `.trees`, `.grass`, `.afterDecoration` |
 | Dungeon-Beute, Dungeon-Mobs | `OldLoot`, `OldGameIds` |
 
-Im Pack war das bisher ExtrabiomesXL: Mit seinen 28 Biomen wählt die Biom-Schicht aus 35 statt 7 Land-Biomen,
-und Mountain Ridge und Wasteland bestehen aus Red Rock bzw. Cracked Sand.
+Im Pack ist das bisher ExtrabiomesXL: Mit seinen 28 Biomen wählt die Biom-Schicht aus 35 statt 7 Land-Biomen,
+Mountain Ridge und Wasteland bestehen aus Red Rock bzw. Cracked Sand, und jedes seiner Biome hat seine eigene
+Dekoration (Redwoods, Firs, Akazien, Herbstbäume, Legend Oaks, Blumen, Gräser, Laubhaufen, Quicksand, Oasen).
+Setzlinge wachsen im Spiel mit denselben 1.5.2-Generatoren (`OldLiveGen`).
 
 Prüfung ohne Client:
 
 ```
 tools/expect.sh 1234 find 260 > expect.txt     # Vorhersage aus dem Kern, ein Chunk je Biom
-./gradlew runServer                            # mit level-seed=1234 und RCON in run/server/server.properties
+./gradlew runServer                            # mit level-seed=1234, RCON und pause-when-empty-seconds=-1 in run/server/server.properties
 python3 tools/verify_blocks.py expect.txt      # muss 0 Abweichungen melden
 ```
 
@@ -105,8 +109,9 @@ Mit dem Vanilla-Server stimmen Spawnpunkt und 99,995 % von 67 Mio. Blöcken übe
 Festung und Minenschächte. Mit dem Hexxit-Server stimmen Spawnpunkt und alle Biome; bei den Blöcken fehlen noch
 die Weltgeneratoren der nicht portierten Mods (Einzelheiten und erwartete Unterschiede: Teil 2 in `docs/PLAN.md`).
 
-Enthalten sind auch die Strukturen von 1.5.2 und die Spawnsuche. Noch nicht enthalten: die eigene Dekoration der
-ExtrabiomesXL-Biome.
+Enthalten sind auch die Strukturen von 1.5.2, die Spawnsuche und die Dekoration der ExtrabiomesXL-Biome. Mit
+ihr stimmen für Seed 1234 je ein Chunk aller 49 Biome (150.400 Blöcke) und Chunks an Quicksand und einer Legend
+Oak (30.158 Blöcke) mit dem Kern überein.
 
 ## Wann ein Mod als portiert gilt
 
@@ -152,7 +157,7 @@ ExtrabiomesXL-Biome.
 | BetterStorage | `betterstorage` 0.6.2.23.h2 | copygirl, copyboy | 9.015 | offen |
 | ChocoCraft | `chococraft` 2.8.8 | Torojima | 9.331 | offen |
 | Dimensional Doors | `dimensional-doors` 1.4.1.194 | StevenRS11, SenseiKiwi | 10.746 | offen |
-| ExtrabiomesXL | `ebxl` 3.13.4 | ScottKillen u. a. | 10.762 | in Arbeit: 28 Biome, Red Rock, Cracked Sand samt Rezepten |
+| ExtrabiomesXL | `ebxl` 3.13.4 | ScottKillen u. a. | 10.762 | ✅ portiert, am Server verifiziert (Client-Prüfung offen) |
 | (Vanilla 1.5.2) Weltgenerierung | `worldgen152` | Mojang | – | Gelände, Dekoration, Strukturen und Spawnpunkt ✅ gegen Spiel und gegen Original-Welten verifiziert |
 | LegendGear | `legendgear` 1.5.2 | NMcCoy | 11.590 | offen |
 | NEI Plugins | `nei-plugins` 1.0.9.3 | mistaqur | 11.790 | entfällt, stattdessen JEI |
