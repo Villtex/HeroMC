@@ -6,6 +6,7 @@ Jeder Teil ist so geschnitten, dass er in **eine Session** passt. Start in einem
 ## Regeln für jeden Teil
 
 1. **Vorbereitung**
+   - **Zuerst den Nutzer an das empfohlene Modell erinnern** und den Aufwand (Spalte „Modell, Aufwand“ in der Übersicht). Läuft die Session auf einem anderen Modell, kurz darauf hinweisen. Er wechselt mit `/model`. Den Aufwand stellt er im selben Menü ein. Bleibt ein Fehler nach zwei, drei Versuchen hängen, eine Stufe höher gehen. Erst danach anfangen. Faustregel: Opus 5.5 als Standard; Fable 5.2 für bitgenaue Weltgenerierung, schweres Rendering und festgefahrene Fehler; Sonnet 5.5 für kleine, mechanische Teile.
    - `git pull`, danach den Abschnitt des Teils lesen und prüfen, ob die Voraussetzungen erledigt sind (Status unten).
    - Original-Quellen holen: `python3 tools/reference.py --only <archiv>[,<archiv>...]`.
 2. **Port**
@@ -32,34 +33,34 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 
 ## Übersicht
 
-| Teil | Inhalt | Zeilen (Original) | Braucht | Status |
-|---:|---|---:|---|---|
-| 0 | Grundgerüst, RottenFleshToLeather, 1.5.2-Gelände, ExtrabiomesXL-Biome | – | – | ✅ erledigt |
-| 1 | Vanilla-1.5.2-Dekoration und Schnittstelle für Mod-Weltgeneratoren | ~3.000 | 0 | ✅ erledigt |
-| 2 | Vanilla-1.5.2-Strukturen, Spawnpunkt, Abgleich mit Original-Welt | ~6.000 | 1 | offen |
-| 3 | JEI-Grundlage, ExtrabiomesXL fertig (Bäume, Pflanzen, Holz, Scarecrow) | ~9.000 | 1 | offen |
-| 4 | Kleine Mods: Obsidian Plates, Chest Transporter, ArmorBar, BuffBar, Back Tools, Soul Shards | ~5.000 | 3 | offen |
-| 5 | Hexxit Gear, More Bows, Enchanting Plus, offLawn, Wild Caves 3 | ~13.000 | 1, 3 | offen |
-| 6 | bspkrsCore, TreeCapitator, Inventory Tweaks, Custom LAN Ports | ~19.000 | 3 | offen |
-| 7 | Natura | ~20.000 | 1, 3 | offen |
-| 8 | Artifice, CoFHCore (nur was das Pack nutzt) | ~27.000 | 1, 3 | offen |
-| 9 | Harken Scythe, Asgard Shield, Asgard Shield Addons | ~30.000 | 3 | offen |
-| 10 | Project Zulu A: Kreaturen | ~25.000 | 3 | offen |
-| 11 | Project Zulu B: Blöcke, Items, Weltgenerierung, Spawns | ~18.000 | 10 | offen |
-| 12 | Better Dungeons A: Bau-Engine und Gebäude-Import | ~18.000 | 1 | offen |
-| 13 | Better Dungeons B: Dungeon-Typen, Mobs, Loot | ~18.000 | 12 | offen |
-| 14 | Battle Towers, Ruins (mit allen Ruinen-Vorlagen) | ~5.000 + Vorlagen | 1 | offen |
-| 15 | Dimensional Doors | ~11.000 | 2 | offen |
-| 16 | BiblioCraft | ~21.000 | 3 | offen |
-| 17 | BetterStorage, Backpacks, qCraft | ~17.000 | 3 | offen |
-| 18 | ChocoCraft, Infernal Mobs | ~16.000 | 1, 3 | offen |
-| 19 | LegendGear, Falling Meteors | ~19.000 | 1, 3 | offen |
-| 20 | Xeno's Reliquary, Secret Rooms | ~18.000 | 3 | offen |
-| 21 | Immibis Core, Immibis's Microblocks | ~26.000 | 3 | offen |
-| 22 | Client-Mods: Damage Indicators, MapWriter | ~12.000 | – | offen |
-| 23 | Gesamttest und Modpack-Export | – | alle | offen |
-| 24 | später: Twilight Forest | ~50.000 | – | zurückgestellt |
-| 25 | später: Tinkers' Construct | ~60.000 | – | zurückgestellt |
+| Teil | Inhalt | Zeilen (Original) | Braucht | Modell, Aufwand | Status |
+|---:|---|---:|---|---|---|
+| 0 | Grundgerüst, RottenFleshToLeather, 1.5.2-Gelände, ExtrabiomesXL-Biome | – | – | – | ✅ erledigt |
+| 1 | Vanilla-1.5.2-Dekoration und Schnittstelle für Mod-Weltgeneratoren | ~3.000 | 0 | Fable 5.2, extra hoch | ✅ erledigt |
+| 2 | Vanilla-1.5.2-Strukturen, Spawnpunkt, Abgleich mit Original-Welt | ~6.000 | 1 | Fable 5.2, extra hoch | offen |
+| 3 | JEI-Grundlage, ExtrabiomesXL fertig (Bäume, Pflanzen, Holz, Scarecrow) | ~9.000 | 1 | Opus 5.5, mittel | offen |
+| 4 | Kleine Mods: Obsidian Plates, Chest Transporter, ArmorBar, BuffBar, Back Tools, Soul Shards | ~5.000 | 3 | Sonnet 5.5, niedrig | offen |
+| 5 | Hexxit Gear, More Bows, Enchanting Plus, offLawn, Wild Caves 3 | ~13.000 | 1, 3 | Opus 5.5, mittel | offen |
+| 6 | bspkrsCore, TreeCapitator, Inventory Tweaks, Custom LAN Ports | ~19.000 | 3 | Opus 5.5, mittel | offen |
+| 7 | Natura | ~20.000 | 1, 3 | Opus 5.5, mittel | offen |
+| 8 | Artifice, CoFHCore (nur was das Pack nutzt) | ~27.000 | 1, 3 | Opus 5.5, mittel | offen |
+| 9 | Harken Scythe, Asgard Shield, Asgard Shield Addons | ~30.000 | 3 | Opus 5.5, mittel | offen |
+| 10 | Project Zulu A: Kreaturen | ~25.000 | 3 | Fable 5.2, hoch | offen |
+| 11 | Project Zulu B: Blöcke, Items, Weltgenerierung, Spawns | ~18.000 | 10 | Opus 5.5, mittel | offen |
+| 12 | Better Dungeons A: Bau-Engine und Gebäude-Import | ~18.000 | 1 | Fable 5.2, hoch | offen |
+| 13 | Better Dungeons B: Dungeon-Typen, Mobs, Loot | ~18.000 | 12 | Fable 5.2, hoch | offen |
+| 14 | Battle Towers, Ruins (mit allen Ruinen-Vorlagen) | ~5.000 + Vorlagen | 1 | Opus 5.5, mittel | offen |
+| 15 | Dimensional Doors | ~11.000 | 2 | Opus 5.5, mittel | offen |
+| 16 | BiblioCraft | ~21.000 | 3 | Fable 5.2, hoch | offen |
+| 17 | BetterStorage, Backpacks, qCraft | ~17.000 | 3 | Opus 5.5, mittel | offen |
+| 18 | ChocoCraft, Infernal Mobs | ~16.000 | 1, 3 | Opus 5.5, mittel | offen |
+| 19 | LegendGear, Falling Meteors | ~19.000 | 1, 3 | Opus 5.5, mittel | offen |
+| 20 | Xeno's Reliquary, Secret Rooms | ~18.000 | 3 | Opus 5.5, mittel | offen |
+| 21 | Immibis Core, Immibis's Microblocks | ~26.000 | 3 | Fable 5.2, extra hoch | offen |
+| 22 | Client-Mods: Damage Indicators, MapWriter | ~12.000 | – | Sonnet 5.5, niedrig | offen |
+| 23 | Gesamttest und Modpack-Export | – | alle | Opus 5.5, mittel | offen |
+| 24 | später: Twilight Forest | ~50.000 | – | Fable 5.2, hoch | zurückgestellt |
+| 25 | später: Tinkers' Construct | ~60.000 | – | Fable 5.2, hoch | zurückgestellt |
 
 Entfallen ganz: Not Enough Items, NEI Plugins, CodeChickenCore (durch JEI ersetzt), Lumy Skin Patch,
 `basemods` (Forge 1.5.2 selbst).
@@ -85,6 +86,15 @@ Die Reihenfolge ab Teil 4 ist frei wählbar, solange „Braucht“ erfüllt ist.
 - `tools/expect.sh` und `Expect.java` auf dekorierte Chunks erweitern. Bei der Dekoration ändert ein Chunk seine Nachbarn, deshalb mit fertig dekorierten Bereichen vergleichen.
 
 **Fertig wenn:** Testserver mit Seed 1234 und die Vorhersage stimmen auch nach der Dekoration überein.
+
+**Letzter Schritt von Teil 1:** einen schlanken Projekt-Skill `.claude/skills/worldgen152/SKILL.md` anlegen, höchstens etwa 150 Zeilen. Er ist für alle späteren Teile, die eigene Generatoren einhängen (3, 5, 7, 8, 11–14, 18, 19), und beschreibt:
+
+- wie ein Mod einen 1.5.2-Generator in `worldgen152` anmeldet: API, Reihenfolge wie im Original, Zufall und Seed
+- wie Biome, Terrain-Blöcke und Biom-Dekoratoren registriert oder ersetzt werden
+- die Prüfung mit `tools/expect.sh` und `tools/verify_blocks.py`, auch für dekorierte Chunks
+- die Stolperfallen aus Teil 1, zum Beispiel Dekoration über Chunk-Grenzen und Zufallsfolgen
+
+In der Beschreibung des Skills soll stehen, wann er greift: beim Portieren von Weltgenerierung eines Hexxit-Mods. Nichts doppeln, was in `CLAUDE.md`, `docs/PLAN.md` oder im Skill `minecraft-modding` steht. Den Skill mitcommitten.
 
 **Status: erledigt.** Seed 1234, je ein Chunk aller 49 Biome: 132.102 Blöcke, 784 Biom-Proben, 5 Spawner/Truhen
 stimmen, 0 Abweichungen (2 Blöcke von fließendem Quellwasser erreicht, das zählt nicht als Abweichung).
@@ -116,6 +126,7 @@ So ist es gebaut (`hexxit.worldgen152.core.populate`, reines Java):
 - ExtrabiomesXL-Biome benutzen bis Teil 3 den Standard-Dekorator (vereinzelte Eichen, Gras, Blumen).
 - Strukturen fehlen noch (Teil 2); die Stelle in `OldPopulator` ist markiert. Sie verbrauchen Zufallszahlen vor den
   Seen, dadurch verschieben sich danach Seen und Dungeons in Chunks mit Strukturen.
+- Wie man Generatoren einhängt und prüft, steht im Skill `.claude/skills/worldgen152/SKILL.md`.
 - Client-Prüfung offen (Aussehen von Riesenpilzen, Ranken, Kakao, Kürbissen).
 
 ## Teil 2 – Vanilla-1.5.2-Strukturen und Abgleich
@@ -185,6 +196,7 @@ Kein Tinkers vorhanden: Integrationen dazu weglassen und notieren.
 
 ## Teil 10 und 11 – Project Zulu
 
+- **Erinnerung an den Nutzer zu Beginn von Teil 10:** Er wollte auf den Blockbench-MCP hingewiesen werden (https://github.com/sosadly/blockbench-mcp). Damit lassen sich Mob-Modelle direkt in Blockbench bauen. Der Server braucht ein laufendes Blockbench auf dem eigenen Rechner. Vor dem Start fragen, ob er ihn einrichten will.
 - **Teil 10:** Kreaturen. Modelle, Renderer, KI, Spawns je Biom. Die Pack-Konfiguration liegt in `config/Project Zulu`.
 - **Teil 11:** Blöcke, Items, Rezepte, Weltgeneration (Pyramiden, Labyrinthe, ...), Mob-Spawn-Abgleich.
 

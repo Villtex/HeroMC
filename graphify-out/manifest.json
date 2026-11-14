@@ -30,8 +30,8 @@
     "semantic_hash": ""
   },
   "mods/ebxl/src/main/java/extrabiomes/EbxlBiomes.java": {
-    "mtime": 1794605776.1916738,
-    "seen": 1794639205.1826036,
+    "mtime": 1794639257.9174285,
+    "seen": 1794639315.9163148,
     "ast_hash": "d316441aea3f71a5a2c4c4c9d069b6ce",
     "semantic_hash": ""
   },
@@ -366,14 +366,14 @@
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/OldBlockStates.java": {
-    "mtime": 1794605937.5167174,
-    "seen": 1794639205.182659,
+    "mtime": 1794639257.9174285,
+    "seen": 1794639315.9164126,
     "ast_hash": "d4d450e3487f163194a84532834c6fdf",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/OldChunkGenerator.java": {
-    "mtime": 1794605937.5354388,
-    "seen": 1794639205.1826599,
+    "mtime": 1794639257.9174285,
+    "seen": 1794639315.9164145,
     "ast_hash": "a6b8c603063691743cf881c3a38536a9",
     "semantic_hash": ""
   },
@@ -396,14 +396,14 @@
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/OldBiome.java": {
-    "mtime": 1794605696.3538215,
-    "seen": 1794639205.1826668,
+    "mtime": 1794639257.9174285,
+    "seen": 1794639315.9164257,
     "ast_hash": "c86bcdf978af4f2673ceb59154bcf03e",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/OldBiomes.java": {
-    "mtime": 1794605696.356285,
-    "seen": 1794639205.1826677,
+    "mtime": 1794639257.9174285,
+    "seen": 1794639315.9164276,
     "ast_hash": "2aab5cf9198b0b1272396e277c987f00",
     "semantic_hash": ""
   },
@@ -648,14 +648,14 @@
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1794639201.6639514,
-    "seen": 1794639205.1827273,
-    "ast_hash": "a2334b2d8788d147186d1c59e8c18e23",
+    "mtime": 1794639264.6542876,
+    "seen": 1794639315.9165514,
+    "ast_hash": "bb29d7f2c5866a1d764e9b12c0dca5ea",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1794639201.6637852,
-    "seen": 1794639205.1827285,
+    "mtime": 1794639257.9134283,
+    "seen": 1794639315.9165537,
     "ast_hash": "5f1db15141c385be104434450f0f88c1",
     "semantic_hash": ""
   },
@@ -672,14 +672,14 @@
     "semantic_hash": ""
   },
   "tools/java/Expect.java": {
-    "mtime": 1794605776.1967082,
-    "seen": 1794639205.1827216,
+    "mtime": 1794639257.9217064,
+    "seen": 1794639315.9165356,
     "ast_hash": "c1e4905994292ebef8328c3c34e07921",
     "semantic_hash": ""
   },
   "tools/verify_blocks.py": {
-    "mtime": 1794606047.088095,
-    "seen": 1794639205.1827242,
+    "mtime": 1794639257.9217064,
+    "seen": 1794639315.9165418,
     "ast_hash": "c2fbf5474587fcdc1d6d6846186ccafa",
     "semantic_hash": ""
   },
@@ -690,123 +690,129 @@
     "semantic_hash": ""
   },
   "docs/PLAN.md": {
-    "mtime": 1794639201.663415,
-    "seen": 1794639205.1827292,
-    "ast_hash": "ee7c89a04649d9db2e4a5c1ecfa4aafe",
+    "mtime": 1794639269.765062,
+    "seen": 1794639315.9165554,
+    "ast_hash": "63a553f02fe490f86f23062818810f72",
     "semantic_hash": ""
   },
   ".mcp.json": {
-    "mtime": 1794604679.6568482,
-    "seen": 1794639205.1825938,
+    "mtime": 1794639257.9134283,
+    "seen": 1794639315.9162993,
     "ast_hash": "001267ec59fd1b9669d4cf2ce786f898",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/OldChunkWriter.java": {
-    "mtime": 1794605937.5204504,
-    "seen": 1794639205.1826613,
+    "mtime": 1794639257.9174285,
+    "seen": 1794639315.9164162,
     "ast_hash": "0fc495d9cb3f47ff919c9cdaa13e0aa5",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/OldGameIds.java": {
-    "mtime": 1794605937.5190477,
-    "seen": 1794639205.1826627,
+    "mtime": 1794639257.9174285,
+    "seen": 1794639315.9164183,
     "ast_hash": "71af4fd85876564ba04f4fd473cc9254",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldBlockInfo.java": {
-    "mtime": 1794605256.06515,
-    "seen": 1794639205.1826787,
+    "mtime": 1794639257.9174285,
+    "seen": 1794639315.9164495,
     "ast_hash": "8e76226f28a4bc3c95fe8ebbf74e7096",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldDecoratedChunk.java": {
-    "mtime": 1794605752.7893507,
-    "seen": 1794639205.1826801,
+    "mtime": 1794639257.9217064,
+    "seen": 1794639315.9164517,
     "ast_hash": "05dc5941c0246c409be59afdccd7ea1b",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldDecoration.java": {
-    "mtime": 1794605752.7911065,
-    "seen": 1794639205.182681,
+    "mtime": 1794639257.9217064,
+    "seen": 1794639315.9164536,
     "ast_hash": "a5c373c5fc371e77f19c2a59c73481d3",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldDecorator.java": {
-    "mtime": 1794605666.784676,
-    "seen": 1794639205.1826818,
+    "mtime": 1794639257.9217064,
+    "seen": 1794639315.9164555,
     "ast_hash": "ea98a23543626a6968d980499099aeab",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldDungeonGen.java": {
-    "mtime": 1794605400.2979965,
-    "seen": 1794639205.1826825,
+    "mtime": 1794639257.9217064,
+    "seen": 1794639315.9164572,
     "ast_hash": "4740273468885ef098165004525c0429",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldGen.java": {
-    "mtime": 1794605355.7002938,
-    "seen": 1794639205.1826837,
+    "mtime": 1794639257.9217064,
+    "seen": 1794639315.9164593,
     "ast_hash": "e33286cda3d2ce5dd0f4ddc4a319dc3c",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldLakeGens.java": {
-    "mtime": 1794605355.7030191,
-    "seen": 1794639205.1826844,
+    "mtime": 1794639257.9217064,
+    "seen": 1794639315.916461,
     "ast_hash": "5403380e4257592a7640890b2d17f599",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldLoot.java": {
-    "mtime": 1794605400.2963555,
-    "seen": 1794639205.1826854,
+    "mtime": 1794639257.9217064,
+    "seen": 1794639315.916463,
     "ast_hash": "46a438e3c099d890c6a7df0b05465bbd",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldOreGens.java": {
-    "mtime": 1794605355.7017953,
-    "seen": 1794639205.182686,
+    "mtime": 1794639257.9217064,
+    "seen": 1794639315.9164648,
     "ast_hash": "a9fc270d8daecdae0a3776a6be42577b",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldPlantGens.java": {
-    "mtime": 1794605436.9907677,
-    "seen": 1794639205.1826873,
+    "mtime": 1794639257.9217064,
+    "seen": 1794639315.9164662,
     "ast_hash": "93f89ade61e2a5ab19622235a1df6522",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldPopulator.java": {
-    "mtime": 1794605666.787298,
-    "seen": 1794639205.1826882,
+    "mtime": 1794639257.9217064,
+    "seen": 1794639315.9164681,
     "ast_hash": "1ed868310f39abdd513543f1870550fb",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldStack.java": {
-    "mtime": 1794605306.2131927,
-    "seen": 1794639205.1826892,
+    "mtime": 1794639257.9217064,
+    "seen": 1794639315.91647,
     "ast_hash": "416720e687ce2b000b3974655c74ca99",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldTerrainGen.java": {
-    "mtime": 1794605666.7831166,
-    "seen": 1794639205.1826901,
+    "mtime": 1794639257.9217064,
+    "seen": 1794639315.9164717,
     "ast_hash": "23f3b8e67630df48377b673e4ee6516a",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldTile.java": {
-    "mtime": 1794605306.2144368,
-    "seen": 1794639205.1826909,
+    "mtime": 1794639257.9217064,
+    "seen": 1794639315.9164739,
     "ast_hash": "d432648077a5b929f209c8a510fcbe6a",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldTreeGens.java": {
-    "mtime": 1794605551.0612159,
-    "seen": 1794639205.1826918,
+    "mtime": 1794639257.9217064,
+    "seen": 1794639315.9164755,
     "ast_hash": "21a2eb29a13e9c0551eeef0190d40c9a",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldWorld.java": {
-    "mtime": 1794605306.215933,
-    "seen": 1794639205.1826925,
+    "mtime": 1794639257.9217064,
+    "seen": 1794639315.916478,
     "ast_hash": "60ce149e775b4a5bfa6403d727cc610b",
+    "semantic_hash": ""
+  },
+  ".claude/skills/worldgen152/SKILL.md": {
+    "mtime": 1794639314.1900873,
+    "seen": 1794639315.916549,
+    "ast_hash": "af72163cf198e442b28a57cb28852c24",
     "semantic_hash": ""
   }
 }
