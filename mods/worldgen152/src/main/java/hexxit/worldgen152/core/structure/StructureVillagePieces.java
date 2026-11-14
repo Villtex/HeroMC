@@ -25,6 +25,7 @@ public class StructureVillagePieces {
         arraylist.add(new StructureVillagePieceWeight(ComponentVillageField2.class, 3, StructureComponent.getRandomIntegerInRange(par0Random, 2 + par1, 4 + par1 * 2)));
         arraylist.add(new StructureVillagePieceWeight(ComponentVillageHouse2.class, 15, StructureComponent.getRandomIntegerInRange(par0Random, 0, 1 + par1)));
         arraylist.add(new StructureVillagePieceWeight(ComponentVillageHouse3.class, 8, StructureComponent.getRandomIntegerInRange(par0Random, 0 + par1, 3 + par1 * 2)));
+        OldStructures.addExtraVillageComponents(arraylist, par0Random, par1);
         Iterator iterator = arraylist.iterator();
 
         while (iterator.hasNext()) {
@@ -83,8 +84,7 @@ public class StructureVillagePieces {
         } else if (oclass == ComponentVillageHouse3.class) {
             object = ComponentVillageHouse3.func_74921_a(par0ComponentVillageStartPiece, par2List, par3Random, par4, par5, par6, par7, par8);
         } else {
-            // VillagerRegistry.getVillageComponent: village pieces of mods; none are registered
-            object = null;
+            object = OldStructures.villageComponent(par1StructureVillagePieceWeight, par0ComponentVillageStartPiece, par2List, par3Random, par4, par5, par6, par7, par8);
         }
 
         return (ComponentVillage)object;

@@ -52,8 +52,7 @@ OldTerrainGen.addListener(new OldTerrainGen.Listener() {
 
 - **Reihenfolge = Ladereihenfolge der Mods im Original.** Alle Generatoren eines Chunks teilen sich *eine*
   Zufallsfolge (`fmlRandom`, einmal pro Chunk gesetzt). Ein Generator mehr oder in anderer Reihenfolge verschiebt
-  alle folgenden. Die Reihenfolge des Originals ist noch nicht ermittelt; sie steht im Log des Original-Servers
-  (Abgleich in Teil 2). Bis dahin die Reihenfolge wählen und im Plan unter „Offen“ notieren.
+  alle folgenden. Die Ladereihenfolge des Originals steht in `docs/PLAN.md` unter Teil 2.
 - Eigene `Random`-Objekte des Originals (`new Random(seed)`, `world.rand`) genau nachbauen. `world.rand` war nicht
   seed-fest: dafür einen festen Ersatz wählen und im Plan unter „Offen“ notieren.
 - `MathHelper.sin/cos` → `OldMath.sin/cos` (Tabelle), `floor_double` → `OldMath.floor`. `Math.sin` nur, wo das
@@ -103,7 +102,8 @@ Neue Beute: `OldLoot.DUNGEON_CHEST.add(new OldStack(itemId, damage, 1), min, max
 Eigene Bauteile erben von `StructureComponent` (Namen und Hilfsmethoden wie im Original: `fillWithBlocks`,
 `placeBlockAtCurrentPosition`, `getMetadataWithOffset`). Bauteile dürfen sich Zustand merken, sie werden je Kachel
 neu erzeugt. Mod-Biome für Dörfer, Festungen und Spawn: `OldStructures.VILLAGE_BIOMES`, `STRONGHOLD_BIOMES`,
-`SPAWN_BIOMES`. Eigene Dorfblöcke je Biom: `OldStructures.villageBlocks`. Entitäten: `world.spawnEntity(new
+`SPAWN_BIOMES`. Eigene Dorfblöcke je Biom: `OldStructures.villageBlocks`. Dorf-Bauteile eines Mods
+(`IVillageCreationHandler`): `OldStructures.VILLAGE_HANDLERS`. Entitäten: `world.spawnEntity(new
 OldEntity...)`, neue Arten brauchen einen Fall in `OldChunkWriter.entity`. Strukturen laufen vor den Seen und
 ziehen aus derselben Zufallsfolge wie die Population.
 
@@ -120,8 +120,10 @@ python3 tools/verify_blocks.py expect.txt         # Server läuft mit level-seed
 Erzes oder Baums dort nicht auf, liegt kein passender Chunk in der Auswahl: gezielt Chunks angeben. Die Datei
 enthält vier volle Spalten je Chunk und jeden Block, den die Population geändert hat.
 
-Bitgenauigkeit gegen das Original lässt sich so nicht prüfen, nur Kern gegen Spiel. Den Port deshalb Zeile für
-Zeile gegen `.reference/<mod>/src` lesen, besonders die Reihenfolge der `nextInt`-Aufrufe.
+Das prüft Kern gegen Spiel. Kern gegen Original prüft `python3 tools/compare_original.py
+.cache/original/hexxit/world 1234`: Es liest die Region-Dateien einer Welt des echten Hexxit-Servers und zählt
+die Abweichungen je Block-ID. Nach dem Port eines Mod-Generators müssen dessen IDs dort aus der Liste fallen.
+Welt erzeugen: `tools/original_server.sh hexxit 420` (Einrichtung in `docs/PLAN.md`, Teil 2).
 
 ## Stolperfallen
 

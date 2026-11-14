@@ -48,7 +48,8 @@
   "permissions": {
     "allow": [
       "Bash(npm install @mcdxai/minecraft-dev-mcp*)",
-      "Bash(npx @mcdxai/minecraft-dev-mcp*)"
+      "Bash(npx @mcdxai/minecraft-dev-mcp*)",
+      "Bash(tools/original_server.sh *)"
     ]
   }
 }

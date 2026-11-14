@@ -16,6 +16,8 @@ public class Expect {
     public static void main(String[] a) {
         long seed = Long.parseLong(a[0]);
         boolean vanilla = a.length > 1 && a[1].equals("vanilla");   // without the biomes of mods, to compare with a vanilla 1.5.2 world
+        OldDungeonGen.vanillaLoot = vanilla;
+        OldLoot.vanillaDraws = vanilla;
         if (vanilla) a = java.util.stream.Stream.concat(java.util.stream.Stream.of(a[0]), Arrays.stream(a).skip(2)).toArray(String[]::new);
         else extrabiomes.EbxlBiomes.register();
         BiomeLayout layout = new BiomeLayout(seed);
@@ -54,8 +56,32 @@ public class Expect {
             int[] spawn = hexxit.worldgen152.core.structure.OldStructures.spawnPoint(seed, layout, source);
             System.out.println("spawn " + spawn[0] + " " + spawn[1]);
             return;
-        } else {
+        } else if (!a[1].equals("raw")) {
             for (int i = 1; i + 1 < a.length; i += 2) chunks.add(new int[]{Integer.parseInt(a[i]), Integer.parseInt(a[i + 1])});
+        }
+        if (a[1].equals("raw")) {
+            // every block of the chunks, for tools/compare_original.py: "R cx cz" and 16*16*256 cells (id << 4 | meta) as base64
+            chunks.clear();
+            for (int i = 2; i + 1 < a.length; i += 2) chunks.add(new int[]{Integer.parseInt(a[i]), Integer.parseInt(a[i + 1])});
+            StringBuilder dump = new StringBuilder();
+            for (int[] ch : chunks) {
+                OldDecoratedChunk c = decoration.chunk(ch[0], ch[1]);
+                byte[] cells = new byte[16 * 16 * 256 * 2];
+                int n = 0;
+                for (int x = 0; x < 16; x++) for (int z = 0; z < 16; z++) for (int y = 0; y < 256; y++) {
+                    int cell = c.cell(x, y, z);
+                    cells[n++] = (byte) (cell >> 8);
+                    cells[n++] = (byte) cell;
+                }
+                dump.append("R ").append(ch[0]).append(' ').append(ch[1]).append(' ').append(Base64.getEncoder().encodeToString(cells)).append('\n');
+                byte[] biomes = new byte[256];
+                for (int x = 0; x < 16; x++) for (int z = 0; z < 16; z++) biomes[z * 16 + x] = (byte) c.biomeId(x, z);
+                dump.append("G ").append(ch[0]).append(' ').append(ch[1]).append(' ').append(Base64.getEncoder().encodeToString(biomes)).append('\n');
+                for (OldEntity e : c.entities()) dump.append("E ").append(e.x()).append(' ').append(e.y()).append(' ').append(e.z()).append(' ').append(e.getClass().getSimpleName()).append('\n');
+                if (dump.length() > 1 << 24) { System.out.print(dump); dump.setLength(0); }
+            }
+            System.out.print(dump);
+            return;
         }
         StringBuilder out = new StringBuilder();
         Map<Integer, Integer> changed = new TreeMap<>();

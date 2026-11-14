@@ -38,9 +38,7 @@ public final class OldLoot {
             for (int i = 0; i < rolled.length; i++) {
                 Entry entry = this.entries.get(i);
                 if (entry.stack.itemId() == ENCHANTED_BOOK) {
-                    int[] enchantment = BOOK_ENCHANTMENTS[random.nextInt(BOOK_ENCHANTMENTS.length)];
-                    int level = 1 >= enchantment[1] ? 1 : random.nextInt(enchantment[1]) + 1;
-                    entry = new Entry(new OldStack(ENCHANTED_BOOK, 0, 1, enchantment[0], level), entry.min, entry.max, entry.weight);
+                    entry = new Entry(randomBook(random), entry.min, entry.max, entry.weight);
                 }
                 rolled[i] = entry;
             }
@@ -78,7 +76,9 @@ public final class OldLoot {
                     break;
                 }
             }
-            random.nextInt(chosen.max - chosen.min + 1); // the original drew the count twice and used the second
+            if (!vanillaDraws) {
+                random.nextInt(chosen.max - chosen.min + 1); // Forge drew the count twice and used the second
+            }
             int size = chosen.min + random.nextInt(chosen.max - chosen.min + 1);
             int limit = stackLimit(chosen.stack.itemId());
             if (size > limit) {
@@ -89,6 +89,19 @@ public final class OldLoot {
                 slots[random.nextInt(slots.length)] = chosen.stack.withCount(size);
             }
         }
+    }
+
+    /**
+     * Minecraft 1.5.2 without Forge drew the size of a stack once, Forge's ChestGenHooks twice. The pack (and
+     * this port) follows Forge; this switch is only for comparing the core with a world of the vanilla server.
+     */
+    public static volatile boolean vanillaDraws;
+
+    /** ItemEnchantedBook.func_92109_a: a book with one random enchantment at a random level. */
+    public static OldStack randomBook(Random random) {
+        int[] enchantment = BOOK_ENCHANTMENTS[random.nextInt(BOOK_ENCHANTMENTS.length)];
+        int level = 1 >= enchantment[1] ? 1 : random.nextInt(enchantment[1]) + 1;
+        return new OldStack(ENCHANTED_BOOK, 0, 1, enchantment[0], level);
     }
 
     public static final int ENCHANTED_BOOK = 403;

@@ -49,6 +49,42 @@ public final class OldStructures {
 
     public static volatile VillageBlocks villageBlocks;
 
+    /** Forge's IVillageCreationHandler: a village piece of a mod. */
+    public interface VillageHandler {
+        /** Weight and limit of the piece for a new village; may draw from the village's random sequence. */
+        StructureVillagePieceWeight getVillagePieceWeight(Random random, int size);
+
+        Class<?> getComponentClass();
+
+        /** The piece at this place, or null if it does not fit (like the static factory methods of the vanilla pieces). */
+        ComponentVillage buildComponent(StructureVillagePieceWeight weight, ComponentVillageStartPiece start, List<StructureComponent> pieces,
+                                        Random random, int x, int y, int z, int direction, int type);
+    }
+
+    /**
+     * VillagerRegistry.registerVillageCreationHandler. Forge kept the handlers in a hash map keyed by class, so
+     * their order changed from one start of the game to the next; here it is the order of registration.
+     */
+    public static final CopyOnWriteArrayList<VillageHandler> VILLAGE_HANDLERS = new CopyOnWriteArrayList<>();
+
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    static void addExtraVillageComponents(ArrayList pieces, Random random, int size) {
+        for (VillageHandler handler : VILLAGE_HANDLERS) {
+            pieces.add(handler.getVillagePieceWeight(random, size));
+        }
+    }
+
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    static ComponentVillage villageComponent(StructureVillagePieceWeight weight, ComponentVillageStartPiece start, List pieces, Random random,
+                                             int x, int y, int z, int direction, int type) {
+        for (VillageHandler handler : VILLAGE_HANDLERS) {
+            if (handler.getComponentClass() == weight.villagePieceClass) {
+                return handler.buildComponent(weight, start, pieces, random, x, y, z, direction, type);
+            }
+        }
+        return null;
+    }
+
     /** How many chunks away from its start chunk a structure can reach. */
     private static final int REACH = 9;
     private static final int MINESHAFT = 0;

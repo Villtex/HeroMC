@@ -1,8 +1,8 @@
 {
   ".claude/settings.json": {
-    "mtime": 1794604627.3460696,
-    "seen": 1794659108.639814,
-    "ast_hash": "384673bae7ffaa08c41692587e307091",
+    "mtime": 1794662097.9263403,
+    "seen": 1794675600.0541902,
+    "ast_hash": "ac75c1d76a129f806dbf5d29fd535f2e",
     "semantic_hash": ""
   },
   "build.gradle": {
@@ -654,9 +654,9 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1794659082.773405,
-    "seen": 1794659108.6400394,
-    "ast_hash": "1278c88abcf45c47bb54cd79d9dd5ee1",
+    "mtime": 1794663456.028425,
+    "seen": 1794675600.0546412,
+    "ast_hash": "77d7ef0a8e20ef6675c0b1e3347a59a9",
     "semantic_hash": ""
   },
   "mods/ebxl/original-assets.txt": {
@@ -672,9 +672,9 @@
     "semantic_hash": ""
   },
   "tools/java/Expect.java": {
-    "mtime": 1794640805.2998242,
-    "seen": 1794659108.6400294,
-    "ast_hash": "c1820c8a0431f2edd9d6f119edf3aa7b",
+    "mtime": 1794663363.2603164,
+    "seen": 1794675600.054621,
+    "ast_hash": "505b6761ff5597550b7146a06a523d61",
     "semantic_hash": ""
   },
   "tools/verify_blocks.py": {
@@ -690,9 +690,9 @@
     "semantic_hash": ""
   },
   "docs/PLAN.md": {
-    "mtime": 1794659082.7728121,
-    "seen": 1794659108.6400406,
-    "ast_hash": "b3219c655cd458ec0e8eb12f1a4a4a31",
+    "mtime": 1794675411.9203029,
+    "seen": 1794675600.054643,
+    "ast_hash": "5d6c528876bb24a574ed2fdc40ceac17",
     "semantic_hash": ""
   },
   ".mcp.json": {
@@ -738,9 +738,9 @@
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldDungeonGen.java": {
-    "mtime": 1794639744.420533,
-    "seen": 1794659108.6399226,
-    "ast_hash": "4740273468885ef098165004525c0429",
+    "mtime": 1794662404.0813777,
+    "seen": 1794675600.0544097,
+    "ast_hash": "70673db6fdcad0ea28c5033acb3fc88a",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldGen.java": {
@@ -756,9 +756,9 @@
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldLoot.java": {
-    "mtime": 1794640108.5042596,
-    "seen": 1794659108.6399286,
-    "ast_hash": "9e2ce2f11d7157422cf4e975e2759f7c",
+    "mtime": 1794662787.430264,
+    "seen": 1794675600.054419,
+    "ast_hash": "845e069bdb880325b28a63d3f7983de7",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldOreGens.java": {
@@ -810,9 +810,9 @@
     "semantic_hash": ""
   },
   ".claude/skills/worldgen152/SKILL.md": {
-    "mtime": 1794659082.7738445,
-    "seen": 1794659108.640037,
-    "ast_hash": "93719c902378960dc0d691b359f45a69",
+    "mtime": 1794675411.9206212,
+    "seen": 1794675600.0546367,
+    "ast_hash": "2c0419eacd386aba579f2c3f0a0a3eb6",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldEntity.java": {
@@ -1056,9 +1056,9 @@
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/OldStructures.java": {
-    "mtime": 1794658820.7194545,
-    "seen": 1794659108.6399817,
-    "ast_hash": "3ca57a55e3cd4f0135bb0980c21ccd3b",
+    "mtime": 1794675411.8994303,
+    "seen": 1794675600.0545313,
+    "ast_hash": "44d4aebf34a8a4edb5eb110d69bfe2de",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/StructureBoundingBox.java": {
@@ -1140,15 +1140,33 @@
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/StructureVillagePieces.java": {
-    "mtime": 1794640342.2237833,
-    "seen": 1794659108.6399975,
-    "ast_hash": "e55feb69cff3757f07a7b36491ba685c",
+    "mtime": 1794675411.8986557,
+    "seen": 1794675600.0545607,
+    "ast_hash": "3b8ab6e4e5c5230313c7218d63fe5022",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/structure/StructureVillageStart.java": {
     "mtime": 1794640237.357622,
     "seen": 1794659108.6399984,
     "ast_hash": "f63519b4423eb9a0eaacc10e229d92cb",
+    "semantic_hash": ""
+  },
+  "tools/compare_original.py": {
+    "mtime": 1794663363.2606122,
+    "seen": 1794675600.0546162,
+    "ast_hash": "7fd762d2cc5890d67c18b355b56f4617",
+    "semantic_hash": ""
+  },
+  "tools/original_server.sh": {
+    "mtime": 1794662097.9055638,
+    "seen": 1794675600.0546227,
+    "ast_hash": "f53b40fa37dac5d2df10dfae7350c7fa",
+    "semantic_hash": ""
+  },
+  "tools/original_spawn.py": {
+    "mtime": 1794662527.4693596,
+    "seen": 1794675600.0546248,
+    "ast_hash": "ffb0f8d1fa5ce0fb72bd4565c37fde9d",
     "semantic_hash": ""
   }
 }
