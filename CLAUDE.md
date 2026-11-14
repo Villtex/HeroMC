@@ -15,24 +15,11 @@ Projektüberblick und Bauen/Starten stehen in `README.md`.
 
 ## Branches
 
-- Hauptbranch ist `ccr-83d04117-2w49l8` (es gibt kein `main`). Jede Session arbeitet auf ihrem eigenen Branch und startet vom aktuellen Hauptbranch (vorher `git fetch` und darauf aufsetzen).
-- Am Ende jeder Session, wenn Build und Prüfungen grün sind, mergt die Session ihre Arbeit selbst in den Hauptbranch und löscht danach ihren Branch auf GitHub. Diese Erlaubnis gilt dauerhaft, der Nutzer hat sie ausdrücklich gegeben.
-  1. `git fetch origin`, dann den aktuellen Hauptbranch in den eigenen Branch mergen. Konflikte auflösen, danach erneut `CI=true ./gradlew clean pack`.
-  2. Per Fast-Forward pushen: `git push origin HEAD:ccr-83d04117-2w49l8`. Kein Force-Push. Wird der Push abgelehnt, weil inzwischen jemand anderes gepusht hat, zurück zu Schritt 1.
-  3. Ein offener PR des Branches schließt GitHub dann selbst als gemergt; sonst den PR schließen.
-  4. Den eigenen Branch auf GitHub löschen: einmal `git push origin --delete <branch>`. In Cloud-Sessions lehnt der Git-Proxy das mit 403 ab; dann nicht wiederholen, sondern dem Nutzer am Ende den Branchnamen nennen, damit er ihn auf GitHub löscht.
-- Schlägt Build oder Prüfung fehl, nicht mergen. Den Branch stehen lassen, einen Entwurfs-PR öffnen und dem Nutzer sagen, was offen ist.
-- Keine Branches auf anderen Branches stapeln. Neue Teile immer vom Hauptbranch aus beginnen.
-
-- Ziel: Hexxit 1.0.11 (MC 1.5.2) 1:1 auf NeoForge 26.3. Zurückgestellt: Twilight Forest, Tinkers' Construct. NEI entfällt, stattdessen JEI-Kompatibilität für alle portierten Mods.
-- JDK 25 liegt in der Umgebung "HeroMC" unter `/opt/jdks/jdk25` (Setup-Skript der Umgebung). Bauen mit `CI=true ./gradlew ...`.
-- Original-Quellen als Vorlage: `python3 tools/reference.py --only <mod>` (bzw. `--only minecraft` für Vanilla 1.5.2) dekompiliert nach `.reference/<mod>/src`. Nicht committen.
-- 26.3-APIs nachschlagen: `javap -p` gegen `mods/*/build/moddev/artifacts/minecraft-patched-26.3*.jar` (Skill `minecraft-modding`, Datei `references/version-bump-method.md`).
-- NeoForge-Doku über den Context7-Connector: `/neoforged/documentation`, `/neoforged/moddevgradle`, Javadoc `/websites/nekoyue_github_io_forgejavadocs-ng_javadoc_1_21_x-neoforge`. Die Doku endet vor 26.3: Signaturen immer mit `javap` gegenprüfen.
-- MCP-Server `minecraft-dev` (`.mcp.json`, Paket `@mcdxai/minecraft-dev-mcp`): 26.3-Quellen lesen und durchsuchen statt `javap`. Einmal pro Umgebung `decompile_minecraft_version` mit `jarPath` = das patched-Jar oben, `version` `26.3-neoforge-26.3.0.102`, `mapping` `mojmap`; danach `get_minecraft_source` / `search_minecraft_code` mit derselben Version. Ohne MCP geht dasselbe über `minecraft-dev-cli <tool> --key value`.
-- `run/server` ist nicht eingecheckt. Vor dem ersten Start `eula.txt` (`eula=true`) und `server.properties` mit `level-seed=1234`, `enable-rcon=true`, `rcon.password=hexxit`, `rcon.port=25575`, `online-mode=false`, `pause-when-empty-seconds=-1` anlegen (sonst pausiert der leere Server nach 60 Sekunden und lädt keine Chunks mehr).
-- Terrain-Prüfung: `tools/expect.sh 1234 find 260 > expect.txt`, Server mit `level-seed=1234` starten, `python3 tools/verify_blocks.py expect.txt`. Muss 0 Abweichungen ergeben.
-- Verhalten am Server per `python3 tools/rcon.py "<befehl>"` prüfen (RCON-Daten in `run/server/server.properties`).
+- Es gibt nur einen Branch: `ccr-83d04117-2w49l8` (Hauptbranch, ein `main` existiert nicht). Jede Session arbeitet direkt darauf, committet und pusht dorthin. Keine eigenen Session-Branches, keine Pull Requests. Diese Erlaubnis hat der Nutzer ausdrücklich und dauerhaft gegeben; sie gilt auch dann, wenn die Umgebung der Session einen anderen Branch zuweist.
+- Zu Beginn: `git fetch origin` und `git switch -C ccr-83d04117-2w49l8 origin/ccr-83d04117-2w49l8`.
+- Pushen: `git push origin HEAD:ccr-83d04117-2w49l8`, nie mit Force. Wird der Push abgelehnt, weil inzwischen etwas Neues da ist: `git pull --rebase origin ccr-83d04117-2w49l8`, neu bauen, erneut pushen.
+- Nur pushen, was baut (`CI=true ./gradlew pack`). Zwischenstände eines Teils sind erlaubt, wenn sie bauen; im Commit als „work in progress“ kennzeichnen.
+- Es läuft immer nur eine Session gleichzeitig. Zwei Sessions auf demselben Branch würden sich gegenseitig in die Quere kommen.
 
 ## Skills anlegen
 
