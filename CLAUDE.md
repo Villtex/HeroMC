@@ -18,7 +18,7 @@ Projektüberblick und Bauen/Starten stehen in `README.md`.
 - 26.3-APIs nachschlagen: `javap -p` gegen `mods/*/build/moddev/artifacts/minecraft-patched-26.3*.jar` (Skill `minecraft-modding`, Datei `references/version-bump-method.md`).
 - NeoForge-Doku über den Context7-Connector: `/neoforged/documentation`, `/neoforged/moddevgradle`, Javadoc `/websites/nekoyue_github_io_forgejavadocs-ng_javadoc_1_21_x-neoforge`. Die Doku endet vor 26.3: Signaturen immer mit `javap` gegenprüfen.
 - MCP-Server `minecraft-dev` (`.mcp.json`, Paket `@mcdxai/minecraft-dev-mcp`): 26.3-Quellen lesen und durchsuchen statt `javap`. Einmal pro Umgebung `decompile_minecraft_version` mit `jarPath` = das patched-Jar oben, `version` `26.3-neoforge-26.3.0.102`, `mapping` `mojmap`; danach `get_minecraft_source` / `search_minecraft_code` mit derselben Version. Ohne MCP geht dasselbe über `minecraft-dev-cli <tool> --key value`.
-- `run/server` ist nicht eingecheckt. Vor dem ersten Start `eula.txt` (`eula=true`) und `server.properties` mit `level-seed=1234`, `enable-rcon=true`, `rcon.password=hexxit`, `rcon.port=25575`, `online-mode=false` anlegen.
+- `run/server` ist nicht eingecheckt. Vor dem ersten Start `eula.txt` (`eula=true`) und `server.properties` mit `level-seed=1234`, `enable-rcon=true`, `rcon.password=hexxit`, `rcon.port=25575`, `online-mode=false`, `pause-when-empty-seconds=-1` anlegen (sonst pausiert der leere Server nach 60 Sekunden und lädt keine Chunks mehr).
 - Terrain-Prüfung: `tools/expect.sh 1234 find 260 > expect.txt`, Server mit `level-seed=1234` starten, `python3 tools/verify_blocks.py expect.txt`. Muss 0 Abweichungen ergeben.
 - Verhalten am Server per `python3 tools/rcon.py "<befehl>"` prüfen (RCON-Daten in `run/server/server.properties`).
 

@@ -95,11 +95,13 @@ tools/expect.sh 1234 find 260 > expect.txt     # Vorhersage aus dem Kern, ein Ch
 python3 tools/verify_blocks.py expect.txt      # muss 0 Abweichungen melden
 ```
 
-Stand der Prüfung: Für Seed 1234 stimmen je ein Chunk aller 49 Biome mit dem Kern überein (132.102 Blöcke
-einschließlich aller von der Population geänderten, 784 Biom-Proben, Spawner und Truhen). Der Abgleich des
-Kerns mit einer Welt des Original-Packs steht noch aus.
+Stand der Prüfung: Für Seed 1234 stimmen je ein Chunk aller 49 Biome (137.790 Blöcke) und 36 Chunks an Dörfern,
+Festungen, Minenschächten und Tempeln (113.533 Blöcke, dazu Truhen, Spawner, Dorfbewohner, Truhenloren) mit dem
+Kern überein. Strukturen dafür: `tools/expect.sh 1234 structures 220`. Der Abgleich des Kerns mit einer Welt des
+Original-Packs steht noch aus (siehe Teil 2 in `docs/PLAN.md`).
 
-Noch nicht enthalten: Strukturen, die 1.5.2-Spawnsuche und die eigene Dekoration der ExtrabiomesXL-Biome.
+Enthalten sind auch die Strukturen von 1.5.2 und die Spawnsuche. Noch nicht enthalten: die eigene Dekoration der
+ExtrabiomesXL-Biome.
 
 ## Wann ein Mod als portiert gilt
 
@@ -146,7 +148,7 @@ Noch nicht enthalten: Strukturen, die 1.5.2-Spawnsuche und die eigene Dekoration
 | ChocoCraft | `chococraft` 2.8.8 | Torojima | 9.331 | offen |
 | Dimensional Doors | `dimensional-doors` 1.4.1.194 | StevenRS11, SenseiKiwi | 10.746 | offen |
 | ExtrabiomesXL | `ebxl` 3.13.4 | ScottKillen u. a. | 10.762 | in Arbeit: 28 Biome, Red Rock, Cracked Sand samt Rezepten |
-| (Vanilla 1.5.2) Weltgenerierung | `worldgen152` | Mojang | – | Gelände und Dekoration ✅ verifiziert; Strukturen offen (Teil 2) |
+| (Vanilla 1.5.2) Weltgenerierung | `worldgen152` | Mojang | – | Gelände, Dekoration, Strukturen und Spawnpunkt ✅ Kern gegen Spiel verifiziert; Abgleich mit Original-Welt offen (Teil 2) |
 | LegendGear | `legendgear` 1.5.2 | NMcCoy | 11.590 | offen |
 | NEI Plugins | `nei-plugins` 1.0.9.3 | mistaqur | 11.790 | entfällt, stattdessen JEI |
 | Xeno's Reliquary | `xreliquary` 1.0.6d | x3n0ph0b3 | 11.868 | offen |

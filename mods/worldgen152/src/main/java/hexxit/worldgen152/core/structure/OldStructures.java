@@ -27,14 +27,14 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public final class OldStructures {
     /** MapGenVillage.villageSpawnBiomes (BiomeManager.addVillageBiome). */
-    public static final List<OldBiome> VILLAGE_BIOMES = new CopyOnWriteArrayList<>(List.of(OldBiomes.PLAINS, OldBiomes.DESERT));
+    public static final CopyOnWriteArrayList<OldBiome> VILLAGE_BIOMES = new CopyOnWriteArrayList<>(List.of(OldBiomes.PLAINS, OldBiomes.DESERT));
     /** MapGenStronghold.allowedBiomes (BiomeManager.addStrongholdBiome). */
-    public static final List<OldBiome> STRONGHOLD_BIOMES = new CopyOnWriteArrayList<>(List.of(
+    public static final CopyOnWriteArrayList<OldBiome> STRONGHOLD_BIOMES = new CopyOnWriteArrayList<>(List.of(
             OldBiomes.DESERT, OldBiomes.FOREST, OldBiomes.EXTREME_HILLS, OldBiomes.SWAMPLAND, OldBiomes.TAIGA, OldBiomes.ICE_PLAINS,
             OldBiomes.ICE_MOUNTAINS, OldBiomes.DESERT_HILLS, OldBiomes.FOREST_HILLS, OldBiomes.EXTREME_HILLS_EDGE, OldBiomes.JUNGLE,
             OldBiomes.JUNGLE_HILLS));
     /** WorldChunkManager.allowedBiomes: where the world spawn may lie (BiomeManager.addSpawnBiome). */
-    public static final List<OldBiome> SPAWN_BIOMES = new CopyOnWriteArrayList<>(List.of(
+    public static final CopyOnWriteArrayList<OldBiome> SPAWN_BIOMES = new CopyOnWriteArrayList<>(List.of(
             OldBiomes.FOREST, OldBiomes.PLAINS, OldBiomes.TAIGA, OldBiomes.TAIGA_HILLS, OldBiomes.FOREST_HILLS, OldBiomes.JUNGLE,
             OldBiomes.JUNGLE_HILLS));
 

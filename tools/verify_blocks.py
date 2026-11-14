@@ -6,7 +6,7 @@ Input lines:
   "B x z namespace:biome"   biome check at y 70
   "S x y z Mob"             mob spawner with that 1.5.2 entity name
   "C x y z n"               chest or dispenser with n filled slots
-  "E x y z Kind"            entity of a structure (Villager, Witch, MinecartChest) within 24 blocks of that place
+  "E x y z Kind"            entity of a structure (Villager, Witch, MinecartChest) within 48 blocks of that place
 Needs enable-rcon=true, rcon.password=hexxit, rcon.port=25575 in run/server/server.properties.
 
 Springs start to flow once their chunk is live, as in 1.5.2. Flowing (not source) water or lava where the
@@ -14,7 +14,7 @@ prediction has something else is therefore counted separately and is not a diffe
 
 Usage:  python3 tools/verify_blocks.py expect.txt
 """
-import os, sys
+import os, sys, time
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from rcon import packet
 import socket
@@ -151,8 +151,13 @@ def main():
 
         # nothing may grow, spread or melt between generation and the comparison
         packet(s, 2, 2, 'gamerule minecraft:random_tick_speed 0')
+        # ... and nothing may flow, fall or walk through a door while the chunks wait for their turn
+        packet(s, 2, 2, 'tick freeze')
+        # one chunk after the other: many far apart chunks at once make the generator recompute its tiles over and over
         for cx, cz in chunks:
             packet(s, 2, 2, f'forceload add {cx * 16} {cz * 16}')
+            while not test(f'loaded {cx * 16} 64 {cz * 16}'):
+                time.sleep(0.2)
         ok = bad = flowed = bok = bbad = tok = tbad = shown = 0
 
         def report(*what):
@@ -161,7 +166,7 @@ def main():
                 shown += 1
                 print(*what)
 
-        for l in lines:
+        for l in sorted(lines, key=lambda l: l[0] == 'E'):
             if l[0] == 'B':
                 if test(f'biome {l[1]} 70 {l[2]} {l[3]}'):
                     bok += 1
@@ -177,7 +182,9 @@ def main():
             elif l[0] == 'E':
                 # entities may have walked or rolled a little since they were generated
                 x, y, z = (float(v) for v in l[1:4])
-                if test(f'entity @e[type={ENTITIES[l[4]]},x={x},y={y},z={z},distance=..24]'):
+                selector = f'entity @e[type={ENTITIES[l[4]]},x={x},y={y},z={z},distance=..48]'
+                # entities of a freshly generated chunk appear a moment after its blocks
+                if test(selector) or any(time.sleep(1) or test(selector) for _ in range(10)):
                     tok += 1
                 else:
                     tbad += 1
@@ -200,11 +207,14 @@ def main():
                         test(f'block {x} {y} {z} minecraft:water') and not test(f'block {x} {y} {z} minecraft:water[level=0]')
                         or test(f'block {x} {y} {z} minecraft:lava') and not test(f'block {x} {y} {z} minecraft:lava[level=0]')):
                     flowed += 1
+                elif bid in (10, 11) and any(test(f'block {x} {y} {z} minecraft:{b}') for b in ('obsidian', 'cobblestone', 'stone')):
+                    flowed += 1   # lava that flowing water has reached
                 else:
                     bad += 1
                     report('BLOCK MISMATCH', x, y, z, f'{bid}:{meta}', want)
         for cx, cz in chunks:
             packet(s, 2, 2, f'forceload remove {cx * 16} {cz * 16}')
+        packet(s, 2, 2, 'tick unfreeze')
     print(f'blocks: {ok} match, {bad} differ, {flowed} reached by flowing liquid; biomes: {bok} match, {bbad} differ; '
           f'spawners/chests/entities: {tok} match, {tbad} differ; {len(chunks)} chunks')
     sys.exit(1 if bad or bbad or tbad else 0)

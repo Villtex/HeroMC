@@ -21,6 +21,7 @@ seines Originals in den Kern eingehängt**, nicht als `PlacedFeature` oder Biome
 | `ChestGenHooks`, `DungeonHooks` | `OldLoot` |
 | `TerrainGen`-Events, `registerWorldGenerator` | `OldTerrainGen` |
 | `Block`-Eigenschaften (Material, Lichtdurchlass) | `OldBlockInfo` |
+| `MapGenStructure`, `StructureComponent`, `Component*` | `core.structure`: `OldStructures` und die Klassen mit den Namen des Originals |
 
 Spielseite (`hexxit.worldgen152`): `OldBlockStates` (ID + Metadaten → Blockzustand), `OldGameIds` (alte Item-IDs,
 Mob-Namen, Verzauberungen), `OldChunkWriter` (schreibt in den Chunk).
@@ -97,10 +98,20 @@ keine Felder für laufende Daten, alles über Parameter.
 Neue Beute: `OldLoot.DUNGEON_CHEST.add(new OldStack(itemId, damage, 1), min, max, weight)` und die Übersetzung in
 `OldGameIds.registerItem`. Dungeon-Mobs: `OldLoot.addDungeonMob` und `OldGameIds.registerEntity`.
 
+## Strukturen
+
+Eigene Bauteile erben von `StructureComponent` (Namen und Hilfsmethoden wie im Original: `fillWithBlocks`,
+`placeBlockAtCurrentPosition`, `getMetadataWithOffset`). Bauteile dürfen sich Zustand merken, sie werden je Kachel
+neu erzeugt. Mod-Biome für Dörfer, Festungen und Spawn: `OldStructures.VILLAGE_BIOMES`, `STRONGHOLD_BIOMES`,
+`SPAWN_BIOMES`. Eigene Dorfblöcke je Biom: `OldStructures.villageBlocks`. Entitäten: `world.spawnEntity(new
+OldEntity...)`, neue Arten brauchen einen Fall in `OldChunkWriter.entity`. Strukturen laufen vor den Seen und
+ziehen aus derselben Zufallsfolge wie die Population.
+
 ## Prüfen
 
 ```
 tools/expect.sh 1234 find 260 > expect.txt        # ein Chunk je Biom
+tools/expect.sh 1234 structures 220 > expect.txt  # Chunks an den nächsten Strukturen jeder Art
 tools/expect.sh 1234 -36 -24 12 -8 > expect.txt   # bestimmte Chunks
 python3 tools/verify_blocks.py expect.txt         # Server läuft mit level-seed=1234, muss 0 Abweichungen melden
 ```
@@ -128,5 +139,7 @@ Zeile gegen `.reference/<mod>/src` lesen, besonders die Reihenfolge der `nextInt
 - **Licht** ist nur das Himmelslicht der eigenen Spalte (`world.skyLight`), Blocklicht gibt es nicht.
 - **Höhen:** `getHeightValue` (oberster lichtdämpfender Block + 1), `getTopSolidOrLiquidBlock` (geht durch Wasser
   und Laub), `getPrecipitationHeight`. Nicht verwechseln, das Original unterscheidet sie.
+- **Frische Welt.** Vor dem Abgleich `run/server/world` löschen. Der Abgleich friert die Welt ein (`tick freeze`);
+  in einer Welt, die schon gelaufen ist, sind Kies gefallen, Lava geflossen und Türen geöffnet.
 - **Vergleich am Server:** Der Abgleich stellt `random_tick_speed` auf 0. Blöcke, die fließendes Wasser erreicht,
   zählt er getrennt und nicht als Abweichung.
