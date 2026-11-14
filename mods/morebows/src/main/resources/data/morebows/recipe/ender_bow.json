@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "G": "minecraft:gold_ingot",
+    "P": "minecraft:ender_pearl",
+    "I": "morebows:iron_bow",
+    "E": "minecraft:ender_eye"
+  },
+  "pattern": [
+    "GP",
+    "EI",
+    "GP"
+  ],
+  "result": {
+    "id": "morebows:ender_bow"
+  }
+}

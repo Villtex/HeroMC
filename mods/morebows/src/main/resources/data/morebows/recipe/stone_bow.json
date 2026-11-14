@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "minecraft:stick",
+    "*": "minecraft:string",
+    "$": "minecraft:stone",
+    "(": "minecraft:bow"
+  },
+  "pattern": [
+    " $*",
+    "#(*",
+    " $*"
+  ],
+  "result": {
+    "id": "morebows:stone_bow"
+  }
+}
