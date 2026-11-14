@@ -288,6 +288,10 @@ Kein Tinkers vorhanden: Integrationen dazu weglassen und notieren.
 
 - **Teil 12:** Bau-Engine und Import der Gebäude- und Dungeon-Vorlagen aus `betterdungeons-data1/2` (`Chocolate/`).
 - **Teil 13:** Dungeon-Typen, Wächter, Mobs, Loot (`ChestConfig`), Platzierung in der Welt.
+- **Am Ende von Teil 13 den Nutzer erinnern** (von ihm so gewünscht): Die Dörfer haben erst dann den Grundriss
+  des Originals, wenn auch die zwei Dorf-Bauteile von Tinkers' Construct da sind (Werkzeugschmiede, Schmelzerei;
+  sonst erst Teil 25). Fragen, ob sie jetzt vorgezogen werden sollen, und das Dorf-Bauteil von Better Dungeons
+  (`VillageHandler`) über `OldStructures.VILLAGE_HANDLERS` einhängen. Hintergrund: Teil 2, „Dörfer in der Hexxit-Welt“.
 
 ## Teil 14 – Battle Towers, Ruins
 
