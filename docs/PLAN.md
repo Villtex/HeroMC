@@ -44,6 +44,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 5 | Hexxit Gear, More Bows, Enchanting Plus, offLawn, Wild Caves 3 | ~13.000 | 1, 3 | Opus 5.5, mittel | ✅ erledigt |
 | 6 | bspkrsCore, TreeCapitator, Inventory Tweaks, Custom LAN Ports | ~19.000 | 3 | Opus 5.5, mittel | ✅ erledigt |
 | 7 | Natura | ~20.000 | 1, 3 | Opus 5.5, mittel | offen |
+| 7b | Natura-Nether: 1.5.2-Nether (Netherite-Gelände, Höhlen, Netherfestung) in worldgen152, Nether-Generatoren von Natura | ~3.000 | 2, 7 | Fable 5.2, hoch | offen |
 | 8 | Artifice, CoFHCore (nur was das Pack nutzt) | ~27.000 | 1, 3 | Opus 5.5, mittel | offen |
 | 9 | Harken Scythe, Asgard Shield, Asgard Shield Addons | ~30.000 | 3 | Opus 5.5, mittel | offen |
 | 10 | Project Zulu A: Kreaturen | ~25.000 | 3 | Fable 5.2, hoch | offen |
@@ -479,6 +480,18 @@ Drei davon sind reine Client-HUDs: ArmorBar, BuffBar und Back Tools. Back Tools 
 - JEI für eigene Rezepte
 
 Kein Tinkers vorhanden: Integrationen dazu weglassen und notieren.
+
+## Teil 7b – Natura-Nether
+
+Im Pack ist `Override Nether` an: Natura ersetzt den Nether durch `NetheriteWorldProvider`/`NetheriteChunkProvider`
+(1.5.2-Nether mit Tainted Soil und Heat Sand). worldgen152 kann bisher nur die Oberwelt; in Teil 7 entschieden:
+eigener Teil.
+
+- 1.5.2-Nether in worldgen152: Gelände (`ChunkProviderHell` in der Netherite-Variante), `MapGenCavesHell`,
+  Netherfestung (`StructureNetherBridgePieces`), Population (Feuer, Glowstone, Pilze, Quarz), Spawns.
+- Nether-Zweige der Natura-Generatoren (`BaseTreeWorldgen`, Biom „Hell“): Bloodwood, Darkwood, Fusewood,
+  Glowshrooms, Nether-Beeren, Thornvines; Reihenfolge wie im Original.
+- Abgleich wie in Teil 2 mit `tools/expect.sh`/`verify_blocks.py` (dafür Nether-Unterstützung ergänzen).
 
 ## Teil 8 – Artifice, CoFHCore
 
