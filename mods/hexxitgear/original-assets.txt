@@ -1,0 +1,27 @@
+# path in HexxitGear-1.0-23.jar -> path in the ported jar
+textures/items/item.hexxitgear.hexicalessence.png -> assets/hexxitgear/textures/item/hexical_essence.png
+textures/items/item.hexxitgear.hexicaldiamond.png -> assets/hexxitgear/textures/item/hexical_diamond.png
+textures/items/item.hexxitgear.tribal.helmet.png -> assets/hexxitgear/textures/item/tribal_helmet.png
+textures/items/item.hexxitgear.tribal.chest.png -> assets/hexxitgear/textures/item/tribal_chest.png
+textures/items/item.hexxitgear.tribal.leggings.png -> assets/hexxitgear/textures/item/tribal_leggings.png
+textures/items/item.hexxitgear.tribal.boots.png -> assets/hexxitgear/textures/item/tribal_boots.png
+textures/items/item.hexxitgear.scale.helmet.png -> assets/hexxitgear/textures/item/scale_helmet.png
+textures/items/item.hexxitgear.scale.chest.png -> assets/hexxitgear/textures/item/scale_chest.png
+textures/items/item.hexxitgear.scale.leggings.png -> assets/hexxitgear/textures/item/scale_leggings.png
+textures/items/item.hexxitgear.scale.boots.png -> assets/hexxitgear/textures/item/scale_boots.png
+textures/items/item.hexxitgear.thief.helmet.png -> assets/hexxitgear/textures/item/thief_helmet.png
+textures/items/item.hexxitgear.thief.chest.png -> assets/hexxitgear/textures/item/thief_chest.png
+textures/items/item.hexxitgear.thief.leggings.png -> assets/hexxitgear/textures/item/thief_leggings.png
+textures/items/item.hexxitgear.thief.boots.png -> assets/hexxitgear/textures/item/thief_boots.png
+textures/blocks/tile.hexxitgear.flora.hexbiscus.png -> assets/hexxitgear/textures/block/hexbiscus.png
+# armor layers: layer 1 (helmet slot, chest, boots) and layer 2 (leggings) of 1.5.2
+textures/armor/tribal.png -> assets/hexxitgear/textures/entity/equipment/humanoid/tribal.png
+textures/armor/tribal2.png -> assets/hexxitgear/textures/entity/equipment/humanoid_leggings/tribal.png
+textures/armor/scale.png -> assets/hexxitgear/textures/entity/equipment/humanoid/scale.png
+textures/armor/scale2.png -> assets/hexxitgear/textures/entity/equipment/humanoid_leggings/scale.png
+textures/armor/thief.png -> assets/hexxitgear/textures/entity/equipment/humanoid/thief.png
+textures/armor/thief2.png -> assets/hexxitgear/textures/entity/equipment/humanoid_leggings/thief.png
+# the three helmets have their own models (ModelSkullHelmet, ModelScaleHelmet, ModelHoodHelmet)
+textures/maps/SkullHelmet.png -> assets/hexxitgear/textures/entity/equipment/humanoid/skull_helmet.png
+textures/maps/ScaleHelmet.png -> assets/hexxitgear/textures/entity/equipment/humanoid/scale_helmet.png
+textures/maps/HoodHelmet.png -> assets/hexxitgear/textures/entity/equipment/humanoid/hood_helmet.png

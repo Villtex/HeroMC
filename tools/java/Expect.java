@@ -22,6 +22,7 @@ public class Expect {
         if (vanilla) a = java.util.stream.Stream.concat(java.util.stream.Stream.of(a[0]), Arrays.stream(a).skip(2)).toArray(String[]::new);
         else {
             extrabiomes.EbxlBiomes.register();
+            sct.hexxitgear.gen.HGWorldGen.register();
             offlawn.gen.OffLawnGen.register();
             wildcaves.gen.WildCavesGen.register();
         }

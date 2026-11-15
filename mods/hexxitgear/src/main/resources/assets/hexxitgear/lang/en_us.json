@@ -1,0 +1,22 @@
+{
+  "itemGroup.hexxitgear": "Hexxit Gear",
+  "block.hexxitgear.hexbiscus": "Hexbiscus",
+  "item.hexxitgear.hexical_essence": "Hexical Essence",
+  "item.hexxitgear.hexical_diamond": "Hexical Diamond",
+  "item.hexxitgear.tribal_helmet": "Tribal Helmet",
+  "item.hexxitgear.tribal_chest": "Tribal Chestpiece",
+  "item.hexxitgear.tribal_leggings": "Tribal Leggings",
+  "item.hexxitgear.tribal_boots": "Tribal Boots",
+  "item.hexxitgear.scale_helmet": "Scale Helmet",
+  "item.hexxitgear.scale_chest": "Scale Chestpiece",
+  "item.hexxitgear.scale_leggings": "Scale Leggings",
+  "item.hexxitgear.scale_boots": "Scale Boots",
+  "item.hexxitgear.thief_helmet": "Thiefs Hood",
+  "item.hexxitgear.thief_chest": "Thiefs Chestpiece",
+  "item.hexxitgear.thief_leggings": "Thiefs Leggings",
+  "item.hexxitgear.thief_boots": "Thiefs Boots",
+  "jei.hexxitgear.hexbiscus": "Hexbiscus grows rarely on grass and dirt across the overworld. Breaking it gives a Hexical Essence; four essences around a diamond make a Hexical Diamond, the core of every Hexxit Gear armor piece.",
+  "jei.hexxitgear.tribal": "Tribal set: wearing all four pieces gives Strength, Night Vision and Jump Boost III.",
+  "jei.hexxitgear.scale": "Scale set: wearing all four pieces gives Strength, Fire Resistance and Resistance.",
+  "jei.hexxitgear.thief": "Thief set: wearing all four pieces gives Strength and Night Vision, doubles the walking speed (sprinting adds nothing) and gives far better control in the air."
+}

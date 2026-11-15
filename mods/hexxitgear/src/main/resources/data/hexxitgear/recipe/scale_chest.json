@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "G": "#c:ingots/gold",
+    "O": "minecraft:obsidian",
+    "H": "hexxitgear:hexical_diamond"
+  },
+  "pattern": [
+    "G G",
+    "OHO",
+    "GOG"
+  ],
+  "result": {
+    "id": "hexxitgear:scale_chest"
+  }
+}

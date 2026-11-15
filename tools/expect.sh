@@ -20,6 +20,7 @@ JAVA=${JAVA_HOME:+$JAVA_HOME/bin/}java
   $(find "$ROOT/mods/worldgen152/src/main/java/hexxit/worldgen152/core" -name '*.java') \
   "$ROOT/mods/ebxl/src/main/java/extrabiomes/EbxlBiomes.java" "$OUT/stub/extrabiomes/Extrabiomes.java" \
   $(find "$ROOT/mods/ebxl/src/main/java/extrabiomes/gen" -name '*.java') \
+  $(find "$ROOT/mods/hexxitgear/src/main/java/sct/hexxitgear/gen" -name '*.java') \
   $(find "$ROOT/mods/offlawn/src/main/java/offlawn/gen" -name '*.java') \
   $(find "$ROOT/mods/wildcaves3/src/main/java/wildcaves/gen" -name '*.java') \
   "$ROOT/tools/java/Expect.java"

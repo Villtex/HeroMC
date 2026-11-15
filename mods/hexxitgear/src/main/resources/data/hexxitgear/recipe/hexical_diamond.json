@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": "hexxitgear:hexical_essence",
+    "D": "minecraft:diamond"
+  },
+  "pattern": [
+    " I ",
+    "IDI",
+    " I "
+  ],
+  "result": {
+    "id": "hexxitgear:hexical_diamond"
+  }
+}

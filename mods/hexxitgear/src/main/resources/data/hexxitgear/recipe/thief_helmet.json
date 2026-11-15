@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "R": "minecraft:red_wool",
+    "H": "hexxitgear:hexical_diamond"
+  },
+  "pattern": [
+    "RRR",
+    "RHR"
+  ],
+  "result": {
+    "id": "hexxitgear:thief_helmet"
+  }
+}

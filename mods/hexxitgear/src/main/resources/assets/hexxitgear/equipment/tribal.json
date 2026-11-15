@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "hexxitgear:tribal"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "hexxitgear:tribal"
+      }
+    ]
+  }
+}

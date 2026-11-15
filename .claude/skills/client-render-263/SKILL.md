@@ -1,6 +1,6 @@
 ---
 name: client-render-263
-description: Beim Portieren von Client-Darstellung eines Hexxit-Mods auf 26.3 benutzen. Greift bei HUD-Anzeigen (Tick-Handler mit TickType.RENDER, Overlays), Gegenständen oder Modellen am Spielermodell (Rücken, Schild, Rucksack), durchscheinenden oder halbtransparenten Blöcken (ISimpleBlockRenderingHandler mit Alpha), und bei Rechtsklick-Logik, die vor dem Block greifen muss (PlayerInteractEvent). Beispiele im Repo: armorbar, buffbar, backtools, obsidiplates, chesttransporter.
+description: Beim Portieren von Client-Darstellung eines Hexxit-Mods auf 26.3 benutzen. Greift bei HUD-Anzeigen (Tick-Handler mit TickType.RENDER, Overlays), Gegenständen oder Modellen am Spielermodell (Rücken, Schild, Rucksack), Rüstungen (ItemArmor mit eigener Textur oder eigenem Helm-Modell, getArmorModel), durchscheinenden oder halbtransparenten Blöcken (ISimpleBlockRenderingHandler mit Alpha), und bei Rechtsklick-Logik, die vor dem Block greifen muss (PlayerInteractEvent). Beispiele im Repo: armorbar, buffbar, backtools, obsidiplates, chesttransporter, hexxitgear.
 ---
 
 # Client-Darstellung in 26.3 (NeoForge 26.3.0.102)
@@ -52,6 +52,22 @@ static void render(GuiGraphicsExtractor g, DeltaTracker delta) { ... }   // Mine
    `ItemDisplayContext.NONE`-Modell liegt in 0..1 → `translate(-0.5,-0.5,-0.5)`; seine Vorderseite zeigt nach +z.
    `item.submit(poseStack, collector, light, OverlayTexture.NO_OVERLAY, state.outlineColor)`. Body in try/catch, einmal loggen.
    Umhang sichtbar: `state.showCape && state.skin.cape() != null`; unsichtbar: `state.isInvisible`.
+
+## Rüstung: Texturen und eigene Helm-Modelle (`ItemArmor`, `getArmorTexture`, `getArmorModel`)
+
+Beispiel: `mods/hexxitgear` (`HexxitGear.diamond(...)`, `client/HelmetModels`, `client/HexxitGearClient`).
+- Werte: `new ArmorMaterial(durability, defense, enchantability, equipSound, toughness, knockback, repairTag, assetKey)`,
+  Item mit `p.humanoidArmor(material, ArmorType.HELMET)`. `EnumArmorMaterial.DIAMOND` = `ArmorMaterials.DIAMOND` (33, 3/8/6/3, 10).
+  Asset-Schlüssel: `ResourceKey.create(EquipmentAssets.ROOT_ID, id)`; je Textur ein eigenes Material (gleiche Werte).
+- `assets/<mod>/equipment/<name>.json`: `{"layers":{"humanoid":[{"texture":"<mod>:<name>"}],"humanoid_leggings":[...]}}`.
+  1.5.2 `xxx.png` (Schicht 1: Helm, Brust, Stiefel) → `textures/entity/equipment/humanoid/<name>.png`, `xxx2.png`
+  (Hose) → `textures/entity/equipment/humanoid_leggings/<name>.png`. Ohne `humanoid_baby` tragen Baby-Mobs sie unsichtbar.
+- Verzauberbar nur über Tags: `#minecraft:enchantable/head_armor` (chest/leg/foot), `enchantable/equippable`,
+  `enchantable/durability`. Nicht in `#minecraft:head_armor` usw. eintragen, sonst werden sie über `trimmable_armor` verzierbar.
+- Eigenes Modell: `RegisterClientExtensionsEvent` → `IClientItemExtensions.getHumanoidArmorModel(stack, layerType, original)`
+  gibt ein `HumanoidModel` zurück (alle sieben Teile leer, Würfel als Kinder von `head`; `LayerDefinition.create(mesh, texW, texH).bakeRoot()`,
+  einmal lazy bauen). `setupAnim` ruft der Renderer selbst. `ModelRenderer.render(f5 + d)` des Originals vergrößert Würfel **und**
+  Drehpunkt um `(f5+d)/f5`: `PartPose.offset(px*s, py*s, pz*s).withScale(s)`. `mirror = true` → `CubeListBuilder.mirror()`.
 
 ## Halbdurchsichtige Blöcke (Alpha im Renderer)
 
