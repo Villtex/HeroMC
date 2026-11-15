@@ -69,3 +69,10 @@ Vorlage: `mods/enchantingplus/src/main/java/eplus/` (`EnchantTableMenu`, `client
   (`EnchantingPlus.applyLight`), auf Server (`ServerAboutToStartEvent`) und Client (`ClientPlayerNetworkEvent.LoggingIn`).
 - `randomDisplayTick`-Partikel: kein Hook am Vanilla-Block → im `ClientTickEvent.Post` wie `ClientLevel.animateTick`
   667× in Radius 16 und 32 Blöcke ziehen und bei Treffer die Partikel des Originals erzeugen.
+
+## Truhen-GUIs und Inventory Tweaks
+
+Inventory Tweaks (`mods/inventorytweaks`) zeigt Sortier-Knöpfe und sortiert per Middle-Click in Truhen-Menüs.
+Menüs, die von `ChestMenu`, `ShulkerBoxMenu` oder `DispenserMenu` erben, erkennt es selbst. Eigene Truhen-Screens
+(BetterStorage, Backpacks, BiblioCraft) im `InterModEnqueueEvent` anmelden, ohne Abhängigkeit:
+`InterModComms.sendTo("inventorytweaks", "chest", () -> "voller.Klassenname.DesScreens;9")` (Zahl = Zeilenbreite).

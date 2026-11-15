@@ -39,6 +39,7 @@ Der Port ist in Teile aufgeteilt, die je in eine Session passen: [`docs/PLAN.md`
 | `.claude/skills/worldgen152/` | Projekt-Skill: Weltgenerierung eines Mods in `worldgen152` einhängen, Setzlinge, Prüfung |
 | `.claude/skills/client-render-263/` | Projekt-Skill: HUD-Ebenen, Gegenstände am Spielermodell, Rüstungen mit eigenen Helm-Modellen, durchscheinende Blockmodelle, Rechtsklick vor dem Block abfangen (26.3) |
 | `.claude/skills/menu-gui-263/` | Projekt-Skill: eigene GUI mit Container (Menü, Screen, Pakete Client → Server, Server-Konfiguration für die Vorschau im Client) |
+| `.claude/skills/treecapitator-trees/` | Projekt-Skill: Bäume und Äxte eines Mods bei TreeCapitator anmelden (Daten-Registry `treecapitator:tree`, Item-Tags) |
 
 ## Bauen und Starten
 
@@ -148,15 +149,15 @@ Hexbiscus (72.274 Blöcke) mit dem Kern überein.
 | Backpacks | `backpacks` 1.12.13 | Eydamos | 2.331 | offen |
 | Asgard Shield | `asgardshield` 2.0.4 | Jade Knightblazer | 2.842 | offen |
 | Ruins | `ruins` 1.5.2 | d00dv4d3r, kolt666, AtomicStryker | 2.951 | offen |
-| bspkrsCore | `bspkrscore` 2.09 | DaftPVF, bspkrs | 3.066 | offen |
+| bspkrsCore | `bspkrscore` 2.09 | DaftPVF, bspkrs | 3.066 | ✅ portiert, soweit TreeCapitator es braucht (Block-Angaben) |
 | Enchanting Plus | `enchantingplus` 1.15.4 | xkyouchoux, odininon, GnR Slash | 3.342 | ✅ portiert, Server startet (GUI nur im Client prüfbar) |
 | More Bows | `morebows` 1.5.2.2 | iDiamondhunter | 4.156 | ✅ portiert, Server startet (Schießen und Client-Prüfung offen) |
-| TreeCapitator | `treecapitator` 1.5.2.r14 | DaftPVF, bspkrs, Lunatrius | 4.498 | offen |
-| Custom LAN Ports | `customport` 1.5.2 | CptHunter | 4.521 | offen |
+| TreeCapitator | `treecapitator` 1.5.2.r14 | DaftPVF, bspkrs, Lunatrius | 4.498 | ✅ portiert, am Server verifiziert (Vanilla- und ExtrabiomesXL-Bäume) |
+| Custom LAN Ports | `customport` 1.5.2 | CptHunter | 4.521 | ✅ portiert (nur integrierter Server; Client-Prüfung offen) |
 | qCraft | `qcraft` 1.0.1 | Daniel Ratcliffe, TeacherGaming | 5.221 | offen |
 | MapWriter | `mapwriter` 2.0.5 | — | 5.356 | offen |
 | Secret Rooms | `secretrooms` 4.6.0.283 | AbrarSyed | 5.692 | offen |
-| Inventory Tweaks | `inventorytweaks` 1.54b | Jimeo Wan, Kobata | 6.626 | offen |
+| Inventory Tweaks | `inventorytweaks` 1.54b | Jimeo Wan, Kobata | 6.626 | ✅ portiert (reiner Client-Mod; Client-Prüfung offen) |
 | Damage Indicators | `damageindicators` 2.7.0.1 | rich1051414 | 6.783 | offen |
 | Falling Meteors | `meteorsmod` 2.10.2a | AlexDGr8r | 6.957 | offen |
 | Infernal Mobs | `infernalmobs` 1.5.2 | AtomicStryker | 7.089 | offen |

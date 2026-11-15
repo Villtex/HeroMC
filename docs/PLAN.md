@@ -42,7 +42,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 3 | JEI-Grundlage, ExtrabiomesXL fertig (Bäume, Pflanzen, Holz, Scarecrow) | ~9.000 | 1 | Opus 5.5, mittel | ✅ erledigt |
 | 4 | Kleine Mods: Obsidian Plates, Chest Transporter, ArmorBar, BuffBar, Back Tools, Soul Shards | ~5.000 | 3 | Sonnet 5.5, niedrig | ✅ erledigt |
 | 5 | Hexxit Gear, More Bows, Enchanting Plus, offLawn, Wild Caves 3 | ~13.000 | 1, 3 | Opus 5.5, mittel | ✅ erledigt |
-| 6 | bspkrsCore, TreeCapitator, Inventory Tweaks, Custom LAN Ports | ~19.000 | 3 | Opus 5.5, mittel | offen |
+| 6 | bspkrsCore, TreeCapitator, Inventory Tweaks, Custom LAN Ports | ~19.000 | 3 | Opus 5.5, mittel | ✅ erledigt |
 | 7 | Natura | ~20.000 | 1, 3 | Opus 5.5, mittel | offen |
 | 8 | Artifice, CoFHCore (nur was das Pack nutzt) | ~27.000 | 1, 3 | Opus 5.5, mittel | offen |
 | 9 | Harken Scythe, Asgard Shield, Asgard Shield Addons | ~30.000 | 3 | Opus 5.5, mittel | offen |
@@ -411,6 +411,65 @@ Drei davon sind reine Client-HUDs: ArmorBar, BuffBar und Back Tools. Back Tools 
 - bspkrsCore wird nur so weit portiert, wie TreeCapitator es braucht.
 - Inventory Tweaks: Sortieren und Auto-Refill, Regeln aus `InvTweaksRules.txt` des Packs.
 - Custom LAN Ports: Port beim Öffnen fürs LAN frei wählbar.
+
+**Status: erledigt.** Vier Teilprojekte: `mods/bspkrscore` (`mod_bspkrscore`), `mods/treecapitator`,
+`mods/inventorytweaks`, `mods/customport` (`customlan`). Werte der Pack-Konfiguration als Standard.
+
+- **bspkrsCore**: nur `bspkrs.util.BlockID` (`ns:block`, `ns:block[eigenschaft=wert]`, `#ns:tag`, Block wird erst
+  beim Abgleich gesucht, unbekannte passen auf nichts). Konfigurations-Klassen, Update-Prüfung, HUD-Helfer entfallen.
+- **TreeCapitator**: Fäll-Logik von `TreeCapitator.java` r14 (Stämme per Flutfüllung ab dem gefällten aufwärts,
+  oberste Stämme je Ast, Blätter um sie herum, Smart Tree Detection, Axt-Schaden je Stamm, Scheren-Zweig, Schleich-
+  Aktion, Kreativ-Optionen), Abbau langsamer mit Axt (`breakSpeedModifier` 0,256; `treeHeightDecidesBreakSpeed`
+  aus wie im Pack). Statt ASM-Hook `BreakBlockEvent` (LOWEST, vor dem Entfernen), der gefällte Block selbst bricht
+  normal. Bäume als Daten-Registry `treecapitator:tree` (zum Client synchronisiert), Merge-Regeln von
+  `TreeRegistry.registerTree`; Vanilla und ExtrabiomesXL (`acacia`, `fir`, `redwood`, Herbstlaub an `vanilla_oak`/
+  `vanilla_spruce`, Eichen-Viertelstämme) wie in `tree_and_mod_configs`. Äxte `#treecapitator:axes` (=
+  `#minecraft:axes`), Scheren `#treecapitator:shears`. Konfiguration `treecapitator-server.toml` (SYNCED).
+  Neuer Skill `treecapitator-trees` für spätere Teile.
+- **Inventory Tweaks** (Subagent): Sortieren (Taste R, Middle-Click, Truhen-Knöpfe, Algorithmus von
+  `InvTweaksHandlerSorting`), Regeln aus `InvTweaksRules.txt` des Packs, Item-Baum aus `InvTweaksTree.txt` mit
+  26.3-IDs (`mods/inventorytweaks/tools/convert_tree.py`, alle 1658 Items haben einen Eintrag, oreDict → Tags),
+  Auto-Refill, Shortcuts, Sortieren beim Aufheben, Einstellungsseiten, 20 Sprachen. Alles über normale Slot-Klicks,
+  also auch auf fremden Servern. Eigene Truhen-Screens späterer Mods: IMC an `inventorytweaks`, Methode `chest`,
+  Inhalt `"Klassenname;Zeilenbreite"` (Menüs, die von `ChestMenu`/`ShulkerBoxMenu`/`DispenserMenu` erben, gehen ohne).
+- **Custom LAN 2.2**: Portfeld des Weltoptionen-Bildschirms (26.3 öffnet dort fürs LAN) startet mit dem gemerkten
+  Port (`optionsCLP.txt`, 25565) statt einem zufälligen, der benutzte Port wird gespeichert. Knopf „Custom LAN
+  Options“ (MOTD, Online-Modus, PvP) und zwei Seiten Befehlsrechte (`CLPermissions.txt`, 0 = alle, 2 = OPs, Standards
+  des Originals). Befehle nur im integrierten Server: back, broadcast, explosion, fireball, fly, gettime, god, hat,
+  heal, home, sethome, lightning, viewmotd, pm, reloadops, setspawn, spawn, spawnmob, setwarp, warp, removewarp,
+  warplist; dazu die Server-Befehle von Vanilla, die ein LAN-Spiel sonst nicht hat (ban, ban-ip/banip, banlist,
+  pardon/unban, pardon-ip/unban-ip/unbanip, op, deop, save-all/-off/-on, stop) mit den Rechten von Custom LAN.
+- **Prüfung**: `clean pack` grün; Server bis `Done` ohne Fehler und Warnungen der neuen Mods (LAN-Befehle dort wie
+  vorgesehen nicht registriert). TreeCapitator mit FakePlayer am Server: Eiche, große Eiche, Birke, Fichte, Dschungel,
+  Riesenpilz, ExtrabiomesXL-Tanne fallen ganz (alle Stämme und Blätter, Axt-Schaden = Zahl der Stämme, Drops);
+  persistente Blätter bleiben; Stamm ohne Blätter wird nicht als Baum erkannt; Abbaugeschwindigkeit ×0,256.
+
+**Offen / bewusst abweichend:**
+
+- TreeCapitator: zusätzliche Bäume, die 1.5.2 nicht kannte (Akazie, Schwarzeiche, Blasseiche, Mangrove, Kirsche,
+  Karmesin- und Wirrpilz). Riesenpilze sind ein Baum (der Stiel ist heute ein Block für beide). Das „check decay“-Bit
+  ist nachgebildet: nicht persistente Blätter höchstens 4 Blöcke von einem gefällten Stamm; bei Ranken bleibt der
+  Bit-Test des Originals (Osten gesetzt, Norden nicht). Mit `maxHorLogBreakDist = -1` endete r14 nie; hier gelten
+  die übrigen Grenzen trotzdem. Verzauberungsmodus (im Pack aus), IMC, MultiMine-Liste, ID Resolver und Fern-Konfig
+  entfallen. Drops über die Loot-Tabellen mit der Axt (Behutsamkeit wirkt also). Baumdaten laden nur beim
+  Serverstart. Bäume von Natura, Project Zulu, Twilight Forest, Äxte von Harken Scythe, Meteors, TConstruct: in
+  deren Teilen (Skill `treecapitator-trees`).
+- Inventory Tweaks: kein Server-Teil (Item-Tausch-Paket, `enableServerItemSwap` wirkungslos). Baum mit Item-IDs,
+  Tags und Trank-Typen statt ID/Damage; Regeln nach ID heißen `D5 minecraft:stone`. Fehler des alten Baums
+  korrigiert (Birke/Fichte vertauscht, Löwenzahn/Rose zeigten auf Schienen, Disc „wait“ fehlte). Neue Items in die
+  passendste Kategorie. Mod-Werkzeuge über Werkzeug-Tags. Kein Sortieren im Kreativ-Inventar; die Sortiertaste wirkt
+  nicht in Textfeldern. Werfen-Shortcut warf im Original zu viel (behoben). Auto-Refill wartet 200 ms im Client-Tick.
+  Einstellungen als Bildschirm-Ebene. Weggelassen: Kompatibilität mit 1.5.2-Mods, NEI, Obfuskations-Helfer.
+- Custom LAN: Spielerlimit (im integrierten Server von 26.3 fest 8), Flug, Tiere und NPCs (Einstellungen gibt es
+  nicht mehr) und das Binden an eine IP (es lauscht auf allen Adressen) entfallen; PvP ist die Spielregel `pvp`.
+  Der Knopf sitzt im Weltoptionen-Bildschirm statt in den Chat-Optionen. `/kick` und `/tp` sind die von Vanilla,
+  `/reload` bleibt das Datapack-Neuladen. `/back` speichert den Todespunkt jetzt wirklich (im Original schrieb nichts
+  `lastPos/*.pos`), mit Dimension. Abstürze des Originals behoben (Raycast ohne Treffer, Client-Aufrufe im Server,
+  Welt 0 statt Welt des Spielers); `/spawnmob` sucht höchstens 256 Blöcke weit, Schweinezombie erreichbar, Warp-Namen
+  ohne Pfadteile. Ban/Kick/Deop schützen den Host nicht mehr. Online-Modus wie im Original standardmäßig aus.
+- Client-Prüfung offen: alle Bildschirme (Custom-LAN-Optionen und -Rechte, Inventory-Tweaks-Einstellungen,
+  Truhen-Knöpfe), Sortieren, Shortcuts, Auto-Refill, LAN öffnen mit gemerktem Port, alle LAN-Befehle,
+  TreeCapitator mit echtem Spieler (Abbaugeschwindigkeit im Client, Schleichen).
 
 ## Teil 7 – Natura
 
