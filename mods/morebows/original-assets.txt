@@ -1,0 +1,34 @@
+# path in 'More bows 1.5.2_2 Forge.jar' -> path in the ported jar
+# XBow1 is the idle icon (XBow is the same picture), XBow2 to XBow4 are the three pulling stages
+textures/items/mod/DiamondBow1.png -> assets/morebows/textures/item/diamond_bow.png
+textures/items/mod/DiamondBow2.png -> assets/morebows/textures/item/diamond_bow_pulling_0.png
+textures/items/mod/DiamondBow3.png -> assets/morebows/textures/item/diamond_bow_pulling_1.png
+textures/items/mod/DiamondBow4.png -> assets/morebows/textures/item/diamond_bow_pulling_2.png
+textures/items/mod/EnderBow1.png -> assets/morebows/textures/item/ender_bow.png
+textures/items/mod/EnderBow2.png -> assets/morebows/textures/item/ender_bow_pulling_0.png
+textures/items/mod/EnderBow3.png -> assets/morebows/textures/item/ender_bow_pulling_1.png
+textures/items/mod/EnderBow4.png -> assets/morebows/textures/item/ender_bow_pulling_2.png
+textures/items/mod/FlameBow1.png -> assets/morebows/textures/item/flame_bow.png
+textures/items/mod/FlameBow2.png -> assets/morebows/textures/item/flame_bow_pulling_0.png
+textures/items/mod/FlameBow3.png -> assets/morebows/textures/item/flame_bow_pulling_1.png
+textures/items/mod/FlameBow4.png -> assets/morebows/textures/item/flame_bow_pulling_2.png
+textures/items/mod/FrostBow1.png -> assets/morebows/textures/item/frost_bow.png
+textures/items/mod/FrostBow2.png -> assets/morebows/textures/item/frost_bow_pulling_0.png
+textures/items/mod/FrostBow3.png -> assets/morebows/textures/item/frost_bow_pulling_1.png
+textures/items/mod/FrostBow4.png -> assets/morebows/textures/item/frost_bow_pulling_2.png
+textures/items/mod/GoldBow1.png -> assets/morebows/textures/item/gold_bow.png
+textures/items/mod/GoldBow2.png -> assets/morebows/textures/item/gold_bow_pulling_0.png
+textures/items/mod/GoldBow3.png -> assets/morebows/textures/item/gold_bow_pulling_1.png
+textures/items/mod/GoldBow4.png -> assets/morebows/textures/item/gold_bow_pulling_2.png
+textures/items/mod/IronBow1.png -> assets/morebows/textures/item/iron_bow.png
+textures/items/mod/IronBow2.png -> assets/morebows/textures/item/iron_bow_pulling_0.png
+textures/items/mod/IronBow3.png -> assets/morebows/textures/item/iron_bow_pulling_1.png
+textures/items/mod/IronBow4.png -> assets/morebows/textures/item/iron_bow_pulling_2.png
+textures/items/mod/MultiBow1.png -> assets/morebows/textures/item/multi_bow.png
+textures/items/mod/MultiBow2.png -> assets/morebows/textures/item/multi_bow_pulling_0.png
+textures/items/mod/MultiBow3.png -> assets/morebows/textures/item/multi_bow_pulling_1.png
+textures/items/mod/MultiBow4.png -> assets/morebows/textures/item/multi_bow_pulling_2.png
+textures/items/mod/StoneBow1.png -> assets/morebows/textures/item/stone_bow.png
+textures/items/mod/StoneBow2.png -> assets/morebows/textures/item/stone_bow_pulling_0.png
+textures/items/mod/StoneBow3.png -> assets/morebows/textures/item/stone_bow_pulling_1.png
+textures/items/mod/StoneBow4.png -> assets/morebows/textures/item/stone_bow_pulling_2.png

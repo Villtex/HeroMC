@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "R": "minecraft:string",
+    "I": "minecraft:ice",
+    "S": "minecraft:snowball",
+    "E": "morebows:iron_bow"
+  },
+  "pattern": [
+    " IR",
+    "SER",
+    " IR"
+  ],
+  "result": {
+    "id": "morebows:frost_bow"
+  }
+}
