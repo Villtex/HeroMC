@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "O": "minecraft:obsidian",
+    "G": "#c:ingots/gold",
+    "H": "hexxitgear:hexical_diamond"
+  },
+  "pattern": [
+    "OOO",
+    "GHG",
+    "O O"
+  ],
+  "result": {
+    "id": "hexxitgear:scale_leggings"
+  }
+}

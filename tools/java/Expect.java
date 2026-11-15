@@ -19,7 +19,10 @@ public class Expect {
         OldDungeonGen.vanillaLoot = vanilla;
         OldLoot.vanillaDraws = vanilla;
         if (vanilla) a = java.util.stream.Stream.concat(java.util.stream.Stream.of(a[0]), Arrays.stream(a).skip(2)).toArray(String[]::new);
-        else extrabiomes.EbxlBiomes.register();
+        else {
+            extrabiomes.EbxlBiomes.register();
+            sct.hexxitgear.gen.HGWorldGen.register();
+        }
         BiomeLayout layout = new BiomeLayout(seed);
         OldTerrain terrain = new OldTerrain(layout);
         Map<Long, OldChunk> raw = new HashMap<>();

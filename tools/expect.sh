@@ -5,7 +5,7 @@
 #   tools/expect.sh <seed> <chunkX> <chunkZ> [...]   > expect.txt
 #   tools/expect.sh <seed> spawn                     (the world spawn)
 # "vanilla" after the seed leaves out the biomes of mods (to compare with a vanilla 1.5.2 world).
-# Compiles hexxit.worldgen152.core and the ExtrabiomesXL biome table with plain javac (JDK 21+).
+# Compiles hexxit.worldgen152.core, the ExtrabiomesXL biome table and the Hexxit Gear generator with plain javac (JDK 21+).
 set -e
 ROOT=$(cd "$(dirname "$0")/.." && pwd)
 OUT=$(mktemp -d)
@@ -20,5 +20,6 @@ JAVA=${JAVA_HOME:+$JAVA_HOME/bin/}java
   $(find "$ROOT/mods/worldgen152/src/main/java/hexxit/worldgen152/core" -name '*.java') \
   "$ROOT/mods/ebxl/src/main/java/extrabiomes/EbxlBiomes.java" "$OUT/stub/extrabiomes/Extrabiomes.java" \
   $(find "$ROOT/mods/ebxl/src/main/java/extrabiomes/gen" -name '*.java') \
+  $(find "$ROOT/mods/hexxitgear/src/main/java/sct/hexxitgear/gen" -name '*.java') \
   "$ROOT/tools/java/Expect.java"
 "$JAVA" -cp "$OUT/classes" Expect "$@"

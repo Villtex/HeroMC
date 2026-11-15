@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "R": "minecraft:red_wool",
+    "L": "minecraft:leather",
+    "H": "hexxitgear:hexical_diamond"
+  },
+  "pattern": [
+    "R R",
+    "LHL",
+    "LLL"
+  ],
+  "result": {
+    "id": "hexxitgear:thief_chest"
+  }
+}
