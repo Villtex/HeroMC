@@ -7,6 +7,7 @@ import java.util.*;
  *   "x y z id meta"   four full columns, and every block population changed or added
  *   "B x z biomeKey"  biome samples
  *   "S x y z Mob"     mob spawners, "C x y z n" chests and dispensers with n filled slots
+ *   "K x y z type rotation" floor skulls (type as TileEntitySkull, rotation 0 to 15)
  *   "E x y z Kind"    entities structures spawned (Villager, Witch, MinecartChest)
  * With "find <radius>" it picks one chunk per biome found on a coarse scan around 0,0, with
  * "structures <radius>" chunks of the structures starting within that many chunks of 0,0; "spawn" prints
@@ -19,7 +20,11 @@ public class Expect {
         OldDungeonGen.vanillaLoot = vanilla;
         OldLoot.vanillaDraws = vanilla;
         if (vanilla) a = java.util.stream.Stream.concat(java.util.stream.Stream.of(a[0]), Arrays.stream(a).skip(2)).toArray(String[]::new);
-        else extrabiomes.EbxlBiomes.register();
+        else {
+            extrabiomes.EbxlBiomes.register();
+            offlawn.gen.OffLawnGen.register();
+            wildcaves.gen.WildCavesGen.register();
+        }
         BiomeLayout layout = new BiomeLayout(seed);
         OldTerrain terrain = new OldTerrain(layout);
         Map<Long, OldChunk> raw = new HashMap<>();
@@ -105,6 +110,7 @@ public class Expect {
             for (var e : c.tiles().entrySet()) {
                 int k = e.getKey();
                 String pos = (cx * 16 + (k >> 12)) + " " + (k & 255) + " " + (cz * 16 + (k >> 8 & 15));
+                if (e.getValue() instanceof OldTile.Skull k) out.append("K ").append(pos).append(' ').append(k.type()).append(' ').append(k.rotation() & 15).append('\n');
                 if (e.getValue() instanceof OldTile.Spawner s) out.append("S ").append(pos).append(' ').append(s.mob()).append('\n');
                 if (e.getValue() instanceof OldTile.Dispenser t) out.append("C ").append(pos).append(' ').append(Arrays.stream(t.slots()).filter(Objects::nonNull).count()).append('\n');
                 if (e.getValue() instanceof OldTile.Chest t) out.append("C ").append(pos).append(' ').append(Arrays.stream(t.slots()).filter(Objects::nonNull).count()).append('\n');

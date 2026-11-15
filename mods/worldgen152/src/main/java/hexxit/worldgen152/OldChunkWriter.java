@@ -93,6 +93,13 @@ final class OldChunkWriter {
             int key = entry.getKey();
             pos.set(minX + (key >> 12), key & 255, minZ + (key >> 8 & 15));
             BlockState state = chunk.getBlockState(pos);
+            if (entry.getValue() instanceof OldTile.Skull skull && state.is(Blocks.SKELETON_SKULL)) {
+                // a floor skull (metadata 1): kind and rotation lived in the tile entity; the rotation was stored
+                // as a byte and drawn as rotation * 360 / 16, so only its lowest four bits count
+                state = SKULLS[Math.floorMod(skull.type(), SKULLS.length)].defaultBlockState()
+                        .setValue(BlockStateProperties.ROTATION_16, skull.rotation() & 15);
+                chunk.setBlockState(pos, state);
+            }
             if (!(state.getBlock() instanceof EntityBlock entityBlock)) {
                 continue;
             }
@@ -118,6 +125,10 @@ final class OldChunkWriter {
             }
         }
     }
+
+    /** TileEntitySkull.skullType 0 to 4. */
+    private static final Block[] SKULLS = {Blocks.SKELETON_SKULL, Blocks.WITHER_SKELETON_SKULL, Blocks.ZOMBIE_HEAD, Blocks.PLAYER_HEAD,
+            Blocks.CREEPER_HEAD};
 
     private static void fill(Container container, OldStack[] slots, RegistryAccess registries) {
         for (int slot = 0; slot < slots.length && slot < container.getContainerSize(); slot++) {

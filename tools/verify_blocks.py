@@ -26,7 +26,15 @@ SIMPLE = {0: 'air', 1: 'stone', 2: 'grass_block', 3: 'dirt', 4: 'cobblestone', 7
           30: 'cobweb', 46: 'tnt', 47: 'bookshelf', 52: 'spawner', 58: 'crafting_table', 70: 'stone_pressure_plate',
           72: 'oak_pressure_plate', 85: 'oak_fence', 101: 'iron_bars', 102: 'glass_pane', 56: 'diamond_ore', 73: 'redstone_ore', 79: 'ice', 80: 'snow_block', 81: 'cactus', 82: 'clay',
           83: 'sugar_cane', 110: 'mycelium', 111: 'lily_pad', 129: 'emerald_ore', 103: 'melon'}
-MODS = {254: 'extrabiomesxl:red_rock', 255: 'extrabiomesxl:cracked_sand'}
+MODS = {254: 'extrabiomesxl:red_rock', 255: 'extrabiomesxl:cracked_sand', 1552: 'wildcaves3:bone_pile'}
+# Wild Caves 3: one block per metadata value
+PIECES = ['stalactite_1', 'stalactite_2', 'stalactite_3', 'stalactite_4', 'stalactite_connection_1', 'stalactite_connection_2',
+          'stalactite_connection_3', 'stalactite_connection_4', 'stalactite_end', 'stalagmite_end', 'stalagmite_1', 'stalagmite_2',
+          'stalagmite_3']
+WILDCAVES = {1554: PIECES, 1553: ['sandstone_' + p for p in PIECES], 1550: ['icicle_1', 'icicle_2', 'icicle_3'],
+             1551: ['glowcap_1', 'glowcap_2', 'glowcap_3', 'gloweed', 'glowcap_4_top', 'glowcap_4_bottom', 'iceshroom_1', 'iceshroom_2',
+                    'iceshroom_3', 'iceshroom_4']}
+SKULLS = ['skeleton_skull', 'wither_skeleton_skull', 'zombie_head', 'player_head', 'creeper_head']
 WOOD = ['oak', 'spruce', 'birch', 'jungle']
 FACING = ['south', 'west', 'north', 'east']
 MOBS = {'Skeleton': 'minecraft:skeleton', 'Zombie': 'minecraft:zombie', 'Spider': 'minecraft:spider',
@@ -75,10 +83,25 @@ def ebxl(bid, meta):
     return None
 
 
+def mod_meta(bid, meta):
+    """Blocks of mods whose metadata matters."""
+    if bid == 1290:  # offLawn sunflower: 0 lower, 1 upper half
+        return f'offlawn:sunflower[half={"upper" if meta == 1 else "lower"}]'
+    if bid == 144:  # skulls: 1 on the floor (kind and rotation in "K" lines), 2 to 5 on a wall
+        return 'minecraft:skeleton_skull' if meta < 2 else f'minecraft:skeleton_wall_skull[facing={SIDE[meta]}]'
+    if bid in WILDCAVES:
+        names = WILDCAVES[bid]
+        return 'wildcaves3:' + names[min(meta, len(names) - 1)]
+    return None
+
+
 def block(bid, meta):
     """Block (with the states that matter) a 1.5.2 id and metadata must have become."""
     if bid in MODS:
         return MODS[bid]
+    mod = mod_meta(bid, meta)
+    if mod:
+        return mod
     if bid >= 256:
         mod = ebxl(bid, meta)
         if mod:
@@ -172,7 +195,7 @@ def block(bid, meta):
 
 def main():
     lines = [l.split() for l in open(sys.argv[1]) if l.strip()]
-    chunks = sorted({(int(l[0]) >> 4, int(l[2]) >> 4) for l in lines if l[0][0] not in 'BSCE'})
+    chunks = sorted({(int(l[0]) >> 4, int(l[2]) >> 4) for l in lines if l[0][0] not in 'BSCEK'})
     with socket.create_connection(('127.0.0.1', 25575), timeout=300) as s:
         if packet(s, 1, 3, 'hexxit')[0] == -1:
             raise SystemExit('rcon: wrong password')
@@ -220,6 +243,12 @@ def main():
                 else:
                     tbad += 1
                     report('ENTITY MISMATCH', ' '.join(l))
+            elif l[0] == 'K':
+                if test(f'block {l[1]} {l[2]} {l[3]} minecraft:{SKULLS[int(l[4])]}[rotation={l[5]}]'):
+                    tok += 1
+                else:
+                    tbad += 1
+                    report('SKULL MISMATCH', ' '.join(l))
             elif l[0] == 'C':
                 n = int(l[4])
                 pos = f'{l[1]} {l[2]} {l[3]}'

@@ -1,0 +1,6 @@
+# path in OffLawn-1.5.1.zip -> path in the ported jar
+textures/blocks/offlawn.lawn.png -> assets/offlawn/textures/block/lawn.png
+textures/blocks/offlawn.beanstalk.png -> assets/offlawn/textures/block/beanstalk.png
+textures/blocks/offlawn.sunflower-bottom.png -> assets/offlawn/textures/block/sunflower_bottom.png
+textures/blocks/offlawn.sunflower-top.png -> assets/offlawn/textures/block/sunflower_top.png
+textures/items/offlawn.sunflowerseed.png -> assets/offlawn/textures/item/sunflower_seed.png
