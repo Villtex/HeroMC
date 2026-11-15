@@ -38,21 +38,26 @@ Neuer Mod mit Weltgenerierung heißt deshalb auch: seine Kern-Klasse in `tools/e
 ## Generator anmelden
 
 ```java
-// IWorldGenerator: läuft nach der Vanilla-Population des Chunks
-OldTerrainGen.registerWorldGenerator((random, chunkX, chunkZ, world) -> {
+// IWorldGenerator: läuft nach der Vanilla-Population des Chunks. Erstes Argument: FML-ID des Originals (@Mod modid)
+OldTerrainGen.registerWorldGenerator("WildCaves3", (random, chunkX, chunkZ, world) -> {
     int x = chunkX * 16 + random.nextInt(16);   // Koordinaten und Zufallsaufrufe 1:1 aus dem Original
     new OldOreGens.Minable(BLOCK_ID, META, 8, 1).generate(world, random, x, y, z);
 });
 
 // TerrainGen-Events; false = Result.DENY (Vanilla-Schritt fällt aus und zieht keine Zufallszahlen)
-OldTerrainGen.addListener(new OldTerrainGen.Listener() {
+OldTerrainGen.addListener("ExtrabiomesXL", new OldTerrainGen.Listener() {
     @Override public boolean generateOre(OldWorld w, Random r, int x, int z, OldTerrainGen.Ore type) { ... }
 });
 ```
 
 - **Reihenfolge = Ladereihenfolge der Mods im Original.** Alle Generatoren eines Chunks teilen sich *eine*
   Zufallsfolge (`fmlRandom`, einmal pro Chunk gesetzt). Ein Generator mehr oder in anderer Reihenfolge verschiebt
-  alle folgenden. Die Ladereihenfolge des Originals steht in `docs/PLAN.md` unter Teil 2.
+  alle folgenden. `OldTerrainGen` sortiert nach der FML-ID (`OldTerrainGen.LOAD_ORDER`, aus dem FML-Log), weil
+  NeoForge die Mod-Konstruktoren parallel ausführt; innerhalb eines Mods zählt die Anmeldereihenfolge. Folge: Jeder
+  neue Generator verschiebt die Funde der späteren Mods (Sonnenblumen-Chunks von offLawn lagen nach Hexxit Gear
+  woanders). Kandidaten-Chunks deshalb erst suchen, wenn alle Generatoren des Teils drin sind.
+- `new Random()` ohne Seed im Original (Wild Caves `Utils.weightedChoise`): nicht seed-fest. Ersatz: eine `Random`
+  je Chunk aus Welt-Seed und Chunk (`WildCavesGen.choices`), getrennt von der gemeinsamen Folge; unter „Offen“ notieren.
 - Eigene `Random`-Objekte des Originals (`new Random(seed)`, `world.rand`) genau nachbauen. `world.rand` war nicht
   seed-fest: dafür einen festen Ersatz wählen und im Plan unter „Offen“ notieren.
 - `MathHelper.sin/cos` → `OldMath.sin/cos` (Tabelle), `floor_double` → `OldMath.floor`. `Math.sin` nur, wo das
@@ -94,8 +99,10 @@ keine Felder für laufende Daten, alles über Parameter.
 ## Truhen und Spawner
 
 `world.setBlock(x, y, z, 54)` und danach `world.setTile(x, y, z, chest)`; Inhalt über `OldLoot.Category.fill`.
-Neue Beute: `OldLoot.DUNGEON_CHEST.add(new OldStack(itemId, damage, 1), min, max, weight)` und die Übersetzung in
-`OldGameIds.registerItem`. Dungeon-Mobs: `OldLoot.addDungeonMob` und `OldGameIds.registerEntity`.
+Neue Beute: `OldLoot.DUNGEON_CHEST.add("FmlId", new OldStack(itemId, damage, 1), min, max, weight)` (Einträge der
+Mods folgen den Vanilla-Einträgen in Ladereihenfolge; die Reihenfolge entscheidet die gewichtete Ziehung) und die
+Übersetzung in `OldGameIds.registerItem`. Schädel: `setBlock(x, y, z, 144, 1)` + `setTile(..., new OldTile.Skull(art,
+drehung))`, `verify_blocks.py` prüft sie über die `K`-Zeilen. Dungeon-Mobs: `OldLoot.addDungeonMob` und `OldGameIds.registerEntity`.
 
 ## Strukturen
 
@@ -131,8 +138,10 @@ Das prüft Kern gegen Spiel. Kern gegen Original prüft `python3 tools/compare_o
 die Abweichungen je Block-ID. Nach dem Port eines Mod-Generators müssen dessen IDs dort aus der Liste fallen.
 Welt erzeugen: `tools/original_server.sh hexxit 420` (Einrichtung in `docs/PLAN.md`, Teil 2).
 
-Seltenes fehlt meist in der `find`-Auswahl: Kandidaten mit einer kleinen Klasse gegen `BiomeLayout` suchen, an
-`expect.sh` geben, in der Ausgabe nach der ID suchen (`awk '$4==917'`). Manche Originale fragen das Biom an (x, x).
+Seltenes fehlt meist in der `find`-Auswahl: Kandidaten mit einer kleinen Klasse gegen `BiomeLayout` suchen
+(`layout.biomeAt(cx * 16, cz * 16).name` in einer Schleife; mit `expect.sh`s javac-Zeile übersetzen), an
+`expect.sh` geben, in der Ausgabe nach der ID suchen (`awk '$4==917'`). 1.500 Chunks rechnet `expect.sh` in etwa
+30 s. Generatoren mit `y = nextInt(128)` (offLawn) treffen die Oberfläche selten: etwa 1 Fund je 50 passende Chunks. Manche Originale fragen das Biom an (x, x).
 Testserver braucht `pause-when-empty-seconds=-1`, sonst lädt er ohne Spieler nach 60 s keine Chunks mehr.
 
 ## Stolperfallen
@@ -157,5 +166,7 @@ Testserver braucht `pause-when-empty-seconds=-1`, sonst lädt er ohne Spieler na
   `OldBlockStates` und `verify_blocks.py`, sonst stürzt der Server beim Generieren ab.
 - **26.3-Tags:** `grass_block` steht nicht mehr in `#minecraft:dirt` (`#minecraft:grass_blocks`). Böden für
   Pflanzen und Setzlinge ausdrücklich nennen.
+- **Ranken ohne Halt** (Wild Caves hängt sie in die Luft) entfernt in 26.3 das erste Nachbar-Update, etwa wenn eine
+  Schiene nebenan nachbearbeitet wird; `verify_blocks.py` zählt sie als „vines without hold gone“.
 - **Vergleich am Server:** Der Abgleich stellt `random_tick_speed` auf 0. Blöcke, die fließendes Wasser erreicht,
   zählt er getrennt und nicht als Abweichung.

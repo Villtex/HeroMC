@@ -41,7 +41,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 2 | Vanilla-1.5.2-Strukturen, Spawnpunkt, Abgleich mit Original-Welt | ~6.000 | 1 | Fable 5.2, extra hoch | ✅ erledigt |
 | 3 | JEI-Grundlage, ExtrabiomesXL fertig (Bäume, Pflanzen, Holz, Scarecrow) | ~9.000 | 1 | Opus 5.5, mittel | ✅ erledigt |
 | 4 | Kleine Mods: Obsidian Plates, Chest Transporter, ArmorBar, BuffBar, Back Tools, Soul Shards | ~5.000 | 3 | Sonnet 5.5, niedrig | ✅ erledigt |
-| 5 | Hexxit Gear, More Bows, Enchanting Plus, offLawn, Wild Caves 3 | ~13.000 | 1, 3 | Opus 5.5, mittel | offen |
+| 5 | Hexxit Gear, More Bows, Enchanting Plus, offLawn, Wild Caves 3 | ~13.000 | 1, 3 | Opus 5.5, mittel | ✅ erledigt |
 | 6 | bspkrsCore, TreeCapitator, Inventory Tweaks, Custom LAN Ports | ~19.000 | 3 | Opus 5.5, mittel | offen |
 | 7 | Natura | ~20.000 | 1, 3 | Opus 5.5, mittel | offen |
 | 8 | Artifice, CoFHCore (nur was das Pack nutzt) | ~27.000 | 1, 3 | Opus 5.5, mittel | offen |
@@ -343,6 +343,68 @@ Drei davon sind reine Client-HUDs: ArmorBar, BuffBar und Back Tools. Back Tools 
   - Truhen-Loot
 - Enchanting Plus: eigene GUI und Rezepttyp → JEI.
 - offLawn (Sonnenblumen) und Wild Caves 3 (Höhlen-Deko) hängen sich in `worldgen152` ein.
+
+**Status: erledigt.** Fünf Teilprojekte: `hexxitgear`, `morebows`, `eplus` (`mods/enchantingplus`), `offlawn`,
+`wildcaves3`. Werte der Pack-Konfiguration als Standard.
+
+- **worldgen152, Reihenfolge**: NeoForge baut die Mods parallel. `OldTerrainGen.registerWorldGenerator`, `addListener`
+  und `OldLoot.Category.add` nehmen deshalb als erstes Argument die FML-ID des Originals und ordnen nach der
+  Ladereihenfolge des Hexxit-Servers (`OldTerrainGen.LOAD_ORDER`), innerhalb eines Mods nach Anmeldung. Neu im Kern:
+  Schädel (Block 144, `OldTile.Skull` mit Art und Drehung, `OldChunkWriter` setzt den Kopf), Item 397.
+- **Hexxit Gear**: Hexical Essence und Diamond, drei Sets (Tribal, Scale, Thief) mit den Werten der Diamantrüstung,
+  eigene Helm-Modelle über `IClientItemExtensions`. Set-Boni wie im Original alle 21 Ticks geprüft: Tribal Stärke I,
+  Nachtsicht, Sprungkraft III; Scale Stärke I, Feuerresistenz, Resistenz I; Thief Stärke I, Nachtsicht, Lauftempo 0,2
+  und Lufttempo 0,1. Hexbiscus (ID 2011) mit Generator `HGWorldGen`, droppt Hexical Essence. 13 Rezepte, JEI-Infoseiten.
+- **More Bows**: acht Bögen mit Haltbarkeit, Spannzeit, Schadensfaktoren und Sonderschüssen des Originals (Blazing:
+  Feuer 70 s; Legia: bis zu drei Pfeile; Ender: Salve aus sechs Pfeilen; Frost: eigene Entity `morebows:frost_arrow`
+  mit Langsamkeit III, Eis und Schnee am Einschlag). Spannstufen als Item-Modell, Vanilla-Verzauberungen über Tags.
+- **Enchanting Plus**: kein eigener Block, wie im Original ersetzt es den Verzauberungstisch: Rechtsklick öffnet die
+  GUI von `GuiModTable` (Liste mit Stufen-Schiebern, Kosten, Reparatur, Wechsel zur Vanilla-GUI). Kostenformeln aus
+  `ContainerEnchantTable`, Bücherregale, Zurücknehmen nur für auf dem Tisch erreichte Stufen (`eplus:restrictions`).
+  Pakete als Payloads, der Server prüft alles nach. Server-Werte als `SYNCED`-Konfiguration, `/eplus`-Befehl, JEI-Kategorie
+  mit Kosten je Stufe. Angeboten werden die 22 Verzauberungen von 1.5.2 und Soul Stealer (`#eplus:table`).
+- **offLawn**: Rasen (grasfarben, breitet sich nicht aus, bleibt unter Bäumen, Hacke macht Ackerboden, Knochenmehl wie
+  `LawnBonemeal`), Sonnenblume (zwei Blöcke, Licht 8 oder Himmel) mit essbarem Samen (2 Hunger), Bohnenranke
+  (kletterbar, hält am Boden oder an der Decke, Verlängern mit Rechtsklick, Scheren zehnmal schneller). Generator
+  `OffLawnGen` (1290): in den häufigen Biomen 1 in 10, in den normalen 1 in 32 Chunks ein Versuch.
+- **Wild Caves 3**: 40 Blöcke (je Metadatenwert einer): Stein- und Sandstein-Stalaktiten/-Stalagmiten, Eiszapfen,
+  Glowcaps, Glow weed, Iceshrooms, Bone pile. Halt, Formen und Drops wie im Original. Generator `WildCavesGen` mit den
+  fünf Biom-Varianten (gefroren, trocken, Dschungel, normal, feucht), Fossilien als zweiter Generator, Schädel in der
+  Beute von Dungeon, Minenschacht und Festung.
+- **Prüfung**: `clean pack` grün; Server bis `Done` ohne Fehler und Warnungen der neuen Mods. Kern gegen Server
+  (Seed 1234, frische Welt): 49 Biom-Chunks (157.943 Blöcke), 36 Struktur-Chunks (119.058 Blöcke, 137 Truhen,
+  Spawner, Schädel, Entitäten), 28 Chunks mit Sonnenblumen und Hexbiscus (72.274 Blöcke): 0 Abweichungen. Per RCON:
+  Stalaktit, Eiszapfen, Glowcap und Bohnenranke brechen ohne Halt (mit Drop), Beutetabellen (Samen, Bone pile,
+  Hexical Essence), Frostpfeil, `/eplus`.
+
+**Offen / bewusst abweichend:**
+
+- Wild Caves 3 zog viele Entscheidungen mit ungeseedetem `new Random()`; das Original war also nicht seed-fest. Hier
+  kommen diese Züge aus einer Folge je Chunk (`WildCavesGen.choices`, Welt-Seed und Chunk). Ein Abgleich mit einer
+  Original-Welt kann für Wild Caves deshalb nicht übereinstimmen.
+- Wild Caves: Lücke von einem Block setzte im Original das Stein-Stück an (x, y, y) statt (x, y, z), in einen fernen
+  Chunk; das entfällt. Glowcaps in „normalen“ Höhlen gibt es wie im Original nie (das Feld wurde nie gesetzt), der
+  Dschungel nimmt die Ranken-Wahrscheinlichkeit für Glowcaps, „feucht“ macht im Stalaktiten-Fall Schädel. Leuchtkraft
+  der Flora 6 (das Original setzte 150, gespeichert wurde 150 & 15). Ranken hängen wie im Original ohne Halt in der
+  Luft; das erste Nachbar-Update in 26.3 entfernt sie (zählt `verify_blocks.py` getrennt).
+- offLawn: Statt der „falschen“ Pflanzen des Originals stehen die normalen Pflanzen auf dem Rasen (Tags
+  `supports_vegetation`, `supports_sugar_cane`, `cannot_replace_below_tree_trunk`, Riesenpilze). Die Hacke braucht
+  wie bei Erde Luft darüber (Tag `turns_into_farmland`). Auf der Bohnenranke wachsen alle kleinen Blumen (1.5.2 kannte
+  nur zwei), gesetzt wie normale Blöcke auf die Oberseite.
+- Hexxit Gear: Umhänge entfallen (kamen von einer abgeschalteten Webseite), damit auch das Netzwerk. Set-Boni zählen
+  je Spieler (Original: ein Zähler für alle). Thief-Lufttempo einen Tick versetzt. Effekte wirken wie heute. Babys
+  tragen die Rüstung unsichtbar. Truhen-Loot hat der Mod selbst nicht; die Teile kommen über Battle Towers und Infernal
+  Mobs (alte IDs in `OldGameIds` angemeldet).
+- More Bows: Ender Bow ohne das 3-Sekunden-Einfrieren des Servers; der Frostpfeil ist jetzt eine richtige Entity (im
+  Original für den Client unsichtbar und nicht gespeichert); kein zweiter Treffer des Frostpfeils; Legia-Versatz unter
+  einem Block.
+- Enchanting Plus: Licht 15 des Vanilla-Tischs per Reflection (ungeprüft), Partikel über eine Abtastung im Client,
+  neuere Vanilla-Verzauberungen (Mending usw.) nicht im Angebot, strengere Server-Prüfung, `/eplus changelog`,
+  Thaumcraft- und TConstruct-Plugins entfallen.
+- Nur mit Spieler prüfbar: Set-Boni, Schießen aller Bögen, Rasen hacken und düngen, Samen pflanzen, Bohnenranke
+  verlängern, die Enchanting-Plus-GUI.
+- Client-Prüfung offen: alle Modelle und Texturen (Helme, Bögen mit Spannstufen, Frostpfeil, Stalaktiten, Glowcaps,
+  Sonnenblume, Rasenfarbe), Enchanting-Plus-GUI, JEI-Seiten und -Kategorie, Licht der Glowcaps und des Tischs.
 
 ## Teil 6 – bspkrsCore, TreeCapitator, Inventory Tweaks, Custom LAN Ports
 

@@ -212,7 +212,18 @@ def main():
             packet(s, 2, 2, f'forceload add {cx * 16} {cz * 16}')
             while not test(f'loaded {cx * 16} 64 {cz * 16}'):
                 time.sleep(0.2)
-        ok = bad = flowed = bok = bbad = tok = tbad = shown = 0
+        ok = bad = flowed = loose = bok = bbad = tok = tbad = shown = 0
+
+
+        def unsupported_vine(x, y, z, meta):
+            """A vine (Wild Caves 3 hangs them in the air) none of whose sides has a block behind it."""
+            for bit, (dx, dz) in ((1, (0, 1)), (2, (-1, 0)), (4, (0, -1)), (8, (1, 0))):
+                if meta & bit and not test(f'block {x + dx} {y} {z + dz} #minecraft:air') \
+                        and not test(f'block {x + dx} {y} {z + dz} minecraft:vine') \
+                        and not test(f'block {x + dx} {y} {z + dz} #minecraft:rails') \
+                        and not test(f'block {x + dx} {y} {z + dz} minecraft:water'):
+                    return False
+            return True
 
         def report(*what):
             nonlocal shown
@@ -267,6 +278,11 @@ def main():
                         test(f'block {x} {y} {z} minecraft:water') and not test(f'block {x} {y} {z} minecraft:water[level=0]')
                         or test(f'block {x} {y} {z} minecraft:lava') and not test(f'block {x} {y} {z} minecraft:lava[level=0]')):
                     flowed += 1
+                elif bid == 106 and (test(f'block {x} {y} {z} #minecraft:air') or test(f'block {x} {y} {z} minecraft:vine[up=true]')) \
+                        and unsupported_vine(x, y, z, meta):
+                    # a vine without hold on its side: the first neighbour update removes it, or leaves only the part
+                    # under the ceiling (1.5.2 did the same once a neighbour changed)
+                    loose += 1
                 elif bid in (10, 11) and any(test(f'block {x} {y} {z} minecraft:{b}') for b in ('obsidian', 'cobblestone', 'stone')):
                     flowed += 1   # lava that flowing water has reached
                 else:
@@ -275,7 +291,7 @@ def main():
         for cx, cz in chunks:
             packet(s, 2, 2, f'forceload remove {cx * 16} {cz * 16}')
         packet(s, 2, 2, 'tick unfreeze')
-    print(f'blocks: {ok} match, {bad} differ, {flowed} reached by flowing liquid; biomes: {bok} match, {bbad} differ; '
+    print(f'blocks: {ok} match, {bad} differ, {flowed} reached by flowing liquid, {loose} vines without hold gone; biomes: {bok} match, {bbad} differ; '
           f'spawners/chests/entities: {tok} match, {tbad} differ; {len(chunks)} chunks')
     sys.exit(1 if bad or bbad or tbad else 0)
 

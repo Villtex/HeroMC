@@ -37,7 +37,8 @@ Der Port ist in Teile aufgeteilt, die je in eine Session passen: [`docs/PLAN.md`
 | `gradle/neoforge.mods.toml` | gemeinsame Vorlage für die Mod-Metadaten |
 | `docs/JEI.md` | Vorlage für das JEI-Plugin eines Mods (JEI ersetzt NEI) |
 | `.claude/skills/worldgen152/` | Projekt-Skill: Weltgenerierung eines Mods in `worldgen152` einhängen, Setzlinge, Prüfung |
-| `.claude/skills/client-render-263/` | Projekt-Skill: HUD-Ebenen, Gegenstände am Spielermodell, durchscheinende Blockmodelle, Rechtsklick vor dem Block abfangen (26.3) |
+| `.claude/skills/client-render-263/` | Projekt-Skill: HUD-Ebenen, Gegenstände am Spielermodell, Rüstungen mit eigenen Helm-Modellen, durchscheinende Blockmodelle, Rechtsklick vor dem Block abfangen (26.3) |
+| `.claude/skills/menu-gui-263/` | Projekt-Skill: eigene GUI mit Container (Menü, Screen, Pakete Client → Server, Server-Konfiguration für die Vorschau im Client) |
 
 ## Bauen und Starten
 
@@ -114,6 +115,10 @@ Enthalten sind auch die Strukturen von 1.5.2, die Spawnsuche und die Dekoration 
 ihr stimmen für Seed 1234 je ein Chunk aller 49 Biome (150.400 Blöcke) und Chunks an Quicksand und einer Legend
 Oak (30.158 Blöcke) mit dem Kern überein.
 
+Mit Hexxit Gear, offLawn und Wild Caves 3 (Teil 5) stimmen für Seed 1234 je ein Chunk aller 49 Biome (157.943 Blöcke),
+36 Chunks an Strukturen (119.058 Blöcke, 137 Truhen, Spawner, Schädel und Entitäten) und Chunks mit Sonnenblumen und
+Hexbiscus (72.274 Blöcke) mit dem Kern überein.
+
 ## Wann ein Mod als portiert gilt
 
 1. sauberer Build (`./gradlew clean pack`)
@@ -136,16 +141,16 @@ Oak (30.158 Blöcke) mit dem Kern überein.
 | Obsidian Pressure Plates | `obsidiplates` 1.5.0.13 | Myrathi | 752 | ✅ portiert, am Server verifiziert (Client-Prüfung offen) |
 | Back Tools | `backtools` 1.5.2.v01 | — | 956 | ✅ portiert (nur Client, Client-Prüfung offen) |
 | Soul Shards | `soulshards` 1.36 | ShadwDrgn | 1.503 | ✅ portiert, am Server verifiziert (Spieler-Aktionen und Client-Prüfung offen) |
-| Hexxit Gear | `hexxitgear` 1.0.23 | sct | 1.536 | offen |
+| Hexxit Gear | `hexxitgear` 1.0.23 | sct | 1.536 | ✅ portiert, am Server verifiziert (Set-Boni mit Spieler und Client-Prüfung offen) |
 | Battle Towers | `battletowers` 1.5.2 | AtomicStryker | 1.842 | offen |
-| offLawn | `offlawn` 1.5.1.r02 | Rhodox, Slinky | 1.850 | offen |
-| Wild Caves 3 | `wildcaves3` 0.4.2 | Alexmania | 2.094 | offen |
+| offLawn | `offlawn` 1.5.1.r02 | Rhodox, Slinky | 1.850 | ✅ portiert, am Server verifiziert (Spieler-Aktionen und Client-Prüfung offen) |
+| Wild Caves 3 | `wildcaves3` 0.4.2 | Alexmania | 2.094 | ✅ portiert, am Server verifiziert (Client-Prüfung offen) |
 | Backpacks | `backpacks` 1.12.13 | Eydamos | 2.331 | offen |
 | Asgard Shield | `asgardshield` 2.0.4 | Jade Knightblazer | 2.842 | offen |
 | Ruins | `ruins` 1.5.2 | d00dv4d3r, kolt666, AtomicStryker | 2.951 | offen |
 | bspkrsCore | `bspkrscore` 2.09 | DaftPVF, bspkrs | 3.066 | offen |
-| Enchanting Plus | `enchantingplus` 1.15.4 | xkyouchoux, odininon, GnR Slash | 3.342 | offen |
-| More Bows | `morebows` 1.5.2.2 | iDiamondhunter | 4.156 | offen |
+| Enchanting Plus | `enchantingplus` 1.15.4 | xkyouchoux, odininon, GnR Slash | 3.342 | ✅ portiert, Server startet (GUI nur im Client prüfbar) |
+| More Bows | `morebows` 1.5.2.2 | iDiamondhunter | 4.156 | ✅ portiert, Server startet (Schießen und Client-Prüfung offen) |
 | TreeCapitator | `treecapitator` 1.5.2.r14 | DaftPVF, bspkrs, Lunatrius | 4.498 | offen |
 | Custom LAN Ports | `customport` 1.5.2 | CptHunter | 4.521 | offen |
 | qCraft | `qcraft` 1.0.1 | Daniel Ratcliffe, TeacherGaming | 5.221 | offen |

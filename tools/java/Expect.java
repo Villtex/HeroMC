@@ -111,7 +111,7 @@ public class Expect {
             for (var e : c.tiles().entrySet()) {
                 int k = e.getKey();
                 String pos = (cx * 16 + (k >> 12)) + " " + (k & 255) + " " + (cz * 16 + (k >> 8 & 15));
-                if (e.getValue() instanceof OldTile.Skull k) out.append("K ").append(pos).append(' ').append(k.type()).append(' ').append(k.rotation() & 15).append('\n');
+                if (e.getValue() instanceof OldTile.Skull sk) out.append("K ").append(pos).append(' ').append(sk.type()).append(' ').append(sk.rotation() & 15).append('\n');
                 if (e.getValue() instanceof OldTile.Spawner s) out.append("S ").append(pos).append(' ').append(s.mob()).append('\n');
                 if (e.getValue() instanceof OldTile.Dispenser t) out.append("C ").append(pos).append(' ').append(Arrays.stream(t.slots()).filter(Objects::nonNull).count()).append('\n');
                 if (e.getValue() instanceof OldTile.Chest t) out.append("C ").append(pos).append(' ').append(Arrays.stream(t.slots()).filter(Objects::nonNull).count()).append('\n');
