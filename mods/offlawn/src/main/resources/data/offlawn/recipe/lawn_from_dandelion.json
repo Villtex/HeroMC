@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "minecraft:dirt",
+    "minecraft:dandelion"
+  ],
+  "result": {
+    "id": "offlawn:lawn",
+    "count": 1
+  }
+}

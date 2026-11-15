@@ -43,6 +43,12 @@ public final class OldGameIds {
         item(2256, Items.MUSIC_DISC_13);
         item(2257, Items.MUSIC_DISC_CAT);
         registerItem(351, 3, BuiltInRegistries.ITEM.getKey(Items.COCOA_BEANS).toString());
+        // skulls (ItemSkull damage = kind): loot of Wild Caves 3
+        registerItem(397, 0, BuiltInRegistries.ITEM.getKey(Items.SKELETON_SKULL).toString());
+        registerItem(397, 1, BuiltInRegistries.ITEM.getKey(Items.WITHER_SKELETON_SKULL).toString());
+        registerItem(397, 2, BuiltInRegistries.ITEM.getKey(Items.ZOMBIE_HEAD).toString());
+        registerItem(397, 3, BuiltInRegistries.ITEM.getKey(Items.PLAYER_HEAD).toString());
+        registerItem(397, 4, BuiltInRegistries.ITEM.getKey(Items.CREEPER_HEAD).toString());
         item(403, Items.ENCHANTED_BOOK);
         // loot of structures
         item(264, Items.DIAMOND);

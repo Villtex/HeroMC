@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "wildcaves3:block/stalactite_connection_1"
+  }
+}

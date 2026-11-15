@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "offlawn:block/sunflower_bottom"
+    },
+    "half=upper": {
+      "model": "offlawn:block/sunflower_top"
+    }
+  }
+}

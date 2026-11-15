@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "minecraft:vine",
+    "offlawn:sunflower_seed"
+  ],
+  "result": {
+    "id": "offlawn:beanstalk",
+    "count": 4
+  }
+}

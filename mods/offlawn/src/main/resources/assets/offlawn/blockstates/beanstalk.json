@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "hanging=false,standing=false": {
+      "model": "offlawn:block/beanstalk"
+    },
+    "hanging=false,standing=true": {
+      "model": "offlawn:block/beanstalk"
+    },
+    "hanging=true,standing=false": {
+      "model": "offlawn:block/beanstalk"
+    },
+    "hanging=true,standing=true": {
+      "model": "offlawn:block/beanstalk"
+    }
+  }
+}

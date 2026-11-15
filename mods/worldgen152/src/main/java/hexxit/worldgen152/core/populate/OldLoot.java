@@ -16,6 +16,8 @@ public final class OldLoot {
     /** One chest category of ChestGenHooks. */
     public static final class Category {
         private final List<Entry> entries = new ArrayList<>();
+        /** Load-order rank of the mod of each entry (-1 = vanilla), parallel to {@link #entries}. */
+        private final List<Integer> ranks = new ArrayList<>();
         private final int countMin;
         private final int countMax;
 
@@ -24,12 +26,41 @@ public final class OldLoot {
             this.countMax = countMax;
         }
 
+        /** A vanilla entry (ChestGenHooks' own table). */
         public synchronized void add(OldStack stack, int min, int max, int weight) {
-            this.entries.add(new Entry(stack, min, max, weight));
+            this.insert(-1, new Entry(stack, min, max, weight));
+        }
+
+        /**
+         * ChestGenHooks.addItem of the original mod {@code originalModId} (its FML mod id). Entries of mods follow
+         * the vanilla ones in the mod load order ({@link OldTerrainGen#LOAD_ORDER}), whatever order the NeoForge mod
+         * constructors run in; the order decides which item a weighted draw picks.
+         */
+        public synchronized void add(String originalModId, OldStack stack, int min, int max, int weight) {
+            int rank = OldTerrainGen.LOAD_ORDER.indexOf(originalModId);
+            if (rank < 0) {
+                throw new IllegalArgumentException("Unknown original mod id " + originalModId + " (see OldTerrainGen.LOAD_ORDER)");
+            }
+            this.insert(rank, new Entry(stack, min, max, weight));
+        }
+
+        private void insert(int rank, Entry entry) {
+            int at = this.ranks.size();
+            while (at > 0 && this.ranks.get(at - 1) > rank) {
+                at--;
+            }
+            this.ranks.add(at, rank);
+            this.entries.add(at, entry);
         }
 
         public synchronized void remove(int itemId, int damage) {
-            this.entries.removeIf(entry -> entry.stack.itemId() == itemId && (damage == 32767 || entry.stack.damage() == damage));
+            for (int i = this.entries.size() - 1; i >= 0; i--) {
+                Entry entry = this.entries.get(i);
+                if (entry.stack.itemId() == itemId && (damage == 32767 || entry.stack.damage() == damage)) {
+                    this.entries.remove(i);
+                    this.ranks.remove(i);
+                }
+            }
         }
 
         /** ChestGenHooks.getItems: enchanted books pick their enchantment here, once per chest. */

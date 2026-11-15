@@ -16,6 +16,10 @@ public sealed interface OldTile {
         }
     }
 
+    /** TileEntitySkull: skull type (0 skeleton, 1 wither skeleton, 2 zombie, 3 player, 4 creeper) and rotation. */
+    record Skull(int type, int rotation) implements OldTile {
+    }
+
     /** Mob spawner with the entity name of 1.5.2 ("Zombie", "Skeleton", ...). */
     record Spawner(String mob) implements OldTile {
     }

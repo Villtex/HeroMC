@@ -33,6 +33,8 @@ public final class OldBlockStates {
     private static final Direction[] CHEST_FACING = {Direction.NORTH, Direction.NORTH, Direction.NORTH, Direction.SOUTH, Direction.WEST, Direction.EAST};
     private static final Direction[] FACING = {Direction.DOWN, Direction.UP, Direction.NORTH, Direction.SOUTH, Direction.WEST, Direction.EAST};
     private static final Direction[] DIRECTION = {Direction.SOUTH, Direction.WEST, Direction.NORTH, Direction.EAST};
+    /** BlockSkull metadata 2 to 5: the side of the wall block it was put on = the direction it faces. */
+    private static final Direction[] SKULL_WALL = {Direction.NORTH, Direction.SOUTH, Direction.WEST, Direction.EAST};
 
     static {
         block(1, Blocks.STONE);
@@ -96,6 +98,10 @@ public final class OldBlockStates {
         registerMeta(99, meta -> hugeMushroom(Blocks.BROWN_MUSHROOM_BLOCK, meta));
         registerMeta(100, meta -> hugeMushroom(Blocks.RED_MUSHROOM_BLOCK, meta));
         // vine metadata: bit 1 south, 2 west, 4 north, 8 east - the side of the block it hangs on
+        // skulls: metadata 1 stands on the floor (kind and rotation come from the tile, OldChunkWriter), 2 to 5 hang on walls
+        registerMeta(144, meta -> meta >= 2 && meta <= 5
+                ? Blocks.SKELETON_WALL_SKULL.defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_FACING, SKULL_WALL[meta - 2])
+                : Blocks.SKELETON_SKULL.defaultBlockState());
         registerMeta(106, meta -> Blocks.VINE.defaultBlockState()
                 .setValue(BlockStateProperties.SOUTH, (meta & 1) != 0)
                 .setValue(BlockStateProperties.WEST, (meta & 2) != 0)

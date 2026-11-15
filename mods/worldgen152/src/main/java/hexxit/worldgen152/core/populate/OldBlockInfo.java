@@ -104,7 +104,7 @@ public final class OldBlockInfo {
         for (int id : new int[] {31, 32, 106}) {
             register(id, Material.VINE, false, 0, false);
         }
-        for (int id : new int[] {27, 28, 50, 55, 63, 65, 66, 68, 69, 70, 72, 75, 76, 77, 93, 94, 131, 132, 140, 143, 157}) {
+        for (int id : new int[] {27, 28, 50, 55, 63, 65, 66, 68, 69, 70, 72, 75, 76, 77, 93, 94, 131, 132, 140, 143, 144, 157}) {
             register(id, Material.CIRCUITS, false, 0, false);
         }
         for (int id : new int[] {64, 96}) {
