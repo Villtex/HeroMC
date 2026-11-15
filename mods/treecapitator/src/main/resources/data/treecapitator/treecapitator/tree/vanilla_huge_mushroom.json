@@ -1,0 +1,1 @@
+{ "logs": ["minecraft:mushroom_stem"], "leaves": ["minecraft:brown_mushroom_block", "minecraft:red_mushroom_block"], "maxHorLeafBreakDist": 6, "requireLeafDecayCheck": false }
