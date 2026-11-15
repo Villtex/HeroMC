@@ -1,0 +1,2 @@
+# path in EnchantingPlus-1.15.4.jar -> path in the ported jar
+assets/eplus/textures/gui/enchant.png -> assets/eplus/textures/gui/enchant.png
