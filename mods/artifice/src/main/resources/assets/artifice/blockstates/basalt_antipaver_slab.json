@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "artifice:block/basalt_antipaver_slab"
+    },
+    "type=double": {
+      "model": "artifice:block/basalt_antipaver_slab_double"
+    },
+    "type=top": {
+      "model": "artifice:block/basalt_antipaver_slab_top"
+    }
+  }
+}

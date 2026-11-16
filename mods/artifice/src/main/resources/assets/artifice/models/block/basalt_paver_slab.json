@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "artifice:block/basalt_paver",
+    "top": "artifice:block/basalt_paver",
+    "side": "artifice:block/basalt_paver_side"
+  }
+}

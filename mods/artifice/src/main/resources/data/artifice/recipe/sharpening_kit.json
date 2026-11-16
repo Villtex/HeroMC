@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": "minecraft:coal",
+    "Y": "minecraft:iron_ingot",
+    "Q": "minecraft:stone",
+    "Z": "minecraft:flint"
+  },
+  "pattern": [
+    " Z ",
+    "YXQ"
+  ],
+  "result": {
+    "count": 1,
+    "id": "artifice:sharpening_kit"
+  }
+}

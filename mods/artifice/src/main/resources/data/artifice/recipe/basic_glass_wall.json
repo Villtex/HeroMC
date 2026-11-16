@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "X": "artifice:basic_frame",
+    "Y": "minecraft:clay_ball",
+    "Z": "minecraft:glass"
+  },
+  "pattern": [
+    "YXY",
+    " Z "
+  ],
+  "result": {
+    "count": 2,
+    "id": "artifice:basic_glass_wall"
+  }
+}

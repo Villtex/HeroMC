@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "Q": "minecraft:string",
+    "Y": "minecraft:leather",
+    "X": "minecraft:bucket"
+  },
+  "pattern": [
+    "Q",
+    "Y",
+    "X"
+  ],
+  "result": {
+    "count": 1,
+    "id": "artifice:scuba_tank"
+  }
+}

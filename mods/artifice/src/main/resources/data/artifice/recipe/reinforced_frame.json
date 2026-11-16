@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "X": "#minecraft:planks",
+    "Y": "minecraft:iron_ingot"
+  },
+  "pattern": [
+    "XYX",
+    "YYY",
+    "XYX"
+  ],
+  "result": {
+    "count": 8,
+    "id": "artifice:reinforced_frame"
+  }
+}

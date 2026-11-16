@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "X": "artifice:advanced_frame",
+    "Y": "#c:ingots/steel"
+  },
+  "pattern": [
+    "YXY",
+    "YYY"
+  ],
+  "result": {
+    "count": 2,
+    "id": "artifice:advanced_blast_wall"
+  }
+}

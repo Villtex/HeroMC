@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "Y": "minecraft:glass",
+    "X": "minecraft:leather",
+    "Z": "minecraft:iron_ingot",
+    "Q": "minecraft:string"
+  },
+  "pattern": [
+    " Q ",
+    "XYX",
+    " Z "
+  ],
+  "result": {
+    "count": 1,
+    "id": "artifice:dive_kit"
+  }
+}

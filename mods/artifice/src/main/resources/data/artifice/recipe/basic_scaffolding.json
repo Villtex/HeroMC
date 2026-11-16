@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "X": "artifice:basic_frame",
+    "Y": "#minecraft:planks"
+  },
+  "pattern": [
+    "Y",
+    "X",
+    "Y"
+  ],
+  "result": {
+    "count": 8,
+    "id": "artifice:basic_scaffolding"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "values": [
+    "artifice:basalt_brick_slab",
+    "artifice:basalt_cobblestone_slab",
+    "artifice:basalt_paver_slab",
+    "artifice:basalt_antipaver_slab",
+    "artifice:marble_brick_slab",
+    "artifice:marble_cobblestone_slab",
+    "artifice:marble_paver_slab",
+    "artifice:marble_antipaver_slab"
+  ]
+}

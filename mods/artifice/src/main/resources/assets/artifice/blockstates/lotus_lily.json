@@ -1,0 +1,38 @@
+{
+  "variants": {
+    "open=true": [
+      {
+        "model": "artifice:block/lotus_lily"
+      },
+      {
+        "model": "artifice:block/lotus_lily",
+        "y": 90
+      },
+      {
+        "model": "artifice:block/lotus_lily",
+        "y": 180
+      },
+      {
+        "model": "artifice:block/lotus_lily",
+        "y": 270
+      }
+    ],
+    "open=false": [
+      {
+        "model": "artifice:block/lotus_lily_closed"
+      },
+      {
+        "model": "artifice:block/lotus_lily_closed",
+        "y": 90
+      },
+      {
+        "model": "artifice:block/lotus_lily_closed",
+        "y": 180
+      },
+      {
+        "model": "artifice:block/lotus_lily_closed",
+        "y": 270
+      }
+    ]
+  }
+}

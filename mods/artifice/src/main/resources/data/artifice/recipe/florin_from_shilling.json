@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "#c:coins/copper",
+    "#c:coins/copper",
+    "#c:coins/copper",
+    "#c:coins/copper"
+  ],
+  "result": {
+    "count": 1,
+    "id": "artifice:florin"
+  }
+}

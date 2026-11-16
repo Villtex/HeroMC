@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": "minecraft:iron_bars",
+    "Y": "minecraft:iron_ingot"
+  },
+  "pattern": [
+    "XXX",
+    " Y "
+  ],
+  "result": {
+    "count": 1,
+    "id": "artifice:armor_spikes"
+  }
+}

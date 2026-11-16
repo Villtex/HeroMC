@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": "minecraft:leather",
+    "Y": "minecraft:string"
+  },
+  "pattern": [
+    "YXY",
+    " X "
+  ],
+  "result": {
+    "count": 1,
+    "id": "artifice:laminated_padding"
+  }
+}

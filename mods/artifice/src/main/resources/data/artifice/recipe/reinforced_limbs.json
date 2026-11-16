@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": "#c:rods/wooden",
+    "Y": "minecraft:leather",
+    "Z": "minecraft:iron_ingot"
+  },
+  "pattern": [
+    "YXZ",
+    " X "
+  ],
+  "result": {
+    "count": 1,
+    "id": "artifice:reinforced_limbs"
+  }
+}

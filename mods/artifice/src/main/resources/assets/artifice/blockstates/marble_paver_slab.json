@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "artifice:block/marble_paver_slab"
+    },
+    "type=double": {
+      "model": "artifice:block/marble_paver_slab_double"
+    },
+    "type=top": {
+      "model": "artifice:block/marble_paver_slab_top"
+    }
+  }
+}

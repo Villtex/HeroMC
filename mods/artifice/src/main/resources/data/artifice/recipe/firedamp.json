@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "Q": "minecraft:bowl",
+    "Y": "minecraft:slime_ball",
+    "X": "minecraft:bone_meal"
+  },
+  "pattern": [
+    "X",
+    "Y",
+    "Q"
+  ],
+  "result": {
+    "count": 1,
+    "id": "artifice:firedamp"
+  }
+}

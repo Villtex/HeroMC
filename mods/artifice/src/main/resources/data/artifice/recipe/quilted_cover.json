@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": "#minecraft:wool",
+    "Y": "minecraft:string"
+  },
+  "pattern": [
+    "YXY",
+    " X "
+  ],
+  "result": {
+    "count": 1,
+    "id": "artifice:quilted_cover"
+  }
+}

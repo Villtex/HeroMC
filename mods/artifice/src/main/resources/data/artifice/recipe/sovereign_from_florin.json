@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "#c:coins/silver",
+    "#c:coins/silver",
+    "#c:coins/silver",
+    "#c:coins/silver"
+  ],
+  "result": {
+    "count": 1,
+    "id": "artifice:sovereign"
+  }
+}

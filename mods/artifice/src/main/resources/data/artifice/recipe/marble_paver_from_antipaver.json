@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "artifice:marble_antipaver"
+  ],
+  "result": {
+    "count": 1,
+    "id": "artifice:marble_paver"
+  }
+}

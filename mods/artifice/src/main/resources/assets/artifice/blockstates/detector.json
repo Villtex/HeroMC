@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "pulse=0": {
+      "model": "artifice:block/detector"
+    },
+    "pulse=1": {
+      "model": "artifice:block/detector"
+    },
+    "pulse=2": {
+      "model": "artifice:block/detector"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "X": "artifice:advanced_frame",
+    "Y": "#c:ingots/steel"
+  },
+  "pattern": [
+    "Y",
+    "X",
+    "Y"
+  ],
+  "result": {
+    "count": 8,
+    "id": "artifice:advanced_scaffolding"
+  }
+}

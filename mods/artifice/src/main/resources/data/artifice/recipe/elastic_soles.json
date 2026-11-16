@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": "minecraft:leather",
+    "Y": "minecraft:slime_ball"
+  },
+  "pattern": [
+    "X X",
+    "Y Y"
+  ],
+  "result": {
+    "count": 1,
+    "id": "artifice:elastic_soles"
+  }
+}

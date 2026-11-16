@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "#c:coins/gold",
+    "#c:coins/gold",
+    "#c:coins/gold",
+    "#c:coins/gold"
+  ],
+  "result": {
+    "count": 1,
+    "id": "artifice:marque"
+  }
+}

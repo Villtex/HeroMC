@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "X": "#c:rods/wooden",
+    "Y": "minecraft:cobblestone"
+  },
+  "pattern": [
+    " YX",
+    " XY",
+    "X  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "artifice:stone_sledge"
+  }
+}

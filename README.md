@@ -179,10 +179,10 @@ Prüfen: `tools/expect.sh 1234 nether structures 60 > expect.txt`, dann `verify_
 | LegendGear | `legendgear` 1.5.2 | NMcCoy | 11.590 | offen |
 | NEI Plugins | `nei-plugins` 1.0.9.3 | mistaqur | 11.790 | entfällt, stattdessen JEI |
 | Xeno's Reliquary | `xreliquary` 1.0.6d | x3n0ph0b3 | 11.868 | offen |
-| CoFHCore | `cofhcore` 1.5.2.5 | KingLemmingCoFH, Cynycal, Zeldo | 12.302 | offen |
+| CoFHCore | `cofhcore` 1.5.2.5 | KingLemmingCoFH, Cynycal, Zeldo | 12.302 | ✅ Teil 8 (Erz-Ersatz, flaches Grundgestein, Köpfe, `/cofh tps`) |
 | Immibis Core | `immibiscore` 55.1.6 | immibis | 12.512 | offen |
 | Immibis's Microblocks | `immibismicroblocks` 55.0.7 | immibis | 13.474 | offen |
-| Artifice | `artifice` 1.1.2.182 | Shukaro | 14.781 | offen |
+| Artifice | `artifice` 1.1.2.182 | Shukaro | 14.781 | ✅ Teil 8 |
 | CodeChickenCore | `codechickencore` 0.8.7.3 | ChickenBones | 14.969 | entfällt (Bibliothek von NEI) |
 | Not Enough Items | `nei` 1.5.2.28 | ChickenBones | 16.239 | entfällt, stattdessen JEI |
 | Natura | `natura` 2.1.5.1 | mDiyo | 20.430 | ✅ Teil 7, Nether ✅ Teil 7b |

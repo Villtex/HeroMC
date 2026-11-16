@@ -29,7 +29,8 @@ SIMPLE = {0: 'air', 1: 'stone', 2: 'grass_block', 3: 'dirt', 4: 'cobblestone', 7
           83: 'sugar_cane', 110: 'mycelium', 111: 'lily_pad', 129: 'emerald_ore', 103: 'melon',
           51: 'fire', 87: 'netherrack', 88: 'soul_sand', 89: 'glowstone', 112: 'nether_bricks', 113: 'nether_brick_fence',
           153: 'nether_quartz_ore'}
-MODS = {254: 'extrabiomesxl:red_rock', 255: 'extrabiomesxl:cracked_sand', 1552: 'wildcaves3:bone_pile', 2011: 'hexxitgear:hexbiscus'}
+MODS = {254: 'extrabiomesxl:red_rock', 255: 'extrabiomesxl:cracked_sand', 1552: 'wildcaves3:bone_pile', 2011: 'hexxitgear:hexbiscus',
+        1004: 'artifice:basalt', 1005: 'artifice:marble'}
 # Wild Caves 3: one block per metadata value
 PIECES = ['stalactite_1', 'stalactite_2', 'stalactite_3', 'stalactite_4', 'stalactite_connection_1', 'stalactite_connection_2',
           'stalactite_connection_3', 'stalactite_connection_4', 'stalactite_end', 'stalagmite_end', 'stalagmite_1', 'stalagmite_2',
@@ -176,6 +177,10 @@ def block(bid, meta):
     mod = natura(bid, meta)
     if mod:
         return mod
+    if bid == 1003:  # Artifice flora: lotus (3 open, 4 closed)
+        return 'artifice:' + {0: 'bluebell', 1: 'orchid', 2: 'iris'}.get(meta, f'lotus[open={"false" if meta == 4 else "true"}]')
+    if bid == 1014:  # Artifice lotus lily
+        return f'artifice:lotus_lily[open={"false" if meta == 1 else "true"}]'
     if bid in (10, 11) and meta:
         return f'minecraft:lava[level={meta}]'
     if bid in SIMPLE:

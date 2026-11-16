@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "Y": "#minecraft:planks",
+    "X": "#c:rods/wooden"
+  },
+  "pattern": [
+    " Y ",
+    "YXY",
+    " Y "
+  ],
+  "result": {
+    "count": 16,
+    "id": "artifice:box"
+  }
+}

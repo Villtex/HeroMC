@@ -45,7 +45,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 6 | bspkrsCore, TreeCapitator, Inventory Tweaks, Custom LAN Ports | ~19.000 | 3 | Opus 5.5, mittel | ✅ erledigt |
 | 7 | Natura | ~20.000 | 1, 3 | Opus 5.5, mittel | ✅ erledigt |
 | 7b | Natura-Nether: 1.5.2-Nether (Netherite-Gelände, Höhlen, Netherfestung) in worldgen152, Nether-Generatoren von Natura | ~3.000 | 2, 7 | Fable 5.2, hoch | ✅ erledigt |
-| 8 | Artifice, CoFHCore (nur was das Pack nutzt) | ~27.000 | 1, 3 | Opus 5.5, mittel | offen |
+| 8 | Artifice, CoFHCore (nur was das Pack nutzt) | ~27.000 | 1, 3 | Opus 5.5, mittel | ✅ erledigt |
 | 9 | Harken Scythe, Asgard Shield, Asgard Shield Addons | ~30.000 | 3 | Opus 5.5, mittel | offen |
 | 10 | Project Zulu A: Kreaturen | ~25.000 | 3 | Fable 5.2, hoch | offen |
 | 11 | Project Zulu B: Blöcke, Items, Weltgenerierung, Spawns | ~18.000 | 10 | Opus 5.5, mittel | offen |
@@ -583,6 +583,54 @@ eigener Teil.
 
 - Artifice: Steine, Marmor, Basalt, Lotus, Upgrade-Werkzeuge, Weltgeneration.
 - CoFHCore: nur, was das Pack tatsächlich nutzt, zum Beispiel die Erz-Konfiguration (`config/cofh`).
+
+**Status: erledigt.** Teilprojekte `mods/cofhcore` (`cofhcore`) und `mods/artifice` (`artifice`).
+
+- **CoFHCore/CoFH World** (`cofh.gen.CoFHWorldGen`, Kern ohne Spielklassen, in `expect.sh`): `ReplaceVanillaGeneration`
+  verweigert die acht Erz-Events des Dekorators und erzeugt die Erze selbst mit den Werten des Packs (`World.cfg`:
+  Erde 20×32, Kies 10×32, Kohle 20×16, Eisen 40×8, Gold 8×8, Redstone 64×7, Diamant 8×7, alle y 0–128, Lapis 8×6
+  um y 64±64). `FlatBedrock`: Grundgestein y 1–5 wird Stein, im Nether auch y 122–126, dort Netherrack.
+  Köpfe als Drop (`HeadDrops`, `Core.cfg`), `/cofh tps [o|a|<dim>]`, `/cofh help|version` mit dem Originaltext.
+  Für qCraft (Teil 17): `CoFHWorldGen.addCustomFeature("QOre", 2373, 0, 5, 4, 1, 24, false)` aufrufen; die Vorlage
+  aus `WorldCustomGen.txt` lief im Original trotz `AllowCustomGeneration=false` (die Option wurde nie gelesen).
+- **Artifice-Weltgenerierung** (`artifice.gen.ArtificeWorldGen`, in `expect.sh`): Blumen, Lotus-Seerosen (nur
+  Swampland), Basaltschicht (y −2..7 mit eigenem `XSRandom` aus dem Seed, in jedem Chunk dasselbe Muster),
+  Marmor-Cluster (4 je Chunk, Größe 400). IDs 1003/1004/1005/1014 in `verify_blocks.py`.
+- **Artifice-Inhalte**: Basalt und Marmor (je 6 Varianten, Treppen, Stufen), 4 Blumen + Lotus (öffnet/schließt nach
+  Licht), Lotus-Seerose, Farbstoffe, Stahl (Eisenbarren im Ofen), Rahmen/Sprengwand/Glaswand/Gerüst in 4 Stufen,
+  Detektor, Vorschlaghämmer (zerlegen Blöcke in Teile, Werfer), Sicheln (Flächenernte), Kiste (Daten-Komponente
+  `artifice:box_contents`, Rezept `artifice:box`), Münzen und Nuggets, 13 Upgrades (Rezept `artifice:upgrade`),
+  Tooltips mit Flavor-Text. JSON aus `mods/artifice/tools/gen.py`, Prüfung `tools/check.py`. JEI: Beispielrezepte
+  für Kiste und Upgrades, Info-Seiten (Vorschlaghammer-Teile, Sichel, Gerüst, Detektor, Lotus, Blumen).
+- **Prüfung**: `clean pack` grün; Server bis `Done` ohne Fehler der beiden Mods. Kern gegen Spiel, Seed 1234:
+  49 Biom-Chunks (285.241 Blöcke), 6 Chunks mit Lotus-Seerosen (32.923), 6 Nether-Chunks (12.125): 0 Abweichungen.
+  Gegen eine neue Welt des Original-Hexxit-Servers 1.0.10 (`compare_original.py`, 120 Chunks, 7,9 Mio. Blöcke):
+  keine Abweichung bei Grundgestein und Stein ↔ Basalt, die Basaltschicht und das flache Grundgestein stimmen also
+  bitgenau. `/cofh tps`, Detektor-Puls (0 → 1 → 2 → 0) per RCON geprüft.
+
+**Offen / bewusst abweichend:**
+
+- **Generator-Reihenfolge:** Forge 1.5.2 hielt die Weltgeneratoren in einem `HashSet` (`GameRegistry.worldGenerators`),
+  die Reihenfolge wechselte von Start zu Start. Hier Ladereihenfolge. Erze von CoFH, Marmor-Cluster und Blumen ziehen
+  aus der gemeinsamen Zufallsfolge und liegen deshalb in der Original-Welt woanders (Mengen symmetrisch, z. B.
+  Kohle 10.859 ↔ 10.141 Blöcke); Marmor macht den größten Teil der verbleibenden 7,1 % Abweichung aus.
+- Lotus (Blume und Seerose) wurde im Original geschlossen gesetzt, wenn die Weltzeit > 12000 war (nicht seed-fest);
+  hier immer offen, wie in einer neuen Welt. Er schließt sich im Spiel nach Licht.
+- Köpfe: wie im Original lassen Skelette (Konfigurationsfehler in `CoFHCore.preInit`) und Spieler
+  (`PlayerDropsEvent` übergab immer 0) keine Köpfe fallen; Zombie gilt für alle `Zombie`-Arten von 26.3.
+  Nicht ohne Spieler prüfbar. Nicht portiert: Capes/Skins (`/cofh cape|skin`, Web-Adressen tot), Update-Check,
+  Fluid-/GUI-Tab-APIs, ForgeIRC.
+- Keine verbundenen Texturen: Paver/Antipaver und Rahmen nutzen Teilbild 0 (Paver und Antipaver sehen gleich aus).
+- Kiste: hält bis zu 8 Gegenstände (ein Stück je Feld, wie im Original); Rest-Kiste über `getRemainingItems`, der
+  Gegenstandsverlust des Originals beim Auspacken und beim Werfer ist nicht übernommen, keine Deep-Storage-Units.
+- Vorschlaghammer: Haltbarkeit wie im Original nur bei Blöcken mit fester Metadaten-Zuordnung; farbige Betten geben
+  ihre Wolle; Kürbis-Teil ist `carved_pumpkin`. Upgrades prüfen „passt“ über die Item-Tags von 26.3.
+- Knochenmehl: Vanilla-Gras unverändert, zusätzlich setzt ein `BonemealEvent` Artifice-Blumen mit ihrem Anteil.
+  Blumen folgen beim Setzen den Regeln von 26.3 (ohne Licht-Prüfung von 1.5.2). Gerüst: Suche verbundener Teile auf
+  100.000 Blöcke begrenzt. Stein-Kreislauf-Rezepte entfielen schon im Pack (nur je eine Basalt-/Marmorart).
+- Nicht ohne Spieler geprüft: Vorschlaghammer, Sichel, Gerüst-Klettern und -Halt, Kiste, Upgrades, Köpfe.
+- Client-Prüfung offen: Rahmen-/Glaswand-/Gerüst-Modelle (Overlay), Lotus-Seerose, Tooltip-Farben, Glanz gefüllter
+  Kisten, JEI-Seiten.
 
 ## Teil 9 – Harken Scythe, Asgard Shield, Addons
 

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "X": "minecraft:cobblestone",
+    "Y": "#c:rods/wooden"
+  },
+  "pattern": [
+    "X ",
+    " X",
+    "Y "
+  ],
+  "result": {
+    "count": 1,
+    "id": "artifice:stone_sickle"
+  }
+}

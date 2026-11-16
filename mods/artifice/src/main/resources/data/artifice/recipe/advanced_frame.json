@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "X": "#c:ingots/steel",
+    "Y": "#c:storage_blocks/steel"
+  },
+  "pattern": [
+    "X X",
+    " Y ",
+    "X X"
+  ],
+  "result": {
+    "count": 16,
+    "id": "artifice:advanced_frame"
+  }
+}

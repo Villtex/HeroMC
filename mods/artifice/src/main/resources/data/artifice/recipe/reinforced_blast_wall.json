@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "X": "artifice:reinforced_frame",
+    "Y": "minecraft:brick",
+    "Z": "minecraft:clay_ball"
+  },
+  "pattern": [
+    "YXY",
+    "YZY"
+  ],
+  "result": {
+    "count": 2,
+    "id": "artifice:reinforced_blast_wall"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "Y": "minecraft:string",
+    "X": "artifice:basic_frame",
+    "Q": "minecraft:redstone"
+  },
+  "pattern": [
+    " Q ",
+    "YXY",
+    " Y "
+  ],
+  "result": {
+    "count": 1,
+    "id": "artifice:detector"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "open=true": {
+      "model": "artifice:block/lotus"
+    },
+    "open=false": {
+      "model": "artifice:block/lotus_closed"
+    }
+  }
+}

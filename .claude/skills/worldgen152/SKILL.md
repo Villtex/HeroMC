@@ -145,6 +145,13 @@ Das prüft Kern gegen Spiel. Kern gegen Original prüft `python3 tools/compare_o
 die Abweichungen je Block-ID. Nach dem Port eines Mod-Generators müssen dessen IDs dort aus der Liste fallen.
 Welt erzeugen: `tools/original_server.sh hexxit 420` (Einrichtung in `docs/PLAN.md`, Teil 2).
 
+**Original-Abgleich und Reihenfolge:** Forge 1.5.2 hielt die Generatoren in einem `HashSet`, ihre Reihenfolge
+wechselte von Start zu Start. Gegen eine Original-Welt stimmen deshalb nur Generatoren ohne die gemeinsame
+Zufallsfolge exakt (CoFHs flaches Grundgestein, Artifices Basaltschicht mit eigenem `XSRandom`); alles andere zeigt
+sich nur als symmetrische Mengen (`1 -> 16` ≈ `16 -> 1`). Vanilla-Erze gibt es im Pack nicht: CoFH World
+(`mods/cofhcore`, `cofh.gen.CoFHWorldGen`) verweigert die Erz-Events und erzeugt sie mit den Pack-Werten. Erze, die
+ein Mod über `config/cofh/WorldCustomGen.txt` bekam (qCraft QOre), mit `CoFHWorldGen.addCustomFeature` anmelden.
+
 Seltenes fehlt meist in der `find`-Auswahl: Kandidaten mit einer kleinen Klasse gegen `BiomeLayout` suchen
 (`layout.biomeAt(cx * 16, cz * 16).name` in einer Schleife; mit `expect.sh`s javac-Zeile übersetzen), an
 `expect.sh` geben, in der Ausgabe nach der ID suchen (`awk '$4==917'`). 1.500 Chunks rechnet `expect.sh` in etwa

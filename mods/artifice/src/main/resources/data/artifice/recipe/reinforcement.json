@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": "minecraft:string",
+    "Q": "minecraft:leather",
+    "Z": "minecraft:iron_ingot",
+    "Y": "#c:rods/wooden"
+  },
+  "pattern": [
+    "XQZ",
+    " Y "
+  ],
+  "result": {
+    "count": 1,
+    "id": "artifice:reinforcement"
+  }
+}

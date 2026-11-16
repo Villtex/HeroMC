@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": "minecraft:slime_ball",
+    "Y": "minecraft:leather",
+    "Q": "minecraft:string"
+  },
+  "pattern": [
+    "YXQ",
+    " X "
+  ],
+  "result": {
+    "count": 1,
+    "id": "artifice:elastic_layering"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "values": [
+    "#c:coins/copper",
+    "#c:coins/silver",
+    "#c:coins/gold",
+    "#c:coins/platinum"
+  ]
+}
