@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "asaddons:item/gilded_nether_quartz_shield",
+    "tints": [
+      {
+        "type": "asgardshield_core:shield_color",
+        "shield": "nether"
+      },
+      {
+        "type": "minecraft:constant",
+        "value": -986896
+      }
+    ]
+  }
+}

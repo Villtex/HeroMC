@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "asgardshield_core:item/skull_giant_sword"
+  }
+}

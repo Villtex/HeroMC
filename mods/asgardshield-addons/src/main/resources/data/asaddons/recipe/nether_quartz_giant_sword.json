@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "X": "minecraft:quartz",
+    "*": "minecraft:blaze_rod"
+  },
+  "pattern": [
+    " XX",
+    "XXX",
+    "*X "
+  ],
+  "result": {
+    "count": 1,
+    "id": "asaddons:nether_quartz_giant_sword"
+  }
+}

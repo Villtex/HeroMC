@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "asaddons:item/patchwork_shield",
+    "tints": [
+      {
+        "type": "asgardshield_core:shield_color",
+        "shield": "patchwork"
+      },
+      {
+        "type": "minecraft:constant",
+        "value": -986896
+      }
+    ]
+  }
+}

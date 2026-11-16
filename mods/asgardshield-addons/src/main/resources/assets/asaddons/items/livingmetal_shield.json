@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "asaddons:item/livingmetal_shield",
+    "tints": [
+      {
+        "type": "asgardshield_core:shield_color",
+        "shield": "livingmetal"
+      },
+      {
+        "type": "minecraft:constant",
+        "value": -986896
+      }
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_dye",
+  "category": "equipment",
+  "group": "asgardshield_dyed",
+  "dye": "#minecraft:dyes",
+  "target": "asaddons:gilded_patchwork_shield",
+  "result": {
+    "id": "asaddons:gilded_patchwork_shield"
+  }
+}

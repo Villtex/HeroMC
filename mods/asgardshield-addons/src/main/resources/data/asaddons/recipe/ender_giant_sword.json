@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "X": "minecraft:obsidian",
+    "*": "minecraft:blaze_rod",
+    "^": "minecraft:ender_eye"
+  },
+  "pattern": [
+    " XX",
+    "X^X",
+    "*X "
+  ],
+  "result": {
+    "count": 1,
+    "id": "asaddons:ender_giant_sword"
+  }
+}

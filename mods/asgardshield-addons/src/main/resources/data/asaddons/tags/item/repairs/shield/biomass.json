@@ -1,0 +1,9 @@
+{
+  "values": [
+    {
+      "id": "harkenscythe_core:biomass",
+      "required": false
+    },
+    "minecraft:leather"
+  ]
+}

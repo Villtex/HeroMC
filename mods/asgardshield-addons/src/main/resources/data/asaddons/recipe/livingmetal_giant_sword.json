@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "harkenscythe_core"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "X": "harkenscythe_core:livingmetal_ingot",
+    "*": "minecraft:stick"
+  },
+  "pattern": [
+    " XX",
+    "XXX",
+    "*X "
+  ],
+  "result": {
+    "count": 1,
+    "id": "asaddons:livingmetal_giant_sword"
+  }
+}

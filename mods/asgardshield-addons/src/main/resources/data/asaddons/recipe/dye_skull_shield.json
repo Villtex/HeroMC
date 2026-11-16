@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_dye",
+  "category": "equipment",
+  "group": "asgardshield_dyed",
+  "dye": "#minecraft:dyes",
+  "target": "asaddons:skull_shield",
+  "result": {
+    "id": "asaddons:skull_shield"
+  }
+}
