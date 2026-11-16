@@ -31,20 +31,50 @@ public final class OldLiveGen {
     private OldLiveGen() {
     }
 
-    /** The 1.5.2 id a generator should see for a block of today. */
-    static int oldId(BlockState state) {
+    /**
+     * The 1.5.2 id and metadata ({@code id << 4 | meta}) a generator should see for a block of today: the mod blocks
+     * as the mods mapped them, otherwise air, water, lava, the ground blocks the generators ask about, logs, leaves,
+     * plants, and stone for the rest.
+     */
+    static int oldCell(BlockState state) {
         if (state.isAir()) {
             return 0;
         }
         FluidState fluid = state.getFluidState();
         if (!fluid.isEmpty() && state.getBlock() instanceof net.minecraft.world.level.block.LiquidBlock) {
-            return fluid.is(FluidTags.LAVA) ? 11 : 9;
+            return (fluid.is(FluidTags.LAVA) ? 11 : 9) << 4;
         }
+        int mod = OldBlockStates.modCell(state);
+        if (mod >= 0) {
+            return mod;
+        }
+        return oldId(state) << 4;
+    }
+
+    private static int oldId(BlockState state) {
         if (state.is(Blocks.GRASS_BLOCK)) {
             return 2;
         }
         if (state.is(Blocks.FARMLAND)) {
             return 60;
+        }
+        if (state.is(Blocks.MYCELIUM)) {
+            return 110;
+        }
+        if (state.is(Blocks.NETHERRACK)) {
+            return 87;
+        }
+        if (state.is(Blocks.SOUL_SAND)) {
+            return 88;
+        }
+        if (state.is(Blocks.BEDROCK)) {
+            return 7;
+        }
+        if (state.is(Blocks.CACTUS)) {
+            return 81;
+        }
+        if (state.is(Blocks.SUGAR_CANE)) {
+            return 83;
         }
         if (state.is(BlockTags.DIRT)) {
             return 3;
@@ -73,8 +103,18 @@ public final class OldLiveGen {
      * @return what the generator returned; on {@code false} nothing is written
      */
     public static boolean generate(ServerLevel level, OldGen gen, Random random, int x, int y, int z, int radius, int height) {
+        return generate(level, gen, random, x, y, z, radius, 2, height);
+    }
+
+    /**
+     * Grows {@code gen} at x/y/z. The generator may touch {@code radius} blocks to the sides, {@code depth} blocks
+     * below y (roots, trees that hang from a ceiling) and {@code height} blocks above.
+     *
+     * @return what the generator returned; on {@code false} nothing is written
+     */
+    public static boolean generate(ServerLevel level, OldGen gen, Random random, int x, int y, int z, int radius, int depth, int height) {
         OldWorld world = new OldWorld(level.getSeed(), (cx, cz) -> new OldChunk(cx, cz, NO_BLOCKS, NO_BIOMES));
-        int minY = Math.max(level.getMinY(), y - 2);
+        int minY = Math.max(level.getMinY(), y - depth);
         int maxY = Math.min(level.getMaxY(), y + height);
         int size = 2 * radius + 1;
         int[] before = new int[size * size * (maxY - minY + 1)];
@@ -83,10 +123,10 @@ public final class OldLiveGen {
         for (int dx = -radius; dx <= radius; dx++) {
             for (int dz = -radius; dz <= radius; dz++) {
                 for (int by = minY; by <= maxY; by++, i++) {
-                    int id = oldId(level.getBlockState(pos.set(x + dx, by, z + dz)));
-                    before[i] = id << 4;
-                    if (id != 0 && by >= 0 && by < OldWorld.HEIGHT) {
-                        world.setBlock(x + dx, by, z + dz, id, 0);
+                    int cell = oldCell(level.getBlockState(pos.set(x + dx, by, z + dz)));
+                    before[i] = cell;
+                    if (cell != 0 && by >= 0 && by < OldWorld.HEIGHT) {
+                        world.setBlock(x + dx, by, z + dz, cell >> 4, cell & 15);
                     }
                 }
             }
@@ -136,6 +176,7 @@ public final class OldLiveGen {
         }
         List<BlockPos> leaves = new ArrayList<>();
         List<BlockState> leafStates = new ArrayList<>();
+        List<BlockPos> written = new ArrayList<>();
         i = 0;
         for (int dx = -radius; dx <= radius; dx++) {
             for (int dz = -radius; dz <= radius; dz++) {
@@ -155,8 +196,17 @@ public final class OldLiveGen {
                         leafStates.add(state.setValue(LeavesBlock.DISTANCE, Math.max(1, distance[i])));
                     } else {
                         level.setBlock(at, state, Block.UPDATE_ALL);
+                        written.add(at);
                     }
                 }
+            }
+        }
+        // states that depend on their neighbours (connections): the last block of a group never got its update
+        for (BlockPos at : written) {
+            BlockState state = level.getBlockState(at);
+            BlockState shaped = Block.updateFromNeighbourShapes(state, level, at);
+            if (shaped != state) {
+                level.setBlock(at, shaped, Block.UPDATE_CLIENTS);
             }
         }
         // leaves last and without neighbour updates, as the 1.5.2 generators left them (see the chunk writer)

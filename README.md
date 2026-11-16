@@ -39,6 +39,8 @@ Der Port ist in Teile aufgeteilt, die je in eine Session passen: [`docs/PLAN.md`
 | `.claude/skills/worldgen152/` | Projekt-Skill: Weltgenerierung eines Mods in `worldgen152` einhängen, Setzlinge, Prüfung |
 | `.claude/skills/client-render-263/` | Projekt-Skill: HUD-Ebenen, Gegenstände am Spielermodell, Rüstungen mit eigenen Helm-Modellen, durchscheinende Blockmodelle, Rechtsklick vor dem Block abfangen (26.3) |
 | `.claude/skills/menu-gui-263/` | Projekt-Skill: eigene GUI mit Container (Menü, Screen, Pakete Client → Server, Server-Konfiguration für die Vorschau im Client) |
+| `.claude/skills/wood-sets-263/` | Projekt-Skill: Holzarten und Pflanzen eines Mods (Planken, Stämme, Blätter, Setzlinge, Treppen bis Werkbänke, Brennwert, Rezeptkonflikte mit Vanilla), Vorlage Natura |
+| `.claude/skills/mobs-263/` | Projekt-Skill: Mobs, Spawn-Eier, Boote, Mob-Drops und Spawns (Biome-Modifier), Vorlage Natura |
 | `.claude/skills/treecapitator-trees/` | Projekt-Skill: Bäume und Äxte eines Mods bei TreeCapitator anmelden (Daten-Registry `treecapitator:tree`, Item-Tags) |
 
 ## Bauen und Starten
@@ -120,6 +122,9 @@ Mit Hexxit Gear, offLawn und Wild Caves 3 (Teil 5) stimmen für Seed 1234 je ein
 36 Chunks an Strukturen (119.058 Blöcke, 137 Truhen, Spawner, Schädel und Entitäten) und Chunks mit Sonnenblumen und
 Hexbiscus (72.274 Blöcke) mit dem Kern überein.
 
+Mit Natura (Teil 7) stimmen für Seed 1234 je ein Chunk aller 49 Biome (159.260 Blöcke) und 297 Chunks mit
+Natura-Bäumen, -Büschen, -Feldfrüchten und Saguaros (903.929 Blöcke) mit dem Kern überein.
+
 ## Wann ein Mod als portiert gilt
 
 1. sauberer Build (`./gradlew clean pack`)
@@ -175,7 +180,7 @@ Hexbiscus (72.274 Blöcke) mit dem Kern überein.
 | Artifice | `artifice` 1.1.2.182 | Shukaro | 14.781 | offen |
 | CodeChickenCore | `codechickencore` 0.8.7.3 | ChickenBones | 14.969 | entfällt (Bibliothek von NEI) |
 | Not Enough Items | `nei` 1.5.2.28 | ChickenBones | 16.239 | entfällt, stattdessen JEI |
-| Natura | `natura` 2.1.5.1 | mDiyo | 20.430 | offen |
+| Natura | `natura` 2.1.5.1 | mDiyo | 20.430 | ✅ Teil 7 (Nether: Teil 7b) |
 | BiblioCraft | `bibliocraft` 1.3.3 | Nuchaz | 20.970 | offen |
 | Harken Scythe | `harkenscythe` 2.1.6 | Jade Knightblazer | 27.284 | offen |
 | Better Dungeons (Chocolate Quest) | `betterdungeons` 1.09b | Chocolatin | 36.118 | offen |

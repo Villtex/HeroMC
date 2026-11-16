@@ -43,7 +43,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 4 | Kleine Mods: Obsidian Plates, Chest Transporter, ArmorBar, BuffBar, Back Tools, Soul Shards | ~5.000 | 3 | Sonnet 5.5, niedrig | ✅ erledigt |
 | 5 | Hexxit Gear, More Bows, Enchanting Plus, offLawn, Wild Caves 3 | ~13.000 | 1, 3 | Opus 5.5, mittel | ✅ erledigt |
 | 6 | bspkrsCore, TreeCapitator, Inventory Tweaks, Custom LAN Ports | ~19.000 | 3 | Opus 5.5, mittel | ✅ erledigt |
-| 7 | Natura | ~20.000 | 1, 3 | Opus 5.5, mittel | offen |
+| 7 | Natura | ~20.000 | 1, 3 | Opus 5.5, mittel | ✅ erledigt |
 | 7b | Natura-Nether: 1.5.2-Nether (Netherite-Gelände, Höhlen, Netherfestung) in worldgen152, Nether-Generatoren von Natura | ~3.000 | 2, 7 | Fable 5.2, hoch | offen |
 | 8 | Artifice, CoFHCore (nur was das Pack nutzt) | ~27.000 | 1, 3 | Opus 5.5, mittel | offen |
 | 9 | Harken Scythe, Asgard Shield, Asgard Shield Addons | ~30.000 | 3 | Opus 5.5, mittel | offen |
@@ -480,6 +480,52 @@ Drei davon sind reine Client-HUDs: ArmorBar, BuffBar und Back Tools. Back Tools 
 - JEI für eigene Rezepte
 
 Kein Tinkers vorhanden: Integrationen dazu weglassen und notieren.
+
+**Status: erledigt** (ohne den 1.5.2-Nether, der ist Teil 7b). Teilprojekt `mods/natura` (`natura`).
+
+- **Inhalte**: 13 Hölzer (Stämme mit `axis`, Bloodwood-Viertel, Redwood-Rinde/-Kern/-Wurzel, Planken, Blätter,
+  Setzlinge, Treppen, Stufen, Zäune, Tore, Türen, Falltüren, Knöpfe, Druckplatten, Werkbänke, Bücherregale,
+  Stöcke), Wolken, Saguaro, Beerenbüsche (Oberwelt, Nether), Gerste, Baumwolle, Bluebells, Thornvines,
+  Glowshrooms klein/groß, Tainted Soil, Heat Sand, Topiary-Gras, Beutel, Beeren, Essen, Werkzeuge, Kamas, Bögen,
+  Imp-Rüstung. 245 Rezepte, Loot, Tags, Brennbarkeit, Brennwerte (`cookingFuel`), Loot-Modifier für Samen aus Gras.
+  Alle JSON und `original-assets.txt` erzeugt `mods/natura/tools/gen.py` (überschreibt `resources/{assets,data}`),
+  `tools/check.py` prüft Verweise.
+- **Mobs**: Imp, Heatscar Spider (Babys beim Tod, 2–4 laut Pack), Baby Heatscar Spider, Nitro Creeper; Spawns als
+  Biome-Modifier in den Nether-Biomen von 26.3 (bis Teil 7b). Vier Boote, Spawn-Eier, Imp-Fleisch.
+- **Weltgenerierung** (`natura.gen`, ohne Spielklassen, in `expect.sh`): BaseCrop-, BaseCloud-, BaseTreeWorldgen
+  unter FML-ID `Natura`, alle Gens als Port. Setzlinge und Glowshrooms wachsen über dieselben Gens
+  (`OldLiveGen`, neu: ID/Meta der Mod-Blöcke, Tiefe, `OldBlockStates.registerConnecting` für Saguaro-Arme).
+- **TreeCapitator**: 13 Bäume (Pack-Konfiguration plus Darkwood aus dem IMC des Originals), Hatchets in `#minecraft:axes`.
+- **JEI**: keine eigenen Rezepttypen; Plugin meldet die 13 Werkbänke als Crafting-Stationen und Info-Seiten.
+- **Prüfung**: `clean pack` grün; Server bis `Done` ohne Fehler von Natura; alle Setzlinge, große Glowshrooms und
+  Saguaro wachsen; TreeCapitator fällt Eukalyptus, Ahorn, Sakura, Weide ganz; Rezepte, Drops, Spawns, Babys der
+  Heatscar Spider per RCON. Abgleich Seed 1234: 49 Biome (159.260 Blöcke) und 297 Natura-Chunks (903.929 Blöcke),
+  0 Abweichungen.
+
+**Offen / bewusst abweichend:**
+
+- Nether (Netherite-Gelände, Nether-Zweige der Generatoren, Spawns dort): Teil 7b. Thornvines bekommen im
+  Chunk-Writer ihre obere Fläche nur aus den Metadaten (erst im Nether relevant).
+- Biomnamen: Natura fragt `AutumnWoods`, `BirchForest`, `PineForest`, `TemperateRainforest`, `ForestedHills`,
+  `GreenHills` ab; ExtrabiomesXL schreibt sie mit Leerzeichen, im Original trafen sie also nie (übernommen).
+- Sakura-Gen: Im Original eine Instanz für die ganze Sitzung (Höhengrenze lief über Bäume weiter, nicht seed-fest);
+  hier eine je Chunk (`world.chunkState`). Gerste/Baumwolle/Bluebells prüfen nur Himmelslicht. Saguaro: fallender
+  Sand und Wasser-Updates beim Generieren nicht nachgebildet.
+- Im Original nie registriert, nicht portiert: Leitern, Stamm-Stufen, NaturaSnow, Herbs, Ivy, FusewoodArrow-Entity
+  (der Bogen schießt normale Pfeile). Boote waren im Original toter Code: hier mit 1.5.2-Bootsrezept und dem
+  Bootsystem von 26.3. Spawn-Eier nur in der Primärfarbe. Baby-Spinnen nur beim Tod, nicht beim Despawnen. Looting-
+  Bonus der geladenen Nitro-Creeper-Drops fehlt.
+- Vanilla-Rezepte für Werkbank, Stock, Bücherregal, Schüssel in `data/minecraft/recipe` überschrieben (schließen
+  Natura-Planken per `neoforge:difference` aus), damit Natura-Rezepte greifen. Holzwerkzeuge mit normalen Mustern
+  (Original nutzte für alle dasselbe). Werkbank nutzt das Vanilla-Menü. Bloodwood mit jeder Axt schnell abbaubar.
+  Nether-Beeren-Effekte addieren Dauern nicht. Weidensetzling braucht Boden.
+- Weggelassen: Minefactory-Reloaded-Plugin, Tinkers, Thaumcraft, Forestry, BuildCraft-Fassaden; Bonemeal auf Gras
+  lässt keine Bluebells wachsen. Inventory-Tweaks-Kategorien für Natura-Items nicht eingetragen. Nur `en_us`
+  (Original ohne Sprachdateien).
+- Nicht Natura: 2 von 4.752 Biom-Stichproben weichen an 4x4-Rastergrenzen ab ((-382, -2026), (1298, -1122)).
+- Client-Prüfung offen: Modelle, Färbungen (Topiary-/Blau-/Herbstgras), Transparenz von Wolken und großen
+  Glowshrooms, Saguaro-Arme, Bögen, Imp-Rüstung, Imp-Modell, Heatscar-Skalierung, Boote (Lage im Wasser,
+  Bloodwood-Boot auf Lava), Ei- und Boots-Icons.
 
 ## Teil 7b – Natura-Nether
 

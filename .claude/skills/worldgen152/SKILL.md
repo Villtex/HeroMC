@@ -119,6 +119,13 @@ ziehen aus derselben Zufallsfolge wie die Population.
 `OldLiveGen.generate(level, gen, random, x, y, z, radius, height)` lässt einen `OldGen` in der echten Welt laufen
 (Vorbild mit 2x2-Suche: `extrabiomes/block/EbxlSaplingBlock`). Zustand über Bäume hinweg: beim Generieren je
 Chunk über `world.chunkState(key, Supplier)`. Laub weiter als 6 vom Stamm: `extrabiomes/block/EbxlLeavesBlock`.
+Bäume, die nach unten wachsen oder Wurzeln schlagen: Überladung mit `depth` (`generate(..., radius, depth, height)`).
+Reichweite eines Generators vorher messen (Gen in einer `OldWorld` 200-mal laufen lassen, geänderte Blöcke
+ausmessen), sonst fehlen Teile still. Der Generator sieht Mod-Blöcke unter ihrer alten ID:Meta (Umkehrung von
+`OldBlockStates`, IDs > 158), Netherrack 87, Seelensand 88, Myzel 110. Grenzen des Originals bleiben (Natura:
+Weide nur unter y 128, Blutholz-Decke unter 120, Hopseed sucht Boden ab y 128 abwärts). Blöcke mit Verbindungen
+(Saguaro): `OldBlockStates.registerConnecting(block)`, dann rechnet der Chunk-Writer sie per Post-Processing und
+`OldLiveGen` per `updateFromNeighbourShapes` nach. Vorbild: `natura/Natura.java` (`grow`, `registerOldBlocks`).
 
 ## Prüfen
 

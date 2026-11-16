@@ -165,7 +165,7 @@ final class OldChunkWriter {
     private static boolean connects(BlockState state) {
         Block block = state.getBlock();
         return block instanceof CrossCollisionBlock || block instanceof StairBlock || block instanceof RedstoneWireBlock
-                || block instanceof TripWireBlock || block instanceof WallBlock;
+                || block instanceof TripWireBlock || block instanceof WallBlock || OldBlockStates.connecting(block);
     }
 
     /** A door half with what 1.5.2 stored in the other half: facing and "open" below, the hinge side above. */

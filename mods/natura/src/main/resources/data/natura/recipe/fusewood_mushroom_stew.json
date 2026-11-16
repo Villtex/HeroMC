@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "category": "food",
+  "category": "misc",
   "ingredients": [
     "natura:fusewood_bowl",
     "minecraft:brown_mushroom",

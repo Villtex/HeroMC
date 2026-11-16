@@ -12,6 +12,10 @@ import net.minecraft.world.level.block.state.properties.Half;
 import net.minecraft.world.level.block.state.properties.RailShape;
 import net.minecraft.world.level.block.state.properties.SlabType;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.IntFunction;
 import java.util.function.Supplier;
 
@@ -29,6 +33,11 @@ public final class OldBlockStates {
     @SuppressWarnings("unchecked")
     private static final IntFunction<BlockState>[] MAPPERS = new IntFunction[MAX_ID];
     private static final BlockState[][] RESOLVED = new BlockState[MAX_ID][];
+    /** Highest block id of vanilla 1.5.2; everything above belongs to a mod. */
+    private static final int LAST_VANILLA_ID = 158;
+    private static final List<Supplier<? extends Block>> CONNECTING = new CopyOnWriteArrayList<>();
+    /** Mod states and blocks back to their 1.5.2 id and metadata ({@code id << 4 | meta}), built on first use. */
+    private static volatile Map<Object, Integer> reverse;
 
     private static final Direction[] CHEST_FACING = {Direction.NORTH, Direction.NORTH, Direction.NORTH, Direction.SOUTH, Direction.WEST, Direction.EAST};
     private static final Direction[] FACING = {Direction.DOWN, Direction.UP, Direction.NORTH, Direction.SOUTH, Direction.WEST, Direction.EAST};
@@ -308,5 +317,61 @@ public final class OldBlockStates {
             states[meta] = state;
         }
         return state;
+    }
+
+    /**
+     * A mod block whose state depends on its neighbours (connections, like the arms of the saguaro). The chunk writer
+     * lets it update its shape once the chunk is part of the world, as it does for fences.
+     */
+    public static void registerConnecting(Supplier<? extends Block> block) {
+        CONNECTING.add(block);
+    }
+
+    static boolean connecting(Block block) {
+        for (Supplier<? extends Block> b : CONNECTING) {
+            if (b.get() == block) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * The 1.5.2 id and metadata ({@code id << 4 | meta}) of a mod block (an id above the vanilla ones), or -1. A state
+     * that no metadata value maps to exactly (leaf distance, connections) falls back to the first metadata value of its
+     * block.
+     */
+    static int modCell(BlockState state) {
+        Map<Object, Integer> map = reverse;
+        if (map == null) {
+            map = buildReverse();
+        }
+        Integer cell = map.get(state);
+        if (cell == null) {
+            cell = map.get(state.getBlock());
+        }
+        return cell == null ? -1 : cell;
+    }
+
+    private static synchronized Map<Object, Integer> buildReverse() {
+        if (reverse != null) {
+            return reverse;
+        }
+        Map<Object, Integer> map = new HashMap<>();
+        for (int id = LAST_VANILLA_ID + 1; id < MAX_ID; id++) {
+            if (MAPPERS[id] == null || !hexxit.worldgen152.core.populate.OldBlockInfo.known(id)) {
+                continue;
+            }
+            for (int meta = 0; meta < 16; meta++) {
+                BlockState state = get(id, meta);
+                if (state == null || state.isAir()) {
+                    continue;
+                }
+                map.putIfAbsent(state, id << 4 | meta);
+                map.putIfAbsent(state.getBlock(), id << 4 | meta);
+            }
+        }
+        reverse = map;
+        return map;
     }
 }

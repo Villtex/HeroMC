@@ -479,8 +479,8 @@ tooltip('berry_medley', 'An irresistable combination of berries')
 import itertools
 bl = [n(b[0]) for b in BERRIES]
 for k, combo in enumerate(itertools.combinations(bl, 3)):
-    shapeless(f'berry_medley_{k}', ['minecraft:bowl'] + list(combo), n('berry_medley'), 1, 'food', 'berry_medley')
-shapeless('berry_medley_double', ['minecraft:bowl', 'minecraft:bowl'] + bl, n('berry_medley'), 2, 'food', 'berry_medley')
+    shapeless(f'berry_medley_{k}', ['minecraft:bowl'] + list(combo), n('berry_medley'), 1, 'misc', 'berry_medley')
+shapeless('berry_medley_double', ['minecraft:bowl', 'minecraft:bowl'] + bl, n('berry_medley'), 2, 'misc', 'berry_medley')
 
 # ================================================================= CROPS
 for a in range(4):
@@ -628,15 +628,15 @@ for bag, content in (('wheat_seed_bag', 'minecraft:wheat_seeds'), ('barley_seed_
     shaped(f'{content.split(":")[1]}_from_{bag}', ['s'], {'s': n(bag)}, content, 9, 'misc')
 shaped('string_from_cotton', ['sss'], {'s': n('cotton')}, 'minecraft:string')
 shaped('white_wool_from_cotton', ['sss', 'sss', 'sss'], {'s': n('cotton')}, 'minecraft:white_wool', 1, 'building')
-shaped('cactus_juice', ['X'], {'X': 'minecraft:cactus'}, n('cactus_juice'), 1, 'food')
+shaped('cactus_juice', ['X'], {'X': 'minecraft:cactus'}, n('cactus_juice'), 1, 'misc')
 shaped('water_bucket_from_cactus_juice', ['www', 'wBw', 'www'], {'w': n('cactus_juice'), 'B': 'minecraft:bucket'}, 'minecraft:water_bucket')
-shaped('bread_from_barley', ['bbb'], {'b': n('barley')}, 'minecraft:bread', 1, 'food')
-shaped('barley_flour', ['X'], {'X': n('barley')}, n('barley_flour'), 1, 'food')
+shaped('bread_from_barley', ['bbb'], {'b': n('barley')}, 'minecraft:bread', 1, 'misc')
+shaped('barley_flour', ['X'], {'X': n('barley')}, n('barley_flour'), 1, 'misc')
 # "Enable wheat to flour recipe" is false in the pack: no wheat flour recipe
 for flour in ('barley_flour', 'wheat_flour'):
     smelting(f'bread_from_{flour}', n(flour), 'minecraft:bread', 0.5)
     shaped(f'cake_from_{flour}', ['AAA', 'BEB', ' C '], {'A': 'minecraft:milk_bucket', 'B': 'minecraft:sugar', 'E': '#minecraft:eggs', 'C': n(flour)},
-           'minecraft:cake', 1, 'food')
+           'minecraft:cake', 1, 'misc')
 shaped('ghostwood_fletching', [' s ', '#s#', '#s#'], {'s': n('ghostwood_stick'), '#': n('ghostwood_leaves')}, n('ghostwood_fletching'))
 shaped('arrow_from_ghostwood_fletching', [' f ', '#s#', ' # '], {'f': 'minecraft:flint', 's': '#c:rods/wooden', '#': n('ghostwood_fletching')},
        'minecraft:arrow', 4, 'equipment')
@@ -657,10 +657,10 @@ for w in BOWLS:
     generated_item(f'{w}_mushroom_stew', n(f'item/{w}_bowl'), [n('item/mushroom_stew_overlay')]); name_item(f'{w}_mushroom_stew', 'Mushroom Stew')
     generated_item(f'{w}_glowshroom_stew', n(f'item/{w}_bowl'), [n('item/glowshroom_stew_overlay')]); name_item(f'{w}_glowshroom_stew', 'Glowshroom Stew')
     shaped(f'{w}_bowl', ['# #', ' # '], {'#': n(f'{w}_planks')}, n(f'{w}_bowl'), 4)
-    shapeless(f'{w}_mushroom_stew', [n(f'{w}_bowl'), 'minecraft:brown_mushroom', 'minecraft:red_mushroom'], n(f'{w}_mushroom_stew'), 1, 'food')
-    shapeless(f'{w}_glowshroom_stew', [n(f'{w}_bowl'), n('green_glowshroom'), n('purple_glowshroom'), n('blue_glowshroom')], n(f'{w}_glowshroom_stew'), 1, 'food')
+    shapeless(f'{w}_mushroom_stew', [n(f'{w}_bowl'), 'minecraft:brown_mushroom', 'minecraft:red_mushroom'], n(f'{w}_mushroom_stew'), 1, 'misc')
+    shapeless(f'{w}_glowshroom_stew', [n(f'{w}_bowl'), n('green_glowshroom'), n('purple_glowshroom'), n('blue_glowshroom')], n(f'{w}_glowshroom_stew'), 1, 'misc')
 generated_item('glowshroom_stew', 'minecraft:item/bowl', [n('item/glowshroom_stew_overlay')]); name_item('glowshroom_stew', 'Glowshroom Stew')
-shapeless('glowshroom_stew', ['minecraft:bowl', n('green_glowshroom'), n('purple_glowshroom'), n('blue_glowshroom')], n('glowshroom_stew'), 1, 'food')
+shapeless('glowshroom_stew', ['minecraft:bowl', n('green_glowshroom'), n('purple_glowshroom'), n('blue_glowshroom')], n('glowshroom_stew'), 1, 'misc')
 
 # tools
 TOOLSETS = [('ghostwood', 'ghostwood', 'Ghostwood'), ('bloodwood', 'bloodwood', 'Bloodwood'), ('darkwood', 'darkwood', 'Darkwood'),
