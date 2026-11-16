@@ -1,0 +1,29 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": [
+    "extrabiomesxl:autumn_woods",
+    "extrabiomesxl:birch_forest",
+    "extrabiomesxl:forested_hills",
+    "extrabiomesxl:forested_island",
+    "extrabiomesxl:green_hills",
+    "extrabiomesxl:redwood_forest",
+    "extrabiomesxl:redwood_lush",
+    "extrabiomesxl:temperate_rainforest",
+    "extrabiomesxl:woodlands",
+    "worldgen152:forest",
+    "worldgen152:forest_hills",
+    "worldgen152:taiga",
+    "worldgen152:taiga_hills"
+  ],
+  "spawners": [
+    {
+      "type": "projectzulu:beaver",
+      "count": {
+        "type": "minecraft:uniform",
+        "min_inclusive": 1,
+        "max_inclusive": 2
+      },
+      "weight": 10
+    }
+  ]
+}

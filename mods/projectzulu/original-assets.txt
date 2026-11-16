@@ -1,0 +1,17 @@
+# path in ProjectZuluCompletev1.0.3.8.zip (projectzulu-v1.0.3.8.zip) -> path in the ported jar
+mods/projectzulublock/textures/items/scrapmeat.png -> assets/projectzulu/textures/item/scrap_meat.png
+mods/projectzulublock/textures/items/furpelt.png -> assets/projectzulu/textures/item/fur_pelt.png
+mods/projectzulublock/textures/items/scaleitem.png -> assets/projectzulu/textures/item/scale_item.png
+mods/projectzulublock/textures/items/ankh.png -> assets/projectzulu/textures/item/ankh.png
+mods/projectzulublock/textures/items/poisondroplet.png -> assets/projectzulu/textures/item/poison_droplet.png
+mods/projectzulublock/textures/items/tusk.png -> assets/projectzulu/textures/item/tusk.png
+mods/projectzulublock/textures/items/blacklichen.png -> assets/projectzulu/textures/item/black_lichen.png
+mods/projectzulublock/textures/items/antennae.png -> assets/projectzulu/textures/item/antennae.png
+mods/projectzulublock/textures/items/talon.png -> assets/projectzulu/textures/item/talon.png
+mods/projectzulublock/textures/items/bark.png -> assets/projectzulu/textures/item/bark.png
+mods/projectzulublock/textures/items/smallheart.png -> assets/projectzulu/textures/item/small_heart.png
+mods/projectzulublock/textures/items/largeheart.png -> assets/projectzulu/textures/item/large_heart.png
+mods/projectzulublock/textures/items/gill.png -> assets/projectzulu/textures/item/gill.png
+mods/projectzulublock/textures/items/ectoplasm.png -> assets/projectzulu/textures/item/ectoplasm.png
+mods/projectzulublock/textures/items/froglegs.png -> assets/projectzulu/textures/item/frog_legs.png
+mods/projectzulublock/textures/items/rabbitsfoot.png -> assets/projectzulu/textures/item/rabbits_foot.png

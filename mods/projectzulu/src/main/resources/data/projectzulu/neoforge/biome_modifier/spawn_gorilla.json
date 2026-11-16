@@ -1,0 +1,16 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": [
+    "extrabiomesxl:extreme_jungle",
+    "extrabiomesxl:mini_jungle",
+    "worldgen152:jungle",
+    "worldgen152:jungle_hills"
+  ],
+  "spawners": [
+    {
+      "type": "projectzulu:gorilla",
+      "count": 1,
+      "weight": 10
+    }
+  ]
+}

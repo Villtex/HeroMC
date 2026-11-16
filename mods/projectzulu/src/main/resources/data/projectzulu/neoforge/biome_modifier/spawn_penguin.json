@@ -1,0 +1,19 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": [
+    "extrabiomesxl:glacier",
+    "extrabiomesxl:ice_wasteland",
+    "worldgen152:ice_plains"
+  ],
+  "spawners": [
+    {
+      "type": "projectzulu:penguin",
+      "count": {
+        "type": "minecraft:uniform",
+        "min_inclusive": 1,
+        "max_inclusive": 3
+      },
+      "weight": 10
+    }
+  ]
+}

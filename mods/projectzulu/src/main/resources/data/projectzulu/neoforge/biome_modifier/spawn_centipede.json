@@ -1,0 +1,27 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": [
+    "extrabiomesxl:autumn_woods",
+    "extrabiomesxl:birch_forest",
+    "extrabiomesxl:forested_hills",
+    "extrabiomesxl:forested_island",
+    "extrabiomesxl:green_hills",
+    "extrabiomesxl:redwood_forest",
+    "extrabiomesxl:redwood_lush",
+    "extrabiomesxl:temperate_rainforest",
+    "extrabiomesxl:woodlands",
+    "worldgen152:extreme_hills",
+    "worldgen152:forest",
+    "worldgen152:forest_hills",
+    "worldgen152:plains",
+    "worldgen152:swampland",
+    "worldgen152:taiga"
+  ],
+  "spawners": [
+    {
+      "type": "projectzulu:centipede",
+      "count": 1,
+      "weight": 1
+    }
+  ]
+}

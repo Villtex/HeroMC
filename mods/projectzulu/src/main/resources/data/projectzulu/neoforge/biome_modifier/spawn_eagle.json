@@ -1,0 +1,14 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": [
+    "worldgen152:extreme_hills",
+    "worldgen152:extreme_hills_edge"
+  ],
+  "spawners": [
+    {
+      "type": "projectzulu:eagle",
+      "count": 1,
+      "weight": 5
+    }
+  ]
+}

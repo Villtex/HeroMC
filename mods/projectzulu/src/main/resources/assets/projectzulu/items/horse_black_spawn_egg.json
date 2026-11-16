@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "projectzulu:item/horse_black_spawn_egg",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -15658735
+      }
+    ]
+  }
+}

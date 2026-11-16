@@ -1,0 +1,21 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": [
+    "extrabiomesxl:glacier",
+    "extrabiomesxl:ice_wasteland",
+    "extrabiomesxl:tundra",
+    "worldgen152:ice_plains",
+    "worldgen152:taiga_hills"
+  ],
+  "spawners": [
+    {
+      "type": "projectzulu:mammoth",
+      "count": {
+        "type": "minecraft:uniform",
+        "min_inclusive": 1,
+        "max_inclusive": 3
+      },
+      "weight": 1
+    }
+  ]
+}

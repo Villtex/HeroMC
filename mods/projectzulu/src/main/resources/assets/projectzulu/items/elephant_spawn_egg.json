@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "projectzulu:item/elephant_spawn_egg",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -10992846
+      }
+    ]
+  }
+}

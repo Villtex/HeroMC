@@ -1,0 +1,21 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": [
+    "extrabiomesxl:mountain_desert",
+    "extrabiomesxl:mountain_ridge",
+    "extrabiomesxl:savanna",
+    "worldgen152:desert",
+    "worldgen152:desert_hills"
+  ],
+  "spawners": [
+    {
+      "type": "projectzulu:armadillo",
+      "count": {
+        "type": "minecraft:uniform",
+        "min_inclusive": 2,
+        "max_inclusive": 4
+      },
+      "weight": 10
+    }
+  ]
+}

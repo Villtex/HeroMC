@@ -1,0 +1,3 @@
+armadillo_living: armadilloliving.ogg
+armadillo_hurt: armadillohurt.ogg
+armadillo_death: armadillodeath.ogg

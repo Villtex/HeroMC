@@ -1,0 +1,1 @@
+mods/projectzulumob/armadillo.png -> assets/projectzulu/textures/entity/armadillo.png

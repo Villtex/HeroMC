@@ -1,0 +1,32 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": [
+    "extrabiomesxl:birch_forest",
+    "extrabiomesxl:forested_hills",
+    "extrabiomesxl:forested_island",
+    "extrabiomesxl:green_hills",
+    "extrabiomesxl:mountain_taiga",
+    "extrabiomesxl:pine_forest",
+    "extrabiomesxl:rainforest",
+    "extrabiomesxl:redwood_forest",
+    "extrabiomesxl:redwood_lush",
+    "extrabiomesxl:snowy_rainforest",
+    "extrabiomesxl:temperate_rainforest",
+    "extrabiomesxl:woodlands",
+    "worldgen152:forest",
+    "worldgen152:forest_hills",
+    "worldgen152:taiga",
+    "worldgen152:taiga_hills"
+  ],
+  "spawners": [
+    {
+      "type": "projectzulu:fox",
+      "count": {
+        "type": "minecraft:uniform",
+        "min_inclusive": 1,
+        "max_inclusive": 3
+      },
+      "weight": 10
+    }
+  ]
+}

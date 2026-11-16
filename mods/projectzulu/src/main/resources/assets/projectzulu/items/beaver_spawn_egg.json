@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "projectzulu:item/beaver_spawn_egg",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -13229047
+      }
+    ]
+  }
+}

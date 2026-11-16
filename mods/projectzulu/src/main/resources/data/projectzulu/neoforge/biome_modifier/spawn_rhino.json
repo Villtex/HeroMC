@@ -1,0 +1,19 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": [
+    "extrabiomesxl:savanna",
+    "worldgen152:desert",
+    "worldgen152:plains"
+  ],
+  "spawners": [
+    {
+      "type": "projectzulu:rhino",
+      "count": {
+        "type": "minecraft:uniform",
+        "min_inclusive": 1,
+        "max_inclusive": 2
+      },
+      "weight": 10
+    }
+  ]
+}

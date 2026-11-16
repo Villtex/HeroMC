@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "projectzulu:item/haunted_armor_spawn_egg",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -4013374
+      }
+    ]
+  }
+}

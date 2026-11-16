@@ -1,0 +1,14 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": [
+    "worldgen152:beach",
+    "worldgen152:river"
+  ],
+  "spawners": [
+    {
+      "type": "projectzulu:pelican",
+      "count": 1,
+      "weight": 7
+    }
+  ]
+}

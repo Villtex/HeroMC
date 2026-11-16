@@ -1,0 +1,21 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": [
+    "extrabiomesxl:alpine",
+    "extrabiomesxl:mountain_taiga",
+    "extrabiomesxl:snowy_rainforest",
+    "worldgen152:taiga",
+    "worldgen152:taiga_hills"
+  ],
+  "spawners": [
+    {
+      "type": "projectzulu:boar",
+      "count": {
+        "type": "minecraft:uniform",
+        "min_inclusive": 1,
+        "max_inclusive": 3
+      },
+      "weight": 10
+    }
+  ]
+}

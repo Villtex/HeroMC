@@ -1,0 +1,19 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": [
+    "extrabiomesxl:green_swamp",
+    "extrabiomesxl:marsh",
+    "worldgen152:swampland"
+  ],
+  "spawners": [
+    {
+      "type": "projectzulu:frog",
+      "count": {
+        "type": "minecraft:uniform",
+        "min_inclusive": 1,
+        "max_inclusive": 3
+      },
+      "weight": 10
+    }
+  ]
+}
