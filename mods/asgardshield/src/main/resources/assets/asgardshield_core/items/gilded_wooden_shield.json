@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "asgardshield_core:item/gilded_wooden_shield",
+    "tints": [
+      {
+        "type": "asgardshield_core:shield_color",
+        "shield": "wood"
+      },
+      {
+        "type": "minecraft:constant",
+        "value": -986896
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "X": "#minecraft:planks",
+    "*": "minecraft:stick"
+  },
+  "pattern": [
+    " XX",
+    "XXX",
+    "*X "
+  ],
+  "result": {
+    "count": 1,
+    "id": "asgardshield_core:wooden_giant_sword"
+  }
+}

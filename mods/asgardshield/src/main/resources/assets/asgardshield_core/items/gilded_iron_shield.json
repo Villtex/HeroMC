@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "asgardshield_core:item/gilded_iron_shield",
+    "tints": [
+      {
+        "type": "asgardshield_core:shield_color",
+        "shield": "iron"
+      },
+      {
+        "type": "minecraft:constant",
+        "value": -986896
+      }
+    ]
+  }
+}

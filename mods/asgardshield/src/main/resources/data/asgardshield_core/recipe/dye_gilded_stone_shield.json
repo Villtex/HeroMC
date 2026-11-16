@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_dye",
+  "category": "equipment",
+  "group": "asgardshield_dyed",
+  "dye": "#minecraft:dyes",
+  "target": "asgardshield_core:gilded_stone_shield",
+  "result": {
+    "id": "asgardshield_core:gilded_stone_shield"
+  }
+}

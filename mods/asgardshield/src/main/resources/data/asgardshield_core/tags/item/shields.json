@@ -1,0 +1,12 @@
+{
+  "values": [
+    "asgardshield_core:wooden_shield",
+    "asgardshield_core:gilded_wooden_shield",
+    "asgardshield_core:stone_shield",
+    "asgardshield_core:gilded_stone_shield",
+    "asgardshield_core:iron_shield",
+    "asgardshield_core:gilded_iron_shield",
+    "asgardshield_core:diamond_shield",
+    "asgardshield_core:gilded_diamond_shield"
+  ]
+}
