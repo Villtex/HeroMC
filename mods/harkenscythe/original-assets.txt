@@ -251,6 +251,16 @@ mods/mod_HarkenScythe/textures/blocks/tile.HSBloodCrucible_top.png -> assets/har
 mods/mod_HarkenScythe/textures/blocks/tile.HSBloodCrucible_bottom.png -> assets/harkenscythe_core/textures/block/blood_crucible_bottom.png
 mods/mod_HarkenScythe/textures/blocks/tile.HSBloodCrucible_inner.png -> assets/harkenscythe_core/textures/block/blood_crucible_inner.png
 mods/mod_HarkenScythe/textures/blocks/tile.HSBloodCrucible_liquid.png -> assets/harkenscythe_core/textures/block/blood_crucible_liquid.png
+mods/mod_HarkenScythe/textures/blocks/tile.HSSoulAltar_side.png -> assets/harkenscythe_core/textures/block/altar_of_souls_side.png
+mods/mod_HarkenScythe/textures/blocks/tile.HSSoulAltar_top.png -> assets/harkenscythe_core/textures/block/altar_of_souls_top.png
+mods/mod_HarkenScythe/textures/blocks/tile.HSSoulAltar_bottom.png -> assets/harkenscythe_core/textures/block/altar_of_souls_bottom.png
+mods/mod_HarkenScythe/textures/blocks/tile.HSBloodAltar_side.png -> assets/harkenscythe_core/textures/block/altar_of_blood_side.png
+mods/mod_HarkenScythe/textures/blocks/tile.HSBloodAltar_top.png -> assets/harkenscythe_core/textures/block/altar_of_blood_top.png
+mods/mod_HarkenScythe/textures/blocks/tile.HSBloodAltar_bottom.png -> assets/harkenscythe_core/textures/block/altar_of_blood_bottom.png
+mods/mod_HarkenScythe/textures/gui/guiSoulAlter.png -> assets/harkenscythe_core/textures/gui/altar_of_souls.png
+mods/mod_HarkenScythe/textures/gui/guiBloodAlter.png -> assets/harkenscythe_core/textures/gui/altar_of_blood.png
+mods/mod_HarkenScythe/textures/gui/bookShadow.png -> assets/harkenscythe_core/textures/entity/altar/book_of_shadows.png
+mods/mod_HarkenScythe/textures/gui/bookCarnage.png -> assets/harkenscythe_core/textures/entity/altar/book_of_carnage.png
 mods/mod_HarkenScythe/textures/models/soul/soulcommon.png -> assets/harkenscythe_core/textures/entity/soul/soulcommon.png
 mods/mod_HarkenScythe/textures/models/soul/soulgrieving.png -> assets/harkenscythe_core/textures/entity/soul/soulgrieving.png
 mods/mod_HarkenScythe/textures/models/soul/soulculled.png -> assets/harkenscythe_core/textures/entity/soul/soulculled.png

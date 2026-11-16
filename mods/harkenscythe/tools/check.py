@@ -54,10 +54,31 @@ for f in glob.glob(A + '/equipment/*.json'):
         for layer in ('humanoid', 'humanoid_leggings'):
             if f'"{layer}"' in open(f).read() and f'assets/{NS}/textures/entity/equipment/{layer}/{t}.png' not in targets:
                 err.append(f'missing equipment texture {layer}/{t}')
+enchantments = {os.path.basename(f)[:-5] for f in glob.glob(f'{RES}/data/{NS}/enchantment/*.json')}
 for f in glob.glob(RES + '/data/**/*.json', recursive=True):
     for ref in re.findall(r'"' + NS + r':([a-z_0-9]+)"(?!:)', open(f).read()):
-        if ref not in items and ref not in blocks and '/recipe/' in f:
+        if ref not in items and ref not in blocks and ref not in enchantments and ref != 'altar' and '/recipe/' in f:
             err.append(f'unknown {NS}:{ref} in {f[len(RES):]}')
+# altar recipes: one recipe per number and altar; the augment rows cover every roll and rank exactly once
+orders = {}
+for f in glob.glob(f'{RES}/data/{NS}/recipe/altar/*/*.json'):
+    r = json.load(open(f))
+    key = (r['altar'], r['order'])
+    if key in orders:
+        err.append(f'altar order {key} twice: {orders[key]} {f}')
+    orders[key] = f
+    if r.get('augments'):
+        grid = [[0] * 101 for _ in range(101)]
+        for a in r['augments']:
+            if a['enchantment'].split(':')[1] not in enchantments:
+                err.append(f'unknown augment {a["enchantment"]} in {f}')
+            for roll in range(a.get('min_roll', 1), a.get('max_roll', 100) + 1):
+                for rank in range(a.get('min_rank', 1), a.get('max_rank', 100) + 1):
+                    grid[roll][rank] += 1
+        if any(grid[x][y] != 1 for x in range(1, 101) for y in range(1, 101)):
+            err.append('augment rows do not cover the dice exactly once in ' + f)
+if len(orders) != 2 * 14:
+    err.append(f'{len(orders)} altar recipes, expected 28')
 java = ''.join(open(p).read() for p in glob.glob(J + '/**/*.java', recursive=True))
 for t in re.findall(r'id\("(textures/[a-z_/]+\.png)', java):
     if f'assets/{NS}/{t}' not in targets:

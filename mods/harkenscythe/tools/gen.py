@@ -477,6 +477,117 @@ tag('item', f'{NS}:enchantable/shield', f'#{NS}:enchantable/weapon', {'id': '#as
 tag('item', f'{NS}:enchantable/armor', '#minecraft:enchantable/armor', {'id': '#asgardshield_core:shields', 'required': False})
 tag('item', f'{NS}:enchantable/attunable', '#minecraft:enchantable/durability')
 
+# ------------------------------------------------------------------------------------------------ altars
+# BlockHSSoulAltar / BlockHSBloodAltar: 12/16 high (setBlockBounds 0.75), top, side and bottom texture
+for kind, old, title, base, book in (('souls', 'Soul', 'Altar of Souls', 'minecraft:obsidian', 'book_of_shadows'),
+                                     ('blood', 'Blood', 'Altar of Blood', 'minecraft:netherrack', 'book_of_carnage')):
+    b = f'altar_of_{kind}'
+    t = {p: tex(f'blocks/tile.HS{old}Altar_{p}.png', f'block/{b}_{p}') for p in ('side', 'top', 'bottom')}
+    side = {'texture': '#side', 'uv': [0, 4, 16, 16]}
+    block_model(b, {'textures': {'particle': t['side'], 'side': t['side'], 'top': t['top'], 'bottom': t['bottom']},
+                    'elements': [{'from': [0, 0, 0], 'to': [16, 12, 16], 'faces': {
+                        'north': dict(side, cullface='north'), 'south': dict(side, cullface='south'),
+                        'west': dict(side, cullface='west'), 'east': dict(side, cullface='east'),
+                        'up': {'texture': '#top'}, 'down': {'texture': '#bottom', 'cullface': 'down'}}}]})
+    blockstate(b, {'': {'model': n(f'block/{b}')}})
+    block_item(b)
+    loot_self(b)
+    lang[f'block.{NS}.{b}'] = title
+    tag('block', 'minecraft:mineable/pickaxe', n(b))
+    recipes[b] = ('shaped', [' ^ ', '*X*', 'XXX'], {'X': base, '*': 'minecraft:ender_pearl', '^': n(book)}, n(b))
+tex('gui/guiSoulAlter.png', 'gui/altar_of_souls')
+tex('gui/guiBloodAlter.png', 'gui/altar_of_blood')
+tex('gui/bookShadow.png', 'entity/altar/book_of_shadows')
+tex('gui/bookCarnage.png', 'entity/altar/book_of_carnage')
+
+# RecipeHSSoulAltar / RecipeHSBloodAltar: "order" is the old recipe number (soulAltarRecipeList 1-6, soulAltarAugmentList
+# 20-27, the highest match wins); cost per item in souls or blood (the GUI showed it times the stack size)
+# the wool of woolColorCheck: every colour but orange (missing in 1.5.2), and spectral wool
+WOOLS = ['white', 'magenta', 'light_blue', 'yellow', 'lime', 'pink', 'gray', 'light_gray', 'cyan', 'purple', 'blue', 'brown', 'green', 'red',
+         'black']
+tag('item', f'{NS}:altar/wool', *[f'minecraft:{c}_wool' for c in WOOLS], n('spectral_wool'))
+# ItemSword: swords, scythes, glaives and the giant swords of Asgard Shield (ItemZedSword)
+tag('item', f'{NS}:altar/sword', '#minecraft:swords', *[n(w) for w in WEAPONS], {'id': '#asgardshield_core:giant_swords', 'required': False})
+tag('item', f'{NS}:altar/attunable', *[n(x) for x in ('talisman', 'ethereal_talisman', 'overworld_amulet', 'nether_amulet', 'ethereal_amulet')])
+tag('item', f'{NS}:altar/skulls', *[n(f'{sid}_skull') for sid, _, _, _ in SKULLS])
+ASGARD = [{'type': 'neoforge:mod_loaded', 'modid': 'asgardshield_core'}]
+
+
+def rows(ench, levels, roll=(1, 100)):
+    """Rows of one enchantment: levels = [(lowest rank, level), ...] from the highest rank down."""
+    out, top = [], 100
+    for low, lv in levels:
+        out.append({'enchantment': n(ench), 'level': lv, 'min_roll': roll[0], 'max_roll': roll[1], 'min_rank': low, 'max_rank': top})
+        top = low - 1
+    return out
+
+
+STD = [(90, 3), (60, 2), (1, 1)]
+FOUR = [(90, 4), (80, 3), (50, 2), (1, 1)]
+
+
+def book_rows(augs, four):
+    out = []
+    for i, a in enumerate(augs):
+        top = 4 if a == four else 3
+        out += rows(a, [(91, top), (71, 3), (41, 2), (1, 1)], (i * 20 + 1, i * 20 + 20))
+    return out
+
+
+ALTARS = {
+    'soul': {'keeper': 'soulkeeper', 'vessel': 'soul_vessel', 'keeper_cost': 20, 'vessel_cost': 40, 'step': 5, 'cloth': 'soulweave_cloth',
+             'imbue': ('minecraft:iron_ingot', 'livingmetal_ingot', 'imbue', 5), 'aug': 50, 'attune': 20, 'attuned': 'soul_attuned',
+             'slay': 'soulsteal', 'death': 'afterlife', 'bow': 'blight', 'armor': 'vitality', 'shield': 'ward',
+             'book': ['soulsteal', 'blight', 'vitality', 'afterlife', 'ward'], 'sword2': STD},
+    'blood': {'keeper': 'bloodkeeper', 'vessel': 'blood_vessel', 'keeper_cost': 40, 'vessel_cost': 80, 'step': 10, 'cloth': 'bloodweave_cloth',
+              'imbue': (n('biomass_seed'), 'germinated_biomass_seed', 'germinate', 10), 'aug': 100, 'attune': 40, 'attuned': 'blood_attuned',
+              'slay': 'bloodletting', 'death': 'decapitate', 'bow': 'hemorrhage', 'armor': 'exude', 'shield': 'sanguinary',
+              'book': ['bloodletting', 'hemorrhage', 'exude', 'decapitate', 'sanguinary'], 'sword2': [(90, 3), (55, 2), (1, 1)]},
+}
+for altar, a in ALTARS.items():
+    def altar_recipe(name, order, action, ingredient, cost, **extra):
+        r = {'type': n('altar'), 'altar': altar, 'order': order, 'action': action, 'ingredient': ingredient, 'cost': cost}
+        cond = extra.pop('conditions', None)
+        r.update(extra)
+        if cond:
+            r['neoforge:conditions'] = cond
+        recipes[f'altar/{altar}/{name}'] = r
+    altar_recipe('essence_keeper', 1, 'enthrall', n('essence_keeper'), a['keeper_cost'], result=n(a['keeper']))
+    altar_recipe(a['keeper'], 2, 'enthrall', n(a['keeper']), a['step'], recharge=True, result=n(a['keeper']))
+    altar_recipe('essence_vessel', 3, 'enthrall', n('essence_vessel'), a['vessel_cost'], result=n(a['vessel']))
+    altar_recipe(a['vessel'], 4, 'enthrall', n(a['vessel']), a['step'], recharge=True, result=n(a['vessel']))
+    altar_recipe('wool', 5, 'entwine', f'#{NS}:altar/wool', a['step'], result=n(a['cloth']))
+    src, dst, action, cost = a['imbue']
+    altar_recipe(dst, 6, action, src, cost, result=n(dst))
+    c = a['aug']
+    altar_recipe('sword', 20, 'augment', f'#{NS}:altar/sword', c,
+                 augments=rows(a['death'], STD, (85, 100)) + rows(a['slay'], a['sword2'], (1, 84)))
+    altar_recipe('bow', 21, 'augment', '#minecraft:enchantable/bow', c, augments=rows(a['death'], STD, (85, 100)) + rows(a['bow'], STD, (1, 84)))
+    altar_recipe('armor', 22, 'augment', '#minecraft:enchantable/armor', c, exclude=f'#{NS}:altar/skulls', augments=rows(a['armor'], FOUR))
+    altar_recipe('axe', 23, 'augment', '#minecraft:axes', c, augments=rows(a['slay'], STD, (85, 100)) + rows(a['death'], STD, (1, 84)))
+    altar_recipe('shield', 24, 'augment', '#asgardshield_core:shields', c, conditions=ASGARD,
+                 augments=rows(a['armor'], STD, (85, 100)) + rows(a['shield'], STD, (1, 84)))
+    # ItemZedSword: the third branch only took ranks of 60 and more, the rest fell to the last one
+    altar_recipe('giant_sword', 25, 'augment', '#asgardshield_core:giant_swords', c, conditions=ASGARD,
+                 augments=rows(a['death'], STD, (90, 100)) + rows(a['armor'], STD, (75, 89)) + rows(a['slay'], [(90, 3), (60, 2)], (1, 74))
+                 + [{'enchantment': n(a['shield']), 'level': 1, 'min_roll': 1, 'max_roll': 74, 'min_rank': 1, 'max_rank': 59}])
+    altar_recipe('book', 26, 'attune', 'minecraft:book', c, single=True, result='minecraft:enchanted_book',
+                 augments=book_rows(a['book'], a['armor']))
+    altar_recipe('attunement', 27, 'attune', f'#{NS}:altar/attunable', a['attune'], components={'minecraft:rarity': 'epic'},
+                 augments=[{'enchantment': n(a['attuned']), 'level': 1}])
+lang.update({
+    f'container.{NS}.captured_souls': 'Captured Souls', f'container.{NS}.collected_blood': 'Collected Blood',
+    f'container.{NS}.altar.enthrall': 'Enthrall', f'container.{NS}.altar.entwine': 'Entwine', f'container.{NS}.altar.imbue': 'Imbue',
+    f'container.{NS}.altar.germinate': 'Germinate', f'container.{NS}.altar.augment': 'Augment', f'container.{NS}.altar.attune': 'Attune',
+    f'jei.{NS}.altar.cost.soul': 'Cost: %s Souls', f'jei.{NS}.altar.cost.blood': 'Cost: %s Blood',
+    f'jei.{NS}.altar.recharge.soul': 'Cost: %s Souls for every %s missing', f'jei.{NS}.altar.recharge.blood': 'Cost: %s Blood for every %s missing',
+    f'jei.{NS}.altar.per_item': 'per item',
+    f'jei.{NS}.altar.unenchanted': 'Only unenchanted items',
+    f'jei.{NS}.altar.chance': '%s: %s%%',
+    f'jei.{NS}.altar': 'Place crucibles two blocks away around the altar (one block lower to one block higher, with air between them '
+                       'one block above the crucible). The altar uses their content.',
+})
+
 # ------------------------------------------------------------------------------------------------ mobs, loot, trades
 for e in ('spectral_pets', 'harbingers', 'soulless'):
     tag('entity_type', f'{NS}:{e}')

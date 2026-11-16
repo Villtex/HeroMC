@@ -1,0 +1,17 @@
+{
+  "type": "harkenscythe_core:altar",
+  "altar": "soul",
+  "order": 27,
+  "action": "attune",
+  "ingredient": "#harkenscythe_core:altar/attunable",
+  "cost": 20,
+  "components": {
+    "minecraft:rarity": "epic"
+  },
+  "augments": [
+    {
+      "enchantment": "harkenscythe_core:soul_attuned",
+      "level": 1
+    }
+  ]
+}

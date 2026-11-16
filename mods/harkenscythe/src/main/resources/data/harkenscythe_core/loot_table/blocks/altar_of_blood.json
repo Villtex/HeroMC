@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "condition": {
+        "type": "minecraft:survives_explosion"
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "harkenscythe_core:altar_of_blood"
+        }
+      ],
+      "rolls": 1
+    }
+  ],
+  "random_sequence": "harkenscythe_core:blocks/altar_of_blood"
+}

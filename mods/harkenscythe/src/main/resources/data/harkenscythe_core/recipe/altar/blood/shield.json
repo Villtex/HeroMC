@@ -1,0 +1,64 @@
+{
+  "type": "harkenscythe_core:altar",
+  "altar": "blood",
+  "order": 24,
+  "action": "augment",
+  "ingredient": "#asgardshield_core:shields",
+  "cost": 100,
+  "augments": [
+    {
+      "enchantment": "harkenscythe_core:exude",
+      "level": 3,
+      "min_roll": 85,
+      "max_roll": 100,
+      "min_rank": 90,
+      "max_rank": 100
+    },
+    {
+      "enchantment": "harkenscythe_core:exude",
+      "level": 2,
+      "min_roll": 85,
+      "max_roll": 100,
+      "min_rank": 60,
+      "max_rank": 89
+    },
+    {
+      "enchantment": "harkenscythe_core:exude",
+      "level": 1,
+      "min_roll": 85,
+      "max_roll": 100,
+      "min_rank": 1,
+      "max_rank": 59
+    },
+    {
+      "enchantment": "harkenscythe_core:sanguinary",
+      "level": 3,
+      "min_roll": 1,
+      "max_roll": 84,
+      "min_rank": 90,
+      "max_rank": 100
+    },
+    {
+      "enchantment": "harkenscythe_core:sanguinary",
+      "level": 2,
+      "min_roll": 1,
+      "max_roll": 84,
+      "min_rank": 60,
+      "max_rank": 89
+    },
+    {
+      "enchantment": "harkenscythe_core:sanguinary",
+      "level": 1,
+      "min_roll": 1,
+      "max_roll": 84,
+      "min_rank": 1,
+      "max_rank": 59
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "asgardshield_core"
+    }
+  ]
+}

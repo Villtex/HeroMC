@@ -2,6 +2,8 @@
   "values": [
     "harkenscythe_core:livingmetal_block",
     "harkenscythe_core:soul_crucible",
-    "harkenscythe_core:blood_crucible"
+    "harkenscythe_core:blood_crucible",
+    "harkenscythe_core:altar_of_souls",
+    "harkenscythe_core:altar_of_blood"
   ]
 }

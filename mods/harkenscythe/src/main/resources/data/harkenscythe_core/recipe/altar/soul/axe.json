@@ -1,0 +1,58 @@
+{
+  "type": "harkenscythe_core:altar",
+  "altar": "soul",
+  "order": 23,
+  "action": "augment",
+  "ingredient": "#minecraft:axes",
+  "cost": 50,
+  "augments": [
+    {
+      "enchantment": "harkenscythe_core:soulsteal",
+      "level": 3,
+      "min_roll": 85,
+      "max_roll": 100,
+      "min_rank": 90,
+      "max_rank": 100
+    },
+    {
+      "enchantment": "harkenscythe_core:soulsteal",
+      "level": 2,
+      "min_roll": 85,
+      "max_roll": 100,
+      "min_rank": 60,
+      "max_rank": 89
+    },
+    {
+      "enchantment": "harkenscythe_core:soulsteal",
+      "level": 1,
+      "min_roll": 85,
+      "max_roll": 100,
+      "min_rank": 1,
+      "max_rank": 59
+    },
+    {
+      "enchantment": "harkenscythe_core:afterlife",
+      "level": 3,
+      "min_roll": 1,
+      "max_roll": 84,
+      "min_rank": 90,
+      "max_rank": 100
+    },
+    {
+      "enchantment": "harkenscythe_core:afterlife",
+      "level": 2,
+      "min_roll": 1,
+      "max_roll": 84,
+      "min_rank": 60,
+      "max_rank": 89
+    },
+    {
+      "enchantment": "harkenscythe_core:afterlife",
+      "level": 1,
+      "min_roll": 1,
+      "max_roll": 84,
+      "min_rank": 1,
+      "max_rank": 59
+    }
+  ]
+}

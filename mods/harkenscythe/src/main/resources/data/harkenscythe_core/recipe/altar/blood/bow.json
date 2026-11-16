@@ -1,0 +1,58 @@
+{
+  "type": "harkenscythe_core:altar",
+  "altar": "blood",
+  "order": 21,
+  "action": "augment",
+  "ingredient": "#minecraft:enchantable/bow",
+  "cost": 100,
+  "augments": [
+    {
+      "enchantment": "harkenscythe_core:decapitate",
+      "level": 3,
+      "min_roll": 85,
+      "max_roll": 100,
+      "min_rank": 90,
+      "max_rank": 100
+    },
+    {
+      "enchantment": "harkenscythe_core:decapitate",
+      "level": 2,
+      "min_roll": 85,
+      "max_roll": 100,
+      "min_rank": 60,
+      "max_rank": 89
+    },
+    {
+      "enchantment": "harkenscythe_core:decapitate",
+      "level": 1,
+      "min_roll": 85,
+      "max_roll": 100,
+      "min_rank": 1,
+      "max_rank": 59
+    },
+    {
+      "enchantment": "harkenscythe_core:hemorrhage",
+      "level": 3,
+      "min_roll": 1,
+      "max_roll": 84,
+      "min_rank": 90,
+      "max_rank": 100
+    },
+    {
+      "enchantment": "harkenscythe_core:hemorrhage",
+      "level": 2,
+      "min_roll": 1,
+      "max_roll": 84,
+      "min_rank": 60,
+      "max_rank": 89
+    },
+    {
+      "enchantment": "harkenscythe_core:hemorrhage",
+      "level": 1,
+      "min_roll": 1,
+      "max_roll": 84,
+      "min_rank": 1,
+      "max_rank": 59
+    }
+  ]
+}

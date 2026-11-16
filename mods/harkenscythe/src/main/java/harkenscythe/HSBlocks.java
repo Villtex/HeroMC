@@ -1,5 +1,7 @@
 package harkenscythe;
 
+import harkenscythe.altar.AltarBlock;
+import harkenscythe.altar.AltarBlockEntity;
 import harkenscythe.block.BiomassBlock;
 import harkenscythe.block.BiomassPlantBlock;
 import harkenscythe.block.BloodSplashBlock;
@@ -21,7 +23,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 /**
- * The blocks of mod_HarkenScythe (without the altars). Hardness as in 1.5.2; setResistance(r) of 1.5.2 is
+ * The blocks of mod_HarkenScythe. Hardness as in 1.5.2; setResistance(r) of 1.5.2 is
  * {@code 0.6 * r} today. The step sounds "powder" and "metal" of 1.5.2 were the stone sound.
  */
 public final class HSBlocks {
@@ -59,6 +61,14 @@ public final class HSBlocks {
     public static final DeferredBlock<BiomassPlantBlock> BIOMASS_PLANT = BLOCKS.registerBlock("biomass_plant", BiomassPlantBlock::new,
             p -> p.mapColor(MapColor.PLANT).noCollision().instabreak().sound(SoundType.GRASS).randomTicks().pushReaction(PushReaction.POPPED));
 
+    /** Material.rock (needs a pickaxe), hardness 5, resistance 10 (6 today), the metal step sound; see {@link AltarBlock}. */
+    public static final DeferredBlock<AltarBlock> ALTAR_OF_SOULS = BLOCKS.registerBlock("altar_of_souls", p -> new AltarBlock(false, p),
+            p -> p.mapColor(MapColor.COLOR_BLACK).strength(5.0F, 6.0F).requiresCorrectToolForDrops().sound(SoundType.METAL).noOcclusion());
+    public static final DeferredBlock<AltarBlock> ALTAR_OF_BLOOD = BLOCKS.registerBlock("altar_of_blood", p -> new AltarBlock(true, p),
+            p -> p.mapColor(MapColor.NETHER).strength(5.0F, 6.0F).requiresCorrectToolForDrops().sound(SoundType.METAL).noOcclusion());
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<AltarBlockEntity>> ALTAR_ENTITY = BLOCK_ENTITIES.register("altar",
+            () -> new BlockEntityType<>(AltarBlockEntity::new, ALTAR_OF_SOULS.get(), ALTAR_OF_BLOOD.get()));
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<HSSkullBlockEntity>> SKULL_ENTITY = BLOCK_ENTITIES.register("skull",
             () -> new BlockEntityType<>(HSSkullBlockEntity::new, SKULL.get()));
 

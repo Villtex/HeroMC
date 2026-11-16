@@ -1,0 +1,9 @@
+{
+  "type": "harkenscythe_core:altar",
+  "altar": "blood",
+  "order": 6,
+  "action": "germinate",
+  "ingredient": "harkenscythe_core:biomass_seed",
+  "cost": 10,
+  "result": "harkenscythe_core:germinated_biomass_seed"
+}

@@ -1,0 +1,9 @@
+{
+  "type": "harkenscythe_core:altar",
+  "altar": "blood",
+  "order": 5,
+  "action": "entwine",
+  "ingredient": "#harkenscythe_core:altar/wool",
+  "cost": 10,
+  "result": "harkenscythe_core:bloodweave_cloth"
+}

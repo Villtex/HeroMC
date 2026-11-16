@@ -1,0 +1,10 @@
+{
+  "type": "harkenscythe_core:altar",
+  "altar": "soul",
+  "order": 4,
+  "action": "enthrall",
+  "ingredient": "harkenscythe_core:soul_vessel",
+  "cost": 5,
+  "recharge": true,
+  "result": "harkenscythe_core:soul_vessel"
+}

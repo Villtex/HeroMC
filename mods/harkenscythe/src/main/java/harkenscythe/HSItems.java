@@ -172,6 +172,9 @@ public final class HSItems {
     // crucibles (tabDecorations)
     public static final DeferredItem<BlockItem> SOUL_CRUCIBLE = blockItem(HSBlocks.SOUL_CRUCIBLE, "decorations");
     public static final DeferredItem<BlockItem> BLOOD_CRUCIBLE = blockItem(HSBlocks.BLOOD_CRUCIBLE, "decorations");
+    // altars (tabDecorations)
+    public static final DeferredItem<BlockItem> ALTAR_OF_SOULS = blockItem(HSBlocks.ALTAR_OF_SOULS, "decorations");
+    public static final DeferredItem<BlockItem> ALTAR_OF_BLOOD = blockItem(HSBlocks.ALTAR_OF_BLOOD, "decorations");
     // blocks (tabBlock)
     public static final DeferredItem<BlockItem> SOULWEAVE_CLOTH = blockItem(HSBlocks.SOULWEAVE_CLOTH, "blocks");
     public static final DeferredItem<BlockItem> BLOODWEAVE_CLOTH = blockItem(HSBlocks.BLOODWEAVE_CLOTH, "blocks");

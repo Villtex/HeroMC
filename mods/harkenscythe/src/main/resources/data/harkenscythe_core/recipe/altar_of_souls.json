@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": "minecraft:obsidian",
+    "*": "minecraft:ender_pearl",
+    "^": "harkenscythe_core:book_of_shadows"
+  },
+  "pattern": [
+    " ^ ",
+    "*X*",
+    "XXX"
+  ],
+  "result": {
+    "count": 1,
+    "id": "harkenscythe_core:altar_of_souls"
+  }
+}

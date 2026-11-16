@@ -1,0 +1,172 @@
+{
+  "type": "harkenscythe_core:altar",
+  "altar": "soul",
+  "order": 26,
+  "action": "attune",
+  "ingredient": "minecraft:book",
+  "cost": 50,
+  "single": true,
+  "result": "minecraft:enchanted_book",
+  "augments": [
+    {
+      "enchantment": "harkenscythe_core:soulsteal",
+      "level": 3,
+      "min_roll": 1,
+      "max_roll": 20,
+      "min_rank": 91,
+      "max_rank": 100
+    },
+    {
+      "enchantment": "harkenscythe_core:soulsteal",
+      "level": 3,
+      "min_roll": 1,
+      "max_roll": 20,
+      "min_rank": 71,
+      "max_rank": 90
+    },
+    {
+      "enchantment": "harkenscythe_core:soulsteal",
+      "level": 2,
+      "min_roll": 1,
+      "max_roll": 20,
+      "min_rank": 41,
+      "max_rank": 70
+    },
+    {
+      "enchantment": "harkenscythe_core:soulsteal",
+      "level": 1,
+      "min_roll": 1,
+      "max_roll": 20,
+      "min_rank": 1,
+      "max_rank": 40
+    },
+    {
+      "enchantment": "harkenscythe_core:blight",
+      "level": 3,
+      "min_roll": 21,
+      "max_roll": 40,
+      "min_rank": 91,
+      "max_rank": 100
+    },
+    {
+      "enchantment": "harkenscythe_core:blight",
+      "level": 3,
+      "min_roll": 21,
+      "max_roll": 40,
+      "min_rank": 71,
+      "max_rank": 90
+    },
+    {
+      "enchantment": "harkenscythe_core:blight",
+      "level": 2,
+      "min_roll": 21,
+      "max_roll": 40,
+      "min_rank": 41,
+      "max_rank": 70
+    },
+    {
+      "enchantment": "harkenscythe_core:blight",
+      "level": 1,
+      "min_roll": 21,
+      "max_roll": 40,
+      "min_rank": 1,
+      "max_rank": 40
+    },
+    {
+      "enchantment": "harkenscythe_core:vitality",
+      "level": 4,
+      "min_roll": 41,
+      "max_roll": 60,
+      "min_rank": 91,
+      "max_rank": 100
+    },
+    {
+      "enchantment": "harkenscythe_core:vitality",
+      "level": 3,
+      "min_roll": 41,
+      "max_roll": 60,
+      "min_rank": 71,
+      "max_rank": 90
+    },
+    {
+      "enchantment": "harkenscythe_core:vitality",
+      "level": 2,
+      "min_roll": 41,
+      "max_roll": 60,
+      "min_rank": 41,
+      "max_rank": 70
+    },
+    {
+      "enchantment": "harkenscythe_core:vitality",
+      "level": 1,
+      "min_roll": 41,
+      "max_roll": 60,
+      "min_rank": 1,
+      "max_rank": 40
+    },
+    {
+      "enchantment": "harkenscythe_core:afterlife",
+      "level": 3,
+      "min_roll": 61,
+      "max_roll": 80,
+      "min_rank": 91,
+      "max_rank": 100
+    },
+    {
+      "enchantment": "harkenscythe_core:afterlife",
+      "level": 3,
+      "min_roll": 61,
+      "max_roll": 80,
+      "min_rank": 71,
+      "max_rank": 90
+    },
+    {
+      "enchantment": "harkenscythe_core:afterlife",
+      "level": 2,
+      "min_roll": 61,
+      "max_roll": 80,
+      "min_rank": 41,
+      "max_rank": 70
+    },
+    {
+      "enchantment": "harkenscythe_core:afterlife",
+      "level": 1,
+      "min_roll": 61,
+      "max_roll": 80,
+      "min_rank": 1,
+      "max_rank": 40
+    },
+    {
+      "enchantment": "harkenscythe_core:ward",
+      "level": 3,
+      "min_roll": 81,
+      "max_roll": 100,
+      "min_rank": 91,
+      "max_rank": 100
+    },
+    {
+      "enchantment": "harkenscythe_core:ward",
+      "level": 3,
+      "min_roll": 81,
+      "max_roll": 100,
+      "min_rank": 71,
+      "max_rank": 90
+    },
+    {
+      "enchantment": "harkenscythe_core:ward",
+      "level": 2,
+      "min_roll": 81,
+      "max_roll": 100,
+      "min_rank": 41,
+      "max_rank": 70
+    },
+    {
+      "enchantment": "harkenscythe_core:ward",
+      "level": 1,
+      "min_roll": 81,
+      "max_roll": 100,
+      "min_rank": 1,
+      "max_rank": 40
+    }
+  ]
+}

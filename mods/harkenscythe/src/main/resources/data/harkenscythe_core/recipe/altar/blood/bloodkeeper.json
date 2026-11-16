@@ -1,0 +1,10 @@
+{
+  "type": "harkenscythe_core:altar",
+  "altar": "blood",
+  "order": 2,
+  "action": "enthrall",
+  "ingredient": "harkenscythe_core:bloodkeeper",
+  "cost": 10,
+  "recharge": true,
+  "result": "harkenscythe_core:bloodkeeper"
+}

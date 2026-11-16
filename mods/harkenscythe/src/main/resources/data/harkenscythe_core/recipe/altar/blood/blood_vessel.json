@@ -1,0 +1,10 @@
+{
+  "type": "harkenscythe_core:altar",
+  "altar": "blood",
+  "order": 4,
+  "action": "enthrall",
+  "ingredient": "harkenscythe_core:blood_vessel",
+  "cost": 10,
+  "recharge": true,
+  "result": "harkenscythe_core:blood_vessel"
+}

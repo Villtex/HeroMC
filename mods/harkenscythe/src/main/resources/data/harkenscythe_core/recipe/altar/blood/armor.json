@@ -1,0 +1,43 @@
+{
+  "type": "harkenscythe_core:altar",
+  "altar": "blood",
+  "order": 22,
+  "action": "augment",
+  "ingredient": "#minecraft:enchantable/armor",
+  "cost": 100,
+  "exclude": "#harkenscythe_core:altar/skulls",
+  "augments": [
+    {
+      "enchantment": "harkenscythe_core:exude",
+      "level": 4,
+      "min_roll": 1,
+      "max_roll": 100,
+      "min_rank": 90,
+      "max_rank": 100
+    },
+    {
+      "enchantment": "harkenscythe_core:exude",
+      "level": 3,
+      "min_roll": 1,
+      "max_roll": 100,
+      "min_rank": 80,
+      "max_rank": 89
+    },
+    {
+      "enchantment": "harkenscythe_core:exude",
+      "level": 2,
+      "min_roll": 1,
+      "max_roll": 100,
+      "min_rank": 50,
+      "max_rank": 79
+    },
+    {
+      "enchantment": "harkenscythe_core:exude",
+      "level": 1,
+      "min_roll": 1,
+      "max_roll": 100,
+      "min_rank": 1,
+      "max_rank": 49
+    }
+  ]
+}
