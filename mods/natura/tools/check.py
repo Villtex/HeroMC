@@ -21,6 +21,10 @@ for suf in re.findall(r'w\.id \+ "(_[a-z_]+)"',isrc):
 for pre in ['ghostwood','bloodwood','darkwood','fusewood','quartz']:
     for k in ['sword','pickaxe','shovel','hatchet','kama']: items.add(f'{pre}_{k}')
 items |= (blocks-noitem)
+# mobs, spawn eggs, imp meat, boats (NaturaEntities.java)
+esrc=open(J+'/NaturaEntities.java').read()
+items |= set(re.findall(r'item\("([a-z_]+)"',esrc))
+entities=set(re.findall(r'(?:entity|boatEntity)\("([a-z_]+)"',esrc))
 lang=json.load(open(A+'/lang/en_us.json'))
 err=[]
 for b in blocks:
@@ -48,9 +52,15 @@ for f in glob.glob(A+'/blockstates/*.json')+glob.glob(A+'/items/*.json'):
     for ref in re.findall(r'"model": "([a-z_:/0-9]+)"', open(f).read()):
         check_model(ref)
 # recipe/loot references to natura items
-allnames=items|blocks
+allnames=items|blocks|entities
 for f in glob.glob(RES+'/data/**/*.json',recursive=True):
-    for ref in re.findall(r'"#?natura:([a-z_/0-9]+)"', open(f).read()):
+    text = open(f).read()
+    # tag references (#natura:x, or "tag": "natura:x") must name a tag of the mod
+    tagrefs = set(re.findall(r'"#natura:([a-z_/0-9]+)"', text)) | set(re.findall(r'"tag": "natura:([a-z_/0-9]+)"', text))
+    for ref in tagrefs:
+        if not glob.glob(RES+f'/data/natura/tags/*/{ref}.json'): err.append(f'unknown tag #natura:{ref} in {f[len(RES):]}')
+    for ref in re.findall(r'"natura:([a-z_/0-9]+)"', text):
+        if ref in tagrefs: continue
         if '/' in ref or f.endswith('tags') : continue
         if ref not in allnames and ref not in ('kamas','sticks','imp'): err.append(f'unknown ref natura:{ref} in {f[len(RES):]}')
 print('\n'.join(sorted(set(err))) or 'OK', len(blocks), len(items))

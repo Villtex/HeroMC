@@ -50,6 +50,10 @@ public final class NaturaWorldGen {
         OldBlockInfo.register(NaturaIds.GLOWSHROOM_BLUE, Material.WOOD, false, 0, false);
         OldBlockInfo.register(NaturaIds.GLOWSHROOM_GREEN, Material.WOOD, false, 0, false);
         OldBlockInfo.register(NaturaIds.GLOWSHROOM_PURPLE, Material.WOOD, false, 0, false);
+        // NPlanks (Material.wood), HeatSand (Material.sand), TaintedSoil (Material.ground): plain cubes
+        OldBlockInfo.registerCube(NaturaIds.PLANKS, Material.WOOD);
+        OldBlockInfo.registerCube(NaturaIds.HEAT_SAND, Material.SAND);
+        OldBlockInfo.registerCube(NaturaIds.TAINTED_SOIL, Material.GROUND);
 
         // ---- GameRegistry.registerWorldGenerator, in the order of Natura.init ----
         OldTerrainGen.registerWorldGenerator(FML_ID, BaseCropWorldgen::generate);

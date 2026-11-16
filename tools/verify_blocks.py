@@ -83,6 +83,70 @@ def ebxl(bid, meta):
     return None
 
 
+# Natura (ids of the pack configuration)
+NATURA_LOGS = {1259: ['eucalyptus', 'sakura', 'ghostwood', 'hopseed'], 1248: ['maple', 'silverbell', 'amaranth', 'tiger'],
+               1258: ['willow'], 1235: ['darkwood', 'fusewood']}
+NATURA_LEAVES = {1238: ['redwood', 'eucalyptus', 'hopseed', 'redwood'], 1255: ['sakura', 'ghostwood', 'bloodwood', 'willow'],
+                 1247: ['maple', 'silverbell', 'amaranth', 'tiger'],
+                 1234: ['darkwood', 'flowering_darkwood', 'fruit_darkwood', 'fusewood']}
+NATURA_SAPLINGS = {1256: ['redwood', 'eucalyptus', 'hopseed', 'sakura', 'ghostwood', 'bloodwood', 'darkwood', 'fusewood'],
+                   1249: ['maple', 'silverbell', 'amaranth', 'tiger', 'willow']}
+NATURA_BUSHES = {1226: ['raspberry', 'blueberry', 'blackberry', 'maloberry'], 1244: ['blightberry', 'duskberry', 'skyberry', 'stingberry']}
+NATURA_GLOWSHROOMS = {1229: 'blue', 1242: 'green', 1246: 'purple'}
+NATURA_WOODS = ['eucalyptus', 'sakura', 'ghostwood', 'redwood', 'bloodwood', 'hopseed', 'maple', 'silverbell', 'amaranth', 'tiger', 'willow',
+                'darkwood', 'fusewood']
+NATURA_SIMPLE = {1239: 'bluebells', 252: 'heat_sand', 253: 'tainted_soil'}
+
+
+def pick(names, i):
+    return names[i] if i < len(names) else names[0]
+
+
+def natura(bid, meta):
+    """Natura blocks; the arms of the saguaro trunk (1253:0) are checked against the world in main()."""
+    if bid in NATURA_LOGS:
+        return f'natura:{pick(NATURA_LOGS[bid], meta & 3)}_log[axis={AXIS[meta & 12]}]'
+    if bid == 1251:
+        return 'natura:' + pick(['redwood_bark', 'redwood_heart', 'redwood_root'], meta)
+    if bid == 1227:
+        if meta >= 12:
+            return 'natura:bloodwood_bark'
+        return f'natura:bloodwood_log[axis={AXIS[meta & 12]},bark={["nw", "ne", "sw", "se"][meta & 3]}]'
+    if bid in NATURA_LEAVES:
+        return f'natura:{NATURA_LEAVES[bid][meta & 3]}_leaves[persistent=false]'
+    if bid in NATURA_SAPLINGS:
+        return f'natura:{pick(NATURA_SAPLINGS[bid], meta & 7)}_sapling[stage={1 if meta & 8 else 0}]'
+    if bid in NATURA_BUSHES:
+        return f'natura:{NATURA_BUSHES[bid][meta & 3]}_bush[age={(meta >> 2) & 3}]'
+    if bid == 1231:
+        return f'natura:{["white", "dark", "ash", "sulfur"][meta & 3]}_cloud'
+    if bid == 1233:
+        return f'natura:barley_crop[age={meta}]' if meta <= 3 else f'natura:cotton_crop[age={min(meta - 4, 4)}]'
+    if bid in NATURA_SIMPLE:
+        return 'natura:' + NATURA_SIMPLE[bid]
+    if bid == 1253:
+        if meta in (1, 2):
+            return f'natura:saguaro_sprout[age={meta - 1}]'
+        if 3 <= meta <= 6:
+            return f'natura:saguaro_fruit[facing={ {3: "east", 4: "south", 5: "west", 6: "north"}[meta] }]'
+        return 'natura:saguaro'
+    if bid == 1257:
+        return (f'natura:thornvines[up={flag(meta == 0)},south={flag(meta & 1)},west={flag(meta & 2)},north={flag(meta & 4)},'
+                f'east={flag(meta & 8)}]')
+    if bid == 1241:
+        return f'natura:{pick(["green", "purple", "blue"], meta)}_glowshroom'
+    if bid in NATURA_GLOWSHROOMS:
+        color = NATURA_GLOWSHROOMS[bid]
+        if meta in (10, 15):
+            return f'natura:{color}_glowshroom_stem[up={flag(meta == 15)},down={flag(meta == 15)},north=true,south=true,east=true,west=true]'
+        a = meta == 14
+        return (f'natura:{color}_glowshroom_block[up={flag(a or 1 <= meta <= 9)},down={flag(a)},north={flag(a or 1 <= meta <= 3)},'
+                f'south={flag(a or 7 <= meta <= 9)},west={flag(a or meta in (1, 4, 7))},east={flag(a or meta in (3, 6, 9))}]')
+    if bid == 1245:
+        return f'natura:{pick(NATURA_WOODS, meta)}_planks'
+    return None
+
+
 def mod_meta(bid, meta):
     """Blocks of mods whose metadata matters."""
     if bid == 1290:  # offLawn sunflower: 0 lower, 1 upper half
@@ -106,6 +170,9 @@ def block(bid, meta):
         mod = ebxl(bid, meta)
         if mod:
             return mod
+    mod = natura(bid, meta)
+    if mod:
+        return mod
     if bid in SIMPLE:
         return 'minecraft:' + SIMPLE[bid]
     if bid == 17:
@@ -225,6 +292,20 @@ def main():
                     return False
             return True
 
+        def saguaro(x, y, z):
+            """SaguaroBlock.connect: up to a trunk above, down unless air below, arms to trunks next to it when
+            this block or the neighbour has air below."""
+            def trunk(x, y, z):
+                return test(f'block {x} {y} {z} natura:saguaro')
+
+            def air(x, y, z):
+                return test(f'block {x} {y} {z} #minecraft:air')
+            air_below = air(x, y - 1, z)
+            arms = []
+            for name, dx, dz in (('north', 0, -1), ('east', 1, 0), ('south', 0, 1), ('west', -1, 0)):
+                arms.append(f'{name}={flag(trunk(x + dx, y, z + dz) and (air_below or air(x + dx, y - 1, z + dz)))}')
+            return f'natura:saguaro[up={flag(trunk(x, y + 1, z))},down={flag(not air_below)},{",".join(arms)}]'
+
         def report(*what):
             nonlocal shown
             if shown < 20:
@@ -272,6 +353,8 @@ def main():
                 x, y, z, bid = map(int, l[:4])
                 meta = int(l[4]) if len(l) > 4 else 0
                 want = block(bid, meta)
+                if bid == 1253 and meta in (0, 7, 8, 9, 10, 11, 12, 13, 14, 15):
+                    want = saguaro(x, y, z)
                 if test(f'block {x} {y} {z} {want}'):
                     ok += 1
                 elif bid not in (8, 9, 10, 11) and (

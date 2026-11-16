@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "minecraft:item/birch_boat",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -9561328
+      }
+    ]
+  }
+}

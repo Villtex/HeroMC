@@ -766,6 +766,68 @@ for vr, sub in (('crafting_table', '#natura:planks'), ('stick', '#natura:planks'
             r['key'][k] = {'neoforge:ingredient_type': 'neoforge:difference', 'base': '#minecraft:planks', 'subtracted': sub}
     write(f'data/minecraft/recipe/{vr}.json', r)
 
+# ================================================================= ENTITIES (NaturaEntities.java) — begin
+# Mobs, spawn eggs, imp meat and boats. Only this section writes their assets/data.
+for src, dst in (('imp', 'imp'), ('flamespider', 'heatscar_spider'), ('creeperunstable', 'nitro_creeper')):
+    assets.append((f'mods/natura/textures/mob/{src}.png', f'assets/natura/textures/entity/{dst}.png'))
+MOBS = [  # id, english (NProxyCommon), spawn egg primary colour (SpawnEgg.primaryColor)
+    ('imp', 'Imp', 15898421), ('heatscar_spider', 'Heatscar Spider', 15093008),
+    ('nitro_creeper', 'Nitro Creeper', 16203372), ('baby_heatscar_spider', 'Baby Heatscar Spider', 15093008)]
+for e, title, primary in MOBS:
+    lang[f'entity.natura.{e}'] = title
+    # 26.3 has no blank spawn egg texture to tint: the vanilla egg in the primary colour of the original
+    egg = f'{e}_spawn_egg'
+    item_model(egg, {'parent': 'minecraft:item/generated', 'textures': {'layer0': 'minecraft:item/egg'}})
+    item_def(egg, n(f'item/{egg}'), [{'type': 'minecraft:constant', 'value': (0xFF000000 | primary) - (1 << 32)}])
+    name_item(egg, f'Spawn {title}')  # item.natura.spawnegg.name "Spawn " + the entity name
+
+# ImpMeat (Raw/Cooked Imphide), furnace 0.2 experience
+for i, orig, title, tip in (('raw_imp_meat', 'impmeat_raw', 'Raw Imphide', "Eating this probably isn't good for you"),
+                            ('cooked_imp_meat', 'impmeat_cooked', 'Cooked Imphide', "It's warm to the touch")):
+    tex_item(orig, i); generated_item(i, n(f'item/{i}')); name_item(i, title); tooltip(i, tip)
+smelting('cooked_imp_meat', n('raw_imp_meat'), n('cooked_imp_meat'), 0.2)
+
+# imps: tempted by any Natura stew (BowlStew), bred with BowlStew damage 13 and up
+itag('natura:imp_tempt_items', *[n(f'{w}_mushroom_stew') for w in BOWLS], n('glowshroom_stew'), *[n(f'{w}_glowshroom_stew') for w in BOWLS])
+itag('natura:imp_food', n('fusewood_mushroom_stew'), n('glowshroom_stew'), *[n(f'{w}_glowshroom_stew') for w in BOWLS])
+
+# boats: entity textures of the original (64 x 32, 1.5.2 boat layout); no item icon in the original, so the item is
+# the birch boat tinted with the average colour of the planks
+BOATS = [('redwood', 'redwood', 'Redwood Boat', 0xB3704A), ('bloodwood', 'bloodwood', 'Bloodwood Boat', 0x6E1B10),
+         ('ghostwood', 'ghostwood', 'White Boat', 0x919191), ('eucalyptus', 'eucalyptus', 'Eucalyptus Boat', 0xC18992)]
+for w, orig, title, color in BOATS:
+    b = f'{w}_boat'
+    assets.append((f'mods/natura/textures/boats/{orig}_boat.png', f'assets/natura/textures/entity/boat/{w}.png'))
+    item_def(b, 'minecraft:item/birch_boat', [{'type': 'minecraft:constant', 'value': (0xFF000000 | color) - (1 << 32)}])
+    name_item(b, title)
+    lang[f'entity.natura.{b}'] = title
+    # no recipe in the original (the boats were never registered): the boat recipe of 1.5.2 with the planks
+    shaped(b, ['# #', '###'], {'#': n(f'{w}_planks')}, n(b), 1, 'misc', 'boat')
+    itag('minecraft:boats', n(b))
+    tag('entity_type', 'c:boats', n(b))
+
+# drops (dropFewItems; looting adds 0..level as in 1.5.2 rand(1 + level))
+def mob_loot(e, pools):
+    write(f'data/natura/loot_table/entities/{e}.json', {'type': 'minecraft:entity', 'pools': pools, 'random_sequence': f'natura:entities/{e}'})
+def counted(item, lo, hi, looting=1.0):
+    mods = [{'type': 'minecraft:set_count', 'count': {'type': 'minecraft:uniform', 'min': lo, 'max': hi}}]
+    if looting: mods.append({'type': 'minecraft:enchanted_count_increase', 'count': {'type': 'minecraft:uniform', 'min': 0.0, 'max': looting},
+                             'enchantment': 'minecraft:looting'})
+    return {'rolls': 1, 'entries': [{'type': 'minecraft:item', 'name': item, 'modifier': mods}]}
+mob_loot('imp', [counted(n('raw_imp_meat'), 1, 3), counted(n('imp_leather'), 2, 6, 2.0)])
+mob_loot('heatscar_spider', [counted(n('flamestring'), 2, 4)])
+mob_loot('baby_heatscar_spider', [counted(n('flamestring'), 0, 1)])
+# EntityCreeper: gunpowder (2-5 here) and the music disc when a skeleton kills it; charged: NitroCreeper.java
+creeper = van('data/minecraft/loot_table/entities/creeper.json')
+mob_loot('nitro_creeper', [counted('minecraft:gunpowder', 2, 5)] + creeper['pools'][1:])
+
+# spawns (EntityRegistry.addSpawn, BiomeDictionary NETHER): the Nether biomes of 26.3 until part 7b
+for e, weight, lo, hi in (('imp', 10, 8, 12), ('heatscar_spider', 10, 4, 4), ('nitro_creeper', 8, 4, 6), ('baby_heatscar_spider', 7, 4, 4)):
+    count = lo if lo == hi else {'type': 'minecraft:uniform', 'min_inclusive': lo, 'max_inclusive': hi}
+    write(f'data/natura/neoforge/biome_modifier/spawn_{e}.json', {'type': 'neoforge:add_spawns', 'biomes': '#minecraft:is_nether',
+          'spawners': [{'type': n(e), 'count': count, 'weight': weight}]})
+# ================================================================= ENTITIES — end
+
 # ---------------------------------------------------------------- write recipes, tags, lang, assets
 for name, r in recipes.items():
     write(f'data/natura/recipe/{name}.json', r)

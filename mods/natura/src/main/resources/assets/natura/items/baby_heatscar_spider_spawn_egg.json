@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "natura:item/baby_heatscar_spider_spawn_egg",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -1684208
+      }
+    ]
+  }
+}

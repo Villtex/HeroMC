@@ -306,3 +306,12 @@ mods/natura/textures/items/armor_imp_leggings.png -> assets/natura/textures/item
 mods/natura/textures/items/armor_imp_boots.png -> assets/natura/textures/item/imp_boots.png
 mods/natura/textures/armor/imp_1.png -> assets/natura/textures/entity/equipment/humanoid/imp.png
 mods/natura/textures/armor/imp_2.png -> assets/natura/textures/entity/equipment/humanoid_leggings/imp.png
+mods/natura/textures/mob/imp.png -> assets/natura/textures/entity/imp.png
+mods/natura/textures/mob/flamespider.png -> assets/natura/textures/entity/heatscar_spider.png
+mods/natura/textures/mob/creeperunstable.png -> assets/natura/textures/entity/nitro_creeper.png
+mods/natura/textures/items/impmeat_raw.png -> assets/natura/textures/item/raw_imp_meat.png
+mods/natura/textures/items/impmeat_cooked.png -> assets/natura/textures/item/cooked_imp_meat.png
+mods/natura/textures/boats/redwood_boat.png -> assets/natura/textures/entity/boat/redwood.png
+mods/natura/textures/boats/bloodwood_boat.png -> assets/natura/textures/entity/boat/bloodwood.png
+mods/natura/textures/boats/ghostwood_boat.png -> assets/natura/textures/entity/boat/ghostwood.png
+mods/natura/textures/boats/eucalyptus_boat.png -> assets/natura/textures/entity/boat/eucalyptus.png

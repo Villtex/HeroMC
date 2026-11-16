@@ -118,5 +118,6 @@ public final class NaturaClient {
     public static void register(IEventBus modBus) {
         modBus.addListener(NaturaClient::colors);
         NeoForge.EVENT_BUS.addListener(NaturaClient::tooltips);
+        natura.client.entity.NaturaEntityRenderers.register(modBus);
     }
 }

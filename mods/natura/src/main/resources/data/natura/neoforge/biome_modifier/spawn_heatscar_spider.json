@@ -1,0 +1,11 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": "#minecraft:is_nether",
+  "spawners": [
+    {
+      "type": "natura:heatscar_spider",
+      "count": 4,
+      "weight": 10
+    }
+  ]
+}
