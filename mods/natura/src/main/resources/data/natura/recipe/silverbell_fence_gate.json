@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "natura:silverbell_planks",
+    "s": "natura:silverbell_stick"
+  },
+  "pattern": [
+    "s#s",
+    "s#s"
+  ],
+  "result": {
+    "count": 1,
+    "id": "natura:silverbell_fence_gate"
+  },
+  "group": "wooden_fence_gate"
+}

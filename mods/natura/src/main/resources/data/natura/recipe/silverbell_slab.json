@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "b": "natura:silverbell_planks"
+  },
+  "pattern": [
+    "bbb"
+  ],
+  "result": {
+    "count": 6,
+    "id": "natura:silverbell_slab"
+  },
+  "group": "wooden_slab"
+}

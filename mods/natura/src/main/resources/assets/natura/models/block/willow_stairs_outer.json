@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "natura:block/willow_planks",
+    "side": "natura:block/willow_planks",
+    "top": "natura:block/willow_planks"
+  }
+}

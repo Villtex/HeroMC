@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "natura:maple_log"
+  ],
+  "result": {
+    "count": 4,
+    "id": "natura:maple_planks"
+  },
+  "group": "planks"
+}

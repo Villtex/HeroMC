@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "natura:hopseed_log"
+  ],
+  "result": {
+    "count": 4,
+    "id": "natura:hopseed_planks"
+  },
+  "group": "planks"
+}

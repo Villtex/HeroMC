@@ -1,0 +1,6 @@
+{
+  "parent": "natura:item/fusewood_bow",
+  "textures": {
+    "layer0": "natura:item/fusewood_bow_pulling_2"
+  }
+}

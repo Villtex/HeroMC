@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "c": "natura:ash_cloud"
+  },
+  "pattern": [
+    "ccc",
+    "ccc",
+    "ccc"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:charcoal"
+  }
+}

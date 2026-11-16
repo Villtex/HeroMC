@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "food",
+  "ingredients": [
+    "natura:bloodwood_bowl",
+    "natura:green_glowshroom",
+    "natura:purple_glowshroom",
+    "natura:blue_glowshroom"
+  ],
+  "result": {
+    "count": 1,
+    "id": "natura:bloodwood_glowshroom_stew"
+  }
+}

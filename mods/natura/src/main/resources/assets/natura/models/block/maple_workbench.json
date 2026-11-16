@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "natura:block/maple_planks",
+    "up": "natura:block/maple_workbench_top",
+    "north": "natura:block/maple_workbench_front",
+    "west": "natura:block/maple_workbench_front",
+    "south": "natura:block/maple_workbench_side",
+    "east": "natura:block/maple_workbench_side",
+    "particle": "natura:block/maple_workbench_front"
+  }
+}

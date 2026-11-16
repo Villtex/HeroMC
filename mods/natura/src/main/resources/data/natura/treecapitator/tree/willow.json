@@ -1,0 +1,9 @@
+{
+  "logs": [
+    "natura:willow_log"
+  ],
+  "leaves": [
+    "natura:willow_leaves"
+  ],
+  "maxHorLeafBreakDist": 5
+}

@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "natura:block/bluegrass_slab",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -16714762
+      }
+    ]
+  }
+}

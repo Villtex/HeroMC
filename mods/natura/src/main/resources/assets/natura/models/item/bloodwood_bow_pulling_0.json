@@ -1,0 +1,6 @@
+{
+  "parent": "natura:item/bloodwood_bow",
+  "textures": {
+    "layer0": "natura:item/bloodwood_bow_pulling_0"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "natura:flamestring",
+    "s": "natura:ghostwood_stick"
+  },
+  "pattern": [
+    "#s ",
+    "# s",
+    "#s "
+  ],
+  "result": {
+    "count": 1,
+    "id": "natura:ghostwood_bow"
+  }
+}

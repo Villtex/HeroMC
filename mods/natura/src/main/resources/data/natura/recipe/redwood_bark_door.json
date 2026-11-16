@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "natura:redwood_bark"
+  },
+  "pattern": [
+    "##",
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 1,
+    "id": "natura:redwood_bark_door"
+  },
+  "group": "wooden_door"
+}

@@ -1,0 +1,11 @@
+{
+  "logs": [
+    "natura:darkwood_log"
+  ],
+  "leaves": [
+    "natura:darkwood_leaves",
+    "natura:flowering_darkwood_leaves",
+    "natura:fruit_darkwood_leaves",
+    "natura:fusewood_leaves"
+  ]
+}

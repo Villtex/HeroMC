@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "natura:block/tiger_planks",
+    "side": "natura:block/tiger_planks",
+    "top": "natura:block/tiger_planks"
+  }
+}

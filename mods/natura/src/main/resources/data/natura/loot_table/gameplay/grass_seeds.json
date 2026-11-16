@@ -1,0 +1,49 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "condition": {
+        "type": "minecraft:all_of",
+        "terms": [
+          {
+            "type": "minecraft:inverted",
+            "term": "minecraft:tool/can_shear"
+          },
+          {
+            "type": "minecraft:random_chance",
+            "chance": 0.0234375
+          }
+        ]
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "natura:barley_seeds"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "condition": {
+        "type": "minecraft:all_of",
+        "terms": [
+          {
+            "type": "minecraft:inverted",
+            "term": "minecraft:tool/can_shear"
+          },
+          {
+            "type": "minecraft:random_chance",
+            "chance": 0.0234375
+          }
+        ]
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "natura:cotton_seeds"
+        }
+      ]
+    }
+  ]
+}

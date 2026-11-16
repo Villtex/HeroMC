@@ -1,0 +1,41 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "natura:block/saguaro_top",
+    "all": "natura:block/saguaro_top"
+  },
+  "elements": [
+    {
+      "from": [
+        5.2,
+        0,
+        5.2
+      ],
+      "to": [
+        10.8,
+        8,
+        10.8
+      ],
+      "faces": {
+        "down": {
+          "texture": "#all"
+        },
+        "up": {
+          "texture": "#all"
+        },
+        "north": {
+          "texture": "#all"
+        },
+        "south": {
+          "texture": "#all"
+        },
+        "west": {
+          "texture": "#all"
+        },
+        "east": {
+          "texture": "#all"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "natura:amaranth_planks",
+    "s": "natura:amaranth_stick"
+  },
+  "pattern": [
+    "s#s",
+    "s#s"
+  ],
+  "result": {
+    "count": 1,
+    "id": "natura:amaranth_fence_gate"
+  },
+  "group": "wooden_fence_gate"
+}

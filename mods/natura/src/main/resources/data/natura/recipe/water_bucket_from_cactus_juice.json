@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "w": "natura:cactus_juice",
+    "B": "minecraft:bucket"
+  },
+  "pattern": [
+    "www",
+    "wBw",
+    "www"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:water_bucket"
+  }
+}

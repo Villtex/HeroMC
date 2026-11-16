@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "natura:block/bloodwood_bark",
+    "up": "natura:block/bloodwood_upper_right",
+    "down": "natura:block/bloodwood_upper_right",
+    "north": "natura:block/bloodwood_bark",
+    "south": "natura:block/bloodwood_side_right",
+    "west": "natura:block/bloodwood_side_left",
+    "east": "natura:block/bloodwood_bark"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "s": "natura:barley_seed_bag"
+  },
+  "pattern": [
+    "s"
+  ],
+  "result": {
+    "count": 9,
+    "id": "natura:barley_seeds"
+  }
+}

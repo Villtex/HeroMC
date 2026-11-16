@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "natura:block/stingberry_bush_small"
+    },
+    "age=1": {
+      "model": "natura:block/stingberry_bush_medium"
+    },
+    "age=2": {
+      "model": "natura:block/stingberry_bush"
+    },
+    "age=3": {
+      "model": "natura:block/stingberry_bush_ripe"
+    }
+  }
+}

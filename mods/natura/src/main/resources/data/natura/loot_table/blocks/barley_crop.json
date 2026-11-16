@@ -1,0 +1,96 @@
+{
+  "type": "minecraft:block",
+  "modifier": {
+    "type": "minecraft:explosion_decay"
+  },
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "natura:barley_seeds"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "natura:barley_seeds"
+        }
+      ],
+      "condition": {
+        "type": "minecraft:all_of",
+        "terms": [
+          {
+            "type": "minecraft:any_of",
+            "terms": [
+              {
+                "type": "minecraft:match_block",
+                "blocks": "natura:barley_crop",
+                "state": {
+                  "age": "2"
+                }
+              },
+              {
+                "type": "minecraft:match_block",
+                "blocks": "natura:barley_crop",
+                "state": {
+                  "age": "3"
+                }
+              }
+            ]
+          },
+          {
+            "type": "minecraft:random_chance",
+            "chance": 0.3333333333333333
+          }
+        ]
+      }
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "natura:barley_seeds"
+        }
+      ],
+      "condition": {
+        "type": "minecraft:all_of",
+        "terms": [
+          {
+            "type": "minecraft:match_block",
+            "blocks": "natura:barley_crop",
+            "state": {
+              "age": "3"
+            }
+          },
+          {
+            "type": "minecraft:random_chance",
+            "chance": 0.25
+          }
+        ]
+      }
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "natura:barley"
+        }
+      ],
+      "condition": {
+        "type": "minecraft:match_block",
+        "blocks": "natura:barley_crop",
+        "state": {
+          "age": "3"
+        }
+      }
+    }
+  ],
+  "random_sequence": "natura:blocks/barley_crop"
+}

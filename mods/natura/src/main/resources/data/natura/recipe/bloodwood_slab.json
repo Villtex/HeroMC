@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "b": "natura:bloodwood_planks"
+  },
+  "pattern": [
+    "bbb"
+  ],
+  "result": {
+    "count": 6,
+    "id": "natura:bloodwood_slab"
+  },
+  "group": "wooden_slab"
+}

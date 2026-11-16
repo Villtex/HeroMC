@@ -1,0 +1,13 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "natura:block/topiary_grass",
+    "tints": [
+      {
+        "type": "minecraft:grass",
+        "temperature": 0.5,
+        "downfall": 1.0
+      }
+    ]
+  }
+}

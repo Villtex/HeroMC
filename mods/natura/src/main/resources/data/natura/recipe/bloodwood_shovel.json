@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "natura:bloodwood_planks",
+    "s": "natura:bloodwood_stick"
+  },
+  "pattern": [
+    "#",
+    "s",
+    "s"
+  ],
+  "result": {
+    "count": 1,
+    "id": "natura:bloodwood_shovel"
+  }
+}

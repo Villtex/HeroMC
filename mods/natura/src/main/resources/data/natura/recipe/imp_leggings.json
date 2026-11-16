@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "natura:imp_leather"
+  },
+  "pattern": [
+    "###",
+    "# #",
+    "# #"
+  ],
+  "result": {
+    "id": "natura:imp_leggings",
+    "count": 1,
+    "components": {
+      "minecraft:enchantments": {
+        "minecraft:projectile_protection": 1,
+        "minecraft:fire_protection": 1
+      }
+    }
+  }
+}

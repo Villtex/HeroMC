@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "s": "natura:nether_wart_bag"
+  },
+  "pattern": [
+    "s"
+  ],
+  "result": {
+    "count": 9,
+    "id": "minecraft:nether_wart"
+  }
+}

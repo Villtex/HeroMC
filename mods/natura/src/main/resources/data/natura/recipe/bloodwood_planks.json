@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    [
+      "natura:bloodwood_log",
+      "natura:bloodwood_bark"
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "id": "natura:bloodwood_planks"
+  },
+  "group": "planks"
+}

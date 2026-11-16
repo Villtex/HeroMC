@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "s": "minecraft:potato"
+  },
+  "pattern": [
+    "sss",
+    "sss",
+    "sss"
+  ],
+  "result": {
+    "count": 1,
+    "id": "natura:potato_bag"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "natura:sakura_planks",
+    "b": "minecraft:book"
+  },
+  "pattern": [
+    "###",
+    "bbb",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "natura:sakura_bookshelf"
+  }
+}

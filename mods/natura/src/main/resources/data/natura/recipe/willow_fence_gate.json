@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "natura:willow_planks",
+    "s": "natura:willow_stick"
+  },
+  "pattern": [
+    "s#s",
+    "s#s"
+  ],
+  "result": {
+    "count": 1,
+    "id": "natura:willow_fence_gate"
+  },
+  "group": "wooden_fence_gate"
+}

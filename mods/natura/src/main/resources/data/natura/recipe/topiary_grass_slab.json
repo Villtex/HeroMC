@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "b": "natura:topiary_grass"
+  },
+  "pattern": [
+    "bbb"
+  ],
+  "result": {
+    "count": 6,
+    "id": "natura:topiary_grass_slab"
+  }
+}

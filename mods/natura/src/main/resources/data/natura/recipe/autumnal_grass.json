@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "natura:topiary_grass",
+    "#c:dyes/red"
+  ],
+  "result": {
+    "count": 1,
+    "id": "natura:autumnal_grass"
+  }
+}

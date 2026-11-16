@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "food",
+  "key": {
+    "b": "natura:barley"
+  },
+  "pattern": [
+    "bbb"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:bread"
+  }
+}

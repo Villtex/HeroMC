@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "s": "natura:wheat_seed_bag"
+  },
+  "pattern": [
+    "s"
+  ],
+  "result": {
+    "count": 9,
+    "id": "minecraft:wheat_seeds"
+  }
+}

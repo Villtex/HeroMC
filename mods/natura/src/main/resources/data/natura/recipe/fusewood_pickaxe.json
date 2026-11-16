@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "natura:fusewood_planks",
+    "s": "natura:fusewood_stick"
+  },
+  "pattern": [
+    "###",
+    " s ",
+    " s "
+  ],
+  "result": {
+    "count": 1,
+    "id": "natura:fusewood_pickaxe"
+  }
+}

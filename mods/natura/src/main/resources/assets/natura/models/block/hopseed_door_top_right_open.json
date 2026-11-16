@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_right_open",
+  "textures": {
+    "bottom": "natura:block/hopseed_door_bottom",
+    "top": "natura:block/hopseed_door_top"
+  }
+}

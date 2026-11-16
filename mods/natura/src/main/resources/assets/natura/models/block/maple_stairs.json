@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "natura:block/maple_planks",
+    "side": "natura:block/maple_planks",
+    "top": "natura:block/maple_planks"
+  }
+}

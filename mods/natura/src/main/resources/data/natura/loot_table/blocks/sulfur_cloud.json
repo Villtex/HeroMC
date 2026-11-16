@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "natura:sulfur_cloud"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "natura:blocks/sulfur_cloud"
+}

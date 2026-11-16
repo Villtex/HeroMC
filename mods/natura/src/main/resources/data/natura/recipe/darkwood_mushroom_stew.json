@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "food",
+  "ingredients": [
+    "natura:darkwood_bowl",
+    "minecraft:brown_mushroom",
+    "minecraft:red_mushroom"
+  ],
+  "result": {
+    "count": 1,
+    "id": "natura:darkwood_mushroom_stew"
+  }
+}

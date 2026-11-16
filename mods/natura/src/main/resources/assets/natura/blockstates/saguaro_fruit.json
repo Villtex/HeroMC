@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "natura:block/saguaro_fruit"
+    },
+    "facing=south": {
+      "model": "natura:block/saguaro_fruit",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "natura:block/saguaro_fruit",
+      "y": 180
+    },
+    "facing=north": {
+      "model": "natura:block/saguaro_fruit",
+      "y": 270
+    }
+  }
+}

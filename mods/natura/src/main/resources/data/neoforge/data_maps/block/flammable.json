@@ -1,0 +1,132 @@
+{
+  "values": {
+    "natura:eucalyptus_log": {
+      "ignite_odds": 5,
+      "burn_odds": 20
+    },
+    "natura:sakura_log": {
+      "ignite_odds": 5,
+      "burn_odds": 20
+    },
+    "natura:hopseed_log": {
+      "ignite_odds": 5,
+      "burn_odds": 20
+    },
+    "natura:maple_log": {
+      "ignite_odds": 5,
+      "burn_odds": 20
+    },
+    "natura:silverbell_log": {
+      "ignite_odds": 5,
+      "burn_odds": 20
+    },
+    "natura:amaranth_log": {
+      "ignite_odds": 5,
+      "burn_odds": 20
+    },
+    "natura:tiger_log": {
+      "ignite_odds": 5,
+      "burn_odds": 20
+    },
+    "natura:willow_log": {
+      "ignite_odds": 5,
+      "burn_odds": 20
+    },
+    "natura:redwood_bark": {
+      "ignite_odds": 5,
+      "burn_odds": 20
+    },
+    "natura:redwood_heart": {
+      "ignite_odds": 5,
+      "burn_odds": 20
+    },
+    "natura:redwood_root": {
+      "ignite_odds": 5,
+      "burn_odds": 20
+    },
+    "natura:eucalyptus_planks": {
+      "ignite_odds": 5,
+      "burn_odds": 20
+    },
+    "natura:sakura_planks": {
+      "ignite_odds": 5,
+      "burn_odds": 20
+    },
+    "natura:redwood_planks": {
+      "ignite_odds": 5,
+      "burn_odds": 20
+    },
+    "natura:hopseed_planks": {
+      "ignite_odds": 5,
+      "burn_odds": 20
+    },
+    "natura:maple_planks": {
+      "ignite_odds": 5,
+      "burn_odds": 20
+    },
+    "natura:silverbell_planks": {
+      "ignite_odds": 5,
+      "burn_odds": 20
+    },
+    "natura:amaranth_planks": {
+      "ignite_odds": 5,
+      "burn_odds": 20
+    },
+    "natura:tiger_planks": {
+      "ignite_odds": 5,
+      "burn_odds": 20
+    },
+    "natura:willow_planks": {
+      "ignite_odds": 5,
+      "burn_odds": 20
+    },
+    "natura:redwood_leaves": {
+      "ignite_odds": 30,
+      "burn_odds": 60
+    },
+    "natura:eucalyptus_leaves": {
+      "ignite_odds": 30,
+      "burn_odds": 60
+    },
+    "natura:hopseed_leaves": {
+      "ignite_odds": 30,
+      "burn_odds": 60
+    },
+    "natura:sakura_leaves": {
+      "ignite_odds": 30,
+      "burn_odds": 60
+    },
+    "natura:maple_leaves": {
+      "ignite_odds": 30,
+      "burn_odds": 60
+    },
+    "natura:silverbell_leaves": {
+      "ignite_odds": 30,
+      "burn_odds": 60
+    },
+    "natura:amaranth_leaves": {
+      "ignite_odds": 30,
+      "burn_odds": 60
+    },
+    "natura:tiger_leaves": {
+      "ignite_odds": 30,
+      "burn_odds": 60
+    },
+    "natura:raspberry_bush": {
+      "ignite_odds": 4,
+      "burn_odds": 25
+    },
+    "natura:blueberry_bush": {
+      "ignite_odds": 4,
+      "burn_odds": 25
+    },
+    "natura:blackberry_bush": {
+      "ignite_odds": 4,
+      "burn_odds": 25
+    },
+    "natura:maloberry_bush": {
+      "ignite_odds": 4,
+      "burn_odds": 25
+    }
+  }
+}

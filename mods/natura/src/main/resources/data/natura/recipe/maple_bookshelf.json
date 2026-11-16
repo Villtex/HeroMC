@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "natura:maple_planks",
+    "b": "minecraft:book"
+  },
+  "pattern": [
+    "###",
+    "bbb",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "natura:maple_bookshelf"
+  }
+}

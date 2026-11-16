@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "natura:heat_sand",
+    "natura:tainted_soil"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:soul_sand"
+  }
+}

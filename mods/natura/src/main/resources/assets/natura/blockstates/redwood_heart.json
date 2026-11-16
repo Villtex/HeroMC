@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "natura:block/redwood_heart"
+    },
+    "axis=y": {
+      "model": "natura:block/redwood_heart"
+    },
+    "axis=z": {
+      "model": "natura:block/redwood_heart"
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "condition": {
+                "type": "minecraft:any_of",
+                "terms": [
+                  "minecraft:tool/can_shear",
+                  "minecraft:tool/can_silk_touch",
+                  {
+                    "type": "minecraft:match_tool",
+                    "predicate": {
+                      "items": "#natura:kamas"
+                    }
+                  }
+                ]
+              },
+              "name": "natura:hopseed_leaves"
+            },
+            {
+              "type": "minecraft:item",
+              "name": "natura:hopseed_sapling",
+              "condition": {
+                "type": "minecraft:all_of",
+                "terms": [
+                  {
+                    "type": "minecraft:survives_explosion"
+                  },
+                  {
+                    "type": "minecraft:random_chance",
+                    "chance": 0.05
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "random_sequence": "natura:blocks/hopseed_leaves"
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "natura:fusewood_planks"
+  },
+  "pattern": [
+    "#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "natura:fusewood_button"
+  },
+  "group": "wooden_button"
+}

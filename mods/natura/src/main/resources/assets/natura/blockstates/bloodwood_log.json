@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "axis=y,bark=nw": {
+      "model": "natura:block/bloodwood_log_nw"
+    },
+    "axis=x,bark=nw": {
+      "model": "natura:block/bloodwood_log_nw",
+      "x": 90,
+      "y": 90
+    },
+    "axis=z,bark=nw": {
+      "model": "natura:block/bloodwood_log_nw",
+      "x": 90
+    },
+    "axis=y,bark=ne": {
+      "model": "natura:block/bloodwood_log_ne"
+    },
+    "axis=x,bark=ne": {
+      "model": "natura:block/bloodwood_log_ne",
+      "x": 90,
+      "y": 90
+    },
+    "axis=z,bark=ne": {
+      "model": "natura:block/bloodwood_log_ne",
+      "x": 90
+    },
+    "axis=y,bark=sw": {
+      "model": "natura:block/bloodwood_log_sw"
+    },
+    "axis=x,bark=sw": {
+      "model": "natura:block/bloodwood_log_sw",
+      "x": 90,
+      "y": 90
+    },
+    "axis=z,bark=sw": {
+      "model": "natura:block/bloodwood_log_sw",
+      "x": 90
+    },
+    "axis=y,bark=se": {
+      "model": "natura:block/bloodwood_log_se"
+    },
+    "axis=x,bark=se": {
+      "model": "natura:block/bloodwood_log_se",
+      "x": 90,
+      "y": 90
+    },
+    "axis=z,bark=se": {
+      "model": "natura:block/bloodwood_log_se",
+      "x": 90
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "natura:ghostwood_planks",
+    "s": "natura:ghostwood_stick"
+  },
+  "pattern": [
+    "s#s",
+    "s#s"
+  ],
+  "result": {
+    "count": 1,
+    "id": "natura:ghostwood_fence_gate"
+  },
+  "group": "wooden_fence_gate"
+}

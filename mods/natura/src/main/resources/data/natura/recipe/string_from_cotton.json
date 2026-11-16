@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "s": "natura:cotton"
+  },
+  "pattern": [
+    "sss"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:string"
+  }
+}

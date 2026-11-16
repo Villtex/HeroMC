@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "natura:sakura_planks",
+    "s": "natura:sakura_stick"
+  },
+  "pattern": [
+    "s#s",
+    "s#s"
+  ],
+  "result": {
+    "count": 1,
+    "id": "natura:sakura_fence_gate"
+  },
+  "group": "wooden_fence_gate"
+}

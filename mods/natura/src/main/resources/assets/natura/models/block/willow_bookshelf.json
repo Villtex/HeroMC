@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "natura:block/willow_planks",
+    "side": "natura:block/willow_bookshelf"
+  }
+}

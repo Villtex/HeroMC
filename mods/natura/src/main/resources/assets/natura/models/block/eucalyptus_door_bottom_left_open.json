@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_left_open",
+  "textures": {
+    "bottom": "natura:block/eucalyptus_door_bottom",
+    "top": "natura:block/eucalyptus_door_top"
+  }
+}

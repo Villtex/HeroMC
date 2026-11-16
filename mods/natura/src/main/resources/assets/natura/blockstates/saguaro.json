@@ -1,0 +1,75 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "down": "true",
+        "up": "false"
+      },
+      "apply": {
+        "model": "natura:block/saguaro_core"
+      }
+    },
+    {
+      "when": {
+        "down": "true",
+        "up": "true"
+      },
+      "apply": {
+        "model": "natura:block/saguaro_core_up"
+      }
+    },
+    {
+      "when": {
+        "down": "false",
+        "up": "false"
+      },
+      "apply": {
+        "model": "natura:block/saguaro_core_lifted"
+      }
+    },
+    {
+      "when": {
+        "down": "false",
+        "up": "true"
+      },
+      "apply": {
+        "model": "natura:block/saguaro_core_lifted_up"
+      }
+    },
+    {
+      "when": {
+        "north": "true"
+      },
+      "apply": {
+        "model": "natura:block/saguaro_arm"
+      }
+    },
+    {
+      "when": {
+        "east": "true"
+      },
+      "apply": {
+        "model": "natura:block/saguaro_arm",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "south": "true"
+      },
+      "apply": {
+        "model": "natura:block/saguaro_arm",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "west": "true"
+      },
+      "apply": {
+        "model": "natura:block/saguaro_arm",
+        "y": 270
+      }
+    }
+  ]
+}

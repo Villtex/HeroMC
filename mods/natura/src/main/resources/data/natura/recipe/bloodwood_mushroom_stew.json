@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "food",
+  "ingredients": [
+    "natura:bloodwood_bowl",
+    "minecraft:brown_mushroom",
+    "minecraft:red_mushroom"
+  ],
+  "result": {
+    "count": 1,
+    "id": "natura:bloodwood_mushroom_stew"
+  }
+}

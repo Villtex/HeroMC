@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "natura:block/fusewood_planks",
+    "up": "natura:block/fusewood_workbench_top",
+    "north": "natura:block/fusewood_workbench_front",
+    "west": "natura:block/fusewood_workbench_front",
+    "south": "natura:block/fusewood_workbench_side",
+    "east": "natura:block/fusewood_workbench_side",
+    "particle": "natura:block/fusewood_workbench_front"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "natura:block/tinted_slab",
+  "textures": {
+    "bottom": "natura:block/topiary_grass",
+    "top": "natura:block/topiary_grass",
+    "side": "natura:block/topiary_grass"
+  }
+}

@@ -23,6 +23,7 @@ public class Expect {
         else {
             extrabiomes.EbxlBiomes.register();
             sct.hexxitgear.gen.HGWorldGen.register();
+            natura.gen.NaturaWorldGen.register();
             offlawn.gen.OffLawnGen.register();
             wildcaves.gen.WildCavesGen.register();
         }

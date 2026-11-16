@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "natura:silverbell_log"
+  ],
+  "result": {
+    "count": 4,
+    "id": "natura:silverbell_planks"
+  },
+  "group": "planks"
+}

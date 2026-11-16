@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "c": "natura:sulfur_cloud"
+  },
+  "pattern": [
+    "cc",
+    "cc"
+  ],
+  "result": {
+    "count": 1,
+    "id": "natura:sulfur"
+  }
+}

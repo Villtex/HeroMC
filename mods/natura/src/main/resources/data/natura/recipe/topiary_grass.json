@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "s": "minecraft:wheat_seeds",
+    "#": "minecraft:dirt"
+  },
+  "pattern": [
+    " s ",
+    "s#s",
+    " s "
+  ],
+  "result": {
+    "count": 1,
+    "id": "natura:topiary_grass"
+  }
+}

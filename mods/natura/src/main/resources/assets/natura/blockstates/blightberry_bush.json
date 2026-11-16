@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "natura:block/blightberry_bush_small"
+    },
+    "age=1": {
+      "model": "natura:block/blightberry_bush_medium"
+    },
+    "age=2": {
+      "model": "natura:block/blightberry_bush"
+    },
+    "age=3": {
+      "model": "natura:block/blightberry_bush_ripe"
+    }
+  }
+}

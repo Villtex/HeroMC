@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "natura:ghostwood_log"
+  ],
+  "result": {
+    "count": 4,
+    "id": "natura:ghostwood_planks"
+  },
+  "group": "planks"
+}

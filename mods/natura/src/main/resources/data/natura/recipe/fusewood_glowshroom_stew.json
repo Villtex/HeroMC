@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "food",
+  "ingredients": [
+    "natura:fusewood_bowl",
+    "natura:green_glowshroom",
+    "natura:purple_glowshroom",
+    "natura:blue_glowshroom"
+  ],
+  "result": {
+    "count": 1,
+    "id": "natura:fusewood_glowshroom_stew"
+  }
+}

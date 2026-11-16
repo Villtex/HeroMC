@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "natura:block/silverbell_planks",
+    "up": "natura:block/silverbell_workbench_top",
+    "north": "natura:block/silverbell_workbench_front",
+    "west": "natura:block/silverbell_workbench_front",
+    "south": "natura:block/silverbell_workbench_side",
+    "east": "natura:block/silverbell_workbench_side",
+    "particle": "natura:block/silverbell_workbench_front"
+  }
+}

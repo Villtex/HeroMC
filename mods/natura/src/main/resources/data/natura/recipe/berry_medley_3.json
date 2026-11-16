@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "food",
+  "ingredients": [
+    "minecraft:bowl",
+    "natura:blueberry",
+    "natura:blackberry",
+    "natura:maloberry"
+  ],
+  "result": {
+    "count": 1,
+    "id": "natura:berry_medley"
+  },
+  "group": "berry_medley"
+}

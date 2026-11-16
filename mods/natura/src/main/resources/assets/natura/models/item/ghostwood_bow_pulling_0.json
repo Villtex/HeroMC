@@ -1,0 +1,6 @@
+{
+  "parent": "natura:item/ghostwood_bow",
+  "textures": {
+    "layer0": "natura:item/ghostwood_bow_pulling_0"
+  }
+}

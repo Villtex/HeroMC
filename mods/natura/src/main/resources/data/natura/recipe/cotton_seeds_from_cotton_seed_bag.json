@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "s": "natura:cotton_seed_bag"
+  },
+  "pattern": [
+    "s"
+  ],
+  "result": {
+    "count": 9,
+    "id": "natura:cotton_seeds"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_left_open",
+  "textures": {
+    "bottom": "natura:block/bloodwood_door_bottom",
+    "top": "natura:block/bloodwood_door_top"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "natura:block/hopseed_planks",
+    "side": "natura:block/hopseed_bookshelf"
+  }
+}

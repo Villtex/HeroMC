@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "natura:block/bloodwood_planks",
+    "up": "natura:block/bloodwood_workbench_top",
+    "north": "natura:block/bloodwood_workbench_front",
+    "west": "natura:block/bloodwood_workbench_front",
+    "south": "natura:block/bloodwood_workbench_side",
+    "east": "natura:block/bloodwood_workbench_side",
+    "particle": "natura:block/bloodwood_workbench_front"
+  }
+}

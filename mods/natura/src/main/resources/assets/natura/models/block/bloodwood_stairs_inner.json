@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "natura:block/bloodwood_planks",
+    "side": "natura:block/bloodwood_planks",
+    "top": "natura:block/bloodwood_planks"
+  }
+}

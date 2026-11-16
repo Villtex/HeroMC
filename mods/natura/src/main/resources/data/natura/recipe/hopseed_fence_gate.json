@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "natura:hopseed_planks",
+    "s": "natura:hopseed_stick"
+  },
+  "pattern": [
+    "s#s",
+    "s#s"
+  ],
+  "result": {
+    "count": 1,
+    "id": "natura:hopseed_fence_gate"
+  },
+  "group": "wooden_fence_gate"
+}

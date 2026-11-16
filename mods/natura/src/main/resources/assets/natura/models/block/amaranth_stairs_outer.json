@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "natura:block/amaranth_planks",
+    "side": "natura:block/amaranth_planks",
+    "top": "natura:block/amaranth_planks"
+  }
+}
