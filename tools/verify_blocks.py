@@ -135,7 +135,7 @@ def natura(bid, meta):
             return f'natura:saguaro_fruit[facing={ {3: "east", 4: "south", 5: "west", 6: "north"}[meta] }]'
         return 'natura:saguaro'
     if bid == 1257:
-        return (f'natura:thornvines[up={flag(meta == 0)},south={flag(meta & 1)},west={flag(meta & 2)},north={flag(meta & 4)},'
+        return (f'natura:thornvines[south={flag(meta & 1)},west={flag(meta & 2)},north={flag(meta & 4)},'
                 f'east={flag(meta & 8)}]')
     if bid == 1241:
         return f'natura:{pick(["green", "purple", "blue"], meta)}_glowshroom'

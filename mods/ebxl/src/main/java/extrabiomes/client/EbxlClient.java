@@ -15,9 +15,9 @@ import java.util.List;
 public final class EbxlClient {
     public static final ModelLayerLocation SCARECROW_LAYER = new ModelLayerLocation(Identifier.fromNamespaceAndPath(Extrabiomes.MOD_ID, "scarecrow"), "main");
     /** ColorizerFoliage.getFoliageColorPine of 1.5.2. */
-    public static final int FIR_COLOR = 0x619961;
+    public static final int FIR_COLOR = 0xFF619961;
     /** ColorizerFoliage.getFoliageColor(0.9, 0.1): the dry, yellow end of the foliage colour map. */
-    public static final int ACACIA_COLOR = 0xAEA42A;
+    public static final int ACACIA_COLOR = 0xFFAEA42A;
 
     private EbxlClient() {
     }

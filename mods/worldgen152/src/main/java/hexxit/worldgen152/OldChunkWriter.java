@@ -27,6 +27,7 @@ import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.RedstoneWireBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.TripWireBlock;
+import net.minecraft.world.level.block.VineBlock;
 import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
@@ -62,7 +63,8 @@ final class OldChunkWriter {
                     BlockState state = id == 0 ? air : OldBlockStates.get(id, cell & 15);
                     if (state.getBlock() instanceof LeavesBlock) {
                         state = state.setValue(LeavesBlock.DISTANCE, populated.leafDistance(x, y, z));
-                    } else if (state.is(Blocks.VINE)) {
+                    } else if (state.getBlock() instanceof VineBlock) {
+                        // vines of mods too (Natura's thornvines): the top face only shows under a solid block, as in 1.5.2
                         state = state.setValue(BlockStateProperties.UP, y + 1 < 256 && OldBlockInfo.holdsVines(populated.blockId(x, y + 1, z)));
                     }
                     if (state.getBlock() instanceof DoorBlock) {

@@ -27,7 +27,7 @@ import java.util.List;
 /** Client side: leaf and grass colours, and the tooltips of the original (addInformation). */
 public final class NaturaClient {
     /** OverworldLeaves.colorMultiplier: maple leaves are always orange. */
-    public static final int MAPLE_COLOR = 0xCC5818;
+    public static final int MAPLE_COLOR = 0xFFCC5818;
 
     private NaturaClient() {
     }

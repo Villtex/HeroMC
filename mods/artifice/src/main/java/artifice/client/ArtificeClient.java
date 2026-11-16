@@ -28,7 +28,7 @@ import java.util.List;
 /** Client side: the lily pad colour under the lotus lily and the tooltips of the original (ArtificeTooltips). */
 public final class ArtificeClient {
     /** BlockLilyPad.colorMultiplier of 1.5.2 (renderBlockLilyPad draws the vanilla pad in its colour). */
-    private static final int LILY_PAD_COLOR = 0x208030;
+    private static final int LILY_PAD_COLOR = 0xFF208030;
 
     private ArtificeClient() {
     }

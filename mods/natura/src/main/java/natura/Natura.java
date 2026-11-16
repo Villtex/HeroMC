@@ -199,9 +199,9 @@ public final class Natura {
             default -> NaturaBlocks.SAGUARO.get().defaultBlockState();
         });
         OldBlockStates.registerConnecting(NaturaBlocks.SAGUARO);
-        // ThornVines (BlockVine): 1 south, 2 west, 4 north, 8 east; 0 hangs under the block above
+        // ThornVines (BlockVine): 1 south, 2 west, 4 north, 8 east; the top face comes from the block above (OldChunkWriter)
         OldBlockStates.registerMeta(NaturaIds.THORN_VINES, meta -> NaturaBlocks.THORNVINES.get().defaultBlockState()
-                .setValue(BlockStateProperties.UP, meta == 0)
+                .setValue(BlockStateProperties.UP, false)
                 .setValue(BlockStateProperties.SOUTH, (meta & 1) != 0)
                 .setValue(BlockStateProperties.WEST, (meta & 2) != 0)
                 .setValue(BlockStateProperties.NORTH, (meta & 4) != 0)

@@ -10,38 +10,12 @@
     },
     {
       "apply": {
-        "model": "natura:block/thornvines"
-      },
-      "when": {
-        "east": "false",
-        "north": "false",
-        "south": "false",
-        "up": "false",
-        "west": "false"
-      }
-    },
-    {
-      "apply": {
         "model": "natura:block/thornvines",
         "uvlock": true,
         "y": 90
       },
       "when": {
         "east": "true"
-      }
-    },
-    {
-      "apply": {
-        "model": "natura:block/thornvines",
-        "uvlock": true,
-        "y": 90
-      },
-      "when": {
-        "east": "false",
-        "north": "false",
-        "south": "false",
-        "up": "false",
-        "west": "false"
       }
     },
     {
@@ -58,20 +32,6 @@
       "apply": {
         "model": "natura:block/thornvines",
         "uvlock": true,
-        "y": 180
-      },
-      "when": {
-        "east": "false",
-        "north": "false",
-        "south": "false",
-        "up": "false",
-        "west": "false"
-      }
-    },
-    {
-      "apply": {
-        "model": "natura:block/thornvines",
-        "uvlock": true,
         "y": 270
       },
       "when": {
@@ -82,38 +42,10 @@
       "apply": {
         "model": "natura:block/thornvines",
         "uvlock": true,
-        "y": 270
-      },
-      "when": {
-        "east": "false",
-        "north": "false",
-        "south": "false",
-        "up": "false",
-        "west": "false"
-      }
-    },
-    {
-      "apply": {
-        "model": "natura:block/thornvines",
-        "uvlock": true,
         "x": 270
       },
       "when": {
         "up": "true"
-      }
-    },
-    {
-      "apply": {
-        "model": "natura:block/thornvines",
-        "uvlock": true,
-        "x": 270
-      },
-      "when": {
-        "east": "false",
-        "north": "false",
-        "south": "false",
-        "up": "false",
-        "west": "false"
       }
     }
   ]
