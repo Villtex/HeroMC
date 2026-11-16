@@ -2,6 +2,8 @@ package harkenscythe.compat;
 
 import harkenscythe.HSItems;
 import harkenscythe.HarkenScythe;
+import harkenscythe.altar.AltarRecipe;
+import harkenscythe.client.AltarRecipesClient;
 import harkenscythe.item.GlaiveItem;
 import harkenscythe.item.KeeperItem;
 import harkenscythe.item.ScytheItem;
@@ -9,6 +11,9 @@ import harkenscythe.recipe.SpectralDyeRecipe;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.RecipeTypes;
+import mezz.jei.api.helpers.IGuiHelper;
+import mezz.jei.api.registration.IRecipeCatalystRegistration;
+import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -26,6 +31,7 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.ShapelessRecipe;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
@@ -34,7 +40,7 @@ import java.util.function.Supplier;
 /**
  * JEI (NEI is not ported): the spectral dye recipe is a special recipe JEI cannot list, so every armour piece gets an
  * example with one dye; info pages explain scythes, glaives, keepers and the other items whose use no recipe shows.
- * All other recipes (attunement included) are ordinary crafting recipes.
+ * All other recipes (attunement included) are ordinary crafting recipes. The altars have a category each.
  */
 @JeiPlugin
 public class HarkenScytheJeiPlugin implements IModPlugin {
@@ -67,7 +73,32 @@ public class HarkenScytheJeiPlugin implements IModPlugin {
     }
 
     @Override
+    public void registerCategories(IRecipeCategoryRegistration registration) {
+        IGuiHelper gui = registration.getJeiHelpers().getGuiHelper();
+        registration.addRecipeCategories(new AltarCategory(gui, AltarRecipe.Kind.SOUL, HSItems.ALTAR_OF_SOULS.get()),
+                new AltarCategory(gui, AltarRecipe.Kind.BLOOD, HSItems.ALTAR_OF_BLOOD.get()));
+    }
+
+    @Override
+    public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
+        registration.addCraftingStation(AltarCategory.SOULS, HSItems.ALTAR_OF_SOULS.get());
+        registration.addCraftingStation(AltarCategory.BLOOD, HSItems.ALTAR_OF_BLOOD.get());
+    }
+
+    @Override
     public void registerRecipes(IRecipeRegistration registration) {
+        List<RecipeHolder<AltarRecipe>> souls = new ArrayList<>();
+        List<RecipeHolder<AltarRecipe>> blood = new ArrayList<>();
+        for (RecipeHolder<AltarRecipe> holder : AltarRecipesClient.recipes()) {
+            if (!AltarCategory.inputs(holder.value()).isEmpty()) {
+                (holder.value().altar() == AltarRecipe.Kind.SOUL ? souls : blood).add(holder);
+            }
+        }
+        souls.sort(Comparator.comparingInt(h -> h.value().order()));
+        blood.sort(Comparator.comparingInt(h -> h.value().order()));
+        registration.addRecipes(AltarCategory.SOULS, souls);
+        registration.addRecipes(AltarCategory.BLOOD, blood);
+        registration.addItemStackInfo(of(HSItems.ALTAR_OF_SOULS, HSItems.ALTAR_OF_BLOOD), info("altar"));
         List<RecipeHolder<CraftingRecipe>> examples = new ArrayList<>();
         for (Map.Entry<Item, Item> pair : SpectralDyeRecipe.pairs().entrySet()) {
             ShapelessRecipe recipe = new ShapelessRecipe(new Recipe.CommonInfo(false), new CraftingRecipe.CraftingBookInfo(CraftingBookCategory.EQUIPMENT, ""),

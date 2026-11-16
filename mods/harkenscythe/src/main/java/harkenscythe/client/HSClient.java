@@ -4,6 +4,7 @@ import harkenscythe.HSBlocks;
 import harkenscythe.HSEntities;
 import harkenscythe.HSItems;
 import harkenscythe.HarkenScythe;
+import harkenscythe.altar.Altars;
 import net.minecraft.client.resources.model.EquipmentClientInfo;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.Identifier;
@@ -13,6 +14,7 @@ import net.minecraft.world.item.component.DyedItemColor;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
@@ -20,7 +22,7 @@ import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 import java.util.HashMap;
 import java.util.Map;
 
-/** ClientProxyHarkenScythe: renderers of the souls and the skull block, the drink gauge, the dyed weave armour. */
+/** ClientProxyHarkenScythe: renderers of the souls, the skull block and the altars, the altar screen, the drink gauge, the dyed weave armour. */
 public final class HSClient {
     /** getArmorTextureFile of the weave armour: the 1.5.2 colour of a single dye (and today's) picks a texture. */
     private static final Map<Integer, String> WEAVE_COLORS = new HashMap<>();
@@ -65,7 +67,10 @@ public final class HSClient {
             event.registerEntityRenderer(HSEntities.SOUL_WRATHFUL.get(), context -> new SoulRenderer<>(context, "soulwrathful"));
             event.registerEntityRenderer(HSEntities.SOUL_LOST.get(), context -> new SoulRenderer<>(context, "soullost"));
             event.registerBlockEntityRenderer(HSBlocks.SKULL_ENTITY.get(), HSSkullRenderer::new);
+            event.registerBlockEntityRenderer(HSBlocks.ALTAR_ENTITY.get(), AltarRenderer::new);
         });
+        modBus.addListener(RegisterMenuScreensEvent.class, event -> event.register(Altars.ALTAR_MENU.get(), AltarScreen::new));
+        AltarRecipesClient.register();
         modBus.addListener(RegisterGuiLayersEvent.class, event -> event.registerAbove(VanillaGuiLayers.HOTBAR, HarkenScythe.id("drink_gauge"),
                 DrinkHud::render));
         modBus.addListener(RegisterClientExtensionsEvent.class, event -> {
