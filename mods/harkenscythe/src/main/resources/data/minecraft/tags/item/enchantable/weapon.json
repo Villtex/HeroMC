@@ -1,0 +1,19 @@
+{
+  "values": [
+    "harkenscythe_core:wooden_scythe",
+    "harkenscythe_core:wooden_glaive",
+    "harkenscythe_core:stone_scythe",
+    "harkenscythe_core:stone_glaive",
+    "harkenscythe_core:iron_scythe",
+    "harkenscythe_core:iron_glaive",
+    "harkenscythe_core:diamond_scythe",
+    "harkenscythe_core:diamond_glaive",
+    "harkenscythe_core:golden_scythe",
+    "harkenscythe_core:golden_glaive",
+    "harkenscythe_core:livingmetal_scythe",
+    "harkenscythe_core:livingmetal_glaive",
+    "harkenscythe_core:biomass_scythe",
+    "harkenscythe_core:biomass_glaive",
+    "harkenscythe_core:soul_reaper"
+  ]
+}

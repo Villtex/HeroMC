@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "harkenscythe_core:livingmetal_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "harkenscythe_core:livingmetal_ingot"
+  }
+}

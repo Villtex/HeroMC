@@ -1,0 +1,9 @@
+{
+  "values": [
+    "#minecraft:enchantable/armor",
+    {
+      "id": "#asgardshield_core:shields",
+      "required": false
+    }
+  ]
+}

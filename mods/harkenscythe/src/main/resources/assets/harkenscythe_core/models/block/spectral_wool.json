@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "harkenscythe_core:block/spectral_wool"
+  },
+  "render_type": "minecraft:translucent"
+}

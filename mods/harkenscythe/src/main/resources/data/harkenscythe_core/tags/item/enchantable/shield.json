@@ -1,0 +1,9 @@
+{
+  "values": [
+    "#harkenscythe_core:enchantable/weapon",
+    {
+      "id": "#asgardshield_core:shields",
+      "required": false
+    }
+  ]
+}

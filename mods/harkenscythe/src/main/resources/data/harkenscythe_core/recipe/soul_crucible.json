@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": "minecraft:obsidian",
+    "*": "minecraft:ender_pearl"
+  },
+  "pattern": [
+    "X X",
+    "X*X",
+    "XXX"
+  ],
+  "result": {
+    "count": 1,
+    "id": "harkenscythe_core:soul_crucible"
+  }
+}

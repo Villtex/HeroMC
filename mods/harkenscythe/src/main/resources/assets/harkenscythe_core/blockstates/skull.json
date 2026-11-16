@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=up": {
+      "model": "harkenscythe_core:block/skull"
+    },
+    "facing=north": {
+      "model": "harkenscythe_core:block/skull"
+    },
+    "facing=south": {
+      "model": "harkenscythe_core:block/skull"
+    },
+    "facing=west": {
+      "model": "harkenscythe_core:block/skull"
+    },
+    "facing=east": {
+      "model": "harkenscythe_core:block/skull"
+    }
+  }
+}

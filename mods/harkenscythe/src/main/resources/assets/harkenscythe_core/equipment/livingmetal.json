@@ -1,0 +1,19 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "harkenscythe_core:livingmetal"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "harkenscythe_core:livingmetal"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "harkenscythe_core:livingmetal"
+      }
+    ]
+  }
+}

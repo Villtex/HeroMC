@@ -1,0 +1,23 @@
+{
+  "values": [
+    "harkenscythe_core:biomass_sword",
+    "harkenscythe_core:biomass_shovel",
+    "harkenscythe_core:biomass_pickaxe",
+    "harkenscythe_core:biomass_axe",
+    "harkenscythe_core:biomass_hoe",
+    "harkenscythe_core:biomass_helmet",
+    "harkenscythe_core:biomass_chestplate",
+    "harkenscythe_core:biomass_leggings",
+    "harkenscythe_core:biomass_boots",
+    "harkenscythe_core:biomass_scythe",
+    "harkenscythe_core:biomass_glaive",
+    {
+      "id": "asaddons:biomass_shield",
+      "required": false
+    },
+    {
+      "id": "asaddons:gilded_biomass_shield",
+      "required": false
+    }
+  ]
+}

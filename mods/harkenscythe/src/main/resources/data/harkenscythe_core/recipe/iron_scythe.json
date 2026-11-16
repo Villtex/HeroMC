@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": "minecraft:iron_ingot",
+    "*": "minecraft:stick"
+  },
+  "pattern": [
+    "XXX",
+    "  *",
+    " * "
+  ],
+  "result": {
+    "count": 1,
+    "id": "harkenscythe_core:iron_scythe"
+  }
+}

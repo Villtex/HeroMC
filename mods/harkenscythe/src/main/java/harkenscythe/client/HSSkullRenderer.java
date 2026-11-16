@@ -83,7 +83,7 @@ public class HSSkullRenderer implements BlockEntityRenderer<HSSkullBlockEntity, 
             poseStack.rotateDegrees(Axis.YP, -state.rotation * 22.5F);
         }
         poseStack.scale(-1.0F, -1.0F, 1.0F);
-        this.part(poseStack, collector, state, texture(state.type.texture()), 0, 0, 0, state.type.scaleX, state.type.scaleYZ);
+        this.part(poseStack, collector, state, HarkenScythe.id("textures/entity/equipment/humanoid/skull_" + state.type.id() + ".png"), 0, 0, 0, state.type.scaleX, state.type.scaleYZ);
         if (state.type == SkullType.ENDER_DRAGON) {
             // positions relative to the head in its own (mirrored) frame, from the translations of enderDragonAcc
             this.part(poseStack, collector, state, SNOUT, 0.0F, wall ? 0.24F : 0.0F, wall ? -1.0F : -0.76F, 1.2F, 1.2F);

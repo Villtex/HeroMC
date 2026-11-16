@@ -1,0 +1,80 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "property": "minecraft:context_dimension",
+    "cases": [
+      {
+        "when": "minecraft:overworld",
+        "model": {
+          "type": "minecraft:range_dispatch",
+          "property": "minecraft:time",
+          "source": "moon_phase",
+          "wobble": false,
+          "scale": 8.0,
+          "entries": [
+            {
+              "threshold": 0.0,
+              "model": {
+                "type": "minecraft:model",
+                "model": "harkenscythe_core:item/lunar_clock_0"
+              }
+            },
+            {
+              "threshold": 0.5,
+              "model": {
+                "type": "minecraft:model",
+                "model": "harkenscythe_core:item/lunar_clock_1"
+              }
+            },
+            {
+              "threshold": 1.5,
+              "model": {
+                "type": "minecraft:model",
+                "model": "harkenscythe_core:item/lunar_clock_2"
+              }
+            },
+            {
+              "threshold": 2.5,
+              "model": {
+                "type": "minecraft:model",
+                "model": "harkenscythe_core:item/lunar_clock_3"
+              }
+            },
+            {
+              "threshold": 3.5,
+              "model": {
+                "type": "minecraft:model",
+                "model": "harkenscythe_core:item/lunar_clock_4"
+              }
+            },
+            {
+              "threshold": 4.5,
+              "model": {
+                "type": "minecraft:model",
+                "model": "harkenscythe_core:item/lunar_clock_5"
+              }
+            },
+            {
+              "threshold": 5.5,
+              "model": {
+                "type": "minecraft:model",
+                "model": "harkenscythe_core:item/lunar_clock_6"
+              }
+            },
+            {
+              "threshold": 6.5,
+              "model": {
+                "type": "minecraft:model",
+                "model": "harkenscythe_core:item/lunar_clock_7"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "harkenscythe_core:item/lunar_clock_0"
+    }
+  }
+}

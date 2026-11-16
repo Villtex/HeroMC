@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "harkenscythe_core:item/biomass_glaive"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "harkenscythe_core:block/biomass_block"
+  }
+}

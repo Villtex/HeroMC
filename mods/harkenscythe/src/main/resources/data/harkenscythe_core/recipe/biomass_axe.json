@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": "harkenscythe_core:biomass",
+    "*": "minecraft:stick"
+  },
+  "pattern": [
+    "XX ",
+    "X* ",
+    " * "
+  ],
+  "result": {
+    "count": 1,
+    "id": "harkenscythe_core:biomass_axe"
+  }
+}

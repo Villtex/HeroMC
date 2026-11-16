@@ -1,0 +1,40 @@
+{
+  "variants": {
+    "color=red,stage=1": {
+      "model": "harkenscythe_core:block/blood_splash_red_1"
+    },
+    "color=red,stage=2": {
+      "model": "harkenscythe_core:block/blood_splash_red_2"
+    },
+    "color=red,stage=3": {
+      "model": "harkenscythe_core:block/blood_splash_red_3"
+    },
+    "color=red,stage=4": {
+      "model": "harkenscythe_core:block/blood_splash_red_4"
+    },
+    "color=green,stage=1": {
+      "model": "harkenscythe_core:block/blood_splash_green_1"
+    },
+    "color=green,stage=2": {
+      "model": "harkenscythe_core:block/blood_splash_green_2"
+    },
+    "color=green,stage=3": {
+      "model": "harkenscythe_core:block/blood_splash_green_3"
+    },
+    "color=green,stage=4": {
+      "model": "harkenscythe_core:block/blood_splash_green_4"
+    },
+    "color=purple,stage=1": {
+      "model": "harkenscythe_core:block/blood_splash_purple_1"
+    },
+    "color=purple,stage=2": {
+      "model": "harkenscythe_core:block/blood_splash_purple_2"
+    },
+    "color=purple,stage=3": {
+      "model": "harkenscythe_core:block/blood_splash_purple_3"
+    },
+    "color=purple,stage=4": {
+      "model": "harkenscythe_core:block/blood_splash_purple_4"
+    }
+  }
+}

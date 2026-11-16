@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "condition": {
+        "type": "minecraft:survives_explosion"
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "harkenscythe_core:soulweave_cloth"
+        }
+      ],
+      "rolls": 1
+    }
+  ],
+  "random_sequence": "harkenscythe_core:blocks/soulweave_cloth"
+}

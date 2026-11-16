@@ -1,0 +1,16 @@
+{
+  "values": {
+    "harkenscythe_core:soulweave_cloth": {
+      "ignite_odds": 500,
+      "burn_odds": 50
+    },
+    "harkenscythe_core:bloodweave_cloth": {
+      "ignite_odds": 500,
+      "burn_odds": 50
+    },
+    "harkenscythe_core:spectral_wool": {
+      "ignite_odds": 500,
+      "burn_odds": 50
+    }
+  }
+}

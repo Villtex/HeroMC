@@ -1,0 +1,59 @@
+{
+  "type": "minecraft:block",
+  "modifier": {
+    "type": "minecraft:explosion_decay"
+  },
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "condition": {
+                "type": "minecraft:block_state_property",
+                "block": "harkenscythe_core:biomass_plant",
+                "properties": {
+                  "age": "3"
+                }
+              },
+              "name": "harkenscythe_core:biomass"
+            },
+            {
+              "type": "minecraft:item",
+              "name": "harkenscythe_core:biomass_seed"
+            }
+          ]
+        }
+      ],
+      "rolls": 1
+    },
+    {
+      "condition": {
+        "type": "minecraft:block_state_property",
+        "block": "harkenscythe_core:biomass_plant",
+        "properties": {
+          "age": "3"
+        }
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "harkenscythe_core:biomass_seed",
+          "modifier": {
+            "type": "minecraft:apply_bonus",
+            "enchantment": "minecraft:fortune",
+            "formula": "minecraft:binomial_with_bonus_count",
+            "parameters": {
+              "extra": 3,
+              "probability": 0.26666666666666666
+            }
+          }
+        }
+      ],
+      "rolls": 1
+    }
+  ],
+  "random_sequence": "harkenscythe_core:blocks/biomass_plant"
+}

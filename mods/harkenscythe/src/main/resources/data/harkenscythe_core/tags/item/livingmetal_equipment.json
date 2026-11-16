@@ -1,0 +1,23 @@
+{
+  "values": [
+    "harkenscythe_core:livingmetal_sword",
+    "harkenscythe_core:livingmetal_shovel",
+    "harkenscythe_core:livingmetal_pickaxe",
+    "harkenscythe_core:livingmetal_axe",
+    "harkenscythe_core:livingmetal_hoe",
+    "harkenscythe_core:livingmetal_helmet",
+    "harkenscythe_core:livingmetal_chestplate",
+    "harkenscythe_core:livingmetal_leggings",
+    "harkenscythe_core:livingmetal_boots",
+    "harkenscythe_core:livingmetal_scythe",
+    "harkenscythe_core:livingmetal_glaive",
+    {
+      "id": "asaddons:livingmetal_shield",
+      "required": false
+    },
+    {
+      "id": "asaddons:gilded_livingmetal_shield",
+      "required": false
+    }
+  ]
+}

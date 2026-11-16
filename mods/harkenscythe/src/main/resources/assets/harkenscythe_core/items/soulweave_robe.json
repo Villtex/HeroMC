@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "harkenscythe_core:item/soulweave_robe",
+    "tints": [
+      {
+        "type": "minecraft:dye",
+        "default": -14173732
+      },
+      {
+        "type": "minecraft:constant",
+        "value": -1
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "harkenscythe_core:skull_pigman_zombie"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "harkenscythe_core:skull_pigman_zombie"
+      }
+    ]
+  }
+}

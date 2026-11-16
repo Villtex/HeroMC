@@ -1,0 +1,10 @@
+{
+  "gives": {
+    "id": "harkenscythe_core:necronomicon_page"
+  },
+  "max_uses": 7,
+  "wants": {
+    "count": 30,
+    "id": "minecraft:emerald"
+  }
+}

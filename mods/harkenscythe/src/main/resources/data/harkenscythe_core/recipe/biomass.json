@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "harkenscythe_core:biomass_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "harkenscythe_core:biomass"
+  }
+}

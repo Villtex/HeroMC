@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "ethereal_talisman_soul_attuned",
+  "ingredients": [
+    "harkenscythe_core:ethereal_talisman",
+    {
+      "neoforge:ingredient_type": "neoforge:components",
+      "items": "harkenscythe_core:soul_vessel",
+      "components": {
+        "minecraft:damage": 20
+      }
+    }
+  ],
+  "result": {
+    "id": "harkenscythe_core:ethereal_talisman",
+    "components": {
+      "minecraft:enchantments": {
+        "harkenscythe_core:soul_attuned": 1
+      },
+      "minecraft:rarity": "epic"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "harkenscythe_core:spectral_dye",
+    "minecraft:white_wool"
+  ],
+  "result": {
+    "count": 1,
+    "id": "harkenscythe_core:spectral_wool"
+  }
+}

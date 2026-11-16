@@ -1,0 +1,19 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "harkenscythe_core:soulweave_default"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "harkenscythe_core:soulweave_default"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "harkenscythe_core:soulweave_default"
+      }
+    ]
+  }
+}

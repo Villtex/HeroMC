@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:book",
+    "minecraft:feather",
+    "minecraft:gold_ingot",
+    {
+      "neoforge:ingredient_type": "neoforge:components",
+      "items": "harkenscythe_core:bloodkeeper",
+      "components": {
+        "minecraft:damage": 0
+      }
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "harkenscythe_core:book_of_carnage"
+  }
+}

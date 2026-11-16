@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": "#minecraft:planks",
+    "*": "minecraft:stick"
+  },
+  "pattern": [
+    "XXX",
+    "  *",
+    " * "
+  ],
+  "result": {
+    "count": 1,
+    "id": "harkenscythe_core:wooden_scythe"
+  }
+}

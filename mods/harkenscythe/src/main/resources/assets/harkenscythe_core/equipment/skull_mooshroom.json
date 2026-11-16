@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "harkenscythe_core:skull_mooshroom"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "harkenscythe_core:skull_mooshroom"
+      }
+    ]
+  }
+}

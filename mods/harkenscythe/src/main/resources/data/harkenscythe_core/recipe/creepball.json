@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": "minecraft:rotten_flesh",
+    "*": "minecraft:spider_eye",
+    "^": "minecraft:slime_ball"
+  },
+  "pattern": [
+    "X*X",
+    "*^*",
+    "X*X"
+  ],
+  "result": {
+    "count": 1,
+    "id": "harkenscythe_core:creepball"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "harkenscythe_core:item/bloodweave_shoes",
+    "layer1": "harkenscythe_core:item/bloodweave_shoes_overlay"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "values": [
+    "harkenscythe_core:talisman",
+    "harkenscythe_core:ethereal_talisman",
+    "harkenscythe_core:overworld_amulet",
+    "harkenscythe_core:nether_amulet",
+    "harkenscythe_core:ethereal_amulet",
+    "#minecraft:enchantable/durability"
+  ]
+}

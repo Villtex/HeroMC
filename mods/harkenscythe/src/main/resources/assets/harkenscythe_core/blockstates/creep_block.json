@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "soil=0": {
+      "model": "harkenscythe_core:block/creep_block_0"
+    },
+    "soil=1": {
+      "model": "harkenscythe_core:block/creep_block_1"
+    },
+    "soil=2": {
+      "model": "harkenscythe_core:block/creep_block_2"
+    }
+  }
+}

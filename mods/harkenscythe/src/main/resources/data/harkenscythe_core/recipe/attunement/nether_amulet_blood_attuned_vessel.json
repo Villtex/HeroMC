@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "nether_amulet_blood_attuned",
+  "ingredients": [
+    "harkenscythe_core:nether_amulet",
+    {
+      "neoforge:ingredient_type": "neoforge:components",
+      "items": "harkenscythe_core:blood_vessel",
+      "components": {
+        "minecraft:damage": 0
+      }
+    }
+  ],
+  "result": {
+    "id": "harkenscythe_core:nether_amulet",
+    "components": {
+      "minecraft:enchantments": {
+        "harkenscythe_core:blood_attuned": 1
+      },
+      "minecraft:rarity": "epic"
+    }
+  }
+}

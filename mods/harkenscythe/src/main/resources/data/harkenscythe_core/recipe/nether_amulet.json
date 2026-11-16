@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": "minecraft:string",
+    "*": "minecraft:fire_charge",
+    "^": "minecraft:ender_pearl"
+  },
+  "pattern": [
+    "X X",
+    "*^*",
+    " * "
+  ],
+  "result": {
+    "count": 1,
+    "id": "harkenscythe_core:nether_amulet"
+  }
+}
