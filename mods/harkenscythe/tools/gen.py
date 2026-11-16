@@ -342,7 +342,7 @@ for age in range(4):
     block_model(f'biomass_plant_{age}', {'parent': 'minecraft:block/cross', 'render_type': 'minecraft:cutout', 'textures': {
         'cross': tex(f'blocks/tile.HSBiomassPlant_{age + 1}.png', f'block/biomass_plant_{age + 1}')}})
 blockstate('biomass_plant', {f'age={a}': {'model': n(f'block/biomass_plant_{a}')} for a in range(4)})
-ripe = {'type': 'minecraft:block_state_property', 'block': n('biomass_plant'), 'properties': {'age': '3'}}
+ripe = {'type': 'minecraft:match_block', 'blocks': n('biomass_plant'), 'state': {'age': '3'}}
 write(f'data/{NS}/loot_table/blocks/biomass_plant.json', {'type': 'minecraft:block', 'modifier': {'type': 'minecraft:explosion_decay'}, 'pools': [
     {'entries': [{'type': 'minecraft:alternatives', 'children': [
         {'type': 'minecraft:item', 'condition': ripe, 'name': n('biomass')}, {'type': 'minecraft:item', 'name': n('biomass_seed')}]}], 'rolls': 1},

@@ -12,9 +12,9 @@
             {
               "type": "minecraft:item",
               "condition": {
-                "type": "minecraft:block_state_property",
-                "block": "harkenscythe_core:biomass_plant",
-                "properties": {
+                "type": "minecraft:match_block",
+                "blocks": "harkenscythe_core:biomass_plant",
+                "state": {
                   "age": "3"
                 }
               },
@@ -31,9 +31,9 @@
     },
     {
       "condition": {
-        "type": "minecraft:block_state_property",
-        "block": "harkenscythe_core:biomass_plant",
-        "properties": {
+        "type": "minecraft:match_block",
+        "blocks": "harkenscythe_core:biomass_plant",
+        "state": {
           "age": "3"
         }
       },

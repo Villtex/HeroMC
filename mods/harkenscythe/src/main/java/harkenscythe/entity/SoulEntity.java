@@ -42,8 +42,6 @@ public class SoulEntity extends Mob {
     public SoulEntity(EntityType<? extends SoulEntity> type, Level level) {
         super(type, level);
         this.innerRotation = this.random.nextInt(100000);
-        this.setNoGravity(true);
-        this.setNoAi(true);
         this.setPersistenceRequired();
     }
 
@@ -158,6 +156,17 @@ public class SoulEntity extends Mob {
             return super.hurtServer(level, source, damage);
         }
         return false;
+    }
+
+    /** The original never called the movement of EntityLiving: no gravity and no AI, whatever the saved data says. */
+    @Override
+    public boolean isNoGravity() {
+        return true;
+    }
+
+    @Override
+    public boolean isNoAi() {
+        return true;
     }
 
     @Override

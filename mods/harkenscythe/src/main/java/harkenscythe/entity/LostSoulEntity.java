@@ -36,8 +36,6 @@ public class LostSoulEntity extends Monster {
     public LostSoulEntity(EntityType<? extends LostSoulEntity> type, Level level) {
         super(type, level);
         this.innerRotation = this.random.nextInt(100000);
-        this.setNoGravity(true);
-        this.setNoAi(true);
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -93,6 +91,17 @@ public class LostSoulEntity extends Monster {
     @Override
     public boolean hurtServer(ServerLevel level, DamageSource source, float damage) {
         return source.is(DamageTypeTags.BYPASSES_INVULNERABILITY) && super.hurtServer(level, source, damage);
+    }
+
+    /** The original never called the movement of EntityLiving: no gravity and no AI, whatever the saved data says. */
+    @Override
+    public boolean isNoGravity() {
+        return true;
+    }
+
+    @Override
+    public boolean isNoAi() {
+        return true;
     }
 
     @Override
