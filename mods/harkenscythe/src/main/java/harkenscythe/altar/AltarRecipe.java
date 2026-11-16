@@ -215,7 +215,7 @@ public record AltarRecipe(Kind altar, int order, Action action, Ingredient ingre
 
     @Override
     public PlacementInfo placementInfo() {
-        return PlacementInfo.NOT_PLACEABLE;
+        return PlacementInfo.create(this.ingredient);
     }
 
     @Override

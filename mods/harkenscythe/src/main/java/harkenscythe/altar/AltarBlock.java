@@ -6,11 +6,14 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.Container;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -145,6 +148,34 @@ public class AltarBlock extends BaseEntityBlock {
                 cost[0] -= content;
             }
         });
+    }
+
+    public @Nullable AltarRecipe recipe(ServerLevel level, ItemStack stack) {
+        return stack.isEmpty() ? null : AltarRecipe.find(level.recipeAccess().recipeMap().byType(Altars.ALTAR_TYPE.get()), this.kind(), stack);
+    }
+
+    /**
+     * The button of the GUI (actionPerformed, the HSPacket and TileEntityHSSoulAltar.updateEntity): if the crucibles hold
+     * the cost of the slot's recipe (in whole crucible levels, cost / 5 or / 10 as in 1.5.2), they are drained and the
+     * slot gets the result. Returns whether it happened.
+     */
+    public static boolean craft(ServerLevel level, BlockPos pos, Container slot) {
+        if (!(level.getBlockState(pos).getBlock() instanceof AltarBlock block)) {
+            return false;
+        }
+        ItemStack stack = slot.getItem(0);
+        AltarRecipe recipe = block.recipe(level, stack);
+        if (recipe == null) {
+            return false;
+        }
+        int unit = block.kind().unit;
+        int levels = recipe.totalCost(stack) / unit;
+        if (levels > block.essence(level, pos) / unit) {
+            return false;
+        }
+        block.drain(level, pos, levels);
+        slot.setItem(0, recipe.apply(stack, level.getRandom(), level.registryAccess()));
+        return true;
     }
 
     /** randomDisplayTick: portal particles (souls) or red dust (blood) above the altar for the crucibles around it. */

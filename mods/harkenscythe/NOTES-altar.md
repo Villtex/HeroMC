@@ -1,25 +1,21 @@
-# Harken Scythe: Schnittstellen für die Altäre (Teil 9, Teilauftrag 2)
+# Harken Scythe: die Altäre (Teil 9, Teilauftrag 2)
 
-Noch nicht portiert: `BlockHSSoulAltar`, `BlockHSBloodAltar`, `TileEntityHSSoulAltar/BloodAltar`, `ContainerHS*Altar`,
-`GuiHS*Altar`, `RecipeHSSoulAltar/BloodAltar`, `GuiHandler`, die Altar-Pakete von `CommonPacketHandlerHarkenScythe`.
-Ids: Blöcke `harkenscythe_core:altar_of_souls`, `altar_of_blood` (snake_case von „Altar of Souls/Blood“).
+Portiert in `harkenscythe.altar` (Server) und `harkenscythe.client.Altar*` (Client), JEI in `harkenscythe.compat.AltarCategory`.
 
-## Was der Kern schon bereitstellt
+- Blöcke `harkenscythe_core:altar_of_souls` / `altar_of_blood` (`AltarBlock`, 12/16 hoch, Härte 5, Widerstand 6 = 1.5.2 10,
+  Metall-Klang, Spitzhacke), Block-Entity `harkenscythe_core:altar` (`AltarBlockEntity`: ein Slot, Buch-Animation des
+  Zaubertischs). Werkbank: Obsidian/Netherrack „XXX“, „*X*“ mit Enderperlen, Book of Shadows/Carnage oben.
+- Tiegel: `AltarBlock.essence/drain` und `animateTick` laufen über dieselbe Schleife wie 1.5.2 (Ring 2 um den Altar,
+  Höhe −1..+1, Luft auf halbem Weg eine Ebene über dem Tiegel). Kosten zählen in ganzen Tiegelstufen (Seelen /5, Blut /10).
+- Menü `harkenscythe_core:altar` (`AltarMenu`): Der Server rechnet Essenz, Rezept und Kosten aus und schickt sie als
+  Daten-Slots; der Knopf ist `clickMenuButton(0)` → `AltarBlock.craft`. Das HSPacket von 1.5.2 entfällt.
+- Rezepttyp `harkenscythe_core:altar` (`AltarRecipe`), Daten in `data/harkenscythe_core/recipe/altar/<soul|blood>/`, erzeugt
+  von `tools/gen.py`. `order` = alte Rezeptnummer (1–6 Umwandlung, 20–27 Augment), die höchste passende gewinnt.
+  Augment-Zeilen: Wurf und Rang je 1–100 wie `soulAltarItemStackAugmentBuilder`; `tools/check.py` prüft, dass jede
+  Kombination genau einmal abgedeckt ist. Schild/Riesenschwert nur mit `asgardshield_core` (Bedingung `mod_loaded`).
+- Die Rezepte gehen per `OnDatapackSyncEvent.sendRecipes` an den Client (`AltarRecipesClient`) für JEI.
 
-- Items (`harkenscythe.HSItems`): `BOOK_OF_SHADOWS`, `BOOK_OF_CARNAGE` (Altar-Rezepte, 1.5.2: Obsidian/Netherrack
-  „XXX“ unten, „*X*“ mit Enderperlen, Buch oben), Keeper/Vessel (`ESSENCE_KEEPER`, `SOULKEEPER`, `BLOODKEEPER`,
-  `ESSENCE_VESSEL`, `SOUL_VESSEL`, `BLOOD_VESSEL`), `BIOMASS_SEED` → `GERMINATED_BIOMASS_SEED` (Blutaltar),
-  `LIVINGMETAL_INGOT`, `SOULWEAVE_CLOTH`, `BLOODWEAVE_CLOTH`, `ECTOPLASM`, Talismane, Amulette.
-- Füllstand der Keeper: **Haltbarkeit** wie in 1.5.2 (gespeichert = max − damage), Hilfen in `harkenscythe.item.Essence`
-  (`stored`, `has`, `consume`, `fill`, `drain`). Kapazität: Soulkeeper 20, Bloodkeeper 40, Soul Vessel 40, Blood Vessel 80.
-- Tiegel: `HSBlocks.SOUL_CRUCIBLE` / `BLOOD_CRUCIBLE`, Füllstand im Blockstate `CrucibleBlock.LEVEL` (0–10, Seelen ×5,
-  Blut ×10). Der Seelenaltar sucht Tiegel im Umkreis 2 (x/z) und −1..+1 (y) (`BlockHSSoulAltar.randomDisplayTick` und
-  die Altar-Rezepte), der Blutaltar entsprechend `BLOOD_CRUCIBLE`.
-- Augments als Verzauberungen: `HarkenScythe.SOUL_ATTUNED` … `SANGUINARY` (`ResourceKey<Enchantment>`), Stufe lesen mit
-  `harkenscythe.event.HSEvents.level(level, stack, key)`. Unterstützte Items: Tags `harkenscythe_core:enchantable/*`
-  (`weapon`, `shield`, `armor`, `attunable`) bzw. Vanilla-Tags (`enchantable/bow`, `enchantable/durability`).
-  Kosten 100 (nicht am Zaubertisch), die Altäre müssen sie direkt anwenden (`ItemStack.enchant(holder, level)`).
-- Attunement gibt es schon als Werkbank-Rezepte (`data/harkenscythe_core/recipe/attunement/`).
-- Projekt-Skill-Kandidat: `menu-gui-263` für Container/Screen/Pakete; Altar-Texturen (`textures/gui/guiSoulAlter.png`,
-  `guiBloodAlter.png`, `blocks/tile.HS*Altar_*`) noch nicht in `original-assets.txt` – in `tools/gen.py` ergänzen.
-- `RenderHSSoulAltar/BloodAltar` (schwebendes Buch) fehlen ebenfalls.
+Abweichungen: Essenzanzeige live statt Momentaufnahme beim Öffnen; Augmente nur auf unverzauberte Gegenstände, auch
+das Attunement (1.5.2 zeigte den Knopf bei Talisman/Amulett ohne dieses Attunement, wirkte aber je nach Server/Client
+uneinheitlich); Gegenstand im Slot geht beim Schließen ins Inventar statt vor den Spieler. Orange Wolle fehlt wie in
+1.5.2 (`woolColorCheck`).

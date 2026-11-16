@@ -73,16 +73,12 @@ public class AltarMenu extends AbstractContainerMenu {
         return this.data.get(DATA_COST);
     }
 
-    private @Nullable AltarRecipe recipe(ServerLevel level, AltarBlock block, ItemStack stack) {
-        return AltarRecipe.find(level.recipeAccess().recipeMap().byType(Altars.ALTAR_TYPE.get()), block.kind(), stack);
-    }
-
     @Override
     public void broadcastChanges() {
         this.access.execute((level, pos) -> {
             if (level instanceof ServerLevel server && level.getBlockState(pos).getBlock() instanceof AltarBlock block) {
                 ItemStack stack = this.altar.getItem(0);
-                AltarRecipe recipe = stack.isEmpty() ? null : this.recipe(server, block, stack);
+                AltarRecipe recipe = stack.isEmpty() ? null : block.recipe(server, stack);
                 this.data.set(DATA_ESSENCE, block.essence(level, pos));
                 this.data.set(DATA_ACTION, recipe == null ? 0 : recipe.action().ordinal() + 1);
                 this.data.set(DATA_COST, recipe == null ? 0 : recipe.totalCost(stack));
@@ -91,32 +87,16 @@ public class AltarMenu extends AbstractContainerMenu {
         super.broadcastChanges();
     }
 
-    /**
-     * The button (actionPerformed and TileEntityHSSoulAltar.updateEntity): if the crucibles hold the cost (counted in
-     * whole crucible levels, cost / 5 or / 10 as in 1.5.2), they are drained and the slot gets the result.
-     */
+    /** The button: AltarBlock.craft (actionPerformed and TileEntityHSSoulAltar.updateEntity of 1.5.2). */
     @Override
     public boolean clickMenuButton(Player player, int buttonId) {
         if (buttonId != 0) {
             return false;
         }
         this.access.execute((level, pos) -> {
-            if (!(level instanceof ServerLevel server) || !(level.getBlockState(pos).getBlock() instanceof AltarBlock block)) {
-                return;
+            if (level instanceof ServerLevel server && AltarBlock.craft(server, pos, this.altar)) {
+                this.broadcastChanges();
             }
-            ItemStack stack = this.altar.getItem(0);
-            AltarRecipe recipe = stack.isEmpty() ? null : this.recipe(server, block, stack);
-            if (recipe == null) {
-                return;
-            }
-            int unit = block.kind().unit;
-            int levels = recipe.totalCost(stack) / unit;
-            if (levels > block.essence(level, pos) / unit) {
-                return;
-            }
-            block.drain(level, pos, levels);
-            this.altar.setItem(0, recipe.apply(stack, level.getRandom(), level.registryAccess()));
-            this.broadcastChanges();
         });
         return true;
     }
