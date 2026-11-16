@@ -56,7 +56,7 @@ public class LostSoulEntity extends Monster {
     @Override
     public void tick() {
         super.tick();
-        if (this.level().isClientSide()) {
+        if (this.level().isClientSide() || this.isDeadOrDying()) {
             return;
         }
         BlockPos pos = this.blockPosition();

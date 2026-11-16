@@ -85,7 +85,7 @@ public class SoulEntity extends Mob {
     @Override
     public void tick() {
         super.tick();
-        if (this.level().isClientSide()) {
+        if (this.level().isClientSide() || this.isDeadOrDying()) {
             return;
         }
         int rx = (int) Math.round(this.getX());
