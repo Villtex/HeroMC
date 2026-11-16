@@ -654,9 +654,9 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1794835730.473733,
-    "seen": 1794847420.4744983,
-    "ast_hash": "cc683035807b408a200f2e29daf00674",
+    "mtime": 1794849346.5281188,
+    "seen": 1794849359.6036377,
+    "ast_hash": "2521d009a8d8884cef090772d1a35a9f",
     "semantic_hash": ""
   },
   "mods/ebxl/original-assets.txt": {
@@ -3156,9 +3156,9 @@
     "semantic_hash": ""
   },
   "mods/backtools/src/main/java/ichun/backtools/client/BackItemLayer.java": {
-    "mtime": 1794695815.2455525,
-    "seen": 1794847420.4715016,
-    "ast_hash": "41839babf4019e4e455b612aa6142c86",
+    "mtime": 1794847887.2374756,
+    "seen": 1794849359.6003056,
+    "ast_hash": "be6b1058eab92dd4685dbce27130b523",
     "semantic_hash": ""
   },
   "mods/backtools/src/main/java/ichun/backtools/client/BackToolsClient.java": {
@@ -3786,9 +3786,9 @@
     "semantic_hash": ""
   },
   ".claude/skills/client-render-263/SKILL.md": {
-    "mtime": 1794835730.469733,
-    "seen": 1794847420.4744906,
-    "ast_hash": "34ba6d610cde3cbb4ac35da618e841d3",
+    "mtime": 1794849352.4415586,
+    "seen": 1794849359.6036255,
+    "ast_hash": "3e3e224213a2fd51ac339cee5061d4ec",
     "semantic_hash": ""
   },
   "mods/armorbar/original-assets.txt": {
@@ -20463,6 +20463,12 @@
     "mtime": 1794835730.5643628,
     "seen": 1794847420.4745026,
     "ast_hash": "dd18516cb8108a70e423585439ebe862",
+    "semantic_hash": ""
+  },
+  ".claude/skills/headless-client/SKILL.md": {
+    "mtime": 1794849342.6187754,
+    "seen": 1794849359.6036289,
+    "ast_hash": "4be4cc963d621753897d4922586f0b99",
     "semantic_hash": ""
   }
 }

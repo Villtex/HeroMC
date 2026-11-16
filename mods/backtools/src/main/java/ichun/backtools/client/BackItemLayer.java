@@ -45,7 +45,8 @@ public class BackItemLayer extends RenderLayer<AvatarRenderState, PlayerModel> {
             poseStack.rotateDegrees(Axis.ZP, back.orientation() * 90.0F);
             // the item model faces +z; seen from behind the player its front must face -z
             poseStack.rotateDegrees(Axis.YP, 180.0F);
-            poseStack.translate(-0.5F, -0.5F, -0.5F);
+            // the item model itself moves its 0..1 block to the centre (ItemTransform.apply); doing it here too
+            // pushed the item half a block in front of the head
             back.item().submit(poseStack, collector, light, OverlayTexture.NO_OVERLAY, state.outlineColor);
             poseStack.popPose();
         } catch (RuntimeException e) {

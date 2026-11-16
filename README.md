@@ -42,6 +42,7 @@ Der Port ist in Teile aufgeteilt, die je in eine Session passen: [`docs/PLAN.md`
 | `.claude/skills/wood-sets-263/` | Projekt-Skill: Holzarten und Pflanzen eines Mods (Planken, Stämme, Blätter, Setzlinge, Treppen bis Werkbänke, Brennwert, Rezeptkonflikte mit Vanilla), Vorlage Natura |
 | `.claude/skills/mobs-263/` | Projekt-Skill: Mobs, Spawn-Eier, Boote, Mob-Drops und Spawns (Biome-Modifier), Vorlage Natura |
 | `.claude/skills/treecapitator-trees/` | Projekt-Skill: Bäume und Äxte eines Mods bei TreeCapitator anmelden (Daten-Registry `treecapitator:tree`, Item-Tags) |
+| `.claude/skills/headless-client/` | Projekt-Skill: Testclient im Cloud-Container ohne Bildschirm starten (Xvfb, `SDL_VIDEO_FORCE_EGL=1`, Screenshots, xdotool) |
 
 ## Bauen und Starten
 

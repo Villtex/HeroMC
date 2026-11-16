@@ -49,7 +49,7 @@ static void render(GuiGraphicsExtractor g, DeltaTracker delta) { ... }   // Mine
 4. Im Layer: `getParentModel().body.translateAndRotate(poseStack)` (folgt Schleichen/Schwimmen). Modellraum: y nach unten,
    +z = Rücken, Hals bei y=0, Füße 24 px tiefer, Spielerskala 0,9375. 1.5.2-Weltkoordinaten (y hoch, Rücken −z):
    `poseStack.rotateDegrees(Axis.XP, 180)`. Drehen nur mit `poseStack.rotateDegrees(Axis.?, deg)` (`mulPose(Quaternion)` gibt es nicht mehr).
-   `ItemDisplayContext.NONE`-Modell liegt in 0..1 → `translate(-0.5,-0.5,-0.5)`; seine Vorderseite zeigt nach +z.
+   `ItemDisplayContext.NONE`-Modell: die Verschiebung von 0..1 zur Mitte macht Vanilla schon selbst (`ItemTransform.apply`), **nicht** noch einmal `translate(-0.5,-0.5,-0.5)` (sonst sitzt es einen halben Block daneben, z. B. vor dem Kopf); seine Vorderseite zeigt nach +z.
    `item.submit(poseStack, collector, light, OverlayTexture.NO_OVERLAY, state.outlineColor)`. Body in try/catch, einmal loggen.
    Umhang sichtbar: `state.showCape && state.skin.cape() != null`; unsichtbar: `state.isInvisible`.
 
