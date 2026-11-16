@@ -151,6 +151,21 @@ Seltenes fehlt meist in der `find`-Auswahl: Kandidaten mit einer kleinen Klasse 
 30 s. Generatoren mit `y = nextInt(128)` (offLawn) treffen die Oberfläche selten: etwa 1 Fund je 50 passende Chunks. Manche Originale fragen das Biom an (x, x).
 Testserver braucht `pause-when-empty-seconds=-1`, sonst lädt er ohne Spieler nach 60 s keine Chunks mehr.
 
+## Nether
+
+`GameRegistry.generateWorld` lief in jeder Dimension: Jeder angemeldete Generator wird auch für Nether-Chunks
+aufgerufen (`OldNetherPopulator`), mit derselben gemeinsamen Zufallsfolge. Deshalb im Port genau wie im Original
+abfragen: `world.dimension()` (0 oder -1), `world.isHellWorld()`; `world.getBiome` liefert dort immer `OldBiomes.HELL`
+(„Hell“, Temperatur 2.0, Regen 0.0). Dimensions-Blacklists der Pack-Konfiguration als `if (world.dimension() != 0) return;`
+(Vorbild `WildCavesGen`). Ein Zweig, der im Original vor der Biomprüfung Zufallszahlen zieht, zieht sie auch im Nether.
+Terrain-Events dort: `Populate.NETHER_LAVA`, `FIRE`, `GLOWSTONE`, `Decorate.SHROOM`. Erz in Netherrack, das auch
+Tainted Soil ersetzt: `new OldOreGens.Minable(id, meta, n, 87, 253)`. Der Nether hat keine Höhenkarte und kein
+Himmelslicht; Generatoren mit `getHeightValue`/`canBlockSeeTheSky` dort einzeln gegen das Original prüfen.
+
+Prüfen: `tools/expect.sh 1234 nether -8 -8 -7 -8 ...` oder `nether structures 60`, dann `verify_blocks.py` (die Datei
+trägt die Dimension in der ersten Zeile). Die Population des Nethers war im Original nicht seed-fest (`docs/PLAN.md`,
+Teil 7b), ein Abgleich mit Original-Welten ist dort nicht möglich.
+
 ## Stolperfallen
 
 - **Versatz +8.** Population arbeitet auf dem 16×16-Feld, das 8 Blöcke in +x/+z verschoben ist. Die meisten

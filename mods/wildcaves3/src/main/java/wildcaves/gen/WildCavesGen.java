@@ -82,6 +82,9 @@ public final class WildCavesGen {
     // ---- WorldGenWildCaves ----
 
     static void caves(Random random, int chunkX, int chunkZ, OldWorld world) {
+        if (world.dimension() != 0) {
+            return;   // "Dimension Blacklist" of the pack: -1 and 1
+        }
         Random choices = choices(world, chunkX, chunkZ);
         int blockX = chunkX * 16;
         int blockZ = chunkZ * 16;
@@ -396,6 +399,9 @@ public final class WildCavesGen {
 
     /** EventManager.generateSurface: five fossil veins of 4 to 6 blocks in stone, y 1 to 89. */
     static void fossils(Random random, int chunkX, int chunkZ, OldWorld world) {
+        if (world.dimension() != 0) {
+            return;   // EventManager.generate: only dimension 0
+        }
         int blockX = chunkX * 16;
         int blockZ = chunkZ * 16;
         int veinSize = 4 + random.nextInt(3);

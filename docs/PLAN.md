@@ -44,7 +44,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 5 | Hexxit Gear, More Bows, Enchanting Plus, offLawn, Wild Caves 3 | ~13.000 | 1, 3 | Opus 5.5, mittel | ✅ erledigt |
 | 6 | bspkrsCore, TreeCapitator, Inventory Tweaks, Custom LAN Ports | ~19.000 | 3 | Opus 5.5, mittel | ✅ erledigt |
 | 7 | Natura | ~20.000 | 1, 3 | Opus 5.5, mittel | ✅ erledigt |
-| 7b | Natura-Nether: 1.5.2-Nether (Netherite-Gelände, Höhlen, Netherfestung) in worldgen152, Nether-Generatoren von Natura | ~3.000 | 2, 7 | Fable 5.2, hoch | offen |
+| 7b | Natura-Nether: 1.5.2-Nether (Netherite-Gelände, Höhlen, Netherfestung) in worldgen152, Nether-Generatoren von Natura | ~3.000 | 2, 7 | Fable 5.2, hoch | ✅ erledigt |
 | 8 | Artifice, CoFHCore (nur was das Pack nutzt) | ~27.000 | 1, 3 | Opus 5.5, mittel | offen |
 | 9 | Harken Scythe, Asgard Shield, Asgard Shield Addons | ~30.000 | 3 | Opus 5.5, mittel | offen |
 | 10 | Project Zulu A: Kreaturen | ~25.000 | 3 | Fable 5.2, hoch | offen |
@@ -491,7 +491,7 @@ Kein Tinkers vorhanden: Integrationen dazu weglassen und notieren.
   Alle JSON und `original-assets.txt` erzeugt `mods/natura/tools/gen.py` (überschreibt `resources/{assets,data}`),
   `tools/check.py` prüft Verweise.
 - **Mobs**: Imp, Heatscar Spider (Babys beim Tod, 2–4 laut Pack), Baby Heatscar Spider, Nitro Creeper; Spawns als
-  Biome-Modifier in den Nether-Biomen von 26.3 (bis Teil 7b). Vier Boote, Spawn-Eier, Imp-Fleisch.
+  Biome-Modifier für `#minecraft:is_nether` (seit Teil 7b auch `worldgen152:hell`). Vier Boote, Spawn-Eier, Imp-Fleisch.
 - **Weltgenerierung** (`natura.gen`, ohne Spielklassen, in `expect.sh`): BaseCrop-, BaseCloud-, BaseTreeWorldgen
   unter FML-ID `Natura`, alle Gens als Port. Setzlinge und Glowshrooms wachsen über dieselben Gens
   (`OldLiveGen`, neu: ID/Meta der Mod-Blöcke, Tiefe, `OldBlockStates.registerConnecting` für Saguaro-Arme).
@@ -504,7 +504,7 @@ Kein Tinkers vorhanden: Integrationen dazu weglassen und notieren.
 
 **Offen / bewusst abweichend:**
 
-- Nether (Netherite-Gelände, Nether-Zweige der Generatoren, Spawns dort): Teil 7b. Thornvines bekommen im
+- Nether (Netherite-Gelände, Nether-Zweige der Generatoren, Spawns dort): Teil 7b (erledigt). Thornvines bekommen im
   Chunk-Writer ihre obere Fläche nur aus den Metadaten (erst im Nether relevant).
 - Biomnamen: Natura fragt `AutumnWoods`, `BirchForest`, `PineForest`, `TemperateRainforest`, `ForestedHills`,
   `GreenHills` ab; ExtrabiomesXL schreibt sie mit Leerzeichen, im Original trafen sie also nie (übernommen).
@@ -538,6 +538,46 @@ eigener Teil.
 - Nether-Zweige der Natura-Generatoren (`BaseTreeWorldgen`, Biom „Hell“): Bloodwood, Darkwood, Fusewood,
   Glowshrooms, Nether-Beeren, Thornvines; Reihenfolge wie im Original.
 - Abgleich wie in Teil 2 mit `tools/expect.sh`/`verify_blocks.py` (dafür Nether-Unterstützung ergänzen).
+
+**Status: erledigt.**
+
+- **Kern** (`hexxit.worldgen152.core`): `nether/NetherTerrain` (Natura-`NetheriteChunkProvider`: Dichtefeld,
+  Tainted Soil ab Dichte 56, Soul-Sand-/Kies-Ufer mit Heat Sand und Tainted Soil darunter, Bedrock),
+  `nether/NetherCaves` (`MapGenCavesHell`), `structure/MapGenNetherBridge` mit allen 15 Bauteilen (Blaze-Spawner,
+  Netherwarzen, Lava im Eingang), `populate/OldNetherPopulator` + `OldNetherGens` (Lavaquellen, Naturas `FireGen`,
+  Glowstone, Quarz, kleine Glowshrooms), danach die Mod-Generatoren wie in der Oberwelt (`GameRegistry.generateWorld`
+  lief in jeder Dimension). `OldWorld.nether(...)`, `world.dimension()`, `world.isHellWorld()`; Biom dort immer „Hell“.
+- **Spiel**: `OldNetherChunkGenerator` (`worldgen152:nether`), Biom `worldgen152:hell` (Spawns von 1.5.2: Ghast 50,
+  Zombie Pigman 100, Magmawürfel 1; in `#minecraft:is_nether`, damit Naturas Imp, Heatscar Spider und Nitro Creeper
+  dort spawnen), im Welt-Preset `normal` für `minecraft:the_nether` eingetragen. In der Festung deren Spawnliste
+  (Blaze 10, Zombie Pigman 5, Skelett 10 als Witherskelett 8 + Skelett 2, Magmawürfel 3). `/locate structure
+  minecraft:fortress` findet die 1.5.2-Festungen; Strukturen von 26.3 (Bastion, Portalruine, Festung) entstehen nicht.
+- **Natura**: Die Nether-Zweige waren in Teil 7 schon portiert; jetzt über `world.isHellWorld()` aktiv. Wild Caves
+  läuft nur in Dimension 0 (Blacklist des Packs), Hexxit Gear, offLawn und ExtrabiomesXL laufen wie im Original
+  auch im Nether (ohne dort etwas zu setzen).
+- **Werkzeuge**: `tools/expect.sh <seed> nether <chunks>` bzw. `nether structures <radius>` (nächste Festungen);
+  die Datei beginnt mit `D minecraft:the_nether`, `verify_blocks.py` prüft dann in dieser Dimension.
+- **Prüfung**: `clean pack` grün, Server bis `Done` ohne Fehler. Gelände, Höhlen und Zufallszustand nach dem Gelände
+  für 600 Chunks (2 Seeds) byte-gleich mit dem dekompilierten Original-Code (Natura-Methoden + Vanilla-Noise in
+  einem Testrahmen). Kern gegen Spiel, Seed 1234: 256 Chunks um 0,0 (253.515 Blöcke), 256 Chunks mit einer ganzen
+  Festung (313.019 Blöcke, 2 Blaze-Spawner), 8 Festungs-Chunks: 0 Abweichungen. Oberwelt weiter 0 Abweichungen
+  (35 Biome, 111.410 Blöcke).
+
+**Offen / bewusst abweichend:**
+
+- **Population nicht seed-fest im Original:** `populate` zog aus `hellRNG`, ohne ihn neu zu setzen; das Ergebnis hing
+  davon ab, welcher Chunk zuletzt erzeugt wurde. Hier: Zustand nach dem Gelände des Chunks bei +1/+1 (der Chunk, der
+  bei zeilenweiser Erzeugung die Population auslöst). Gelände und Festungs-Layout sind seed-fest wie im Original.
+- Kein Abgleich mit einer Original-Welt (`compare_original.py`): Der Original-Server erzeugt Nether-Chunks nur mit
+  einem Spieler dort. Ersatz ist der Vergleich mit dem dekompilierten Code oben; die Festung ist nur Kern gegen Spiel
+  geprüft.
+- Lavaquellen fließen erst im Spiel (wie die Quellen der Oberwelt), nicht schon während der Generierung; spätere
+  Generatoren sehen die geflossene Lava also nicht. Blocklicht ist nicht nachgebildet: Glowshrooms prüfen ihr
+  Licht (< 13) nicht, direkt neben frisch gesetztem Glowstone/Feuer kann daher einer mehr stehen.
+- Festungen existieren alle von Anfang an (im Original erst, wenn ein Chunk im Umkreis von 8 erzeugt war).
+- Mob-Spawns im Nether (Biom-Liste, Festungsliste, Natura-Mobs, Blaze-Spawner) sind ohne Spieler am Server nicht
+  prüfbar: im Client nachsehen. Client-Prüfung offen: Nebel/Atmosphäre des Bioms `worldgen152:hell`.
+- Bestehende Welten: Schon erzeugte Nether-Chunks bleiben, neue kommen vom 1.5.2-Generator.
 
 ## Teil 8 – Artifice, CoFHCore
 

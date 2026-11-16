@@ -32,6 +32,7 @@ public final class OldDecoration {
     private final long seed;
     private final OldWorld.TerrainSource terrain;
     private final BiomeLayout layout;
+    private final boolean nether;
     private final Map<Long, FutureTask<OldDecoratedChunk[]>> tiles = new LinkedHashMap<>(16, 0.75F, true) {
         @Override
         protected boolean removeEldestEntry(Map.Entry<Long, FutureTask<OldDecoratedChunk[]>> eldest) {
@@ -46,9 +47,19 @@ public final class OldDecoration {
 
     /** Population with the structures of 1.5.2, which need to know where which biome lies. */
     public OldDecoration(long seed, OldWorld.TerrainSource terrain, BiomeLayout layout) {
+        this(seed, terrain, layout, false);
+    }
+
+    private OldDecoration(long seed, OldWorld.TerrainSource terrain, BiomeLayout layout, boolean nether) {
         this.seed = seed;
         this.terrain = terrain;
         this.layout = layout;
+        this.nether = nether;
+    }
+
+    /** Population of the Nether (dimension -1); {@code terrain} supplies its bare chunks. */
+    public static OldDecoration nether(long seed, OldWorld.TerrainSource terrain) {
+        return new OldDecoration(seed, terrain, null, true);
     }
 
     public long seed() {
@@ -89,10 +100,14 @@ public final class OldDecoration {
     private OldDecoratedChunk[] populateTile(int tileX, int tileZ) {
         int x0 = tileX * TILE;
         int z0 = tileZ * TILE;
-        OldWorld world = new OldWorld(this.seed, this.terrain, this.layout);
+        OldWorld world = this.nether ? OldWorld.nether(this.seed, this.terrain) : new OldWorld(this.seed, this.terrain, this.layout);
         for (int x = x0 - MARGIN_LOW; x < x0 + TILE + MARGIN_HIGH; x++) {
             for (int z = z0 - MARGIN_LOW; z < z0 + TILE + MARGIN_HIGH; z++) {
-                OldPopulator.populate(world, x, z);
+                if (this.nether) {
+                    OldNetherPopulator.populate(world, x, z);
+                } else {
+                    OldPopulator.populate(world, x, z);
+                }
             }
         }
         byte[][][] distances = leafDistances(world, x0, z0);

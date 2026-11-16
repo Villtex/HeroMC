@@ -5,13 +5,15 @@ import java.util.*;
 /**
  * Predicts the populated 1.5.2 world for tools/verify_blocks.py. Per chosen chunk it prints
  *   "x y z id meta"   four full columns, and every block population changed or added
+ *   "D dimension"     first line when the chunks are not in the overworld
  *   "B x z biomeKey"  biome samples
  *   "S x y z Mob"     mob spawners, "C x y z n" chests and dispensers with n filled slots
  *   "K x y z type rotation" floor skulls (type as TileEntitySkull, rotation 0 to 15)
  *   "E x y z Kind"    entities structures spawned (Villager, Witch, MinecartChest)
  * With "find <radius>" it picks one chunk per biome found on a coarse scan around 0,0, with
  * "structures <radius>" chunks of the structures starting within that many chunks of 0,0; "spawn" prints
- * the world spawn. "vanilla" as second argument leaves out the biomes of mods.
+ * the world spawn. "vanilla" as second argument leaves out the biomes of mods; "nether" (after it) predicts the
+ * Nether, where "structures" picks the nearest fortresses.
  */
 public class Expect {
     public static void main(String[] a) {
@@ -27,17 +29,32 @@ public class Expect {
             offlawn.gen.OffLawnGen.register();
             wildcaves.gen.WildCavesGen.register();
         }
-        BiomeLayout layout = new BiomeLayout(seed);
-        OldTerrain terrain = new OldTerrain(layout);
+        // "nether" (after "vanilla", if both are given): the Nether of the seed instead of the overworld
+        boolean nether = a.length > 1 && a[1].equals("nether");
+        if (nether) a = java.util.stream.Stream.concat(java.util.stream.Stream.of(a[0]), Arrays.stream(a).skip(2)).toArray(String[]::new);
+        BiomeLayout layout = nether ? null : new BiomeLayout(seed);
+        OldTerrain terrain = nether ? null : new OldTerrain(layout);
+        hexxit.worldgen152.core.nether.NetherTerrain netherTerrain = nether ? new hexxit.worldgen152.core.nether.NetherTerrain(seed) : null;
         Map<Long, OldChunk> raw = new HashMap<>();
         OldWorld.TerrainSource source = (x, z) -> {
             synchronized (raw) {
-                return raw.computeIfAbsent((long) x << 32 | z & 0xFFFFFFFFL, k -> terrain.generate(x, z));
+                return raw.computeIfAbsent((long) x << 32 | z & 0xFFFFFFFFL, k -> nether ? netherTerrain.generate(x, z) : terrain.generate(x, z));
             }
         };
-        OldDecoration decoration = new OldDecoration(seed, source, layout);
+        OldDecoration decoration = nether ? OldDecoration.nether(seed, source) : new OldDecoration(seed, source, layout);
         List<int[]> chunks = new ArrayList<>();
-        if (a[1].equals("find")) {
+        if (nether && a[1].equals("structures")) {
+            // two by two chunks at the first piece of the two fortresses nearest to 0,0
+            List<hexxit.worldgen152.core.structure.MapGenNetherBridge.Found> found = new hexxit.worldgen152.core.structure.MapGenNetherBridge(seed).find(Integer.parseInt(a[2]));
+            found.sort(Comparator.comparingInt(f -> Math.max(Math.abs(f.chunkX()), Math.abs(f.chunkZ()))));
+            for (var f : found.subList(0, Math.min(2, found.size()))) {
+                System.err.println(f);
+                int cx = f.x() - 8 >> 4, cz = f.z() - 8 >> 4;
+                for (int dx = 0; dx < 2; dx++) for (int dz = 0; dz < 2; dz++) chunks.add(new int[]{cx + dx, cz + dz});
+            }
+        } else if (nether && (a[1].equals("find") || a[1].equals("spawn"))) {
+            throw new IllegalArgumentException("the Nether has one biome and no spawn: give chunks or \"structures <radius>\"");
+        } else if (a[1].equals("find")) {
             Map<Integer, int[]> first = new TreeMap<>();
             int r = Integer.parseInt(a[2]);
             for (int d = 0; d <= r; d++) for (int cx = -d; cx <= d; cx++) for (int cz = -d; cz <= d; cz++) {
@@ -91,6 +108,7 @@ public class Expect {
             return;
         }
         StringBuilder out = new StringBuilder();
+        if (nether) out.append("D minecraft:the_nether\n");
         Map<Integer, Integer> changed = new TreeMap<>();
         long start = System.nanoTime();
         for (int[] ch : chunks) {
@@ -108,7 +126,7 @@ public class Expect {
                 }
             }
             for (int x = 2; x < 16; x += 4) for (int z = 2; z < 16; z += 4)
-                out.append("B ").append(cx * 16 + x).append(' ').append(cz * 16 + z).append(' ').append(OldBiomes.byId(c.biomeId(x, z)).key).append('\n');
+                out.append("B ").append(cx * 16 + x).append(' ').append(cz * 16 + z).append(' ').append(nether ? "worldgen152:hell" : OldBiomes.byId(c.biomeId(x, z)).key).append('\n');
             for (var e : c.tiles().entrySet()) {
                 int k = e.getKey();
                 String pos = (cx * 16 + (k >> 12)) + " " + (k & 255) + " " + (cz * 16 + (k >> 8 & 15));

@@ -25,12 +25,9 @@ public final class BaseCropWorldgen {
     private BaseCropWorldgen() {
     }
 
-    /**
-     * {@code world.provider.isHellWorld}. The 1.5.2 world of the core is the overworld, so the Nether branch draws
-     * no random numbers there; it stays for the Nether of Natura (part 7b).
-     */
+    /** {@code world.provider.isHellWorld}: the Nether of Natura (worldgen152's Nether world). */
     static boolean isHellWorld(OldWorld world) {
-        return false;
+        return world.isHellWorld();
     }
 
     /** IWorldGenerator.generate. */

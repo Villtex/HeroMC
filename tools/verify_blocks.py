@@ -2,6 +2,7 @@
 """Compare a running dev server's world with a prediction file from tools/expect.sh, over RCON.
 
 Input lines:
+  "D namespace:dimension"   first line: the dimension all other lines are about (default: the overworld)
   "x y z oldBlockId meta"   block check (meta may be missing = 0)
   "B x z namespace:biome"   biome check at y 70
   "S x y z Mob"             mob spawner with that 1.5.2 entity name
@@ -25,7 +26,9 @@ SIMPLE = {0: 'air', 1: 'stone', 2: 'grass_block', 3: 'dirt', 4: 'cobblestone', 7
           37: 'dandelion', 38: 'poppy', 39: 'brown_mushroom', 40: 'red_mushroom', 48: 'mossy_cobblestone', 49: 'obsidian',
           30: 'cobweb', 46: 'tnt', 47: 'bookshelf', 52: 'spawner', 58: 'crafting_table', 70: 'stone_pressure_plate',
           72: 'oak_pressure_plate', 85: 'oak_fence', 101: 'iron_bars', 102: 'glass_pane', 56: 'diamond_ore', 73: 'redstone_ore', 79: 'ice', 80: 'snow_block', 81: 'cactus', 82: 'clay',
-          83: 'sugar_cane', 110: 'mycelium', 111: 'lily_pad', 129: 'emerald_ore', 103: 'melon'}
+          83: 'sugar_cane', 110: 'mycelium', 111: 'lily_pad', 129: 'emerald_ore', 103: 'melon',
+          51: 'fire', 87: 'netherrack', 88: 'soul_sand', 89: 'glowstone', 112: 'nether_bricks', 113: 'nether_brick_fence',
+          153: 'nether_quartz_ore'}
 MODS = {254: 'extrabiomesxl:red_rock', 255: 'extrabiomesxl:cracked_sand', 1552: 'wildcaves3:bone_pile', 2011: 'hexxitgear:hexbiscus'}
 # Wild Caves 3: one block per metadata value
 PIECES = ['stalactite_1', 'stalactite_2', 'stalactite_3', 'stalactite_4', 'stalactite_connection_1', 'stalactite_connection_2',
@@ -38,7 +41,7 @@ SKULLS = ['skeleton_skull', 'wither_skeleton_skull', 'zombie_head', 'player_head
 WOOD = ['oak', 'spruce', 'birch', 'jungle']
 FACING = ['south', 'west', 'north', 'east']
 MOBS = {'Skeleton': 'minecraft:skeleton', 'Zombie': 'minecraft:zombie', 'Spider': 'minecraft:spider',
-        'CaveSpider': 'minecraft:cave_spider', 'Silverfish': 'minecraft:silverfish'}
+        'CaveSpider': 'minecraft:cave_spider', 'Silverfish': 'minecraft:silverfish', 'Blaze': 'minecraft:blaze'}
 ENTITIES = {'Villager': 'minecraft:villager', 'Witch': 'minecraft:witch', 'MinecartChest': 'minecraft:chest_minecart'}
 WOOL = ['white', 'orange', 'magenta', 'light_blue', 'yellow', 'lime', 'pink', 'gray', 'light_gray', 'cyan', 'purple', 'blue',
         'brown', 'green', 'red', 'black']
@@ -173,6 +176,8 @@ def block(bid, meta):
     mod = natura(bid, meta)
     if mod:
         return mod
+    if bid in (10, 11) and meta:
+        return f'minecraft:lava[level={meta}]'
     if bid in SIMPLE:
         return 'minecraft:' + SIMPLE[bid]
     if bid == 17:
@@ -255,6 +260,8 @@ def block(bid, meta):
                 f'south={flag(7 <= meta <= 9)},west={flag(meta in (1, 4, 7))},east={flag(meta in (3, 6, 9))}]')
     if bid == 106:
         return (f'minecraft:vine[south={flag(meta & 1)},west={flag(meta & 2)},north={flag(meta & 4)},east={flag(meta & 8)}]')
+    if bid == 115:
+        return f'minecraft:nether_wart[age={min(meta, 3)}]'
     if bid == 127:
         return f'minecraft:cocoa[facing={FACING[meta & 3]},age={min(meta >> 2, 2)}]'
     raise SystemExit(f'verify_blocks.py does not know block {bid}:{meta}')
@@ -262,13 +269,17 @@ def block(bid, meta):
 
 def main():
     lines = [l.split() for l in open(sys.argv[1]) if l.strip()]
+    dimension = 'minecraft:overworld'
+    if lines and lines[0][0] == 'D':
+        dimension = lines[0][1]
+        lines = lines[1:]
     chunks = sorted({(int(l[0]) >> 4, int(l[2]) >> 4) for l in lines if l[0][0] not in 'BSCEK'})
     with socket.create_connection(('127.0.0.1', 25575), timeout=300) as s:
         if packet(s, 1, 3, 'hexxit')[0] == -1:
             raise SystemExit('rcon: wrong password')
 
         def test(condition):
-            return 'passed' in packet(s, 3, 2, 'execute if ' + condition)[1]
+            return 'passed' in packet(s, 3, 2, f'execute in {dimension} if ' + condition)[1]
 
         # nothing may grow, spread or melt between generation and the comparison
         packet(s, 2, 2, 'gamerule minecraft:random_tick_speed 0')
@@ -276,7 +287,7 @@ def main():
         packet(s, 2, 2, 'tick freeze')
         # one chunk after the other: many far apart chunks at once make the generator recompute its tiles over and over
         for cx, cz in chunks:
-            packet(s, 2, 2, f'forceload add {cx * 16} {cz * 16}')
+            packet(s, 2, 2, f'execute in {dimension} run forceload add {cx * 16} {cz * 16}')
             while not test(f'loaded {cx * 16} 64 {cz * 16}'):
                 time.sleep(0.2)
         ok = bad = flowed = loose = bok = bbad = tok = tbad = shown = 0
@@ -372,7 +383,7 @@ def main():
                     bad += 1
                     report('BLOCK MISMATCH', x, y, z, f'{bid}:{meta}', want)
         for cx, cz in chunks:
-            packet(s, 2, 2, f'forceload remove {cx * 16} {cz * 16}')
+            packet(s, 2, 2, f'execute in {dimension} run forceload remove {cx * 16} {cz * 16}')
         packet(s, 2, 2, 'tick unfreeze')
     print(f'blocks: {ok} match, {bad} differ, {flowed} reached by flowing liquid, {loose} vines without hold gone; biomes: {bok} match, {bbad} differ; '
           f'spawners/chests/entities: {tok} match, {tbad} differ; {len(chunks)} chunks')

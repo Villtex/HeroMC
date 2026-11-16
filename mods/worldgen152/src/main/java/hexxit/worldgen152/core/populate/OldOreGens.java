@@ -16,16 +16,26 @@ public final class OldOreGens {
         private final int blockMeta;
         private final int count;
         private final int target;
+        private final int alsoReplaced;
 
         public Minable(int blockId, int count) {
             this(blockId, 0, count, 1);
         }
 
         public Minable(int blockId, int blockMeta, int count, int target) {
+            this(blockId, blockMeta, count, target, target);
+        }
+
+        /**
+         * A vein that also replaces {@code alsoReplaced}: a mod block whose {@code isGenMineableReplaceable}
+         * accepts {@code target} (Natura's tainted soil counts as netherrack).
+         */
+        public Minable(int blockId, int blockMeta, int count, int target, int alsoReplaced) {
             this.blockId = blockId;
             this.blockMeta = blockMeta;
             this.count = count;
             this.target = target;
+            this.alsoReplaced = alsoReplaced;
         }
 
         @Override
@@ -60,8 +70,11 @@ public final class OldOreGens {
                             if (dx * dx + dy * dy < 1.0) {
                                 for (int bz = minZ; bz <= maxZ; bz++) {
                                     double dz = (bz + 0.5 - cz) / (width / 2.0);
-                                    if (dx * dx + dy * dy + dz * dz < 1.0 && world.getBlockId(bx, by, bz) == this.target) {
-                                        world.setBlock(bx, by, bz, this.blockId, this.blockMeta);
+                                    if (dx * dx + dy * dy + dz * dz < 1.0) {
+                                        int id = world.getBlockId(bx, by, bz);
+                                        if (id == this.target || id == this.alsoReplaced && id != 0) {
+                                            world.setBlock(bx, by, bz, this.blockId, this.blockMeta);
+                                        }
                                     }
                                 }
                             }

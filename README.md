@@ -36,7 +36,7 @@ Der Port ist in Teile aufgeteilt, die je in eine Session passen: [`docs/PLAN.md`
 | `tools/rcon.py` | kleiner RCON-Client für Verhaltenstests am laufenden Testserver |
 | `gradle/neoforge.mods.toml` | gemeinsame Vorlage für die Mod-Metadaten |
 | `docs/JEI.md` | Vorlage für das JEI-Plugin eines Mods (JEI ersetzt NEI) |
-| `.claude/skills/worldgen152/` | Projekt-Skill: Weltgenerierung eines Mods in `worldgen152` einhängen, Setzlinge, Prüfung |
+| `.claude/skills/worldgen152/` | Projekt-Skill: Weltgenerierung eines Mods in `worldgen152` einhängen, Setzlinge, Nether, Prüfung |
 | `.claude/skills/client-render-263/` | Projekt-Skill: HUD-Ebenen, Gegenstände am Spielermodell, Rüstungen mit eigenen Helm-Modellen, durchscheinende Blockmodelle, Rechtsklick vor dem Block abfangen (26.3) |
 | `.claude/skills/menu-gui-263/` | Projekt-Skill: eigene GUI mit Container (Menü, Screen, Pakete Client → Server, Server-Konfiguration für die Vorschau im Client) |
 | `.claude/skills/wood-sets-263/` | Projekt-Skill: Holzarten und Pflanzen eines Mods (Planken, Stämme, Blätter, Setzlinge, Treppen bis Werkbänke, Brennwert, Rezeptkonflikte mit Vanilla), Vorlage Natura |
@@ -71,7 +71,7 @@ eigenen Gebrauch gedacht; eine Veröffentlichung braucht die Zustimmung der jewe
 
 ## Weltgenerierung wie in 1.5.2
 
-`mods/worldgen152` bildet den Overworld-Generator von Minecraft 1.5.2 nach: Biom-Schichten, Geländeform,
+`mods/worldgen152` bildet den Overworld-Generator von Minecraft 1.5.2 (und den Nether, siehe unten) nach: Biom-Schichten, Geländeform,
 Deckschichten, Grundgestein, Höhlen und Schluchten, und die Population der Chunks: Seen, Dungeons, Erze, Sand
 und Ton, Bäume, Gras, Blumen, Pilze, Zuckerrohr, Kürbisse, Kakteen, Seerosen, Ranken, Quellen, Schnee und Eis.
 Der Kern (`hexxit.worldgen152.core`) ist reines Java ohne Spielklassen und verbraucht seine Zufallszahlen in
@@ -125,6 +125,11 @@ Hexbiscus (72.274 Blöcke) mit dem Kern überein.
 Mit Natura (Teil 7) stimmen für Seed 1234 je ein Chunk aller 49 Biome (159.260 Blöcke) und 297 Chunks mit
 Natura-Bäumen, -Büschen, -Feldfrüchten und Saguaros (903.929 Blöcke) mit dem Kern überein.
 
+Der Nether (Teil 7b) ist der 1.5.2-Nether in der Variante von Natura („Override Nether“: Tainted Soil, Heat Sand,
+Netherfestungen, Glowshrooms, Nether-Bäume). Gelände und Höhlen sind byte-gleich mit dem dekompilierten
+Original-Code; für Seed 1234 stimmen 520 Nether-Chunks (579.244 Blöcke, eine ganze Festung) mit dem Kern überein.
+Prüfen: `tools/expect.sh 1234 nether structures 60 > expect.txt`, dann `verify_blocks.py`.
+
 ## Wann ein Mod als portiert gilt
 
 1. sauberer Build (`./gradlew clean pack`)
@@ -170,7 +175,7 @@ Natura-Bäumen, -Büschen, -Feldfrüchten und Saguaros (903.929 Blöcke) mit dem
 | ChocoCraft | `chococraft` 2.8.8 | Torojima | 9.331 | offen |
 | Dimensional Doors | `dimensional-doors` 1.4.1.194 | StevenRS11, SenseiKiwi | 10.746 | offen |
 | ExtrabiomesXL | `ebxl` 3.13.4 | ScottKillen u. a. | 10.762 | ✅ portiert, am Server verifiziert (Client-Prüfung offen) |
-| (Vanilla 1.5.2) Weltgenerierung | `worldgen152` | Mojang | – | Gelände, Dekoration, Strukturen und Spawnpunkt ✅ gegen Spiel und gegen Original-Welten verifiziert |
+| (Vanilla 1.5.2) Weltgenerierung | `worldgen152` | Mojang | – | Gelände, Dekoration, Strukturen und Spawnpunkt ✅ gegen Spiel und gegen Original-Welten verifiziert; Nether ✅ (Teil 7b) |
 | LegendGear | `legendgear` 1.5.2 | NMcCoy | 11.590 | offen |
 | NEI Plugins | `nei-plugins` 1.0.9.3 | mistaqur | 11.790 | entfällt, stattdessen JEI |
 | Xeno's Reliquary | `xreliquary` 1.0.6d | x3n0ph0b3 | 11.868 | offen |
@@ -180,7 +185,7 @@ Natura-Bäumen, -Büschen, -Feldfrüchten und Saguaros (903.929 Blöcke) mit dem
 | Artifice | `artifice` 1.1.2.182 | Shukaro | 14.781 | offen |
 | CodeChickenCore | `codechickencore` 0.8.7.3 | ChickenBones | 14.969 | entfällt (Bibliothek von NEI) |
 | Not Enough Items | `nei` 1.5.2.28 | ChickenBones | 16.239 | entfällt, stattdessen JEI |
-| Natura | `natura` 2.1.5.1 | mDiyo | 20.430 | ✅ Teil 7 (Nether: Teil 7b) |
+| Natura | `natura` 2.1.5.1 | mDiyo | 20.430 | ✅ Teil 7, Nether ✅ Teil 7b |
 | BiblioCraft | `bibliocraft` 1.3.3 | Nuchaz | 20.970 | offen |
 | Harken Scythe | `harkenscythe` 2.1.6 | Jade Knightblazer | 27.284 | offen |
 | Better Dungeons (Chocolate Quest) | `betterdungeons` 1.09b | Chocolatin | 36.118 | offen |

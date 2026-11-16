@@ -54,8 +54,9 @@ public final class OldBlockStates {
         // 8/10 are the "flowing" ids: a source that should start to flow (see OldChunkWriter)
         block(8, Blocks.WATER);
         block(9, Blocks.WATER);
-        block(10, Blocks.LAVA);
-        block(11, Blocks.LAVA);
+        // lava with metadata: the flowing lava the fortress entrance leaves below its source (8 = falling)
+        registerMeta(10, meta -> Blocks.LAVA.defaultBlockState().setValue(BlockStateProperties.LEVEL, meta));
+        registerMeta(11, meta -> Blocks.LAVA.defaultBlockState().setValue(BlockStateProperties.LEVEL, meta));
         block(12, Blocks.SAND);
         block(13, Blocks.GRAVEL);
         block(14, Blocks.GOLD_ORE);
@@ -90,6 +91,15 @@ public final class OldBlockStates {
         block(48, Blocks.MOSSY_COBBLESTONE);
         block(49, Blocks.OBSIDIAN);
         block(52, Blocks.SPAWNER);
+        // the Nether
+        block(51, Blocks.FIRE);
+        block(87, Blocks.NETHERRACK);
+        block(88, Blocks.SOUL_SAND);
+        block(89, Blocks.GLOWSTONE);
+        block(112, Blocks.NETHER_BRICKS);
+        block(113, Blocks.NETHER_BRICK_FENCE);
+        registerMeta(115, meta -> Blocks.NETHER_WART.defaultBlockState().setValue(BlockStateProperties.AGE_3, Math.min(meta, 3)));
+        block(153, Blocks.NETHER_QUARTZ_ORE);
         registerMeta(54, meta -> Blocks.CHEST.defaultBlockState()
                 .setValue(BlockStateProperties.HORIZONTAL_FACING, CHEST_FACING[meta < 6 ? meta : 0]));
         block(56, Blocks.DIAMOND_ORE);

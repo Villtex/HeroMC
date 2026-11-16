@@ -158,6 +158,15 @@ public final class OldBlockInfo {
         LEAVES[id] = true;
     }
 
+    /**
+     * Leaves with an explicit Block.opaqueCubeLookup entry. A BlockLeaves subclass got {@code true} there in 1.5.2:
+     * the Block constructor asked isOpaqueCube() ({@code !graphicsLevel}) before BlockLeavesBase set graphicsLevel.
+     */
+    public static void registerLeaves(int id, boolean opaqueCube) {
+        register(id, Material.LEAVES, opaqueCube, 1, true);
+        LEAVES[id] = true;
+    }
+
     /** Block.isWood: a log, which trees may grow through and leaves hang on. */
     public static void registerLog(int id) {
         registerCube(id, Material.WOOD);

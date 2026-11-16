@@ -6,6 +6,7 @@ import hexxit.worldgen152.core.OldChunk;
 import hexxit.worldgen152.core.populate.OldBlockInfo.Material;
 
 import hexxit.worldgen152.core.BiomeLayout;
+import hexxit.worldgen152.core.structure.MapGenNetherBridge;
 import hexxit.worldgen152.core.structure.OldStructures;
 
 import java.util.ArrayList;
@@ -86,10 +87,12 @@ public final class OldWorld {
     private OldTreeGens.BigTree bigTree;
     private final Map<Object, Object> chunkState = new HashMap<>();
     private final OldStructures structures;
+    private final int dimension;
+    private final MapGenNetherBridge netherBridge;
 
     /** A world without structures (mineshafts, villages, strongholds, temples). */
     public OldWorld(long seed, TerrainSource terrain) {
-        this(seed, terrain, null);
+        this(seed, terrain, (BiomeLayout) null);
     }
 
     /** A world whose structures are laid out on the given biomes. */
@@ -97,6 +100,36 @@ public final class OldWorld {
         this.seed = seed;
         this.terrain = terrain;
         this.structures = layout == null ? null : new OldStructures(seed, layout);
+        this.dimension = 0;
+        this.netherBridge = null;
+    }
+
+    private OldWorld(long seed, TerrainSource terrain, MapGenNetherBridge netherBridge) {
+        this.seed = seed;
+        this.terrain = terrain;
+        this.structures = null;
+        this.dimension = -1;
+        this.netherBridge = netherBridge;
+    }
+
+    /** The Nether (dimension -1) of the seed: every column is the biome Hell, the only structures are nether fortresses. */
+    public static OldWorld nether(long seed, TerrainSource terrain) {
+        return new OldWorld(seed, terrain, new MapGenNetherBridge(seed));
+    }
+
+    /** {@code world.provider.dimensionId}: 0 for the overworld, -1 for the Nether. */
+    public int dimension() {
+        return this.dimension;
+    }
+
+    /** {@code world.provider.isHellWorld}. */
+    public boolean isHellWorld() {
+        return this.dimension == -1;
+    }
+
+    /** The nether fortresses of this world, or {@code null} outside the Nether. */
+    public MapGenNetherBridge netherBridge() {
+        return this.netherBridge;
     }
 
     /** The structures of this world, or {@code null} if it has none. */
@@ -444,6 +477,9 @@ public final class OldWorld {
     // ---- biomes, heights, light ----
 
     public OldBiome getBiome(int x, int z) {
+        if (this.dimension == -1) {
+            return OldBiomes.HELL;
+        }
         return OldBiomes.byId(this.column(x >> 4, z >> 4).biomes[(x & 15) + (z & 15) * 16] & 0xFF);
     }
 

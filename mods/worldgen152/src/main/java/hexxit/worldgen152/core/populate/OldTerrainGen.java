@@ -26,8 +26,8 @@ public final class OldTerrainGen {
         void generate(Random random, int chunkX, int chunkZ, OldWorld world);
     }
 
-    /** PopulateChunkEvent.Populate.EventType, as far as the overworld uses it. */
-    public enum Populate { LAKE, LAVA, DUNGEON, ICE }
+    /** PopulateChunkEvent.Populate.EventType: the first four in the overworld, the others in the Nether. */
+    public enum Populate { LAKE, LAVA, DUNGEON, ICE, NETHER_LAVA, FIRE, GLOWSTONE }
 
     /** DecorateBiomeEvent.Decorate.EventType. */
     public enum Decorate { SAND, CLAY, SAND_PASS2, TREE, BIG_SHROOM, FLOWERS, GRASS, DEAD_BUSH, LILYPAD, SHROOM, REED, PUMPKIN, CACTUS, LAKE }

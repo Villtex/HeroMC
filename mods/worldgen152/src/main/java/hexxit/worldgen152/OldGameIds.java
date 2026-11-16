@@ -81,6 +81,7 @@ public final class OldGameIds {
         registerEntity("Skeleton", "minecraft:skeleton");
         registerEntity("Zombie", "minecraft:zombie");
         registerEntity("Spider", "minecraft:spider");
+        registerEntity("Blaze", "minecraft:blaze");
         Object[][] enchantments = {
                 {0, Enchantments.PROTECTION}, {1, Enchantments.FIRE_PROTECTION}, {2, Enchantments.FEATHER_FALLING},
                 {3, Enchantments.BLAST_PROTECTION}, {4, Enchantments.PROJECTILE_PROTECTION}, {5, Enchantments.RESPIRATION},

@@ -17,7 +17,7 @@ import java.util.Random;
  * "Temperate Rainforest", "Forested Hills", "Green Hills"); "Rainforest", "Woodlands" and "Extreme Jungle" do.
  *
  * <p>The Nether branch ("Hell" and the Nether biomes of other mods) never matches in the overworld and draws no
- * random numbers there; it stays for the Nether of Natura (part 7b).
+ * random numbers there; it runs in the Nether world of worldgen152, where every column is "Hell".
  */
 public final class BaseTreeWorldgen {
     private static final BloodTreeLargeGen GEN_BLOOD = new BloodTreeLargeGen(3, 2);
@@ -173,7 +173,7 @@ public final class BaseTreeWorldgen {
         }
     }
 
-    /** The Nether part of generate (part 7b). */
+    /** The Nether part of generate. */
     private static void nether(Random random, OldWorld world, int xPos, int zPos) {
         if (NaturaIds.GENERATE_BLOODWOOD && random.nextInt(NaturaIds.BLOOD_SPAWN_RARITY) == 0) {
             int xSpawn = xPos + random.nextInt(16);

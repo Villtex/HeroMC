@@ -22,12 +22,11 @@
     "minecraft:the_nether": {
       "type": "minecraft:the_nether",
       "generator": {
-        "type": "minecraft:noise",
+        "type": "worldgen152:nether",
         "biome_source": {
-          "type": "minecraft:multi_noise",
-          "preset": "minecraft:nether"
-        },
-        "settings": "minecraft:nether"
+          "type": "minecraft:fixed",
+          "biome": "worldgen152:hell"
+        }
       }
     }
   }

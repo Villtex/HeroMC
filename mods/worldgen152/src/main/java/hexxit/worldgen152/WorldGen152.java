@@ -20,7 +20,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import org.slf4j.Logger;
 
 /**
- * The overworld of Minecraft 1.5.2 as a chunk generator for current versions.
+ * The overworld and the Nether of Minecraft 1.5.2 as chunk generators for current versions.
  *
  * <p>{@code hexxit.worldgen152.core} holds the generator itself (plain Java, no game classes); this package
  * plugs it into the game: generator and biome source types, and the world preset / dimension data in
@@ -38,6 +38,7 @@ public final class WorldGen152 {
 
     public WorldGen152(IEventBus modBus) {
         CHUNK_GENERATORS.register("overworld", () -> OldChunkGenerator.CODEC);
+        CHUNK_GENERATORS.register("nether", () -> OldNetherChunkGenerator.CODEC);
         BIOME_SOURCES.register("overworld", () -> OldBiomeSource.CODEC);
         CHUNK_GENERATORS.register(modBus);
         BIOME_SOURCES.register(modBus);
@@ -63,6 +64,10 @@ public final class WorldGen152 {
         MinecraftServer server = event.getServer();
         long seed = server.getWorldGenSettings().options().seed();
         for (LevelStem stem : server.getWorldGenSettings().dimensions().dimensions().values()) {
+            if (stem.generator() instanceof OldNetherChunkGenerator nether) {
+                nether.bind(seed);
+                LOGGER.info("1.5.2 Nether generation active, seed {}", seed);
+            }
             if (stem.generator().getBiomeSource() instanceof OldBiomeSource source) {
                 source.bind(seed);
                 LOGGER.info("1.5.2 world generation active, seed {}", seed);
