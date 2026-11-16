@@ -1,3 +1,12 @@
 armadillo_living: armadilloliving.ogg
 armadillo_hurt: armadillohurt.ogg
 armadillo_death: armadillodeath.ogg
+bird: bird1.ogg,bird2.ogg,bird3.ogg,bird4.ogg,bird5.ogg
+bird_hurt: birdhurt1.ogg,birdhurt2.ogg
+eagle_living: eagleliving1.ogg,eagleliving2.ogg
+eagle_hurt: eaglehurt1.ogg
+vulture_hurt: vulturehurt.ogg
+hornbill_living: hornbillliving1.ogg,hornbillliving2.ogg,hornbillliving3.ogg,hornbillliving4.ogg
+hornbill_hurt: hornbillhurt1.ogg
+pelican_living: pelicanliving1.ogg,pelicanliving2.ogg,pelicanliving3.ogg
+pelican_hurt: pelicanhurt.ogg

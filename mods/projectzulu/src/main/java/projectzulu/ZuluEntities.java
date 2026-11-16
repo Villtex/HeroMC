@@ -15,6 +15,11 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import projectzulu.entity.ArmadilloEntity;
+import projectzulu.entity.EagleEntity;
+import projectzulu.entity.FinchEntity;
+import projectzulu.entity.HornBillEntity;
+import projectzulu.entity.PelicanEntity;
+import projectzulu.entity.VultureEntity;
 
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
@@ -31,10 +36,32 @@ public final class ZuluEntities {
 
     // ---- creatures ----
     public static final DeferredHolder<EntityType<?>, EntityType<ArmadilloEntity>> ARMADILLO = entity("armadillo", ArmadilloEntity::new,
-            MobCategory.CREATURE, b -> b.sized(0.6F, 1.8F));
+            MobCategory.CREATURE, b -> b.sized(0.6F, 1.8F).notInPeaceful());
+    // birds (Batch A): Creature Type ambient, the vulture monster (despawnInPeaceful of the pack -> notInPeaceful)
+    public static final DeferredHolder<EntityType<?>, EntityType<FinchEntity>> RED_FINCH = entity("red_finch", FinchEntity::new,
+            MobCategory.AMBIENT, b -> b.sized(0.5F, 0.5F).notInPeaceful());
+    public static final DeferredHolder<EntityType<?>, EntityType<FinchEntity>> GREEN_FINCH = entity("green_finch", FinchEntity::new,
+            MobCategory.AMBIENT, b -> b.sized(0.5F, 0.5F).notInPeaceful());
+    public static final DeferredHolder<EntityType<?>, EntityType<FinchEntity>> BLUE_FINCH = entity("blue_finch", FinchEntity::new,
+            MobCategory.AMBIENT, b -> b.sized(0.5F, 0.5F).notInPeaceful());
+    public static final DeferredHolder<EntityType<?>, EntityType<EagleEntity>> EAGLE = entity("eagle", EagleEntity::new,
+            MobCategory.AMBIENT, b -> b.sized(1.0F, 1.4F).notInPeaceful());
+    public static final DeferredHolder<EntityType<?>, EntityType<VultureEntity>> VULTURE = entity("vulture", VultureEntity::new,
+            MobCategory.MONSTER, b -> b.sized(1.0F, 1.4F).notInPeaceful());
+    public static final DeferredHolder<EntityType<?>, EntityType<HornBillEntity>> HORN_BILL = entity("horn_bill", HornBillEntity::new,
+            MobCategory.AMBIENT, b -> b.sized(0.8F, 1.2F).notInPeaceful());
+    public static final DeferredHolder<EntityType<?>, EntityType<PelicanEntity>> PELICAN = entity("pelican", PelicanEntity::new,
+            MobCategory.AMBIENT, b -> b.sized(1.5F, 1.4F).notInPeaceful());
 
     // ---- spawn eggs (colours in the item models, tools/gen.py) ----
     public static final DeferredItem<Item> ARMADILLO_SPAWN_EGG = egg("armadillo_spawn_egg", ARMADILLO);
+    public static final DeferredItem<Item> RED_FINCH_SPAWN_EGG = egg("red_finch_spawn_egg", RED_FINCH);
+    public static final DeferredItem<Item> GREEN_FINCH_SPAWN_EGG = egg("green_finch_spawn_egg", GREEN_FINCH);
+    public static final DeferredItem<Item> BLUE_FINCH_SPAWN_EGG = egg("blue_finch_spawn_egg", BLUE_FINCH);
+    public static final DeferredItem<Item> EAGLE_SPAWN_EGG = egg("eagle_spawn_egg", EAGLE);
+    public static final DeferredItem<Item> VULTURE_SPAWN_EGG = egg("vulture_spawn_egg", VULTURE);
+    public static final DeferredItem<Item> HORN_BILL_SPAWN_EGG = egg("horn_bill_spawn_egg", HORN_BILL);
+    public static final DeferredItem<Item> PELICAN_SPAWN_EGG = egg("pelican_spawn_egg", PELICAN);
 
     private ZuluEntities() {
     }
@@ -55,6 +82,13 @@ public final class ZuluEntities {
 
     private static void attributes(EntityAttributeCreationEvent event) {
         event.put(ARMADILLO.get(), ArmadilloEntity.createAttributes().build());
+        event.put(RED_FINCH.get(), FinchEntity.createAttributes().build());
+        event.put(GREEN_FINCH.get(), FinchEntity.createAttributes().build());
+        event.put(BLUE_FINCH.get(), FinchEntity.createAttributes().build());
+        event.put(EAGLE.get(), EagleEntity.createAttributes().build());
+        event.put(VULTURE.get(), VultureEntity.createAttributes().build());
+        event.put(HORN_BILL.get(), HornBillEntity.createAttributes().build());
+        event.put(PELICAN.get(), PelicanEntity.createAttributes().build());
     }
 
     /**
@@ -66,6 +100,25 @@ public final class ZuluEntities {
         event.register(ARMADILLO.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 (type, level, reason, pos, random) -> level.getBrightness(net.minecraft.world.level.LightLayer.BLOCK, pos) < 1
                         && level.canSeeSky(pos),
+                RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        // birds: secondarySpawnRate of the pack (5, horn bill 25), block light below 1, sky above
+        birdPlacement(event, RED_FINCH.get(), 5);
+        birdPlacement(event, GREEN_FINCH.get(), 5);
+        birdPlacement(event, BLUE_FINCH.get(), 5);
+        birdPlacement(event, EAGLE.get(), 5);
+        birdPlacement(event, VULTURE.get(), 5);
+        birdPlacement(event, HORN_BILL.get(), 25);
+        birdPlacement(event, PELICAN.get(), 5);
+    }
+
+    /**
+     * getCanSpawnHere of the birds: "secondarySpawnRate - rand.nextInt(100) >= 0" (the pack value is not 100 for the
+     * birds), block light below 1 and isValidLocation = canBlockSeeTheSky.
+     */
+    private static <T extends Entity> void birdPlacement(RegisterSpawnPlacementsEvent event, EntityType<T> type, int secondarySpawnRate) {
+        event.register(type, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                (t, level, reason, pos, random) -> secondarySpawnRate - random.nextInt(100) >= 0
+                        && level.getBrightness(net.minecraft.world.level.LightLayer.BLOCK, pos) < 1 && level.canSeeSky(pos),
                 RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
 

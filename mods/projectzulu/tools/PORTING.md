@@ -32,8 +32,9 @@ Fertiges Musterexemplar (genau so arbeiten): **Armadillo** –
 - NBT: `addAdditionalSaveData(ValueOutput)` / `readAdditionalSaveData(ValueInput)`.
 - Despawn: Pack-Konfig `<Mob> Should Despawn`. `Animal` despawnt nie → bei true `removeWhenFarAway` überschreiben
   (`return !this.isTame()` o. ä.); Monster despawnen von selbst → bei false nichts tun (kommt nicht vor).
-  `despawnInPeaceful=true` gilt im Pack: Tiere mit Creature Type `monster` in der Konfig → `notInPeaceful()` ins
-  Builder-Lambda; echte `Monster`-Klassen haben das sowieso.
+  `despawnInPeaceful=true` gilt im Pack und traf im Original JEDES EntityGenericAnimal (außer gezähmten):
+  **alle** Kreaturen bekommen `notInPeaceful()` im Builder-Lambda — AUSSER zähmbare (Fox, Pferde, …): die statt
+  dessen in `customServerAiStep` bei Peaceful und `!isTame()` per `discard()` entfernen, damit Gezähmte bleiben.
 - Sounds: `sounds.<name>` im Original → `ZuluSounds.<NAME>` (`sound("snake_case")`). Ogg-Dateien NICHT kopieren,
   nur Event registrieren; sounds.json und Assets macht tools/gen.py. Vanilla-Sounds (z. B. Zombie) direkt verwenden.
 - Modelle: ModelBase → `createBodyLayer()` wie ArmadilloModel; Rotationspunkte/Boxen/texOffs exakt übernehmen,

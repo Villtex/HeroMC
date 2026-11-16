@@ -1,1 +1,8 @@
 mods/projectzulumob/armadillo.png -> assets/projectzulu/textures/entity/armadillo.png
+mods/projectzulumob/finch_red.png -> assets/projectzulu/textures/entity/finch_red.png
+mods/projectzulumob/finch_green.png -> assets/projectzulu/textures/entity/finch_green.png
+mods/projectzulumob/finch_blue.png -> assets/projectzulu/textures/entity/finch_blue.png
+mods/projectzulumob/eagle.png -> assets/projectzulu/textures/entity/eagle.png
+mods/projectzulumob/vulture.png -> assets/projectzulu/textures/entity/vulture.png
+mods/projectzulumob/hornbill.png -> assets/projectzulu/textures/entity/horn_bill.png
+mods/projectzulumob/pelican.png -> assets/projectzulu/textures/entity/pelican.png

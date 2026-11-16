@@ -17,6 +17,16 @@ public final class ZuluSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> ARMADILLO_LIVING = sound("armadillo_living");
     public static final DeferredHolder<SoundEvent, SoundEvent> ARMADILLO_HURT = sound("armadillo_hurt");
     public static final DeferredHolder<SoundEvent, SoundEvent> ARMADILLO_DEATH = sound("armadillo_death");
+    // birds (Batch A); "sounds.bird" etc. of the original, the numbered oggs are random variants of one event
+    public static final DeferredHolder<SoundEvent, SoundEvent> BIRD = sound("bird");
+    public static final DeferredHolder<SoundEvent, SoundEvent> BIRD_HURT = sound("bird_hurt");
+    public static final DeferredHolder<SoundEvent, SoundEvent> EAGLE_LIVING = sound("eagle_living");
+    public static final DeferredHolder<SoundEvent, SoundEvent> EAGLE_HURT = sound("eagle_hurt");
+    public static final DeferredHolder<SoundEvent, SoundEvent> VULTURE_HURT = sound("vulture_hurt");
+    public static final DeferredHolder<SoundEvent, SoundEvent> HORNBILL_LIVING = sound("hornbill_living");
+    public static final DeferredHolder<SoundEvent, SoundEvent> HORNBILL_HURT = sound("hornbill_hurt");
+    public static final DeferredHolder<SoundEvent, SoundEvent> PELICAN_LIVING = sound("pelican_living");
+    public static final DeferredHolder<SoundEvent, SoundEvent> PELICAN_HURT = sound("pelican_hurt");
 
     private ZuluSounds() {
     }
