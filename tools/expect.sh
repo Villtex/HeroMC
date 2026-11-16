@@ -24,5 +24,7 @@ JAVA=${JAVA_HOME:+$JAVA_HOME/bin/}java
   $(find "$ROOT/mods/natura/src/main/java/natura/gen" -name '*.java') \
   $(find "$ROOT/mods/offlawn/src/main/java/offlawn/gen" -name '*.java') \
   $(find "$ROOT/mods/wildcaves3/src/main/java/wildcaves/gen" -name '*.java') \
+  $(find "$ROOT/mods/cofhcore/src/main/java/cofh/gen" -name '*.java') \
+  $(find "$ROOT/mods/artifice/src/main/java/artifice/gen" -name '*.java') \
   "$ROOT/tools/java/Expect.java"
 "$JAVA" -cp "$OUT/classes" Expect "$@"

@@ -28,6 +28,8 @@ public class Expect {
             natura.gen.NaturaWorldGen.register();
             offlawn.gen.OffLawnGen.register();
             wildcaves.gen.WildCavesGen.register();
+            cofh.gen.CoFHWorldGen.register();
+            artifice.gen.ArtificeWorldGen.register();
         }
         // "nether" (after "vanilla", if both are given): the Nether of the seed instead of the overworld
         boolean nether = a.length > 1 && a[1].equals("nether");
