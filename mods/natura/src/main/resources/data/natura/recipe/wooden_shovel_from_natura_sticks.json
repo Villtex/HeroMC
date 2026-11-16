@@ -2,7 +2,11 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": "#minecraft:planks",
+    "#": {
+      "neoforge:ingredient_type": "neoforge:difference",
+      "base": "#minecraft:planks",
+      "subtracted": "#natura:nether_wood_planks"
+    },
     "s": "#natura:sticks"
   },
   "pattern": [
