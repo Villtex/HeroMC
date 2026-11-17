@@ -27,3 +27,17 @@ mods/projectzulumob/Horse/horse_grey.png -> assets/projectzulu/textures/entity/h
 mods/projectzulumob/Horse/horse_grey_saddled.png -> assets/projectzulu/textures/entity/horse_grey_saddled.png
 mods/projectzulumob/Horse/horse_white.png -> assets/projectzulu/textures/entity/horse_white.png
 mods/projectzulumob/Horse/horse_white_saddled.png -> assets/projectzulu/textures/entity/horse_white_saddled.png
+mods/projectzulumob/bearblack.png -> assets/projectzulu/textures/entity/black_bear.png
+mods/projectzulumob/bearbrown.png -> assets/projectzulu/textures/entity/brown_bear.png
+mods/projectzulumob/bearpolar.png -> assets/projectzulu/textures/entity/polar_bear.png
+mods/projectzulumob/gorilla.png -> assets/projectzulu/textures/entity/gorilla.png
+mods/projectzulumob/rhino.png -> assets/projectzulu/textures/entity/rhino.png
+mods/projectzulumob/crocodile.png -> assets/projectzulu/textures/entity/alligator.png
+mods/projectzulumob/giraffe.png -> assets/projectzulu/textures/entity/giraffe.png
+mods/projectzulumob/elephant.png -> assets/projectzulu/textures/entity/elephant.png
+mods/projectzulumob/mammoth.png -> assets/projectzulu/textures/entity/mammoth.png
+mods/projectzulumob/mammoth_saddle.png -> assets/projectzulu/textures/entity/mammoth_saddle.png
+mods/projectzulumob/mammoth_snow.png -> assets/projectzulu/textures/entity/mammoth_snow.png
+mods/projectzulumob/mammoth_snow_saddle.png -> assets/projectzulu/textures/entity/mammoth_snow_saddle.png
+mods/projectzulumob/treeent.png -> assets/projectzulu/textures/entity/tree_ent.png
+mods/projectzulumob/treeent_snow.png -> assets/projectzulu/textures/entity/tree_ent_snow.png

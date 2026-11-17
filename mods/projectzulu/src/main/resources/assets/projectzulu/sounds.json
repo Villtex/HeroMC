@@ -14,6 +14,11 @@
       "projectzulu:armadilloliving"
     ]
   },
+  "bear_living": {
+    "sounds": [
+      "projectzulu:bearliving"
+    ]
+  },
   "beaver_living": {
     "sounds": [
       "projectzulu:beaverliving"
@@ -40,6 +45,11 @@
       "projectzulu:boarliving2"
     ]
   },
+  "crocodile_living": {
+    "sounds": [
+      "projectzulu:crocoodileliving"
+    ]
+  },
   "eagle_hurt": {
     "sounds": [
       "projectzulu:eaglehurt1"
@@ -49,6 +59,16 @@
     "sounds": [
       "projectzulu:eagleliving1",
       "projectzulu:eagleliving2"
+    ]
+  },
+  "elephant_hurt": {
+    "sounds": [
+      "projectzulu:elephanthurtsound"
+    ]
+  },
+  "elephant_living": {
+    "sounds": [
+      "projectzulu:elephantlivingsound"
     ]
   },
   "fox_hurt": {
@@ -64,6 +84,11 @@
   "frog_living": {
     "sounds": [
       "projectzulu:frogliving"
+    ]
+  },
+  "gorilla_hurt": {
+    "sounds": [
+      "projectzulu:gorillahurt1"
     ]
   },
   "hornbill_hurt": {
@@ -90,6 +115,11 @@
       "projectzulu:horse2",
       "projectzulu:horse3",
       "projectzulu:horse4"
+    ]
+  },
+  "mammoth_living": {
+    "sounds": [
+      "projectzulu:mammothliving"
     ]
   },
   "ostrich_hurt": {
@@ -128,6 +158,21 @@
     "sounds": [
       "projectzulu:rabbithurt1",
       "projectzulu:rabbithurt2"
+    ]
+  },
+  "rhino_hurt": {
+    "sounds": [
+      "projectzulu:rhinohurtsound"
+    ]
+  },
+  "rhino_living": {
+    "sounds": [
+      "projectzulu:rhinolivingsound"
+    ]
+  },
+  "treeent_living": {
+    "sounds": [
+      "projectzulu:treeentliving"
     ]
   },
   "vulture_hurt": {
