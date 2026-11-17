@@ -55,7 +55,22 @@ public class EvilSpectralMiner extends Monster {
     public EvilSpectralMiner(EntityType<? extends EvilSpectralMiner> type, Level level) {
         super(type, level);
         this.xpReward = 5;
+        this.equipPickaxe();
+    }
+
+    /** getRandomPickaxe: wood, stone, iron, gold or diamond (also after /summon, which loads the entity from data). */
+    private void equipPickaxe() {
         this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(PICKAXES[this.random.nextInt(PICKAXES.length)]));
+    }
+
+    @Override
+    public net.minecraft.world.entity.@Nullable SpawnGroupData finalizeSpawn(net.minecraft.world.level.ServerLevelAccessor level,
+            net.minecraft.world.DifficultyInstance difficulty, EntitySpawnReason reason, net.minecraft.world.entity.@Nullable SpawnGroupData data) {
+        data = super.finalizeSpawn(level, difficulty, reason, data);
+        if (this.getMainHandItem().isEmpty()) {
+            this.equipPickaxe();
+        }
+        return data;
     }
 
     public static AttributeSupplier.Builder createAttributes() {
