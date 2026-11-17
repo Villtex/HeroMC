@@ -56,6 +56,7 @@ public final class HSClient {
     }
 
     public static void register(IEventBus modBus) {
+        harkenscythe.client.mob.SpectralRenderers.register(modBus);
         modBus.addListener(EntityRenderersEvent.RegisterLayerDefinitions.class, event -> {
             event.registerLayerDefinition(SoulRenderer.LAYER, SoulModel::createLayer);
             event.registerLayerDefinition(HSSkullRenderer.LAYER, HSSkullRenderer::createLayer);
