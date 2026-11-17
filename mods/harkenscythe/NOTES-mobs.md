@@ -1,34 +1,29 @@
-# Harken Scythe: Schnittstellen für die Mobs (Teil 9, Teilauftrag 3)
+# Harken Scythe: Mobs (Teil 9, Teilauftrag 3) – Stand
 
-Noch nicht portiert: alle `EntityHSSpectral*`, `EntityHSSpectralMinerEvil`, `EntityHSHarbinger`, `EntityHSSlime*`
-(Ektoplasma/Hämoglobin), `EntityAIHS*`, ihre Modelle und Renderer, Spawn-Eier, der Harbinger-Spawn
-(`addSpawn(EntityHSHarbinger, 1, 0, 1, monster, …)`, dieselben 13 Biome wie die verlorene Seele: Biome-Modifier
-wie `data/harkenscythe_core/neoforge/biome_modifier/spawn_soul_lost.json`, Gewicht 1 → 10).
+Portiert in `harkenscythe.mob` (Server) und `harkenscythe.client.mob` (Modelle/Renderer); Registrierung, Spawn-Eier,
+Attribute, Spawn-Platzierung und die Hooks von `entity.SpectralPets` in `mob.HSMobs` (im Mod-Konstruktor
+`HSMobs.register`). Daten über `tools/gen.py` (Abschnitt „Teil 9, part 3“), geprüft von `tools/check.py`.
 
-## Schnittstelle `harkenscythe.entity.SpectralPets`
+- `SpectralPet` (TamableAnimal): gemeinsames Verhalten aller `EntityHSSpectral*` (Lebensdauer −1 HP/200 Ticks,
+  Zähmen mit Creepball, Heilen mit Blutkeeper/-gefäß, Sitzen, halber Schaden von Mobs, Biss 1/2, Minion „Evil“).
+  Ziele werden im Konstruktor über `setupGoals()` angelegt (nicht in `registerGoals`, das vor den Feldern läuft).
+- Einfache Arten: `SimpleSpectral` (Huhn, Kuh, Dorfbewohner, Silberfisch); bewaffnete: `SpectralHumanoid`
+  (Zombie, Pigman, Wither-Skelett: Schwert; Skelett: Bogen; Hexe: Trank; Bergarbeiter: Bogen/Schwert/Fackel/Rüstung).
+- `Harbinger`, `EvilSpectralMiner` (Monster), `EssenceSlime` (Slime: Ektoplasma/Hämoglobin).
+- Biome-Modifier `spawn_harbinger` (13 Biome, Gewicht 1 → 10), Loot-Tabellen `entities/harbinger`,
+  `entities/spectral_miner_evil`; Sattel, Waffen, Rüstung, getragene Blöcke in Java (`dropCustomDeathLoot`).
 
-Teilauftrag 3 setzt im Mod-Konstruktor `SpectralPets.hooks = new SpectralPets.Hooks() { ... }` (alle Methoden haben
-Standard-Implementierungen, die nichts tun):
+## Abweichungen (bewusst)
 
-| Hook | Aufrufer im Kern | Original |
-|---|---|---|
-| `create(fallenSoulName, level, x, y, z, random, needsMaster)` | Necronomicon (`NecronomiconItem`) | `EntityHSSoul.createSpectralPet` (Namen: Chicken, Cow, Sheep, Bat, Pig, Wolf, Cat_Black/Red/Siamese, Ocelot, Squid, Villager, Creeper, Zombie, PigZombie, Skeleton, Skeleton_Wither, Witch, Spider, CaveSpider, Silverfish, Enderman, Blaze, Ghast; siehe `entity.FallenSoul`) |
-| `createMiner(level, x, y, z, random)` | Necronomicon auf verlorener Seele | `EntityHSSoulLost.createSpectralPet` (EntityHSSpectralMiner) |
-| `spawnEvilMiner(level, x, y, z)` | Keeper auf verlorener Seele (`LostSoulEntity.mobInteract`) | `EntityHSSoulLost.interact` (EntityHSSpectralMinerEvil); nur bei `true` verschwindet die Seele |
-| `spawnEssenceSlime(level, x, y, z, size, worth, blood)` | abgebauter Tiegel (`CrucibleBlock`) | `BlockHS*Crucible.breakBlock` (EntityHSSlimeSoul/Blood, `setResourceWorthTotal`) |
-| `harbingerSoulReap(harbinger, victim)` | `HSEvents.livingDrops`, wenn der Angreifer im Tag `harbingers` ist | `EventHookContainerClassHarkenScythe.harbingerSoulReap` |
-| `keepsSoulLight(entity)` | `SoulLightBlock.randomTick` | Spektraler Bergarbeiter mit Fackel in der Hand |
+- Waffen/Tränke geben keinen Zusatzschaden (wie im Original: `getAttackStrength` wurde nie benutzt).
+- Gespeichert wird zusätzlich: Halsband (Wolf), Katzenfell (Ozelot), Wert der Schleime (1.5.2 verlor sie beim Speichern).
+- Harbinger: das Teleportieren zum Ziel nutzte `entityToAttack` (nie gesetzt bei KI-Mobs) und fehlt daher.
+- Schweinesteuerung über die 26.3-Reitlogik (ohne Boost); Hexe wirft Wurftränke über `ThrownSplashPotion`.
+- Sound „damage.fall“ des Bergarbeiters gab es in 1.5.2 nicht: stumm. Variantensounds (Huhn, Kuh, …) per Registry-ID.
 
-Für `harbingerSoulReap` gibt es `HSEvents.spawnSoul(level, HSEntities.SOUL_GRIEVING.get(), victim, 1)` und
-`HSEvents.soulReaping(...)`; `SoulEntity.getFallenSoulName()` liefert den Namen für `create`.
+## Offen
 
-## Entity-Tags (leer, von Teilauftrag 3 zu füllen)
-
-- `harkenscythe_core:spectral_pets`: alle Spektral-Tiere inkl. Spektral-Bergarbeiter (`isSpectralPet`: kein Blut, keine Seele).
-- `harkenscythe_core:harbingers`: der Harbinger (darf Seelen verletzen; seine Kills gehen an `harbingerSoulReap`;
-  getötet hinterlässt er eine „culled“ Seele, Wert 10).
-- `harkenscythe_core:soulless`: Ektoplasma-/Hämoglobin-Schleim und der böse Spektral-Bergarbeiter (keine Seele).
-
-Seelen-Entitäten (fertig): `soul_common`, `soul_grieving`, `soul_culled`, `soul_wrathful` (`SoulEntity`, nur vom
-Harbinger verletzbar) und `soul_lost` (`LostSoulEntity`). Texturen der Mobs unter `models/mob/` im Archiv, noch
-nicht in `original-assets.txt`.
+- Client-Prüfung offen: Renderer starten fehlerfrei bis zum Titelbildschirm, Aussehen/Animationen in der Welt nicht
+  gesehen. Nicht gezeichnet: Schweinesattel (die 1.5.2-Textur `/mob/saddle.png` fehlt, 26.3 hat ein anderes Layout),
+  Block in der Hand des Enderman, Trank in der Hand der Hexe.
+- Zähmen/Interaktionen mit Spieler (Creepball, Waffen geben, Keeper auf verlorener Seele) nicht per RCON prüfbar.
