@@ -20,6 +20,7 @@ public final class ProjectZulu {
         ZuluBigAnimals.register(modBus);
         ZuluMonsters.register(modBus);
         ZuluHorses.register(modBus);
+        ZuluCreativeTabs.register(modBus);
         if (FMLEnvironment.getDist() == Dist.CLIENT) {
             projectzulu.client.ZuluClient.register(modBus);
         }

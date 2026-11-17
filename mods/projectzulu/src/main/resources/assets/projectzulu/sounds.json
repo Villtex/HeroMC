@@ -1,0 +1,125 @@
+{
+  "armadillo_death": {
+    "sounds": [
+      "projectzulu:armadillodeath"
+    ]
+  },
+  "armadillo_hurt": {
+    "sounds": [
+      "projectzulu:armadillohurt"
+    ]
+  },
+  "armadillo_living": {
+    "sounds": [
+      "projectzulu:armadilloliving"
+    ]
+  },
+  "beaver_living": {
+    "sounds": [
+      "projectzulu:beaverliving"
+    ]
+  },
+  "bird": {
+    "sounds": [
+      "projectzulu:bird1",
+      "projectzulu:bird2",
+      "projectzulu:bird3",
+      "projectzulu:bird4",
+      "projectzulu:bird5"
+    ]
+  },
+  "bird_hurt": {
+    "sounds": [
+      "projectzulu:birdhurt1",
+      "projectzulu:birdhurt2"
+    ]
+  },
+  "boar_living": {
+    "sounds": [
+      "projectzulu:boarliving1",
+      "projectzulu:boarliving2"
+    ]
+  },
+  "eagle_hurt": {
+    "sounds": [
+      "projectzulu:eaglehurt1"
+    ]
+  },
+  "eagle_living": {
+    "sounds": [
+      "projectzulu:eagleliving1",
+      "projectzulu:eagleliving2"
+    ]
+  },
+  "fox_hurt": {
+    "sounds": [
+      "projectzulu:foxhurtsound"
+    ]
+  },
+  "frog_hurt": {
+    "sounds": [
+      "projectzulu:froghurt"
+    ]
+  },
+  "frog_living": {
+    "sounds": [
+      "projectzulu:frogliving"
+    ]
+  },
+  "hornbill_hurt": {
+    "sounds": [
+      "projectzulu:hornbillhurt1"
+    ]
+  },
+  "hornbill_living": {
+    "sounds": [
+      "projectzulu:hornbillliving1",
+      "projectzulu:hornbillliving2",
+      "projectzulu:hornbillliving3",
+      "projectzulu:hornbillliving4"
+    ]
+  },
+  "ostrich_hurt": {
+    "sounds": [
+      "projectzulu:ostrichhurtsound"
+    ]
+  },
+  "ostrich_living": {
+    "sounds": [
+      "projectzulu:ostrichlivingsound"
+    ]
+  },
+  "pelican_hurt": {
+    "sounds": [
+      "projectzulu:pelicanhurt"
+    ]
+  },
+  "pelican_living": {
+    "sounds": [
+      "projectzulu:pelicanliving1",
+      "projectzulu:pelicanliving2",
+      "projectzulu:pelicanliving3"
+    ]
+  },
+  "penguin_hurt": {
+    "sounds": [
+      "projectzulu:penguinhurt"
+    ]
+  },
+  "rabbit_dead": {
+    "sounds": [
+      "projectzulu:rabbitdead1"
+    ]
+  },
+  "rabbit_hurt": {
+    "sounds": [
+      "projectzulu:rabbithurt1",
+      "projectzulu:rabbithurt2"
+    ]
+  },
+  "vulture_hurt": {
+    "sounds": [
+      "projectzulu:vulturehurt"
+    ]
+  }
+}
