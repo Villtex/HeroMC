@@ -231,6 +231,11 @@ for section, (mob, title) in MOBS.items():
                          'tints': [{'type': 'minecraft:constant', 'value': (0xFF000000 | primary) - (1 << 32)}]}})
         lang[f'item.{NS}.{egg}'] = f'{title} Spawn Egg'
 
+# the lizard's spit projectile (no spawn entry, no egg)
+lang[f'entity.{NS}.lizard_spit'] = 'Lizard Spit'
+# undead (Smite, healing/harming potions): EntityMummy and EntityMummyPharaoh were EnumCreatureAttribute.UNDEAD
+write('data/minecraft/tags/entity_type/undead.json', {'replace': False, 'values': [n('mummy'), n('mummy_pharaoh')]})
+
 # ---------------------------------------------------------------- the drop items of ZuluItems
 ITEMS = [  # id, original texture (textures/items/), english (ItemGenerics/declaration display names)
     ('scrap_meat', 'scrapmeat', 'Scrap Meat'),
@@ -274,7 +279,7 @@ for line in map_lines(os.path.join(ROOT, 'tools/sound-map.txt')):
     oggs = [f.strip() for f in files.split(',')]
     names = []
     for ogg in oggs:
-        base = re.sub(r'\.ogg$', '', ogg)
+        base = re.sub(r'\.ogg$', '', ogg).lower()  # resource paths may not contain capitals (MummyShortRoar)
         assets.append((f'mods/projectzulucore/sounds/{ogg}', f'assets/{NS}/sounds/{base}.ogg'))
         names.append(n(base))
     sounds[event] = {'sounds': names}

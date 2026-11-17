@@ -117,9 +117,29 @@
       "projectzulu:horse4"
     ]
   },
+  "lizard_hurt": {
+    "sounds": [
+      "projectzulu:lizardhurt"
+    ]
+  },
   "mammoth_living": {
     "sounds": [
       "projectzulu:mammothliving"
+    ]
+  },
+  "mimic_living": {
+    "sounds": [
+      "projectzulu:mimicliving"
+    ]
+  },
+  "mummy_roar": {
+    "sounds": [
+      "projectzulu:mummyroar"
+    ]
+  },
+  "mummy_short_roar": {
+    "sounds": [
+      "projectzulu:mummyshortroar"
     ]
   },
   "ostrich_hurt": {
@@ -168,6 +188,16 @@
   "rhino_living": {
     "sounds": [
       "projectzulu:rhinolivingsound"
+    ]
+  },
+  "sandworm_roar": {
+    "sounds": [
+      "projectzulu:sandwormroar"
+    ]
+  },
+  "summon_whispers": {
+    "sounds": [
+      "projectzulu:summonwhispers"
     ]
   },
   "treeent_living": {

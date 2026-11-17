@@ -31,3 +31,9 @@ elephant_living: elephantlivingsound.ogg
 elephant_hurt: elephanthurtsound.ogg
 mammoth_living: mammothliving.ogg
 treeent_living: treeentliving.ogg
+sandworm_roar: sandwormroar.ogg
+lizard_hurt: lizardhurt.ogg
+mimic_living: mimicliving.ogg
+mummy_roar: mummyroar.ogg
+summon_whispers: summonwhispers.ogg
+mummy_short_roar: MummyShortRoar.ogg
