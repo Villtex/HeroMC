@@ -79,6 +79,19 @@
       "projectzulu:hornbillliving4"
     ]
   },
+  "horse_hurt": {
+    "sounds": [
+      "projectzulu:horsehurt1"
+    ]
+  },
+  "horse_living": {
+    "sounds": [
+      "projectzulu:horse1",
+      "projectzulu:horse2",
+      "projectzulu:horse3",
+      "projectzulu:horse4"
+    ]
+  },
   "ostrich_hurt": {
     "sounds": [
       "projectzulu:ostrichhurtsound"
