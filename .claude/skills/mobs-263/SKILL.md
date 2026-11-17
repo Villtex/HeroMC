@@ -1,6 +1,6 @@
 ---
 name: mobs-263
-description: Beim Portieren von Mobs, Spawn-Eiern, Booten, Mob-Drops oder Mob-Spawns eines Hexxit-Mods auf 26.3 benutzen (EntityRegistry.registerModEntity/addSpawn, RenderLiving mit ModelBase, eigene Boote, SpawnEgg-Items, dropFewItems). Beispiele im Repo: mods/natura (NaturaEntities, natura.entity, natura.client.entity), mods/ebxl (Scarecrow).
+description: Beim Portieren von Mobs, Spawn-Eiern, Booten, Mob-Drops oder Mob-Spawns eines Hexxit-Mods auf 26.3 benutzen (EntityRegistry.registerModEntity/addSpawn, RenderLiving mit ModelBase, eigene Boote, SpawnEgg-Items, dropFewItems). Greift auch bei vielen Mobs auf einmal (Project Zulu, ChocoCraft, Infernal Mobs, Better Dungeons, Twilight Forest). Beispiele im Repo: mods/natura (NaturaEntities, natura.entity, natura.client.entity), mods/ebxl (Scarecrow), mods/projectzulu (40 Kreaturen: Vögel, Reittiere, Boss, Mehrteiler).
 ---
 
 # Mobs, Spawn-Eier und Boote auf 26.3
@@ -73,3 +73,39 @@ Abschnitt „ENTITIES“ in `mods/natura/tools/gen.py`.
 - Slime-Unterklassen: `setCubeMobHealth`, `getParticleType` überschreiben, eigene Teilung in `remove`.
 - Durchscheinende Modelle („spectral“): `RenderTypes.entityTranslucent(texture)` im Renderer. Vorbild
   `mods/harkenscythe/.../client/mob`.
+
+## Viele Mobs (Vorbild Project Zulu, `mods/projectzulu`)
+
+- **Modell-Geometrie nicht abtippen:** `python3 tools/modelbase_to_layer.py <ModelX.java> <wurzel1,wurzel2>` gibt die
+  `addOrReplaceChild`-Zeilen samt Hierarchie, texOffs und `mirror` aus. Nur Animationen von Hand portieren.
+- **Animations-Easing am Entity** (EntityModelRotation, `eXXX.rotateX(step, min, max)` in `setLivingAnimations`):
+  pro Renderer `EasingCache` (WeakHashMap Entity → Werte) + `Eased.step(...)` in `extractRenderState`, Ergebnis in
+  einen eigenen RenderState (`ArmadilloRenderer`). 26.3 setzt Posen jeden Frame zurück: Konstanten jedes Mal setzen.
+- **Zornig nach Treffer** (angerLevel): `NeutralMob` in 26.3 = `get/setPersistentAngerEndTime(long)`,
+  `EntityReference<LivingEntity>`-Ziel, `updatePersistentAnger(level, true)` in `customServerAiStep`,
+  `add/readPersistentAngerSaveData` im NBT (`ArmadilloEntity`). `PanicGoal` nur, wenn das Original wirklich floh.
+- **getAttackStrength nach Schwierigkeit:** Normal-Wert als `ATTACK_DAMAGE`, Vanilla skaliert selbst.
+  Große Mobs: eigene Nahkampf-Reichweite `(2*Breite)²` (`ZuluBigAnimal`), sonst treffen sie nie.
+- **Fliegende Mobs ohne Pathfinder** (EntityAerial): Motion-Delta zur Zielposition vor der KI, `travel()` ohne
+  Schwerkraft mit Luftreibung 0.91 (`AerialAnimal`, `AerialGoals`).
+- **Reiten mit Sattel und Lenk-Item** (1.5.2-Schweine-KI): `getControllingPassenger`, `tickRidden`,
+  `getRiddenInput`, `getRiddenSpeed` (`ZuluHorseEntity`). Vorher prüfen, ob `isRideable()` im Original überhaupt true war.
+- **Mehrteilige Mobs** (Tausendfüßer, Wurm): NeoForge-`PartEntity`, Teile folgen der Kopf-Spur (`CentipedeEntity`).
+- **Boss-Leiste:** `ServerBossEvent` (`MummyPharaohEntity`).
+- **Farbvarianten** als eigene Entity-Typen mit einer Klasse; Renderer wählt die Textur je Typ (Finken, Pferde).
+- **Pack-Konfiguration als Quelle:** Spawns je Biom, Eifarben und gewichtete Drops (min..max Würfe) aus der
+  Forge-.cfg per gen.py erzeugen (`mods/projectzulu/tools/gen.py`, `parse_cfg`). Biome anderer, noch nicht portierter
+  Mods überspringen. Peaceful-Despawn des Originals → `notInPeaceful()`; Zähmbare stattdessen `discard()` nur ungezähmt.
+- **Parallel portieren:** je Batch eine eigene Registrierungsklasse (eigene `DeferredRegister`, gleicher Namespace)
+  und ein eigener Renderer-Registrar, Agents in eigenen Worktrees; gemeinsame Maps (Texturen/Sounds) nur anhängen.
+  Merge-Konflikte bleiben so auf die Map-Dateien beschränkt (Konfliktmarker löschen, beide Seiten behalten).
+- **Untote:** Tag `data/minecraft/tags/entity_type/undead.json` (Smite und Tränke hängen daran).
+- **Ogg-Namen mit Großbuchstaben** (`MummyShortRoar.ogg`) im Ziel klein schreiben, sonst ungültiger Ressourcenpfad.
+
+## Prüfen ohne Spieler
+
+- `/summon` jedes Mobs + `data get entity … Health` + `loot spawn x y z kill @e[type=…,limit=1]` (zieht die
+  Loot-Tabelle wie ein Tod).
+- Natürliche Spawns: Kategorie CREATURE spawnt beim Generieren neuer Chunks auch ohne Spieler →
+  `locate biome …`, `forceload add` um den Fund (±96), 15 s warten, `execute if entity @e[type=…,x=…,dx=…]` zählen.
+  Monster/Ambient brauchen einen Spieler in der Nähe.

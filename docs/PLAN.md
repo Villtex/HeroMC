@@ -47,7 +47,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 7b | Natura-Nether: 1.5.2-Nether (Netherite-Gelände, Höhlen, Netherfestung) in worldgen152, Nether-Generatoren von Natura | ~3.000 | 2, 7 | Fable 5.2, hoch | ✅ erledigt |
 | 8 | Artifice, CoFHCore (nur was das Pack nutzt) | ~27.000 | 1, 3 | Opus 5.5, mittel | ✅ erledigt |
 | 9 | Harken Scythe, Asgard Shield, Asgard Shield Addons | ~30.000 | 3 | Opus 5.5, mittel | ✅ erledigt |
-| 10 | Project Zulu A: Kreaturen | ~25.000 | 3 | Fable 5.2, hoch | offen |
+| 10 | Project Zulu A: Kreaturen | ~25.000 | 3 | Fable 5.2, hoch | ✅ erledigt |
 | 11 | Project Zulu B: Blöcke, Items, Weltgenerierung, Spawns | ~18.000 | 10 | Opus 5.5, mittel | offen |
 | 12 | Better Dungeons A: Bau-Engine und Gebäude-Import | ~18.000 | 1 | Fable 5.2, hoch | offen |
 | 13 | Better Dungeons B: Dungeon-Typen, Mobs, Loot | ~18.000 | 12 | Fable 5.2, hoch | offen |
@@ -682,6 +682,50 @@ IDs und `neoforge:mod_loaded`). Einzelheiten zu Schnittstellen: `mods/harkenscyt
 - **Erinnerung an den Nutzer zu Beginn von Teil 10:** Er wollte auf den Blockbench-MCP hingewiesen werden (https://github.com/sosadly/blockbench-mcp). Damit lassen sich Mob-Modelle direkt in Blockbench bauen. Der Server braucht ein laufendes Blockbench auf dem eigenen Rechner. Vor dem Start fragen, ob er ihn einrichten will.
 - **Teil 10:** Kreaturen. Modelle, Renderer, KI, Spawns je Biom. Die Pack-Konfiguration liegt in `config/Project Zulu`.
 - **Teil 11:** Blöcke, Items, Rezepte, Weltgeneration (Pyramiden, Labyrinthe, ...), Mob-Spawn-Abgleich.
+
+### Teil 10 – Stand
+
+**Status: erledigt.** Teilprojekt `mods/projectzulu` (Mod-ID `projectzulu`). Blockbench-MCP: Hinweis gegeben, nicht
+nötig – die Modelle werden aus dem 1.5.2-Code exakt übernommen (`tools/modelbase_to_layer.py`).
+
+- **40 Kreaturen** (alle mit `shouldExist=true` der Pack-Konfiguration; `horserandom` ist dort aus), je mit Modell,
+  Renderer, Sounds, Spawn-Ei (außer Pharao, keine Eifarbe in der Konfig), Spawn-Regel (`getCanSpawnHere`):
+  - Armadillo (Deckung vor Bogenschützen, Rollen) – `ZuluEntities`
+  - Vögel: Finken rot/grün/blau, Adler, Geier (kreist, greift Geschwächte an), Horn Bill, Pelikan (landet als einziger)
+    auf Flug-Basis `AerialAnimal` (EntityAerial-Physik) – `ZuluEntities`
+  - Landtiere: Eber, Fuchs (zähmbar, Modus-Zyklus), Frosch, Kaninchen (hüpfen), Biber, Pinguin, Strauß
+    auf `ZuluLandAnimal` (Flucht/Zorn, Alarm an Artgenossen) – `ZuluEntities`
+  - Großtiere: Schwarz-, Braun-, Eisbär, Gorilla, Nashorn, Alligator, Giraffe, Elefant, Mammut, Baum-Ent
+    (Schnee-Texturen in Taiga) auf `ZuluBigAnimal` (Original-Nahkampfreichweite, gedämpfter Rückstoß) – `ZuluBigAnimals`
+  - Monster: Sandwurm (eingegraben), Echse + Spucke (Gift/Langsamkeit), Mumie, Pharao (Boss, 4 Phasen, Feuerbälle,
+    Mumien-Beschwörung, Boss-Leiste), Mimic (Truhe), Minotaurus, Spukrüstung (setzt sich zusammen, Eisen/Gold),
+    Tausendfüßer (9 PartEntity-Segmente) auf `ZuluMonster` – `ZuluMonsters`
+  - Pferde in 7 Farben: reitbar mit Sattel, Lenken mit Stock (1.5.2-Schweine-KI), Paarung nur gleiche Farbe – `ZuluHorses`
+- **Daten aus `ProjectZuluMobBiomeConfig.cfg`** (`tools/gen.py`): Biome-Spawns je Biom mit Gewicht und Packgröße
+  (worldgen152- und ExtrabiomesXL-Biome; Biome von Twilight Forest/Dimensional Doors übersprungen), gewichtete
+  Loot-Tabellen (min..max Würfe), Eifarben, `#minecraft:undead` für Mumie/Pharao, 16 Drop-Items (Scrap Meat, Fur Pelt,
+  Scale, Ankh, Herzen, Talon …) mit Originaltexturen. 123 Texturen/Sounds aus dem Original-Archiv.
+- **Peaceful:** `despawnInPeaceful=true` des Packs → alle Kreaturen `notInPeaceful()`, nur der Fuchs (zähmbar)
+  verschwindet ungezähmt per `discard()`.
+- **Prüfung:** `pack` grün; Testserver bis `Done` ohne Fehler/Warnungen; per RCON alle 40 `/summon` mit Original-Leben,
+  `loot spawn … kill` für alle Loot-Tabellen; natürliche Chunk-Spawns: Wüste (Armadillo, Strauß, Nashorn), Savanne
+  (+ Elefant, Pferd), Ebene (Giraffe, Pferde), Taiga-Rand (Biber, Alligator/Frosch aus Fluss/Sumpf), Dschungel (Eber).
+  Weltgenerierung unverändert (nur Spawns), daher kein `expect.sh`-Lauf.
+
+**Offen / bewusst abweichend:**
+
+- Client-Prüfung offen: alle Modelle und Animationen (besonders Babys, Mammut ×4, Tausendfüßer-Segmente, Schwertlage
+  der Spukrüstung, Horn-Bill-Körperhöhe), Reiten der Pferde, Sattel-Texturen, Kreativ-Tabs.
+- Mit Spieler ungetestet: natürliche Spawns von Monstern und Vögeln (brauchen Spieler in der Nähe), Fuchs zähmen,
+  Geier-Kreisen, Pharao-Kampf, Mimic-Weckruf, Spukrüstung-Zusammensetzen.
+- Wie im Original: Mammut und Strauß nicht reitbar (`isRideable()` war false), Pferde nicht zähmbar (kein Zähm-Item),
+  Sattel wird nicht verbraucht und nicht gedroppt; Finken-Sounds vertauscht; einige Modellfehler des Originals.
+- Abweichend: Zähm-GUI (Paper), Namensschilder mit Zustands-Icon und Temperatur-System nicht portiert; Fuchs-Wachmodus
+  nur gegen Monster; Echsen-Kragen bewegt sich (im Original nie synchronisiert); Pharao speichert Phase und Startpunkt.
+- **Für Teil 11:** Mob-Köpfe (seltene Drops, `MobSkulls`), Jasper-Drop des Pharaos, eigener Kreativ-Tab (bis dahin
+  Vanilla-Tabs „Spawn Eggs“/„Ingredients“), Strukturen mit Pharao/Mimic/Minotaurus/Spukrüstung (`setSummoned`,
+  `setHovering`, `setRandomArmor` liegen bereit), Sound-Events `mummy_roar`/`summon_whispers` für BlockJasper,
+  `LimitedMobSpawner`. Mob-Spawn-Abgleich der Biome mit dem Original.
 
 ## Teil 12 und 13 – Better Dungeons (Chocolate Quest)
 

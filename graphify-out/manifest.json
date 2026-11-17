@@ -654,9 +654,9 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1794897775.0307932,
-    "seen": 1794897790.322467,
-    "ast_hash": "3132e05a93c15b8526cc11392bde7de6",
+    "mtime": 1794915564.8456159,
+    "seen": 1794915623.0459952,
+    "ast_hash": "cd1f1cb21e4a2fc3e47e7937f771ea8a",
     "semantic_hash": ""
   },
   "mods/ebxl/original-assets.txt": {
@@ -690,9 +690,9 @@
     "semantic_hash": ""
   },
   "docs/PLAN.md": {
-    "mtime": 1794897775.0349483,
-    "seen": 1794897790.322471,
-    "ast_hash": "6e71f556a00c25bdeabe34c6d656a370",
+    "mtime": 1794915564.8453484,
+    "seen": 1794915623.0459979,
+    "ast_hash": "b5034c63ac757648b570893f72d99720",
     "semantic_hash": ""
   },
   ".mcp.json": {
@@ -17598,9 +17598,9 @@
     "semantic_hash": ""
   },
   ".claude/skills/mobs-263/SKILL.md": {
-    "mtime": 1794897775.0307932,
-    "seen": 1794897790.3224542,
-    "ast_hash": "13c3597eeb433d61880c8c5b90cc08d3",
+    "mtime": 1794915531.1403677,
+    "seen": 1794915623.0459878,
+    "ast_hash": "2fd9ca15110554ff48528c3fef71f2d8",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/OldNetherChunkGenerator.java": {
@@ -24858,15 +24858,15 @@
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/java/projectzulu/ProjectZulu.java": {
-    "mtime": 1794868967.4294407,
-    "seen": 1794897790.3210335,
-    "ast_hash": "0e8eeab4f024f1165e26d5f0c4576f8d",
+    "mtime": 1794897978.7753987,
+    "seen": 1794915623.0451972,
+    "ast_hash": "accd18efa6f08ef8e86e9927576b4703",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/java/projectzulu/ZuluEntities.java": {
-    "mtime": 1794897775.8267932,
-    "seen": 1794897790.3210366,
-    "ast_hash": "527bb111b836af75b4f13a86df4b3968",
+    "mtime": 1794897887.6183336,
+    "seen": 1794915623.0452027,
+    "ast_hash": "1599a3381fb56d27730b58661558729b",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/java/projectzulu/ZuluItems.java": {
@@ -24882,9 +24882,9 @@
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/java/projectzulu/client/ZuluClient.java": {
-    "mtime": 1794868967.4294841,
-    "seen": 1794897790.321043,
-    "ast_hash": "e3ba669b62cda021c06768232b637a2e",
+    "mtime": 1794897880.0215065,
+    "seen": 1794915623.0452077,
+    "ast_hash": "4a851005522f5312fcb777e64ba4b7cd",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/java/projectzulu/client/entity/AerialRenderer.java": {
@@ -24960,9 +24960,9 @@
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/java/projectzulu/client/entity/ZuluEntityRenderers.java": {
-    "mtime": 1794897775.8267932,
-    "seen": 1794897790.3211043,
-    "ast_hash": "4f2f601cecc0478ca8cee274dc1d0494",
+    "mtime": 1794897887.6204722,
+    "seen": 1794915623.0452564,
+    "ast_hash": "3df98684b17bc6d98ab4176b515cc818",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/java/projectzulu/entity/AerialAnimal.java": {
@@ -25014,1113 +25014,1113 @@
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/alligator_spawn_egg.json": {
-    "mtime": 1794868967.4299006,
-    "seen": 1794897790.3211427,
+    "mtime": 1794915258.117366,
+    "seen": 1794915623.045297,
     "ast_hash": "4ff80651b1b331086e8c13ba65d204c8",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/ankh.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3211455,
+    "mtime": 1794915258.1264586,
+    "seen": 1794915623.0452979,
     "ast_hash": "9f4d270052c37be89e437705651eaaa0",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/antennae.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3211477,
+    "mtime": 1794915258.1268213,
+    "seen": 1794915623.0452993,
     "ast_hash": "cca5bfaaf908cbb47e7d8dcd85928c0c",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/armadillo_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3211505,
+    "mtime": 1794915258.114479,
+    "seen": 1794915623.0453002,
     "ast_hash": "40502fa798fb7edf0d62eb64fac118ad",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/bark.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3211527,
+    "mtime": 1794915258.126996,
+    "seen": 1794915623.045301,
     "ast_hash": "7d075f0db88c449029d9126f51fc466a",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/beaver_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.321155,
+    "mtime": 1794915258.1185741,
+    "seen": 1794915623.045302,
     "ast_hash": "5fdb451eed77e64d79377899f131d632",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/black_bear_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.321157,
+    "mtime": 1794915258.1188805,
+    "seen": 1794915623.0453036,
     "ast_hash": "4e76317fb13d83039fbc1601a828fce8",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/black_lichen.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3211596,
+    "mtime": 1794915258.1267197,
+    "seen": 1794915623.0453048,
     "ast_hash": "3717bd359034702d01dea2be3f3db4e6",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/blue_finch_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3211615,
+    "mtime": 1794915258.121256,
+    "seen": 1794915623.045306,
     "ast_hash": "96d24fdba160b1c99b4e5e2ec2ce7763",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/boar_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.321163,
+    "mtime": 1794915258.1168725,
+    "seen": 1794915623.0453067,
     "ast_hash": "964103f79d02f5e934af1af94df81d39",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/brown_bear_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3211653,
+    "mtime": 1794915258.119202,
+    "seen": 1794915623.0453076,
     "ast_hash": "6e092bca99a8c677b8f6188ceae511dd",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/centipede_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3211677,
+    "mtime": 1794915258.1260257,
+    "seen": 1794915623.0453084,
     "ast_hash": "5d1b37e7b36ca4013d7c828b4e084021",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/eagle_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.32117,
+    "mtime": 1794915258.12471,
+    "seen": 1794915623.04531,
     "ast_hash": "feb41fb92588f93cf96a9fb678e490b8",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/ectoplasm.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3211725,
+    "mtime": 1794915258.127577,
+    "seen": 1794915623.045311,
     "ast_hash": "e1398fe200f065d38e8fa06cc29556f7",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/elephant_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3211744,
+    "mtime": 1794915258.1221871,
+    "seen": 1794915623.0453117,
     "ast_hash": "142fb4a4220de5030b45bdf176649e38",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/fox_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.321176,
+    "mtime": 1794915258.116533,
+    "seen": 1794915623.045313,
     "ast_hash": "0724e30b069d010bc76ccb682cc9d2d2",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/frog_legs.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.321179,
+    "mtime": 1794915258.1276484,
+    "seen": 1794915623.045314,
     "ast_hash": "c19da8cbb8eeb91c82ce95357f6bd28b",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/frog_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3211813,
+    "mtime": 1794915258.1178534,
+    "seen": 1794915623.0453148,
     "ast_hash": "ab0d3c758f6fa73d8e6d333377612433",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/fur_pelt.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3211834,
+    "mtime": 1794915258.1262734,
+    "seen": 1794915623.0453155,
     "ast_hash": "c1432b5ffe2c3604a35dd6b3f283592c",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/gill.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3211858,
+    "mtime": 1794915258.1272917,
+    "seen": 1794915623.0453165,
     "ast_hash": "7a879d0ee136524343a8e6ac1de975d7",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/giraffe_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3211882,
+    "mtime": 1794915258.121878,
+    "seen": 1794915623.0453174,
     "ast_hash": "3b169240788d2d3366d48947a7e2902f",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/gorilla_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3211908,
+    "mtime": 1794915258.1215482,
+    "seen": 1794915623.0453184,
     "ast_hash": "1f6af69b99c5fae7d583d7ea421bc8f9",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/green_finch_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3211937,
+    "mtime": 1794915258.1209571,
+    "seen": 1794915623.0453193,
     "ast_hash": "6044593df8782be20e05268179ea0754",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/haunted_armor_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3211954,
+    "mtime": 1794915258.1257062,
+    "seen": 1794915623.0453205,
     "ast_hash": "aaab2ae4f168c2d35cbcc86b2b967f6a",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/horn_bill_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3211975,
+    "mtime": 1794915258.125031,
+    "seen": 1794915623.0453212,
     "ast_hash": "f060cba88483a436904558448f6fddd6",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/horse_beige_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3212,
+    "mtime": 1794915258.1225042,
+    "seen": 1794915623.045322,
     "ast_hash": "32ed53faa67cfcd1763e70276aaa9905",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/horse_black_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3212032,
+    "mtime": 1794915258.1228914,
+    "seen": 1794915623.0453234,
     "ast_hash": "3dd61538d2cc8bbc0fd6dac1fdbbb850",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/horse_brown_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.321206,
+    "mtime": 1794915258.1231802,
+    "seen": 1794915623.0453243,
     "ast_hash": "ec6db428e242524d01c8612ec1ed88a5",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/horse_dark_black_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3212085,
+    "mtime": 1794915258.1234977,
+    "seen": 1794915623.045325,
     "ast_hash": "06697da204eacea91de69e3ff65a63c9",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/horse_dark_brown_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.321211,
+    "mtime": 1794915258.123776,
+    "seen": 1794915623.0453258,
     "ast_hash": "d249520eec2f5b6290afedd0ccf6788f",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/horse_grey_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3212132,
+    "mtime": 1794915258.1240923,
+    "seen": 1794915623.045327,
     "ast_hash": "5d7a2ab84a32547bf753c4ad452fc542",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/horse_white_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3212156,
+    "mtime": 1794915258.12441,
+    "seen": 1794915623.0453281,
     "ast_hash": "b8a9380b8812da065e0ffe1879e5c65e",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/large_heart.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3212178,
+    "mtime": 1794915258.1271896,
+    "seen": 1794915623.0453606,
     "ast_hash": "2745b7f38023b5fab649a39228afda16",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/lizard_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3212206,
+    "mtime": 1794915258.1149511,
+    "seen": 1794915623.0453625,
     "ast_hash": "a84c4dc655a71f5592716d649aeeb8bd",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/mammoth_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.321223,
+    "mtime": 1794915258.1161718,
+    "seen": 1794915623.0453634,
     "ast_hash": "18a5c753b2e66084e1f9698edbec677b",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/mimic_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.321225,
+    "mtime": 1794915258.1170473,
+    "seen": 1794915623.0453646,
     "ast_hash": "9c66bbb4a3ae34067f32be7f7a534940",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/minotaur_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.321227,
+    "mtime": 1794915258.1255438,
+    "seen": 1794915623.0453658,
     "ast_hash": "2b1af337af4e556df06f24a06628f09a",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/mummy_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3212295,
+    "mtime": 1794915258.1152115,
+    "seen": 1794915623.0453668,
     "ast_hash": "a650067845167d7966742f8e4a0075ce",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/ostrich_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3212318,
+    "mtime": 1794915258.119792,
+    "seen": 1794915623.045368,
     "ast_hash": "b3947e6b9198d79302528094b3eb5590",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/pelican_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.321234,
+    "mtime": 1794915258.125358,
+    "seen": 1794915623.0453694,
     "ast_hash": "a09b3f262f41ea6057ebeeff4d6a875d",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/penguin_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.321237,
+    "mtime": 1794915258.1182153,
+    "seen": 1794915623.0453706,
     "ast_hash": "aef1bbe5140b4cca607ac4cc6e8f19aa",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/poison_droplet.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3212392,
+    "mtime": 1794915258.126542,
+    "seen": 1794915623.0453713,
     "ast_hash": "32c15708e33e5d58d4b3aabb5f93c10e",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/polar_bear_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3212414,
+    "mtime": 1794915258.1195104,
+    "seen": 1794915623.0453725,
     "ast_hash": "143ac3fc518dd9db6e3d6588f0f04cdf",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/rabbit_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.321243,
+    "mtime": 1794915258.1203759,
+    "seen": 1794915623.0453734,
     "ast_hash": "70c71c8485a52c519b9fb7d1e4c1396d",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/rabbits_foot.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3212454,
+    "mtime": 1794915258.1277416,
+    "seen": 1794915623.0453744,
     "ast_hash": "f0ded3474cdfc96fc0dfefe9eef35e8a",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/red_finch_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3212492,
+    "mtime": 1794915258.1206694,
+    "seen": 1794915623.045376,
     "ast_hash": "7b920dbd93a5d3b166e7efcb81f3e8b6",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/rhino_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.321252,
+    "mtime": 1794915258.1200426,
+    "seen": 1794915623.045378,
     "ast_hash": "4192c7731f07513bed5865a95170b23a",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/sandworm_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.321255,
+    "mtime": 1794915258.1147091,
+    "seen": 1794915623.0453794,
     "ast_hash": "056fd54cd5460e75ff7b16355da0fc50",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/scale_item.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3212578,
+    "mtime": 1794915258.1263664,
+    "seen": 1794915623.0453808,
     "ast_hash": "3ec2023c5c0109125b485143c8ddf918",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/scrap_meat.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3212605,
+    "mtime": 1794915258.126185,
+    "seen": 1794915623.0453815,
     "ast_hash": "12e644a022d626a75842ae83ead49906",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/small_heart.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3212626,
+    "mtime": 1794915258.127103,
+    "seen": 1794915623.0453827,
     "ast_hash": "3b0d7351ca9d706bad608f15b07ca261",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/talon.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3212655,
+    "mtime": 1794915258.1269097,
+    "seen": 1794915623.0453837,
     "ast_hash": "be65d19d66e571e8f3c4cc13729c0c4d",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/tree_ent_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3212686,
+    "mtime": 1794915258.1158261,
+    "seen": 1794915623.045385,
     "ast_hash": "cd0c05b7a69b9e8715fdb0f0b91d237c",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/tusk.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3212707,
+    "mtime": 1794915258.126643,
+    "seen": 1794915623.0453858,
     "ast_hash": "9b7d3e26a203f2003a030d58ef4a49cb",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/items/vulture_spawn_egg.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.321273,
+    "mtime": 1794915258.1155407,
+    "seen": 1794915623.0453868,
     "ast_hash": "178316ef9fcae4cee8063cdfb678db78",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/lang/en_us.json": {
-    "mtime": 1794868967.4299374,
-    "seen": 1794897790.3212752,
-    "ast_hash": "25ed54c24e97be0c6df3f425918a1a04",
+    "mtime": 1794915258.128233,
+    "seen": 1794915623.0453875,
+    "ast_hash": "51f5dd8df4f8feb9d98506ab0989f865",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/alligator_spawn_egg.json": {
-    "mtime": 1794868967.431074,
-    "seen": 1794897790.3212771,
+    "mtime": 1794915258.1173186,
+    "seen": 1794915623.0453882,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/ankh.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3212798,
+    "mtime": 1794915258.1264164,
+    "seen": 1794915623.0453897,
     "ast_hash": "2e60498033f85723ea72387a8e54ba8a",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/antennae.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.321282,
+    "mtime": 1794915258.12677,
+    "seen": 1794915623.0453906,
     "ast_hash": "7109959e77c974c8806cc704bcfe2b69",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/armadillo_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3212838,
+    "mtime": 1794915258.114443,
+    "seen": 1794915623.0453913,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/bark.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.321287,
+    "mtime": 1794915258.1269553,
+    "seen": 1794915623.045393,
     "ast_hash": "a80b9a5f917c16642c59b6d397795806",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/beaver_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3212895,
+    "mtime": 1794915258.1185176,
+    "seen": 1794915623.045394,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/black_bear_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3212917,
+    "mtime": 1794915258.1188223,
+    "seen": 1794915623.045395,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/black_lichen.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3212943,
+    "mtime": 1794915258.1266928,
+    "seen": 1794915623.0453959,
     "ast_hash": "e00352caba7c32c29c78715bb58d7299",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/blue_finch_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3212967,
+    "mtime": 1794915258.1212065,
+    "seen": 1794915623.045397,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/boar_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3212988,
+    "mtime": 1794915258.116818,
+    "seen": 1794915623.0453978,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/brown_bear_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.321301,
+    "mtime": 1794915258.119172,
+    "seen": 1794915623.0453987,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/centipede_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3213034,
+    "mtime": 1794915258.1259873,
+    "seen": 1794915623.0454,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/eagle_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3213055,
+    "mtime": 1794915258.1246612,
+    "seen": 1794915623.0454009,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/ectoplasm.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3213074,
+    "mtime": 1794915258.1275249,
+    "seen": 1794915623.0454016,
     "ast_hash": "7a1d4d889364f545f3742d220d3838b7",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/elephant_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3213098,
+    "mtime": 1794915258.1221378,
+    "seen": 1794915623.0454028,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/fox_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3213117,
+    "mtime": 1794915258.116487,
+    "seen": 1794915623.0454037,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/frog_legs.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3213134,
+    "mtime": 1794915258.1276085,
+    "seen": 1794915623.0454047,
     "ast_hash": "fca9caced2f887c809e78b96f29fc5bc",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/frog_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.321315,
+    "mtime": 1794915258.117799,
+    "seen": 1794915623.0454054,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/fur_pelt.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.321318,
+    "mtime": 1794915258.1262312,
+    "seen": 1794915623.0454068,
     "ast_hash": "ba4fd55fdc606b3e75f9bd3f10ae0df2",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/gill.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.321321,
+    "mtime": 1794915258.127246,
+    "seen": 1794915623.0454078,
     "ast_hash": "e5f99eab813818b6eb78e1bb6c7cad35",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/giraffe_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3213232,
+    "mtime": 1794915258.121817,
+    "seen": 1794915623.045409,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/gorilla_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3213255,
+    "mtime": 1794915258.1214988,
+    "seen": 1794915623.0454102,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/green_finch_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3213277,
+    "mtime": 1794915258.1209042,
+    "seen": 1794915623.0454109,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/haunted_armor_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3213298,
+    "mtime": 1794915258.1256583,
+    "seen": 1794915623.0454118,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/horn_bill_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3213322,
+    "mtime": 1794915258.1249778,
+    "seen": 1794915623.0454128,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/horse_beige_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3213348,
+    "mtime": 1794915258.1224551,
+    "seen": 1794915623.0454137,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/horse_black_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3213365,
+    "mtime": 1794915258.1226628,
+    "seen": 1794915623.0454147,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/horse_brown_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.321339,
+    "mtime": 1794915258.1231523,
+    "seen": 1794915623.0454154,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/horse_dark_black_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3213406,
+    "mtime": 1794915258.123444,
+    "seen": 1794915623.045416,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/horse_dark_brown_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3213427,
+    "mtime": 1794915258.1237214,
+    "seen": 1794915623.045417,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/horse_grey_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3213449,
+    "mtime": 1794915258.1240447,
+    "seen": 1794915623.045418,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/horse_white_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3213475,
+    "mtime": 1794915258.1243618,
+    "seen": 1794915623.0454192,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/large_heart.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3213496,
+    "mtime": 1794915258.1271558,
+    "seen": 1794915623.0454206,
     "ast_hash": "91b74599df36049535f369472a1009a5",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/lizard_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.321352,
+    "mtime": 1794915258.114923,
+    "seen": 1794915623.0454216,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/mammoth_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3213542,
+    "mtime": 1794915258.116118,
+    "seen": 1794915623.0454226,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/mimic_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3213568,
+    "mtime": 1794915258.116993,
+    "seen": 1794915623.0454235,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/minotaur_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.321359,
+    "mtime": 1794915258.1255069,
+    "seen": 1794915623.0454247,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/mummy_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3213608,
+    "mtime": 1794915258.1151555,
+    "seen": 1794915623.0454254,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/ostrich_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3213637,
+    "mtime": 1794915258.119764,
+    "seen": 1794915623.0454266,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/pelican_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3213665,
+    "mtime": 1794915258.125323,
+    "seen": 1794915623.045428,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/penguin_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3213682,
+    "mtime": 1794915258.118165,
+    "seen": 1794915623.0454288,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/poison_droplet.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3213706,
+    "mtime": 1794915258.126492,
+    "seen": 1794915623.0454295,
     "ast_hash": "910d3ae6f4a854c39d507315508a6500",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/polar_bear_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.321373,
+    "mtime": 1794915258.119475,
+    "seen": 1794915623.045431,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/rabbit_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3213751,
+    "mtime": 1794915258.1203156,
+    "seen": 1794915623.0454319,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/rabbits_foot.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3213778,
+    "mtime": 1794915258.1276987,
+    "seen": 1794915623.045433,
     "ast_hash": "5ca7173480a9dd13c21d435cf862ef02",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/red_finch_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3213804,
+    "mtime": 1794915258.1206217,
+    "seen": 1794915623.045434,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/rhino_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3213832,
+    "mtime": 1794915258.120011,
+    "seen": 1794915623.0454352,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/sandworm_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3213856,
+    "mtime": 1794915258.1146786,
+    "seen": 1794915623.0454361,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/scale_item.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3213887,
+    "mtime": 1794915258.1263218,
+    "seen": 1794915623.0454378,
     "ast_hash": "8837688abc2053eb989da77f3b8fc240",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/scrap_meat.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.321391,
+    "mtime": 1794915258.1261463,
+    "seen": 1794915623.0454385,
     "ast_hash": "bf39add945ea67889f514af679927c22",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/small_heart.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.321394,
+    "mtime": 1794915258.127057,
+    "seen": 1794915623.04544,
     "ast_hash": "93cded828fe899a4a539fc42e3c16d79",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/talon.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.321396,
+    "mtime": 1794915258.1268554,
+    "seen": 1794915623.045441,
     "ast_hash": "24cf2b9c044669eb460ba0831ca57669",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/tree_ent_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3213983,
+    "mtime": 1794915258.1157808,
+    "seen": 1794915623.045442,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/tusk.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3214004,
+    "mtime": 1794915258.126592,
+    "seen": 1794915623.045443,
     "ast_hash": "7c0a5996f3e182701b8dd1a047435944",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/assets/projectzulu/models/item/vulture_spawn_egg.json": {
-    "mtime": 1794868967.431095,
-    "seen": 1794897790.3214025,
+    "mtime": 1794915258.115495,
+    "seen": 1794915623.045444,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/alligator.json": {
-    "mtime": 1794868967.4318156,
-    "seen": 1794897790.321405,
+    "mtime": 1794915258.11727,
+    "seen": 1794915623.0454478,
     "ast_hash": "450b5e46f1ef57201449b525bc567796",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/armadillo.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.321408,
+    "mtime": 1794915258.11437,
+    "seen": 1794915623.045449,
     "ast_hash": "14bb6545cfc335a20a6bfa5891f43671",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/beaver.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.321411,
+    "mtime": 1794915258.1184614,
+    "seen": 1794915623.04545,
     "ast_hash": "00b4dc7ece2621188f3e06abd46a166f",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/black_bear.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.321413,
+    "mtime": 1794915258.1187816,
+    "seen": 1794915623.045451,
     "ast_hash": "1f45ddb39f9439417b05f07d758f3db4",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/blue_finch.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.3214157,
+    "mtime": 1794915258.1211443,
+    "seen": 1794915623.0454519,
     "ast_hash": "5c815b16c092724d18d1cde86a03d645",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/boar.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.321418,
+    "mtime": 1794915258.116768,
+    "seen": 1794915623.0454528,
     "ast_hash": "de667ed8f4558058446e18bcf9d8989a",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/brown_bear.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.3214202,
+    "mtime": 1794915258.1191256,
+    "seen": 1794915623.0454538,
     "ast_hash": "b73aa2d7552a099f7a7d5afc77db9ae3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/centipede.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.3214223,
+    "mtime": 1794915258.1259375,
+    "seen": 1794915623.0454545,
     "ast_hash": "688b68835f4fa9b8cb774a529124ff6b",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/eagle.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.3214245,
+    "mtime": 1794915258.1246183,
+    "seen": 1794915623.0454555,
     "ast_hash": "174d69242ef90931f25fd865f3257e0e",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/elephant.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.3214266,
+    "mtime": 1794915258.122077,
+    "seen": 1794915623.0454564,
     "ast_hash": "3fd10757173a868df69f00852452d68c",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/fox.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.3214293,
+    "mtime": 1794915258.116453,
+    "seen": 1794915623.0454574,
     "ast_hash": "bb7dc855dab9f782bd4cfaaf11aa3dbe",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/frog.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.321432,
+    "mtime": 1794915258.1177511,
+    "seen": 1794915623.0454588,
     "ast_hash": "a3bc8faf80bdf27751fe17f0ba0a7913",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/giraffe.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.321434,
+    "mtime": 1794915258.1217585,
+    "seen": 1794915623.0454595,
     "ast_hash": "df506f6043d570d44768df06259d6b16",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/gorilla.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.321436,
+    "mtime": 1794915258.1214585,
+    "seen": 1794915623.0454605,
     "ast_hash": "b29d6fc65d464df67ad1b6c8362f58cd",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/green_finch.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.3214376,
+    "mtime": 1794915258.120849,
+    "seen": 1794915623.0454612,
     "ast_hash": "976cc8c6729833719eedf5a6c1444cc8",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/haunted_armor.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.32144,
+    "mtime": 1794915258.1256049,
+    "seen": 1794915623.0454624,
     "ast_hash": "2522ac2217b343347cf3b24087fa6380",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/horn_bill.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.321442,
+    "mtime": 1794915258.1249373,
+    "seen": 1794915623.0454633,
     "ast_hash": "e43e3f2acffd6feb7048885336736f5c",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/horse_beige.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.3214438,
+    "mtime": 1794915258.122406,
+    "seen": 1794915623.0454643,
     "ast_hash": "f1dd3da96892ee7a829662e98ab17ebe",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/horse_brown.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.321446,
+    "mtime": 1794915258.1231127,
+    "seen": 1794915623.045465,
     "ast_hash": "e6223f77e640fc79a18c2896433c4cd2",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/horse_dark_black.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.3214478,
+    "mtime": 1794915258.1233938,
+    "seen": 1794915623.0454664,
     "ast_hash": "25f599de879792d8ba14f1cb42afa43a",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/horse_dark_brown.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.32145,
+    "mtime": 1794915258.123675,
+    "seen": 1794915623.0454671,
     "ast_hash": "b006f77dd8ff68beee81947a1d6f9272",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/horse_grey.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.3214521,
+    "mtime": 1794915258.124001,
+    "seen": 1794915623.045468,
     "ast_hash": "36d70be5980471c2e85b3352615e4d63",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/lizard.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.3214545,
+    "mtime": 1794915258.114897,
+    "seen": 1794915623.0454693,
     "ast_hash": "d06ec3291a7a6eb5868a41a3421cd452",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/mammoth.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.3214567,
+    "mtime": 1794915258.1160676,
+    "seen": 1794915623.0454702,
     "ast_hash": "012a551aeacd19d7383896e96a523b03",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/mimic.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.3214583,
+    "mtime": 1794915258.1169357,
+    "seen": 1794915623.045471,
     "ast_hash": "f46189bcfc248e019e328297f28cbe2f",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/minotaur.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.3214612,
+    "mtime": 1794915258.1254745,
+    "seen": 1794915623.0454721,
     "ast_hash": "5c79fc7a93c7fb5636d43563ef73d184",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/mummy_pharaoh.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.3214633,
+    "mtime": 1794915258.1150186,
+    "seen": 1794915623.0454733,
     "ast_hash": "0c44ebdd283527f8ec23085fe6801ea2",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/ostrich.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.3214653,
+    "mtime": 1794915258.1197202,
+    "seen": 1794915623.0454743,
     "ast_hash": "e18b12632695099041b5dc1b2cd7f797",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/pelican.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.321468,
+    "mtime": 1794915258.1252828,
+    "seen": 1794915623.0454752,
     "ast_hash": "6c44c7360753e2b0d3c517d63ca74ef3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/penguin.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.3214705,
+    "mtime": 1794915258.1180582,
+    "seen": 1794915623.0454764,
     "ast_hash": "aa110aca4fec524effc88faf2b41dd31",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/polar_bear.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.3214734,
+    "mtime": 1794915258.1194263,
+    "seen": 1794915623.0454774,
     "ast_hash": "2731db415c2e695724b913c43e13f634",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/rabbit.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.3214755,
+    "mtime": 1794915258.120263,
+    "seen": 1794915623.045478,
     "ast_hash": "535a21b418045eb6a9a30c2bfcf5bb68",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/red_finch.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.321478,
+    "mtime": 1794915258.1205719,
+    "seen": 1794915623.045479,
     "ast_hash": "92cb16b0f089d56670374538cc09629c",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/rhino.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.3214803,
+    "mtime": 1794915258.119983,
+    "seen": 1794915623.0454805,
     "ast_hash": "f290fd67307b21299c3c4d8c8ca64089",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/sandworm.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.3214822,
+    "mtime": 1794915258.1146483,
+    "seen": 1794915623.0454814,
     "ast_hash": "32d8f5efccfcee2c3c2f122a2dd6908a",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/tree_ent.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.3214846,
+    "mtime": 1794915258.1157522,
+    "seen": 1794915623.0454824,
     "ast_hash": "6b02acb3c93b3245b9a9cd30272efea9",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/loot_table/entities/vulture.json": {
-    "mtime": 1794868967.431858,
-    "seen": 1794897790.321487,
+    "mtime": 1794915258.1154525,
+    "seen": 1794915623.0454836,
     "ast_hash": "df07b26cfaa828e6e33c161aa8a4a8e4",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_alligator.json": {
-    "mtime": 1794868967.4327497,
-    "seen": 1794897790.321489,
+    "mtime": 1794915258.117153,
+    "seen": 1794915623.0454845,
     "ast_hash": "cb35137f3137b54a36d652e3dc00464e",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_armadillo.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.3214915,
+    "mtime": 1794915258.114177,
+    "seen": 1794915623.045486,
     "ast_hash": "2f707b375204e3e28f6d57d87dfa0267",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_beaver.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.3214931,
+    "mtime": 1794915258.1183355,
+    "seen": 1794915623.045487,
     "ast_hash": "0905d66dd3e7cc9885369610a7963949",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_black_bear.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.3214955,
+    "mtime": 1794915258.118676,
+    "seen": 1794915623.0454879,
     "ast_hash": "22296399175f8d02becc9aa91901848a",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_blue_finch.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.3214977,
+    "mtime": 1794915258.1210718,
+    "seen": 1794915623.0454886,
     "ast_hash": "933f22e86d2c2e9a60ccf8d070ca39d9",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_boar.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.3215003,
+    "mtime": 1794915258.1166396,
+    "seen": 1794915623.0454895,
     "ast_hash": "a6412b50ee2280b2efacf9107225e56c",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_brown_bear.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.3215027,
+    "mtime": 1794915258.118999,
+    "seen": 1794915623.0454905,
     "ast_hash": "a2ef4238331d999e269296116bbc623b",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_centipede.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.3215053,
+    "mtime": 1794915258.1258457,
+    "seen": 1794915623.0454915,
     "ast_hash": "417b4531d19817fbd5aa274572f4162d",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_eagle.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.321508,
+    "mtime": 1794915258.124504,
+    "seen": 1794915623.0454922,
     "ast_hash": "9483227513e703dff70c7e0d72a12fe3",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_elephant.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.3215098,
+    "mtime": 1794915258.1219764,
+    "seen": 1794915623.0454936,
     "ast_hash": "01424886ed137f717e822481f23a6064",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_fox.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.3215122,
+    "mtime": 1794915258.116317,
+    "seen": 1794915623.0454943,
     "ast_hash": "705d5e0972381d63f6cdbb5f3055e4c7",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_frog.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.3215146,
+    "mtime": 1794915258.1176586,
+    "seen": 1794915623.0454955,
     "ast_hash": "5ecf746a76f57d80ecfd353c8754474d",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_giraffe.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.3215165,
+    "mtime": 1794915258.1216557,
+    "seen": 1794915623.0454962,
     "ast_hash": "400470b033c4bfb42e1ae3775c0a2b42",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_gorilla.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.3215187,
+    "mtime": 1794915258.1213603,
+    "seen": 1794915623.0454972,
     "ast_hash": "be50f58f01376bdc345f928a2fa2c633",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_green_finch.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.3215206,
+    "mtime": 1794915258.1207752,
+    "seen": 1794915623.0454981,
     "ast_hash": "d242e2189b0f110d66f9345aa805d733",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_horn_bill.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.3215232,
+    "mtime": 1794915258.1248264,
+    "seen": 1794915623.045499,
     "ast_hash": "732bb1947bc6a325ead0d45ada37e33a",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_horse_beige.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.3215253,
+    "mtime": 1794915258.1223044,
+    "seen": 1794915623.0454998,
     "ast_hash": "bb7f976f326fb80cdfdfe126257aaecf",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_horse_black.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.321527,
+    "mtime": 1794915258.1226182,
+    "seen": 1794915623.0455008,
     "ast_hash": "16449b0f3f67944265079edfc39d33a6",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_horse_brown.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.3215292,
+    "mtime": 1794915258.1229954,
+    "seen": 1794915623.0455015,
     "ast_hash": "503c438c7c45cdeaf97e8c8957c3a523",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_horse_dark_black.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.321532,
+    "mtime": 1794915258.123297,
+    "seen": 1794915623.0455024,
     "ast_hash": "f312fc921ddd53c8ab9a5ddf03268ce1",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_horse_dark_brown.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.3215337,
+    "mtime": 1794915258.123595,
+    "seen": 1794915623.0455039,
     "ast_hash": "e7b6bbc598dc0c5eada9251078f655db",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_horse_grey.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.321536,
+    "mtime": 1794915258.1238954,
+    "seen": 1794915623.0455048,
     "ast_hash": "22fbf14066e5480e17b017645e11f390",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_horse_white.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.3215377,
+    "mtime": 1794915258.1242957,
+    "seen": 1794915623.0455055,
     "ast_hash": "4d133e89ec63cf458d69b0a003b0ac1d",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_lizard.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.3215399,
+    "mtime": 1794915258.1148047,
+    "seen": 1794915623.0455067,
     "ast_hash": "ecfac63901e5a8961d2a01221aa67b7d",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_mammoth.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.3215423,
+    "mtime": 1794915258.115948,
+    "seen": 1794915623.045508,
     "ast_hash": "f15f0e95dc58e052aa086c8222dcb66d",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_mummy.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.3215444,
+    "mtime": 1794915258.1151197,
+    "seen": 1794915623.0455089,
     "ast_hash": "ffa36cb3acb9259a1b9aea7507f12e68",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_ostrich.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.3215466,
+    "mtime": 1794915258.119616,
+    "seen": 1794915623.0455096,
     "ast_hash": "277224fad57aa2887f289c1c4f307b4e",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_pelican.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.3215487,
+    "mtime": 1794915258.1251748,
+    "seen": 1794915623.045511,
     "ast_hash": "36391674daec2249c92efdeeb3d1b898",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_penguin.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.321552,
+    "mtime": 1794915258.1179607,
+    "seen": 1794915623.045512,
     "ast_hash": "356bac755474d3722d72a2f80f74d46a",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_polar_bear.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.321555,
+    "mtime": 1794915258.1193116,
+    "seen": 1794915623.045513,
     "ast_hash": "bfe2f4887118851c424fbabf616fd751",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_rabbit.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.3215573,
+    "mtime": 1794915258.1201344,
+    "seen": 1794915623.0455139,
     "ast_hash": "50fc01a3ba14612eeeed2aef2b504e0a",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_red_finch.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.3215601,
+    "mtime": 1794915258.1204894,
+    "seen": 1794915623.045515,
     "ast_hash": "501203ac5dd50da14ea1e20da4beef15",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_rhino.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.3215623,
+    "mtime": 1794915258.119889,
+    "seen": 1794915623.0455158,
     "ast_hash": "bb3d23baabcf531443ca843c4689e809",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_sandworm.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.3215647,
+    "mtime": 1794915258.1145766,
+    "seen": 1794915623.0455167,
     "ast_hash": "85266606d7cf8c8883c7005bd8dbff81",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_tree_ent.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.321567,
+    "mtime": 1794915258.1156518,
+    "seen": 1794915623.045518,
     "ast_hash": "3993cbc2abb7109a3247c2357f2b00a7",
     "semantic_hash": ""
   },
   "mods/projectzulu/src/main/resources/data/projectzulu/neoforge/biome_modifier/spawn_vulture.json": {
-    "mtime": 1794868967.4327805,
-    "seen": 1794897790.3215697,
+    "mtime": 1794915258.1153286,
+    "seen": 1794915623.0455186,
     "ast_hash": "9cfcbe73048d779d91da5f39fd887140",
     "semantic_hash": ""
   },
   "mods/projectzulu/tools/gen.py": {
-    "mtime": 1794868967.434051,
-    "seen": 1794897790.3215723,
-    "ast_hash": "aed4549080efd5030b2dd286b182f8a9",
+    "mtime": 1794915248.3837855,
+    "seen": 1794915623.0455196,
+    "ast_hash": "8f890173194b560b19db166adaa3456e",
     "semantic_hash": ""
   },
   "mods/asgardshield/original-assets.txt": {
@@ -26148,27 +26148,27 @@
     "semantic_hash": ""
   },
   "mods/projectzulu/original-assets.txt": {
-    "mtime": 1794868967.4267051,
-    "seen": 1794897790.3225076,
-    "ast_hash": "85e2ea7e90dd83767772a337f47109e9",
+    "mtime": 1794915258.1284645,
+    "seen": 1794915623.0460217,
+    "ast_hash": "e94a40ef9d12a5a433fae01d7f05d0bc",
     "semantic_hash": ""
   },
   "mods/projectzulu/tools/PORTING.md": {
-    "mtime": 1794869477.8453183,
-    "seen": 1794897790.3225105,
-    "ast_hash": "253274dc401da5f0d028c0730931072b",
+    "mtime": 1794897898.6667876,
+    "seen": 1794915623.0460227,
+    "ast_hash": "78f21ce08cb6e6198a4111be9c6a65e8",
     "semantic_hash": ""
   },
   "mods/projectzulu/tools/sound-map.txt": {
-    "mtime": 1794897775.8267932,
-    "seen": 1794897790.3225133,
-    "ast_hash": "0d36ec3061d8485c307ecfc47639ada1",
+    "mtime": 1794915248.3736994,
+    "seen": 1794915623.0460238,
+    "ast_hash": "0bb8411abe156fa93909abe2a8872d74",
     "semantic_hash": ""
   },
   "mods/projectzulu/tools/texture-map.txt": {
-    "mtime": 1794897775.8301525,
-    "seen": 1794897790.322516,
-    "ast_hash": "ed55365e8677baf3165e05a00950aa80",
+    "mtime": 1794915242.1874866,
+    "seen": 1794915623.0460253,
+    "ast_hash": "8cc86392c538063f2b74d8abc0910a2d",
     "semantic_hash": ""
   },
   "mods/harkenscythe/src/main/java/harkenscythe/client/mob/SpectralModels.java": {
@@ -26739,6 +26739,330 @@
     "mtime": 1794897775.8267932,
     "seen": 1794897790.32114,
     "ast_hash": "5577f7183c4f01b51af7613f3672cc6d",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/ZuluBigAnimals.java": {
+    "mtime": 1794898834.1627455,
+    "seen": 1794915623.0451996,
+    "ast_hash": "e6b7ed83c28dac72abff434571637ca3",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/ZuluCreativeTabs.java": {
+    "mtime": 1794897976.870784,
+    "seen": 1794915623.045201,
+    "ast_hash": "d5281b8549ba9f2dbdc7ecfa65342a10",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/ZuluHorses.java": {
+    "mtime": 1794898393.6667655,
+    "seen": 1794915623.0452037,
+    "ast_hash": "54c83a8f41ebc95367da39fb64408bcb",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/ZuluMonsters.java": {
+    "mtime": 1794915242.1702082,
+    "seen": 1794915623.045206,
+    "ast_hash": "6d50cb63d52d5e6122b1de7753ffc476",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/client/entity/AlligatorModel.java": {
+    "mtime": 1794898834.1627455,
+    "seen": 1794915623.0452101,
+    "ast_hash": "12ffd6e6679c6b4eadf60332f9edd395",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/client/entity/BearModel.java": {
+    "mtime": 1794898834.1627455,
+    "seen": 1794915623.0452137,
+    "ast_hash": "bde0f4613b0e006fb49283da868c93dc",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/client/entity/BigAnimalRenderer.java": {
+    "mtime": 1794898834.1627455,
+    "seen": 1794915623.045217,
+    "ast_hash": "e3f72c303af6e5d64f9430da052fea8f",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/client/entity/BigAnimalRenderers.java": {
+    "mtime": 1794898834.1627455,
+    "seen": 1794915623.045218,
+    "ast_hash": "964091b225d9e26854828f7c9293e5c3",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/client/entity/BigModelParts.java": {
+    "mtime": 1794898834.1627455,
+    "seen": 1794915623.0452187,
+    "ast_hash": "5145588b8e14aea3e0a43d6f0f8adb8a",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/client/entity/CentipedeModel.java": {
+    "mtime": 1794915242.1702082,
+    "seen": 1794915623.045222,
+    "ast_hash": "07d356a663e08269c0c1e8b61bdee10d",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/client/entity/CentipedeRenderer.java": {
+    "mtime": 1794915242.1735032,
+    "seen": 1794915623.0452232,
+    "ast_hash": "6fdb127e10484383fc764975a0d8358a",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/client/entity/ElephantModel.java": {
+    "mtime": 1794898834.1627455,
+    "seen": 1794915623.045228,
+    "ast_hash": "eb1df9c60b0bcb535028d931926ddc03",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/client/entity/GiraffeModel.java": {
+    "mtime": 1794898834.1627455,
+    "seen": 1794915623.045232,
+    "ast_hash": "e1a70bb268473b9b6a0771dd7598621c",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/client/entity/GorillaModel.java": {
+    "mtime": 1794898834.1627455,
+    "seen": 1794915623.0452335,
+    "ast_hash": "44d9f1a428b04beb74ac87bb3811cd88",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/client/entity/HauntedArmorModel.java": {
+    "mtime": 1794915242.1763039,
+    "seen": 1794915623.0452344,
+    "ast_hash": "9947f12bb8fc869404bd07373879ece4",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/client/entity/HauntedArmorRenderer.java": {
+    "mtime": 1794915242.1763039,
+    "seen": 1794915623.0452352,
+    "ast_hash": "2bcdccc8be28b8d584956990ffde0e85",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/client/entity/HorseRenderers.java": {
+    "mtime": 1794898393.6667655,
+    "seen": 1794915623.045237,
+    "ast_hash": "0054d7737d4ba20351e2ddb4edac7c65",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/client/entity/LizardModel.java": {
+    "mtime": 1794915242.1764603,
+    "seen": 1794915623.0452387,
+    "ast_hash": "566696d02a44e5625cc915f82d0b543a",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/client/entity/LizardSpitRenderer.java": {
+    "mtime": 1794915242.1764603,
+    "seen": 1794915623.0452394,
+    "ast_hash": "5f5c8c9796f2d395276e8da3914dc884",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/client/entity/MammothModel.java": {
+    "mtime": 1794898834.1627455,
+    "seen": 1794915623.0452404,
+    "ast_hash": "e074076aa11dc7d6739cabb16e2d1a67",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/client/entity/MimicModel.java": {
+    "mtime": 1794915242.1765993,
+    "seen": 1794915623.0452414,
+    "ast_hash": "e39dba95b8f96775865dbc1db0bf1c34",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/client/entity/MinotaurModel.java": {
+    "mtime": 1794915242.1767106,
+    "seen": 1794915623.0452423,
+    "ast_hash": "2342b12d86725ba0c04fc635c055ccca",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/client/entity/MonsterRenderer.java": {
+    "mtime": 1794915242.1767106,
+    "seen": 1794915623.045243,
+    "ast_hash": "a5b3a44bc6df1d666515852b14169d6a",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/client/entity/MonsterRenderers.java": {
+    "mtime": 1794915242.1767106,
+    "seen": 1794915623.0452442,
+    "ast_hash": "dadba3190e694215e7f28ab52155c9e5",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/client/entity/MummyModel.java": {
+    "mtime": 1794915242.1767106,
+    "seen": 1794915623.045245,
+    "ast_hash": "b1426b5f525d432606d16c7a9aad6ae1",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/client/entity/MummyRenderer.java": {
+    "mtime": 1794915242.1767106,
+    "seen": 1794915623.0452456,
+    "ast_hash": "1ef789a93f977e31bd91e95fcd9d5163",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/client/entity/RhinoModel.java": {
+    "mtime": 1794898834.1627455,
+    "seen": 1794915623.0452516,
+    "ast_hash": "83959f58ccdbde42adc251cfabc8f719",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/client/entity/SandwormModel.java": {
+    "mtime": 1794915242.1767106,
+    "seen": 1794915623.0452523,
+    "ast_hash": "64d8b32a67d95507971fe0782e8157b2",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/client/entity/TreeEntModel.java": {
+    "mtime": 1794898834.1661742,
+    "seen": 1794915623.0452533,
+    "ast_hash": "f1da0bca375c7ba3029cc8f05e9b7737",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/client/entity/ZuluHorseModel.java": {
+    "mtime": 1794898393.668854,
+    "seen": 1794915623.0452578,
+    "ast_hash": "7f667b1a98255a5801fcecb97c0cb2b0",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/client/entity/ZuluHorseRenderer.java": {
+    "mtime": 1794898393.6689382,
+    "seen": 1794915623.0452585,
+    "ast_hash": "e3d4b45fe48dabd3cbd0e13c23ed158a",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/entity/AlligatorEntity.java": {
+    "mtime": 1794898834.1661742,
+    "seen": 1794915623.045262,
+    "ast_hash": "4455f7dde5fab542c14328f3e47eeb42",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/entity/BearEntity.java": {
+    "mtime": 1794898834.1661742,
+    "seen": 1794915623.0452638,
+    "ast_hash": "9284ea57509950eb53acba2cd99b65af",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/entity/CentipedeEntity.java": {
+    "mtime": 1794915242.1772423,
+    "seen": 1794915623.0452673,
+    "ast_hash": "b1494df25a017a672fbec20c80d30fce",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/entity/ElephantEntity.java": {
+    "mtime": 1794898834.1664562,
+    "seen": 1794915623.04527,
+    "ast_hash": "cba24af86d11f802ced0d5153b75b0d9",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/entity/GiraffeEntity.java": {
+    "mtime": 1794898834.1664562,
+    "seen": 1794915623.0452735,
+    "ast_hash": "fa88ab5c0fa510b25c033f2e32208940",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/entity/GorillaEntity.java": {
+    "mtime": 1794898834.1664562,
+    "seen": 1794915623.0452747,
+    "ast_hash": "291dbf2905d60d72c6eabb69ba6ec9b9",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/entity/HauntedArmorEntity.java": {
+    "mtime": 1794915242.1772423,
+    "seen": 1794915623.0452757,
+    "ast_hash": "3b545e534ea4095106a3df4d96cd38a2",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/entity/LizardEntity.java": {
+    "mtime": 1794915242.1773825,
+    "seen": 1794915623.0452776,
+    "ast_hash": "10c6eef9a2649ae6e4f85b9b53d49d7b",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/entity/LizardSpitEntity.java": {
+    "mtime": 1794915242.1773825,
+    "seen": 1794915623.0452788,
+    "ast_hash": "20506301f29b23da4f3b9c0d04b10773",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/entity/MammothEntity.java": {
+    "mtime": 1794898834.1665971,
+    "seen": 1794915623.0452795,
+    "ast_hash": "5abb8dd468ca8c20b41516aaaf696772",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/entity/MimicEntity.java": {
+    "mtime": 1794915242.1773825,
+    "seen": 1794915623.0452807,
+    "ast_hash": "ec51f8f2c53a6caae7481477de0c2de4",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/entity/MinotaurEntity.java": {
+    "mtime": 1794915242.1773825,
+    "seen": 1794915623.0452816,
+    "ast_hash": "22e0c22e9640b6fee6f05e78c03d4f60",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/entity/MummyEntity.java": {
+    "mtime": 1794915242.1773825,
+    "seen": 1794915623.0452826,
+    "ast_hash": "d0edc6e69520c7ae1ea7f6c21b3421c4",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/entity/MummyPharaohEntity.java": {
+    "mtime": 1794915242.177716,
+    "seen": 1794915623.0452833,
+    "ast_hash": "715b9e572110c53db831c6e717a7baa1",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/entity/RhinoEntity.java": {
+    "mtime": 1794898834.1665971,
+    "seen": 1794915623.0452895,
+    "ast_hash": "d67ecc09e52425ef91dab429d293b359",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/entity/SandwormEntity.java": {
+    "mtime": 1794915242.177716,
+    "seen": 1794915623.0452902,
+    "ast_hash": "468fad0d00962d004839ce13334bfacb",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/entity/TreeEntEntity.java": {
+    "mtime": 1794898834.1665971,
+    "seen": 1794915623.0452912,
+    "ast_hash": "945b30c413c9c5223147b76b48414e0f",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/entity/ZuluBigAnimal.java": {
+    "mtime": 1794898834.1667929,
+    "seen": 1794915623.045293,
+    "ast_hash": "d6ec1fc2fd3e74d0d801bde75210f423",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/entity/ZuluHorseEntity.java": {
+    "mtime": 1794898393.669055,
+    "seen": 1794915623.0452938,
+    "ast_hash": "095b373eccfa545c57895a66ba10d35f",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/java/projectzulu/entity/ZuluMonster.java": {
+    "mtime": 1794915242.1778705,
+    "seen": 1794915623.045296,
+    "ast_hash": "ea133a0081000b30ad0a3a34a6d64233",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/resources/assets/projectzulu/sounds.json": {
+    "mtime": 1794915258.1280777,
+    "seen": 1794915623.0454457,
+    "ast_hash": "e0bf562ea1e1fea65f2678d52084777c",
+    "semantic_hash": ""
+  },
+  "mods/projectzulu/src/main/resources/data/minecraft/tags/entity_type/undead.json": {
+    "mtime": 1794915258.126113,
+    "seen": 1794915623.0454469,
+    "ast_hash": "5dc73fb7a15c9a518c0ff0d2eeaed686",
+    "semantic_hash": ""
+  },
+  "tools/modelbase_to_layer.py": {
+    "mtime": 1794915509.547095,
+    "seen": 1794915623.0459735,
+    "ast_hash": "608e35ca5e9ba82f0be9c82b96513074",
     "semantic_hash": ""
   }
 }
