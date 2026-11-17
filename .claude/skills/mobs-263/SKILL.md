@@ -61,3 +61,15 @@ Abschnitt „ENTITIES“ in `mods/natura/tools/gen.py`.
 - Auf Lava fahren: `canBoatInFluid(FluidState)` und `canBoatInFluid(FluidType)` überschreiben (NeoForge, `BloodwoodBoat`).
 - Alte 64x32-Boottexturen: eigenes Modell nach `ModelBoat` von 1.5.2, Renderer von `AbstractBoatRenderer` ableiten
   (übernimmt Drehung um 90° und Höhe 0.375 der 26.3-Boote), siehe `NaturaBoatModel`/`NaturaBoatRenderer`.
+
+## Stolperfallen (aus Teil 9, Harken Scythe)
+
+- `registerGoals` läuft im Konstruktor von `Mob` vor den eigenen Feldern: Ziele, die eigene Felder brauchen, im
+  eigenen Konstruktor nach `super(...)` anlegen.
+- Zähmbare Mobs: `TamableAnimal`; Lebenspunkte abhängig vom Zähmen über `applyTamingSideEffects`.
+- Adulte Variantensounds (Huhn, Kuh, Schwein, Wolf, Katze) gibt es nur je Variante: per
+  `BuiltInRegistries.SOUND_EVENT.getValue(Identifier.withDefaultNamespace("entity.cow.ambient"))` holen.
+- Ausrüstung aus dem Konstruktor geht bei `/summon` verloren: zusätzlich in `finalizeSpawn` setzen.
+- Slime-Unterklassen: `setCubeMobHealth`, `getParticleType` überschreiben, eigene Teilung in `remove`.
+- Durchscheinende Modelle („spectral“): `RenderTypes.entityTranslucent(texture)` im Renderer. Vorbild
+  `mods/harkenscythe/.../client/mob`.

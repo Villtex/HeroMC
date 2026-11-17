@@ -90,3 +90,9 @@ Logik nur `!level.isClientSide()`. Entitäten: `PlayerInteractEvent.EntityIntera
 - `MobEffectInstance` klemmt Stufen auf 0..255: negative Stufen (Sprungkraft −2) → Attribut-Modifikator (`Attributes.JUMP_STRENGTH`).
 - `PushReaction.DESTROY` heißt `POPPED`. `BaseEntityBlock` braucht keinen `codec()` mehr.
 - `JAVA_TOOL_OPTIONS` nicht leeren: Er trägt den Proxy, sonst schlägt `createMinecraftArtifacts` fehl.
+
+## Rüstungstextur je Färbefarbe
+
+Hatte das Original eine eigene Texturdatei je Farbe (`getArmorTexture` mit Metadaten/NBT), in 26.3
+`IClientItemExtensions.getArmorTexture` überschreiben (Vorbild Soulweave/Bloodweave in `mods/harkenscythe`).
+`original-assets.txt` nimmt pro Quelldatei nur ein Ziel: mehrfach gebrauchte Texturen im Modell referenzieren.

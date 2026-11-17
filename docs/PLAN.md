@@ -46,7 +46,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 7 | Natura | ~20.000 | 1, 3 | Opus 5.5, mittel | ✅ erledigt |
 | 7b | Natura-Nether: 1.5.2-Nether (Netherite-Gelände, Höhlen, Netherfestung) in worldgen152, Nether-Generatoren von Natura | ~3.000 | 2, 7 | Fable 5.2, hoch | ✅ erledigt |
 | 8 | Artifice, CoFHCore (nur was das Pack nutzt) | ~27.000 | 1, 3 | Opus 5.5, mittel | ✅ erledigt |
-| 9 | Harken Scythe, Asgard Shield, Asgard Shield Addons | ~30.000 | 3 | Opus 5.5, mittel | offen |
+| 9 | Harken Scythe, Asgard Shield, Asgard Shield Addons | ~30.000 | 3 | Opus 5.5, mittel | ✅ erledigt |
 | 10 | Project Zulu A: Kreaturen | ~25.000 | 3 | Fable 5.2, hoch | offen |
 | 11 | Project Zulu B: Blöcke, Items, Weltgenerierung, Spawns | ~18.000 | 10 | Opus 5.5, mittel | offen |
 | 12 | Better Dungeons A: Bau-Engine und Gebäude-Import | ~18.000 | 1 | Fable 5.2, hoch | offen |
@@ -637,6 +637,45 @@ eigener Teil.
 - Harken Scythe: Seelen, Sensen, Altäre, Zauber.
 - Asgard Shield samt Farb-API.
 - Die drei Addons: Nether-Ender, Hallowed, HarkenScythe.
+
+**Status: erledigt.** Teilprojekte `mods/harkenscythe` (`harkenscythe_core`), `mods/asgardshield` (`asgardshield_core`)
+und `mods/asgardshield-addons` (`asaddons`, alle drei Addons in einem Mod, braucht `asgardshield`, Harken-Teile über
+IDs und `neoforge:mod_loaded`). Einzelheiten zu Schnittstellen: `mods/harkenscythe/NOTES-altar.md`, `NOTES-mobs.md`.
+
+- **Harken Scythe, Kern:** alle Items/Blöcke (Sensen und Gleven mit Lade-Angriff, Keeper/Vessel mit Füllstand über die
+  Haltbarkeit wie 1.5.2, Bücher, Necronomicon-Ritual, Talismane, Amulette, Livingmetal/Biomass mit Selbstreparatur,
+  Soulweave/Bloodweave/Spectral-Rüstungen mit Färben, 16 Schädel als Helm und Block, Tiegel, Seelenlicht, Blutspritzer,
+  Creep, Biomasse-Pflanze), 12 Augments als datengetriebene Verzauberungen (nicht am Zaubertisch; Ward/Sanguinary/
+  Vitality/Exude auch für Asgard-Schilde und Riesenschwerter), alle Ereignisse (Seelenernte mit Harvest Moon,
+  Blutspritzer, Talisman-Rettung, Decapitate, Afterlife …), Seelen-Entitäten, Handel, Spawn der verlorenen Seele,
+  Necronomicon-Seite in Strukturtruhen über `OldLoot` (`harkenscythe.gen.HSWorldGen`, in `expect.sh`/`Expect.java`),
+  Bonus-Truhe per Loot-Modifier. JEI-Plugin.
+- **Altäre:** Altar of Souls / Altar of Blood mit Block-Entity, Menü, Screen, schwebendem Buch, eigenem Rezepttyp
+  `harkenscythe_core:altar` (28 JSONs inkl. Augment-Würfel), JEI-Kategorien. Essenz aus Tiegeln im Ring wie 1.5.2.
+- **Mobs:** 22 Spectral-Tiere + Spectral Miner (zähmbar, Basis `SpectralPet` auf `TamableAnimal`), böser Miner,
+  Harbinger (Seelenernte → Spectral-Minions), Ektoplasma/Hämoglobin (Slime); Modelle Würfel für Würfel nach 1.5.2,
+  durchscheinend; Spawn-Eier; Harbinger-Spawn (Gewicht 1 → 10).
+- **Asgard Shield:** Schilde (4 Stufen + Gilded), 5 Riesenschwerter, Guard Gauge/Guard Break/Vanguard auf dem Server
+  (Sync-Payload), alle Perks, HUD mit Original-Texturen, Farb-API (Client-Konfig, Tint-Quelle), Färben, Gilding-Rezept.
+  Addons: 18 Items mit Originalrezepten.
+- **Prüfung:** `clean pack` grün; Testserver bis `Done` ohne Fehler; per RCON (Crafter, temporäre Testbefehle, nicht
+  committet): Rezepte, Seelenernte, Blutspritzer, Augments, Talisman, Keeper, Altar-Rezepte (je 10.000 Würfe Verteilung
+  wie Original), alle 26 Mobs `/summon`, Harbinger-Minions, Slimes aus Tiegeln. Kern gegen Spiel, Seed 1234,
+  `structures 220`: 36 Chunks, 211.284 Blöcke, 127 Truhen/Spawner/Entitäten, 0 Abweichungen.
+
+**Offen / bewusst abweichend:**
+
+- Client-Prüfung offen: Modelle und Animationen aller Mobs (Testclient lädt bis zum Titelbildschirm), Seelen-Kristall,
+  Schädel-Renderer, Tiegel, Blutschichten, Altar-GUI und Buch, gefärbte Rüstungen, HUDs (Trinkzähler, Guard Gauge,
+  Vanguard), Schild-Tints und Blockhaltung, JEI-Seiten. Mit Spieler ungetestet: Zähmen, Blocken, Amulett-Teleport.
+- Nicht gezeichnet: Schweinesattel der Spectral Pig, Block in der Hand des Spectral Enderman, Trank der Spectral Witch.
+- Asgard Shield: Gilding ergibt das richtige Gilded-Schild (Original „ID + 1“ traf mit den Pack-IDs falsche Items);
+  Guard Gauge läuft serverseitig; Vanguard-Effekte wirken wirklich (1.5.2 nur clientseitig); Auren je Spieler;
+  nur die Haupthand blockt.
+- Harken Scythe: Seelenlicht bleibt auf dem Client (1.5.2 entfernte es per Desync); Spectral-Rüstung mit Leder-Rüstungswerten;
+  Handel als zusätzliche Auswahl des Bibliothekars; tote Handler/Achievements des Originals nicht portiert;
+  Altar-Augments nur auf unverzauberte Gegenstände; orange Wolle wie im Original ohne Rezept; Harbinger teleportiert
+  nicht (lief im Original nie); Halsband/Katzenfell/Schleimwert werden gespeichert.
 
 ## Teil 10 und 11 – Project Zulu
 

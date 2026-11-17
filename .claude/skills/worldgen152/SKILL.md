@@ -199,3 +199,10 @@ Teil 7b), ein Abgleich mit Original-Welten ist dort nicht möglich.
   Schiene nebenan nachbearbeitet wird; `verify_blocks.py` zählt sie als „vines without hold gone“.
 - **Vergleich am Server:** Der Abgleich stellt `random_tick_speed` auf 0. Blöcke, die fließendes Wasser erreicht,
   zählt er getrennt und nicht als Abweichung.
+
+## Truhenbeute eines Mods (ChestGenHooks)
+
+`ChestGenHooks.getInfo(...).addItem` → `OldLoot.<KATEGORIE>.add(mod, new OldStack(id + 256, meta, n), min, max, gewicht)`
+in einer Klasse ohne Spielklassen unter `<mod>/gen`. Zusätzlich eintragen: Pfad in `tools/expect.sh` (find-Zeile) und
+`<Klasse>.register();` in `tools/java/Expect.java`, sonst meldet `verify_blocks.py` CHEST MISMATCH. Die Bonus-Truhe
+erzeugt worldgen152 nicht: dafür einen Global Loot Modifier. Vorbild `harkenscythe.gen.HSWorldGen`.

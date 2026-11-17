@@ -76,3 +76,12 @@ Inventory Tweaks (`mods/inventorytweaks`) zeigt Sortier-Knöpfe und sortiert per
 Menüs, die von `ChestMenu`, `ShulkerBoxMenu` oder `DispenserMenu` erben, erkennt es selbst. Eigene Truhen-Screens
 (BetterStorage, Backpacks, BiblioCraft) im `InterModEnqueueEvent` anmelden, ohne Abhängigkeit:
 `InterModComms.sendTo("inventorytweaks", "chest", () -> "voller.Klassenname.DesScreens;9")` (Zahl = Zeilenbreite).
+
+## Eigener Rezepttyp für eine Maschine (Vorbild: Harken-Scythe-Altäre)
+
+- Typ + Serializer registrieren, Rezepte als Daten-JSON (`gen.py`). `placementInfo()` → `PlacementInfo.create(ingredient)`,
+  sonst warnt der Server „can't be placed“.
+- Rezepte zum Client: `OnDatapackSyncEvent` → `event.sendRecipes(TYPE)`; auf dem Client `RecipesReceivedEvent`
+  (Priorität HIGHEST, vor JEI) zwischenspeichern. JEI-Kategorie mit `IRecipeHolderType`.
+- Vom Server berechnete Werte (Essenz, Kosten, Rezeptnummer) über `ContainerData` an den Screen, Knopf über
+  `clickMenuButton` – keine eigenen Pakete nötig. `mods/harkenscythe/.../altar`.

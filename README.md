@@ -41,6 +41,7 @@ Der Port ist in Teile aufgeteilt, die je in eine Session passen: [`docs/PLAN.md`
 | `.claude/skills/menu-gui-263/` | Projekt-Skill: eigene GUI mit Container (Menü, Screen, Pakete Client → Server, Server-Konfiguration für die Vorschau im Client) |
 | `.claude/skills/wood-sets-263/` | Projekt-Skill: Holzarten und Pflanzen eines Mods (Planken, Stämme, Blätter, Setzlinge, Treppen bis Werkbänke, Brennwert, Rezeptkonflikte mit Vanilla), Vorlage Natura |
 | `.claude/skills/mobs-263/` | Projekt-Skill: Mobs, Spawn-Eier, Boote, Mob-Drops und Spawns (Biome-Modifier), Vorlage Natura |
+| `.claude/skills/server-tests-263/` | Projekt-Skill: Verhalten ohne Spieler am Testserver prüfen (Rezepte über Crafter + RCON, temporärer FakePlayer-Befehl, forceloaded Chunks) |
 | `.claude/skills/treecapitator-trees/` | Projekt-Skill: Bäume und Äxte eines Mods bei TreeCapitator anmelden (Daten-Registry `treecapitator:tree`, Item-Tags) |
 | `.claude/skills/headless-client/` | Projekt-Skill: Testclient im Cloud-Container ohne Bildschirm starten (Xvfb, `SDL_VIDEO_FORCE_EGL=1`, Screenshots, xdotool) |
 
@@ -146,7 +147,7 @@ Prüfen: `tools/expect.sh 1234 nether structures 60 > expect.txt`, dann `verify_
 | Mod | Archiv, Version | Autor (Original) | Zeilen | Status |
 |---|---|---|---:|---|
 | RottenFleshToLeather | `flesh2leather` 1.5.1 | thesbros | 38 | ✅ portiert, am Server verifiziert |
-| Asgard Shield Addons (Nether-Ender / Hallowed / HarkenScythe) | `asgardshield-addons` 2.0.0 | Jade Knightblazer | 169 | offen |
+| Asgard Shield Addons (Nether-Ender / Hallowed / HarkenScythe) | `asgardshield-addons` 2.0.0 | Jade Knightblazer | 169 | ✅ Teil 9 (Client-Prüfung offen) |
 | Chest Transporter | `chesttransporter` 1.1.6 | cubex2 | 488 | ✅ portiert, Server startet (Spieler-Aktionen und Client-Prüfung offen) |
 | BuffBar | `buffbar` 0.7.1 | — | 571 | ✅ portiert (nur Client, Client-Prüfung offen) |
 | ArmorBar | `armorbar` 0.7.1 | — | 683 | ✅ portiert (nur Client, Client-Prüfung offen) |
@@ -158,7 +159,7 @@ Prüfen: `tools/expect.sh 1234 nether structures 60 > expect.txt`, dann `verify_
 | offLawn | `offlawn` 1.5.1.r02 | Rhodox, Slinky | 1.850 | ✅ portiert, am Server verifiziert (Spieler-Aktionen und Client-Prüfung offen) |
 | Wild Caves 3 | `wildcaves3` 0.4.2 | Alexmania | 2.094 | ✅ portiert, am Server verifiziert (Client-Prüfung offen) |
 | Backpacks | `backpacks` 1.12.13 | Eydamos | 2.331 | offen |
-| Asgard Shield | `asgardshield` 2.0.4 | Jade Knightblazer | 2.842 | offen |
+| Asgard Shield | `asgardshield` 2.0.4 | Jade Knightblazer | 2.842 | ✅ Teil 9 (Schilde, Riesenschwerter, Guard-Mechanik, Farb-API; Client-Prüfung offen) |
 | Ruins | `ruins` 1.5.2 | d00dv4d3r, kolt666, AtomicStryker | 2.951 | offen |
 | bspkrsCore | `bspkrscore` 2.09 | DaftPVF, bspkrs | 3.066 | ✅ portiert, soweit TreeCapitator es braucht (Block-Angaben) |
 | Enchanting Plus | `enchantingplus` 1.15.4 | xkyouchoux, odininon, GnR Slash | 3.342 | ✅ portiert, Server startet (GUI nur im Client prüfbar) |
@@ -188,7 +189,7 @@ Prüfen: `tools/expect.sh 1234 nether structures 60 > expect.txt`, dann `verify_
 | Not Enough Items | `nei` 1.5.2.28 | ChickenBones | 16.239 | entfällt, stattdessen JEI |
 | Natura | `natura` 2.1.5.1 | mDiyo | 20.430 | ✅ Teil 7, Nether ✅ Teil 7b |
 | BiblioCraft | `bibliocraft` 1.3.3 | Nuchaz | 20.970 | offen |
-| Harken Scythe | `harkenscythe` 2.1.6 | Jade Knightblazer | 27.284 | offen |
+| Harken Scythe | `harkenscythe` 2.1.6 | Jade Knightblazer | 27.284 | ✅ Teil 9 (Seelen/Blut, Altäre, 26 Mobs; Client-Prüfung offen) |
 | Better Dungeons (Chocolate Quest) | `betterdungeons` 1.09b | Chocolatin | 36.118 | offen |
 | Project Zulu | `projectzulu` 1.0.3.8 | — | 42.845 | offen |
 | The Twilight Forest | `twilightforest` 1.18.1 | Benimatic | 50.329 | zurückgestellt |
