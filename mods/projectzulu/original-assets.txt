@@ -25,6 +25,7 @@ mods/projectzulublock/textures/items/powderslush.png -> assets/projectzulu/textu
 mods/projectzulublock/textures/items/glowinggoo.png -> assets/projectzulu/textures/item/glowing_goo.png
 mods/projectzulublock/textures/items/smallunhealthyheart.png -> assets/projectzulu/textures/item/small_unhealthy_heart.png
 mods/projectzulublock/textures/items/largeunhealthyheart.png -> assets/projectzulu/textures/item/large_unhealthy_heart.png
+mods/projectzulucore/gui/guielements.png -> assets/projectzulu/textures/gui/zulu_effects.png
 mods/projectzulumob/armadillo.png -> assets/projectzulu/textures/entity/armadillo.png
 mods/projectzulumob/finch_red.png -> assets/projectzulu/textures/entity/finch_red.png
 mods/projectzulumob/finch_green.png -> assets/projectzulu/textures/entity/finch_green.png
