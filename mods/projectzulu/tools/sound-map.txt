@@ -20,3 +20,12 @@ beaver_living: beaverliving.ogg
 penguin_hurt: penguinhurt.ogg
 ostrich_living: ostrichlivingsound.ogg
 ostrich_hurt: ostrichhurtsound.ogg
+bear_living: bearliving.ogg
+gorilla_hurt: gorillahurt1.ogg
+rhino_living: rhinolivingsound.ogg
+rhino_hurt: rhinohurtsound.ogg
+crocodile_living: crocoodileliving.ogg
+elephant_living: elephantlivingsound.ogg
+elephant_hurt: elephanthurtsound.ogg
+mammoth_living: mammothliving.ogg
+treeent_living: treeentliving.ogg
