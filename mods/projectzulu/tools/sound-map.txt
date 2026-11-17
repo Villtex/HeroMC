@@ -20,3 +20,5 @@ beaver_living: beaverliving.ogg
 penguin_hurt: penguinhurt.ogg
 ostrich_living: ostrichlivingsound.ogg
 ostrich_hurt: ostrichhurtsound.ogg
+horse_living: horse1.ogg,horse2.ogg,horse3.ogg,horse4.ogg
+horse_hurt: horsehurt1.ogg
