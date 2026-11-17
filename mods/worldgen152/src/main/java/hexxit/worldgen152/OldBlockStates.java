@@ -6,9 +6,12 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.AttachFace;
+import net.minecraft.world.level.block.state.properties.BedPart;
+import net.minecraft.world.level.block.state.properties.ComparatorMode;
 import net.minecraft.world.level.block.state.properties.DoorHingeSide;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.Half;
+import net.minecraft.world.level.block.state.properties.PistonType;
 import net.minecraft.world.level.block.state.properties.RailShape;
 import net.minecraft.world.level.block.state.properties.SlabType;
 
@@ -75,7 +78,8 @@ public final class OldBlockStates {
         registerMeta(18, meta -> new Block[] {Blocks.OAK_LEAVES, Blocks.SPRUCE_LEAVES, Blocks.BIRCH_LEAVES, Blocks.JUNGLE_LEAVES}[meta & 3]
                 .defaultBlockState());
         block(21, Blocks.LAPIS_ORE);
-        block(24, Blocks.SANDSTONE);
+        // sandstone: 0 plain, 1 chiseled, 2 smooth (today cut); other values drew the plain texture
+        registerMeta(24, meta -> (meta == 1 ? Blocks.CHISELED_SANDSTONE : meta == 2 ? Blocks.CUT_SANDSTONE : Blocks.SANDSTONE).defaultBlockState());
         // tall grass: 0 was the dead shrub, 1 grass, 2 fern
         registerMeta(31, meta -> (meta == 2 ? Blocks.FERN : meta == 1 ? Blocks.SHORT_GRASS : Blocks.DEAD_BUSH).defaultBlockState());
         block(32, Blocks.DEAD_BUSH);
@@ -134,6 +138,152 @@ public final class OldBlockStates {
         block(129, Blocks.EMERALD_ORE);
         block(103, Blocks.MELON);   // ExtrabiomesXL melon patches
         structureBlocks();
+        otherVanillaBlocks();
+    }
+
+    /** The remaining vanilla blocks of 1.5.2, which templates (Better Dungeons, Ruins) place. */
+    private static void otherVanillaBlocks() {
+        // saplings: metadata 0-3 the wood, bit 8 the second growth stage
+        registerMeta(6, meta -> new Block[] {Blocks.OAK_SAPLING, Blocks.SPRUCE_SAPLING, Blocks.BIRCH_SAPLING, Blocks.JUNGLE_SAPLING}[meta & 3]
+                .defaultBlockState().setValue(BlockStateProperties.STAGE, (meta & 8) != 0 ? 1 : 0));
+        block(19, Blocks.SPONGE);
+        block(20, Blocks.GLASS);
+        block(22, Blocks.LAPIS_BLOCK);
+        block(25, Blocks.NOTE_BLOCK);
+        // bed: metadata 0-3 the direction from foot to head (south, west, north, east), bit 4 occupied, bit 8 the head
+        registerMeta(26, meta -> Blocks.BED.red().defaultBlockState()
+                .setValue(BlockStateProperties.HORIZONTAL_FACING, DIRECTION[meta & 3])
+                .setValue(BlockStateProperties.OCCUPIED, (meta & 4) != 0)
+                .setValue(BlockStateProperties.BED_PART, (meta & 8) != 0 ? BedPart.HEAD : BedPart.FOOT));
+        // powered, detector and activator rails: metadata 0-5 the straight shapes of the rail, bit 8 powered
+        registerMeta(27, meta -> straightRail(Blocks.POWERED_RAIL, meta));
+        registerMeta(28, meta -> straightRail(Blocks.DETECTOR_RAIL, meta));
+        registerMeta(157, meta -> straightRail(Blocks.ACTIVATOR_RAIL, meta));
+        // piston head: metadata 0-5 facing, bit 8 sticky
+        registerMeta(34, meta -> Blocks.PISTON_HEAD.defaultBlockState()
+                .setValue(BlockStateProperties.FACING, FACING[Math.min(meta & 7, 5)])
+                .setValue(BlockStateProperties.PISTON_TYPE, (meta & 8) != 0 ? PistonType.STICKY : PistonType.DEFAULT));
+        // a block being moved by a piston only exists with its tile entity, which generation never writes
+        register(36, Blocks.AIR::defaultBlockState);
+        block(41, Blocks.GOLD_BLOCK);
+        block(42, Blocks.IRON_BLOCK);
+        block(45, Blocks.BRICKS);
+        block(57, Blocks.DIAMOND_BLOCK);
+        registerMeta(62, meta -> Blocks.FURNACE.defaultBlockState()
+                .setValue(BlockStateProperties.HORIZONTAL_FACING, CHEST_FACING[meta < 6 ? meta : 0])
+                .setValue(BlockStateProperties.LIT, true));
+        // signs: standing ones with the rotation in sixteenths, wall signs with the side they face (2-5)
+        registerMeta(63, meta -> Blocks.OAK_SIGN.defaultBlockState().setValue(BlockStateProperties.ROTATION_16, meta));
+        registerMeta(68, meta -> Blocks.OAK_WALL_SIGN.defaultBlockState()
+                .setValue(BlockStateProperties.HORIZONTAL_FACING, CHEST_FACING[meta < 6 ? meta : 0]));
+        registerMeta(74, meta -> Blocks.REDSTONE_ORE.defaultBlockState().setValue(BlockStateProperties.LIT, true));
+        registerMeta(75, meta -> torch(Blocks.REDSTONE_TORCH, Blocks.REDSTONE_WALL_TORCH, meta).setValue(BlockStateProperties.LIT, false));
+        registerMeta(76, meta -> torch(Blocks.REDSTONE_TORCH, Blocks.REDSTONE_WALL_TORCH, meta).setValue(BlockStateProperties.LIT, true));
+        registerMeta(84, meta -> Blocks.JUKEBOX.defaultBlockState().setValue(BlockStateProperties.HAS_RECORD, meta != 0));
+        // 1.5.2 portals kept no metadata; their plane came from the obsidian around them
+        block(90, Blocks.NETHER_PORTAL);
+        registerMeta(91, meta -> Blocks.JACK_O_LANTERN.defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_FACING, DIRECTION[meta & 3]));
+        registerMeta(92, meta -> Blocks.CAKE.defaultBlockState().setValue(BlockStateProperties.BITES, Math.min(meta, 6)));
+        registerMeta(94, meta -> Blocks.REPEATER.defaultBlockState()
+                .setValue(BlockStateProperties.HORIZONTAL_FACING, DIRECTION[meta & 3])
+                .setValue(BlockStateProperties.DELAY, (meta >> 2) + 1)
+                .setValue(BlockStateProperties.POWERED, true));
+        // the April fools' locked chest became an ordinary chest
+        block(95, Blocks.CHEST);
+        // trapdoor: metadata 0-3 the side of the block its hinge is on (south, north, east, west), bit 4 open, bit 8 upper half
+        registerMeta(96, meta -> Blocks.OAK_TRAPDOOR.defaultBlockState()
+                .setValue(BlockStateProperties.HORIZONTAL_FACING, new Direction[] {Direction.NORTH, Direction.SOUTH, Direction.WEST, Direction.EAST}[meta & 3])
+                .setValue(BlockStateProperties.OPEN, (meta & 4) != 0)
+                .setValue(BlockStateProperties.HALF, (meta & 8) != 0 ? Half.TOP : Half.BOTTOM));
+        registerMeta(104, meta -> Blocks.PUMPKIN_STEM.defaultBlockState().setValue(BlockStateProperties.AGE_7, meta & 7));
+        registerMeta(105, meta -> Blocks.MELON_STEM.defaultBlockState().setValue(BlockStateProperties.AGE_7, meta & 7));
+        // fence gate: metadata 0-3 the direction (south, west, north, east), bit 4 open
+        registerMeta(107, meta -> Blocks.OAK_FENCE_GATE.defaultBlockState()
+                .setValue(BlockStateProperties.HORIZONTAL_FACING, DIRECTION[meta & 3])
+                .setValue(BlockStateProperties.OPEN, (meta & 4) != 0));
+        block(116, Blocks.ENCHANTING_TABLE);
+        // brewing stand: bits 1, 2, 4 show a bottle in slot 0, 1, 2
+        registerMeta(117, meta -> Blocks.BREWING_STAND.defaultBlockState()
+                .setValue(BlockStateProperties.HAS_BOTTLE_0, (meta & 1) != 0)
+                .setValue(BlockStateProperties.HAS_BOTTLE_1, (meta & 2) != 0)
+                .setValue(BlockStateProperties.HAS_BOTTLE_2, (meta & 4) != 0));
+        block(119, Blocks.END_PORTAL);
+        block(121, Blocks.END_STONE);
+        block(122, Blocks.DRAGON_EGG);
+        registerMeta(123, meta -> Blocks.REDSTONE_LAMP.defaultBlockState().setValue(BlockStateProperties.LIT, false));
+        registerMeta(124, meta -> Blocks.REDSTONE_LAMP.defaultBlockState().setValue(BlockStateProperties.LIT, true));
+        // double wooden slab: metadata 0-3 the wood; other values drew oak planks
+        registerMeta(125, meta -> new Block[] {Blocks.OAK_SLAB, Blocks.SPRUCE_SLAB, Blocks.BIRCH_SLAB, Blocks.JUNGLE_SLAB}[(meta & 7) < 4 ? meta & 7 : 0]
+                .defaultBlockState().setValue(BlockStateProperties.SLAB_TYPE, SlabType.DOUBLE));
+        registerMeta(130, meta -> Blocks.ENDER_CHEST.defaultBlockState()
+                .setValue(BlockStateProperties.HORIZONTAL_FACING, CHEST_FACING[meta < 6 ? meta : 0]));
+        block(133, Blocks.EMERALD_BLOCK);
+        block(137, Blocks.COMMAND_BLOCK);
+        block(138, Blocks.BEACON);
+        registerMeta(139, meta -> (meta == 1 ? Blocks.MOSSY_COBBLESTONE_WALL : Blocks.COBBLESTONE_WALL).defaultBlockState());
+        registerMeta(143, meta -> button(Blocks.OAK_BUTTON, meta));
+        // anvil: metadata 0-3 the direction, the bits above it the damage (0 whole, 1 chipped, 2 damaged)
+        registerMeta(145, meta -> new Block[] {Blocks.ANVIL, Blocks.CHIPPED_ANVIL, Blocks.DAMAGED_ANVIL}[Math.min(meta >> 2, 2)]
+                .defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_FACING, DIRECTION[meta & 3]));
+        registerMeta(146, meta -> Blocks.TRAPPED_CHEST.defaultBlockState()
+                .setValue(BlockStateProperties.HORIZONTAL_FACING, CHEST_FACING[meta < 6 ? meta : 0]));
+        // weighted pressure plates and the daylight sensor keep their output power in the metadata
+        registerMeta(147, meta -> Blocks.LIGHT_WEIGHTED_PRESSURE_PLATE.defaultBlockState().setValue(BlockStateProperties.POWER, meta));
+        registerMeta(148, meta -> Blocks.HEAVY_WEIGHTED_PRESSURE_PLATE.defaultBlockState().setValue(BlockStateProperties.POWER, meta));
+        // comparator: metadata 0-3 the direction (as the repeater), bit 4 subtract mode, bit 8 powered (always for id 150)
+        registerMeta(149, meta -> comparator(meta, (meta & 8) != 0));
+        registerMeta(150, meta -> comparator(meta, true));
+        registerMeta(151, meta -> Blocks.DAYLIGHT_DETECTOR.defaultBlockState().setValue(BlockStateProperties.POWER, meta));
+        block(152, Blocks.REDSTONE_BLOCK);
+        // hopper: metadata 0 and 2-5 the side it feeds (1, up, does not exist), bit 8 switched off by redstone
+        registerMeta(154, meta -> Blocks.HOPPER.defaultBlockState()
+                .setValue(BlockStateProperties.FACING_HOPPER, (meta & 7) >= 2 && (meta & 7) <= 5 ? FACING[meta & 7] : Direction.DOWN)
+                .setValue(BlockStateProperties.ENABLED, (meta & 8) == 0));
+        // quartz: 0 plain, 1 chiseled, 2-4 pillar along y, x, z
+        registerMeta(155, meta -> switch (meta) {
+            case 1 -> Blocks.CHISELED_QUARTZ_BLOCK.defaultBlockState();
+            case 2 -> Blocks.QUARTZ_PILLAR.defaultBlockState().setValue(BlockStateProperties.AXIS, Direction.Axis.Y);
+            case 3 -> Blocks.QUARTZ_PILLAR.defaultBlockState().setValue(BlockStateProperties.AXIS, Direction.Axis.X);
+            case 4 -> Blocks.QUARTZ_PILLAR.defaultBlockState().setValue(BlockStateProperties.AXIS, Direction.Axis.Z);
+            default -> Blocks.QUARTZ_BLOCK.defaultBlockState();
+        });
+        stairs(156, Blocks.QUARTZ_STAIRS);
+        registerMeta(158, meta -> Blocks.DROPPER.defaultBlockState().setValue(BlockStateProperties.FACING, FACING[Math.min(meta & 7, 5)]));
+    }
+
+    /** Torch metadata: 1-4 on a wall, facing east, west, south, north (away from the block it is on); else standing. */
+    private static BlockState torch(Block standing, Block wall, int meta) {
+        return switch (meta) {
+            case 1 -> wall.defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST);
+            case 2 -> wall.defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST);
+            case 3 -> wall.defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH);
+            case 4 -> wall.defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH);
+            default -> standing.defaultBlockState();
+        };
+    }
+
+    /** Button metadata: 1-4 the side it faces (east, west, south, north), bit 8 pressed; 1.5.2 buttons only sat on walls. */
+    private static BlockState button(Block block, int meta) {
+        return block.defaultBlockState()
+                .setValue(BlockStateProperties.ATTACH_FACE, AttachFace.WALL)
+                .setValue(BlockStateProperties.POWERED, (meta & 8) != 0)
+                .setValue(BlockStateProperties.HORIZONTAL_FACING,
+                        new Direction[] {Direction.NORTH, Direction.EAST, Direction.WEST, Direction.SOUTH, Direction.NORTH}[Math.min(meta & 7, 4)]);
+    }
+
+    private static BlockState straightRail(Block block, int meta) {
+        RailShape[] shapes = {RailShape.NORTH_SOUTH, RailShape.EAST_WEST, RailShape.ASCENDING_EAST, RailShape.ASCENDING_WEST,
+                RailShape.ASCENDING_NORTH, RailShape.ASCENDING_SOUTH};
+        return block.defaultBlockState()
+                .setValue(BlockStateProperties.RAIL_SHAPE_STRAIGHT, shapes[(meta & 7) < 6 ? meta & 7 : 0])
+                .setValue(BlockStateProperties.POWERED, (meta & 8) != 0);
+    }
+
+    private static BlockState comparator(int meta, boolean powered) {
+        return Blocks.COMPARATOR.defaultBlockState()
+                .setValue(BlockStateProperties.HORIZONTAL_FACING, DIRECTION[meta & 3])
+                .setValue(BlockStateProperties.MODE_COMPARATOR, (meta & 4) != 0 ? ComparatorMode.SUBTRACT : ComparatorMode.COMPARE)
+                .setValue(BlockStateProperties.POWERED, powered);
     }
 
     /** Blocks only structures place (villages, mineshafts, strongholds, temples, witch huts). */
@@ -149,6 +299,16 @@ public final class OldBlockStates {
         registerMeta(43, meta -> {
             Block[] slabs = {Blocks.SMOOTH_STONE_SLAB, Blocks.SANDSTONE_SLAB, Blocks.PETRIFIED_OAK_SLAB, Blocks.COBBLESTONE_SLAB,
                     Blocks.BRICK_SLAB, Blocks.STONE_BRICK_SLAB, Blocks.NETHER_BRICK_SLAB, Blocks.QUARTZ_SLAB};
+            // bit 8 drew the top texture on every side: smooth stone, smooth sandstone, smooth quartz
+            if (meta == 8) {
+                return Blocks.SMOOTH_STONE.defaultBlockState();
+            }
+            if (meta == 9) {
+                return Blocks.SMOOTH_SANDSTONE.defaultBlockState();
+            }
+            if (meta == 15) {
+                return Blocks.SMOOTH_QUARTZ.defaultBlockState();
+            }
             return slabs[meta & 7].defaultBlockState().setValue(BlockStateProperties.SLAB_TYPE, SlabType.DOUBLE);
         });
         block(46, Blocks.TNT);
@@ -195,13 +355,10 @@ public final class OldBlockStates {
                 default -> lever.setValue(BlockStateProperties.ATTACH_FACE, AttachFace.CEILING).setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST);
             };
         });
-        block(70, Blocks.STONE_PRESSURE_PLATE);
-        block(72, Blocks.OAK_PRESSURE_PLATE);
-        registerMeta(77, meta -> Blocks.STONE_BUTTON.defaultBlockState()
-                .setValue(BlockStateProperties.ATTACH_FACE, AttachFace.WALL)
-                .setValue(BlockStateProperties.POWERED, (meta & 8) != 0)
-                .setValue(BlockStateProperties.HORIZONTAL_FACING,
-                        new Direction[] {Direction.NORTH, Direction.EAST, Direction.WEST, Direction.SOUTH, Direction.NORTH}[Math.min(meta & 7, 4)]));
+        // pressure plates: metadata 1 is pressed
+        registerMeta(70, meta -> Blocks.STONE_PRESSURE_PLATE.defaultBlockState().setValue(BlockStateProperties.POWERED, meta == 1));
+        registerMeta(72, meta -> Blocks.OAK_PRESSURE_PLATE.defaultBlockState().setValue(BlockStateProperties.POWERED, meta == 1));
+        registerMeta(77, meta -> button(Blocks.STONE_BUTTON, meta));
         block(85, Blocks.OAK_FENCE);
         registerMeta(93, meta -> Blocks.REPEATER.defaultBlockState()
                 .setValue(BlockStateProperties.HORIZONTAL_FACING, DIRECTION[meta & 3])

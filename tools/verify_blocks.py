@@ -22,13 +22,19 @@ import socket
 
 SIMPLE = {0: 'air', 1: 'stone', 2: 'grass_block', 3: 'dirt', 4: 'cobblestone', 7: 'bedrock',
           8: 'water[level=0]', 9: 'water[level=0]', 10: 'lava[level=0]', 11: 'lava[level=0]', 12: 'sand', 13: 'gravel',
-          14: 'gold_ore', 15: 'iron_ore', 16: 'coal_ore', 21: 'lapis_ore', 24: 'sandstone', 32: 'dead_bush',
+          14: 'gold_ore', 15: 'iron_ore', 16: 'coal_ore', 21: 'lapis_ore', 32: 'dead_bush',
           37: 'dandelion', 38: 'poppy', 39: 'brown_mushroom', 40: 'red_mushroom', 48: 'mossy_cobblestone', 49: 'obsidian',
           30: 'cobweb', 46: 'tnt', 47: 'bookshelf', 52: 'spawner', 58: 'crafting_table', 70: 'stone_pressure_plate',
           72: 'oak_pressure_plate', 85: 'oak_fence', 101: 'iron_bars', 102: 'glass_pane', 56: 'diamond_ore', 73: 'redstone_ore', 79: 'ice', 80: 'snow_block', 81: 'cactus', 82: 'clay',
           83: 'sugar_cane', 110: 'mycelium', 111: 'lily_pad', 129: 'emerald_ore', 103: 'melon',
           51: 'fire', 87: 'netherrack', 88: 'soul_sand', 89: 'glowstone', 112: 'nether_bricks', 113: 'nether_brick_fence',
-          153: 'nether_quartz_ore'}
+          153: 'nether_quartz_ore',
+          # lamps, torches, rails, plates, hoppers: whether they are lit or powered is left to the game
+          19: 'sponge', 20: 'glass', 22: 'lapis_block', 25: 'note_block', 36: 'air', 41: 'gold_block', 42: 'iron_block',
+          45: 'bricks', 57: 'diamond_block', 74: 'redstone_ore[lit=true]', 90: 'nether_portal[axis=x]', 95: 'chest',
+          116: 'enchanting_table', 119: 'end_portal', 121: 'end_stone', 122: 'dragon_egg', 123: 'redstone_lamp',
+          124: 'redstone_lamp', 133: 'emerald_block', 137: 'command_block', 138: 'beacon', 147: 'light_weighted_pressure_plate',
+          148: 'heavy_weighted_pressure_plate', 151: 'daylight_detector', 152: 'redstone_block'}
 MODS = {254: 'extrabiomesxl:red_rock', 255: 'extrabiomesxl:cracked_sand', 1552: 'wildcaves3:bone_pile', 2011: 'hexxitgear:hexbiscus',
         1004: 'artifice:basalt', 1005: 'artifice:marble'}
 # Wild Caves 3: one block per metadata value
@@ -48,7 +54,7 @@ WOOL = ['white', 'orange', 'magenta', 'light_blue', 'yellow', 'lime', 'pink', 'g
         'brown', 'green', 'red', 'black']
 SIDE = {2: 'north', 3: 'south', 4: 'west', 5: 'east'}
 STAIRS = {53: 'oak', 67: 'cobblestone', 108: 'brick', 109: 'stone_brick', 114: 'nether_brick', 128: 'sandstone', 134: 'spruce',
-          135: 'birch', 136: 'jungle'}
+          135: 'birch', 136: 'jungle', 156: 'quartz'}
 SLABS = ['smooth_stone', 'sandstone', 'petrified_oak', 'cobblestone', 'brick', 'stone_brick', 'nether_brick', 'quartz']
 RAILS = ['north_south', 'east_west', 'ascending_east', 'ascending_west', 'ascending_north', 'ascending_south', 'south_east',
          'south_west', 'north_west', 'north_east']
@@ -156,7 +162,7 @@ def mod_meta(bid, meta):
     if bid == 1290:  # offLawn sunflower: 0 lower, 1 upper half
         return f'offlawn:sunflower[half={"upper" if meta == 1 else "lower"}]'
     if bid == 144:  # skulls: 1 on the floor (kind and rotation in "K" lines), 2 to 5 on a wall
-        return 'minecraft:skeleton_skull' if meta < 2 else f'minecraft:skeleton_wall_skull[facing={SIDE[meta]}]'
+        return 'minecraft:skeleton_skull' if not 2 <= meta <= 5 else f'minecraft:skeleton_wall_skull[facing={SIDE[meta]}]'
     if bid in WILDCAVES:
         names = WILDCAVES[bid]
         return 'wildcaves3:' + names[min(meta, len(names) - 1)]
@@ -193,22 +199,80 @@ def block(bid, meta):
     if bid == 18:
         return f'minecraft:{WOOD[meta & 3]}_leaves[persistent=false]'
     if bid == 31:
-        return 'minecraft:' + {0: 'dead_bush', 1: 'short_grass', 2: 'fern'}[meta]
+        return 'minecraft:' + {1: 'short_grass', 2: 'fern'}.get(meta, 'dead_bush')
     if bid == 44:
         return f'minecraft:{SLABS[meta & 7]}_slab[type={"top" if meta & 8 else "bottom"}]'
     if bid == 43:
+        if meta in (8, 9, 15):
+            return 'minecraft:' + {8: 'smooth_stone', 9: 'smooth_sandstone', 15: 'smooth_quartz'}[meta]
         return f'minecraft:{SLABS[meta & 7]}_slab[type=double]'
+    if bid == 125:
+        return f'minecraft:{WOOD[meta & 7] if meta & 7 < 4 else "oak"}_slab[type=double]'
+    if bid == 6:
+        return f'minecraft:{WOOD[meta & 3]}_sapling[stage={1 if meta & 8 else 0}]'
+    if bid == 24:
+        return 'minecraft:' + {1: 'chiseled_sandstone', 2: 'cut_sandstone'}.get(meta, 'sandstone')
+    if bid == 26:
+        return (f'minecraft:red_bed[facing={FACING[meta & 3]},part={"head" if meta & 8 else "foot"},'
+                f'occupied={flag(meta & 4)}]')
+    if bid in (27, 28, 157):
+        name = {27: 'powered_rail', 28: 'detector_rail', 157: 'activator_rail'}[bid]
+        return f'minecraft:{name}[shape={RAILS[meta & 7] if meta & 7 < 6 else "north_south"}]'
+    if bid == 34:
+        return f'minecraft:piston_head[facing={ {0: "down", 1: "up", **SIDE}.get(meta & 7, "east") },type={"sticky" if meta & 8 else "normal"}]'
+    if bid == 62:
+        return f'minecraft:furnace[facing={SIDE.get(meta, "north")},lit=true]'
+    if bid == 63:
+        return f'minecraft:oak_sign[rotation={meta}]'
+    if bid == 68:
+        return f'minecraft:oak_wall_sign[facing={SIDE.get(meta, "north")}]'
+    if bid in (75, 76):
+        return ('minecraft:redstone_torch' if meta not in (1, 2, 3, 4)
+                else f'minecraft:redstone_wall_torch[facing={ {1: "east", 2: "west", 3: "south", 4: "north"}[meta] }]')
+    if bid == 84:
+        return f'minecraft:jukebox[has_record={flag(meta)}]'
+    if bid == 91:
+        return f'minecraft:jack_o_lantern[facing={FACING[meta & 3]}]'
+    if bid == 92:
+        return f'minecraft:cake[bites={min(meta, 6)}]'
+    if bid == 94:
+        return f'minecraft:repeater[facing={FACING[meta & 3]},delay={(meta >> 2) + 1}]'
+    if bid == 96:
+        return (f'minecraft:oak_trapdoor[facing={["north", "south", "west", "east"][meta & 3]},'
+                f'half={"top" if meta & 8 else "bottom"},open={flag(meta & 4)}]')
+    if bid in (104, 105):
+        return f'minecraft:{"pumpkin" if bid == 104 else "melon"}_stem[age={meta & 7}]'
+    if bid == 107:
+        return f'minecraft:oak_fence_gate[facing={FACING[meta & 3]},open={flag(meta & 4)}]'
+    if bid == 117:
+        return (f'minecraft:brewing_stand[has_bottle_0={flag(meta & 1)},has_bottle_1={flag(meta & 2)},'
+                f'has_bottle_2={flag(meta & 4)}]')
+    if bid in (130, 146):
+        return f'minecraft:{"ender_chest" if bid == 130 else "trapped_chest"}[facing={SIDE.get(meta, "north")}]'
+    if bid == 139:
+        return 'minecraft:mossy_cobblestone_wall' if meta == 1 else 'minecraft:cobblestone_wall'
+    if bid == 143:
+        return f'minecraft:oak_button[face=wall,facing={ {1: "east", 2: "west", 3: "south", 4: "north"}.get(meta & 7, "north") }]'
+    if bid == 145:
+        return f'minecraft:{["anvil", "chipped_anvil", "damaged_anvil"][min(meta >> 2, 2)]}[facing={FACING[meta & 3]}]'
+    if bid in (149, 150):
+        return f'minecraft:comparator[facing={FACING[meta & 3]},mode={"subtract" if meta & 4 else "compare"}]'
+    if bid == 154:
+        return f'minecraft:hopper[facing={ {0: "down", **SIDE}.get(meta & 7, "down") }]'
+    if bid == 155:
+        return 'minecraft:' + {1: 'chiseled_quartz_block', 2: 'quartz_pillar[axis=y]', 3: 'quartz_pillar[axis=x]',
+                               4: 'quartz_pillar[axis=z]'}.get(meta, 'quartz_block')
     if bid == 126:
         return f'minecraft:{WOOD[meta & 3]}_slab[type={"top" if meta & 8 else "bottom"}]'
     if bid == 5:
         return f'minecraft:{WOOD[meta & 3]}_planks'
     if bid == 35:
         return f'minecraft:{WOOL[meta]}_wool'
-    if bid in (23, 29, 33):
-        name = {23: 'dispenser', 29: 'sticky_piston', 33: 'piston'}[bid]
-        return f'minecraft:{name}[facing={ {0: "down", 1: "up", **SIDE}[meta & 7] }]'
+    if bid in (23, 29, 33, 158):
+        name = {23: 'dispenser', 29: 'sticky_piston', 33: 'piston', 158: 'dropper'}[bid]
+        return f'minecraft:{name}[facing={ {0: "down", 1: "up", **SIDE}.get(meta & 7, "east") }]'
     if bid == 50:
-        return 'minecraft:torch' if meta in (0, 5) else f'minecraft:wall_torch[facing={ {1: "east", 2: "west", 3: "south", 4: "north"}[meta] }]'
+        return 'minecraft:torch' if meta not in (1, 2, 3, 4) else f'minecraft:wall_torch[facing={ {1: "east", 2: "west", 3: "south", 4: "north"}[meta] }]'
     if bid in STAIRS:
         return (f'minecraft:{STAIRS[bid]}_stairs[facing={["east", "west", "south", "north"][meta & 3]},'
                 f'half={"top" if meta & 4 else "bottom"}]')
@@ -227,7 +291,7 @@ def block(bid, meta):
             return f'minecraft:{name}[half=upper,hinge={"right" if meta & 1 else "left"}]'
         return f'minecraft:{name}[half=lower,facing={["east", "south", "west", "north"][meta & 3]},open={flag(meta & 4)}]'
     if bid == 66:
-        return f'minecraft:rail[shape={RAILS[meta]}]'
+        return f'minecraft:rail[shape={RAILS[meta if meta < 10 else 0]}]'
     if bid == 69:
         face, facing = {1: ('wall', 'east'), 2: ('wall', 'west'), 3: ('wall', 'south'), 4: ('wall', 'north'), 5: ('floor', 'north'),
                         6: ('floor', 'east'), 7: ('ceiling', 'north'), 0: ('ceiling', 'east')}[meta & 7]
@@ -237,7 +301,7 @@ def block(bid, meta):
     if bid == 93:
         return f'minecraft:repeater[facing={FACING[meta & 3]},delay={(meta >> 2) + 1}]'
     if bid == 97:
-        return 'minecraft:' + ['infested_stone', 'infested_cobblestone', 'infested_stone_bricks'][meta]
+        return 'minecraft:' + {1: 'infested_cobblestone', 2: 'infested_stone_bricks'}.get(meta, 'infested_stone')
     if bid == 98:
         return 'minecraft:' + ['stone_bricks', 'mossy_stone_bricks', 'cracked_stone_bricks', 'chiseled_stone_bricks'][meta & 3]
     if bid == 118:
@@ -249,7 +313,7 @@ def block(bid, meta):
     if bid == 132:
         return f'minecraft:tripwire[attached={flag(meta & 4)}]'
     if bid == 140:
-        return 'minecraft:' + POTS[meta]
+        return 'minecraft:' + POTS[meta if meta < 12 else 0]
     if bid == 54:
         return f'minecraft:chest[facing={ {2: "north", 3: "south", 4: "west", 5: "east"}.get(meta, "north") }]'
     if bid == 78:

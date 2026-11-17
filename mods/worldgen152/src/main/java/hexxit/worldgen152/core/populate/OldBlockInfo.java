@@ -10,6 +10,8 @@ public final class OldBlockInfo {
     public enum Material {
         AIR(false, false, false, true, false),
         GRASS, GROUND, WOOD, ROCK, IRON, SPONGE, CLOTH, SAND, CRAFTED_SNOW, CLAY, PUMPKIN, PISTON,
+        ANVIL, REDSTONE_LIGHT, DRAGON_EGG, CAKE,
+        PORTAL(false, false, false, false, false),
         WATER(false, false, true, true, true),
         LAVA(false, false, true, true, true),
         LEAVES(true, true, false, false, false),
@@ -104,18 +106,40 @@ public final class OldBlockInfo {
         for (int id : new int[] {31, 32, 106}) {
             register(id, Material.VINE, false, 0, false);
         }
-        for (int id : new int[] {27, 28, 50, 55, 63, 65, 66, 68, 69, 70, 72, 75, 76, 77, 93, 94, 131, 132, 140, 143, 144, 157}) {
+        for (int id : new int[] {27, 28, 50, 55, 65, 66, 69, 75, 76, 77, 93, 94, 131, 132, 140, 143, 144, 149, 150, 157}) {
             register(id, Material.CIRCUITS, false, 0, false);
         }
-        for (int id : new int[] {64, 96}) {
+        // signs, pressure plates and the daylight sensor are not of Material.circuits: they take the material they are made of
+        for (int id : new int[] {63, 64, 68, 72, 96, 146, 151}) {
             register(id, Material.WOOD, false, 0, false);
         }
+        register(70, Material.ROCK, false, 0, false);
         register(71, Material.IRON, false, 0, false);
-        // pistons, cauldron, end portal frame
+        for (int id : new int[] {117, 147, 148, 154}) {
+            register(id, Material.IRON, false, 0, false);
+        }
+        // pistons, cauldron
         register(29, Material.PISTON, false, 0, false);
         register(33, Material.PISTON, false, 0, false);
+        register(34, Material.PISTON, false, 0, false);
+        register(36, Material.PISTON, false, 0, false);
         register(118, Material.IRON, false, 0, false);
-        register(120, Material.ROCK, false, 0, false);
+        // the end portal frame does not override renderAsNormalBlock, so it counts as a normal cube (rock is opaque)
+        register(120, Material.ROCK, false, 0, true);
+        register(26, Material.CLOTH, false, 0, false);
+        register(90, Material.PORTAL, false, 0, false);
+        register(119, Material.PORTAL, false, 0, false);
+        register(92, Material.CAKE, false, 0, false);
+        // locked chest: a plain Block subclass, so an opaque cube
+        registerCube(95, Material.WOOD);
+        // enchanting table, ender chest
+        register(116, Material.ROCK, false, 0, false);
+        register(130, Material.ROCK, false, 0, false);
+        register(122, Material.DRAGON_EGG, false, 0, false);
+        cube(Material.REDSTONE_LIGHT, 123, 124);
+        cube(Material.IRON, 137);
+        register(138, Material.GLASS, false, 0, false);
+        register(145, Material.ANVIL, false, 0, false);
     }
 
     private OldBlockInfo() {
