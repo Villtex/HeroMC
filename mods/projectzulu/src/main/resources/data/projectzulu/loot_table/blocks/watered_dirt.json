@@ -1,0 +1,83 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "name": "projectzulu:watered_dirt",
+              "condition": "minecraft:tool/can_silk_touch",
+              "modifier": [
+                {
+                  "type": "minecraft:copy_state",
+                  "block": "projectzulu:watered_dirt",
+                  "properties": [
+                    "moisture",
+                    "sandy"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:sand",
+              "condition": {
+                "type": "minecraft:match_block",
+                "blocks": "projectzulu:watered_dirt",
+                "state": {
+                  "sandy": "true"
+                }
+              }
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:dirt"
+            }
+          ]
+        }
+      ],
+      "condition": {
+        "type": "minecraft:survives_explosion"
+      }
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "projectzulu:water_droplet",
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": 3
+            }
+          ]
+        }
+      ],
+      "condition": {
+        "type": "minecraft:all_of",
+        "terms": [
+          {
+            "type": "minecraft:survives_explosion"
+          },
+          {
+            "type": "minecraft:inverted",
+            "term": "minecraft:tool/can_silk_touch"
+          },
+          {
+            "type": "minecraft:match_block",
+            "blocks": "projectzulu:watered_dirt",
+            "state": {
+              "moisture": "3"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "random_sequence": "projectzulu:blocks/watered_dirt"
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "projectzulu:block/aloe_vera_b0"
+  }
+}

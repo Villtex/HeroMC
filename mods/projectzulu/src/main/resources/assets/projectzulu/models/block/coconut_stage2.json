@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cocoa_stage2",
+  "textures": {
+    "particle": "projectzulu:block/coconut_2",
+    "cocoa": "projectzulu:block/coconut_2"
+  }
+}

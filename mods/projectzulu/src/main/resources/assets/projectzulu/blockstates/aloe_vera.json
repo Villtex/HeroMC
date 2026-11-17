@@ -1,0 +1,31 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "projectzulu:block/aloe_vera_age0"
+    },
+    "age=1": {
+      "model": "projectzulu:block/aloe_vera_age1"
+    },
+    "age=2": {
+      "model": "projectzulu:block/aloe_vera_age2"
+    },
+    "age=3": {
+      "model": "projectzulu:block/aloe_vera_age3"
+    },
+    "age=4": {
+      "model": "projectzulu:block/aloe_vera_age4"
+    },
+    "age=5": {
+      "model": "projectzulu:block/aloe_vera_age5"
+    },
+    "age=6": {
+      "model": "projectzulu:block/aloe_vera_age6"
+    },
+    "age=7": {
+      "model": "projectzulu:block/aloe_vera_age7"
+    },
+    "age=8": {
+      "model": "projectzulu:block/aloe_vera_age8"
+    }
+  }
+}

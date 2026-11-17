@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "projectzulu:block/palm_log"
+    },
+    "axis=y": {
+      "model": "projectzulu:block/palm_log"
+    },
+    "axis=z": {
+      "model": "projectzulu:block/palm_log"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": "projectzulu:tumbleweed"
+  },
+  "pattern": [
+    "C",
+    "C",
+    "C"
+  ],
+  "result": {
+    "count": 6,
+    "id": "minecraft:string"
+  }
+}

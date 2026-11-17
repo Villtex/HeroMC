@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "projectzulu:block/watered_dirt_d0"
+  }
+}

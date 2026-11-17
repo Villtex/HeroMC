@@ -1,0 +1,20 @@
+{
+  "values": {
+    "projectzulu:palm_log": {
+      "ignite_odds": 5,
+      "burn_odds": 20
+    },
+    "projectzulu:palm_planks": {
+      "ignite_odds": 5,
+      "burn_odds": 20
+    },
+    "projectzulu:palm_slab": {
+      "ignite_odds": 5,
+      "burn_odds": 20
+    },
+    "projectzulu:palm_stairs": {
+      "ignite_odds": 5,
+      "burn_odds": 20
+    }
+  }
+}

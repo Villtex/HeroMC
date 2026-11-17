@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "projectzulu:block/palm_leaves"
+  }
+}

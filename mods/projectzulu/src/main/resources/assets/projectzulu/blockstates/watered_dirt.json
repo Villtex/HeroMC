@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "moisture=0,sandy=false": {
+      "model": "projectzulu:block/watered_dirt_d0"
+    },
+    "moisture=1,sandy=false": {
+      "model": "projectzulu:block/watered_dirt_d1"
+    },
+    "moisture=2,sandy=false": {
+      "model": "projectzulu:block/watered_dirt_d2"
+    },
+    "moisture=3,sandy=false": {
+      "model": "projectzulu:block/watered_dirt_d3"
+    },
+    "moisture=0,sandy=true": {
+      "model": "projectzulu:block/watered_dirt_s0"
+    },
+    "moisture=1,sandy=true": {
+      "model": "projectzulu:block/watered_dirt_s1"
+    },
+    "moisture=2,sandy=true": {
+      "model": "projectzulu:block/watered_dirt_s2"
+    },
+    "moisture=3,sandy=true": {
+      "model": "projectzulu:block/watered_dirt_s3"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "name": "projectzulu:coconut_item",
+              "condition": {
+                "type": "minecraft:match_block",
+                "blocks": "projectzulu:coconut",
+                "state": {
+                  "age": "2"
+                }
+              }
+            },
+            {
+              "type": "minecraft:item",
+              "name": "projectzulu:coconut_seed"
+            }
+          ]
+        }
+      ],
+      "condition": {
+        "type": "minecraft:survives_explosion"
+      }
+    }
+  ],
+  "random_sequence": "projectzulu:blocks/coconut"
+}

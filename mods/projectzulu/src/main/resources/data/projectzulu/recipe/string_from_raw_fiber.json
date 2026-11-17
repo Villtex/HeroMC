@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "projectzulu:raw_fiber",
+    "projectzulu:raw_fiber",
+    "projectzulu:raw_fiber",
+    "projectzulu:raw_fiber"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:string"
+  }
+}

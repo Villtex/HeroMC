@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "name": "projectzulu:palm_leaves",
+              "condition": "minecraft:tool/can_shear"
+            },
+            {
+              "type": "minecraft:item",
+              "name": "projectzulu:coconut_item",
+              "condition": {
+                "type": "minecraft:random_chance",
+                "chance": 0.11
+              }
+            },
+            {
+              "type": "minecraft:item",
+              "name": "projectzulu:palm_sapling",
+              "condition": {
+                "type": "minecraft:random_chance",
+                "chance": 0.22471910112359553
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "random_sequence": "projectzulu:blocks/palm_leaves"
+}

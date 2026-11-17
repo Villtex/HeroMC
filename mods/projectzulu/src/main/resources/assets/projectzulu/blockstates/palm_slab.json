@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "projectzulu:block/palm_slab"
+    },
+    "type=double": {
+      "model": "projectzulu:block/palm_planks"
+    },
+    "type=top": {
+      "model": "projectzulu:block/palm_slab_top"
+    }
+  }
+}
