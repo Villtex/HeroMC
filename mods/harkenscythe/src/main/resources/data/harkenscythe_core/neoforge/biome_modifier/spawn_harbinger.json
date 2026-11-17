@@ -1,0 +1,29 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": [
+    "worldgen152:beach",
+    "worldgen152:extreme_hills",
+    "worldgen152:extreme_hills_edge",
+    "worldgen152:forest",
+    "worldgen152:forest_hills",
+    "worldgen152:jungle",
+    "worldgen152:jungle_hills",
+    "worldgen152:mushroom_island",
+    "worldgen152:mushroom_island_shore",
+    "worldgen152:ocean",
+    "worldgen152:plains",
+    "worldgen152:river",
+    "worldgen152:swampland"
+  ],
+  "spawners": [
+    {
+      "type": "harkenscythe_core:harbinger",
+      "count": {
+        "type": "minecraft:uniform",
+        "min_inclusive": 0,
+        "max_inclusive": 1
+      },
+      "weight": 10
+    }
+  ]
+}

@@ -1,3 +1,26 @@
 {
-  "values": []
+  "values": [
+    "harkenscythe_core:spectral_chicken",
+    "harkenscythe_core:spectral_cow",
+    "harkenscythe_core:spectral_sheep",
+    "harkenscythe_core:spectral_bat",
+    "harkenscythe_core:spectral_pig",
+    "harkenscythe_core:spectral_wolf",
+    "harkenscythe_core:spectral_ocelot",
+    "harkenscythe_core:spectral_squid",
+    "harkenscythe_core:spectral_villager",
+    "harkenscythe_core:spectral_creeper",
+    "harkenscythe_core:spectral_zombie",
+    "harkenscythe_core:spectral_pig_zombie",
+    "harkenscythe_core:spectral_skeleton",
+    "harkenscythe_core:spectral_wither_skeleton",
+    "harkenscythe_core:spectral_witch",
+    "harkenscythe_core:spectral_spider",
+    "harkenscythe_core:spectral_cave_spider",
+    "harkenscythe_core:spectral_silverfish",
+    "harkenscythe_core:spectral_enderman",
+    "harkenscythe_core:spectral_blaze",
+    "harkenscythe_core:spectral_ghast",
+    "harkenscythe_core:spectral_miner"
+  ]
 }

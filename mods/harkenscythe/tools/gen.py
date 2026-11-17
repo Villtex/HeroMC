@@ -589,8 +589,6 @@ lang.update({
 })
 
 # ------------------------------------------------------------------------------------------------ mobs, loot, trades
-for e in ('spectral_pets', 'harbingers', 'soulless'):
-    tag('entity_type', f'{NS}:{e}')
 for name, title in (('soul_common', 'Soul Common'), ('soul_grieving', 'Soul Grieving'), ('soul_culled', 'Soul Culled'),
                     ('soul_wrathful', 'Soul Wrathful'), ('soul_lost', 'Soul Lost')):
     lang[f'entity.{NS}.{name}'] = title
@@ -601,6 +599,81 @@ write(f'data/{NS}/neoforge/biome_modifier/spawn_soul_lost.json', {
         'beach', 'extreme_hills', 'extreme_hills_edge', 'forest', 'forest_hills', 'jungle', 'jungle_hills', 'mushroom_island',
         'mushroom_island_shore', 'ocean', 'plains', 'river', 'swampland')],
     'spawners': [{'type': n('soul_lost'), 'count': {'type': 'minecraft:uniform', 'min_inclusive': 0, 'max_inclusive': 1}, 'weight': 30}]})
+# Teil 9, part 3: the mobs (registerModEntity 10-13, 20-42; LanguageRegistry names), their textures and spawn eggs
+MOBS = [  # id, 1.5.2 name, textures (models/mob/<file> -> entity/<path>)
+    ('ectoplasm', 'Ectoplasm', [('slimesoul', 'ectoplasm')]),
+    ('hemoglobin', 'Hemoglobin', [('slimeblood', 'hemoglobin')]),
+    ('harbinger', 'Harbinger', [('harbinger', 'harbinger')]),
+    ('spectral_miner_evil', 'Spectral Miner', [('spectral_miner_evil', 'spectral/miner_evil')]),
+    ('spectral_chicken', 'Spectral Chicken', [('spectral_chicken', 'spectral/chicken')]),
+    ('spectral_cow', 'Spectral Cow', [('spectral_cow', 'spectral/cow')]),
+    ('spectral_sheep', 'Spectral Sheep', [('spectral_sheep', 'spectral/sheep'), ('spectral_sheep_fur', 'spectral/sheep_fur')]),
+    ('spectral_bat', 'Spectral Bat', [('spectral_bat', 'spectral/bat')]),
+    ('spectral_pig', 'Spectral Pig', [('spectral_pig', 'spectral/pig')]),
+    ('spectral_wolf', 'Spectral Wolf', [('spectral_wolf', 'spectral/wolf')]),
+    ('spectral_ocelot', 'Spectral Ocelot', [('spectral_ozelot', 'spectral/ocelot'), ('spectral_cat_black', 'spectral/cat_black'),
+                                            ('spectral_cat_red', 'spectral/cat_red'), ('spectral_cat_siamese', 'spectral/cat_siamese')]),
+    ('spectral_squid', 'Spectral Squid', [('spectral_squid', 'spectral/squid')]),
+    ('spectral_villager', 'Spectral Villager', [('spectral_villager', 'spectral/villager')]),
+    ('spectral_creeper', 'Spectral Creeper', [('spectral_creeper', 'spectral/creeper')]),
+    ('spectral_zombie', 'Spectral Zombie', [('spectral_zombie', 'spectral/zombie')]),
+    ('spectral_pig_zombie', 'Spectral Pig Zombie', [('spectral_pigzombie', 'spectral/pig_zombie')]),
+    ('spectral_skeleton', 'Spectral Skeleton', [('spectral_skeleton', 'spectral/skeleton')]),
+    ('spectral_wither_skeleton', 'Spectral Wither Skeleton', [('spectral_skeleton_wither', 'spectral/wither_skeleton')]),
+    ('spectral_witch', 'Spectral Witch', [('spectral_witch', 'spectral/witch')]),
+    ('spectral_spider', 'Spectral Spider', [('spectral_spider', 'spectral/spider'), ('spectral_spider_eyes', 'spectral/spider_eyes')]),
+    ('spectral_cave_spider', 'Spectral Cave Spider', [('spectral_cavespider', 'spectral/cave_spider')]),
+    ('spectral_silverfish', 'Spectral Silverfish', [('spectral_silverfish', 'spectral/silverfish')]),
+    ('spectral_enderman', 'Spectral Enderman', [('spectral_enderman', 'spectral/enderman'), ('spectral_enderman_eyes', 'spectral/enderman_eyes')]),
+    ('spectral_blaze', 'Spectral Blaze', [('spectral_fire', 'spectral/blaze')]),
+    ('spectral_ghast', 'Spectral Ghast', [('spectral_ghast', 'spectral/ghast'), ('spectral_ghast_fire', 'spectral/ghast_fire')]),
+    ('spectral_miner', 'Spectral Miner', [('spectral_miner', 'spectral/miner')]),
+]
+for e, title, textures in MOBS:
+    lang[f'entity.{NS}.{e}'] = title
+    for src, dst in textures:
+        tex(f'models/mob/{src}.png', f'entity/{dst}')
+    # registerEntityEgg(..., 16777215, 0): 26.3 has no blank egg to tint, the vanilla egg in the primary colour
+    egg = f'{e}_spawn_egg'
+    write(f'assets/{NS}/models/item/{egg}.json', {'parent': 'minecraft:item/generated', 'textures': {'layer0': 'minecraft:item/egg'}})
+    item_def(egg, model(n(f'item/{egg}'), [{'type': 'minecraft:constant', 'value': argb(0xFFFFFF)}]))
+    lang[f'item.{NS}.{egg}'] = f'Spawn {title}'
+tag('entity_type', f'{NS}:spectral_pets', *[n(e) for e, _, _ in MOBS if e.startswith('spectral_') and e != 'spectral_miner_evil'])
+tag('entity_type', f'{NS}:harbingers', n('harbinger'))
+tag('entity_type', f'{NS}:soulless', n('ectoplasm'), n('hemoglobin'), n('spectral_miner_evil'))
+tag('entity_type', 'minecraft:undead', n('spectral_miner_evil'))  # EnumCreatureAttribute.UNDEAD
+# EntityRegistry.addSpawn(EntityHSHarbinger, 1, 0, 1, monster, ...): the biomes of the lost soul, weight 1 -> 10
+write(f'data/{NS}/neoforge/biome_modifier/spawn_harbinger.json', {
+    'type': 'neoforge:add_spawns', 'biomes': [f'worldgen152:{b}' for b in (
+        'beach', 'extreme_hills', 'extreme_hills_edge', 'forest', 'forest_hills', 'jungle', 'jungle_hills', 'mushroom_island',
+        'mushroom_island_shore', 'ocean', 'plains', 'river', 'swampland')],
+    'spawners': [{'type': n('harbinger'), 'count': {'type': 'minecraft:uniform', 'min_inclusive': 0, 'max_inclusive': 1}, 'weight': 10}]})
+
+
+def looting(lo, hi):
+    """rand(n + looting) + lo: set_count lo..hi plus 0..1 per looting level."""
+    return [{'type': 'minecraft:set_count', 'count': {'type': 'minecraft:uniform', 'min': lo, 'max': hi}},
+            {'type': 'minecraft:enchanted_count_increase', 'count': {'type': 'minecraft:uniform', 'min': 0.0, 'max': 1.0},
+             'enchantment': 'minecraft:looting'}]
+
+
+# dropRareDrop: killed by a player, rand(200) - looting < 5
+RARE = {'type': 'minecraft:all_of', 'terms': [{'type': 'minecraft:killed_by_player'}, {
+    'type': 'minecraft:random_chance_with_enchanted_bonus', 'enchantment': 'minecraft:looting', 'unenchanted_chance': 0.025,
+    'enchanted_chance': {'type': 'minecraft:linear', 'base': 0.03, 'per_level_above_first': 0.005}}]}
+# EntityHSHarbinger.dropFewItems: rand(3 + looting) bones and an abyss fragment; rare: an Essence Vessel
+write(f'data/{NS}/loot_table/entities/harbinger.json', {'type': 'minecraft:entity', 'random_sequence': n('entities/harbinger'), 'pools': [
+    {'rolls': 1, 'entries': [{'type': 'minecraft:item', 'name': 'minecraft:bone', 'modifier': looting(0, 2)}]},
+    {'rolls': 1, 'entries': [{'type': 'minecraft:item', 'name': n('abyss_fragment')}]},
+    {'rolls': 1, 'condition': RARE, 'entries': [{'type': 'minecraft:item', 'name': n('essence_vessel')}]}]})
+# EntityHSSpectralMinerEvil.dropFewItems: rand(2 + looting) of coal, iron ore, gold ore, torch, redstone, clay; as many
+# ectoplasm; rare: a diamond
+write(f'data/{NS}/loot_table/entities/spectral_miner_evil.json', {'type': 'minecraft:entity', 'random_sequence': n('entities/spectral_miner_evil'),
+    'pools': [
+        {'rolls': 1, 'entries': [{'type': 'minecraft:item', 'name': f'minecraft:{i}', 'modifier': looting(0, 1)}
+                                 for i in ('coal', 'iron_ore', 'gold_ore', 'torch', 'redstone', 'clay_ball')]},
+        {'rolls': 1, 'entries': [{'type': 'minecraft:item', 'name': n('ectoplasm'), 'modifier': looting(0, 1)}]},
+        {'rolls': 1, 'condition': RARE, 'entries': [{'type': 'minecraft:item', 'name': 'minecraft:diamond'}]}]})
 # the bonus chest (not generated by worldgen152): 10 draws among the 1.5.2 weights 46 + the page's 5
 write(f'data/{NS}/loot_table/chests/necronomicon_page_bonus_chest.json', {'type': 'minecraft:chest', 'pools': [{
     'entries': [{'type': 'minecraft:item', 'name': n('necronomicon_page'), 'weight': 5}, {'type': 'minecraft:empty', 'weight': 46}], 'rolls': 10}]})

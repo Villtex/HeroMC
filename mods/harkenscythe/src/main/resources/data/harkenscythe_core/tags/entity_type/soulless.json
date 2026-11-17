@@ -1,3 +1,7 @@
 {
-  "values": []
+  "values": [
+    "harkenscythe_core:ectoplasm",
+    "harkenscythe_core:hemoglobin",
+    "harkenscythe_core:spectral_miner_evil"
+  ]
 }

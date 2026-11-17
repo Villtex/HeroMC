@@ -79,6 +79,23 @@ for f in glob.glob(f'{RES}/data/{NS}/recipe/altar/*/*.json'):
             err.append('augment rows do not cover the dice exactly once in ' + f)
 if len(orders) != 2 * 14:
     err.append(f'{len(orders)} altar recipes, expected 28')
+# Teil 9, part 3: every mob has a name, a spawn egg (item definition and name) and is in exactly the tags it belongs to
+mobs = re.findall(r'(?:monster|pet|humanoid)\("([a-z_]+)"', open(J + '/mob/HSMobs.java').read())
+tags_of = {t: json.load(open(f'{RES}/data/{NS}/tags/entity_type/{t}.json'))['values'] for t in ('spectral_pets', 'harbingers', 'soulless')}
+for m in mobs:
+    if f'entity.{NS}.{m}' not in lang:
+        err.append('no entity name ' + m)
+    if not os.path.exists(f'{A}/items/{m}_spawn_egg.json') or f'item.{NS}.{m}_spawn_egg' not in lang:
+        err.append('no spawn egg ' + m)
+    expected = 'harbingers' if m == 'harbinger' else 'soulless' if m in ('ectoplasm', 'hemoglobin', 'spectral_miner_evil') else 'spectral_pets'
+    for t, values in tags_of.items():
+        if (f'{NS}:{m}' in values) != (t == expected):
+            err.append(f'{m} wrongly in/out of tag {t}')
+if len(mobs) != 26:
+    err.append(f'{len(mobs)} mobs, expected 26')
+for t in ('harbinger', 'spectral_miner_evil'):
+    if not os.path.exists(f'{RES}/data/{NS}/loot_table/entities/{t}.json'):
+        err.append('no loot table ' + t)
 java = ''.join(open(p).read() for p in glob.glob(J + '/**/*.java', recursive=True))
 for t in re.findall(r'id\("(textures/[a-z_/]+\.png)', java):
     if f'assets/{NS}/{t}' not in targets:
