@@ -13,3 +13,12 @@ mods/projectzulumob/rabbit.png -> assets/projectzulu/textures/entity/rabbit.png
 mods/projectzulumob/beaver.png -> assets/projectzulu/textures/entity/beaver.png
 mods/projectzulumob/penguin.png -> assets/projectzulu/textures/entity/penguin.png
 mods/projectzulumob/ostrich.png -> assets/projectzulu/textures/entity/ostrich.png
+mods/projectzulumob/sandworm.png -> assets/projectzulu/textures/entity/sandworm.png
+mods/projectzulumob/sandworm_hidden.png -> assets/projectzulu/textures/entity/sandworm_hidden.png
+mods/projectzulumob/lizard.png -> assets/projectzulu/textures/entity/lizard.png
+mods/projectzulublock/textures/items/lizardspit.png -> assets/projectzulu/textures/entity/lizard_spit.png
+mods/projectzulumob/mummy.png -> assets/projectzulu/textures/entity/mummy.png
+mods/projectzulumob/mummy_pharaoh.png -> assets/projectzulu/textures/entity/mummy_pharaoh.png
+mods/projectzulumob/mimicchest.png -> assets/projectzulu/textures/entity/mimicchest.png
+mods/projectzulumob/minotaur.png -> assets/projectzulu/textures/entity/minotaur.png
+mods/projectzulumob/serpent.png -> assets/projectzulu/textures/entity/serpent.png

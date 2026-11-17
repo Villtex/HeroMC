@@ -20,3 +20,9 @@ beaver_living: beaverliving.ogg
 penguin_hurt: penguinhurt.ogg
 ostrich_living: ostrichlivingsound.ogg
 ostrich_hurt: ostrichhurtsound.ogg
+sandworm_roar: sandwormroar.ogg
+lizard_hurt: lizardhurt.ogg
+mimic_living: mimicliving.ogg
+mummy_roar: mummyroar.ogg
+summon_whispers: summonwhispers.ogg
+# mummy_short_roar: MummyShortRoar.ogg  (Batch D; needs a lower-case target in gen.py: resource paths may not contain capitals)
