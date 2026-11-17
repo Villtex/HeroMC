@@ -6,3 +6,10 @@ mods/projectzulumob/eagle.png -> assets/projectzulu/textures/entity/eagle.png
 mods/projectzulumob/vulture.png -> assets/projectzulu/textures/entity/vulture.png
 mods/projectzulumob/hornbill.png -> assets/projectzulu/textures/entity/horn_bill.png
 mods/projectzulumob/pelican.png -> assets/projectzulu/textures/entity/pelican.png
+mods/projectzulumob/boar.png -> assets/projectzulu/textures/entity/boar.png
+mods/projectzulumob/fox.png -> assets/projectzulu/textures/entity/fox.png
+mods/projectzulumob/frog.png -> assets/projectzulu/textures/entity/frog.png
+mods/projectzulumob/rabbit.png -> assets/projectzulu/textures/entity/rabbit.png
+mods/projectzulumob/beaver.png -> assets/projectzulu/textures/entity/beaver.png
+mods/projectzulumob/penguin.png -> assets/projectzulu/textures/entity/penguin.png
+mods/projectzulumob/ostrich.png -> assets/projectzulu/textures/entity/ostrich.png

@@ -27,6 +27,17 @@ public final class ZuluSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> HORNBILL_HURT = sound("hornbill_hurt");
     public static final DeferredHolder<SoundEvent, SoundEvent> PELICAN_LIVING = sound("pelican_living");
     public static final DeferredHolder<SoundEvent, SoundEvent> PELICAN_HURT = sound("pelican_hurt");
+    // land animals (Batch B)
+    public static final DeferredHolder<SoundEvent, SoundEvent> BOAR_LIVING = sound("boar_living");
+    public static final DeferredHolder<SoundEvent, SoundEvent> FOX_HURT = sound("fox_hurt");
+    public static final DeferredHolder<SoundEvent, SoundEvent> FROG_LIVING = sound("frog_living");
+    public static final DeferredHolder<SoundEvent, SoundEvent> FROG_HURT = sound("frog_hurt");
+    public static final DeferredHolder<SoundEvent, SoundEvent> RABBIT_HURT = sound("rabbit_hurt");
+    public static final DeferredHolder<SoundEvent, SoundEvent> RABBIT_DEAD = sound("rabbit_dead");
+    public static final DeferredHolder<SoundEvent, SoundEvent> BEAVER_LIVING = sound("beaver_living");
+    public static final DeferredHolder<SoundEvent, SoundEvent> PENGUIN_HURT = sound("penguin_hurt");
+    public static final DeferredHolder<SoundEvent, SoundEvent> OSTRICH_LIVING = sound("ostrich_living");
+    public static final DeferredHolder<SoundEvent, SoundEvent> OSTRICH_HURT = sound("ostrich_hurt");
 
     private ZuluSounds() {
     }

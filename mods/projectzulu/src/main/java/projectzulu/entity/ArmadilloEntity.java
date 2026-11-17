@@ -18,7 +18,6 @@ import net.minecraft.world.entity.ai.goal.BreedGoal;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.FollowParentGoal;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.entity.ai.goal.PanicGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.TemptGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
@@ -70,7 +69,6 @@ public class ArmadilloEntity extends Animal implements NeutralMob {
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new PanicGoal(this, 1.0));
         this.goalSelector.addGoal(3, new MeleeAttackGoal(this, 1.0, false));
         this.goalSelector.addGoal(5, new BreedGoal(this, 1.0));
         this.goalSelector.addGoal(6, new TemptGoal(this, 1.0, stack -> stack.is(Items.SPIDER_EYE), false));

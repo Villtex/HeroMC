@@ -10,3 +10,13 @@ hornbill_living: hornbillliving1.ogg,hornbillliving2.ogg,hornbillliving3.ogg,hor
 hornbill_hurt: hornbillhurt1.ogg
 pelican_living: pelicanliving1.ogg,pelicanliving2.ogg,pelicanliving3.ogg
 pelican_hurt: pelicanhurt.ogg
+boar_living: boarliving1.ogg,boarliving2.ogg
+fox_hurt: foxhurtsound.ogg
+frog_living: frogliving.ogg
+frog_hurt: froghurt.ogg
+rabbit_hurt: rabbithurt1.ogg,rabbithurt2.ogg
+rabbit_dead: rabbitdead1.ogg
+beaver_living: beaverliving.ogg
+penguin_hurt: penguinhurt.ogg
+ostrich_living: ostrichlivingsound.ogg
+ostrich_hurt: ostrichhurtsound.ogg
