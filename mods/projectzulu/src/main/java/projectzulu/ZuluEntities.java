@@ -170,7 +170,7 @@ public final class ZuluEntities {
      * getCanSpawnHere of the Batch B land animals: block light below 1 (isValidLightLevel) and canBlockSeeTheSky
      * (isValidLocation). The pack's secondarySpawnRate is 100 for all of them, so no random gate.
      */
-    private static <T extends Entity> void daylitGroundPlacement(RegisterSpawnPlacementsEvent event, EntityType<T> type) {
+    public static <T extends Entity> void daylitGroundPlacement(RegisterSpawnPlacementsEvent event, EntityType<T> type) {
         event.register(type, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 (t, level, reason, pos, random) -> level.getBrightness(net.minecraft.world.level.LightLayer.BLOCK, pos) < 1
                         && level.canSeeSky(pos),

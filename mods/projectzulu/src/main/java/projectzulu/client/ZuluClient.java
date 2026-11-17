@@ -10,5 +10,8 @@ public final class ZuluClient {
 
     public static void register(IEventBus modBus) {
         ZuluEntityRenderers.register(modBus);
+        projectzulu.client.entity.BigAnimalRenderers.register(modBus);
+        projectzulu.client.entity.MonsterRenderers.register(modBus);
+        projectzulu.client.entity.HorseRenderers.register(modBus);
     }
 }

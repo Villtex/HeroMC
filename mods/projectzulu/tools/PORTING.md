@@ -68,3 +68,16 @@ horse_dark_brown, horse_grey, horse_white, eagle, horn_bill, pelican, minotaur, 
 - `dropFewItems`/Custom-Drops: machen Loot-Tabellen aus gen.py – im Entity nichts implementieren,
   AUSSER zustandsabhängige Drops (`dropCustomDeathLoot`).
 - `getCanSpawnHere`-Feinheiten gehören in `ZuluEntities.spawnPlacements` (REPLACE), Biome/Gewichte macht gen.py.
+
+## Batches C, D, E (parallel in eigenen Worktrees)
+
+Jeder Batch registriert NUR in seiner eigenen Klasse (Stubs sind angelegt und verdrahtet):
+- C Großtiere: `ZuluBigAnimals.java` + `client/entity/BigAnimalRenderers.java`
+- D Monster: `ZuluMonsters.java` + `client/entity/MonsterRenderers.java`
+- E Pferde: `ZuluHorses.java` + `client/entity/HorseRenderers.java`
+
+Dort eigene `ENTITIES`/`ITEMS`/`SOUNDS`-Register (gleicher Namespace). Gemeinsame Helfer wiederverwenden, nicht kopieren:
+`ZuluEntities.daylitGroundPlacement(event, type)`, `ZuluEntityRenderers.layer(name)`/`baby(supplier)` (paketweit),
+`entity/ZuluLandAnimal` (Batch-B-Basis: Flucht/Zorn, Alarm an Artgenossen), `client/entity/LandAnimalRenderer`,
+`Eased`/`EasingCache`. Bestehende Klassen anderer Batches NICHT ändern; fehlt etwas, eigene Unterklasse/Kopie im
+eigenen Batch und im Bericht erwähnen. texture-map.txt und sound-map.txt nur am Ende anhängen.

@@ -42,7 +42,7 @@ public final class ZuluEntityRenderers {
     private ZuluEntityRenderers() {
     }
 
-    private static ModelLayerLocation layer(String name) {
+    static ModelLayerLocation layer(String name) {
         return new ModelLayerLocation(Identifier.fromNamespaceAndPath(ProjectZulu.MOD_ID, name), "main");
     }
 
@@ -71,7 +71,7 @@ public final class ZuluEntityRenderers {
     }
 
     /** The 1.5.2 child render scaled the whole model by 0.5. */
-    private static Supplier<LayerDefinition> baby(Supplier<LayerDefinition> adult) {
+    static Supplier<LayerDefinition> baby(Supplier<LayerDefinition> adult) {
         return () -> adult.get().apply(MeshTransformer.scaling(0.5F));
     }
 
