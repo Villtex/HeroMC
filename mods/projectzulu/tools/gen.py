@@ -150,9 +150,9 @@ DROP_ITEMS = {
     'Talon': n('talon'), 'Tusk': n('tusk'), 'Ectoplasm': n('ectoplasm'), 'Gill': n('gill'),
     'Rabbits Feet': n('rabbits_foot'), 'Poison Droplet': n('poison_droplet'), 'Frog Legs': n('frog_legs'),
     'Bark': n('bark'), 'Antennae': n('antennae'),
-    # 'tile.projectzulublock:jasper': the jasper block comes with Teil 11; until then the pharaoh drops without it
+    'tile.projectzulublock:jasper': n('jasper'),  # block of ZuluGear (Teil 11)
 }
-SKIPPED_DROPS = {'tile.projectzulublock:jasper'}
+SKIPPED_DROPS = set()
 
 def uniform(a, b):
     """loot number provider (rolls)"""
@@ -254,6 +254,16 @@ ITEMS = [  # id, original texture (textures/items/), english (ItemGenerics/decla
     ('ectoplasm', 'ectoplasm', 'Ectoplasm'),
     ('frog_legs', 'froglegs', 'Frog Legs'),
     ('rabbits_foot', 'rabbitsfoot', 'Rabbits Feet'),
+    ('raw_fiber', 'rawfiber', 'Raw Fiber'),
+    ('pulp', 'pulp', 'Pulp'),
+    ('salt', 'salt', 'Salt'),
+    ('shiny_bauble', 'shinybauble', 'Shiny Bauble'),
+    ('plant_stalk', 'plantstalk', 'Plant Stalk'),
+    ('prickly_powder', 'pricklypowder', 'Prickly Powder'),
+    ('powder_slush', 'powderslush', 'Powder Slush'),
+    ('glowing_goo', 'glowinggoo', 'Glowing Goo'),
+    ('small_unhealthy_heart', 'smallunhealthyheart', 'Small Unhealthy Heart'),
+    ('large_unhealthy_heart', 'largeunhealthyheart', 'Large Unhealthy Heart'),
 ]
 for item, tex, title in ITEMS:
     write(f'assets/{NS}/models/item/{item}.json',
@@ -261,6 +271,23 @@ for item, tex, title in ITEMS:
     write(f'assets/{NS}/items/{item}.json', {'model': {'type': 'minecraft:model', 'model': n(f'item/{item}')}})
     lang[f'item.{NS}.{item}'] = title
     assets.append((f'mods/projectzulublock/textures/items/{tex}.png', f'assets/{NS}/textures/item/{item}.png'))
+
+# ---------------------------------------------------------------- Teil 11 parts: tools/gen_*.py
+# Each part runs in this namespace (write, n, NS, lang, assets, cfg, ...) and appends to lang/assets.
+# Order: alphabetical. Item helper for parts:
+def simple_item(item, tex, title, src_dir='mods/projectzulublock/textures/items'):
+    write(f'assets/{NS}/models/item/{item}.json',
+          {'parent': 'minecraft:item/generated', 'textures': {'layer0': n(f'item/{item}')}})
+    write(f'assets/{NS}/items/{item}.json', {'model': {'type': 'minecraft:model', 'model': n(f'item/{item}')}})
+    lang[f'item.{NS}.{item}'] = title
+    if tex:
+        assets.append((f'{src_dir}/{tex}.png', f'assets/{NS}/textures/item/{item}.png'))
+
+lang[f'itemGroup.{NS}'] = 'Project Zulu'
+import glob
+for part in sorted(glob.glob(os.path.join(ROOT, 'tools/gen_*.py'))):
+    with open(part) as f:
+        exec(compile(f.read(), part, 'exec'))
 
 # ---------------------------------------------------------------- textures and sounds from the port maps
 def map_lines(path):

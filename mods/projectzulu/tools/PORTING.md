@@ -81,3 +81,56 @@ Dort eigene `ENTITIES`/`ITEMS`/`SOUNDS`-Register (gleicher Namespace). Gemeinsam
 `entity/ZuluLandAnimal` (Batch-B-Basis: Flucht/Zorn, Alarm an Artgenossen), `client/entity/LandAnimalRenderer`,
 `Eased`/`EasingCache`. Bestehende Klassen anderer Batches NICHT ändern; fehlt etwas, eigene Unterklasse/Kopie im
 eigenen Batch und im Bericht erwähnen. texture-map.txt und sound-map.txt nur am Ende anhängen.
+
+# Teil 11 – Blöcke, Items, Tränke, Weltgenerierung
+
+Original: `.reference/projectzulu/src/projectzulu/common/` (`blocks/`, `potion/`, `world/`, `dungeon/`, `core/`,
+`ProjectZulu_Blocks.java`, `ProjectZulu_World.java`, `ProjectZulu_Dungeon.java`). Pack-Konfiguration:
+`ProjectZuluConfig.cfg` (Block-/Item-IDs, Tränke an, Brauständer ersetzen, Grabstein bei Tod, Blumentopf ersetzen,
+Temperatur aus) und `ProjectZuluStructureBiomeConfig.cfg` (Strukturen je Biom).
+
+Gemeinsames Grundgerüst (fertig, nicht umbauen):
+- `gen/ZuluIds.java`: alle 1.5.2-Block-IDs (951–971) und Item-IDs (+256) aus der Pack-Konfig.
+- `gen/ZuluWorldGen.java`: Generator-Hülle, in worldgen152 als `ProjectZulu|Core` angemeldet, in `tools/expect.sh`
+  und `tools/java/Expect.java` eingetragen.
+- `ZuluItems`: alle ItemGenerics-Metas als eigene Items (raw_fiber, pulp, salt, shiny_bauble, plant_stalk,
+  prickly_powder, powder_slush, glowing_goo, small_/large_unhealthy_heart + die Drop-Items aus Teil 10).
+- `ZuluCreativeTabs`: eigener Tab „Project Zulu“ (Icon: Item `projectzulu:campfire`), zeigt automatisch jedes Item
+  des Namespaces; Extra-Stacks (Tränke) über `ZuluCreativeTabs.addExtra(...)`.
+- `tools/gen.py` führt am Ende alle `tools/gen_*.py` aus (gleicher Namespace: `write`, `n`, `NS`, `lang`, `assets`,
+  `simple_item(item, tex, title)`). Jedes Paket schreibt NUR in seine eigene `tools/gen_<paket>.py` (Modelle,
+  Blockstates, Lang, Rezepte, Loot-Tabellen, Tags, Texturen über `assets.append((quelle, ziel))`).
+  `gen.py` löscht `src/main/resources/{assets,data}` und erzeugt alles neu: nie Dateien von Hand dorthin legen.
+
+## Pakete (parallel, je eigener Worktree)
+
+Jedes Paket registriert nur in seiner Klasse `Zulu<Paket>.java` (+ `client/<Paket>Client.java`, beide angelegt und
+verdrahtet) und eigenen neuen Klassen in Unterpaketen (`projectzulu.block`, `projectzulu.item`, `projectzulu.potion`,
+`projectzulu.world`, …). Bestehende Dateien anderer Pakete nicht ändern. Rezepte des Originals
+(`blocks/ItemBlockRecipeManager.java`) jeweils für die eigenen Items/Blöcke als JSON. Jeder Block mit 1.5.2-ID meldet
+im eigenen Register `OldBlockStates.register/registerMeta(ZuluIds.X, …)` an (Metadaten wie im Original).
+Kein `runServer` in den Paketen (Ports kollidieren); Prüfung: `python3 mods/projectzulu/tools/gen.py` und
+`CI=true ./gradlew :projectzulu:compileJava -q` grün. Den Gesamttest macht die Hauptsession nach dem Zusammenführen.
+
+- **Plants** (`ZuluPlants`, `gen_plants.py`): Aloe Vera + Samen, Watered Dirt, Water Droplet, Tumbleweed,
+  Palme komplett (Stamm, Planken, Stufe, Doppelstufe, Treppe, Laub, Setzling mit Wachstum über `OldLiveGen`),
+  Kokosnuss-Block + Kokos-Items (Item, Samen, Schale, Milchfragment, Kokosmilch; `CoconutCraftingHandler`),
+  Treibsand, Night Bloom, Creeper Blossom (+ `EntityCreeperBlossomPrimed` und Renderer), Universal Flower Pot
+  („Replace Default Flower Pot“=true), `RawFiberCraftingHandler`, `ZuluFuelManager`, TreeCapitator-Palme.
+  Skills: `wood-sets-263`, `treecapitator-trees`, `worldgen152` (Setzling).
+- **Gear** (`ZuluGear`, `gen_gear.py`): 10 Rüstungssets (`ItemZuluArmor`, Temperatur aus), Jasper (`BlockJasper`,
+  Sounds `mummy_roar`/`summon_whispers`), Spikes (+ Render), Campfire (+ Render, Gamerule `doesCampfireBurn`),
+  Mob-Köpfe (Block, BlockEntity, Renderer, alle Kopf-Modelle aus `blocks/heads`, Drops der Kreaturen), Grabstein
+  (BlockEntity mit Text, GUI, Renderer, „Drop Tombstone On Death“=true mit Inventar), Ankh-Wirkung,
+  Truhenbeute aus `ItemBlockRecipeManager` (ChestGenHooks) als `gen/ZuluLoot.java` ohne Spielklassen.
+  Skills: `client-render-263`, `menu-gui-263`.
+- **World** (`ZuluWorld`, `gen/*`, `gen_world.py`): `ZuluWorldGen` bitgenau nach `ProjectZuluGenerator`:
+  `StructureManager` (Pyramide, Labyrinth, Friedhof, Oase je `ProjectZuluStructureBiomeConfig.cfg`),
+  `WorldGenReplaceTop`, `WorldGenOnSurface`; `OldBlockInfo` aller generierten Zulu-Blöcke; LimitedMobSpawner
+  (Block, BlockEntity, Spawn-Logik, Renderer; Editor-GUI nur wenn nötig), Strukturen-Mobs (Pharao, Mimic,
+  Minotaurus, Spukrüstung über `setSummoned`/`setHovering`/`setRandomArmor`), Structure Placer.
+  Darf `mods/worldgen152` erweitern (eigene Tile-/Entity-Arten für den Chunk-Writer). Skill: `worldgen152`.
+- **Potions** (`ZuluPotions`, `gen_potions.py`): 6 Effekte (bubbling/„Shiny!“, incendiary, slowfall, cleansing,
+  curse, thorn) mit Wirkung, Tränke (normal/lang/stark, Wurf, Verweil) und Brau-Rezepte aus den 1.5.2-Bitmasken
+  (`potionRequirements`, `ItemGenerics`-Effektstrings) übersetzt, „Alter Vanilla Potion Requirements“ und
+  „Replace Vanilla Brewing Stand“ (= Zutaten der Ausrüstung brauen) sinngemäß, Null-Potion-Handler, Tränke im Tab.

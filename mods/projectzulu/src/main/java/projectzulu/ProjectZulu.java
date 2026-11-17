@@ -15,11 +15,16 @@ public final class ProjectZulu {
     public static final String MOD_ID = "projectzulu";
 
     public ProjectZulu(IEventBus modBus) {
+        projectzulu.gen.ZuluWorldGen.register();
         ZuluItems.register(modBus);
         ZuluEntities.register(modBus);
         ZuluBigAnimals.register(modBus);
         ZuluMonsters.register(modBus);
         ZuluHorses.register(modBus);
+        ZuluPlants.register(modBus);
+        ZuluGear.register(modBus);
+        ZuluWorld.register(modBus);
+        ZuluPotions.register(modBus);
         ZuluCreativeTabs.register(modBus);
         if (FMLEnvironment.getDist() == Dist.CLIENT) {
             projectzulu.client.ZuluClient.register(modBus);

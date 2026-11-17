@@ -27,5 +27,6 @@ JAVA=${JAVA_HOME:+$JAVA_HOME/bin/}java
   $(find "$ROOT/mods/cofhcore/src/main/java/cofh/gen" -name '*.java') \
   $(find "$ROOT/mods/artifice/src/main/java/artifice/gen" -name '*.java') \
   $(find "$ROOT/mods/harkenscythe/src/main/java/harkenscythe/gen" -name '*.java') \
+  $(find "$ROOT/mods/projectzulu/src/main/java/projectzulu/gen" -name '*.java') \
   "$ROOT/tools/java/Expect.java"
 "$JAVA" -cp "$OUT/classes" Expect "$@"

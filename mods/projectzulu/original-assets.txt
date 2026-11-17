@@ -15,6 +15,16 @@ mods/projectzulublock/textures/items/gill.png -> assets/projectzulu/textures/ite
 mods/projectzulublock/textures/items/ectoplasm.png -> assets/projectzulu/textures/item/ectoplasm.png
 mods/projectzulublock/textures/items/froglegs.png -> assets/projectzulu/textures/item/frog_legs.png
 mods/projectzulublock/textures/items/rabbitsfoot.png -> assets/projectzulu/textures/item/rabbits_foot.png
+mods/projectzulublock/textures/items/rawfiber.png -> assets/projectzulu/textures/item/raw_fiber.png
+mods/projectzulublock/textures/items/pulp.png -> assets/projectzulu/textures/item/pulp.png
+mods/projectzulublock/textures/items/salt.png -> assets/projectzulu/textures/item/salt.png
+mods/projectzulublock/textures/items/shinybauble.png -> assets/projectzulu/textures/item/shiny_bauble.png
+mods/projectzulublock/textures/items/plantstalk.png -> assets/projectzulu/textures/item/plant_stalk.png
+mods/projectzulublock/textures/items/pricklypowder.png -> assets/projectzulu/textures/item/prickly_powder.png
+mods/projectzulublock/textures/items/powderslush.png -> assets/projectzulu/textures/item/powder_slush.png
+mods/projectzulublock/textures/items/glowinggoo.png -> assets/projectzulu/textures/item/glowing_goo.png
+mods/projectzulublock/textures/items/smallunhealthyheart.png -> assets/projectzulu/textures/item/small_unhealthy_heart.png
+mods/projectzulublock/textures/items/largeunhealthyheart.png -> assets/projectzulu/textures/item/large_unhealthy_heart.png
 mods/projectzulumob/armadillo.png -> assets/projectzulu/textures/entity/armadillo.png
 mods/projectzulumob/finch_red.png -> assets/projectzulu/textures/entity/finch_red.png
 mods/projectzulumob/finch_green.png -> assets/projectzulu/textures/entity/finch_green.png

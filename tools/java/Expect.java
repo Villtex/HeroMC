@@ -31,6 +31,7 @@ public class Expect {
             cofh.gen.CoFHWorldGen.register();
             artifice.gen.ArtificeWorldGen.register();
             harkenscythe.gen.HSWorldGen.register();
+            projectzulu.gen.ZuluWorldGen.register();
         }
         // "nether" (after "vanilla", if both are given): the Nether of the seed instead of the overworld
         boolean nether = a.length > 1 && a[1].equals("nether");
