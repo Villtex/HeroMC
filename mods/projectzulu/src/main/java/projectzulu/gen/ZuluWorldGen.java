@@ -18,6 +18,7 @@ public final class ZuluWorldGen {
     }
 
     public static void register() {
+        ZuluLoot.register();
         // TODO Teil 11, Batch C: OldBlockInfo of the generated blocks, generator below
         OldTerrainGen.registerWorldGenerator(FML_ID, ZuluWorldGen::generate);
     }
