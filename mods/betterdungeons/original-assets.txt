@@ -3,7 +3,12 @@
 bdimg/arrows.png -> assets/betterdungeons/textures/entity/arrows.png
 bdimg/arrows2.png -> assets/betterdungeons/textures/entity/arrows2.png
 bdimg/cloud_1.png -> assets/betterdungeons/textures/entity/equipment/humanoid/cloud.png
+bdimg/golemBoss.png -> assets/betterdungeons/textures/entity/golem_boss.png
+bdimg/icebull.png -> assets/betterdungeons/textures/entity/ice_bull.png
 bdimg/items.png -> assets/betterdungeons/textures/entity/items.png
+bdimg/mandril.png -> assets/betterdungeons/textures/entity/monking.png
+bdimg/spiderBoss.png -> assets/betterdungeons/textures/entity/spider_boss.png
+bdimg/turtle.png -> assets/betterdungeons/textures/entity/turtle_boss.png
 bdimg/turtle_1.png -> assets/betterdungeons/textures/entity/equipment/humanoid/turtle.png
 bdimg/turtle_2.png -> assets/betterdungeons/textures/entity/equipment/humanoid_leggings/turtle.png
 textures/blocks/bd/e2.png -> assets/betterdungeons/textures/block/capsule_station_bottom.png

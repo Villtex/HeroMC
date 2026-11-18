@@ -17,6 +17,9 @@ import java.util.*;
  * Nether, where "structures" picks the nearest fortresses.
  */
 public class Expect {
+    /** The Better Dungeons mobs whose entity type exists (tools/verify_blocks.py ENTITIES has their ids). */
+    static final java.util.Set<String> PORTED_BD_MOBS = java.util.Set.of("IceBull", "SlimeBoss", "TurtleBoss", "SpiderBoss", "Monking");
+
     public static void main(String[] a) {
         long seed = Long.parseLong(a[0]);
         boolean vanilla = a.length > 1 && a[1].equals("vanilla");   // without the biomes of mods, to compare with a vanilla 1.5.2 world
@@ -188,7 +191,8 @@ public class Expect {
             }
             for (OldEntity e : c.entities()) {
                 String kind = e instanceof OldEntity.Mob m ? "Mob:" + m.name() : e.getClass().getSimpleName();
-                if (kind.startsWith("Mob:BetterDungeons.")) continue;   // the bosses come with their mobs (not ported yet)
+                // Better Dungeons mobs: only the ones that are ported (the bosses of betterdungeons.mob)
+                if (kind.startsWith("Mob:BetterDungeons.") && !PORTED_BD_MOBS.contains(kind.substring("Mob:BetterDungeons.".length()))) continue;
                 out.append("E ").append(e.x()).append(' ').append(e.y()).append(' ').append(e.z()).append(' ').append(kind).append('\n');
             }
         }

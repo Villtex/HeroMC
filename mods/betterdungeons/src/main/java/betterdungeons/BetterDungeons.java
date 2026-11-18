@@ -73,6 +73,7 @@ public final class BetterDungeons {
         modBus.addListener(FMLCommonSetupEvent.class, event -> event.enqueueWork(BDEntityIds::registerOldNames));
         if (FMLEnvironment.getDist() == Dist.CLIENT) {
             betterdungeons.client.BDClient.register(modBus);
+            betterdungeons.client.mob.BDCreatureRenderers.register(modBus);
         }
     }
 }

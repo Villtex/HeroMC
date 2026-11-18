@@ -58,7 +58,11 @@ MOBS = {'Skeleton': 'minecraft:skeleton', 'Zombie': 'minecraft:zombie', 'Spider'
 ENTITIES = {'Villager': 'minecraft:villager', 'Witch': 'minecraft:witch', 'MinecartChest': 'minecraft:chest_minecart',
             'Painting': 'minecraft:painting', 'ItemFrame': 'minecraft:item_frame', 'Item': 'minecraft:item',
             'Mob:Cow': 'minecraft:cow', 'Mob:Pig': 'minecraft:pig', 'Mob:Zombie': 'minecraft:zombie', 'Mob:Skeleton': 'minecraft:skeleton',
-            'Mob:Minecart': 'minecraft:minecart', 'Mob:Sheep': 'minecraft:sheep', 'Mob:Chicken': 'minecraft:chicken'}
+            'Mob:Minecart': 'minecraft:minecart', 'Mob:Sheep': 'minecraft:sheep', 'Mob:Chicken': 'minecraft:chicken',
+            # Better Dungeons bosses of the boss blocks and the ice caves (betterdungeons.mob)
+            'Mob:BetterDungeons.IceBull': 'betterdungeons:ice_bull', 'Mob:BetterDungeons.SlimeBoss': 'betterdungeons:slime_boss',
+            'Mob:BetterDungeons.TurtleBoss': 'betterdungeons:turtle_boss', 'Mob:BetterDungeons.SpiderBoss': 'betterdungeons:spider_boss',
+            'Mob:BetterDungeons.Monking': 'betterdungeons:monking'}
 WOOL = ['white', 'orange', 'magenta', 'light_blue', 'yellow', 'lime', 'pink', 'gray', 'light_gray', 'cyan', 'purple', 'blue',
         'brown', 'green', 'red', 'black']
 SIDE = {2: 'north', 3: 'south', 4: 'west', 5: 'east'}
