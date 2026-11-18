@@ -49,7 +49,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 9 | Harken Scythe, Asgard Shield, Asgard Shield Addons | ~30.000 | 3 | Opus 5.5, mittel | ✅ erledigt |
 | 10 | Project Zulu A: Kreaturen | ~25.000 | 3 | Fable 5.2, hoch | ✅ erledigt |
 | 11 | Project Zulu B: Blöcke, Items, Weltgenerierung, Spawns | ~18.000 | 10 | Opus 5.5, mittel | offen |
-| 12 | Better Dungeons A: Bau-Engine und Gebäude-Import | ~18.000 | 1 | Fable 5.2, hoch | offen |
+| 12 | Better Dungeons A: Bau-Engine und Gebäude-Import | ~18.000 | 1 | Fable 5.2, hoch | ✅ erledigt |
 | 13 | Better Dungeons B: Dungeon-Typen, Mobs, Loot | ~18.000 | 12 | Fable 5.2, hoch | offen |
 | 14 | Battle Towers, Ruins (mit allen Ruinen-Vorlagen) | ~5.000 + Vorlagen | 1 | Opus 5.5, mittel | offen |
 | 15 | Dimensional Doors | ~11.000 | 2 | Opus 5.5, mittel | offen |
@@ -735,6 +735,60 @@ nötig – die Modelle werden aus dem 1.5.2-Code exakt übernommen (`tools/model
   des Originals, wenn auch die zwei Dorf-Bauteile von Tinkers' Construct da sind (Werkzeugschmiede, Schmelzerei;
   sonst erst Teil 25). Fragen, ob sie jetzt vorgezogen werden sollen, und das Dorf-Bauteil von Better Dungeons
   (`VillageHandler`) über `OldStructures.VILLAGE_HANDLERS` einhängen. Hintergrund: Teil 2, „Dörfer in der Hexxit-Welt“.
+
+### Teil 12 – Stand
+
+**Status: erledigt.** Teilprojekt `mods/betterdungeons` (Mod-ID `betterdungeons`, FML-ID `BetterDungeons`). Neuer
+Projekt-Skill `templates-152` (Vorlagen und Schematics übernehmen, für Teil 13, 14, 15).
+
+- **Vorlagen-Import:** `ImportOriginalAssets` liest jetzt mehrere Archive (`[archiv]`-Abschnitte in
+  `original-assets.txt`) und schreibt neben jeden Ordner eine `.index`-Datei. `Chocolate/` aus
+  `betterdungeons-data1/2` landet unter `betterdungeons-original/Chocolate/` im Jar (114 NBT-Vorlagen bis 73×206×70,
+  rund 70 Text-Vorlagen, `DungeonConfig`, `ChestConfig`, `config.prop`), nicht im Repo.
+- **Pack-Konfiguration** `Chocolate/config.prop` (liegt im Daten-Archiv): Block-IDs ab 2001 (eigener Spawner 2002),
+  Item-IDs ab 7351, `dungeonSeparation` 5, Dschungel- und Sumpfhöhlen an, Unterwelt-Höhlen und Minenschächte aus.
+- **Bau-Engine** `betterdungeons.gen` (ohne Spielklassen, läuft in `tools/expect.sh`): `BDNbt` (NBT von 1.5.2),
+  `BDTemplate` (NBT- und Text-Vorlagen, kompakt, gecacht), `BDFiles` (Index, Ordner-Reihenfolge, Properties in
+  Hashtable-Reihenfolge), `BuilderHelper` (alle `fillMap`-Varianten mit zweitem Durchgang für Fackeln/Hebel/Leitern/
+  Betten, Türen, Kisten, Spawner, Mob-Blöcke 8000, Mod-Truhen 8001, Bosse 8002, Öfen, Werfer, Schilder, Plattenspieler,
+  Braustände, Köpfe, Bilder, Rahmen, Mobs der Vorlage), `BDLoot` (`ChestConfig` + eigene Items), `BDMobs`,
+  `BDDungeons` (alle 11 `DungeonConfig`-Typen mit ihren Werten), `BDWorldGen` (WorldGeneratorNew).
+- **Platzierung:** jeder Chunk mit x, z durch 5 teilbar wie im Original (eigener Zufall je Chunk, keine Verschiebung der
+  anderen Generatoren). Gebaut werden die Vorlagen-Dungeons: Burgen (`castles`), Schneeburgen (`castleSnow`) und
+  Schiffe (`ship`). Die übrigen Typen werden gezogen wie im Original, bauen aber noch nichts (Teil 13).
+- **worldgen152 erweitert:** alle Vanilla-Blöcke 1–158 mit jeder Metadaten-Belegung (`OldBlockStates`,
+  `OldBlockInfo`, `verify_blocks.py`), alle Vanilla-Items und Schadenswerte (`OldGameIds`, Tränke, Spawn-Eier,
+  Haltbarkeit, Verzauberungen auf Gegenständen), neue Tiles (`Furnace`, `Sign`, `Jukebox`, `BrewingStand`,
+  `OldTile.Mod` + `OldModData.registerTile`), neue Entitäten (`Painting`, `ItemFrame`, `Mob`, `Item`), leere
+  Blockentitäten für Blöcke ohne eigene Daten, Items/Entitäten nicht portierter Mods werden mit Warnung weggelassen.
+  Korrigiert nach dem 1.5.2-Quelltext: Material von Schildern und Holz-Druckplatten (Holz) und Stein-Druckplatte
+  (Stein), Endportalrahmen als normaler Block, glatte Doppelstufen (Meta 8, 9, 15).
+- **Prüfung:** `pack` grün; Testserver bis `Done` ohne Fehler (Project Zulu dafür vorübergehend herausgenommen, sein
+  Zwischenstand aus Teil 11 hat eine Loot-Tabelle mit dem noch fehlenden Item `projectzulu:jasper`; sein Generator ist
+  dort noch leer, die Vorhersage also gleich). `tools/expect.sh 1234 dungeons 150`: Burg (−25, −35), Schneeburg
+  (30, −35), Schiff (5, 0), je 2×2 Chunks: 117.004 Blöcke, 192 Biome, 57 Spawner/Kisten/Entitäten (Bilder, Rahmen, Mobs), 0 Abweichungen.
+  Gegenprobe `find 260` (49 Biome, mit den korrigierten Vanilla-Einträgen): 285.204 Blöcke, 0 Abweichungen.
+
+**Offen / bewusst abweichend:**
+
+- **Teil 13:** die erzeugten Dungeon-Typen (`iceCave`, `jungleCave`, `lavaCity`, `linearDungeon`, `dungeon`,
+  `volcano`, `emptyCave`, `skyscraper`), Dschungel- und Sumpfhöhlen je Chunk (`BuilderChunkJungle/Swamp`, in der
+  Pack-Konfiguration an), die große Mauer bei z = −8000 mit Burgen/Schiffen (`BuilderWall`, `BuilderCastle`,
+  `BuilderCastleSnow`, `BuilderPirateShip`), alle Mobs und Bosse (Spawner der Vorlagen machen bis dahin Vanilla-Mobs:
+  Zombie, Enderman, Ertrunkener; Bosse der Mob-Blöcke 8002 fehlen), das Verhalten des eigenen Spawners (2002),
+  Items, Rezepte, Kapseln, Dungeon-Platzierer.
+- Ordner-Reihenfolge des Originals (`File.listFiles`) war vom Dateisystem abhängig; hier NTFS (Windows). Sie entscheidet,
+  welche Vorlage und bei mehreren Treffern welcher Dungeon-Typ gewählt wird.
+- `new Random()` des Originals (Inhalt der Mod-Truhen 8001, Werfer/Öfen aus `copySpecialBlocks`): hier aus Welt-Seed
+  und Position, also seed-fest.
+- Wie im Original: `StringTokenizer`-Fehler beim Einlesen (nur die erste Hälfte jeder Biom-Liste zählt, z. B.
+  Burgen nur in Plains, Meadow, Savanna), `triton` findet keinen Mob („Triton“), die Nether-Stadt erscheint nie
+  (Dimension 0, Biom Hell), die Block-Karten-Truhen sind immer Futterkisten.
+- Items noch nicht portierter Mods (Backpacks, Tinkers', LegendGear, ChocoCraft, die eigenen Items ab 7607 …) fehlen in
+  den Kisten; Rüstungs- und Schwerttyp von Mod-Items für die Waffenkisten ist aus dem Namen in `weapons.prop` geraten.
+- Sand, Kies, Amboss und Drachenei der Vorlagen fallen erst, wenn ein Block daneben sich ändert (im Original sofort
+  beim nächsten Tick); Kolben, TNT und Redstone der Vorlagen werden nicht neu ausgewertet.
+- Client-Prüfung offen: Aussehen der Bauten, Bilder (Lage bei mehrteiligen Motiven), Rahmen, Schilder.
 
 ## Teil 14 – Battle Towers, Ruins
 

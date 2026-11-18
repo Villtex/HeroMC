@@ -237,7 +237,8 @@ public final class OldWorld {
             this.hardenLava(x, y, z);
         } else if (id == 54) {
             this.chestAdded(x, y, z);
-        } else if (id == 50) {
+        } else if (id == 50 || (id == 75 || id == 76) && (meta & 15) == 0) {
+            // BlockRedstoneTorch.onBlockAdded runs the torch's only for metadata 0
             this.torchAdded(x, y, z);
         } else if (id == 23 || id == 61) {
             this.setBlockMetadata(x, y, z, this.facingAwayFromWalls(x, y, z));
@@ -252,6 +253,13 @@ public final class OldWorld {
 
     public boolean setBlockToAir(int x, int y, int z) {
         return this.setBlock(x, y, z, 0, 0);
+    }
+
+    /** World.setBlockMetadataWithNotify: changes only the metadata of the block there, without onBlockAdded. */
+    public void setMetadata(int x, int y, int z, int meta) {
+        if (y >= 0 && y < HEIGHT) {
+            this.setBlockMetadata(x, y, z, meta);
+        }
     }
 
     /** Changes only the metadata, without onBlockAdded. */

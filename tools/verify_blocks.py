@@ -6,7 +6,8 @@ Input lines:
   "x y z oldBlockId meta"   block check (meta may be missing = 0)
   "B x z namespace:biome"   biome check at y 70
   "S x y z Mob"             mob spawner with that 1.5.2 entity name
-  "C x y z n"               chest or dispenser with n filled slots
+  "C x y z n [v]"           chest or dispenser with n filled slots ([v]: of them v with vanilla items; the items of mods
+                            that are not ported yet stay out, so v..n slots are right)
   "E x y z Kind"            entity of a structure (Villager, Witch, MinecartChest) within 48 blocks of that place
 Needs enable-rcon=true, rcon.password=hexxit, rcon.port=25575 in run/server/server.properties.
 
@@ -35,7 +36,7 @@ SIMPLE = {0: 'air', 1: 'stone', 2: 'grass_block', 3: 'dirt', 4: 'cobblestone', 7
           116: 'enchanting_table', 119: 'end_portal', 121: 'end_stone', 122: 'dragon_egg', 123: 'redstone_lamp',
           124: 'redstone_lamp', 133: 'emerald_block', 137: 'command_block', 138: 'beacon', 147: 'light_weighted_pressure_plate',
           148: 'heavy_weighted_pressure_plate', 151: 'daylight_detector', 152: 'redstone_block'}
-MODS = {254: 'extrabiomesxl:red_rock', 255: 'extrabiomesxl:cracked_sand', 1552: 'wildcaves3:bone_pile', 2011: 'hexxitgear:hexbiscus',
+MODS = {2002: 'betterdungeons:spawner', 254: 'extrabiomesxl:red_rock', 255: 'extrabiomesxl:cracked_sand', 1552: 'wildcaves3:bone_pile', 2011: 'hexxitgear:hexbiscus',
         1004: 'artifice:basalt', 1005: 'artifice:marble'}
 # Wild Caves 3: one block per metadata value
 PIECES = ['stalactite_1', 'stalactite_2', 'stalactite_3', 'stalactite_4', 'stalactite_connection_1', 'stalactite_connection_2',
@@ -48,8 +49,16 @@ SKULLS = ['skeleton_skull', 'wither_skeleton_skull', 'zombie_head', 'player_head
 WOOD = ['oak', 'spruce', 'birch', 'jungle']
 FACING = ['south', 'west', 'north', 'east']
 MOBS = {'Skeleton': 'minecraft:skeleton', 'Zombie': 'minecraft:zombie', 'Spider': 'minecraft:spider',
-        'CaveSpider': 'minecraft:cave_spider', 'Silverfish': 'minecraft:silverfish', 'Blaze': 'minecraft:blaze'}
-ENTITIES = {'Villager': 'minecraft:villager', 'Witch': 'minecraft:witch', 'MinecartChest': 'minecraft:chest_minecart'}
+        'CaveSpider': 'minecraft:cave_spider', 'Silverfish': 'minecraft:silverfish', 'Blaze': 'minecraft:blaze',
+        # Better Dungeons: stand-ins until its mobs are ported (betterdungeons.BetterDungeons)
+        'BetterDungeons.Pirate': 'minecraft:zombie', 'BetterDungeons.Dwarf': 'minecraft:zombie', 'BetterDungeons.Goblin': 'minecraft:zombie',
+        'BetterDungeons.SnowGoblin': 'minecraft:zombie', 'BetterDungeons.ArmoredEnderman': 'minecraft:enderman',
+        'BetterDungeons.triton': 'minecraft:drowned', 'BetterDungeons.OgreArmored': 'minecraft:zombie',
+        'BetterDungeons.minotaurArmored': 'minecraft:zombie', 'BetterDungeons.GremlinArmored': 'minecraft:zombie'}
+ENTITIES = {'Villager': 'minecraft:villager', 'Witch': 'minecraft:witch', 'MinecartChest': 'minecraft:chest_minecart',
+            'Painting': 'minecraft:painting', 'ItemFrame': 'minecraft:item_frame', 'Item': 'minecraft:item',
+            'Mob:Cow': 'minecraft:cow', 'Mob:Pig': 'minecraft:pig', 'Mob:Zombie': 'minecraft:zombie', 'Mob:Skeleton': 'minecraft:skeleton',
+            'Mob:Minecart': 'minecraft:minecart', 'Mob:Sheep': 'minecraft:sheep', 'Mob:Chicken': 'minecraft:chicken'}
 WOOL = ['white', 'orange', 'magenta', 'light_blue', 'yellow', 'lime', 'pink', 'gray', 'light_gray', 'cyan', 'purple', 'blue',
         'brown', 'green', 'red', 'black']
 SIDE = {2: 'north', 3: 'south', 4: 'west', 5: 'east'}
@@ -423,8 +432,9 @@ def main():
                     report('SKULL MISMATCH', ' '.join(l))
             elif l[0] == 'C':
                 n = int(l[4])
+                least = int(l[5]) if len(l) > 5 else n
                 pos = f'{l[1]} {l[2]} {l[3]}'
-                if (n == 0 or test(f'data block {pos} Items[{n - 1}]')) and not test(f'data block {pos} Items[{n}]'):
+                if (least == 0 or test(f'data block {pos} Items[{least - 1}]')) and not test(f'data block {pos} Items[{n}]'):
                     tok += 1
                 else:
                     tbad += 1

@@ -11,6 +11,7 @@ import java.util.*;
  *   "K x y z type rotation" floor skulls (type as TileEntitySkull, rotation 0 to 15)
  *   "E x y z Kind"    entities structures spawned (Villager, Witch, MinecartChest)
  * With "find <radius>" it picks one chunk per biome found on a coarse scan around 0,0, with
+ * "dungeons <radius>" two by two chunks of the nearest Better Dungeons template dungeon of each type, with
  * "structures <radius>" chunks of the structures starting within that many chunks of 0,0; "spawn" prints
  * the world spawn. "vanilla" as second argument leaves out the biomes of mods; "nether" (after it) predicts the
  * Nether, where "structures" picks the nearest fortresses.
@@ -32,6 +33,7 @@ public class Expect {
             artifice.gen.ArtificeWorldGen.register();
             harkenscythe.gen.HSWorldGen.register();
             projectzulu.gen.ZuluWorldGen.register();
+            betterdungeons.gen.BDWorldGen.register();
         }
         // "nether" (after "vanilla", if both are given): the Nether of the seed instead of the overworld
         boolean nether = a.length > 1 && a[1].equals("nether");
@@ -79,6 +81,22 @@ public class Expect {
                 System.err.println(f);
                 int cx = f.x() - 8 >> 4, cz = f.z() - 8 >> 4;
                 for (int dx = 0; dx < 2; dx++) for (int dz = 0; dz < 2; dz++) chunks.add(new int[]{cx + dx, cz + dz});
+            }
+        } else if (a[1].equals("dungeons")) {
+            // Better Dungeons: per dungeon type the nearest dungeon within <radius> chunks, two by two chunks inside it
+            // (dungeons start at the corner of their chunk and reach up to 4 chunks towards +x/+z)
+            int r = Integer.parseInt(a[2]);
+            Map<String, int[]> nearest = new TreeMap<>();
+            for (int d = 0; d <= r; d += 5) for (int cx = -d; cx <= d; cx += 5) for (int cz = -d; cz <= d; cz += 5) {
+                if (Math.max(Math.abs(cx), Math.abs(cz)) != d) continue;
+                String biome = OldBiomes.byId(layout.chunkIds(cx, cz)[0] & 0xFF).name;
+                String kind = betterdungeons.gen.BDWorldGen.dungeonAt(seed, biome, cx, cz);
+                if (kind != null) nearest.putIfAbsent(kind, new int[]{cx, cz});
+            }
+            for (var e : nearest.entrySet()) {
+                System.err.println(e.getKey() + " at chunk " + e.getValue()[0] + ", " + e.getValue()[1]);
+                if (!e.getKey().contains("template")) continue;
+                for (int dx = 1; dx <= 2; dx++) for (int dz = 1; dz <= 2; dz++) chunks.add(new int[]{e.getValue()[0] + dx, e.getValue()[1] + dz});
             }
         } else if (a[1].equals("spawn")) {
             int[] spawn = hexxit.worldgen152.core.structure.OldStructures.spawnPoint(seed, layout, source);
@@ -134,13 +152,19 @@ public class Expect {
             for (var e : c.tiles().entrySet()) {
                 int k = e.getKey();
                 String pos = (cx * 16 + (k >> 12)) + " " + (k & 255) + " " + (cz * 16 + (k >> 8 & 15));
-                if (e.getValue() instanceof OldTile.Skull sk) out.append("K ").append(pos).append(' ').append(sk.type()).append(' ').append(sk.rotation() & 15).append('\n');
+                if (e.getValue() instanceof OldTile.Skull sk && c.metadata(k >> 12, k & 255, k >> 8 & 15) == 1) out.append("K ").append(pos).append(' ').append(sk.type()).append(' ').append(sk.rotation() & 15).append('\n');
                 if (e.getValue() instanceof OldTile.Spawner s) out.append("S ").append(pos).append(' ').append(s.mob()).append('\n');
                 if (e.getValue() instanceof OldTile.Dispenser t) out.append("C ").append(pos).append(' ').append(Arrays.stream(t.slots()).filter(Objects::nonNull).count()).append('\n');
-                if (e.getValue() instanceof OldTile.Chest t) out.append("C ").append(pos).append(' ').append(Arrays.stream(t.slots()).filter(Objects::nonNull).count()).append('\n');
+                // chests: filled slots, and how many of them hold vanilla items (items of mods not ported yet stay out in the game)
+                if (e.getValue() instanceof OldTile.Chest t) out.append("C ").append(pos).append(' ').append(Arrays.stream(t.slots()).filter(Objects::nonNull).count())
+                        .append(' ').append(Arrays.stream(t.slots()).filter(st -> st != null && (st.itemId() <= 158 || st.itemId() >= 256 && st.itemId() <= 422 || st.itemId() >= 2256 && st.itemId() <= 2267)).count())
+                        .append(Arrays.stream(t.slots()).filter(Objects::nonNull).map(st -> " " + st.itemId() + ":" + st.damage() + "x" + st.count()).reduce("", String::concat)).append('\n');
             }
-            for (OldEntity e : c.entities())
-                out.append("E ").append(e.x()).append(' ').append(e.y()).append(' ').append(e.z()).append(' ').append(e.getClass().getSimpleName()).append('\n');
+            for (OldEntity e : c.entities()) {
+                String kind = e instanceof OldEntity.Mob m ? "Mob:" + m.name() : e.getClass().getSimpleName();
+                if (kind.startsWith("Mob:BetterDungeons.")) continue;   // the bosses come with part 13
+                out.append("E ").append(e.x()).append(' ').append(e.y()).append(' ').append(e.z()).append(' ').append(kind).append('\n');
+            }
         }
         System.out.print(out);
         System.err.println(chunks.size() + " chunks in " + (System.nanoTime() - start) / 1000000 + " ms; blocks changed by population, by id: " + changed);

@@ -1,6 +1,7 @@
 package offlawn;
 
 import hexxit.worldgen152.OldBlockStates;
+import hexxit.worldgen152.OldGameIds;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -60,6 +61,10 @@ public final class OffLawn {
         modBus.addListener(OffLawn::tab);
         NeoForge.EVENT_BUS.addListener(OffLawn::breakSpeed);
         OffLawnGen.register();
+        // items of the pack ids, for chests that other mods fill (Better Dungeons): beanstalk, lawn, sunflower seed
+        OldGameIds.registerItem(OffLawnGen.BEANSTALK, MOD_ID + ":beanstalk");
+        OldGameIds.registerItem(OffLawnGen.LAWN, MOD_ID + ":lawn");
+        OldGameIds.registerItem(5976 + 256, MOD_ID + ":sunflower_seed");   // I:sunflowerSeed=5976 of OffLawn.cfg
         OldBlockStates.registerMeta(OffLawnGen.SUNFLOWER, meta -> SUNFLOWER.get().defaultBlockState()
                 .setValue(SunflowerBlock.HALF, meta == 1 ? DoubleBlockHalf.UPPER : DoubleBlockHalf.LOWER));
         if (FMLEnvironment.getDist() == Dist.CLIENT) {

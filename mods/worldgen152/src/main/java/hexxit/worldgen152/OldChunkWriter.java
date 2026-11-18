@@ -7,6 +7,30 @@ import hexxit.worldgen152.core.populate.OldStack;
 import hexxit.worldgen152.core.populate.OldTile;
 import hexxit.worldgen152.core.populate.OldEntity;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.NbtOps;
+import net.minecraft.nbt.StringTag;
+import net.minecraft.util.ProblemReporter;
+import net.minecraft.world.level.storage.TagValueInput;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.decoration.HangingEntity;
+import net.minecraft.world.entity.decoration.ItemFrame;
+import net.minecraft.world.entity.decoration.painting.Painting;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
+import net.minecraft.world.level.block.entity.BrewingStandBlockEntity;
+import net.minecraft.world.level.block.entity.JukeboxBlockEntity;
+import net.minecraft.world.level.block.entity.SignBlockEntity;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -40,6 +64,8 @@ import net.minecraft.world.level.chunk.ChunkAccess;
 
 /** Puts what 1.5.2 population did to a chunk into the game's chunk, on top of the bare terrain already there. */
 final class OldChunkWriter {
+    private static final org.slf4j.Logger LOGGER = com.mojang.logging.LogUtils.getLogger();
+
     private OldChunkWriter() {
     }
 
@@ -75,6 +101,13 @@ final class OldChunkWriter {
                     }
                     pos.set(minX + x, y, minZ + z);
                     chunk.setBlockState(pos, state);
+                    if (state.getBlock() instanceof EntityBlock entityBlock && populated.tile(x, y, z) == null) {
+                        // beds, enchanting tables, signs ... without data of their own still need their block entity
+                        BlockEntity blockEntity = entityBlock.newBlockEntity(pos.immutable(), state);
+                        if (blockEntity != null) {
+                            chunk.setBlockEntity(blockEntity);
+                        }
+                    }
                     if (id == 8 || id == 10 || connects(state)) {
                         // a spring: let the liquid start to flow once the chunk is part of the world;
                         // fences, panes, stairs, wires: let them find their neighbours
@@ -115,6 +148,33 @@ final class OldChunkWriter {
                 fill(dispenser, contents.slots(), registries);
             } else if (entry.getValue() instanceof OldTile.Spawner spawner && blockEntity instanceof SpawnerBlockEntity spawnerEntity) {
                 spawnerEntity.setEntityId(OldGameIds.entity(spawner.mob()), RandomSource.create(pos.asLong()));
+            } else if (entry.getValue() instanceof OldTile.Furnace contents && blockEntity instanceof AbstractFurnaceBlockEntity furnace) {
+                fill(furnace, contents.slots(), registries);
+            } else if (entry.getValue() instanceof OldTile.BrewingStand contents && blockEntity instanceof BrewingStandBlockEntity stand) {
+                fill(stand, contents.slots(), registries);
+            } else if (entry.getValue() instanceof OldTile.Jukebox jukebox && blockEntity instanceof JukeboxBlockEntity player
+                    && jukebox.record() != null) {
+                ItemStack record = item(jukebox.record(), registries);
+                if (!record.isEmpty()) {
+                    // through the saved data: the setters want the level, which a chunk being generated has not yet
+                    CompoundTag tag = new CompoundTag();
+                    tag.put(JukeboxBlockEntity.SONG_ITEM_TAG_ID,
+                            ItemStack.CODEC.encodeStart(registries.createSerializationContext(NbtOps.INSTANCE), record).getOrThrow());
+                    player.loadCustomOnly(TagValueInput.create(ProblemReporter.DISCARDING, registries, tag));
+                }
+            } else if (entry.getValue() instanceof OldTile.Sign sign && blockEntity instanceof SignBlockEntity signEntity) {
+                // through the saved data (setText wants the level)
+                ListTag messages = new ListTag();
+                for (int i = 0; i < 4; i++) {
+                    messages.add(StringTag.valueOf(i < sign.lines().length && sign.lines()[i] != null ? sign.lines()[i] : ""));
+                }
+                CompoundTag front = new CompoundTag();
+                front.put("messages", messages);
+                CompoundTag tag = new CompoundTag();
+                tag.put("front_text", front);
+                signEntity.loadCustomOnly(TagValueInput.create(ProblemReporter.DISCARDING, registries, tag));
+            } else if (entry.getValue() instanceof OldTile.Mod mod) {
+                OldModData.write(mod, blockEntity, registries);
             }
             chunk.setBlockEntity(blockEntity);
         }
@@ -122,9 +182,42 @@ final class OldChunkWriter {
         for (OldEntity old : populated.entities()) {
             Entity entity = entity(old, level.getLevel(), registries);
             if (entity != null) {
-                entity.snapTo(old.x(), old.y(), old.z(), 0.0F, 0.0F);
+                if (!(entity instanceof HangingEntity)) {
+                    entity.snapTo(old.x(), old.y(), old.z(), old instanceof OldEntity.Mob mob ? mob.yaw() : 0.0F, 0.0F);
+                }
                 chunk.addEntity(entity);
             }
+        }
+    }
+
+    /** 1.5.2 hanging direction (Direction.directions) to the side the entity faces. */
+    private static final Direction[] HANGING = {Direction.SOUTH, Direction.WEST, Direction.NORTH, Direction.EAST};
+    /** Entity equipment slots of 1.5.2, in the order of its "Equipment" list. */
+    private static final EquipmentSlot[] EQUIPMENT = {EquipmentSlot.MAINHAND, EquipmentSlot.FEET, EquipmentSlot.LEGS, EquipmentSlot.CHEST,
+            EquipmentSlot.HEAD};
+    private static final Set<String> REPORTED = ConcurrentHashMap.newKeySet();
+
+    /** The stack, or empty (reported once per item) when the item belongs to a mod that is not ported yet. */
+    private static ItemStack item(OldStack old, RegistryAccess registries) {
+        try {
+            return OldGameIds.stack(old, registries);
+        } catch (IllegalStateException e) {
+            if (REPORTED.add(old.itemId() + ":" + old.damage())) {
+                LOGGER.warn("Generated item left out: {}", e.getMessage());
+            }
+            return ItemStack.EMPTY;
+        }
+    }
+
+    /** The entity type of a 1.5.2 entity name, or {@code null} (reported once) when it is not known (yet). */
+    private static EntityType<?> type(String name) {
+        try {
+            return OldGameIds.entity(name);
+        } catch (IllegalStateException e) {
+            if (REPORTED.add(name)) {
+                LOGGER.warn("Generated entity left out: {}", e.getMessage());
+            }
+            return null;
         }
     }
 
@@ -135,7 +228,7 @@ final class OldChunkWriter {
     private static void fill(Container container, OldStack[] slots, RegistryAccess registries) {
         for (int slot = 0; slot < slots.length && slot < container.getContainerSize(); slot++) {
             if (slots[slot] != null) {
-                container.setItem(slot, OldGameIds.stack(slots[slot], registries));
+                container.setItem(slot, item(slots[slot], registries));
             }
         }
     }
@@ -160,7 +253,55 @@ final class OldChunkWriter {
             }
             return entity;
         }
+        if (old instanceof OldEntity.Painting painting) {
+            // 1.5.2 kept the wall block, today's paintings keep the block in front of it; both centre the
+            // picture the same way, so the motive lands where it was
+            Direction facing = HANGING[painting.direction() & 3];
+            BlockPos at = new BlockPos(painting.tileX(), painting.tileY(), painting.tileZ()).relative(facing);
+            Identifier variant = Identifier.withDefaultNamespace(paintingName(painting.motive()));
+            var holder = registries.lookupOrThrow(Registries.PAINTING_VARIANT).get(ResourceKey.create(Registries.PAINTING_VARIANT, variant));
+            return holder.isEmpty() ? null : new Painting(level, at, facing, holder.get());
+        }
+        if (old instanceof OldEntity.ItemFrame frame) {
+            Direction facing = HANGING[frame.direction() & 3];
+            ItemFrame entity = new ItemFrame(level, new BlockPos(frame.tileX(), frame.tileY(), frame.tileZ()).relative(facing), facing);
+            if (frame.item() != null) {
+                entity.setItem(item(frame.item(), registries), false);
+            }
+            // 1.5.2 turned the item in quarter turns, today in eighths
+            entity.setRotation(frame.rotation() * 2 & 7);
+            return entity;
+        }
+        if (old instanceof OldEntity.Item dropped) {
+            ItemStack stack = item(dropped.stack(), registries);
+            return stack.isEmpty() ? null : new ItemEntity(level, dropped.x(), dropped.y(), dropped.z(), stack, 0.0, 0.0, 0.0);
+        }
+        if (old instanceof OldEntity.Mob mob) {
+            EntityType<?> type = type(mob.name());
+            Entity entity = type == null ? null : type.create(level, EntitySpawnReason.STRUCTURE);
+            if (entity instanceof Mob living && mob.equipment() != null) {
+                for (int slot = 0; slot < mob.equipment().length && slot < EQUIPMENT.length; slot++) {
+                    if (mob.equipment()[slot] != null) {
+                        living.setItemSlot(EQUIPMENT[slot], item(mob.equipment()[slot], registries));
+                    }
+                }
+            }
+            return entity;
+        }
         return null;
+    }
+
+    /** EnumArt title of 1.5.2 ("SkullAndRoses") to today's painting variant ("skull_and_roses"). */
+    private static String paintingName(String motive) {
+        StringBuilder name = new StringBuilder();
+        for (int i = 0; i < motive.length(); i++) {
+            char c = motive.charAt(i);
+            if (Character.isUpperCase(c) && i > 0) {
+                name.append('_');
+            }
+            name.append(Character.toLowerCase(c));
+        }
+        return name.toString();
     }
 
     /** Fences, panes, bars, stairs, redstone wire and tripwire show their connections as block states today. */

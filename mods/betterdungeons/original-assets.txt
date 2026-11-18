@@ -1,0 +1,7 @@
+# Better Dungeons 1.09 -> path in the ported jar
+# The templates (Building), the dungeon and the chest configuration come from the data archives of the pack
+# (the Chocolate folder next to config/ in the original installation), read by betterdungeons.gen.BDFiles.
+[betterdungeons-data1]
+Chocolate/ -> betterdungeons-original/Chocolate/
+[betterdungeons-data2]
+Chocolate/ -> betterdungeons-original/Chocolate/

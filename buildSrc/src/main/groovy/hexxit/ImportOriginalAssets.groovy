@@ -17,11 +17,15 @@ import java.util.zip.ZipEntry
 import java.util.zip.ZipInputStream
 
 /**
- * Copies textures, sounds and other assets out of an original Hexxit 1.0.11 archive into a mod's resources.
+ * Copies textures, sounds and other assets out of original Hexxit 1.0.11 archives into a mod's resources.
  *
  * The originals belong to their authors and are not part of this repository. Each mod lists what it needs in
  * original-assets.txt ("path in the original jar -> path in the new jar", a trailing slash copies a folder);
  * the archive is fetched from the Technic mirror (md5-checked, cached in .cache/zips) when the mod is built.
+ * The lines take from the archive named like the mod; a line "[other-archive]" switches to another archive of
+ * the pack manifest for the lines below it (data-only archives such as betterdungeons-data1). Next to every
+ * copied folder an ".index" file lists its files (paths relative to the folder, one per line, sorted), because
+ * a jar cannot list a directory.
  */
 abstract class ImportOriginalAssets extends DefaultTask {
     @InputFile
@@ -42,28 +46,50 @@ abstract class ImportOriginalAssets extends DefaultTask {
 
     @TaskAction
     void run() {
-        def entry = new JsonSlurper().parse(manifest.get().asFile).mods.find { it.name == archive.get() }
-        if (entry == null) {
-            throw new GradleException("No archive named '${archive.get()}' in ${manifest.get().asFile.name}")
-        }
-
-        Map<String, String> files = [:]
-        Map<String, String> folders = [:]
+        def mods = new JsonSlurper().parse(manifest.get().asFile).mods
+        // archive name -> [files, folders], in the order of original-assets.txt
+        Map<String, List<Map<String, String>>> sections = new LinkedHashMap<>()
+        String current = archive.get()
+        sections[current] = [[:], [:]]
         mapping.get().asFile.eachLine { String raw ->
             String line = raw.trim()
             if (line.isEmpty() || line.startsWith('#')) {
+                return
+            }
+            if (line.startsWith('[') && line.endsWith(']')) {
+                current = line.substring(1, line.length() - 1).trim()
+                sections.computeIfAbsent(current) { [[:], [:]] }
                 return
             }
             def parts = line.split(/\s*->\s*/)
             if (parts.length != 2) {
                 throw new GradleException("${mapping.get().asFile}: expected 'source -> target', got: ${line}")
             }
-            (parts[0].endsWith('/') ? folders : files)[parts[0]] = parts[1]
+            sections[current][parts[0].endsWith('/') ? 1 : 0][parts[0]] = parts[1]
         }
 
         File out = outputDir.get().asFile
         project.delete(out)
         out.mkdirs()
+        Map<String, Set<String>> indexes = new TreeMap<>()
+        sections.each { String name, List<Map<String, String>> section ->
+            if (section[0].isEmpty() && section[1].isEmpty()) {
+                return
+            }
+            def entry = mods.find { it.name == name }
+            if (entry == null) {
+                throw new GradleException("No archive named '${name}' in ${manifest.get().asFile.name}")
+            }
+            copy(entry, section[0], section[1], out, indexes)
+        }
+        indexes.each { String folder, Set<String> names ->
+            File index = new File(out, folder + '.index')
+            index.parentFile.mkdirs()
+            index.text = names.join('\n') + '\n'
+        }
+    }
+
+    void copy(def entry, Map<String, String> files, Map<String, String> folders, File out, Map<String, Set<String>> indexes) {
         Set<String> found = [] as Set
         def take = { String name, byte[] data ->
             String target = files[name]
@@ -73,6 +99,7 @@ abstract class ImportOriginalAssets extends DefaultTask {
                 if (folder != null) {
                     target = folder.value + name.substring(folder.key.length())
                     source = folder.key
+                    indexes.computeIfAbsent(folder.value) { new TreeSet<String>() } << name.substring(folder.key.length())
                 }
             }
             if (target != null) {

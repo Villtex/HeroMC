@@ -3,6 +3,7 @@
 #   tools/expect.sh <seed> find <radius-in-chunks> > expect.txt   (one chunk per biome found near 0,0)
 #   tools/expect.sh <seed> structures <radius-in-chunks> > expect.txt   (chunks of villages, strongholds, temples, mineshafts)
 #   tools/expect.sh <seed> <chunkX> <chunkZ> [...]   > expect.txt
+#   tools/expect.sh <seed> dungeons <radius-in-chunks> > expect.txt   (chunks of the nearest Better Dungeons template dungeons)
 #   tools/expect.sh <seed> spawn                     (the world spawn)
 # "vanilla" after the seed leaves out the biomes of mods (to compare with a vanilla 1.5.2 world).
 # Compiles hexxit.worldgen152.core, the ExtrabiomesXL biome table and the core classes of the mod generators with plain javac (JDK 21+).
@@ -28,5 +29,9 @@ JAVA=${JAVA_HOME:+$JAVA_HOME/bin/}java
   $(find "$ROOT/mods/artifice/src/main/java/artifice/gen" -name '*.java') \
   $(find "$ROOT/mods/harkenscythe/src/main/java/harkenscythe/gen" -name '*.java') \
   $(find "$ROOT/mods/projectzulu/src/main/java/projectzulu/gen" -name '*.java') \
+  $(find "$ROOT/mods/betterdungeons/src/main/java/betterdungeons/gen" -name '*.java') \
   "$ROOT/tools/java/Expect.java"
-"$JAVA" -cp "$OUT/classes" Expect "$@"
+# Better Dungeons reads its templates from the original archives, which the build imports
+BD="$ROOT/mods/betterdungeons/build/generated/original-assets"
+[ -f "$BD/betterdungeons-original/Chocolate/.index" ] || (cd "$ROOT" && ./gradlew -q :betterdungeons:importOriginalAssets >&2)
+"$JAVA" -cp "$OUT/classes:$BD" Expect "$@"

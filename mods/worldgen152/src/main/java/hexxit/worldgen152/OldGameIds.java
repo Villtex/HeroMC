@@ -85,6 +85,15 @@ public final class OldGameIds {
         registerEntity("Zombie", "minecraft:zombie");
         registerEntity("Spider", "minecraft:spider");
         registerEntity("Blaze", "minecraft:blaze");
+        // the other names of EntityList (entities that templates of structures carry)
+        String[][] entities = {{"Creeper", "creeper"}, {"Slime", "slime"}, {"Ghast", "ghast"}, {"PigZombie", "zombified_piglin"},
+                {"Enderman", "enderman"}, {"LavaSlime", "magma_cube"}, {"WitherBoss", "wither"}, {"Bat", "bat"}, {"Witch", "witch"},
+                {"Pig", "pig"}, {"Sheep", "sheep"}, {"Cow", "cow"}, {"Chicken", "chicken"}, {"Squid", "squid"}, {"Wolf", "wolf"},
+                {"MushroomCow", "mooshroom"}, {"SnowMan", "snow_golem"}, {"Ozelot", "ocelot"}, {"VillagerGolem", "iron_golem"},
+                {"Villager", "villager"}, {"Minecart", "minecart"}, {"Boat", "oak_boat"}, {"Giant", "giant"}};
+        for (String[] entity : entities) {
+            registerEntity(entity[0], "minecraft:" + entity[1]);
+        }
         Object[][] enchantments = {
                 {0, Enchantments.PROTECTION}, {1, Enchantments.FIRE_PROTECTION}, {2, Enchantments.FEATHER_FALLING},
                 {3, Enchantments.BLAST_PROTECTION}, {4, Enchantments.PROJECTILE_PROTECTION}, {5, Enchantments.RESPIRATION},
@@ -387,6 +396,18 @@ public final class OldGameIds {
             ItemEnchantments.Mutable stored = new ItemEnchantments.Mutable(ItemEnchantments.EMPTY);
             stored.set(enchantment, old.enchantmentLevel());
             stack.set(DataComponents.STORED_ENCHANTMENTS, stored.toImmutable());
+        }
+        if (old.applied().length > 0) {
+            // ItemStack.addEnchantment: the same enchantment twice stays twice in 1.5.2; today the later level wins
+            ItemEnchantments.Mutable on = new ItemEnchantments.Mutable(ItemEnchantments.EMPTY);
+            for (int i = 0; i + 1 < old.applied().length; i += 2) {
+                ResourceKey<Enchantment> key = ENCHANTMENTS.get(old.applied()[i]);
+                if (key == null) {
+                    throw new IllegalStateException("1.5.2 enchantment " + old.applied()[i] + " is not mapped (OldGameIds.registerEnchantment)");
+                }
+                on.set(registries.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(key), old.applied()[i + 1]);
+            }
+            stack.set(DataComponents.ENCHANTMENTS, on.toImmutable());
         }
         return stack;
     }

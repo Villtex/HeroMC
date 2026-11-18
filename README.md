@@ -27,7 +27,7 @@ Der Port ist in Teile aufgeteilt, die je in eine Session passen: [`docs/PLAN.md`
 | Pfad | Inhalt |
 |---|---|
 | `mods/<name>/` | ein portierter Mod = ein Gradle-Teilprojekt (Name wie im Technic-Manifest) |
-| `mods/<name>/original-assets.txt` | welche Texturen/Sounds der Mod beim Bauen aus dem Original-Archiv übernimmt |
+| `mods/<name>/original-assets.txt` | welche Texturen/Sounds/Vorlagen der Mod beim Bauen aus Original-Archiven übernimmt (`[archiv]` wechselt das Archiv) |
 | `buildSrc/` | Gradle-Task, der diese Dateien lädt (MD5-geprüft) und in das gebaute Jar legt |
 | `pack/hexxit-1.0.11.json` | exaktes Manifest des Originalpacks: Mods, Versionen, Prüfsummen, Download-URLs |
 | `tools/reference.py` | lädt das Original und erzeugt lesbare Referenzquellen (lokal, wird nicht eingecheckt) |
@@ -44,6 +44,7 @@ Der Port ist in Teile aufgeteilt, die je in eine Session passen: [`docs/PLAN.md`
 | `.claude/skills/mobs-263/` | Projekt-Skill: Mobs, Spawn-Eier, Boote, Mob-Drops und Spawns (Biome-Modifier), viele Mobs auf einmal (Modell-Konverter, Easing, Fliegen, Reiten, Mehrteiler, Boss), Prüfen ohne Spieler; Vorlagen Natura, Project Zulu |
 | `.claude/skills/server-tests-263/` | Projekt-Skill: Verhalten ohne Spieler am Testserver prüfen (Rezepte über Crafter + RCON, temporärer FakePlayer-Befehl, forceloaded Chunks) |
 | `.claude/skills/treecapitator-trees/` | Projekt-Skill: Bäume und Äxte eines Mods bei TreeCapitator anmelden (Daten-Registry `treecapitator:tree`, Item-Tags) |
+| `.claude/skills/templates-152/` | Projekt-Skill: Gebäude-Vorlagen und Schematics eines 1.5.2-Mods übernehmen (Daten-Archive beim Bauen ins Jar, NBT ohne Spielklassen, Kisten/Schilder/Bilder/Mobs über worldgen152, Prüfung), Vorlage Better Dungeons |
 | `.claude/skills/headless-client/` | Projekt-Skill: Testclient im Cloud-Container ohne Bildschirm starten (Xvfb, `SDL_VIDEO_FORCE_EGL=1`, Screenshots, xdotool) |
 
 ## Bauen und Starten
@@ -128,6 +129,10 @@ Hexbiscus (72.274 Blöcke) mit dem Kern überein.
 Mit Natura (Teil 7) stimmen für Seed 1234 je ein Chunk aller 49 Biome (159.260 Blöcke) und 297 Chunks mit
 Natura-Bäumen, -Büschen, -Feldfrüchten und Saguaros (903.929 Blöcke) mit dem Kern überein.
 
+Better Dungeons (Teil 12) baut seine Vorlagen-Dungeons (Burgen, Schneeburgen, Schiffe) in dieselbe Welt; für Seed 1234 stimmen
+je 2×2 Chunks der nächsten Burg, Schneeburg und des nächsten Schiffs (117.004 Blöcke, Kisten, Spawner, Bilder, Rahmen) mit dem Kern
+überein (`tools/expect.sh 1234 dungeons 150`).
+
 Der Nether (Teil 7b) ist der 1.5.2-Nether in der Variante von Natura („Override Nether“: Tainted Soil, Heat Sand,
 Netherfestungen, Glowshrooms, Nether-Bäume). Gelände und Höhlen sind byte-gleich mit dem dekompilierten
 Original-Code; für Seed 1234 stimmen 520 Nether-Chunks (579.244 Blöcke, eine ganze Festung) mit dem Kern überein.
@@ -191,7 +196,7 @@ Prüfen: `tools/expect.sh 1234 nether structures 60 > expect.txt`, dann `verify_
 | Natura | `natura` 2.1.5.1 | mDiyo | 20.430 | ✅ Teil 7, Nether ✅ Teil 7b |
 | BiblioCraft | `bibliocraft` 1.3.3 | Nuchaz | 20.970 | offen |
 | Harken Scythe | `harkenscythe` 2.1.6 | Jade Knightblazer | 27.284 | ✅ Teil 9 (Seelen/Blut, Altäre, 26 Mobs; Client-Prüfung offen) |
-| Better Dungeons (Chocolate Quest) | `betterdungeons` 1.09b | Chocolatin | 36.118 | offen |
+| Better Dungeons (Chocolate Quest) | `betterdungeons` 1.09b | Chocolatin | 36.118 | Bau-Engine, Vorlagen, Burgen/Schiffe ✅ Teil 12; Höhlen, Mobs, Items offen (Teil 13) |
 | Project Zulu | `projectzulu` 1.0.3.8 | — | 42.845 | Kreaturen ✅ Teil 10 (40 Mobs, Spawns, Drops; Client-Prüfung offen), Blöcke/Welt offen (Teil 11) |
 | The Twilight Forest | `twilightforest` 1.18.1 | Benimatic | 50.329 | zurückgestellt |
 | Tinkers' Construct | `tconstruct` 1.4.3 | mDiyo | 59.808 | zurückgestellt |
