@@ -9,7 +9,7 @@ Input lines:
   "C x y z n [v]"           chest or dispenser with n filled slots ([v]: of them v with vanilla items; the items of mods
                             that are not ported yet stay out, so v..n slots are right)
   "E x y z Kind"            entity of a structure (Villager, Witch, MinecartChest) within 48 blocks of that place
-Needs enable-rcon=true, rcon.password=hexxit, rcon.port=25575 in run/server/server.properties.
+Needs enable-rcon=true, rcon.password=hexxit, rcon.port=25575 (or $RCON_PORT) in run/server/server.properties.
 
 Springs start to flow once their chunk is live, as in 1.5.2. Flowing (not source) water or lava where the
 prediction has something else is therefore counted separately and is not a difference.
@@ -356,7 +356,7 @@ def main():
         dimension = lines[0][1]
         lines = lines[1:]
     chunks = sorted({(int(l[0]) >> 4, int(l[2]) >> 4) for l in lines if l[0][0] not in 'BSCEK'})
-    with socket.create_connection(('127.0.0.1', 25575), timeout=300) as s:
+    with socket.create_connection(('127.0.0.1', int(os.environ.get('RCON_PORT', 25575))), timeout=300) as s:
         if packet(s, 1, 3, 'hexxit')[0] == -1:
             raise SystemExit('rcon: wrong password')
 

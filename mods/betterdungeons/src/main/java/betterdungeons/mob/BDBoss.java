@@ -23,7 +23,8 @@ import net.minecraft.world.level.Level;
  * dragon and the wither (IBossDisplayData alone did nothing).
  *
  * <p>isAIEnabled: while it is false the AI tasks of 1.5.2 did not run at all (no goals, no target tasks); here the
- * goal flags are switched off, which stops the running goals until it is true again.
+ * move, look and jump flags are switched off, which stops those goals until it is true again. The target goals go on
+ * (stopping them would drop the target, which the attacks need; in 1.5.2 it just stayed).
  */
 public abstract class BDBoss extends Monster {
     private static final EntityDataAccessor<Byte> DATA_ANIM = SynchedEntityData.defineId(BDBoss.class, EntityDataSerializers.BYTE);
@@ -54,7 +55,6 @@ public abstract class BDBoss extends Monster {
             for (Goal.Flag flag : new Goal.Flag[] {Goal.Flag.MOVE, Goal.Flag.LOOK, Goal.Flag.JUMP}) {
                 this.goalSelector.setControlFlag(flag, ai);
             }
-            this.targetSelector.setControlFlag(Goal.Flag.TARGET, ai);
         }
         super.aiStep();
     }

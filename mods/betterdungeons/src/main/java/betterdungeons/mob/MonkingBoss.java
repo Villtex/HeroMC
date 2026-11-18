@@ -33,7 +33,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * EntityGiant ("Monking", the gorilla king of the jungle caves): 1500 health, regenerates 1 every 100 ticks, hits for
+ * EntityGiant ("Monking", the gorilla king of the jungle caves): 1500 health (see {@link #healthScale()}), regenerates 1 every 100 ticks, hits for
  * 7, speed 0.3, 20 xp, no knockback, no fall damage. Attacks other monsters (IMob) and whatever hurts it.
  *
  * <p>Attacks ({@link #attackEntity}, squared distance d): closer than 8 it winds up a 30 tick blow (watcher 16 the
@@ -57,8 +57,21 @@ public class MonkingBoss extends BDBoss {
         this.xpReward = 20;
     }
 
+    /** The health of 1.5.2 (getMaxHealth). */
+    protected float originalMaxHealth() {
+        return 1500.0F;
+    }
+
+    /**
+     * Max health cannot go above 1024 today: the Monking keeps 1024 and takes damage (and regenerates) in the ratio
+     * 1024 / 1500, so it lasts as long as with 1500, and the thirds of its health stay where they were.
+     */
+    protected float healthScale() {
+        return this.getMaxHealth() / this.originalMaxHealth();
+    }
+
     public static AttributeSupplier.Builder createAttributes() {
-        return createMonsterAttributes().add(Attributes.MAX_HEALTH, 1500.0).add(Attributes.ATTACK_DAMAGE, 7.0)
+        return createMonsterAttributes().add(Attributes.MAX_HEALTH, 1024.0).add(Attributes.ATTACK_DAMAGE, 7.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.3).add(Attributes.FOLLOW_RANGE, 16.0).add(Attributes.KNOCKBACK_RESISTANCE, 1.0);
     }
 
@@ -142,7 +155,7 @@ public class MonkingBoss extends BDBoss {
 
     private void serverUpdate() {
         if (this.tickCount % 100 == 0 && this.getHealth() < this.getMaxHealth()) {
-            this.setHealth(this.getHealth() + 1.0F);
+            this.setHealth(this.getHealth() + this.healthScale());
         }
         if (this.isAttacking()) {
             this.setAttackAnimTime(this.getAttackAnimTime() + 1);
@@ -306,7 +319,7 @@ public class MonkingBoss extends BDBoss {
                 damage *= 10.0F;
             }
         }
-        return super.hurtServer(level, source, damage);
+        return super.hurtServer(level, source, damage * this.healthScale());
     }
 
     @Override

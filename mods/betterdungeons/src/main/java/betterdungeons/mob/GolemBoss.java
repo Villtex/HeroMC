@@ -43,6 +43,11 @@ public class GolemBoss extends MonkingBoss implements BDEntityClass {
         this.totalAttackAnimTime = 35;
     }
 
+    @Override
+    protected float originalMaxHealth() {
+        return 1000.0F;
+    }
+
     public static AttributeSupplier.Builder createAttributes() {
         return createMonsterAttributes().add(Attributes.MAX_HEALTH, 1000.0).add(Attributes.ATTACK_DAMAGE, 7.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.3).add(Attributes.FOLLOW_RANGE, 16.0).add(Attributes.KNOCKBACK_RESISTANCE, 1.0);
