@@ -11,7 +11,7 @@ import java.util.*;
  *   "K x y z type rotation" floor skulls (type as TileEntitySkull, rotation 0 to 15)
  *   "E x y z Kind"    entities structures spawned (Villager, Witch, MinecartChest)
  * With "find <radius>" it picks one chunk per biome found on a coarse scan around 0,0, with
- * "dungeons <radius>" two by two chunks of the nearest Better Dungeons template dungeon of each type, with
+ * "dungeons <radius>" chunks of the nearest Better Dungeons dungeon of each type, chunk cave and wall castle, with
  * "structures <radius>" chunks of the structures starting within that many chunks of 0,0; "spawn" prints
  * the world spawn. "vanilla" as second argument leaves out the biomes of mods; "nether" (after it) predicts the
  * Nether, where "structures" picks the nearest fortresses.
@@ -83,8 +83,10 @@ public class Expect {
                 for (int dx = 0; dx < 2; dx++) for (int dz = 0; dz < 2; dz++) chunks.add(new int[]{cx + dx, cz + dz});
             }
         } else if (a[1].equals("dungeons")) {
-            // Better Dungeons: per dungeon type the nearest dungeon within <radius> chunks, two by two chunks inside it
-            // (dungeons start at the corner of their chunk and reach up to 4 chunks towards +x/+z)
+            // Better Dungeons: per dungeon type the nearest dungeon within <radius> chunks, with the chunks that show it
+            // (dungeons start at the corner of their chunk; the ice cave reaches 6 chunks towards +x/+z, the volcano 4
+            // back and 5 forward, its dungeon east of it), the nearest jungle and swamp chunk cave, and the nearest
+            // piece of the great wall at chunk z = -500 with a castle, snow castle or ship
             int r = Integer.parseInt(a[2]);
             Map<String, int[]> nearest = new TreeMap<>();
             for (int d = 0; d <= r; d += 5) for (int cx = -d; cx <= d; cx += 5) for (int cz = -d; cz <= d; cz += 5) {
@@ -93,10 +95,34 @@ public class Expect {
                 String kind = betterdungeons.gen.BDWorldGen.dungeonAt(seed, biome, cx, cz);
                 if (kind != null) nearest.putIfAbsent(kind, new int[]{cx, cz});
             }
+            String[] caves = {"jungle chunk cave", "swamp chunk cave"};
+            search:
+            for (int d = 0; d <= r; d++) for (int cx = -d; cx <= d; cx++) for (int cz = -d; cz <= d; cz++) {
+                if (Math.max(Math.abs(cx), Math.abs(cz)) != d) continue;
+                int cave = betterdungeons.gen.BDWorldGen.chunkCaveAt(OldBiomes.byId(layout.chunkIds(cx, cz)[0] & 0xFF));
+                // a cave only where the chunk and its neighbours are all of the biome: look at the middle of a patch
+                if (cave > 0 && betterdungeons.gen.BDWorldGen.chunkCaveAt(OldBiomes.byId(layout.chunkIds(cx - 1, cz - 1)[0] & 0xFF)) == cave
+                        && betterdungeons.gen.BDWorldGen.chunkCaveAt(OldBiomes.byId(layout.chunkIds(cx + 1, cz + 1)[0] & 0xFF)) == cave)
+                    nearest.putIfAbsent(caves[cave - 1], new int[]{cx, cz});
+                if (nearest.containsKey(caves[0]) && nearest.containsKey(caves[1])) break search;
+            }
+            for (int d = 0; d <= 4 * r; d += 10) for (int cx : new int[]{-d, d}) {
+                String wall = betterdungeons.gen.BDWorldGen.wallCastleAt(layout.biomeAt(cx * 16, -500 * 16 - 70), cx);
+                if (wall != null) nearest.putIfAbsent("wall with " + wall, new int[]{cx, -500});
+            }
             for (var e : nearest.entrySet()) {
-                System.err.println(e.getKey() + " at chunk " + e.getValue()[0] + ", " + e.getValue()[1]);
-                if (!e.getKey().contains("template")) continue;
-                for (int dx = 1; dx <= 2; dx++) for (int dz = 1; dz <= 2; dz++) chunks.add(new int[]{e.getValue()[0] + dx, e.getValue()[1] + dz});
+                int cx = e.getValue()[0], cz = e.getValue()[1];
+                String kind = e.getKey();
+                System.err.println(kind + " at chunk " + cx + ", " + cz);
+                int[][] offsets;
+                if (kind.contains("template")) offsets = new int[][]{{1, 1}, {1, 2}, {2, 1}, {2, 2}};
+                else if (kind.contains("iceCave")) offsets = new int[][]{{2, 2}, {2, 3}, {3, 2}, {3, 3}, {6, 6}};
+                else if (kind.contains("volcano")) offsets = new int[][]{{-1, -1}, {-1, 0}, {0, -1}, {0, 0}, {-4, -4}, {3, 3}, {4, -1}, {5, -2}};
+                else if (kind.contains("linearDungeon")) offsets = new int[][]{{-1, -1}, {-1, 0}, {0, -1}, {0, 0}, {1, 1}};
+                else if (kind.contains("chunk cave")) offsets = new int[][]{{0, 0}, {1, 0}};
+                else if (kind.startsWith("wall")) offsets = new int[][]{{0, 0}, {1, 0}, {1, -4}, {2, -4}, {1, -3}, {2, -3}, {0, -5}};
+                else offsets = new int[][]{{0, 0}, {1, 0}, {0, 1}, {1, 1}};
+                for (int[] o : offsets) chunks.add(new int[]{cx + o[0], cz + o[1]});
             }
         } else if (a[1].equals("spawn")) {
             int[] spawn = hexxit.worldgen152.core.structure.OldStructures.spawnPoint(seed, layout, source);
@@ -162,7 +188,7 @@ public class Expect {
             }
             for (OldEntity e : c.entities()) {
                 String kind = e instanceof OldEntity.Mob m ? "Mob:" + m.name() : e.getClass().getSimpleName();
-                if (kind.startsWith("Mob:BetterDungeons.")) continue;   // the bosses come with part 13
+                if (kind.startsWith("Mob:BetterDungeons.")) continue;   // the bosses come with their mobs (not ported yet)
                 out.append("E ").append(e.x()).append(' ').append(e.y()).append(' ').append(e.z()).append(' ').append(kind).append('\n');
             }
         }

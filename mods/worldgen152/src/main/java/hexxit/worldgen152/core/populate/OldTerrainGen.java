@@ -81,6 +81,24 @@ public final class OldTerrainGen {
             "BetterStorage", "Backpack", "ChestTransporter", "ImmibisCore", "ObsidiPlates", "QuantumCraft",
             "TwilightForest", "chococraft");
 
+    /** Chunks a generator may write into, relative to the chunk it runs for: x from minX to maxX, z from minZ to maxZ. */
+    public record Reach(int minX, int minZ, int maxX, int maxZ) {
+    }
+
+    /**
+     * For generators that sometimes write farther than the margin {@link OldDecoration} populates around a tile (a
+     * structure of 100 blocks from the corner of its chunk): where they do it, known from the seed and the biome
+     * layout alone, without populating anything.
+     */
+    public interface ReachProvider {
+        /** The reach of the generator in that chunk, or {@code null} when it stays within the usual margin there. */
+        Reach reach(long seed, hexxit.worldgen152.core.BiomeLayout layout, int chunkX, int chunkZ);
+    }
+
+    /** A provider and how many chunks from a tile it has to be asked (the largest reach it can return). */
+    record ReachEntry(int distance, ReachProvider provider) {
+    }
+
     private record Entry<T>(int rank, int seq, T value) {
     }
 
@@ -88,6 +106,7 @@ public final class OldTerrainGen {
     private static final List<Entry<Listener>> LISTENER_ENTRIES = new ArrayList<>();
     private static volatile List<WorldGenerator> GENERATORS = List.of();
     private static volatile List<Listener> LISTENERS = List.of();
+    private static volatile List<ReachEntry> REACHES = List.of();
 
     private OldTerrainGen() {
     }
@@ -114,6 +133,22 @@ public final class OldTerrainGen {
     /** A terrain-event handler of the original mod {@code originalModId} (its FML mod id). */
     public static synchronized void addListener(String originalModId, Listener listener) {
         LISTENERS = insert(LISTENER_ENTRIES, originalModId, listener);
+    }
+
+    /**
+     * Declares where the generator of {@code originalModId} writes beyond the usual margin; {@code distance} is the
+     * largest distance in chunks between a chunk it runs for and a chunk it writes into. The tiles near such a
+     * chunk are populated with a margin wide enough to run it, so its structure is not cut at a tile border.
+     */
+    public static synchronized void registerReach(String originalModId, int distance, ReachProvider provider) {
+        rank(originalModId);
+        List<ReachEntry> reaches = new ArrayList<>(REACHES);
+        reaches.add(new ReachEntry(distance, provider));
+        REACHES = List.copyOf(reaches);
+    }
+
+    static List<ReachEntry> reaches() {
+        return REACHES;
     }
 
     static List<WorldGenerator> generators() {

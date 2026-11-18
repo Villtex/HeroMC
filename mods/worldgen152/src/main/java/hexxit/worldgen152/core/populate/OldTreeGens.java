@@ -584,9 +584,23 @@ public final class OldTreeGens {
 
     /** WorldGenBigMushroom: brown (block 99) or red (100); the metadata picks which faces show the cap. */
     public static final class BigMushroom extends OldGen {
+        /** -1: the kind is drawn; 0 brown, 1 red (BlockMushroom.fertilizeMushroom), still drawing the number. */
+        private final int mushroomType;
+
+        public BigMushroom() {
+            this(-1);
+        }
+
+        public BigMushroom(int mushroomType) {
+            this.mushroomType = mushroomType;
+        }
+
         @Override
         public boolean generate(OldWorld world, Random random, int x, int y, int z) {
             int type = random.nextInt(2);
+            if (this.mushroomType >= 0) {
+                type = this.mushroomType;
+            }
             int height = random.nextInt(3) + 4;
             if (y < 1 || y + height + 1 >= 256) {
                 return false;

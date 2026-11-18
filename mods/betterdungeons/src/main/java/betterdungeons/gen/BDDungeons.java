@@ -85,16 +85,68 @@ public final class BDDungeons {
                 int posY = integer(prop, "posY", 10);
                 return () -> new BuilderTemplate(folder, posY);
             }
-            case "iceCave", "jungleCave", "lavaCity", "linearDungeon", "dungeon", "volcano", "skyscraper", "skyscraperGrid", "emptyCave":
-                // the generated dungeons follow in part 13 of the port; they are registered (and drawn) like in the original
-                return () -> NOT_YET;
+            case "iceCave": {
+                // DungeonIceCave.readSpecialData
+                int size = Math.max(16, integer(prop, "size", 100));
+                int caveSpread = Math.min(90, Math.max(10, integer(prop, "caveSpread", 45)));
+                boolean spawnBoss = bool(prop, "spawnBoss", true);
+                int floorBlock = integer(prop, "floorBlock", 79);
+                int posY = integer(prop, "posY", 10);
+                int heightVariation = integer(prop, "heightVariation", 40);
+                return () -> new BuilderIceCave(size, caveSpread, floorBlock, spawnBoss, posY, heightVariation);
+            }
+            case "jungleCave": {
+                int size = integer(prop, "size", 48);
+                int height = integer(prop, "height", 40);
+                int floorBlock = integer(prop, "floorBlock", 2);
+                boolean vines = bool(prop, "vines", true);
+                boolean vegetation = bool(prop, "vegetation", true);
+                return () -> new BuilderJungleCave(size, height, floorBlock, vines, vegetation);
+            }
+            case "linearDungeon": {
+                int rooms = Math.max(1, integer(prop, "rooms", 25));
+                return () -> new BuilderStronghold(rooms);
+            }
+            case "dungeon": {
+                // DungeonBetterDungeon.readSpecialData: the size is read from "rows" (the pack's "size = 40" is not read)
+                int size = Math.max(16, integer(prop, "rows", 40));
+                int roomSize = Math.min(size / 2, integer(prop, "roomSize", 12));
+                int posY = integer(prop, "posY", 10);
+                int heightVariation = integer(prop, "heightVariation", 40);
+                int wallBlock = integer(prop, "wallBlock", 4);
+                return () -> new BuilderDungeon(size, roomSize, posY, heightVariation, wallBlock);
+            }
+            case "volcano": {
+                // DungeonVolcano.readSpecialData: "oreChance" is read from "size"
+                int oreChance = integer(prop, "size", 8);
+                int blockWalls = integer(prop, "blockWalls", 1);
+                int blockPath = integer(prop, "blockPath", 87);
+                int dungeonRooms = integer(prop, "dungeonRooms", 25);
+                boolean generatePath = bool(prop, "generatePath", true);
+                boolean generateDungeon = bool(prop, "generateDungeon", false);
+                return () -> new BuilderVolcano(blockWalls, blockPath, oreChance, generatePath, generateDungeon, dungeonRooms);
+            }
+            case "emptyCave": {
+                // DungeonCave.readSpecialData (initChance and spawnBoss are read, the builder ignores them)
+                int caveBlock = integer(prop, "caveBlock", 0);
+                int size = integer(prop, "size", 32);
+                int height = integer(prop, "height", 28);
+                int posY = integer(prop, "posY", 20);
+                int boss = integer(prop, "boss", 3);
+                return () -> new BuilderEmptyCave(caveBlock, size, height, posY, boss);
+            }
+            case "lavaCity", "skyscraper", "skyscraperGrid":
+                // BuilderNether (the nether city: dimension 0 and biome "Hell" in the pack, so it never appears),
+                // BuilderSkyscraper and BuilderCity (no configuration of the pack uses them): registered and drawn
+                // like in the original, not built
+                return () -> NOT_BUILT;
             default:
                 return null;
         }
     }
 
-    /** Placeholder for the dungeon types that are not ported yet: builds nothing. */
-    static final Builder NOT_YET = (random, world, x, z, mob) -> {
+    /** The dungeon types that never get built in the pack: builds nothing. */
+    static final Builder NOT_BUILT = (random, world, x, z, mob) -> {
     };
 
     static int integer(Properties prop, String name, int defaultValue) {

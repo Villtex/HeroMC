@@ -478,6 +478,11 @@ public final class OldWorld {
         this.column((int) Math.floor(entity.x()) >> 4, (int) Math.floor(entity.z()) >> 4).entities.add(entity);
     }
 
+    /** The entities spawned into a chunk so far (for checks like EntityHanging.onValidSurface). */
+    public List<OldEntity> entities(int chunkX, int chunkZ) {
+        return java.util.Collections.unmodifiableList(this.column(chunkX, chunkZ).entities);
+    }
+
     public OldTile getTile(int x, int y, int z) {
         return this.column(x >> 4, z >> 4).tiles.get(((x & 15) * 16 + (z & 15)) * HEIGHT + y);
     }

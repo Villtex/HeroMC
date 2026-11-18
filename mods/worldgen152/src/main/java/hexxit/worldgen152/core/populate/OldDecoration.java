@@ -101,8 +101,9 @@ public final class OldDecoration {
         int x0 = tileX * TILE;
         int z0 = tileZ * TILE;
         OldWorld world = this.nether ? OldWorld.nether(this.seed, this.terrain) : new OldWorld(this.seed, this.terrain, this.layout);
-        for (int x = x0 - MARGIN_LOW; x < x0 + TILE + MARGIN_HIGH; x++) {
-            for (int z = z0 - MARGIN_LOW; z < z0 + TILE + MARGIN_HIGH; z++) {
+        int[] margin = this.margin(x0, z0);
+        for (int x = x0 - margin[0]; x < x0 + TILE + margin[2]; x++) {
+            for (int z = z0 - margin[1]; z < z0 + TILE + margin[3]; z++) {
                 if (this.nether) {
                     OldNetherPopulator.populate(world, x, z);
                 } else {
@@ -118,6 +119,37 @@ public final class OldDecoration {
             }
         }
         return out;
+    }
+
+    /**
+     * The margin populated around a tile: before it in x and z, after it in x and z. The usual one, widened where a
+     * generator with a far reach ({@link OldTerrainGen#registerReach}) runs for a chunk outside it and writes into
+     * the tile, so that chunk is populated too.
+     */
+    private int[] margin(int x0, int z0) {
+        int[] margin = {MARGIN_LOW, MARGIN_LOW, MARGIN_HIGH, MARGIN_HIGH};
+        if (this.nether || this.layout == null) {
+            return margin;
+        }
+        for (OldTerrainGen.ReachEntry entry : OldTerrainGen.reaches()) {
+            int d = entry.distance();
+            for (int cx = x0 - d; cx < x0 + TILE + d; cx++) {
+                for (int cz = z0 - d; cz < z0 + TILE + d; cz++) {
+                    if (cx >= x0 - margin[0] && cx < x0 + TILE + margin[2] && cz >= z0 - margin[1] && cz < z0 + TILE + margin[3]) {
+                        continue;
+                    }
+                    OldTerrainGen.Reach r = entry.provider().reach(this.seed, this.layout, cx, cz);
+                    if (r == null || cx + r.maxX() < x0 || cx + r.minX() >= x0 + TILE || cz + r.maxZ() < z0 || cz + r.minZ() >= z0 + TILE) {
+                        continue;
+                    }
+                    margin[0] = Math.max(margin[0], x0 - cx);
+                    margin[1] = Math.max(margin[1], z0 - cz);
+                    margin[2] = Math.max(margin[2], cx - (x0 + TILE) + 1);
+                    margin[3] = Math.max(margin[3], cz - (z0 + TILE) + 1);
+                }
+            }
+        }
+        return margin;
     }
 
     /**

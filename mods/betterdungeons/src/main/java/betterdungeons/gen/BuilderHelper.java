@@ -390,6 +390,28 @@ public final class BuilderHelper {
         return new Random(world.seed() ^ x * 341873128712L ^ z * 132897987541L ^ y * 42317861L ^ 0x5DEECE66DL);
     }
 
+    /**
+     * Like {@link #positionRandom(OldWorld, int, int, int)}, for the other {@code new Random()} of the builders (cave
+     * shapes, dungeon layouts); {@code salt} tells apart the ones a builder makes at the same position.
+     */
+    static Random positionRandom(OldWorld world, int x, int y, int z, int salt) {
+        return new Random(world.seed() ^ x * 341873128712L ^ z * 132897987541L ^ y * 42317861L ^ salt * 0x9E3779B97F4A7C15L);
+    }
+
+    /**
+     * BlockMushroom.fertilizeMushroom of the brown (39) or red (40) mushroom at a place the builder has just found
+     * empty: a big mushroom of that kind (WorldGenBigMushroom with a fixed kind), else the small one stays there.
+     */
+    public static boolean fertilizeMushroom(OldWorld world, int mushroom, int x, int y, int z, Random random) {
+        int meta = world.getBlockMetadata(x, y, z);
+        world.setBlockToAir(x, y, z);
+        if (new hexxit.worldgen152.core.populate.OldTreeGens.BigMushroom(mushroom == 39 ? 0 : 1).generate(world, random, x, y, z)) {
+            return true;
+        }
+        world.setBlock(x, y, z, mushroom, meta);
+        return false;
+    }
+
     private static OldTile.Chest chest(OldWorld world, int x, int y, int z) {
         world.setBlock(x, y, z, 54, 0);
         OldTile.Chest chest = new OldTile.Chest();
