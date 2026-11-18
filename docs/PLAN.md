@@ -50,7 +50,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 10 | Project Zulu A: Kreaturen | ~25.000 | 3 | Fable 5.2, hoch | ✅ erledigt |
 | 11 | Project Zulu B: Blöcke, Items, Weltgenerierung, Spawns | ~18.000 | 10 | Opus 5.5, mittel | offen |
 | 12 | Better Dungeons A: Bau-Engine und Gebäude-Import | ~18.000 | 1 | Fable 5.2, hoch | ✅ erledigt |
-| 13 | Better Dungeons B: Dungeon-Typen, Mobs, Loot | ~18.000 | 12 | Fable 5.2, hoch | offen |
+| 13 | Better Dungeons B: Dungeon-Typen, Mobs, Loot | ~18.000 | 12 | Fable 5.2, hoch | ✅ erledigt |
 | 14 | Battle Towers, Ruins (mit allen Ruinen-Vorlagen) | ~5.000 + Vorlagen | 1 | Opus 5.5, mittel | offen |
 | 15 | Dimensional Doors | ~11.000 | 2 | Opus 5.5, mittel | offen |
 | 16 | BiblioCraft | ~21.000 | 3 | Fable 5.2, hoch | offen |
@@ -789,6 +789,72 @@ Projekt-Skill `templates-152` (Vorlagen und Schematics übernehmen, für Teil 13
 - Sand, Kies, Amboss und Drachenei der Vorlagen fallen erst, wenn ein Block daneben sich ändert (im Original sofort
   beim nächsten Tick); Kolben, TNT und Redstone der Vorlagen werden nicht neu ausgewertet.
 - Client-Prüfung offen: Aussehen der Bauten, Bilder (Lage bei mehrteiligen Motiven), Rahmen, Schilder.
+
+### Teil 13 – Stand
+
+**Status: erledigt.** Gearbeitet in vier Strängen (Weltgenerierung; Items, Blöcke, Geschosse; Menschen-Mobs und KI;
+übrige Bosse und Beschwörungen). Neuer Projekt-Skill `items-weapons-263`; `mobs-263` (Bosse, bewaffnete Biped-Mobs),
+`worldgen152` und `templates-152` (Reichweite, Bilder) erweitert.
+
+- **Weltgenerierung** (`betterdungeons.gen`, ohne Spielklassen): `iceCave`, `jungleCave`, `linearDungeon`
+  (Stronghold), `dungeon` (`BuilderDungeon`, `DungeonRoom`, `DecoratorRoom`, Bilder in `BDPainting`), `volcano` (Pfad,
+  Dungeon-Räume), `emptyCave` (Schleim- und Schildkrötenhöhle, `Perlin3D`, Boss über Block 302); je Chunk
+  `BuilderChunkJungle` (Biom „Jungle“) und `BuilderChunkSwamp` (`swampCaves`), die große Mauer bei Chunk z = −500 mit
+  Burg/Schneeburg/Schiff alle 10 Chunks. Geprüft: Mineshafts (0 → `Integer.MAX_VALUE` × 2 = −2), Underworld aus,
+  NetherMountains nie aufgerufen, `lavaCity` nie (Dimension 0, Biom „Hell“). Kern: `OldTerrainGen.registerReach`
+  (breiterer Kachelrand nur für weit schreibende Bauten; gemessen: Eishöhle 0..+6 Chunks, Vulkan −4..+5 / −4..+3,
+  Mauer-Burgen −5 in z), `OldWorld.entities(cx, cz)`.
+- **Items** (135, jede Damage-Variante eigenes Item, `BDItems`, generiert von `tools/gen.py`): Essenzen, Granaten,
+  magische Pfeile, Schilde, Banner, Mob-/Boss-Eier, Kapselstationen (Block 2001), Tasche, Köcher, Langbogen, Revolver,
+  Stäbe, Dolche, Speere, große Schwerter, Rüstungen (Schildkröte, Wolkenstiefel, Scouter), Goldene Feder,
+  Fluchtrolle, Verfluchter Knochen, Super-Spitzhacke, Hakenschüsse, Controller, Pfadmarker. Werte nach 1.5.2, Rezepte
+  als JSON, Lang en/es/zh. Alte IDs 7351 + 256 + Offset in `OldGameIds`: alle 62 Einträge der Dungeon-Kisten lösen auf.
+- **Geschosse:** `BDProjectile` (25 Typen), `BDMagicArrow`, `BDBlockProjectile`. **Blöcke:** eigener Spawner 2002
+  (Spieler im Umkreis 16, 20 Ticks, 1 Mob, danach Luft), Kapselstationen; Kapsel kopiert Bereiche samt Kisten/Entities.
+- **Mobs** (`mob/`, IDs aus `api/BDEntityIds`, `BDEntityIds.registerOldNames()` biegt Spawner/Vorlagen um):
+  27 Menschen-Typen (`BDHumans`: Dungeon-Mobs, Bosse Piratenkapitän, Walker King, Specter Lord, Gremlin Shaman,
+  Minotaurus, Goblin-Boss; Nekromant, Lich, Schweinemagier; Söldner mit Steuer-GUI und `AIModePayload`), KI in
+  `mob/ai`, Loot von `tools/gen_humans.py` mit Bedingung `betterdungeons:mob_level`; Bosse ohne EntityHuman
+  (`BDCreatures`): Monking, Golem-Boss, Eisbulle, Spinnenboss, Schleimboss, Schildkröte (+ `PartEntity`-Teile),
+  Wyvern, dazu SummonedUndead und SummonedBait. Wurm, Biene, Chinesischer Drache, Schlange waren nie registriert.
+- **Prüfung:** `clean pack` grün; Testserver bis `Done` ohne Fehler (Project Zulu vorübergehend heraus, s. u.).
+  `tools/expect.sh 1234 dungeons 150` findet jeden Typ (Chunks: Burg −25,−35; Schneeburg 30,−35; Schiff 5,0;
+  Eishöhle 20,−25; Dschungelhöhle 115,30; Schleimhöhle −20,−35; Stronghold 15,5; Schildkrötenhöhle 90,−45;
+  Untergrund-Dungeon −10,5; Vulkan 15,−135; Dschungel-Chunkhöhle −37,−69; Sumpf-Chunkhöhle 86,−43; Mauer 0,−500,
+  50,−500, −2110,−500): 71 Chunks, 706.445 Blöcke, 322 Spawner/Kisten/Entitäten, 0 Abweichungen. Gegenprobe
+  `find 260`: 289.747 Blöcke, 0 Abweichungen. Bosse in den Höhlen-Chunks (IceBull, SpiderBoss, SlimeBoss, TurtleBoss):
+  32.803 Blöcke, 36 Entitäten, 0 Abweichungen. Per RCON/FakePlayer: alle Item-Werte, 17 Rezepte, alle Geschosse am
+  Zombie, Spawner, Kapsel, `/summon` aller Mobs mit Leben/Ausrüstung/Loot, Kämpfe gegen Zombies/Eisengolems,
+  Beschwörungen. Headless-Client: Modelle backen, Menschen-Mobs rendern.
+
+**Offen / bewusst abweichend:**
+
+- `new Random()` des Originals aus Welt-Seed und Position (`BuilderHelper.positionRandom`): Form von Eis- und
+  Dschungelhöhle, Grundriss des Untergrund-Dungeons, der ganze Stronghold, Vulkan, Bildmotive.
+- Wie im Original übernommen: Vulkan räumt y 121–124 auf 100×100 frei und setzt auf y 5 fließende Lava; `oreChance`
+  aus `size`; Vulkan-Dungeon nutzt `dungeons/`; Eisbulle und Bosse unabhängig von `spawnBoss`; Untergrund-Dungeon liest
+  `rows`; `clean()` der Dschungelhöhlen wirkungslos; Mob-Blöcke 300 immer Mob 7 (specter); Zwerge droppen nichts,
+  Goblins fast ohne Ambient-Laut, Verzauberungen auf Mob-Waffen ohne Wirkung; Schildkröte: stirbt ein Bein, stirbt das
+  gegenüberliegende mit; Wyvern ohne Textur (`dragonbd.png` fehlte schon); keine Bossleisten.
+- Behoben gegenüber dem Original: Boss-Typ wächst nicht mehr mit „ boss“, Klassenwechsel entfernt alte Goals,
+  Schleimboss Stufe 0 endet (statt endloser Kette).
+- 26.3-Grenzen: `MAX_HEALTH` ≤ 1024 (Monking 1024 statt 1500, Schaden/Regeneration im Verhältnis 1024/1500);
+  `jumpMovementFactor` (Wolkenstiefel, Haken) ohne Gegenstück; Spinnenboss: Netz und Nahkampf parallel (Mutex-Bits);
+  fehlende 1.5.2-Vanilla-Texturen durch 26.3 ersetzt (Zombie-Pigman mit Piglin-Modell).
+- Nicht übernommen: `skyscraper`/`skyscraperGrid` (nicht im Pack); Ensaimada, Telekinese-Handschuh, Seelenwaffe,
+  Elementarschwert, Kopf-Trophäe (nie registriert); Editor-Blöcke (`exporterEnabled = 0`); Dungeon-Eier (Damage 600+,
+  bräuchten die Builder in der laufenden Welt); GUI der bearbeitbaren Kapselstation (fest 15×9).
+- Nachbar-Updates beim Setzen (Flag 3) nicht nachgebildet: Wasser der Sumpf- und Schildkrötenhöhlen fließt erst beim
+  nächsten Block-Update. Spawn-Regeln der Vanilla-Spawner (Pirat 20 %, Zwerg unter y 60) brauchen einen Spieler.
+- Bei Seed 1234 ist die Mauerlinie fast nur Ozean; ein Monking kam in der Prüfsuche nicht vor. Kein Abgleich gegen eine
+  Original-Welt (keine vorhanden; Chunk-Höhlen, Mauer, leere Höhlen wären seed-fest vergleichbar).
+- **Project Zulu blockiert den Serverstart:** Loot-Tabelle `mummy_pharaoh` nennt das fehlende `projectzulu:jasper`
+  (Zwischenstand Teil 11). Für alle Tests vorübergehend herausgenommen.
+- Client-Prüfung offen: Item-Modelle, Geschoss-Renderer, Rüstungstexturen, Mob-Modelle/Animationen (Golem-Blitze,
+  Schildkrötenteile, Specter-Geist, Umhang, Feder, Sprechblase, Sitzpose, Köder-Skin), Steuer-GUI des Söldners;
+  Hakenschuss und Wolkenstiefel mit echtem Spieler.
+- Dorf-Bauteil von Better Dungeons (`VillageHandler`) noch nicht über `OldStructures.VILLAGE_HANDLERS` eingehängt
+  (wartet auf die Entscheidung zu den Tinkers'-Dorfbauteilen, siehe oben).
 
 ## Teil 14 – Battle Towers, Ruins
 

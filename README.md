@@ -132,7 +132,9 @@ Natura-Bäumen, -Büschen, -Feldfrüchten und Saguaros (903.929 Blöcke) mit dem
 
 Better Dungeons (Teil 12) baut seine Vorlagen-Dungeons (Burgen, Schneeburgen, Schiffe) in dieselbe Welt; für Seed 1234 stimmen
 je 2×2 Chunks der nächsten Burg, Schneeburg und des nächsten Schiffs (117.004 Blöcke, Kisten, Spawner, Bilder, Rahmen) mit dem Kern
-überein (`tools/expect.sh 1234 dungeons 150`).
+überein (`tools/expect.sh 1234 dungeons 150`). Mit Teil 13 kommen alle Höhlen- und Dungeon-Typen, die Dschungel- und
+Sumpfhöhlen je Chunk und die große Mauer bei z = −8000 dazu: 71 Chunks (706.445 Blöcke, 322 Spawner, Kisten und Entitäten)
+stimmen mit dem Kern überein.
 
 Der Nether (Teil 7b) ist der 1.5.2-Nether in der Variante von Natura („Override Nether“: Tainted Soil, Heat Sand,
 Netherfestungen, Glowshrooms, Nether-Bäume). Gelände und Höhlen sind byte-gleich mit dem dekompilierten
@@ -197,7 +199,7 @@ Prüfen: `tools/expect.sh 1234 nether structures 60 > expect.txt`, dann `verify_
 | Natura | `natura` 2.1.5.1 | mDiyo | 20.430 | ✅ Teil 7, Nether ✅ Teil 7b |
 | BiblioCraft | `bibliocraft` 1.3.3 | Nuchaz | 20.970 | offen |
 | Harken Scythe | `harkenscythe` 2.1.6 | Jade Knightblazer | 27.284 | ✅ Teil 9 (Seelen/Blut, Altäre, 26 Mobs; Client-Prüfung offen) |
-| Better Dungeons (Chocolate Quest) | `betterdungeons` 1.09b | Chocolatin | 36.118 | Bau-Engine, Vorlagen, Burgen/Schiffe ✅ Teil 12; Höhlen, Mobs, Items offen (Teil 13) |
+| Better Dungeons (Chocolate Quest) | `betterdungeons` 1.09b | Chocolatin | 36.118 | ✅ Teil 12 und 13 (Client-Prüfung offen) |
 | Project Zulu | `projectzulu` 1.0.3.8 | — | 42.845 | Kreaturen ✅ Teil 10 (40 Mobs, Spawns, Drops; Client-Prüfung offen), Blöcke/Welt offen (Teil 11) |
 | The Twilight Forest | `twilightforest` 1.18.1 | Benimatic | 50.329 | zurückgestellt |
 | Tinkers' Construct | `tconstruct` 1.4.3 | mDiyo | 59.808 | zurückgestellt |
