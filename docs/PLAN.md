@@ -69,13 +69,21 @@ Entfallen ganz: Not Enough Items, NEI Plugins, CodeChickenCore (durch JEI ersetz
 
 Die Reihenfolge ab Teil 4 ist frei wählbar, solange „Braucht“ erfüllt ist.
 
-**Außerhalb der Teile – Nahkampf wie 1.5.2** (`mods/combat152`, ✅ erledigt): keine Angriffs-Abklingzeit (Grund-
-Angriffsgeschwindigkeit des Spielers 1024, Basis-Tempo der Waffen entfernt), Abklingzeit-Anzeige im Client fest auf
-„Aus“, kein Schwungangriff, Kritische Treffer nach 1.5.2 (auch beim Sprinten, `+rand(i/2+2)` statt ×1,5), Äxte
-3 + Material und Schaufeln 1 + Material wie 1.5.2, keine `entity.player.attack.*`-Geräusche. Per FakePlayer geprüft
-(3 Schläge im selben Tick je voller Schaden, Kritisch-Mittel passt). Nicht angeglichen: Schärfe/Bann (1.5.2 würfelte
-`0..2,75·Stufe`), Schwäche (1.5.2 −2 statt −4), Stärke ab Stufe III, Blocken mit dem Schwert (Rechtsklick).
-Client-Prüfung offen.
+**Außerhalb der Teile – Nahkampf wie 1.5.2** (`mods/combat152`, ✅ erledigt), nach `EntityPlayer`/`EntityMob`/
+`EnchantmentHelper` von 1.5.2:
+- keine Angriffs-Abklingzeit (Grund-Angriffsgeschwindigkeit des Spielers 1024, Basis-Tempo der Waffen entfernt),
+  Abklingzeit-Anzeige im Client fest auf „Aus“, kein Schwungangriff, keine `entity.player.attack.*`-Geräusche;
+- Kritische Treffer auch beim Sprinten, `+rand(i/2+2)` statt ×1,5; Äxte 3 + Material, Schaufeln 1 + Material;
+- Stärke `+(3 << Stufe)`, Schwäche `−(2 << Stufe)` (Korrektur-Modifikator auf `attack_damage` aller Lebewesen);
+- Schärfe/Bann/Nemesis der Gliederfüßer: `1 + rand(Summe)` mit `floor(2,75·L)` bzw. `floor(4,5·L)`, für Spieler und
+  Mobs; die 26.3-Effekte sind in `data/minecraft/enchantment` geleert (Nemesis verlangsamt nicht mehr);
+- Angriffs-Rückstoß (Sprint + Rückstoß-Verzauberung `j`): `addVelocity(-sin·j·0,5, 0,1, cos·j·0,5)` statt `knockback()`;
+- Blocken mit dem Schwert (Rechtsklick): alle Schwerter (Werkzeug mit Spinnennetz-Regel + `WEAPON`, ohne eigenes
+  `use`) bekommen `BLOCKS_ATTACKS` ohne eigene Minderung, Schaden `(1 + d) >> 1` vor der Rüstung von allen Seiten,
+  außer `bypasses_armor`; kein Rückstoß für den Blockenden, keine Axt-Sperre.
+Per FakePlayer geprüft (Schläge im selben Tick, Kritisch-Mittel, Schärfe V 1–13, Stärke III 19, Schwäche I 5,
+Rückstoß 0,9/0,1, Blocken 1→1, 2→1, 7→4, 8→4, Fall 8→8). Offen: Better-Dungeons-Schilde/-Banner blocken weiter über
+die 26.3-Minderung (Axt-Sperre, Rückstoß). Client-Prüfung offen (Schwert-Haltung beim Blocken, keine Anzeige).
 
 ---
 

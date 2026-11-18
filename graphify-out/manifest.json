@@ -654,9 +654,9 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1795024238.1714656,
-    "seen": 1795024256.1786792,
-    "ast_hash": "d3c6fb07f0f5400402a52cb292bcc652",
+    "mtime": 1795039258.2330866,
+    "seen": 1795039277.9624991,
+    "ast_hash": "00a6bed5627572cc2378bcd7a19e3580",
     "semantic_hash": ""
   },
   "mods/ebxl/original-assets.txt": {
@@ -690,9 +690,9 @@
     "semantic_hash": ""
   },
   "docs/PLAN.md": {
-    "mtime": 1795024238.1724992,
-    "seen": 1795024256.1786816,
-    "ast_hash": "3c8f231bf06dbd6584f554532409dc75",
+    "mtime": 1795039258.2325459,
+    "seen": 1795039277.962504,
+    "ast_hash": "e05a541cf6a8b88979ac34f333aad00b",
     "semantic_hash": ""
   },
   ".mcp.json": {
@@ -31398,9 +31398,9 @@
     "semantic_hash": ""
   },
   ".claude/skills/items-weapons-263/SKILL.md": {
-    "mtime": 1795023670.4925015,
-    "seen": 1795024256.1786647,
-    "ast_hash": "2274f5ea65e39f0a7fc92b044d8717d9",
+    "mtime": 1795039258.2335415,
+    "seen": 1795039277.9624732,
+    "ast_hash": "09754968e9684653f655fdd10fbd83f9",
     "semantic_hash": ""
   },
   "mods/betterdungeons/src/main/java/betterdungeons/api/BDEntityClass.java": {
@@ -31896,9 +31896,27 @@
     "semantic_hash": ""
   },
   "mods/combat152/src/main/java/hexxit/combat152/Combat152.java": {
-    "mtime": 1795024218.373424,
-    "seen": 1795024256.1730535,
-    "ast_hash": "6edde10a514e9e619bca7b6934b5beb6",
+    "mtime": 1795039236.6588871,
+    "seen": 1795039277.9507377,
+    "ast_hash": "fe5c7e65aeb9feb9d0bb2d00598b6621",
+    "semantic_hash": ""
+  },
+  "mods/combat152/src/main/resources/data/minecraft/enchantment/bane_of_arthropods.json": {
+    "mtime": 1795039011.1371925,
+    "seen": 1795039277.9507427,
+    "ast_hash": "dd77c9f70af21d4effa7e1c4e7ef2ad2",
+    "semantic_hash": ""
+  },
+  "mods/combat152/src/main/resources/data/minecraft/enchantment/sharpness.json": {
+    "mtime": 1795039011.1370215,
+    "seen": 1795039277.9507463,
+    "ast_hash": "566fa9884d6d17ea2859b00d50eae784",
+    "semantic_hash": ""
+  },
+  "mods/combat152/src/main/resources/data/minecraft/enchantment/smite.json": {
+    "mtime": 1795039011.137111,
+    "seen": 1795039277.9507492,
+    "ast_hash": "1bf7d500c06685de55fa4c825d3c2ea1",
     "semantic_hash": ""
   }
 }

@@ -26,6 +26,8 @@ Daten aus `mods/betterdungeons/tools/gen.py`.
 - `EnumAction.block` (Schild, Banner, Schwert mit eigenem Effekt beim Blocken): Komponente `BLOCKS_ATTACKS` mit
   `new DamageReduction(180F, Optional.empty(), -0.5F, 0.5F)` ergibt den 1.5.2-Wert (1 + Schaden) / 2, Item-Schaden aus
   (`ItemDamageFunction(1e9F, 0, 0)`). Damit liefern `use`/Animation/Dauer schon die Vanilla-Defaults (`BDItems.blocking`).
+- Normale Schwerter (`p.sword(...)`, ohne eigenes `use`) blocken schon über `mods/combat152` (1.5.2-Kampfregeln fürs
+  ganze Pack): dort nichts nachbauen. `BLOCKS_ATTACKS` selbst nur bei Items mit eigenem Effekt beim Blocken.
 - `onUpdate` mit `isUsingItem && aktuelles Item` → `onUseTick` (beide Seiten, Effekte nur Server). Effekte mit 1 Tick
   Dauer mindestens 2 Ticks geben.
 - `inventoryTick` läuft nur auf dem Server (`ServerLevel`): Partikel dort über `ServerLevel.sendParticles(..., 0, vx, vy, vz, 1.0)`
