@@ -235,7 +235,7 @@ public class BDProjectile extends Projectile {
             Entity hitEntity = null;
             double nearest = 0.0;
             for (Entity e : this.level().getEntities(this, this.getBoundingBox().expandTowards(motion).inflate(1.0))) {
-                if (e.isPickable() && (e != shooter || this.ticksInAir >= 25)) {
+                if (e.isPickable() && e.isAlive() && (e != shooter || this.ticksInAir >= 25)) {
                     Optional<Vec3> intercept = e.getBoundingBox().inflate(0.3).clip(pos, end);
                     if (intercept.isPresent()) {
                         double d = pos.distanceTo(intercept.get());

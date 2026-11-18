@@ -63,9 +63,14 @@ public class BDSpawnerBlockEntity extends BlockEntity {
     }
 
     public static void serverTick(Level level, BlockPos pos, BlockState state, BDSpawnerBlockEntity spawner) {
-        if (!(level instanceof ServerLevel server) || !spawner.anyPlayerInRange(level)) {
-            return;
+        if (level instanceof ServerLevel server && spawner.anyPlayerInRange(level)) {
+            tickWithPlayer(server, pos, spawner);
         }
+    }
+
+    /** One tick of updateEntity while a player is in range (count down, then spawn and vanish). */
+    public static void tickWithPlayer(ServerLevel server, BlockPos pos, BDSpawnerBlockEntity spawner) {
+        Level level = server;
         if (spawner.delay == -1) {
             spawner.updateDelay(level);
         }
