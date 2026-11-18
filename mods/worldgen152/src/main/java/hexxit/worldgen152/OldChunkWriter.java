@@ -279,6 +279,9 @@ final class OldChunkWriter {
         if (old instanceof OldEntity.Mob mob) {
             EntityType<?> type = type(mob.name());
             Entity entity = type == null ? null : type.create(level, EntitySpawnReason.STRUCTURE);
+            if (entity != null) {
+                OldGameIds.initEntity(mob.name(), entity);
+            }
             if (entity instanceof Mob living && mob.equipment() != null) {
                 for (int slot = 0; slot < mob.equipment().length && slot < EQUIPMENT.length; slot++) {
                     if (mob.equipment()[slot] != null) {

@@ -1,0 +1,17 @@
+# path in BattleTowers_1.5.2.zip -> path in the ported jar
+atomicstryker/battletowers/client/golem.png -> assets/battletowers/textures/entity/golem.png
+atomicstryker/battletowers/client/golemdormant.png -> assets/battletowers/textures/entity/golem_dormant.png
+atomicstryker/battletowers/client/sound/golem.ogg -> assets/battletowers/sounds/golem.ogg
+atomicstryker/battletowers/client/sound/golemawaken.ogg -> assets/battletowers/sounds/golem_awaken.ogg
+atomicstryker/battletowers/client/sound/golemcharge1.ogg -> assets/battletowers/sounds/golem_charge1.ogg
+atomicstryker/battletowers/client/sound/golemcharge2.ogg -> assets/battletowers/sounds/golem_charge2.ogg
+atomicstryker/battletowers/client/sound/golemdeath.ogg -> assets/battletowers/sounds/golem_death.ogg
+atomicstryker/battletowers/client/sound/golemhurt1.ogg -> assets/battletowers/sounds/golem_hurt1.ogg
+atomicstryker/battletowers/client/sound/golemhurt2.ogg -> assets/battletowers/sounds/golem_hurt2.ogg
+atomicstryker/battletowers/client/sound/golemspecial1.ogg -> assets/battletowers/sounds/golem_special1.ogg
+atomicstryker/battletowers/client/sound/golemspecial2.ogg -> assets/battletowers/sounds/golem_special2.ogg
+atomicstryker/battletowers/client/sound/towerbreakstart.ogg -> assets/battletowers/sounds/tower_break_start.ogg
+atomicstryker/battletowers/client/sound/towercrumble.ogg -> assets/battletowers/sounds/tower_crumble.ogg
+# The pack's configuration (chest items per floor, allowed biomes, distance), read by battletowers.gen.BTConfig
+[z-hexxit-configs]
+config/BattleTowers.cfg -> battletowers-original/BattleTowers.cfg

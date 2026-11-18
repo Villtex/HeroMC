@@ -69,12 +69,28 @@ Better Dungeons baut ab der Chunk-Ecke bis 73 Blöcke breit, das passt. Größer
 geänderte Blöcke umrahmen) und mit `OldTerrainGen.registerReach` anmelden (Skill `worldgen152`, „Reichweite“).
 `new Random()` der Builder (Höhlenform, Dungeon-Grundriss): `BuilderHelper.positionRandom(world, x, y, z, salt)`.
 
+## Text-Vorlagen ohne Umwandlung (Ruins, Teil 14)
+
+Ruins' `.tml` liest der Kern wie das Original (`ruins.gen.RuinTemplate`, `RuinsFiles` mit Index und
+`BufferedReader.readLine`-Semantik); kein Konverter nötig. Parser-Fehler des Originals mitnehmen (Leerzeile in einer
+Schicht lässt die Vorlage fallen). Gewichtete Wahl aus einem `HashSet` mit `hashCode` = Dateipfad: einen festen
+Pfad nehmen und unter „Offen“ notieren. Pack-Optionen aus `z-hexxit-configs` mit einer `[z-hexxit-configs]`-Zeile
+ins Jar holen (`mods/ruins.txt`, `config/BattleTowers.cfg`).
+
+Bauten, die sich aneinanderreihen (Ruinen-Gruppen mit wachsendem Abstand): vor dem Bauen die gelesene/geschriebene
+Fläche (`RuinTemplate.extent`) gegen das Fenster −3..+4 Chunks prüfen und sonst auslassen, statt die Reichweite für
+jede Kachel zu erhöhen.
+
 ## 5. Prüfen
 
 ```
 tools/expect.sh 1234 dungeons 150 > expect.txt   # Better Dungeons: je Dungeon-Typ, Chunk-Höhle und Mauer-Burg der nächste
 python3 tools/verify_blocks.py expect.txt
 ```
+
+Generatoren, deren Funde von der Welt abhängen (Ruins, Battle Towers): ein statischer Melde-Haken im Kern
+(`RuinsGen.built`, `BTWorldGen.built`, im Spiel `null`) und in `Expect.java` Kacheln ringweise populieren, bis genug
+gebaut sind (`tools/expect.sh 1234 ruins 40 -30 -40`, `towers 6`, `nether ruins 15`).
 
 Für einen neuen Mod: Suchmodus in `tools/java/Expect.java` nach dem Muster `dungeons` anlegen (Kandidaten nur über
 `BiomeLayout` und den Seed bestimmen, ohne die Welt zu bevölkern), Kern-Pfad in `tools/expect.sh` ergänzen, den

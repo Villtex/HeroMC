@@ -41,6 +41,8 @@ public class Expect {
             harkenscythe.gen.HSWorldGen.register();
             projectzulu.gen.ZuluWorldGen.register();
             betterdungeons.gen.BDWorldGen.register();
+            ruins.gen.RuinsGen.register();
+            battletowers.gen.BTWorldGen.register();
         }
         // "nether" (after "vanilla", if both are given): the Nether of the seed instead of the overworld
         boolean nether = a.length > 1 && a[1].equals("nether");
@@ -131,6 +133,47 @@ public class Expect {
                 else offsets = new int[][]{{0, 0}, {1, 0}, {0, 1}, {1, 1}};
                 for (int[] o : offsets) chunks.add(new int[]{cx + o[0], cz + o[1]});
             }
+        } else if (a[1].equals("ruins")) {
+            // Ruins: populate the chunks around 0,0 (or the chunk given after the count) ring by ring and take the chunks of the first <count> ruins built
+            // (their centre chunk and the three towards +x/+z), and every chunk a site's later ruins stand in
+            int count = Integer.parseInt(a[2]);
+            List<String> found = Collections.synchronizedList(new ArrayList<>());
+            ruins.gen.RuinsGen.built = found::add;
+            System.err.println(ruins.gen.RuinsGen.templateCount() + " Ruins templates");
+            Set<Long> picked = new LinkedHashSet<>();
+            int ox = a.length > 4 ? Integer.parseInt(a[3]) : 0, oz = a.length > 4 ? Integer.parseInt(a[4]) : 0;   // centre chunk
+            for (int d = 0; d <= 200 && found.size() < count; d += 8) for (int tx = -d; tx <= d; tx += 8) for (int tz = -d; tz <= d; tz += 8) {
+                if (Math.max(Math.abs(tx), Math.abs(tz)) != d) continue;
+                decoration.chunk(ox + tx, oz + tz);
+            }
+            ruins.gen.RuinsGen.built = null;
+            Set<String> seen = new HashSet<>();
+            for (String r : found) {
+                if (!seen.add(r) || seen.size() > count) continue;
+                String[] p = r.split(" ", 5);
+                int x = Integer.parseInt(p[0]), z = Integer.parseInt(p[2]);
+                System.err.println("ruin " + r);
+                for (int dx = 0; dx < 2; dx++) for (int dz = 0; dz < 2; dz++) picked.add((long) ((x >> 4) - dx) << 32 | ((z >> 4) - dz) & 0xFFFFFFFFL);
+            }
+            for (long k : picked) chunks.add(new int[]{(int) (k >> 32), (int) k});
+        } else if (a[1].equals("towers")) {
+            // Battle Towers: the chunks of the towers built at the candidates of the cells nearest to 0,0, up to <count>
+            // towers (a tower covers its chunk corner and the chunks towards -x/-z); prints how many tries succeeded
+            int count = Integer.parseInt(a[2]);
+            List<String> found = Collections.synchronizedList(new ArrayList<>());
+            battletowers.gen.BTWorldGen.built = found::add;
+            int tried = 0;
+            for (int d = 0; d <= 4000 && found.size() < count; d++) for (int cx = -d; cx <= d && found.size() < count; cx++) for (int cz = -d; cz <= d && found.size() < count; cz++) {
+                if (Math.max(Math.abs(cx), Math.abs(cz)) != d || !battletowers.gen.BTWorldGen.triedAt(seed, layout, cx, cz)) continue;
+                tried++;
+                int before = found.size();
+                decoration.chunk(cx, cz);
+                if (found.size() > before) for (int dx = -1; dx <= 0; dx++) for (int dz = -1; dz <= 0; dz++) chunks.add(new int[]{cx + dx, cz + dz});
+                else System.err.println("no tower at chunk " + cx + ", " + cz + " (" + layout.biomeAt(cx * 16, cz * 16).name + ")");
+            }
+            battletowers.gen.BTWorldGen.built = null;
+            for (String t : new LinkedHashSet<>(found)) System.err.println("tower " + t);
+            System.err.println(tried + " towers tried, " + new LinkedHashSet<>(found).size() + " built");
         } else if (a[1].equals("spawn")) {
             int[] spawn = hexxit.worldgen152.core.structure.OldStructures.spawnPoint(seed, layout, source);
             System.out.println("spawn " + spawn[0] + " " + spawn[1]);

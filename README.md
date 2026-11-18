@@ -45,7 +45,7 @@ Der Port ist in Teile aufgeteilt, die je in eine Session passen: [`docs/PLAN.md`
 | `.claude/skills/mobs-263/` | Projekt-Skill: Mobs, Spawn-Eier, Boote, Mob-Drops und Spawns (Biome-Modifier), viele Mobs auf einmal (Modell-Konverter, Easing, Fliegen, Reiten, Mehrteiler, Boss), Prüfen ohne Spieler; Vorlagen Natura, Project Zulu |
 | `.claude/skills/server-tests-263/` | Projekt-Skill: Verhalten ohne Spieler am Testserver prüfen (Rezepte über Crafter + RCON, temporärer FakePlayer-Befehl, forceloaded Chunks) |
 | `.claude/skills/treecapitator-trees/` | Projekt-Skill: Bäume und Äxte eines Mods bei TreeCapitator anmelden (Daten-Registry `treecapitator:tree`, Item-Tags) |
-| `.claude/skills/templates-152/` | Projekt-Skill: Gebäude-Vorlagen und Schematics eines 1.5.2-Mods übernehmen (Daten-Archive beim Bauen ins Jar, NBT ohne Spielklassen, Kisten/Schilder/Bilder/Mobs über worldgen152, Prüfung), Vorlage Better Dungeons |
+| `.claude/skills/templates-152/` | Projekt-Skill: Gebäude-Vorlagen und Schematics eines 1.5.2-Mods übernehmen (Daten-Archive beim Bauen ins Jar, NBT ohne Spielklassen, Kisten/Schilder/Bilder/Mobs über worldgen152, Text-Vorlagen ohne Umwandlung, Prüfung), Vorlagen Better Dungeons, Ruins |
 | `.claude/skills/items-weapons-263/` | Projekt-Skill: Waffen, Stäbe, Bögen, Geschosse und Spezial-Items (Schwert-Werte, Blocken, Geschoss-Entity je Typ, magische Pfeile/Köcher, Taschen, Damage-Varianten mit alten IDs, Kapseln, Einmal-Spawner), Vorlage Better Dungeons |
 | `.claude/skills/headless-client/` | Projekt-Skill: Testclient im Cloud-Container ohne Bildschirm starten (Xvfb, `SDL_VIDEO_FORCE_EGL=1`, Screenshots, xdotool) |
 
@@ -137,6 +137,11 @@ je 2×2 Chunks der nächsten Burg, Schneeburg und des nächsten Schiffs (117.004
 Sumpfhöhlen je Chunk und die große Mauer bei z = −8000 dazu: 71 Chunks (706.445 Blöcke, 322 Spawner, Kisten und Entitäten)
 stimmen mit dem Kern überein.
 
+Ruins und Battle Towers (Teil 14) kommen ebenfalls aus dem Kern: Für Seed 1234 stimmen die Chunks von 40 Ruinen an
+Land und 6 Türmen (822.881 Blöcke, 660 Spawner, Kisten und Entitäten), 40 Ozean-Ruinen (607.877 Blöcke) und 15
+Nether-Ruinen (119.768 Blöcke) mit dem Kern überein (`tools/expect.sh 1234 ruins 40 -30 -40`, `towers 6`,
+`nether ruins 15`).
+
 Der Nether (Teil 7b) ist der 1.5.2-Nether in der Variante von Natura („Override Nether“: Tainted Soil, Heat Sand,
 Netherfestungen, Glowshrooms, Nether-Bäume). Gelände und Höhlen sind byte-gleich mit dem dekompilierten
 Original-Code; für Seed 1234 stimmen 520 Nether-Chunks (579.244 Blöcke, eine ganze Festung) mit dem Kern überein.
@@ -165,12 +170,12 @@ Prüfen: `tools/expect.sh 1234 nether structures 60 > expect.txt`, dann `verify_
 | Back Tools | `backtools` 1.5.2.v01 | — | 956 | ✅ portiert (nur Client, Client-Prüfung offen) |
 | Soul Shards | `soulshards` 1.36 | ShadwDrgn | 1.503 | ✅ portiert, am Server verifiziert (Spieler-Aktionen und Client-Prüfung offen) |
 | Hexxit Gear | `hexxitgear` 1.0.23 | sct | 1.536 | ✅ portiert, am Server verifiziert (Set-Boni mit Spieler und Client-Prüfung offen) |
-| Battle Towers | `battletowers` 1.5.2 | AtomicStryker | 1.842 | offen |
+| Battle Towers | `battletowers` 1.5.2 | AtomicStryker | 1.842 | ✅ Teil 14 (Client-Prüfung offen) |
 | offLawn | `offlawn` 1.5.1.r02 | Rhodox, Slinky | 1.850 | ✅ portiert, am Server verifiziert (Spieler-Aktionen und Client-Prüfung offen) |
 | Wild Caves 3 | `wildcaves3` 0.4.2 | Alexmania | 2.094 | ✅ portiert, am Server verifiziert (Client-Prüfung offen) |
 | Backpacks | `backpacks` 1.12.13 | Eydamos | 2.331 | offen |
 | Asgard Shield | `asgardshield` 2.0.4 | Jade Knightblazer | 2.842 | ✅ Teil 9 (Schilde, Riesenschwerter, Guard-Mechanik, Farb-API; Client-Prüfung offen) |
-| Ruins | `ruins` 1.5.2 | d00dv4d3r, kolt666, AtomicStryker | 2.951 | offen |
+| Ruins | `ruins` 1.5.2 | d00dv4d3r, kolt666, AtomicStryker | 2.951 | ✅ Teil 14 (Client-Prüfung offen) |
 | bspkrsCore | `bspkrscore` 2.09 | DaftPVF, bspkrs | 3.066 | ✅ portiert, soweit TreeCapitator es braucht (Block-Angaben) |
 | Enchanting Plus | `enchantingplus` 1.15.4 | xkyouchoux, odininon, GnR Slash | 3.342 | ✅ portiert, Server startet (GUI nur im Client prüfbar) |
 | More Bows | `morebows` 1.5.2.2 | iDiamondhunter | 4.156 | ✅ portiert, Server startet (Schießen und Client-Prüfung offen) |
@@ -213,7 +218,7 @@ Weitere Archive des Packs, die kein eigener Mod sind:
 | `betterdungeons-data1` | Dungeon-Vorlagen und Loot-Konfiguration für Better Dungeons. Wird mit dem Mod konvertiert |
 | `betterdungeons-data2` | weitere Dungeon-Vorlagen für Better Dungeons. Wird mit dem Mod konvertiert |
 | `lumyskinpatch` | Skin-Server-Patch für alte Versionen. In 26.3 gegenstandslos, kein Port |
-| `ruins-data1` | Ruinen-Vorlagen (785 Dateien). Werden mit Ruins konvertiert |
-| `ruins-data2` | Ruinen-Vorlagen (491 Dateien). Werden mit Ruins konvertiert |
-| `ruins-data3` | Ruinen-Vorlagen (557 Dateien). Werden mit Ruins konvertiert |
+| `ruins-data1` | Ruinen-Vorlagen (785 Dateien). Kommen beim Bauen unverändert ins Ruins-Jar |
+| `ruins-data2` | Ruinen-Vorlagen (491 Dateien). Kommen beim Bauen unverändert ins Ruins-Jar |
+| `ruins-data3` | Ruinen-Vorlagen (557 Dateien). Kommen beim Bauen unverändert ins Ruins-Jar |
 | `z-hexxit-configs` | Konfigurationen des Packs (Block-IDs, Balancing, Biom-Auswahl). Die Werte werden pro Mod als Standard übernommen |

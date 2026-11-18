@@ -51,7 +51,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 11 | Project Zulu B: Blöcke, Items, Weltgenerierung, Spawns | ~18.000 | 10 | Opus 5.5, mittel | offen |
 | 12 | Better Dungeons A: Bau-Engine und Gebäude-Import | ~18.000 | 1 | Fable 5.2, hoch | ✅ erledigt |
 | 13 | Better Dungeons B: Dungeon-Typen, Mobs, Loot | ~18.000 | 12 | Fable 5.2, hoch | ✅ erledigt |
-| 14 | Battle Towers, Ruins (mit allen Ruinen-Vorlagen) | ~5.000 + Vorlagen | 1 | Opus 5.5, mittel | offen |
+| 14 | Battle Towers, Ruins (mit allen Ruinen-Vorlagen) | ~5.000 + Vorlagen | 1 | Opus 5.5, mittel | ✅ erledigt |
 | 15 | Dimensional Doors | ~11.000 | 2 | Opus 5.5, mittel | offen |
 | 16 | BiblioCraft | ~21.000 | 3 | Fable 5.2, hoch | offen |
 | 17 | BetterStorage, Backpacks, qCraft | ~17.000 | 3 | Opus 5.5, mittel | offen |
@@ -872,6 +872,58 @@ Projekt-Skill `templates-152` (Vorlagen und Schematics übernehmen, für Teil 13
 ## Teil 14 – Battle Towers, Ruins
 
 Ruins bringt rund 1.800 Vorlagen (`.tml`) aus `ruins-data1..3` mit. Dafür einen Konverter bauen, der die Vorlagen beim Bauen übernimmt. Sie kommen nicht ins Repo.
+
+### Teil 14 – Stand
+
+**Status: erledigt.** Teilprojekte `mods/ruins` (Mod-ID `as_ruins`, FML-ID `AS_Ruins`) und `mods/battletowers`
+(`battletowers`, FML-ID `BattleTowers`). Skills `templates-152` und `worldgen152` erweitert.
+
+- **Ruins-Vorlagen:** keine Umwandlung nötig, der Kern liest die `.tml` wie das Original. Der Build holt
+  `mods/resources/ruins/` aus `ruins-data1..3` (1.833 Dateien, mit Index) und die Pack-Optionen `mods/ruins.txt`
+  ins Jar (`ruins-original/`). 1.697 Vorlagen laden; 4 in `generic/` scheitern wie im Original an Leerzeilen in
+  einer Schicht, Unterordner (`generic/townpack`) liest das Original nicht.
+- **Ruins-Generator** (`ruins.gen`, ohne Spielklassen): `RuinsGen` (RuinHandler + RuinGenerator), `RuinTemplate`,
+  `RuinTemplateRule` (Bedingungen, Drehung samt Fallthrough-Switch, Spawner, Kisten mit Beute und
+  `ChestGenHooks.getOneItem`, Enderkristall auf Grundgestein), `RuinRotation` (`rotation_mappings.txt`). Pack-Werte:
+  6 Versuche je Chunk zu 3 %, 75 % Folgeruine, Biom-Vorlagen zu 75 % (Glacier und Feature-Biome 100 %). Läuft auch
+  im Nether (Ordner `hell`; wie im Original landen die Ruinen fast alle unter der Decke auf y 126).
+- **Battle Towers:** `battletowers.gen` (`BTWorldGen`, `BTTower` = AS_WorldGenTower, `BTItems`, `BTConfig` liest
+  `config/BattleTowers.cfg` des Packs aus dem Jar): sieben Turmtypen, Etagen mit Spawnern und Truhen nach der
+  Pack-Beute je Etage (7 Versuche, unterirdisch doppelt), 15 % unterirdisch, Golem oben. Biom-Prüfung wie im
+  Original an den *Block*-Koordinaten (chunkX, chunkZ). Spielseite: Golem (`battletowers:golem`, schläft, wacht bei
+  Treffer, Spieler in 6 Blöcken, Truhe öffnen in 8 / abbauen in 7 Blöcken; Feuerbälle, Sprung mit Explosion 4,
+  Drops), Feuerball (`golem_fireball`), Einsturz nach dem Tod (`TowerDestroyer`, 15 s, dann alle 5 s eine Etage),
+  Geräusche und Texturen aus dem Original-Jar.
+- **worldgen152:** `OldGameIds.registerEntity(name, id, init)` (Entität aus der Weltgenerierung mit Variante, hier der
+  Golem je Turmtyp), `OldLoot.stackLimit` öffentlich. `verify_blocks.py`: Creeper-Spawner, Enderkristall, Golem,
+  Namen mit Leerzeichen bei `E`; die Spawner-Namen von Better Dungeons zeigen jetzt auf dessen Mobs (Teil 13).
+- **Prüfung:** `clean pack` grün; Testserver bis `Done` ohne Fehler (Project Zulu wie in Teil 13 vorübergehend
+  heraus). `tools/expect.sh 1234 ruins 40 -30 -40` (Land) + `towers 6`: 154 Chunks, 822.881 Blöcke, 660
+  Spawner/Kisten/Entitäten, 0 Abweichungen; `ruins 40` (Ozean um 0,0): 607.877 Blöcke, 0; `nether ruins 15`:
+  119.768 Blöcke, 0; Gegenprobe `find 260`: 290.560 Blöcke, 80 Spawner/Kisten/Entitäten, 0. Am Server: Golem aus
+  der Welt mit Typ und Leben (Typ 1, 200), Aufwachen, Feuerbälle, Sprung-Explosionen (sprengt sich wie im Original
+  durch die Böden), Drops, Einsturz der obersten Etage nach dem Tod.
+
+**Offen / bewusst abweichend:**
+
+- **Battle Towers, Abstand:** Das Original merkte sich die Türme der laufenden Sitzung (nicht gespeichert) und
+  baute am ersten geladenen Chunk mit 850 Blöcken Abstand. Hier: Raster aus 60×60 Chunks, je Zelle ein
+  Kandidat aus dem Seed (mindestens 20 Chunks von den fernen Zellrändern), dort die Prüfungen des Originals. Etwa
+  9 von 10 Versuchen gelingen, die Dichte entspricht ungefähr dem Original. Kein Turm mehr zuverlässig nahe dem Spawn.
+- **Ruins, Zustand zwischen Chunks:** Die letzten zehn Ruinen (Überlappungsprüfung) und das Entfernen einzigartiger
+  Vorlagen (`unique`, 43 Vorlagen) gelten nur noch im selben Chunk und seiner Gruppe; einzigartige Ruinen können
+  mehrfach vorkommen. Folgeruinen einer Gruppe, die weiter als 3 Chunks nach −x/−z oder 4 nach +x/+z reichen
+  würden, entfallen (etwa jede dritte Folgeruine), damit an Kachelgrenzen nichts abgeschnitten wird. Der Fehler
+  des Originals, dass ausweichende Ruinen nahe 0, 0 landen, fällt dadurch fast immer weg.
+- Reihenfolge der Vorlagen: `HashSet` nach dem Pfad wie im Original, aber mit einem festen Pfad
+  (`mods/resources/ruins/...`); der echte war der Installationsordner des Spielers.
+- `world.rand` (Golem-Drehung, unterirdisch ja/nein, Enderkristall-Drehung): eigener Zufall aus Seed und Chunk.
+- Golem: 1.5.2 setzte nach verlorenem Ziel 300 Leben über das Maximum; hier Maximum 300, Start mit dem Leben des
+  Typs (150 + 50 je Typ). Feuerball- und Sprung-Explosionen brechen Blöcke unabhängig von `mobGriefing` (wie 1.5.2).
+  Enderkristalle setzen außerhalb des Endes kein Feuer mehr (1.5.2 tat das jeden Tick).
+- Die Info-Funktion von Ruins (Block mit Stock schlagen) nennt Blockname und Zustand statt ID und Metadaten.
+- Client-Prüfung offen: Golem-Modell und -Texturen (wach/schlafend), Feuerball, Geräusche, Truhe öffnen und abbauen
+  neben dem Golem mit echtem Spieler, Stock-Info.
 
 ## Teil 15 – Dimensional Doors
 

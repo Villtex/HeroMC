@@ -1,0 +1,10 @@
+# The Ruins templates (.tml) and the rotation mappings come from the data archives of the pack (mods/resources/ruins
+# in the original installation), read by ruins.gen.RuinsFiles. The global options are the pack's mods/ruins.txt.
+[ruins-data1]
+mods/resources/ruins/ -> ruins-original/ruins/
+[ruins-data2]
+mods/resources/ruins/ -> ruins-original/ruins/
+[ruins-data3]
+mods/resources/ruins/ -> ruins-original/ruins/
+[z-hexxit-configs]
+mods/ruins.txt -> ruins-original/ruins.txt

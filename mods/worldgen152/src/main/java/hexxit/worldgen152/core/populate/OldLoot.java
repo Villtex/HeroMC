@@ -205,7 +205,7 @@ public final class OldLoot {
     private OldLoot() {
     }
 
-    private static int stackLimit(int itemId) {
+    public static int stackLimit(int itemId) {
         // of the vanilla loot only these do not stack; mods adding unstackable loot with max > 1 are not known
         if (itemId == 368) {
             return 16; // ender pearl

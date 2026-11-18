@@ -4,6 +4,8 @@
 #   tools/expect.sh <seed> structures <radius-in-chunks> > expect.txt   (chunks of villages, strongholds, temples, mineshafts)
 #   tools/expect.sh <seed> <chunkX> <chunkZ> [...]   > expect.txt
 #   tools/expect.sh <seed> dungeons <radius-in-chunks> > expect.txt   (chunks of the nearest Better Dungeons dungeon of each type, chunk caves, wall castles)
+#   tools/expect.sh <seed> ruins <count> [cx cz]     > expect.txt   (chunks of the first <count> Ruins ruins found around 0,0 or chunk cx,cz)
+#   tools/expect.sh <seed> towers <count>            > expect.txt   (chunks of the first <count> Battle Towers around 0,0)
 #   tools/expect.sh <seed> spawn                     (the world spawn)
 # "vanilla" after the seed leaves out the biomes of mods (to compare with a vanilla 1.5.2 world).
 # Compiles hexxit.worldgen152.core, the ExtrabiomesXL biome table and the core classes of the mod generators with plain javac (JDK 21+).
@@ -30,8 +32,16 @@ JAVA=${JAVA_HOME:+$JAVA_HOME/bin/}java
   $(find "$ROOT/mods/harkenscythe/src/main/java/harkenscythe/gen" -name '*.java') \
   $(find "$ROOT/mods/projectzulu/src/main/java/projectzulu/gen" -name '*.java') \
   $(find "$ROOT/mods/betterdungeons/src/main/java/betterdungeons/gen" -name '*.java') \
+  $(find "$ROOT/mods/ruins/src/main/java/ruins/gen" -name '*.java') \
+  $(find "$ROOT/mods/battletowers/src/main/java/battletowers/gen" -name '*.java') \
   "$ROOT/tools/java/Expect.java"
 # Better Dungeons reads its templates from the original archives, which the build imports
 BD="$ROOT/mods/betterdungeons/build/generated/original-assets"
 [ -f "$BD/betterdungeons-original/Chocolate/.index" ] || (cd "$ROOT" && ./gradlew -q :betterdungeons:importOriginalAssets >&2)
-"$JAVA" -cp "$OUT/classes:$BD" Expect "$@"
+# Ruins reads its templates and options from the original archives too
+RU="$ROOT/mods/ruins/build/generated/original-assets"
+[ -f "$RU/ruins-original/ruins/.index" ] || (cd "$ROOT" && ./gradlew -q :ruins:importOriginalAssets >&2)
+# and Battle Towers its configuration
+BT="$ROOT/mods/battletowers/build/generated/original-assets"
+[ -f "$BT/battletowers-original/BattleTowers.cfg" ] || (cd "$ROOT" && ./gradlew -q :battletowers:importOriginalAssets >&2)
+"$JAVA" -cp "$OUT/classes:$BD:$RU:$BT" Expect "$@"

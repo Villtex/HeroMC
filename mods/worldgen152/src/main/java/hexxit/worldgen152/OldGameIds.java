@@ -30,6 +30,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class OldGameIds {
     private static final Map<Long, Identifier> ITEMS = new ConcurrentHashMap<>();
     private static final Map<String, Identifier> ENTITIES = new ConcurrentHashMap<>();
+    private static final Map<String, java.util.function.Consumer<net.minecraft.world.entity.Entity>> ENTITY_INITS = new ConcurrentHashMap<>();
     private static final Map<Integer, ResourceKey<Enchantment>> ENCHANTMENTS = new ConcurrentHashMap<>();
     private static final int ANY_DAMAGE = -1;
 
@@ -341,6 +342,23 @@ public final class OldGameIds {
     /** An entity name of 1.5.2 ("Zombie") and the entity type id it has now. */
     public static void registerEntity(String oldName, String entityId) {
         ENTITIES.put(oldName, Identifier.parse(entityId));
+    }
+
+    /**
+     * An entity name of 1.5.2 whose entity needs more than its type, such as a variant the original passed to its
+     * constructor (the Battle Towers golem of each tower type): {@code init} runs on the new entity before it is added.
+     */
+    public static void registerEntity(String oldName, String entityId, java.util.function.Consumer<net.minecraft.world.entity.Entity> init) {
+        registerEntity(oldName, entityId);
+        ENTITY_INITS.put(oldName, init);
+    }
+
+    /** Runs the initialiser registered for the 1.5.2 entity name, if any. */
+    public static void initEntity(String oldName, net.minecraft.world.entity.Entity entity) {
+        java.util.function.Consumer<net.minecraft.world.entity.Entity> init = ENTITY_INITS.get(oldName);
+        if (init != null) {
+            init.accept(entity);
+        }
     }
 
     public static void registerEnchantment(int oldId, ResourceKey<Enchantment> enchantment) {

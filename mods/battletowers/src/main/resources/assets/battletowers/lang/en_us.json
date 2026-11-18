@@ -1,0 +1,12 @@
+{
+  "entity.battletowers.golem": "Battletower Golem",
+  "entity.battletowers.golem_fireball": "Golem Fireball",
+  "subtitles.battletowers.golem": "Golem grumbles",
+  "subtitles.battletowers.golem_awaken": "Golem awakens",
+  "subtitles.battletowers.golem_charge": "Golem charges",
+  "subtitles.battletowers.golem_death": "Golem dies",
+  "subtitles.battletowers.golem_hurt": "Golem hurts",
+  "subtitles.battletowers.golem_special": "Golem leaps",
+  "subtitles.battletowers.tower_break_start": "Tower trembles",
+  "subtitles.battletowers.tower_crumble": "Tower crumbles"
+}

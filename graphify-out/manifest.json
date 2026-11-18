@@ -654,9 +654,9 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1795039258.2330866,
-    "seen": 1795039277.9624991,
-    "ast_hash": "00a6bed5627572cc2378bcd7a19e3580",
+    "mtime": 1795041426.130221,
+    "seen": 1795041446.2998931,
+    "ast_hash": "f677c4db007cd707c26e9e89b880e8d4",
     "semantic_hash": ""
   },
   "mods/ebxl/original-assets.txt": {
@@ -666,21 +666,21 @@
     "semantic_hash": ""
   },
   "tools/expect.sh": {
-    "mtime": 1795023670.7661145,
-    "seen": 1795024256.1786401,
-    "ast_hash": "29e511de1dd1b1f875202caacb8209d5",
+    "mtime": 1795041426.1848607,
+    "seen": 1795041446.2998645,
+    "ast_hash": "6f78fa8ba085173c48180aa7ff282d9c",
     "semantic_hash": ""
   },
   "tools/java/Expect.java": {
-    "mtime": 1795023670.7661145,
-    "seen": 1795024256.178641,
-    "ast_hash": "8075ae7f1c03edee047e99b524a5c27e",
+    "mtime": 1795041426.1848607,
+    "seen": 1795041446.2998662,
+    "ast_hash": "ff75840d8bd0753cfdc6d547efe98d8e",
     "semantic_hash": ""
   },
   "tools/verify_blocks.py": {
-    "mtime": 1795023670.7661145,
-    "seen": 1795024256.1786504,
-    "ast_hash": "40c42c33e9d3dbfd7fbb7b702b895970",
+    "mtime": 1795041426.1848607,
+    "seen": 1795041446.299873,
+    "ast_hash": "cc164e80a74666366737d400857cde75",
     "semantic_hash": ""
   },
   ".claude/agents/log-reader.md": {
@@ -690,9 +690,9 @@
     "semantic_hash": ""
   },
   "docs/PLAN.md": {
-    "mtime": 1795039410.8536415,
-    "seen": 1795039429.6663916,
-    "ast_hash": "7c07c25470670f5c44ed3d8803afac50",
+    "mtime": 1795041426.130221,
+    "seen": 1795041446.2998958,
+    "ast_hash": "e7b8edca9866827ca3f081ceb78a98fe",
     "semantic_hash": ""
   },
   ".mcp.json": {
@@ -702,15 +702,15 @@
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/OldChunkWriter.java": {
-    "mtime": 1795023670.7602975,
-    "seen": 1795024256.178375,
-    "ast_hash": "2247885eb695295e8b51dbf5b109a3df",
+    "mtime": 1795041426.1848607,
+    "seen": 1795041446.299686,
+    "ast_hash": "611a0b724a49a49ca13f88507664053d",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/OldGameIds.java": {
-    "mtime": 1795023670.7602975,
-    "seen": 1795024256.1783762,
-    "ast_hash": "32a0c5b1d4564249a3c094f038977294",
+    "mtime": 1795041426.1848607,
+    "seen": 1795041446.2996871,
+    "ast_hash": "9fb7fd13a97578a0abd564c11f3119f8",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldBlockInfo.java": {
@@ -756,9 +756,9 @@
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldLoot.java": {
-    "mtime": 1795023670.7618287,
-    "seen": 1795024256.1784394,
-    "ast_hash": "7c0f42df9c4042d6a50eb5787fb0cb9f",
+    "mtime": 1795041426.1848607,
+    "seen": 1795041446.2997262,
+    "ast_hash": "bef4df6ae1dad5dbc488be0fb7f1f046",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldOreGens.java": {
@@ -810,9 +810,9 @@
     "semantic_hash": ""
   },
   ".claude/skills/worldgen152/SKILL.md": {
-    "mtime": 1795023670.4925015,
-    "seen": 1795024256.1786768,
-    "ast_hash": "751dd8df9cff4f070341c6c9451db352",
+    "mtime": 1795041426.126221,
+    "seen": 1795041446.2998908,
+    "ast_hash": "c6094e7e037445d117815d8540cc7a40",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldEntity.java": {
@@ -29010,9 +29010,9 @@
     "semantic_hash": ""
   },
   ".claude/skills/templates-152/SKILL.md": {
-    "mtime": 1795023670.4925015,
-    "seen": 1795024256.178672,
-    "ast_hash": "ab7c144b46c0a5fa77cb5c337bb6ac8c",
+    "mtime": 1795041426.126221,
+    "seen": 1795041446.299886,
+    "ast_hash": "ddd074aa7fb36438d87f3f101281f68a",
     "semantic_hash": ""
   },
   "mods/betterdungeons/original-assets.txt": {
@@ -29112,8 +29112,8 @@
     "semantic_hash": ""
   },
   "mods/betterdungeons/src/main/java/betterdungeons/BDItems.java": {
-    "mtime": 1795039359.0793638,
-    "seen": 1795039429.6576672,
+    "mtime": 1795041425.6022208,
+    "seen": 1795041446.294036,
     "ast_hash": "506fef0407b4eba6ee4e5f6b587eebf2",
     "semantic_hash": ""
   },
@@ -31398,8 +31398,8 @@
     "semantic_hash": ""
   },
   ".claude/skills/items-weapons-263/SKILL.md": {
-    "mtime": 1795039359.0913954,
-    "seen": 1795039429.6663637,
+    "mtime": 1795041425.5622208,
+    "seen": 1795041446.2998805,
     "ast_hash": "e86ba172f6b8a2a5b68303e1c39e6ab6",
     "semantic_hash": ""
   },
@@ -31896,27 +31896,159 @@
     "semantic_hash": ""
   },
   "mods/combat152/src/main/java/hexxit/combat152/Combat152.java": {
-    "mtime": 1795039349.3735888,
-    "seen": 1795039429.6587188,
+    "mtime": 1795041425.6022208,
+    "seen": 1795041446.2948558,
     "ast_hash": "16ce6d8ab4a53d0e38b8672cd0d984c6",
     "semantic_hash": ""
   },
   "mods/combat152/src/main/resources/data/minecraft/enchantment/bane_of_arthropods.json": {
-    "mtime": 1795039011.1371925,
-    "seen": 1795039277.9507427,
+    "mtime": 1795041425.6054912,
+    "seen": 1795041446.2948577,
     "ast_hash": "dd77c9f70af21d4effa7e1c4e7ef2ad2",
     "semantic_hash": ""
   },
   "mods/combat152/src/main/resources/data/minecraft/enchantment/sharpness.json": {
-    "mtime": 1795039011.1370215,
-    "seen": 1795039277.9507463,
+    "mtime": 1795041425.6055346,
+    "seen": 1795041446.2948592,
     "ast_hash": "566fa9884d6d17ea2859b00d50eae784",
     "semantic_hash": ""
   },
   "mods/combat152/src/main/resources/data/minecraft/enchantment/smite.json": {
-    "mtime": 1795039011.137111,
-    "seen": 1795039277.9507492,
+    "mtime": 1795041425.6055346,
+    "seen": 1795041446.2948606,
     "ast_hash": "1bf7d500c06685de55fa4c825d3c2ea1",
+    "semantic_hash": ""
+  },
+  "mods/battletowers/src/main/java/battletowers/BattleTowers.java": {
+    "mtime": 1795041426.1839364,
+    "seen": 1795041446.2940097,
+    "ast_hash": "65742f71634e0793a916e24355904fd8",
+    "semantic_hash": ""
+  },
+  "mods/battletowers/src/main/java/battletowers/TowerDestroyer.java": {
+    "mtime": 1795041426.1840174,
+    "seen": 1795041446.294012,
+    "ast_hash": "f85128344e519f86292f3539c5c2963d",
+    "semantic_hash": ""
+  },
+  "mods/battletowers/src/main/java/battletowers/TowerEvents.java": {
+    "mtime": 1795041426.1840174,
+    "seen": 1795041446.2940135,
+    "ast_hash": "d7eaf5ed76c29ae6c8b68d28de4cdf0f",
+    "semantic_hash": ""
+  },
+  "mods/battletowers/src/main/java/battletowers/client/BTClient.java": {
+    "mtime": 1795041426.1840174,
+    "seen": 1795041446.2940147,
+    "ast_hash": "5e025a294c6a750e43be865256ff240a",
+    "semantic_hash": ""
+  },
+  "mods/battletowers/src/main/java/battletowers/entity/BattleTowerGolem.java": {
+    "mtime": 1795041426.1840174,
+    "seen": 1795041446.294016,
+    "ast_hash": "bc89f1258442f82c1cfbddade933dd0b",
+    "semantic_hash": ""
+  },
+  "mods/battletowers/src/main/java/battletowers/entity/GolemFireball.java": {
+    "mtime": 1795041426.184234,
+    "seen": 1795041446.2940176,
+    "ast_hash": "62e80a207ceb06ecaa167c6c9844a285",
+    "semantic_hash": ""
+  },
+  "mods/battletowers/src/main/java/battletowers/gen/BTConfig.java": {
+    "mtime": 1795041426.184234,
+    "seen": 1795041446.2940185,
+    "ast_hash": "60ddc32d351fe041e686cb3f1579048b",
+    "semantic_hash": ""
+  },
+  "mods/battletowers/src/main/java/battletowers/gen/BTItems.java": {
+    "mtime": 1795041426.184324,
+    "seen": 1795041446.2940202,
+    "ast_hash": "4d57d8949650d6b960e7f1810bc37827",
+    "semantic_hash": ""
+  },
+  "mods/battletowers/src/main/java/battletowers/gen/BTTower.java": {
+    "mtime": 1795041426.184324,
+    "seen": 1795041446.2940218,
+    "ast_hash": "b27dda87ab5620296746af0da897c7b5",
+    "semantic_hash": ""
+  },
+  "mods/battletowers/src/main/java/battletowers/gen/BTWorldGen.java": {
+    "mtime": 1795041426.184324,
+    "seen": 1795041446.2940233,
+    "ast_hash": "d95ae576220ea64f7171d2c73a542c52",
+    "semantic_hash": ""
+  },
+  "mods/battletowers/src/main/resources/assets/battletowers/lang/de_de.json": {
+    "mtime": 1795041426.184511,
+    "seen": 1795041446.2940242,
+    "ast_hash": "78fe0026802cf8a6263847e4ce411e0d",
+    "semantic_hash": ""
+  },
+  "mods/battletowers/src/main/resources/assets/battletowers/lang/en_us.json": {
+    "mtime": 1795041426.1845489,
+    "seen": 1795041446.2940257,
+    "ast_hash": "6aaebfd42c550f74ee3eb1ad80bdd01b",
+    "semantic_hash": ""
+  },
+  "mods/battletowers/src/main/resources/assets/battletowers/sounds.json": {
+    "mtime": 1795041426.1845489,
+    "seen": 1795041446.2940269,
+    "ast_hash": "e624178202f0212cd76274be848619a6",
+    "semantic_hash": ""
+  },
+  "mods/battletowers/src/main/resources/data/battletowers/loot_table/entities/golem.json": {
+    "mtime": 1795041426.1846273,
+    "seen": 1795041446.2940283,
+    "ast_hash": "7414f34b25cd0e09ac9add22a022b0dc",
+    "semantic_hash": ""
+  },
+  "mods/ruins/src/main/java/ruins/Ruins.java": {
+    "mtime": 1795041426.1847572,
+    "seen": 1795041446.2993448,
+    "ast_hash": "2ec3fb565a0608fd90156e4727e81197",
+    "semantic_hash": ""
+  },
+  "mods/ruins/src/main/java/ruins/gen/RuinRotation.java": {
+    "mtime": 1795041426.184815,
+    "seen": 1795041446.2993462,
+    "ast_hash": "d4ae92b1f7afde5359c7bbb0caa4fb0d",
+    "semantic_hash": ""
+  },
+  "mods/ruins/src/main/java/ruins/gen/RuinTemplate.java": {
+    "mtime": 1795041426.1848607,
+    "seen": 1795041446.2993472,
+    "ast_hash": "c89cbcb2d621a3f25f605858b6522ecf",
+    "semantic_hash": ""
+  },
+  "mods/ruins/src/main/java/ruins/gen/RuinTemplateRule.java": {
+    "mtime": 1795041426.1848607,
+    "seen": 1795041446.2993486,
+    "ast_hash": "595562350ffc2ce12c1ff0096c9b9e12",
+    "semantic_hash": ""
+  },
+  "mods/ruins/src/main/java/ruins/gen/RuinsFiles.java": {
+    "mtime": 1795041426.1848607,
+    "seen": 1795041446.2993495,
+    "ast_hash": "03ae04e605ad9f6139e862e1f6061f6e",
+    "semantic_hash": ""
+  },
+  "mods/ruins/src/main/java/ruins/gen/RuinsGen.java": {
+    "mtime": 1795041426.1848607,
+    "seen": 1795041446.2993503,
+    "ast_hash": "7a31ceb43a614c5a8de372c33ae33424",
+    "semantic_hash": ""
+  },
+  "mods/battletowers/original-assets.txt": {
+    "mtime": 1795041426.182221,
+    "seen": 1795041446.299902,
+    "ast_hash": "99449dc64598a40906a1e62903fc0273",
+    "semantic_hash": ""
+  },
+  "mods/ruins/original-assets.txt": {
+    "mtime": 1795041426.1846273,
+    "seen": 1795041446.299929,
+    "ast_hash": "a397d0007d9bfa77a7be52f6c55a83df",
     "semantic_hash": ""
   }
 }

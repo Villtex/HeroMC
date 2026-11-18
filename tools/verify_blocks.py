@@ -50,11 +50,14 @@ WOOD = ['oak', 'spruce', 'birch', 'jungle']
 FACING = ['south', 'west', 'north', 'east']
 MOBS = {'Skeleton': 'minecraft:skeleton', 'Zombie': 'minecraft:zombie', 'Spider': 'minecraft:spider',
         'CaveSpider': 'minecraft:cave_spider', 'Silverfish': 'minecraft:silverfish', 'Blaze': 'minecraft:blaze',
-        # Better Dungeons: stand-ins until its mobs are ported (betterdungeons.BetterDungeons)
-        'BetterDungeons.Pirate': 'minecraft:zombie', 'BetterDungeons.Dwarf': 'minecraft:zombie', 'BetterDungeons.Goblin': 'minecraft:zombie',
-        'BetterDungeons.SnowGoblin': 'minecraft:zombie', 'BetterDungeons.ArmoredEnderman': 'minecraft:enderman',
-        'BetterDungeons.triton': 'minecraft:drowned', 'BetterDungeons.OgreArmored': 'minecraft:zombie',
-        'BetterDungeons.minotaurArmored': 'minecraft:zombie', 'BetterDungeons.GremlinArmored': 'minecraft:zombie'}
+        'Creeper': 'minecraft:creeper',
+        # Better Dungeons: its mobs since Teil 13 (BDEntityIds.registerOldNames); names of the templates that match no
+        # mob of the mod keep the stand-ins of betterdungeons.BetterDungeons
+        'BetterDungeons.Pirate': 'betterdungeons:pirate', 'BetterDungeons.Dwarf': 'betterdungeons:dwarf',
+        'BetterDungeons.Goblin': 'betterdungeons:goblin', 'BetterDungeons.SnowGoblin': 'betterdungeons:snow_goblin',
+        'BetterDungeons.ArmoredEnderman': 'betterdungeons:armored_enderman', 'BetterDungeons.triton': 'minecraft:drowned',
+        'BetterDungeons.OgreArmored': 'betterdungeons:ogre_armored', 'BetterDungeons.minotaurArmored': 'minecraft:zombie',
+        'BetterDungeons.GremlinArmored': 'minecraft:zombie'}
 ENTITIES = {'Villager': 'minecraft:villager', 'Witch': 'minecraft:witch', 'MinecartChest': 'minecraft:chest_minecart',
             'Painting': 'minecraft:painting', 'ItemFrame': 'minecraft:item_frame', 'Item': 'minecraft:item',
             'Mob:Cow': 'minecraft:cow', 'Mob:Pig': 'minecraft:pig', 'Mob:Zombie': 'minecraft:zombie', 'Mob:Skeleton': 'minecraft:skeleton',
@@ -62,7 +65,10 @@ ENTITIES = {'Villager': 'minecraft:villager', 'Witch': 'minecraft:witch', 'Minec
             # Better Dungeons bosses of the boss blocks and the ice caves (betterdungeons.mob)
             'Mob:BetterDungeons.IceBull': 'betterdungeons:ice_bull', 'Mob:BetterDungeons.SlimeBoss': 'betterdungeons:slime_boss',
             'Mob:BetterDungeons.TurtleBoss': 'betterdungeons:turtle_boss', 'Mob:BetterDungeons.SpiderBoss': 'betterdungeons:spider_boss',
-            'Mob:BetterDungeons.Monking': 'betterdungeons:monking'}
+            'Mob:BetterDungeons.Monking': 'betterdungeons:monking',
+            # Ruins (end crystals of the templates) and the Battle Towers golem of each tower type
+            'Mob:EnderCrystal': 'minecraft:end_crystal',
+            **{f'Mob:BattleTowers.Battletower Golem#{t}': 'battletowers:golem' for t in range(7)}}
 WOOL = ['white', 'orange', 'magenta', 'light_blue', 'yellow', 'lime', 'pink', 'gray', 'light_gray', 'cyan', 'purple', 'blue',
         'brown', 'green', 'red', 'black']
 SIDE = {2: 'north', 3: 'south', 4: 'west', 5: 'east'}
@@ -421,7 +427,7 @@ def main():
             elif l[0] == 'E':
                 # entities may have walked or rolled a little since they were generated
                 x, y, z = (float(v) for v in l[1:4])
-                selector = f'entity @e[type={ENTITIES[l[4]]},x={x},y={y},z={z},distance=..48]'
+                selector = f'entity @e[type={ENTITIES[" ".join(l[4:])]},x={x},y={y},z={z},distance=..48]'
                 # entities of a freshly generated chunk appear a moment after its blocks
                 if test(selector) or any(time.sleep(1) or test(selector) for _ in range(10)):
                     tok += 1

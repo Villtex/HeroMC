@@ -63,6 +63,9 @@ OldTerrainGen.addListener("ExtrabiomesXL", new OldTerrainGen.Listener() {
 - `MathHelper.sin/cos` → `OldMath.sin/cos` (Tabelle), `floor_double` → `OldMath.floor`. `Math.sin` nur, wo das
   Original `Math.sin` benutzte.
 - Generatoren dürfen keinen Zustand zwischen Chunks behalten. Kacheln werden in mehreren Threads gerechnet.
+  Originale mit Zustand über Chunks: Mindestabstand zu schon gebauten Bauten (Battle Towers) → Raster mit einem
+  Kandidaten-Chunk je Zelle aus dem Seed (`BTWorldGen.isCandidate`, Zellgröße so, dass die Dichte zur gemessenen
+  Erfolgsquote passt); „die letzten N Bauten“/einmalige Vorlagen (Ruins) → nur innerhalb des Chunks. Unter „Offen“.
 
 ## Blöcke anmelden
 
@@ -103,6 +106,8 @@ Neue Beute: `OldLoot.DUNGEON_CHEST.add("FmlId", new OldStack(itemId, damage, 1),
 Mods folgen den Vanilla-Einträgen in Ladereihenfolge; die Reihenfolge entscheidet die gewichtete Ziehung) und die
 Übersetzung in `OldGameIds.registerItem`. Schädel: `setBlock(x, y, z, 144, 1)` + `setTile(..., new OldTile.Skull(art,
 drehung))`, `verify_blocks.py` prüft sie über die `K`-Zeilen. Dungeon-Mobs: `OldLoot.addDungeonMob` und `OldGameIds.registerEntity`.
+Entität mit Variante aus dem Konstruktor des Originals (Golem je Turmtyp): eigener Name je Variante und
+`OldGameIds.registerEntity(name, id, entity -> …)`; der Chunk-Writer ruft die Initialisierung vor dem Einfügen.
 
 ## Strukturen
 
