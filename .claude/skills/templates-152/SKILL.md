@@ -50,6 +50,7 @@ Chocolate/ -> betterdungeons-original/Chocolate/
 | TileEntity aus NBT | `world.setTile(..., new OldTile.Chest/Dispenser/Furnace/Sign/Jukebox/BrewingStand/Skull/Spawner)` |
 | eigene TileEntity | Record `implements OldTile.Mod` im Kern + `OldModData.registerTile(Klasse, Schreiber)` in der Mod-Klasse |
 | `EntityPainting`/`EntityItemFrame` | `OldEntity.Painting/ItemFrame(tileX,tileY,tileZ = Wandblock, direction 0 S 1 W 2 N 3 E, …)` |
+| `new EntityPainting(world, x, y, z, dir)` (Motiv zufällig, onValidSurface) | `betterdungeons.gen.BDPainting.place` (Kollisionsboxen, umgedrehte Box) |
 | andere Entities (`EntityList`-Name) | `OldEntity.Mob(name, x,y,z, yaw, equipment)`, `OldEntity.Item(...)` |
 
 - Alle Vanilla-IDs 1–158 (Blöcke) und alle Vanilla-Items/Schaden-Werte sind in `OldBlockStates`, `OldBlockInfo`,
@@ -62,14 +63,16 @@ Chocolate/ -> betterdungeons-original/Chocolate/
 
 ## 4. Reichweite
 
-Ein Generator darf höchstens etwa 4 Chunks in +x/+z schreiben (`OldDecoration.MARGIN_LOW = 4`). Better Dungeons
-baut ab der Chunk-Ecke bis 73 Blöcke breit, das passt genau. Größere Bauten: Rand anheben (kostet Zeit je Kachel)
-oder vorher messen.
+Ein Generator darf ohne Weiteres etwa 4 Chunks in +x/+z und 3 in −x/−z schreiben (`OldDecoration.MARGIN_LOW/HIGH`).
+Better Dungeons baut ab der Chunk-Ecke bis 73 Blöcke breit, das passt. Größere Bauten (Eishöhle 100 Blöcke, Vulkan
+−50..+85, Burgen 70 Blöcke vor der Mauer): Reichweite messen (Builder in einer `OldWorld` mehrmals laufen lassen,
+geänderte Blöcke umrahmen) und mit `OldTerrainGen.registerReach` anmelden (Skill `worldgen152`, „Reichweite“).
+`new Random()` der Builder (Höhlenform, Dungeon-Grundriss): `BuilderHelper.positionRandom(world, x, y, z, salt)`.
 
 ## 5. Prüfen
 
 ```
-tools/expect.sh 1234 dungeons 150 > expect.txt   # Better Dungeons: je Typ der nächste Vorlagen-Dungeon, 2x2 Chunks
+tools/expect.sh 1234 dungeons 150 > expect.txt   # Better Dungeons: je Dungeon-Typ, Chunk-Höhle und Mauer-Burg der nächste
 python3 tools/verify_blocks.py expect.txt
 ```
 

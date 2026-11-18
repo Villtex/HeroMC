@@ -106,7 +106,7 @@ public class Expect {
                     nearest.putIfAbsent(caves[cave - 1], new int[]{cx, cz});
                 if (nearest.containsKey(caves[0]) && nearest.containsKey(caves[1])) break search;
             }
-            for (int d = 0; d <= 4 * r; d += 10) for (int cx : new int[]{-d, d}) {
+            for (int d = 0; d <= 3000; d += 10) for (int cx : new int[]{-d, d}) {   // (the wall line is mostly ocean)
                 String wall = betterdungeons.gen.BDWorldGen.wallCastleAt(layout.biomeAt(cx * 16, -500 * 16 - 70), cx);
                 if (wall != null) nearest.putIfAbsent("wall with " + wall, new int[]{cx, -500});
             }

@@ -3,7 +3,7 @@
 #   tools/expect.sh <seed> find <radius-in-chunks> > expect.txt   (one chunk per biome found near 0,0)
 #   tools/expect.sh <seed> structures <radius-in-chunks> > expect.txt   (chunks of villages, strongholds, temples, mineshafts)
 #   tools/expect.sh <seed> <chunkX> <chunkZ> [...]   > expect.txt
-#   tools/expect.sh <seed> dungeons <radius-in-chunks> > expect.txt   (chunks of the nearest Better Dungeons template dungeons)
+#   tools/expect.sh <seed> dungeons <radius-in-chunks> > expect.txt   (chunks of the nearest Better Dungeons dungeon of each type, chunk caves, wall castles)
 #   tools/expect.sh <seed> spawn                     (the world spawn)
 # "vanilla" after the seed leaves out the biomes of mods (to compare with a vanilla 1.5.2 world).
 # Compiles hexxit.worldgen152.core, the ExtrabiomesXL biome table and the core classes of the mod generators with plain javac (JDK 21+).

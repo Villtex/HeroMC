@@ -178,9 +178,13 @@ Teil 7b), ein Abgleich mit Original-Welten ist dort nicht möglich.
 - **Versatz +8.** Population arbeitet auf dem 16×16-Feld, das 8 Blöcke in +x/+z verschoben ist. Die meisten
   Generatoren rechnen `x + nextInt(16) + 8`, Erze nur `x + nextInt(16)` (`WorldGenMinable` addiert die 8 selbst).
   Genau übernehmen, was im Original steht.
-- **Reichweite.** Eine Kachel sind 8×8 Chunks, populiert wird mit Rand 4 davor und 2 danach. Ein Generator,
+- **Reichweite.** Eine Kachel sind 8×8 Chunks, populiert wird mit Rand 4 davor und 3 danach. Ein Generator,
   der weiter als etwa 2 Chunks über seinen Chunk hinaus schreibt oder liest, wird an Kachelgrenzen abgeschnitten.
-  Dann `MARGIN_LOW`/`MARGIN_HIGH` in `OldDecoration` anheben.
+  Seltene große Bauten nicht über `MARGIN_LOW`/`MARGIN_HIGH` (kostet jede Kachel), sondern mit
+  `OldTerrainGen.registerReach(fmlId, maxAbstand, (seed, layout, cx, cz) -> new Reach(minX, minZ, maxX, maxZ))`
+  anmelden: nur aus Seed und Biom-Layout entscheiden, ob Chunk (cx, cz) weit schreibt, sonst `null`; Kacheln in der
+  Nähe werden dann mit breiterem Rand populiert. Vorbild `betterdungeons.gen.BDWorldGen.reach` (Eishöhle +6, Vulkan
+  −4..+5, Burgen der Mauer −5 in z).
 - **Kurzschluss-Auswertung.** `a || random.nextInt(2) != 0 && b` zieht nur manchmal eine Zufallszahl. Bedingungen
   nicht umstellen.
 - **`setBlock` gibt bei unverändertem Block `false` zurück** und ruft sonst `onBlockAdded` nach: Lava neben Wasser

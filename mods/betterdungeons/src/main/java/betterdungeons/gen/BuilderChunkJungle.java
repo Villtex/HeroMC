@@ -64,42 +64,35 @@ final class BuilderChunkJungle {
     }
 
     private void iterate(int rule, int rule2) {
+        // checkNumAt of every cell and its border, once per step (the original asked it 18 times per cell)
+        int sx = this.map.length + 2;
+        int sy = this.map[0].length + 2;
+        int sz = this.map.length + 2;
+        int[] num = new int[sx * sy * sz];
+        for (int x = -1; x <= this.map.length; x++) {
+            for (int y = -1; y <= this.map[0].length; y++) {
+                for (int z = -1; z <= this.map.length; z++) {
+                    num[((x + 1) * sy + y + 1) * sz + z + 1] = this.checkNumAt(x, y, z);
+                }
+            }
+        }
         for (int y = 0; y < this.map[0].length; y++) {
             for (int x = 0; x < this.map.length; x++) {
                 for (int z = 0; z < this.map.length; z++) {
-                    if (this.map[x][y][z]) {
-                        this.map2[x][y][z] = this.checkNeightbours(x, y, z) >= rule;
-                    } else {
-                        this.map2[x][y][z] = this.checkNeightbours(x, y, z) >= rule2;
-                    }
+                    int c = ((x + 1) * sy + y + 1) * sz + z + 1;
+                    int dx = sy * sz;
+                    int count = (num[c - dx] + num[c + dx] + num[c + 1] + num[c - 1] + num[c + dx + 1] + num[c + dx - 1] + num[c - dx + 1]
+                            + num[c - dx - 1]) * 2
+                            + num[c + sz] + num[c - sz] + num[c - dx + sz] + num[c + dx + sz] + num[c + sz + 1] + num[c + sz - 1]
+                            + num[c - dx - sz] + num[c + dx - sz] + num[c - sz + 1] + num[c - sz - 1];
+                    this.map2[x][y][z] = count >= (this.map[x][y][z] ? rule : rule2);
                 }
             }
         }
         this.pushBack();
     }
 
-    private int checkNeightbours(int x, int y, int z) {
-        int count = 0;
-        count += this.checkNumAt(x - 1, y, z) * 2;
-        count += this.checkNumAt(x + 1, y, z) * 2;
-        count += this.checkNumAt(x, y, z + 1) * 2;
-        count += this.checkNumAt(x, y, z - 1) * 2;
-        count += this.checkNumAt(x + 1, y, z + 1) * 2;
-        count += this.checkNumAt(x + 1, y, z - 1) * 2;
-        count += this.checkNumAt(x - 1, y, z + 1) * 2;
-        count += this.checkNumAt(x - 1, y, z - 1) * 2;
-        count += this.checkNumAt(x, y + 1, z);
-        count += this.checkNumAt(x, y - 1, z);
-        count += this.checkNumAt(x - 1, y + 1, z);
-        count += this.checkNumAt(x + 1, y + 1, z);
-        count += this.checkNumAt(x, y + 1, z + 1);
-        count += this.checkNumAt(x, y + 1, z - 1);
-        count += this.checkNumAt(x - 1, y - 1, z);
-        count += this.checkNumAt(x + 1, y - 1, z);
-        count += this.checkNumAt(x, y - 1, z + 1);
-        return count + this.checkNumAt(x, y - 1, z - 1);
-    }
-
+    /** BuilderChunkJungle.checkNumAt: the borders of the 48 x 20 x 48 map count as rock at the sides, open at top and bottom. */
     private int checkNumAt(int x, int y, int z) {
         if (x <= 0) {
             return 1;
