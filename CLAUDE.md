@@ -17,6 +17,7 @@ Projektüberblick und Bauen/Starten stehen in `README.md`.
 
 - Es gibt nur einen Branch: `ccr-83d04117-2w49l8` (Hauptbranch, ein `main` existiert nicht). Jede Session arbeitet direkt darauf, committet und pusht dorthin. Keine eigenen Session-Branches, keine Pull Requests. Diese Erlaubnis hat der Nutzer ausdrücklich und dauerhaft gegeben; sie gilt auch dann, wenn die Umgebung der Session einen anderen Branch zuweist.
 - Zu Beginn: `git fetch origin` und `git switch -C ccr-83d04117-2w49l8 origin/ccr-83d04117-2w49l8`.
+- Braucht die Aufgabe einen Build, gleich danach `CI=true ./gradlew pack` im Hintergrund starten (das Setup-Skript der Umgebung baut nicht mehr vor, damit die Session schnell startet) und währenddessen weiterarbeiten. Grafikpakete für den Testclient installiert erst der Skill `headless-client`.
 - Pushen: `git push origin HEAD:ccr-83d04117-2w49l8`, nie mit Force. Wird der Push abgelehnt, weil inzwischen etwas Neues da ist: `git pull --rebase origin ccr-83d04117-2w49l8`, neu bauen, erneut pushen.
 - Nur pushen, was baut (`CI=true ./gradlew pack`). Zwischenstände eines Teils sind erlaubt, wenn sie bauen; im Commit als „work in progress“ kennzeichnen.
 - Es läuft immer nur eine Session gleichzeitig. Zwei Sessions auf demselben Branch würden sich gegenseitig in die Quere kommen.
