@@ -17,7 +17,8 @@ NS = 'betterdungeons'
 
 # generated folders (the spawner's blockstate/model from Teil 12 stay)
 for d in ('assets/betterdungeons/items', 'assets/betterdungeons/models/item', 'assets/betterdungeons/equipment',
-          'data/betterdungeons/recipe', 'data/betterdungeons/tags', 'data/betterdungeons/loot_table', 'data/minecraft'):
+          'data/betterdungeons/recipe', 'data/betterdungeons/tags', 'data/betterdungeons/loot_table/blocks', 'data/minecraft/tags/item'):
+    # the loot tables of the mobs and the entity tags come from tools/gen_humans.py (and the other mob generators)
     shutil.rmtree(os.path.join(RES, d), ignore_errors=True)
 
 
@@ -319,6 +320,9 @@ for src, target in [('en_US', 'en_us'), ('es_ES', 'es_es'), ('zh_CN', 'zh_cn')]:
         if v is not None:
             out[f'item.{NS}.{item_id}'] = v
     if target == 'en_us':
+        # mobs the language files of 1.5.2 did not name (they showed the raw key)
+        for old, v in {'OrcArmored': 'Orc', 'goblinBoss': 'Goblin Boss', 'FriendlyHuman': 'Mercenary'}.items():
+            out.setdefault(f'entity.{NS}.{ENTITY_PATHS[old]}', v)
         for item_id, v in FIXED.items():
             out[f'item.{NS}.{item_id}'] = v
         out.update(MESSAGES)

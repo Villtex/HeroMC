@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "betterdungeons:armored_enderman",
+    "betterdungeons:armored_pig_zombie",
+    "betterdungeons:armored_skeleton",
+    "betterdungeons:armored_zombie",
+    "betterdungeons:liche",
+    "betterdungeons:necromancer",
+    "betterdungeons:pig_mage"
+  ]
+}

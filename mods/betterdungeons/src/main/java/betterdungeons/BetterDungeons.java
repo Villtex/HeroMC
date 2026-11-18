@@ -54,6 +54,7 @@ public final class BetterDungeons {
         BLOCK_ENTITIES.register(modBus);
         BDEntities.register(modBus);
         BDSounds.register(modBus);
+        betterdungeons.mob.BDHumans.register(modBus);
         NeoForge.EVENT_BUS.register(BDEvents.class);
         OldBlockStates.register(BuilderHelper.SPAWNER_BLOCK, () -> SPAWNER.get().defaultBlockState());
         OldModData.registerTile(BDSpawnerTile.class, (tile, blockEntity, registries) -> {
@@ -72,6 +73,7 @@ public final class BetterDungeons {
         modBus.addListener(FMLCommonSetupEvent.class, event -> event.enqueueWork(BDEntityIds::registerOldNames));
         if (FMLEnvironment.getDist() == Dist.CLIENT) {
             betterdungeons.client.BDClient.register(modBus);
+            betterdungeons.client.BDHumanRenderers.register(modBus);
         }
     }
 }

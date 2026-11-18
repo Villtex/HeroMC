@@ -236,6 +236,11 @@ public final class MiscItems {
         @Override
         public InteractionResult use(Level level, Player player, InteractionHand hand) {
             ItemStack stack = player.getItemInHand(hand);
+            if (level.isClientSide() && player.isShiftKeyDown() && assigned(level, stack) instanceof BDCommandableMob) {
+                // sneak + use: GuiMobControl (opened by the client half of the mob port)
+                betterdungeons.mob.BDHumans.openControlScreen.accept(player, stack);
+                return InteractionResult.SUCCESS;
+            }
             if (!stack.has(DataComponents.CUSTOM_DATA) || level.isClientSide()) {
                 return InteractionResult.PASS;
             }

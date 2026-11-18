@@ -1,0 +1,65 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "betterdungeons:earth_sword"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond",
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": 2
+            }
+          ]
+        }
+      ],
+      "condition": {
+        "type": "minecraft:all_of",
+        "terms": [
+          {
+            "type": "minecraft:killed_by_player"
+          },
+          {
+            "type": "minecraft:any_of",
+            "terms": [
+              {
+                "type": "minecraft:random_chance",
+                "chance": 0.2
+              },
+              {
+                "type": "minecraft:random_chance_with_enchanted_bonus",
+                "enchantment": "minecraft:looting",
+                "unenchanted_chance": 0.0,
+                "enchanted_chance": {
+                  "type": "minecraft:fraction",
+                  "numerator": {
+                    "type": "minecraft:linear",
+                    "base": 1.0,
+                    "per_level_above_first": 1.0
+                  },
+                  "denominator": {
+                    "type": "minecraft:linear",
+                    "base": 2.0,
+                    "per_level_above_first": 1.0
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "random_sequence": "betterdungeons:entities/minotaur_boss"
+}
