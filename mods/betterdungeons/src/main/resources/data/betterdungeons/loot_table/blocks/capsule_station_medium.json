@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "condition": {
+        "type": "minecraft:survives_explosion"
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "betterdungeons:capsule_station_medium"
+        }
+      ],
+      "rolls": 1
+    }
+  ],
+  "random_sequence": "betterdungeons:blocks/capsule_station_medium"
+}

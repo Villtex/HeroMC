@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "betterdungeons:bag",
+    "minecraft:arrow"
+  ],
+  "result": {
+    "id": "betterdungeons:quiver"
+  }
+}

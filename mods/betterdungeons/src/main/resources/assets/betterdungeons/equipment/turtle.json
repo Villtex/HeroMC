@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "betterdungeons:turtle"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "betterdungeons:turtle"
+      }
+    ]
+  }
+}

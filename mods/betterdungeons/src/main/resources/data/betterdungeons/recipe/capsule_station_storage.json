@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "x": "minecraft:obsidian",
+    "y": "minecraft:chest",
+    "z": "minecraft:emerald"
+  },
+  "pattern": [
+    "xzx",
+    "xyx",
+    "xxx"
+  ],
+  "result": {
+    "id": "betterdungeons:capsule_station_storage"
+  }
+}

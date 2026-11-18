@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "betterdungeons:staff",
+    "betterdungeons:wind_essence"
+  ],
+  "result": {
+    "id": "betterdungeons:staff_wind"
+  }
+}

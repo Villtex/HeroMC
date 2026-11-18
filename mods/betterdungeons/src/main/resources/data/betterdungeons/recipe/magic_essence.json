@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "betterdungeons:water_essence",
+    "betterdungeons:poison_essence",
+    "betterdungeons:ice_essence",
+    "betterdungeons:fire_essence",
+    "betterdungeons:dark_essence",
+    "betterdungeons:electric_essence",
+    "betterdungeons:wind_essence",
+    "betterdungeons:life_essence"
+  ],
+  "result": {
+    "id": "betterdungeons:magic_essence"
+  }
+}

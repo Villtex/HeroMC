@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "minecraft:cobblestone",
+    "minecraft:iron_ingot"
+  ],
+  "result": {
+    "id": "betterdungeons:bullet",
+    "count": 9
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "x": "betterdungeons:turtle_scale"
+  },
+  "pattern": [
+    "   ",
+    "x x",
+    "x x"
+  ],
+  "result": {
+    "id": "betterdungeons:turtle_boots"
+  }
+}

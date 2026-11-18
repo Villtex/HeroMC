@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "betterdungeons:item/capsule",
+    "layer1": "betterdungeons:item/capsule0"
+  }
+}

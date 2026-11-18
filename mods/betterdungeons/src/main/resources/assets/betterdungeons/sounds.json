@@ -1,0 +1,62 @@
+{
+  "handgun": {
+    "sounds": [
+      "betterdungeons:handgun"
+    ],
+    "subtitle": "subtitles.betterdungeons.handgun"
+  },
+  "wind": {
+    "sounds": [
+      "betterdungeons:wind"
+    ],
+    "subtitle": "subtitles.betterdungeons.wind"
+  },
+  "small_monster_dead": {
+    "sounds": [
+      "betterdungeons:small_monster_dead"
+    ],
+    "subtitle": "subtitles.betterdungeons.small_monster_dead"
+  },
+  "small_monster_speak": {
+    "sounds": [
+      "betterdungeons:small_monster_speak"
+    ],
+    "subtitle": "subtitles.betterdungeons.small_monster_speak"
+  },
+  "small_monster_hurt": {
+    "sounds": [
+      "betterdungeons:small_monster_hurt"
+    ],
+    "subtitle": "subtitles.betterdungeons.small_monster_hurt"
+  },
+  "small_monster_laught": {
+    "sounds": [
+      "betterdungeons:small_monster_laught"
+    ],
+    "subtitle": "subtitles.betterdungeons.small_monster_laught"
+  },
+  "breath_loud": {
+    "sounds": [
+      "betterdungeons:breath_loud"
+    ],
+    "subtitle": "subtitles.betterdungeons.breath_loud"
+  },
+  "breath_double": {
+    "sounds": [
+      "betterdungeons:breath_double"
+    ],
+    "subtitle": "subtitles.betterdungeons.breath_double"
+  },
+  "magic": {
+    "sounds": [
+      "betterdungeons:magic"
+    ],
+    "subtitle": "subtitles.betterdungeons.magic"
+  },
+  "bubble": {
+    "sounds": [
+      "betterdungeons:bubble"
+    ],
+    "subtitle": "subtitles.betterdungeons.bubble"
+  }
+}

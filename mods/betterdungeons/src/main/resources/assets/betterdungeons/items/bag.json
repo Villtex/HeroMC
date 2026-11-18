@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "betterdungeons:item/bag",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -2987746
+      }
+    ]
+  }
+}

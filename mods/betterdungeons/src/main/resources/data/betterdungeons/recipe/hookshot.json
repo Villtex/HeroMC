@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "x": "minecraft:diamond",
+    "y": "minecraft:piston",
+    "z": "minecraft:arrow"
+  },
+  "pattern": [
+    "xzx",
+    "xyx",
+    "xxx"
+  ],
+  "result": {
+    "id": "betterdungeons:hookshot"
+  }
+}
