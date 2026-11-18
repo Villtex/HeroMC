@@ -27,6 +27,7 @@ Der Port ist in Teile aufgeteilt, die je in eine Session passen: [`docs/PLAN.md`
 | Pfad | Inhalt |
 |---|---|
 | `mods/<name>/` | ein portierter Mod = ein Gradle-Teilprojekt (Name wie im Technic-Manifest) |
+| `mods/combat152/` | Nahkampf wie in 1.5.2 für das ganze Pack: keine Abklingzeit, keine Abklingzeit-Anzeige, kein Schwungangriff, Kritische Treffer und Axt-/Schaufelschaden wie damals, keine Schlag-Geräusche |
 | `mods/<name>/original-assets.txt` | welche Texturen/Sounds/Vorlagen der Mod beim Bauen aus Original-Archiven übernimmt (`[archiv]` wechselt das Archiv) |
 | `buildSrc/` | Gradle-Task, der diese Dateien lädt (MD5-geprüft) und in das gebaute Jar legt |
 | `pack/hexxit-1.0.11.json` | exaktes Manifest des Originalpacks: Mods, Versionen, Prüfsummen, Download-URLs |

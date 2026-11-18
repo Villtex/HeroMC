@@ -69,6 +69,14 @@ Entfallen ganz: Not Enough Items, NEI Plugins, CodeChickenCore (durch JEI ersetz
 
 Die Reihenfolge ab Teil 4 ist frei wählbar, solange „Braucht“ erfüllt ist.
 
+**Außerhalb der Teile – Nahkampf wie 1.5.2** (`mods/combat152`, ✅ erledigt): keine Angriffs-Abklingzeit (Grund-
+Angriffsgeschwindigkeit des Spielers 1024, Basis-Tempo der Waffen entfernt), Abklingzeit-Anzeige im Client fest auf
+„Aus“, kein Schwungangriff, Kritische Treffer nach 1.5.2 (auch beim Sprinten, `+rand(i/2+2)` statt ×1,5), Äxte
+3 + Material und Schaufeln 1 + Material wie 1.5.2, keine `entity.player.attack.*`-Geräusche. Per FakePlayer geprüft
+(3 Schläge im selben Tick je voller Schaden, Kritisch-Mittel passt). Nicht angeglichen: Schärfe/Bann (1.5.2 würfelte
+`0..2,75·Stufe`), Schwäche (1.5.2 −2 statt −4), Stärke ab Stufe III, Blocken mit dem Schwert (Rechtsklick).
+Client-Prüfung offen.
+
 ---
 
 ## Teil 1 – Vanilla-1.5.2-Dekoration
