@@ -109,3 +109,33 @@ Abschnitt „ENTITIES“ in `mods/natura/tools/gen.py`.
 - Natürliche Spawns: Kategorie CREATURE spawnt beim Generieren neuer Chunks auch ohne Spieler →
   `locate biome …`, `forceload add` um den Fund (±96), 15 s warten, `execute if entity @e[type=…,x=…,dx=…]` zählen.
   Monster/Ambient brauchen einen Spieler in der Nähe.
+
+## Bewaffnete Biped-Mobs mit eigener KI (Vorbild Better Dungeons, `betterdungeons.mob`)
+
+- **Mehrere 1.5.2-Konstruktoren** (`Mob(world)`, `(world, lvl)`, `(world, lvl, type)`): als Methoden `initAsWorld/initAsLevel/
+  initAsLevelType` (`HumanEntity`); Konstruktor (nur Server) und `finalizeSpawn` rufen `initAsWorld`, Spawner rufen ihre
+  Variante über eine API (`BDDungeonMob.initDungeonMob`). Vor jedem Neu-Init die Klassen-Goals entfernen (`resetClass`).
+- **`configRaze`-Muster** (Werte in einer überschriebenen Methode, die der Basis-Konstruktor aufruft): nur Felder der
+  Basisklasse setzen; Felder der Unterklasse mit Initialisierer werden erst danach gesetzt. Goals im eigenen Konstruktor
+  anlegen, `registerGoals` leer lassen.
+- **Linke Hand** (`leftHandItem`) = `OFFHAND`, Drop-Chance 0; `equipmentDropChances` 0.001 → `setDropChance`.
+- **Schaden wie 1.5.2:** `doHurtTarget` selbst rechnen (Rassenstärke + 1.5.2-Waffenwert − 1; Äxte/Spitzhacken waren in
+  1.5.2 viel schwächer, Tabelle `BDMobUtil.oldWeaponDamage`), Stärke/Schwäche als `3 << amp` / `2 << amp`,
+  danach `causeExtraKnockback` + `EnchantmentHelper.doPostAttackEffects`.
+- **Mutex-Bits → Goal-Flags:** 1 = MOVE, 2 = LOOK, 4 = JUMP (Granaten-KI mit 4 läuft neben dem Nahkampf), 8 = keine.
+  Alle Goals `requiresUpdateEveryTick() = true`. Alte absolute KI-Geschwindigkeiten: `speed(abs) = abs / MOVEMENT_SPEED-Basis`.
+  `getSpeedModifier`-Overrides (Blocken 0.7) → `setSpeed` überschreiben.
+- **Target-Tasks von 1.5.2** (Sicht + 60 Ticks Gedächtnis, eigene Reichweite statt FOLLOW_RANGE) als eigene Basisklasse
+  (`HumanTargetGoals.Target`); `EntityAIHurtByTarget` setzt das Ziel nur, `continueExecuting` endet sofort.
+- **Fremden Mobs Goals geben** (Schwein/Kuh als Reittier): `Mob.goalSelector` per Reflection (`BDMobUtil.goals`).
+- **Level-abhängige Drops:** eigene Loot-Bedingung (`Registries.LOOT_CONDITION_TYPE`, `MapCodec`), hier
+  `betterdungeons:mob_level`; gemeinsame Pools als eigene Tabelle per `{"type":"minecraft:loot_table","value":…}`
+  einbinden, „1/20 alles“ als Pool mit `random_chance`. Loot-Bedingungen in 26.3 unter `"condition"` (ein Objekt,
+  mehrere mit `minecraft:all_of`). Generator `mods/betterdungeons/tools/gen_humans.py`.
+- **Client:** eigenes `HumanoidModel` mit komplett eigenem `setupAnim` (`resetPose()` + `ModelBiped.setRotationAngles` von
+  1.5.2: Beine bei x ±2, gehaltenes Item senkt den Arm), Varianten über Geometrie-/Animations-Enum (`HumanModel`);
+  Rüstung je Geometrie als eigene `ArmorModelSet` (Inflation 1.0/0.5). Vanilla-Texturen von 1.5.2 fehlen: 26.3-Texturen
+  mit gleichem Layout nehmen (Skelett/Enderman 64×32, Zombie/Steve 64×64 → Layer 64×64), Zombie-Pigman → Vanilla-Layer
+  `ModelLayers.ZOMBIFIED_PIGLIN`. Drehen: `poseStack.rotateDegrees(Axis, deg)` / `rotate(Quaternionf)`.
+- **Söldner-Steuerung:** GUI nur auf dem Client öffnen (statischer Hook `BDHumans.openControlScreen`, vom Client gesetzt),
+  Befehl per `playToServer`-Payload, Server prüft Entfernung und Wertebereich.

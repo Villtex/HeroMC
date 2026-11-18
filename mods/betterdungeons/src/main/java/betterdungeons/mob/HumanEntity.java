@@ -1106,6 +1106,9 @@ public class HumanEntity extends PathfinderMob implements BDDungeonMob, BDComman
         this.setSupportAI(1, null);
         this.setHealerTarget(null);
         this.setClassByte(0);
+        if (!this.level().isClientSide()) {
+            this.setItemSlot(EquipmentSlot.OFFHAND, ItemStack.EMPTY);
+        }
     }
 
     public void setShied(boolean flag) {
