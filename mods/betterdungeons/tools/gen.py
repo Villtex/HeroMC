@@ -338,6 +338,12 @@ for src, target in [('en_US', 'en_us'), ('es_ES', 'es_es'), ('zh_CN', 'zh_cn')]:
             out[f'itemGroup.{m.group(1)}'] = v.replace('Building', '')
     write(f'assets/{NS}/lang/{target}.json', dict(sorted(out.items())))
 
+# ---------------------------------------------------------------- textures of the human mobs (betterdungeons.mob.BDHumans, strand b1)
+for orig in ['dwarf', 'pirate', 'pirateBoss', 'shadow', 'goblinGreen', 'goblinBlue', 'goblin', 'goblinShaman', 'snake', 'mandrilSmall',
+             'golemSmall', 'ogre', 'orc', 'minotaur', 'specterBoss', 'necromancer', 'liche', 'pigMage', 'enderman_cloth', 'enderman_chain',
+             'enderman_iron', 'enderman_gold', 'enderman_diamond']:
+    textures[f'bdimg/{orig}.png'] = f'assets/{NS}/textures/entity/{snake(orig)}.png'
+
 # ---------------------------------------------------------------- original-assets.txt
 with open(os.path.join(ROOT, 'original-assets.txt'), encoding='utf-8') as f:
     old = f.read()
