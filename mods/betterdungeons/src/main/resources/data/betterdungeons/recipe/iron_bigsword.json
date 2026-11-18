@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "x": "betterdungeons:handle",
+    "y": "minecraft:iron_ingot"
+  },
+  "pattern": [
+    " y ",
+    " y ",
+    " x "
+  ],
+  "result": {
+    "id": "betterdungeons:iron_bigsword"
+  }
+}

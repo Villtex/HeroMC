@@ -1,0 +1,25 @@
+{
+  "model": {
+    "type": "minecraft:condition",
+    "property": "minecraft:has_component",
+    "component": "minecraft:custom_data",
+    "on_true": {
+      "type": "minecraft:model",
+      "model": "betterdungeons:item/capsule",
+      "tints": [
+        {
+          "type": "minecraft:constant",
+          "value": -1
+        },
+        {
+          "type": "minecraft:constant",
+          "value": -16743032
+        }
+      ]
+    },
+    "on_false": {
+      "type": "minecraft:model",
+      "model": "betterdungeons:item/capsule"
+    }
+  }
+}

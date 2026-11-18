@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "x": "betterdungeons:handle",
+    "y": "minecraft:diamond",
+    "z": "minecraft:stick"
+  },
+  "pattern": [
+    " y ",
+    " z ",
+    " x "
+  ],
+  "result": {
+    "id": "betterdungeons:diamond_spear"
+  }
+}

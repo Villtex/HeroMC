@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "x": "minecraft:arrow",
+    "y": "betterdungeons:fire_essence"
+  },
+  "pattern": [
+    "xxx",
+    "xyx",
+    "xxx"
+  ],
+  "result": {
+    "id": "betterdungeons:fire_arrow",
+    "count": 8
+  }
+}

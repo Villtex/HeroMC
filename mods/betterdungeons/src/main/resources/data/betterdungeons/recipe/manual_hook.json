@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "betterdungeons:longshot",
+    "betterdungeons:longshot"
+  ],
+  "result": {
+    "id": "betterdungeons:manual_hook"
+  }
+}

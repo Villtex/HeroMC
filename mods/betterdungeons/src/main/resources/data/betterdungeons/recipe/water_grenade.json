@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "x": "minecraft:glass_bottle",
+    "y": "betterdungeons:water_essence"
+  },
+  "pattern": [
+    "xxx",
+    "xyx",
+    "xxx"
+  ],
+  "result": {
+    "id": "betterdungeons:water_grenade",
+    "count": 8
+  }
+}

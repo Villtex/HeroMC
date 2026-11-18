@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "x": "minecraft:leather",
+    "y": "minecraft:chest",
+    "z": "minecraft:string"
+  },
+  "pattern": [
+    "xzx",
+    "xyx",
+    "xxx"
+  ],
+  "result": {
+    "id": "betterdungeons:bag"
+  }
+}

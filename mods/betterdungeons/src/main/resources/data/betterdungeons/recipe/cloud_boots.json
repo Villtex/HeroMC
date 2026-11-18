@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "x": "betterdungeons:golden_feather"
+  },
+  "pattern": [
+    "   ",
+    "x x",
+    "x x"
+  ],
+  "result": {
+    "id": "betterdungeons:cloud_boots"
+  }
+}
