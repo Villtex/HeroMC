@@ -23,9 +23,10 @@ Daten aus `mods/betterdungeons/tools/gen.py`.
 
 ## Blocken und „solange benutzt“
 
-- `EnumAction.block` (Schild, Banner, Schwert mit eigenem Effekt beim Blocken): Komponente `BLOCKS_ATTACKS` mit
-  `new DamageReduction(180F, Optional.empty(), -0.5F, 0.5F)` ergibt den 1.5.2-Wert (1 + Schaden) / 2, Item-Schaden aus
-  (`ItemDamageFunction(1e9F, 0, 0)`). Damit liefern `use`/Animation/Dauer schon die Vanilla-Defaults (`BDItems.blocking`).
+- `EnumAction.block` (Schild, Banner, Schwert mit eigenem Effekt beim Blocken): Komponente
+  `DataComponents.BLOCKS_ATTACKS` = `hexxit.combat152.Combat152.BLOCKING` (`mod_requires=combat152`). combat152 halbiert
+  den Schaden wie 1.5.2 ((1 + d) >> 1, alle Seiten, ohne Axt-Sperre/Rückstoß); `use`/Animation/Dauer sind Vanilla-Defaults
+  (`BDItems.blocking`). Keine eigene `DamageReduction` bauen.
 - Normale Schwerter (`p.sword(...)`, ohne eigenes `use`) blocken schon über `mods/combat152` (1.5.2-Kampfregeln fürs
   ganze Pack): dort nichts nachbauen. `BLOCKS_ATTACKS` selbst nur bei Items mit eigenem Effekt beim Blocken.
 - `onUpdate` mit `isUsingItem && aktuelles Item` → `onUseTick` (beide Seiten, Effekte nur Server). Effekte mit 1 Tick

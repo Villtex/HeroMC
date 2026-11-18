@@ -88,8 +88,12 @@ import java.util.Optional;
 public final class Combat152 {
     public static final String MOD_ID = "combat152";
     private static final Identifier EFFECT_FIX = Identifier.fromNamespaceAndPath(MOD_ID, "effects_152");
-    /** Sword blocking of this mod: no own reduction, recognised by the empty list. */
-    private static final BlocksAttacks SWORD_BLOCK = new BlocksAttacks(0.0F, 0.0F, List.of(),
+    /**
+     * {@code EnumAction.block} of 1.5.2 for any item (swords here, shields and banners of Better Dungeons): use with
+     * the vanilla block pose, no own reduction (recognised by the empty list), the damage is halved in
+     * {@link #onIncomingDamage}.
+     */
+    public static final BlocksAttacks BLOCKING = new BlocksAttacks(0.0F, 0.0F, List.of(),
             new BlocksAttacks.ItemDamageFunction(1.0E9F, 0.0F, 0.0F), Optional.empty(), Optional.empty(), Optional.empty());
 
     /** The attack running on this thread (server or client): target and 1.5.2 knockback {@code j}. */
@@ -130,7 +134,7 @@ public final class Combat152 {
                         && components.get(DataComponents.BLOCKS_ATTACKS) == null
                         && components.get(DataComponents.CONSUMABLE) == null
                         && components.get(DataComponents.KINETIC_WEAPON) == null,
-                (components, context, item) -> components.set(DataComponents.BLOCKS_ATTACKS, SWORD_BLOCK));
+                (components, context, item) -> components.set(DataComponents.BLOCKS_ATTACKS, BLOCKING));
     }
 
     /** A sword: mines cobweb (shears do too, but are no weapon) and keeps the default right click. */
@@ -287,7 +291,7 @@ public final class Combat152 {
                 }
             }
         }
-        // Blocking with a sword: (1 + damage) >> 1.
+        // Blocking (EnumAction.block): (1 + damage) >> 1.
         if (target instanceof Player player && event.getAmount() > 0 && !source.is(DamageTypeTags.BYPASSES_ARMOR)) {
             ItemStack blocking = player.getItemBlockingWith();
             if (blocking != null && blocking.get(DataComponents.BLOCKS_ATTACKS) instanceof BlocksAttacks blocks

@@ -35,7 +35,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.ToolMaterial;
-import net.minecraft.world.item.component.BlocksAttacks;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.item.component.Weapon;
@@ -56,7 +55,6 @@ import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
@@ -132,11 +130,9 @@ public final class BDItems {
                 .component(DataComponents.WEAPON, new Weapon(usesPerHit));
     }
 
-    /** EnumAction.block of 1.5.2: blocking halves the damage, (1 + damage) / 2 is taken, from every side. */
+    /** EnumAction.block of 1.5.2: blocking halves the damage, (1 + damage) >> 1, from every side (combat152). */
     static Item.Properties blocking(Item.Properties p) {
-        return p.component(DataComponents.BLOCKS_ATTACKS, new BlocksAttacks(0.0F, 1.0F,
-                List.of(new BlocksAttacks.DamageReduction(180.0F, Optional.empty(), -0.5F, 0.5F)),
-                new BlocksAttacks.ItemDamageFunction(1.0E9F, 0.0F, 0.0F), Optional.empty(), Optional.empty(), Optional.empty()));
+        return p.component(DataComponents.BLOCKS_ATTACKS, hexxit.combat152.Combat152.BLOCKING);
     }
 
     /** getDamageVsEntity of a plain item (staffs, the magic pickaxe): attack damage in the main hand. */

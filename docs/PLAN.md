@@ -82,8 +82,8 @@ Die Reihenfolge ab Teil 4 ist frei wählbar, solange „Braucht“ erfüllt ist.
   `use`) bekommen `BLOCKS_ATTACKS` ohne eigene Minderung, Schaden `(1 + d) >> 1` vor der Rüstung von allen Seiten,
   außer `bypasses_armor`; kein Rückstoß für den Blockenden, keine Axt-Sperre.
 Per FakePlayer geprüft (Schläge im selben Tick, Kritisch-Mittel, Schärfe V 1–13, Stärke III 19, Schwäche I 5,
-Rückstoß 0,9/0,1, Blocken 1→1, 2→1, 7→4, 8→4, Fall 8→8). Offen: Better-Dungeons-Schilde/-Banner blocken weiter über
-die 26.3-Minderung (Axt-Sperre, Rückstoß). Client-Prüfung offen (Schwert-Haltung beim Blocken, keine Anzeige).
+Rückstoß 0,9/0,1, Blocken 1→1, 2→1, 7→4, 8→4, Fall 8→8). Better Dungeons (Schilde, Banner, Moonlight/Morning
+Shine/Walker-Schwert) blockt über `Combat152.BLOCKING` (`mod_requires=combat152`). Client-Prüfung offen (Schwert-Haltung beim Blocken, keine Anzeige).
 
 ---
 

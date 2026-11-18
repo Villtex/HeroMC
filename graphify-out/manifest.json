@@ -690,9 +690,9 @@
     "semantic_hash": ""
   },
   "docs/PLAN.md": {
-    "mtime": 1795039258.2325459,
-    "seen": 1795039277.962504,
-    "ast_hash": "e05a541cf6a8b88979ac34f333aad00b",
+    "mtime": 1795039410.8536415,
+    "seen": 1795039429.6663916,
+    "ast_hash": "7c07c25470670f5c44ed3d8803afac50",
     "semantic_hash": ""
   },
   ".mcp.json": {
@@ -29112,9 +29112,9 @@
     "semantic_hash": ""
   },
   "mods/betterdungeons/src/main/java/betterdungeons/BDItems.java": {
-    "mtime": 1795023670.6806595,
-    "seen": 1795024256.1721675,
-    "ast_hash": "af4569a85e1253114ba7eaa6323881a7",
+    "mtime": 1795039359.0793638,
+    "seen": 1795039429.6576672,
+    "ast_hash": "506fef0407b4eba6ee4e5f6b587eebf2",
     "semantic_hash": ""
   },
   "mods/betterdungeons/src/main/java/betterdungeons/BDSounds.java": {
@@ -31398,9 +31398,9 @@
     "semantic_hash": ""
   },
   ".claude/skills/items-weapons-263/SKILL.md": {
-    "mtime": 1795039258.2335415,
-    "seen": 1795039277.9624732,
-    "ast_hash": "09754968e9684653f655fdd10fbd83f9",
+    "mtime": 1795039359.0913954,
+    "seen": 1795039429.6663637,
+    "ast_hash": "e86ba172f6b8a2a5b68303e1c39e6ab6",
     "semantic_hash": ""
   },
   "mods/betterdungeons/src/main/java/betterdungeons/api/BDEntityClass.java": {
@@ -31896,9 +31896,9 @@
     "semantic_hash": ""
   },
   "mods/combat152/src/main/java/hexxit/combat152/Combat152.java": {
-    "mtime": 1795039236.6588871,
-    "seen": 1795039277.9507377,
-    "ast_hash": "fe5c7e65aeb9feb9d0bb2d00598b6621",
+    "mtime": 1795039349.3735888,
+    "seen": 1795039429.6587188,
+    "ast_hash": "16ce6d8ab4a53d0e38b8672cd0d984c6",
     "semantic_hash": ""
   },
   "mods/combat152/src/main/resources/data/minecraft/enchantment/bane_of_arthropods.json": {
