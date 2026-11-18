@@ -170,8 +170,8 @@ Erde-, Kies- und Erzadern der Vanilla-Dekoration woanders liegen. Das löst sich
 11–14, 18 und 19 auf; `compare_original.py` gegen `.cache/original/hexxit/world` ist dafür der Maßstab.
 
 **Dörfer in der Hexxit-Welt haben einen anderen Grundriss als im Port,** solange die Dorf-Bauteile der Mods
-fehlen: Tinkers' Construct (Werkzeugschmiede, Schmelzerei; zurückgestellt als Teil 25) und Better Dungeons
-(Teil 12/13) hängen eigene Bauteile in die Auswahl. Schon deren Gewichte verbrauchen Zufallszahlen des Dorfs,
+fehlen: Tinkers' Construct (Werkzeugschmiede, Schmelzerei; zurückgestellt als Teil 25) hängt eigene Bauteile in
+die Auswahl (Better Dungeons nicht: sein `VillageHandler` ist nur ein Handels-Handler, Teil 13). Schon deren Gewichte verbrauchen Zufallszahlen des Dorfs,
 danach wählt das Dorf andere Häuser. Die Schnittstelle dafür ist da (`OldStructures.VILLAGE_HANDLERS`). Wer die
 Dörfer vor Teil 25 originalgetreu haben will, muss die zwei Tinkers-Bauteile vorziehen. Forge hielt diese
 Handler in einer Hash-Tabelle nach Klasse; ihre Reihenfolge wechselte im Original von Start zu Start.
@@ -731,10 +731,9 @@ nötig – die Modelle werden aus dem 1.5.2-Code exakt übernommen (`tools/model
 
 - **Teil 12:** Bau-Engine und Import der Gebäude- und Dungeon-Vorlagen aus `betterdungeons-data1/2` (`Chocolate/`).
 - **Teil 13:** Dungeon-Typen, Wächter, Mobs, Loot (`ChestConfig`), Platzierung in der Welt.
-- **Am Ende von Teil 13 den Nutzer erinnern** (von ihm so gewünscht): Die Dörfer haben erst dann den Grundriss
-  des Originals, wenn auch die zwei Dorf-Bauteile von Tinkers' Construct da sind (Werkzeugschmiede, Schmelzerei;
-  sonst erst Teil 25). Fragen, ob sie jetzt vorgezogen werden sollen, und das Dorf-Bauteil von Better Dungeons
-  (`VillageHandler`) über `OldStructures.VILLAGE_HANDLERS` einhängen. Hintergrund: Teil 2, „Dörfer in der Hexxit-Welt“.
+- Erinnerung an die Dorf-Bauteile von Tinkers' Construct ist erledigt: Der Nutzer will sie nicht vorziehen (bleiben
+  in Teil 25). Better Dungeons hat kein Dorf-Bauteil; `VillageHandler` ist nur ein Handels-Handler (Kapselstationen
+  beim Priester, portiert in `BDEvents`).
 
 ### Teil 12 – Stand
 
@@ -853,8 +852,6 @@ Projekt-Skill `templates-152` (Vorlagen und Schematics übernehmen, für Teil 13
 - Client-Prüfung offen: Item-Modelle, Geschoss-Renderer, Rüstungstexturen, Mob-Modelle/Animationen (Golem-Blitze,
   Schildkrötenteile, Specter-Geist, Umhang, Feder, Sprechblase, Sitzpose, Köder-Skin), Steuer-GUI des Söldners;
   Hakenschuss und Wolkenstiefel mit echtem Spieler.
-- Dorf-Bauteil von Better Dungeons (`VillageHandler`) noch nicht über `OldStructures.VILLAGE_HANDLERS` eingehängt
-  (wartet auf die Entscheidung zu den Tinkers'-Dorfbauteilen, siehe oben).
 
 ## Teil 14 – Battle Towers, Ruins
 
