@@ -125,7 +125,7 @@ public abstract class MageEntity extends HumanEntity implements Enemy, HumanGoal
     }
 
     @Override
-    public void onSummonDied() {
+    public void summonGone() {
         this.summonCount--;
     }
 

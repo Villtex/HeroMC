@@ -176,6 +176,10 @@ for orig, target in [('items', 'entity/items'), ('arrows', 'entity/arrows'), ('a
                      ('turtle_1', 'entity/equipment/humanoid/turtle'), ('turtle_2', 'entity/equipment/humanoid_leggings/turtle'),
                      ('cloud_1', 'entity/equipment/humanoid/cloud')]:
     textures[f'bdimg/{orig}.png'] = f'assets/{NS}/textures/{target}.png'
+# the textures of the bosses that are no EntityHuman (Strang b2, betterdungeons.mob; the wyvern's dragonbd.png was missing)
+for orig, target in [('icebull', 'ice_bull'), ('mandril', 'monking'), ('golemBoss', 'golem_boss'), ('spiderBoss', 'spider_boss'),
+                     ('turtle', 'turtle_boss')]:
+    textures[f'bdimg/{orig}.png'] = f'assets/{NS}/textures/entity/{target}.png'
 write(f'assets/{NS}/equipment/turtle.json', {'layers': {'humanoid': [{'texture': f'{NS}:turtle'}],
                                                         'humanoid_leggings': [{'texture': f'{NS}:turtle'}]}})
 write(f'assets/{NS}/equipment/cloud.json', {'layers': {'humanoid': [{'texture': f'{NS}:cloud'}]}})
@@ -294,6 +298,7 @@ MESSAGES = {
     f'item.{NS}.egg.lost': 'Assigned entity not found, left click to assign a new entity',
     f'item.{NS}.egg.missing': '%s: this mob is not in the game yet', f'item.{NS}.path_marker.full': "Can't add more points",
     f'item.{NS}.path_marker.too_far': 'Too far from previous point', f'item.{NS}.path_marker.new_path': 'New path for §2%s',
+    f'entity.{NS}.wyvern': 'Wyvern', f'entity.{NS}.summoned_bait': 'Bait',
     f'container.{NS}.bag': 'Bag', f'container.{NS}.quiver': 'Quiver', f'block.{NS}.spawner': 'BetterDungeonSpwaner'}
 
 

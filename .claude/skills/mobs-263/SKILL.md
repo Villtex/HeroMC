@@ -102,6 +102,26 @@ Abschnitt „ENTITIES“ in `mods/natura/tools/gen.py`.
 - **Untote:** Tag `data/minecraft/tags/entity_type/undead.json` (Smite und Tränke hängen daran).
 - **Ogg-Namen mit Großbuchstaben** (`MummyShortRoar.ogg`) im Ziel klein schreiben, sonst ungültiger Ressourcenpfad.
 
+## Bosse (aus Better Dungeons, `mods/betterdungeons/.../mob`)
+
+- **`MAX_HEALTH` ist auf 1024 begrenzt** (RangedAttribute): mehr Leben (Monking 1500) als 1024 mit Schaden × 1024/alt
+  und Regeneration × 1024/alt (`MonkingBoss.healthScale`), die Drittel-Schwellen bleiben so an derselben Stelle.
+- **isAIEnabled false während eines Angriffs:** `goalSelector.setControlFlag(MOVE/LOOK/JUMP, false)` in `aiStep`, **nicht**
+  `TARGET` abschalten: `TargetGoal.stop()` setzt das Ziel auf null, und Angriffe, die das Ziel brauchen, hängen dann
+  für immer (`BDBoss`). `Mob.serverAiStep` ist final.
+- **Mehrteiler mit eigenen Teil-Lebenspunkten** (Schildkröte): `PartEntity`, Zustand (tot, zurückgezogen) als
+  `SynchedEntityData` am Hauptmob, damit der Client die Teile gleich platziert; tote Teile `isPickable() false`,
+  `getParts()` immer alle liefern (sonst bleiben Einträge in der Teile-Map des Servers liegen). Renderer zeichnet die
+  Teile selbst; **`submitModel` posiert später**: je Teil ein eigenes RenderState-Objekt, kein Feld am Modell (`TurtleRenderer`).
+- **Modell-Transformationen in `render()`** (glScalef/glTranslatef vor den Teilen): am Wurzelteil in `setupAnim`,
+  Wurzel verschiebt erst, dann skaliert: glTranslatef(t) + glScalef(s) → `root.y = t*16`, glScalef(s) + glTranslatef(t)
+  → `root.y = t*16*s` (`MonkingModel`, `GolemBossModel`); `glColor3f` → `getModelTint`.
+- **1.5.2-Ketten** (Schwanz, Hals: ein ModelRenderer mehrfach gezeichnet): N Teile im Mesh, Positionen in `setupAnim`.
+- **Weltgenerierung ohne finalizeSpawn** (`OldChunkWriter`, Reason STRUCTURE): Konstruktor-Varianten des Originals
+  über einen „noch nicht gesetzt“-Zustand unterscheiden, der beim ersten Tick/Speichern greift (`SlimeBoss`).
+- Spinnen-Mutex-Konflikte (zwei Goals mit gleichen Flags, höhere Priorität verdrängt in 26.3 immer): Nebenaufgabe
+  flaglos machen. Boss-Leisten nur, wenn das Original sie hatte (1.5.2: nur Drache und Wither).
+
 ## Prüfen ohne Spieler
 
 - `/summon` jedes Mobs + `data get entity … Health` + `loot spawn x y z kill @e[type=…,limit=1]` (zieht die

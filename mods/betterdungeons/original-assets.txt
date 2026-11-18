@@ -13,9 +13,12 @@ bdimg/goblin.png -> assets/betterdungeons/textures/entity/goblin.png
 bdimg/goblinBlue.png -> assets/betterdungeons/textures/entity/goblin_blue.png
 bdimg/goblinGreen.png -> assets/betterdungeons/textures/entity/goblin_green.png
 bdimg/goblinShaman.png -> assets/betterdungeons/textures/entity/goblin_shaman.png
+bdimg/golemBoss.png -> assets/betterdungeons/textures/entity/golem_boss.png
 bdimg/golemSmall.png -> assets/betterdungeons/textures/entity/golem_small.png
+bdimg/icebull.png -> assets/betterdungeons/textures/entity/ice_bull.png
 bdimg/items.png -> assets/betterdungeons/textures/entity/items.png
 bdimg/liche.png -> assets/betterdungeons/textures/entity/liche.png
+bdimg/mandril.png -> assets/betterdungeons/textures/entity/monking.png
 bdimg/mandrilSmall.png -> assets/betterdungeons/textures/entity/mandril_small.png
 bdimg/minotaur.png -> assets/betterdungeons/textures/entity/minotaur.png
 bdimg/necromancer.png -> assets/betterdungeons/textures/entity/necromancer.png
@@ -27,6 +30,8 @@ bdimg/pirateBoss.png -> assets/betterdungeons/textures/entity/pirate_boss.png
 bdimg/shadow.png -> assets/betterdungeons/textures/entity/shadow.png
 bdimg/snake.png -> assets/betterdungeons/textures/entity/snake.png
 bdimg/specterBoss.png -> assets/betterdungeons/textures/entity/specter_boss.png
+bdimg/spiderBoss.png -> assets/betterdungeons/textures/entity/spider_boss.png
+bdimg/turtle.png -> assets/betterdungeons/textures/entity/turtle_boss.png
 bdimg/turtle_1.png -> assets/betterdungeons/textures/entity/equipment/humanoid/turtle.png
 bdimg/turtle_2.png -> assets/betterdungeons/textures/entity/equipment/humanoid_leggings/turtle.png
 textures/blocks/bd/e2.png -> assets/betterdungeons/textures/block/capsule_station_bottom.png

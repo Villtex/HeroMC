@@ -1,0 +1,260 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond",
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 0,
+                "max": 2
+              }
+            },
+            {
+              "type": "minecraft:enchanted_count_increase",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 0.0,
+                "max": 1.0
+              },
+              "enchantment": "minecraft:looting"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:spider_eye"
+        }
+      ],
+      "condition": {
+        "type": "minecraft:all_of",
+        "terms": [
+          {
+            "type": "minecraft:killed_by_player"
+          },
+          {
+            "type": "minecraft:random_chance_with_enchanted_bonus",
+            "enchantment": "minecraft:looting",
+            "unenchanted_chance": 0.3333333333333333,
+            "enchanted_chance": {
+              "type": "minecraft:fraction",
+              "numerator": {
+                "type": "minecraft:linear",
+                "base": 1.3333333333333333,
+                "per_level_above_first": 1.0
+              },
+              "denominator": {
+                "type": "minecraft:linear",
+                "base": 2.0,
+                "per_level_above_first": 1.0
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "betterdungeons:spider_hook"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:spider_eye"
+        }
+      ],
+      "condition": {
+        "type": "minecraft:all_of",
+        "terms": [
+          {
+            "type": "minecraft:killed_by_player"
+          },
+          {
+            "type": "minecraft:random_chance_with_enchanted_bonus",
+            "enchantment": "minecraft:looting",
+            "unenchanted_chance": 0.3333333333333333,
+            "enchanted_chance": {
+              "type": "minecraft:fraction",
+              "numerator": {
+                "type": "minecraft:linear",
+                "base": 1.3333333333333333,
+                "per_level_above_first": 1.0
+              },
+              "denominator": {
+                "type": "minecraft:linear",
+                "base": 2.0,
+                "per_level_above_first": 1.0
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1,
+        "max": 5
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond",
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "modifier": [
+            {
+              "type": "minecraft:set_potion",
+              "id": "minecraft:regeneration"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "modifier": [
+            {
+              "type": "minecraft:set_potion",
+              "id": "minecraft:swiftness"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "modifier": [
+            {
+              "type": "minecraft:set_potion",
+              "id": "minecraft:fire_resistance"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "modifier": [
+            {
+              "type": "minecraft:set_potion",
+              "id": "minecraft:poison"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "modifier": [
+            {
+              "type": "minecraft:set_potion",
+              "id": "minecraft:healing"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "modifier": [
+            {
+              "type": "minecraft:set_potion",
+              "id": "minecraft:night_vision"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "modifier": [
+            {
+              "type": "minecraft:set_potion",
+              "id": "minecraft:mundane"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "modifier": [
+            {
+              "type": "minecraft:set_potion",
+              "id": "minecraft:weakness"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "modifier": [
+            {
+              "type": "minecraft:set_potion",
+              "id": "minecraft:strength"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "modifier": [
+            {
+              "type": "minecraft:set_potion",
+              "id": "minecraft:slowness"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "modifier": [
+            {
+              "type": "minecraft:set_potion",
+              "id": "minecraft:mundane"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "modifier": [
+            {
+              "type": "minecraft:set_potion",
+              "id": "minecraft:harming"
+            }
+          ]
+        }
+      ],
+      "condition": {
+        "type": "minecraft:random_chance",
+        "chance": 0.1
+      }
+    }
+  ]
+}

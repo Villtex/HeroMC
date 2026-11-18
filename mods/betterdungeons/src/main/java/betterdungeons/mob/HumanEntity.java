@@ -3,7 +3,7 @@ package betterdungeons.mob;
 import betterdungeons.BDItems;
 import betterdungeons.api.BDCommandableMob;
 import betterdungeons.api.BDDungeonMob;
-import betterdungeons.api.BDTeamMob;
+import betterdungeons.api.BDEntityClass;
 import betterdungeons.item.BigSwordItem;
 import betterdungeons.item.DaggerItem;
 import betterdungeons.item.HookShotItem;
@@ -78,7 +78,7 @@ import java.util.Objects;
  * spawner reaches them through {@link BDDungeonMob#initDungeonMob}. The second hand item (leftHandItem) is the off hand.
  * Speeds of the goals are the absolute 1.5.2 values, divided by the movement speed attribute ({@link #speed}).
  */
-public class HumanEntity extends PathfinderMob implements BDDungeonMob, BDCommandableMob, BDTeamMob {
+public class HumanEntity extends PathfinderMob implements BDDungeonMob, BDCommandableMob, BDEntityClass {
     static final EntityDataAccessor<Byte> DATA_CLASS = SynchedEntityData.defineId(HumanEntity.class, EntityDataSerializers.BYTE);
     static final EntityDataAccessor<Byte> DATA_ANIM = SynchedEntityData.defineId(HumanEntity.class, EntityDataSerializers.BYTE);
     static final EntityDataAccessor<Byte> DATA_LVL = SynchedEntityData.defineId(HumanEntity.class, EntityDataSerializers.BYTE);
@@ -219,7 +219,7 @@ public class HumanEntity extends PathfinderMob implements BDDungeonMob, BDComman
         }
         this.initCreature();
         this.setEntityClass(type);
-        if (this.getEntityClass() == 0) {
+        if (this.getClassId() == 0) {
             this.setRandomType();
         }
     }
@@ -402,7 +402,7 @@ public class HumanEntity extends PathfinderMob implements BDDungeonMob, BDComman
             output.putString("playerOwner", this.ownerPlayerName);
         }
         output.putByte("lvl", (byte) this.getlvl());
-        output.putInt("class", this.getEntityClass());
+        output.putInt("class", this.getClassId());
         output.putInt("AIMode", this.AIMode);
         if (this.standingPosition != null) {
             output.putBoolean("standing", true);
@@ -447,7 +447,7 @@ public class HumanEntity extends PathfinderMob implements BDDungeonMob, BDComman
             this.resetClass();
             this.setEntityClass(input.getIntOr("class", 0));
             // a saved entity keeps what it carried (setEntityClass of 1.5.2 re-equipped the class items, the same here)
-            if (this.getEntityClass() == 0) {
+            if (this.getClassId() == 0) {
                 this.setItemSlot(EquipmentSlot.MAINHAND, main);
                 this.setItemSlot(EquipmentSlot.OFFHAND, off);
             }
@@ -738,7 +738,7 @@ public class HumanEntity extends PathfinderMob implements BDDungeonMob, BDComman
                 return false;
             }
             if (this.owner instanceof Mob ownerMob && ownerMob.getTarget() == null) {
-                boolean setTarget = !(entity instanceof BDTeamMob team && Objects.equals(team.getBDType(), this.getHumanType()));
+                boolean setTarget = !(entity instanceof BDEntityClass team && Objects.equals(team.getEntityClass(), this.getHumanType()));
                 if (setTarget) {
                     ownerMob.setTarget(entity);
                     ownerMob.setLastHurtByMob(entity);
@@ -835,7 +835,7 @@ public class HumanEntity extends PathfinderMob implements BDDungeonMob, BDComman
         List<String> keys = new ArrayList<>();
         String[] names = {null, "bd.defender", "bd.grenadier", "bd.healer", "bd.archer", "bd.gunner", "bd.bannerman", "bd.berseker",
                 "bd.assasin", "bd.spearman", "bd.hooker"};
-        int c = this.getEntityClass();
+        int c = this.getClassId();
         if (c > 0 && c < names.length) {
             keys.add(names[c]);
         }
@@ -1022,8 +1022,8 @@ public class HumanEntity extends PathfinderMob implements BDDungeonMob, BDComman
         if (this.getOwnerEntity() == null) {
             double d = 6.0;
             for (Entity entity : this.level().getEntities(this, this.getBoundingBox().inflate(d, 2.0, d))) {
-                if (entity instanceof BDTeamMob team && entity instanceof LivingEntity living && this.getHumanType() != null
-                        && Objects.equals(team.getBDType(), this.getHumanType())) {
+                if (entity instanceof BDEntityClass team && entity instanceof LivingEntity living && this.getHumanType() != null
+                        && Objects.equals(team.getEntityClass(), this.getHumanType())) {
                     if (!(entity instanceof HumanEntity human)) {
                         this.setOwner(living);
                         return;
@@ -1046,54 +1046,54 @@ public class HumanEntity extends PathfinderMob implements BDDungeonMob, BDComman
     }
 
     @Override
-    public @Nullable String getBDType() {
+    public @Nullable String getEntityClass() {
         return this.humanType;
     }
 
     // ---------------------------------------------------------------- classes (data watcher 16)
 
-    public int getEntityClass() {
+    public int getClassId() {
         return this.entityData.get(DATA_CLASS);
     }
 
     public boolean isDefender() {
-        return this.getEntityClass() == DEFENDER;
+        return this.getClassId() == DEFENDER;
     }
 
     public boolean isGrenadier() {
-        return this.getEntityClass() == GRENADIER;
+        return this.getClassId() == GRENADIER;
     }
 
     public boolean isHealer() {
-        return this.getEntityClass() == HEALER;
+        return this.getClassId() == HEALER;
     }
 
     public boolean isArcher() {
-        return this.getEntityClass() == ARCHER;
+        return this.getClassId() == ARCHER;
     }
 
     public boolean isGunner() {
-        return this.getEntityClass() == GUNNER;
+        return this.getClassId() == GUNNER;
     }
 
     public boolean isBannerman() {
-        return this.getEntityClass() == BANNERMAN;
+        return this.getClassId() == BANNERMAN;
     }
 
     public boolean isBerseker() {
-        return this.getEntityClass() == BERSERKER;
+        return this.getClassId() == BERSERKER;
     }
 
     public boolean isAssasin() {
-        return this.getEntityClass() == ASSASSIN;
+        return this.getClassId() == ASSASSIN;
     }
 
     public boolean isSpearman() {
-        return this.getEntityClass() == SPEARMAN;
+        return this.getClassId() == SPEARMAN;
     }
 
     public boolean isHooker() {
-        return this.getEntityClass() == HOOKER;
+        return this.getClassId() == HOOKER;
     }
 
     protected void setClassByte(int c) {
@@ -1271,10 +1271,6 @@ public class HumanEntity extends PathfinderMob implements BDDungeonMob, BDComman
     @Override
     public boolean isMercenary() {
         return false;
-    }
-
-    /** One more summoned helper died (EntityMage.summonCount). */
-    public void onSummonDied() {
     }
 
     /** The particles of 1.5.2 that every client drew for itself (smoke of pirates and so on). */

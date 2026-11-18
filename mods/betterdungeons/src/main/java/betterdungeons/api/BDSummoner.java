@@ -1,9 +1,9 @@
 package betterdungeons.api;
 
 /**
- * A mob that keeps count of what it summoned (EntityMage.summonCount): EntitySummonedUndead called
- * {@code summoner.summonCount--} when it died. The summoned mob calls {@link #onSummonDied()} on its summoner.
+ * A summoner that counts its summoned undead (EntityMage.summonCount of the necromancer and the liche): an undead
+ * calls {@link #summonGone()} when it dies or vanishes (EntitySummonedUndead.setDead).
  */
 public interface BDSummoner {
-    void onSummonDied();
+    void summonGone();
 }

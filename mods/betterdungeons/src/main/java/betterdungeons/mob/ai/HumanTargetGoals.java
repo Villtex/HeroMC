@@ -1,6 +1,6 @@
 package betterdungeons.mob.ai;
 
-import betterdungeons.api.BDTeamMob;
+import betterdungeons.api.BDEntityClass;
 import betterdungeons.mob.BDMobUtil;
 import betterdungeons.mob.HumanEntity;
 import net.minecraft.util.Mth;
@@ -186,14 +186,14 @@ public final class HumanTargetGoals {
                 return false;
             }
             boolean flag = false;
-            if (entity instanceof BDTeamMob mob) {
-                String enemyType = mob.getBDType();
+            if (entity instanceof BDEntityClass mob) {
+                String enemyType = mob.getEntityClass();
                 if (enemyType == null || enemyType.isEmpty()) {
                     return false;
                 }
                 if (enemyType.contains(".")) {
-                    if (this.team && this.taskOwner instanceof BDTeamMob own && own.getBDType() != null && own.getBDType().contains(".")) {
-                        String ownerTeam = own.getBDType().substring(own.getBDType().indexOf('.'));
+                    if (this.team && this.taskOwner instanceof BDEntityClass own && own.getEntityClass() != null && own.getEntityClass().contains(".")) {
+                        String ownerTeam = own.getEntityClass().substring(own.getEntityClass().indexOf('.'));
                         String targetTeam = enemyType.substring(enemyType.indexOf('.'));
                         if (!ownerTeam.equals(targetTeam)) {
                             flag = true;
@@ -271,8 +271,8 @@ public final class HumanTargetGoals {
         @Override
         public boolean canUse() {
             LivingEntity attacker = this.taskOwner.getLastHurtByMob();
-            if (attacker instanceof BDTeamMob other && this.taskOwner instanceof BDTeamMob own && other.getBDType() != null
-                    && other.getBDType().equals(own.getBDType())) {
+            if (attacker instanceof BDEntityClass other && this.taskOwner instanceof BDEntityClass own && other.getEntityClass() != null
+                    && other.getEntityClass().equals(own.getEntityClass())) {
                 return false;
             }
             return this.isSuitableTarget(attacker, true);

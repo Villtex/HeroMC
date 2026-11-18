@@ -53,6 +53,7 @@ public final class BetterDungeons {
         BLOCKS.register(modBus);
         BLOCK_ENTITIES.register(modBus);
         BDEntities.register(modBus);
+        betterdungeons.mob.BDCreatures.register(modBus);
         BDSounds.register(modBus);
         betterdungeons.mob.BDHumans.register(modBus);
         NeoForge.EVENT_BUS.register(BDEvents.class);
@@ -74,6 +75,7 @@ public final class BetterDungeons {
         if (FMLEnvironment.getDist() == Dist.CLIENT) {
             betterdungeons.client.BDClient.register(modBus);
             betterdungeons.client.BDHumanRenderers.register(modBus);
+            betterdungeons.client.mob.BDCreatureRenderers.register(modBus);
         }
     }
 }
