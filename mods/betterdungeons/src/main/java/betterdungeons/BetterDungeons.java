@@ -53,6 +53,7 @@ public final class BetterDungeons {
         BLOCKS.register(modBus);
         BLOCK_ENTITIES.register(modBus);
         BDEntities.register(modBus);
+        betterdungeons.mob.BDCreatures.register(modBus);
         BDSounds.register(modBus);
         NeoForge.EVENT_BUS.register(BDEvents.class);
         OldBlockStates.register(BuilderHelper.SPAWNER_BLOCK, () -> SPAWNER.get().defaultBlockState());
