@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "L": "backpack:leather_tanned",
+    "D": "#c:dyes/red"
+  },
+  "pattern": [
+    "LLL",
+    "LDL",
+    "LLL"
+  ],
+  "result": {
+    "count": 1,
+    "id": "backpack:backpack_red_big"
+  }
+}

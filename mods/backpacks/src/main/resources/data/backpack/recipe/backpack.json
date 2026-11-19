@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "backpack:config",
+      "option": "no_airship"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "L": "minecraft:leather"
+  },
+  "pattern": [
+    "LLL",
+    "L L",
+    "LLL"
+  ],
+  "result": {
+    "count": 1,
+    "id": "backpack:backpack"
+  }
+}
