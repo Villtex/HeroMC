@@ -44,6 +44,7 @@ public class Expect {
             ruins.gen.RuinsGen.register();
             battletowers.gen.BTWorldGen.register();
             dimdoors.gen.RiftGen.register();
+            qcraft.gen.QCraftWorldGen.register();
         }
         // "nether" (after "vanilla", if both are given): the Nether of the seed instead of the overworld
         boolean nether = a.length > 1 && a[1].equals("nether");

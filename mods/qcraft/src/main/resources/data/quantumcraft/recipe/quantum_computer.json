@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "XXX",
+    "XYX",
+    "XZX"
+  ],
+  "key": {
+    "X": "minecraft:iron_ingot",
+    "Y": "quantumcraft:quantum_dust",
+    "Z": "minecraft:glass_pane"
+  },
+  "result": {
+    "id": "quantumcraft:quantum_computer"
+  }
+}

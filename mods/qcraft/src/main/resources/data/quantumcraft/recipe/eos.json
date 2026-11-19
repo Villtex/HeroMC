@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "XX",
+    "XX"
+  ],
+  "key": {
+    "X": "quantumcraft:quantum_dust"
+  },
+  "result": {
+    "id": "quantumcraft:eos"
+  }
+}

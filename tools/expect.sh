@@ -36,6 +36,7 @@ JAVA=${JAVA_HOME:+$JAVA_HOME/bin/}java
   $(find "$ROOT/mods/ruins/src/main/java/ruins/gen" -name '*.java') \
   $(find "$ROOT/mods/battletowers/src/main/java/battletowers/gen" -name '*.java') \
   $(find "$ROOT/mods/dimensional-doors/src/main/java/dimdoors/gen" -name '*.java') \
+  $(find "$ROOT/mods/qcraft/src/main/java/qcraft/gen" -name '*.java') \
   "$ROOT/tools/java/Expect.java"
 # Better Dungeons reads its templates from the original archives, which the build imports
 BD="$ROOT/mods/betterdungeons/build/generated/original-assets"

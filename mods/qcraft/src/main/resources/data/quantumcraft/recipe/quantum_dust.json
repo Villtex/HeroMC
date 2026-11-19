@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "quantumcraft:config",
+      "option": "enableWorldGenReplacementRecipes"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "XY"
+  ],
+  "key": {
+    "X": "minecraft:redstone",
+    "Y": "minecraft:lime_dye"
+  },
+  "result": {
+    "id": "quantumcraft:quantum_dust",
+    "count": 2
+  }
+}

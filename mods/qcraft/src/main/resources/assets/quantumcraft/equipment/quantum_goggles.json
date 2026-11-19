@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "quantumcraft:quantum_goggles"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "quantumcraft:quantum_goggles"
+      }
+    ]
+  }
+}

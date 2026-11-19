@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "XYX"
+  ],
+  "key": {
+    "X": "minecraft:glass_pane",
+    "Y": "quantumcraft:quantum_dust"
+  },
+  "result": {
+    "id": "quantumcraft:quantum_goggles"
+  }
+}

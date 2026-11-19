@@ -39,7 +39,9 @@ SIMPLE = {0: 'air', 1: 'stone', 2: 'grass_block', 3: 'dirt', 4: 'cobblestone', 7
 MODS = {2002: 'betterdungeons:spawner', 254: 'extrabiomesxl:red_rock', 255: 'extrabiomesxl:cracked_sand', 1552: 'wildcaves3:bone_pile', 2011: 'hexxitgear:hexbiscus',
         1004: 'artifice:basalt', 1005: 'artifice:marble',
         # Dimensional Doors: rifts of the rift clusters and gateways
-        1113: 'dimdoors:rift'}
+        1113: 'dimdoors:rift',
+        # qCraft: quantum ore (CoFH World template QOre)
+        2373: 'quantumcraft:quantum_ore'}
 # Wild Caves 3: one block per metadata value
 PIECES = ['stalactite_1', 'stalactite_2', 'stalactite_3', 'stalactite_4', 'stalactite_connection_1', 'stalactite_connection_2',
           'stalactite_connection_3', 'stalactite_connection_4', 'stalactite_end', 'stalagmite_end', 'stalagmite_1', 'stalagmite_2',

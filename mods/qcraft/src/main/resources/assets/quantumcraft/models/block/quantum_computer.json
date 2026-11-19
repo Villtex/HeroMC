@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "front": "quantumcraft:block/quantum_computer",
+    "side": "quantumcraft:block/quantum_computer_side",
+    "top": "quantumcraft:block/quantum_computer_top",
+    "bottom": "quantumcraft:block/quantum_computer_top"
+  }
+}
