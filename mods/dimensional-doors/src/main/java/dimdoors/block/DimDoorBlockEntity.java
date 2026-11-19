@@ -30,7 +30,7 @@ public class DimDoorBlockEntity extends BlockEntity {
 
     /** Asks the save data again whether a link starts here and tells the clients. */
     public void update() {
-        if (this.level instanceof ServerLevel server) {
+        if (this.level instanceof ServerLevel server && !this.isRemoved() && server.isLoaded(this.worldPosition)) {
             boolean now = DDWorld.link(server, this.worldPosition) != null;
             if (now != this.linked) {
                 this.linked = now;
@@ -44,7 +44,9 @@ public class DimDoorBlockEntity extends BlockEntity {
     public void setLevel(net.minecraft.world.level.Level level) {
         super.setLevel(level);
         if (level instanceof ServerLevel server && DDWorld.server() != null) {
-            server.getServer().execute(this::update);
+            // queued, never run at once: setLevel is called while the chunk is being built, and setChanged on that
+            // chunk from inside its construction waits for itself (server watchdog)
+            server.getServer().schedule(new net.minecraft.server.TickTask(server.getServer().getTickCount(), this::update));
         }
     }
 

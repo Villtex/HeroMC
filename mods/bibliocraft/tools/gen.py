@@ -88,10 +88,15 @@ for kind, blocks in KINDS.items():
             "type": "minecraft:special", "base": f"{NS}:item/{kind}",
             "model": {"type": f"{NS}:block", "block": f"{NS}:{block}"}}})
         LANG[f"block.{NS}.{block}"] = name
+        conditions = [{"condition": "minecraft:survives_explosion"}]
+        if block == "armor_stand":
+            # two blocks high (upper half = metadata 4..7 of the original): only the lower half drops the stand
+            conditions.append({"condition": "minecraft:block_state_property", "block": f"{NS}:{block}",
+                               "properties": {"half": "lower"}})
         write(f"data/{NS}/loot_table/blocks/{block}.json", {
             "type": "minecraft:block",
             "pools": [{"rolls": 1, "entries": [{"type": "minecraft:item", "name": f"{NS}:{block}"}],
-                       "conditions": [{"condition": "minecraft:survives_explosion"}]}],
+                       "conditions": conditions}],
             "random_sequence": f"{NS}:blocks/{block}"})
 
 for item, name in ITEMS:
@@ -160,7 +165,11 @@ write("data/minecraft/tags/block/mineable/axe.json",
       {"replace": False, "values": [f"{NS}:{b}" for b in ALL_BLOCKS if not b.endswith(("_lamp", "_lantern"))
                                     and b not in ("armor_stand", "printing_press")]})
 write("data/minecraft/tags/block/mineable/pickaxe.json",
-      {"replace": False, "values": [f"{NS}:armor_stand", f"{NS}:printing_press"]})
+      {"replace": False, "values": [f"{NS}:armor_stand", f"{NS}:printing_press"]
+                                    # BlockLamp / BlockLantern: Material.iron, any pickaxe (requiresCorrectToolForDrops)
+                                    + [f"{NS}:{c}_{k}" for k in ("lamp", "lantern") for c in COLORS]})
+# EntityCandleFX of the lantern: the vanilla flame texture
+write(f"assets/{NS}/particles/candle_flame.json", {"textures": ["minecraft:flame"]})
 # Reading glasses take the Reading enchantment like helmets (EnumEnchantmentType.armor_head)
 write("data/minecraft/tags/item/enchantable/head_armor.json",
       {"replace": False, "values": [f"{NS}:reading_glasses", f"{NS}:tinted_glasses", f"{NS}:monocle"]})
