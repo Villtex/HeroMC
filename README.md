@@ -177,7 +177,7 @@ Prüfen: `tools/expect.sh 1234 nether structures 60 > expect.txt`, dann `verify_
 | Battle Towers | `battletowers` 1.5.2 | AtomicStryker | 1.842 | ✅ Teil 14 (Client-Prüfung offen) |
 | offLawn | `offlawn` 1.5.1.r02 | Rhodox, Slinky | 1.850 | ✅ portiert, am Server verifiziert (Spieler-Aktionen und Client-Prüfung offen) |
 | Wild Caves 3 | `wildcaves3` 0.4.2 | Alexmania | 2.094 | ✅ portiert, am Server verifiziert (Client-Prüfung offen) |
-| Backpacks | `backpacks` 1.12.13 | Eydamos | 2.331 | offen |
+| Backpacks | `backpacks` 1.12.13 | Eydamos | 2.331 | ✅ Teil 17 (Rucksäcke in 16 Farben und groß, Ender-/Werkbank-Rucksack, Taste B, Färben/Vergrößern mit JEI; Client-Prüfung offen) |
 | Asgard Shield | `asgardshield` 2.0.4 | Jade Knightblazer | 2.842 | ✅ Teil 9 (Schilde, Riesenschwerter, Guard-Mechanik, Farb-API; Client-Prüfung offen) |
 | Ruins | `ruins` 1.5.2 | d00dv4d3r, kolt666, AtomicStryker | 2.951 | ✅ Teil 14 (Client-Prüfung offen) |
 | bspkrsCore | `bspkrscore` 2.09 | DaftPVF, bspkrs | 3.066 | ✅ portiert, soweit TreeCapitator es braucht (Block-Angaben) |
@@ -185,14 +185,14 @@ Prüfen: `tools/expect.sh 1234 nether structures 60 > expect.txt`, dann `verify_
 | More Bows | `morebows` 1.5.2.2 | iDiamondhunter | 4.156 | ✅ portiert, Server startet (Schießen und Client-Prüfung offen) |
 | TreeCapitator | `treecapitator` 1.5.2.r14 | DaftPVF, bspkrs, Lunatrius | 4.498 | ✅ portiert, am Server verifiziert (Vanilla- und ExtrabiomesXL-Bäume) |
 | Custom LAN Ports | `customport` 1.5.2 | CptHunter | 4.521 | ✅ portiert (nur integrierter Server; Client-Prüfung offen) |
-| qCraft | `qcraft` 1.0.1 | Daniel Ratcliffe, TeacherGaming | 5.221 | offen |
+| qCraft | `qcraft` 1.0.1 | Daniel Ratcliffe, TeacherGaming | 5.221 | ✅ Teil 17 (qBlocks, Quantencomputer, Erz/Staub, Essenzen, Brille; Weltgenerierung wie im Pack aus; Client-Prüfung offen) |
 | MapWriter | `mapwriter` 2.0.5 | — | 5.356 | offen |
 | Secret Rooms | `secretrooms` 4.6.0.283 | AbrarSyed | 5.692 | offen |
 | Inventory Tweaks | `inventorytweaks` 1.54b | Jimeo Wan, Kobata | 6.626 | ✅ portiert (reiner Client-Mod; Client-Prüfung offen) |
 | Damage Indicators | `damageindicators` 2.7.0.1 | rich1051414 | 6.783 | offen |
 | Falling Meteors | `meteorsmod` 2.10.2a | AlexDGr8r | 6.957 | offen |
 | Infernal Mobs | `infernalmobs` 1.5.2 | AtomicStryker | 7.089 | offen |
-| BetterStorage | `betterstorage` 0.6.2.23.h2 | copygirl, copyboy | 9.015 | offen |
+| BetterStorage | `betterstorage` 0.6.2.23.h2 | copygirl, copyboy | 9.015 | ✅ Teil 17 (Kisten-Stapel, verstärkte Truhen mit Schloss/Schlüssel, Spind, Rüstungsständer, Rucksäcke, Frienderman; Client-Prüfung offen) |
 | ChocoCraft | `chococraft` 2.8.8 | Torojima | 9.331 | offen |
 | Dimensional Doors | `dimensional-doors` 1.4.1.194 | StevenRS11, SenseiKiwi | 10.746 | ✅ Teil 15 (Taschen, Dungeons, Limbo, Rifts; Client-Prüfung offen) |
 | ExtrabiomesXL | `ebxl` 3.13.4 | ScottKillen u. a. | 10.762 | ✅ portiert, am Server verifiziert (Client-Prüfung offen) |

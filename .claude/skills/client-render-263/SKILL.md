@@ -87,6 +87,12 @@ Logik nur `!level.isClientSide()`. Entitäten: `PlayerInteractEvent.EntityIntera
 
 ## Stolperfallen
 
+- Rüstungsmodell mit Animation je Träger (Rucksackdeckel, Vorlage `mods/betterstorage/client/BackpackArmorModel`):
+  `registerEntityModifier(new TypeToken<LivingEntityRenderer<LivingEntity, LivingEntityRenderState, ?>>(){}, …)` setzt
+  Render-Data, die `HumanoidModel.setupAnim` liest. `render(0.05F)` des Originals: `PartPose.ZERO.withScale(...)` am Kind-Teil.
+- Deckel-/Türwinkel nie an einer geteilten `ModelPart` setzen und dann `submitModelPart` aufrufen (Darstellung kommt
+  verzögert, alle Blöcke zeigen den letzten Winkel): eigenes `Model<Float>` mit `setupAnim`, `collector.submitModel(model, angle, …)`.
+
 - `MobEffectInstance` klemmt Stufen auf 0..255: negative Stufen (Sprungkraft −2) → Attribut-Modifikator (`Attributes.JUMP_STRENGTH`).
 - `PushReaction.DESTROY` heißt `POPPED`. `BaseEntityBlock` braucht keinen `codec()` mehr.
 - `JAVA_TOOL_OPTIONS` nicht leeren: Er trägt den Proxy, sonst schlägt `createMinecraftArtifacts` fehl.

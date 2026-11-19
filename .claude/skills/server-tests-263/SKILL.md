@@ -50,3 +50,8 @@ wegschieben (dann ist es kein Teilprojekt mehr), `run/server/mods/<x>*` löschen
   Er schreibt sonst in die frisch gelöschte Welt, der neue Start bricht mit „Overworld settings missing“ ab.
   Beenden mit `python3 tools/rcon.py --port <rcon> stop`.
 - `loot spawn … mine` prüft `requiresCorrectToolForDrops` nicht: kein Test für die Werkzeugstufe.
+- Ein FakePlayer öffnet keine Menüs (`openMenu` liefert leer): Schloss-/Menü-Logik direkt aufrufen.
+- Der Crafter wirft Rest-Items (Remainder) als eigene Item-Entities aus, nicht ins Raster:
+  `execute as @e[type=item] run data get entity @s Item`.
+- Rezepte mit `c:`-Tags, die im Pack evtl. niemand füllt, brauchen `"neoforge:conditions":[{"type":"neoforge:not","value":{"type":"neoforge:tag_empty","tag":"..."}}]`,
+  sonst bricht das Laden der Registries den Start ab.

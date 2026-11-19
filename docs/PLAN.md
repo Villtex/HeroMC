@@ -54,7 +54,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 14 | Battle Towers, Ruins (mit allen Ruinen-Vorlagen) | ~5.000 + Vorlagen | 1 | Opus 5.5, mittel | ✅ erledigt |
 | 15 | Dimensional Doors | ~11.000 | 2 | Opus 5.5, mittel | ✅ erledigt |
 | 16 | BiblioCraft | ~21.000 | 3 | Fable 5.2, hoch | ✅ erledigt |
-| 17 | BetterStorage, Backpacks, qCraft | ~17.000 | 3 | Opus 5.5, mittel | offen |
+| 17 | BetterStorage, Backpacks, qCraft | ~17.000 | 3 | Opus 5.5, mittel | ✅ erledigt |
 | 18 | ChocoCraft, Infernal Mobs | ~16.000 | 1, 3 | Opus 5.5, mittel | offen |
 | 19 | LegendGear, Falling Meteors | ~19.000 | 1, 3 | Opus 5.5, mittel | offen |
 | 20 | Xeno's Reliquary, Secret Rooms | ~18.000 | 3 | Opus 5.5, mittel | offen |
@@ -1051,7 +1051,36 @@ Bauen aus dem Original. Alte IDs (Blöcke 1071–1083 mit Metadaten, Items 5451�
 
 ### Teil 17 – Stand
 
-**Status: in Arbeit.** Backpacks und qCraft erledigt, BetterStorage offen.
+**Status: erledigt.** Drei Teilprojekte; `clean pack` grün, gemeinsamer Testserver mit allen Mods bis `Done` ohne
+Fehler (Project Zulu wie in Teil 13–16 vorübergehend heraus).
+
+**BetterStorage** – Teilprojekt `mods/betterstorage` (Mod-ID `betterstorage`, FML-ID „BetterStorage“), `BSConfig`
+(SYNCED, Werte aus der Pack-`BetterStorage.cfg`: backpackRows=3, reinforcedChestColumns=13,
+enableCrateInventoryInterface=false). Ressourcen samt sieben Verzauberungen schreibt `mods/betterstorage/tools/gen.py`,
+Texturen und `locker.obj` kommen beim Bauen aus dem Original. Alte IDs: Blöcke 1051–1056, Items 5426–5428,
+Verzauberungen ab 180, Entity `BetterStorage.Frienderman` in `OldGameIds`.
+
+- **Aufbau:** `BS` registriert Kiste, acht verstärkte Truhen, Spind, Rüstungsständer, Rucksack und Ender-Rucksack
+  (Block und Item), Schlüssel, Schloss, Schlüsselbund, Frienderman, Rezepttypen `betterstorage:key`/`betterstorage:lock`
+  (Basis `ComboRecipe`) und Rucksack-Attachments. Öffnen über die Menü-Typen, Rucksack-Status als synchronisiertes
+  Attachment, `network/` nur für das Teleport-Partikel. Client: Truhe mit dem 1.5.2-ModelChest und Schloss als Item,
+  Spind aus `locker.obj`, Rüstungsständer über die Vanilla-Equipment-Layer, Rucksack als Block und am Träger
+  (`BackpackArmorModel`, Deckelwinkel über einen Render-State-Modifier), Screens mit den Maßen des Originals,
+  Special-Item-Renderer `betterstorage:block`, Frienderman-Renderer. JEI: Beispielrezepte und Info-Seiten.
+- **Verhalten:** Kisten-Stapel mit gemeinsamem Inventar (pro Welt gespeichert); Schlüssel-/Schlossrezepte übernehmen
+  die Id, der Schlüssel bleibt im Raster, einzelner Schlüssel wird mit Eisen beschichtet oder mit der 1.5.2-Farbmischung
+  gefärbt. Rucksack im Brust-Slot, Schleichen + Rechtsklick setzt ihn ab, andere öffnen ihn von hinten, Inhalt bleibt bei
+  keepInventory. Zombies, Pigmen und Skelette spawnen mit den Wahrscheinlichkeiten aus CommonProxy mit Rucksack
+  (Zufallsinhalt), 1/80 der Endermen wird zum Frienderman. Keine eigene Dungeon-Beute (wie im Original).
+- **Prüfung:** per Crafter/RCON alle Rezepte (Schlüssel-Kopie mit gleicher Id, Schloss gibt den Schlüssel zurück),
+  zwei Kisten als Stapel (Kapazität 36, Inhalt in beiden sichtbar), falscher/richtiger Schlüssel, Rucksack anlegen,
+  absetzen, wieder anlegen mit Inhalt, Frienderman (60 Leben, Tausch Endertruhe → Ender-Rucksack direkt aufgerufen).
+
+**Offen / bewusst abweichend (BetterStorage):** Thaumcraft-Addon entfällt; Kupfer-, Zinn-, Silber- und Zink-Truhen nur,
+wenn ein Mod den `c:`-Tag füllt; Hervorhebung des Rüstungsständer-Slots und Tooltip des Ender-Rucksacks fehlen; Inventory
+Tweaks nicht angemeldet; Items im Inventar gedreht statt mit den Versätzen von 1.5.2; Menü-Öffnen nicht per FakePlayer
+prüfbar; Frienderman tauschte im Testlauf nicht von selbst (teleportierte weg, siehe `mods/betterstorage/TODO.md`).
+Client-Prüfung offen: alle Renderer und ihre Ausrichtung, Rucksack am Spieler, Screens, JEI.
 
 **Backpacks** – Teilprojekt `mods/backpacks` (Mod-ID `backpack`, FML-ID „Backpack“), Werte aus der Pack-`Backpack.cfg`
 in `BackpackConfig` (STARTUP: backpackSizeL=6, backpackSizeM=3, enderRecipe=0, maxBackpackAmount=0,
