@@ -43,3 +43,10 @@ Für Rechtsklick, Lade-Angriffe, Menüs, Rituale: einen Befehl (`RegisterCommand
 
 Startet der Server wegen eines unfertigen anderen Teils nicht: dessen `mods/<x>/gradle.properties` vorübergehend
 wegschieben (dann ist es kein Teilprojekt mehr), `run/server/mods/<x>*` löschen, testen, Datei zurücklegen.
+
+## Stolperfallen
+
+- Vor `runServer` mit `pgrep -af fml.modFolders` prüfen, ob noch ein Server (z. B. eines abgebrochenen Agents) läuft.
+  Er schreibt sonst in die frisch gelöschte Welt, der neue Start bricht mit „Overworld settings missing“ ab.
+  Beenden mit `python3 tools/rcon.py --port <rcon> stop`.
+- `loot spawn … mine` prüft `requiresCorrectToolForDrops` nicht: kein Test für die Werkzeugstufe.

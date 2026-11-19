@@ -1051,7 +1051,7 @@ Bauen aus dem Original. Alte IDs (Blöcke 1071–1083 mit Metadaten, Items 5451�
 
 ### Teil 17 – Stand
 
-**Status: in Arbeit.** Backpacks erledigt, BetterStorage und qCraft offen.
+**Status: in Arbeit.** Backpacks und qCraft erledigt, BetterStorage offen.
 
 **Backpacks** – Teilprojekt `mods/backpacks` (Mod-ID `backpack`, FML-ID „Backpack“), Werte aus der Pack-`Backpack.cfg`
 in `BackpackConfig` (STARTUP: backpackSizeL=6, backpackSizeM=3, enderRecipe=0, maxBackpackAmount=0,
@@ -1075,6 +1075,27 @@ Texturen kommen beim Bauen aus dem Original. Alte IDs 5401 (Damage 0–16, 32–
 nicht); Farbstoffe nach `c:dyes`, andere Items im Färberezept lassen es fehlschlagen; Name nur beim Umbenennen;
 Modell folgt dem Körper beim Schleichen; Öffnen auch aus der Nebenhand; NEI-Overlay entfällt. Client-Prüfung offen:
 Modell am Spieler, Icons, GUIs, Umbenennen, Taste B, JEI und Transfer.
+
+**qCraft** – Teilprojekt `mods/qcraft` (Mod-ID `quantumcraft`, FML-ID „QuantumCraft“), Konfiguration
+`QuantumCraft.toml` (SYNCED, alle drei general-Schalter wie im Pack aus; Ersatzrezept für Staub über die Bedingung
+`quantumcraft:config`). Ressourcen schreibt `mods/qcraft/tools/gen.py`. Alte IDs 2371–2374, 7526–7528 in `OldGameIds`/`OldBlockStates`.
+
+- **Aufbau:** Quantenerz und leuchtendes Quantenerz (Licht 9, Zufallsticks), qBlock (66 Tarnblöcke in der Reihenfolge
+  von `getImpostorBlockList`), Quantencomputer mit Menü, Quantenstaub, die Essenzen eos/eoo/eoe als eigene Items,
+  Quantenbrille (Helm mit Kamera-Overlay). Item-NBT als Data Components (`qblock`, `entanglement`, `nonce`,
+  `stored_area`), Verschränkungen in `<Welt>/quantum/entanglements.bin`. Erz-Generator über worldgen152, wie im Pack aus
+  (`enableWorldGen=false`), in `tools/expect.sh` eingetragen. JEI-Plugin für die qBlock- und Verschränkungsrezepte.
+- **Verhalten:** qBlock zeigt ohne Brille die angesehene Seite, ein ODB behält die zuletzt gezeigte, die Brille macht
+  den Beobachter blind. Quantencomputer: Rahmen aus qBlocks (Obsidian/Gold), Obsidian-Säulen, Glas, Eis tauscht den
+  Bereich mit dem Zwilling, ohne Zwilling speichern/wiederherstellen; Fehlercodes 0–8 wie im Original.
+- **Prüfung:** `pack` grün, Testserver bis `Done` ohne Fehler (Project Zulu vorübergehend heraus). Per Crafter/RCON:
+  qBlock-Rezept setzt die Seiten wie das Original (unzulässige Ecke ohne Ergebnis), eos, Computer, Brille, verschränkte
+  Paare mit Frequenz; per FakePlayer: Seitenwahl nach Blickrichtung mit/ohne Brille, Bereich speichern und
+  wiederherstellen, Fehlercodes 1/2/5; Erz gibt Quantenstaub.
+
+**Offen / bewusst abweichend (qCraft):** Quantenfackel, -draht, -logik und Qubits nicht portiert (im Original per
+Schalter aus). Teleport zwischen zwei verschränkten Computern nur im Code geprüft. Client-Prüfung offen: qBlock-Modell
+und Fuzz-Textur, Brillen-Overlay und -Rüstung, Computer-GUI, Staub-Partikel, animierte Texturen.
 
 ## Teil 18 – ChocoCraft, Infernal Mobs
 
