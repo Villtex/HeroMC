@@ -73,7 +73,7 @@ public class KeyItem extends Item implements KeyLike {
         }
         if (success) {
             lockable.setLock(ItemStack.EMPTY);
-            ItemEntity item = player.drop(lock.copy(), false, false);
+            ItemEntity item = player.drop(lock.copy(), false, net.minecraft.util.Prediction.SERVER_ONLY);
             if (item != null) {
                 item.setNoPickUpDelay();
             }

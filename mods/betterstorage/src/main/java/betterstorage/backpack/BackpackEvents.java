@@ -35,7 +35,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.monster.EnderMan;
+import net.minecraft.world.entity.monster.Enderman;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.item.ItemStack;
@@ -238,7 +238,7 @@ public final class BackpackEvents {
             return;
         }
         if (BackpackItem.place(backpack, player, player.level(), event.getPos(), event.getFace() == null ? net.minecraft.core.Direction.UP : event.getFace())) {
-            player.swing(InteractionHand.MAIN_HAND);
+            player.swing(InteractionHand.MAIN_HAND, net.minecraft.world.item.component.SwingAnimation.DEFAULT, false);
             event.setCancellationResult(InteractionResult.SUCCESS);
             event.setCanceled(true);
         }
@@ -273,7 +273,7 @@ public final class BackpackEvents {
         if (inventory.stillValid(player)) {
             Component name = backpack.get(DataComponents.CUSTOM_NAME);
             BSMenu.open(player, name != null ? name : Component.translatable(type.getName()), type.getColumns(), type.getRows(), inventory);
-            player.swing(InteractionHand.MAIN_HAND, true);
+            player.swing(InteractionHand.MAIN_HAND, net.minecraft.world.item.component.SwingAnimation.DEFAULT, true);
             event.setCancellationResult(InteractionResult.SUCCESS);
             event.setCanceled(true);
         }
@@ -343,13 +343,13 @@ public final class BackpackEvents {
         }
         int index = InventoryMenu.ARMOR_SLOT_START + 1;
         if (!(player.inventoryMenu.slots.get(index) instanceof BackpackArmorSlot)) {
-            BackpackArmorSlot slot = new BackpackArmorSlot(player);
+            BackpackArmorSlot slot = new BackpackArmorSlot(player, player.inventoryMenu.slots.get(index));
             slot.index = index;
             player.inventoryMenu.slots.set(index, slot);
         }
     }
 
     static boolean isEnderman(LivingEntity e) {
-        return e instanceof EnderMan;
+        return e instanceof Enderman;
     }
 }

@@ -24,7 +24,7 @@ public final class CratePileData {
     private static final int MAX_CRATE_PILE_SIZE = 8192;
     private record SavedStack(ItemStack item, int count) {
         static final Codec<SavedStack> CODEC = RecordCodecBuilder.create(i -> i.group(
-                ItemStack.SINGLE_ITEM_CODEC.fieldOf("item").forGetter(SavedStack::item),
+                ItemStack.CODEC.fieldOf("item").forGetter(SavedStack::item),
                 Codec.INT.fieldOf("Count").forGetter(SavedStack::count)).apply(i, SavedStack::new));
     }
     static final Codec<CratePileData> CODEC = RecordCodecBuilder.create(i -> i.group(

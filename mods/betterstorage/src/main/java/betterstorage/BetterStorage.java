@@ -24,7 +24,7 @@ public final class BetterStorage {
     public static final String MOD_ID = "betterstorage";
 
     public BetterStorage(IEventBus modBus, ModContainer container) {
-        container.registerConfig(ModConfig.Type.COMMON, BSConfig.SPEC, "BetterStorage.toml");
+        container.registerConfig(ModConfig.Type.SYNCED, BSConfig.SPEC, "BetterStorage.toml");
         BS.register(modBus);
         BSNetwork.register(modBus);
         BackpackEvents.register(modBus, NeoForge.EVENT_BUS);

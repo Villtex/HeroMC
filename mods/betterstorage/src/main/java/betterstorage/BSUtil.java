@@ -24,6 +24,10 @@ public final class BSUtil {
         return max > min ? min + RANDOM.nextInt(max - min) : min;
     }
 
+    public static double getDouble(double min, double max) {
+        return min + RANDOM.nextDouble() * (max - min);
+    }
+
     public static boolean getBoolean(double probability) {
         return RANDOM.nextDouble() < probability;
     }
@@ -50,7 +54,7 @@ public final class BSUtil {
             return;
         }
         if (entity instanceof Player player) {
-            ItemEntity item = player.drop(stack, true, false);
+            ItemEntity item = player.drop(stack, true, net.minecraft.util.Prediction.SERVER_ONLY);
             if (item != null) {
                 Vec3 motion = item.getDeltaMovement();
                 item.setDeltaMovement(motion.x * speed / 4.0F, motion.y, motion.z * speed / 4.0F);

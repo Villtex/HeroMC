@@ -225,6 +225,8 @@ public final class BS {
         RECIPES.register(modBus);
         ATTACHMENTS.register(modBus);
         TABS.register(modBus);
+        modBus.addListener((net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent event) ->
+                event.put(FRIENDERMAN.get(), Frienderman.createAttributes().build()));
     }
 
     public static Holder<net.minecraft.world.item.Item> holder(DeferredItem<?> item) {
