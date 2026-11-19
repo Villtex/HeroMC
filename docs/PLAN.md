@@ -1049,6 +1049,33 @@ Bauen aus dem Original. Alte IDs (Blöcke 1071–1083 mit Metadaten, Items 5451�
 - Backpacks.
 - qCraft: Quanten-Blöcke, Observer-Dust.
 
+### Teil 17 – Stand
+
+**Status: in Arbeit.** Backpacks erledigt, BetterStorage und qCraft offen.
+
+**Backpacks** – Teilprojekt `mods/backpacks` (Mod-ID `backpack`, FML-ID „Backpack“), Werte aus der Pack-`Backpack.cfg`
+in `BackpackConfig` (STARTUP: backpackSizeL=6, backpackSizeM=3, enderRecipe=0, maxBackpackAmount=0,
+openOnlyWearedBackpacks=false, airshipModCompatibility=false). Ressourcen schreibt `mods/backpacks/tools/gen.py`,
+Texturen kommen beim Bauen aus dem Original. Alte IDs 5401 (Damage 0–16, 32–48, 31999), 5402, 5403, 5404 (18, 50) in `OldGameIds`.
+
+- **Aufbau:** jede Damage-Variante ein eigenes `BackpackItem` (17 kleine, 17 große, Ender, Werkbank klein/groß),
+  gebundenes und gegerbtes Leder. Inhalt in `DataComponents.CONTAINER`, Werkbank-Raster in `backpack:crafting`.
+  Tragbar im Brust-Slot (`Equippable`, Modell `ModelBackpack` über `getHumanoidArmorModel`).
+- **Verhalten:** Menüs mit den Slot-Positionen des Originals (Ender-Rucksack zeigt die Endertruhe), Werkbank-Rucksack
+  füllt nach dem Herausnehmen aus dem Lager nach und tauscht Behälter; kein Rucksack in Rucksack-Slots, eigener Slot
+  gesperrt. Schleich-Rechtsklick benennt um (Paket `backpack:rename`), Taste B öffnet den getragenen Rucksack.
+  Rezepte als JSON mit Konfigurationsbedingung `backpack:config`; Spezialrezepte `backpack:recolor_backpack` und
+  `backpack:enhance_backpack` übernehmen Inhalt und Name. JEI: Beispiele für Färben/Vergrößern, Werkbank-Rucksäcke als
+  Stationen mit Recipe-Transfer. Inventory Tweaks per IMC.
+- **Prüfung:** `pack` grün, Testserver bis `Done` ohne Fehler (Project Zulu vorübergehend heraus). Per RCON über den
+  Crafter alle Rezepte, Vergrößern/Färben/Entfärben mit Inhalt und Name, Ofen; per FakePlayer Shift-Klick, Slot-Sperren,
+  Werkbank-Rucksack (Nachfüllen, Raster bleibt im Item).
+
+**Offen / bewusst abweichend (Backpacks):** kein Rüstungswert (das Original zeigte 3 bzw. 1,5, schützte aber praktisch
+nicht); Farbstoffe nach `c:dyes`, andere Items im Färberezept lassen es fehlschlagen; Name nur beim Umbenennen;
+Modell folgt dem Körper beim Schleichen; Öffnen auch aus der Nebenhand; NEI-Overlay entfällt. Client-Prüfung offen:
+Modell am Spieler, Icons, GUIs, Umbenennen, Taste B, JEI und Transfer.
+
 ## Teil 18 – ChocoCraft, Infernal Mobs
 
 - ChocoCraft: Chocobos (Zucht, Reiten, Farben) und Gysahl-Pflanzen in der Welt.
