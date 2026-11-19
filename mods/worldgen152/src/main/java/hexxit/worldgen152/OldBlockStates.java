@@ -407,7 +407,7 @@ public final class OldBlockStates {
      * One half of a door. 1.5.2 kept facing and "open" in the lower half and the hinge side in the upper half;
      * {@link OldChunkWriter} copies what the other half knows.
      */
-    private static BlockState door(Block block, int meta) {
+    public static BlockState door(Block block, int meta) {
         BlockState state = block.defaultBlockState();
         if ((meta & 8) != 0) {
             return state.setValue(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER)

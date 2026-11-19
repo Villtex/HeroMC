@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " y ",
+    "yxy",
+    " y "
+  ],
+  "key": {
+    "x": "dimdoors:stable_fabric",
+    "y": "minecraft:iron_ingot"
+  },
+  "result": {
+    "id": "dimdoors:rift_signature",
+    "count": 1
+  }
+}

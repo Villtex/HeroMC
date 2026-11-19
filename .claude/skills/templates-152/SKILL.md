@@ -96,3 +96,12 @@ Für einen neuen Mod: Suchmodus in `tools/java/Expect.java` nach dem Muster `dun
 `BiomeLayout` und den Seed bestimmen, ohne die Welt zu bevölkern), Kern-Pfad in `tools/expect.sh` ergänzen, den
 Classpath auf `mods/<mod>/build/generated/original-assets` erweitern. `C x y z n v`-Zeilen: v Slots mit
 Vanilla-Items, n alle; verify akzeptiert v..n.
+
+## Vorlagen zur Laufzeit in die Welt (Dimensional Doors, Teil 15)
+
+Baut das Original erst im Spiel (Dungeon beim Betreten einer Tasche), trotzdem im Kern rechnen: leere `OldWorld`
+(`new OldWorld(seed, (cx, cz) -> new OldChunk(cx, cz, new byte[256 * 128], new byte[256]))`), Builder hineinbauen,
+dann `OldLiveGen.place(level, world, minX, minY, minZ, maxX, maxY, maxZ)` (Blöcke ohne Reaktionen, Türhälften,
+Kisten/Spawner/Schilder über `OldChunkWriter.fillTile`, danach Formen der Nachbarn). `setBlockDirectly` der Mods =
+`world.setBlockDirect` (kein onBlockAdded). MCEdit-Schematics sind gzip-NBT: `GZIPInputStream` vor `DDNbt`
+(`dimdoors/gen/DungeonBuilder.schematic`, mit AddBlocks). Vorbild `dimdoors.world.DDWorld.generateSchematic`.

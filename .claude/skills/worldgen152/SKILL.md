@@ -215,3 +215,17 @@ Teil 7b), ein Abgleich mit Original-Welten ist dort nicht möglich.
 in einer Klasse ohne Spielklassen unter `<mod>/gen`. Zusätzlich eintragen: Pfad in `tools/expect.sh` (find-Zeile) und
 `<Klasse>.register();` in `tools/java/Expect.java`, sonst meldet `verify_blocks.py` CHEST MISMATCH. Die Bonus-Truhe
 erzeugt worldgen152 nicht: dafür einen Global Loot Modifier. Vorbild `harkenscythe.gen.HSWorldGen`.
+
+## Eigene Dimension (Dimensional Doors, Teil 15)
+
+- Datenpack: `data/<ns>/dimension/<name>.json` + `dimension_type/<name>.json` (Attribute wie `bed_rule`,
+  `sky_color`, `fog_color`), Biom ohne Spawns. 1.5.2-Gelände: eigener `ChunkGenerator` mit `MapCodec` im Register
+  `Registries.CHUNK_GENERATOR` (Vorbild `dimdoors.world.LimboChunkGenerator`; 26.3 hat kein buildSurface/applyCarvers).
+  Leere Dimension: `minecraft:flat` mit `layers: []`.
+- Dimensionen, die das Original zur Laufzeit anlegte (Taschen): eine Ebene mit einem Raster-Feld je Tasche und einem
+  Versatz zurück auf die Original-Koordinaten (`dimdoors.world.DDData`).
+- Teleport: `entity.teleport(new TeleportTransition(level, pos, speed, yaw, pitch, Set.of(), DO_NOTHING))`; Respawn in
+  eine andere Dimension: `PlayerRespawnPositionEvent.setTeleportTransition`. FakePlayer ändert bei
+  Dimensionswechsel die Position nicht (FakePlayer-Netz), zum Prüfen reicht die Ebene.
+- Beute, die ein Mod in fremden Kategorien änderte (DDLoot teilte dungeonChest an Ort und Stelle durch 10):
+  `OldLoot.Category.divideWeights`.

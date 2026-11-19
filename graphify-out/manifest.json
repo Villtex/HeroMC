@@ -366,9 +366,9 @@
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/OldBlockStates.java": {
-    "mtime": 1795023670.7602975,
-    "seen": 1795024256.178372,
-    "ast_hash": "b0a3a8a2f2d73694f7924b0c17045dfd",
+    "mtime": 1795042883.2740054,
+    "seen": 1795067210.197984,
+    "ast_hash": "59204c5c710f93e8ec97ec545269b8af",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/OldChunkGenerator.java": {
@@ -654,9 +654,9 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1795041426.130221,
-    "seen": 1795041446.2998931,
-    "ast_hash": "f677c4db007cd707c26e9e89b880e8d4",
+    "mtime": 1795067183.0957625,
+    "seen": 1795067210.1981661,
+    "ast_hash": "9bc76d9469ab9f595448a8bfe59242ff",
     "semantic_hash": ""
   },
   "mods/ebxl/original-assets.txt": {
@@ -666,21 +666,21 @@
     "semantic_hash": ""
   },
   "tools/expect.sh": {
-    "mtime": 1795041426.1848607,
-    "seen": 1795041446.2998645,
-    "ast_hash": "6f78fa8ba085173c48180aa7ff282d9c",
+    "mtime": 1795044283.9010942,
+    "seen": 1795067210.198144,
+    "ast_hash": "6847d525cf0abf8eff5fa492beb16723",
     "semantic_hash": ""
   },
   "tools/java/Expect.java": {
-    "mtime": 1795041426.1848607,
-    "seen": 1795041446.2998662,
-    "ast_hash": "ff75840d8bd0753cfdc6d547efe98d8e",
+    "mtime": 1795044283.9013941,
+    "seen": 1795067210.1981444,
+    "ast_hash": "635805eba37f3a184410901e48565341",
     "semantic_hash": ""
   },
   "tools/verify_blocks.py": {
-    "mtime": 1795041426.1848607,
-    "seen": 1795041446.299873,
-    "ast_hash": "cc164e80a74666366737d400857cde75",
+    "mtime": 1795044283.9007308,
+    "seen": 1795067210.1981494,
+    "ast_hash": "70f88dd431487b4159d55a1fff2bfd77",
     "semantic_hash": ""
   },
   ".claude/agents/log-reader.md": {
@@ -690,9 +690,9 @@
     "semantic_hash": ""
   },
   "docs/PLAN.md": {
-    "mtime": 1795041426.130221,
-    "seen": 1795041446.2998958,
-    "ast_hash": "e7b8edca9866827ca3f081ceb78a98fe",
+    "mtime": 1795067165.6684935,
+    "seen": 1795067210.1981678,
+    "ast_hash": "06d86b83820e62be50b92ade2f94e5f6",
     "semantic_hash": ""
   },
   ".mcp.json": {
@@ -702,14 +702,14 @@
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/OldChunkWriter.java": {
-    "mtime": 1795041426.1848607,
-    "seen": 1795041446.299686,
-    "ast_hash": "611a0b724a49a49ca13f88507664053d",
+    "mtime": 1795042883.2735696,
+    "seen": 1795067210.197988,
+    "ast_hash": "8d9aadd6d80fd5ca91ded3e3805e434b",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/OldGameIds.java": {
-    "mtime": 1795041426.1848607,
-    "seen": 1795041446.2996871,
+    "mtime": 1795042238.5714297,
+    "seen": 1795067210.1979895,
     "ast_hash": "9fb7fd13a97578a0abd564c11f3119f8",
     "semantic_hash": ""
   },
@@ -756,9 +756,9 @@
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldLoot.java": {
-    "mtime": 1795041426.1848607,
-    "seen": 1795041446.2997262,
-    "ast_hash": "bef4df6ae1dad5dbc488be0fb7f1f046",
+    "mtime": 1795042770.062081,
+    "seen": 1795067210.1980288,
+    "ast_hash": "f18b26657e118746b45f5ac7fd9425b3",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldOreGens.java": {
@@ -804,15 +804,15 @@
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldWorld.java": {
-    "mtime": 1795023670.7618287,
-    "seen": 1795024256.1784594,
-    "ast_hash": "ad3ca745833f43600ba51cc2c9162c41",
+    "mtime": 1795042890.7379577,
+    "seen": 1795067210.1980424,
+    "ast_hash": "662d3e9c6a67cc11615f42b4d1171699",
     "semantic_hash": ""
   },
   ".claude/skills/worldgen152/SKILL.md": {
-    "mtime": 1795041426.126221,
-    "seen": 1795041446.2998908,
-    "ast_hash": "c6094e7e037445d117815d8540cc7a40",
+    "mtime": 1795067183.089657,
+    "seen": 1795067210.1981645,
+    "ast_hash": "f4f9d0c8eb426517ab4e8438a0a57640",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldEntity.java": {
@@ -3126,9 +3126,9 @@
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/OldLiveGen.java": {
-    "mtime": 1795023670.7602975,
-    "seen": 1795024256.1783779,
-    "ast_hash": "d9c94bd69f9ec4d3ffb235bcdd6a2bf5",
+    "mtime": 1795042914.8359058,
+    "seen": 1795067210.1979907,
+    "ast_hash": "6a352f959f71f7aa2e8986b1c08f60f8",
     "semantic_hash": ""
   },
   "docs/JEI.md": {
@@ -29010,9 +29010,9 @@
     "semantic_hash": ""
   },
   ".claude/skills/templates-152/SKILL.md": {
-    "mtime": 1795041426.126221,
-    "seen": 1795041446.299886,
-    "ast_hash": "ddd074aa7fb36438d87f3f101281f68a",
+    "mtime": 1795067183.074476,
+    "seen": 1795067210.1981611,
+    "ast_hash": "827c49c313efc2c64c411c496ef294a8",
     "semantic_hash": ""
   },
   "mods/betterdungeons/original-assets.txt": {
@@ -29112,8 +29112,8 @@
     "semantic_hash": ""
   },
   "mods/betterdungeons/src/main/java/betterdungeons/BDItems.java": {
-    "mtime": 1795041425.6022208,
-    "seen": 1795041446.294036,
+    "mtime": 1795042238.569897,
+    "seen": 1795067210.1917067,
     "ast_hash": "506fef0407b4eba6ee4e5f6b587eebf2",
     "semantic_hash": ""
   },
@@ -31398,8 +31398,8 @@
     "semantic_hash": ""
   },
   ".claude/skills/items-weapons-263/SKILL.md": {
-    "mtime": 1795041425.5622208,
-    "seen": 1795041446.2998805,
+    "mtime": 1795042238.447958,
+    "seen": 1795067210.1981568,
     "ast_hash": "e86ba172f6b8a2a5b68303e1c39e6ab6",
     "semantic_hash": ""
   },
@@ -31896,159 +31896,987 @@
     "semantic_hash": ""
   },
   "mods/combat152/src/main/java/hexxit/combat152/Combat152.java": {
-    "mtime": 1795041425.6022208,
-    "seen": 1795041446.2948558,
+    "mtime": 1795042238.5708354,
+    "seen": 1795067210.1925673,
     "ast_hash": "16ce6d8ab4a53d0e38b8672cd0d984c6",
     "semantic_hash": ""
   },
   "mods/combat152/src/main/resources/data/minecraft/enchantment/bane_of_arthropods.json": {
-    "mtime": 1795041425.6054912,
-    "seen": 1795041446.2948577,
+    "mtime": 1795042238.5710242,
+    "seen": 1795067210.192569,
     "ast_hash": "dd77c9f70af21d4effa7e1c4e7ef2ad2",
     "semantic_hash": ""
   },
   "mods/combat152/src/main/resources/data/minecraft/enchantment/sharpness.json": {
-    "mtime": 1795041425.6055346,
-    "seen": 1795041446.2948592,
+    "mtime": 1795042238.5710723,
+    "seen": 1795067210.1925714,
     "ast_hash": "566fa9884d6d17ea2859b00d50eae784",
     "semantic_hash": ""
   },
   "mods/combat152/src/main/resources/data/minecraft/enchantment/smite.json": {
-    "mtime": 1795041425.6055346,
-    "seen": 1795041446.2948606,
+    "mtime": 1795042238.5710723,
+    "seen": 1795067210.1925724,
     "ast_hash": "1bf7d500c06685de55fa4c825d3c2ea1",
     "semantic_hash": ""
   },
   "mods/battletowers/src/main/java/battletowers/BattleTowers.java": {
-    "mtime": 1795041426.1839364,
-    "seen": 1795041446.2940097,
+    "mtime": 1795042238.569114,
+    "seen": 1795067210.1916711,
     "ast_hash": "65742f71634e0793a916e24355904fd8",
     "semantic_hash": ""
   },
   "mods/battletowers/src/main/java/battletowers/TowerDestroyer.java": {
-    "mtime": 1795041426.1840174,
-    "seen": 1795041446.294012,
+    "mtime": 1795042238.5692143,
+    "seen": 1795067210.1916735,
     "ast_hash": "f85128344e519f86292f3539c5c2963d",
     "semantic_hash": ""
   },
   "mods/battletowers/src/main/java/battletowers/TowerEvents.java": {
-    "mtime": 1795041426.1840174,
-    "seen": 1795041446.2940135,
+    "mtime": 1795042238.5692143,
+    "seen": 1795067210.1916754,
     "ast_hash": "d7eaf5ed76c29ae6c8b68d28de4cdf0f",
     "semantic_hash": ""
   },
   "mods/battletowers/src/main/java/battletowers/client/BTClient.java": {
-    "mtime": 1795041426.1840174,
-    "seen": 1795041446.2940147,
+    "mtime": 1795042238.5692143,
+    "seen": 1795067210.191677,
     "ast_hash": "5e025a294c6a750e43be865256ff240a",
     "semantic_hash": ""
   },
   "mods/battletowers/src/main/java/battletowers/entity/BattleTowerGolem.java": {
-    "mtime": 1795041426.1840174,
-    "seen": 1795041446.294016,
+    "mtime": 1795042238.5692143,
+    "seen": 1795067210.1916797,
     "ast_hash": "bc89f1258442f82c1cfbddade933dd0b",
     "semantic_hash": ""
   },
   "mods/battletowers/src/main/java/battletowers/entity/GolemFireball.java": {
-    "mtime": 1795041426.184234,
-    "seen": 1795041446.2940176,
+    "mtime": 1795042238.5694537,
+    "seen": 1795067210.1916816,
     "ast_hash": "62e80a207ceb06ecaa167c6c9844a285",
     "semantic_hash": ""
   },
   "mods/battletowers/src/main/java/battletowers/gen/BTConfig.java": {
-    "mtime": 1795041426.184234,
-    "seen": 1795041446.2940185,
+    "mtime": 1795042238.5694537,
+    "seen": 1795067210.1916833,
     "ast_hash": "60ddc32d351fe041e686cb3f1579048b",
     "semantic_hash": ""
   },
   "mods/battletowers/src/main/java/battletowers/gen/BTItems.java": {
-    "mtime": 1795041426.184324,
-    "seen": 1795041446.2940202,
+    "mtime": 1795042238.5695505,
+    "seen": 1795067210.1916854,
     "ast_hash": "4d57d8949650d6b960e7f1810bc37827",
     "semantic_hash": ""
   },
   "mods/battletowers/src/main/java/battletowers/gen/BTTower.java": {
-    "mtime": 1795041426.184324,
-    "seen": 1795041446.2940218,
+    "mtime": 1795042238.5695505,
+    "seen": 1795067210.1916883,
     "ast_hash": "b27dda87ab5620296746af0da897c7b5",
     "semantic_hash": ""
   },
   "mods/battletowers/src/main/java/battletowers/gen/BTWorldGen.java": {
-    "mtime": 1795041426.184324,
-    "seen": 1795041446.2940233,
+    "mtime": 1795042238.5695505,
+    "seen": 1795067210.1916904,
     "ast_hash": "d95ae576220ea64f7171d2c73a542c52",
     "semantic_hash": ""
   },
   "mods/battletowers/src/main/resources/assets/battletowers/lang/de_de.json": {
-    "mtime": 1795041426.184511,
-    "seen": 1795041446.2940242,
+    "mtime": 1795042238.569775,
+    "seen": 1795067210.1916924,
     "ast_hash": "78fe0026802cf8a6263847e4ce411e0d",
     "semantic_hash": ""
   },
   "mods/battletowers/src/main/resources/assets/battletowers/lang/en_us.json": {
-    "mtime": 1795041426.1845489,
-    "seen": 1795041446.2940257,
+    "mtime": 1795042238.5698214,
+    "seen": 1795067210.191694,
     "ast_hash": "6aaebfd42c550f74ee3eb1ad80bdd01b",
     "semantic_hash": ""
   },
   "mods/battletowers/src/main/resources/assets/battletowers/sounds.json": {
-    "mtime": 1795041426.1845489,
-    "seen": 1795041446.2940269,
+    "mtime": 1795042238.5698214,
+    "seen": 1795067210.1916957,
     "ast_hash": "e624178202f0212cd76274be848619a6",
     "semantic_hash": ""
   },
   "mods/battletowers/src/main/resources/data/battletowers/loot_table/entities/golem.json": {
-    "mtime": 1795041426.1846273,
-    "seen": 1795041446.2940283,
+    "mtime": 1795042238.569897,
+    "seen": 1795067210.1916978,
     "ast_hash": "7414f34b25cd0e09ac9add22a022b0dc",
     "semantic_hash": ""
   },
   "mods/ruins/src/main/java/ruins/Ruins.java": {
-    "mtime": 1795041426.1847572,
-    "seen": 1795041446.2993448,
+    "mtime": 1795042238.571287,
+    "seen": 1795067210.197721,
     "ast_hash": "2ec3fb565a0608fd90156e4727e81197",
     "semantic_hash": ""
   },
   "mods/ruins/src/main/java/ruins/gen/RuinRotation.java": {
-    "mtime": 1795041426.184815,
-    "seen": 1795041446.2993462,
+    "mtime": 1795042238.5713801,
+    "seen": 1795067210.197723,
     "ast_hash": "d4ae92b1f7afde5359c7bbb0caa4fb0d",
     "semantic_hash": ""
   },
   "mods/ruins/src/main/java/ruins/gen/RuinTemplate.java": {
-    "mtime": 1795041426.1848607,
-    "seen": 1795041446.2993472,
+    "mtime": 1795042238.5714297,
+    "seen": 1795067210.1977246,
     "ast_hash": "c89cbcb2d621a3f25f605858b6522ecf",
     "semantic_hash": ""
   },
   "mods/ruins/src/main/java/ruins/gen/RuinTemplateRule.java": {
-    "mtime": 1795041426.1848607,
-    "seen": 1795041446.2993486,
+    "mtime": 1795042238.5714297,
+    "seen": 1795067210.1977262,
     "ast_hash": "595562350ffc2ce12c1ff0096c9b9e12",
     "semantic_hash": ""
   },
   "mods/ruins/src/main/java/ruins/gen/RuinsFiles.java": {
-    "mtime": 1795041426.1848607,
-    "seen": 1795041446.2993495,
+    "mtime": 1795042238.5714297,
+    "seen": 1795067210.1977284,
     "ast_hash": "03ae04e605ad9f6139e862e1f6061f6e",
     "semantic_hash": ""
   },
   "mods/ruins/src/main/java/ruins/gen/RuinsGen.java": {
-    "mtime": 1795041426.1848607,
-    "seen": 1795041446.2993503,
+    "mtime": 1795042238.5714297,
+    "seen": 1795067210.19773,
     "ast_hash": "7a31ceb43a614c5a8de372c33ae33424",
     "semantic_hash": ""
   },
   "mods/battletowers/original-assets.txt": {
-    "mtime": 1795041426.182221,
-    "seen": 1795041446.299902,
+    "mtime": 1795042238.5690448,
+    "seen": 1795067210.1981735,
     "ast_hash": "99449dc64598a40906a1e62903fc0273",
     "semantic_hash": ""
   },
   "mods/ruins/original-assets.txt": {
-    "mtime": 1795041426.1846273,
-    "seen": 1795041446.299929,
+    "mtime": 1795042238.5712283,
+    "seen": 1795067210.1981928,
     "ast_hash": "a397d0007d9bfa77a7be52f6c55a83df",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/java/dimdoors/DDCommands.java": {
+    "mtime": 1795044243.9388938,
+    "seen": 1795067210.1925864,
+    "ast_hash": "a244523e13153bbd0ac1acb1c5b63cf3",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/java/dimdoors/DDEvents.java": {
+    "mtime": 1795067071.8311188,
+    "seen": 1795067210.1925879,
+    "ast_hash": "b1ed45e2ed121172203d46db8d2480fe",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/java/dimdoors/DimDoors.java": {
+    "mtime": 1795044243.9263248,
+    "seen": 1795067210.192589,
+    "ast_hash": "7c420ccdfb4848fc7e56dacb242bc38e",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/java/dimdoors/block/DimDoorBlock.java": {
+    "mtime": 1795044236.613072,
+    "seen": 1795067210.19259,
+    "ast_hash": "06e42d11030ebe01eea8c64307f7c7f7",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/java/dimdoors/block/DimDoorBlockEntity.java": {
+    "mtime": 1795043550.7791514,
+    "seen": 1795067210.1925912,
+    "ast_hash": "cea658ebe373a76e162303387bff16bb",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/java/dimdoors/block/DimHatchBlock.java": {
+    "mtime": 1795043650.6554015,
+    "seen": 1795067210.1925921,
+    "ast_hash": "0863fe0fd7fdb26a307ee3bf4f5dfabb",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/java/dimdoors/block/EternalFabricBlock.java": {
+    "mtime": 1795043650.652748,
+    "seen": 1795067210.1925933,
+    "ast_hash": "8ce0384a059f5fa19de869f30f4cb05b",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/java/dimdoors/block/FabricBlock.java": {
+    "mtime": 1795043650.6509337,
+    "seen": 1795067210.1925945,
+    "ast_hash": "c17b990030742bf7b9a1970d5336e114",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/java/dimdoors/block/RiftBlock.java": {
+    "mtime": 1795044236.613498,
+    "seen": 1795067210.1925952,
+    "ast_hash": "394f25b540028b78a622ada71e2f21d5",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/java/dimdoors/block/RiftBlockEntity.java": {
+    "mtime": 1795044236.6137388,
+    "seen": 1795067210.192597,
+    "ast_hash": "8bc3f724f669ef336a14b06de0b703d7",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/java/dimdoors/block/UnraveledFabricBlock.java": {
+    "mtime": 1795043650.6541002,
+    "seen": 1795067210.1925983,
+    "ast_hash": "e7f6f01061f311649ad3373178c6db80",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/java/dimdoors/client/DDClient.java": {
+    "mtime": 1795044119.9538932,
+    "seen": 1795067210.1925995,
+    "ast_hash": "631b2b8bfd513459be430671486f799a",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/java/dimdoors/entity/Monolith.java": {
+    "mtime": 1795043830.6840525,
+    "seen": 1795067210.1926005,
+    "ast_hash": "043ce3d713af9e20a9dd273aa0ef109f",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/java/dimdoors/gen/DDLoot.java": {
+    "mtime": 1795042797.879991,
+    "seen": 1795067210.1926022,
+    "ast_hash": "a06411367afe5bbfcee9576f45767639",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/java/dimdoors/gen/DDNbt.java": {
+    "mtime": 1795042924.4974144,
+    "seen": 1795067210.192603,
+    "ast_hash": "df49efdba60c4a10d8cc34816bbdf42f",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/java/dimdoors/gen/DungeonBuilder.java": {
+    "mtime": 1795043068.069037,
+    "seen": 1795067210.1926043,
+    "ast_hash": "b746cbb24bfef815f52be3cb1b5d4018",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/java/dimdoors/gen/Dungeons.java": {
+    "mtime": 1795043014.320004,
+    "seen": 1795067210.1926057,
+    "ast_hash": "4462547043ba76d8bc45ff4be620e87d",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/java/dimdoors/gen/LimboTerrain.java": {
+    "mtime": 1795042834.6919932,
+    "seen": 1795067210.192607,
+    "ast_hash": "43af7b98a4cd40f6b3c030d371e4ec14",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/java/dimdoors/gen/RiftGen.java": {
+    "mtime": 1795042739.6479876,
+    "seen": 1795067210.1926076,
+    "ast_hash": "83c824f1768ed16d1c7f06f5face6a26",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/java/dimdoors/gen/Rotation.java": {
+    "mtime": 1795043084.8895457,
+    "seen": 1795067210.192609,
+    "ast_hash": "aeeb902006fc0402ff4847a31ea930e2",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/java/dimdoors/item/DDItems.java": {
+    "mtime": 1795043700.7423453,
+    "seen": 1795067210.1926105,
+    "ast_hash": "46b73a2abf4644917b6abc2848f83491",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/java/dimdoors/item/DimDoorItem.java": {
+    "mtime": 1795043700.7441893,
+    "seen": 1795067210.192612,
+    "ast_hash": "6cd72220e430b4bdf9c5471882e61483",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/java/dimdoors/item/RiftBladeItem.java": {
+    "mtime": 1795043772.9720635,
+    "seen": 1795067210.192613,
+    "ast_hash": "d2bd66da530d3491ded7caf564631f1c",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/java/dimdoors/item/RiftRemoverItem.java": {
+    "mtime": 1795043736.720508,
+    "seen": 1795067210.192614,
+    "ast_hash": "c9a545e2e89f7be4bbdf77fd642fb838",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/java/dimdoors/item/RiftSignatureItem.java": {
+    "mtime": 1795043736.7191796,
+    "seen": 1795067210.1926155,
+    "ast_hash": "3867847c1e73580084146e855eb6e5b3",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/java/dimdoors/world/DDData.java": {
+    "mtime": 1795044073.1911044,
+    "seen": 1795067210.1926167,
+    "ast_hash": "c985aeda098d348f426dc4b7e73b3466",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/java/dimdoors/world/DDWorld.java": {
+    "mtime": 1795044073.2012458,
+    "seen": 1795067210.1926177,
+    "ast_hash": "ad8cb1a439dd18769bdabd449d8f4e6d",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/java/dimdoors/world/LimboChunkGenerator.java": {
+    "mtime": 1795044236.6151109,
+    "seen": 1795067210.1926188,
+    "ast_hash": "8553b42300900fd1fd90412cea8a9c18",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/blockstates/ancient_fabric.json": {
+    "mtime": 1795044210.3072498,
+    "seen": 1795067210.1926198,
+    "ast_hash": "2b27d749e31089a988d330030cb303b4",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/blockstates/dimensional_door.json": {
+    "mtime": 1795044210.302689,
+    "seen": 1795067210.192621,
+    "ast_hash": "649fcd3f97d68815e090482fbd9fc734",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/blockstates/eternal_fabric.json": {
+    "mtime": 1795044210.3075957,
+    "seen": 1795067210.1926222,
+    "ast_hash": "a43c96f231e5e8624ca870bcdbefa4d9",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/blockstates/fabric_of_reality.json": {
+    "mtime": 1795044210.3069553,
+    "seen": 1795067210.1926231,
+    "ast_hash": "0e00d7ddfa882efbcf5ffecf236ccb1e",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/blockstates/rift.json": {
+    "mtime": 1795044210.3081646,
+    "seen": 1795067210.192624,
+    "ast_hash": "d7bb88b341d79f89f71abece434ef6ac",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/blockstates/transdimensional_trapdoor.json": {
+    "mtime": 1795044210.3084083,
+    "seen": 1795067210.1926255,
+    "ast_hash": "4d634c6fc6bce12e67fb06814229ff80",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/blockstates/transient_door.json": {
+    "mtime": 1795044210.306108,
+    "seen": 1795067210.1926265,
+    "ast_hash": "62a59a5ffdef0610a60301de1326b540",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/blockstates/unraveled_fabric.json": {
+    "mtime": 1795044210.3078742,
+    "seen": 1795067210.1926272,
+    "ast_hash": "83a169c51f9a21b62126c6e6fa35c98b",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/blockstates/unstable_door.json": {
+    "mtime": 1795044210.305119,
+    "seen": 1795067210.192628,
+    "ast_hash": "e32b920bf95961d61d4ddf7992059646",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/blockstates/warp_door.json": {
+    "mtime": 1795044210.3041224,
+    "seen": 1795067210.1926293,
+    "ast_hash": "6607912f4f6442b317b0ae30c1bebe40",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/items/ancient_fabric.json": {
+    "mtime": 1795044210.3075025,
+    "seen": 1795067210.1926305,
+    "ast_hash": "99b85faf60f702787f3421109d689181",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/items/dimensional_door.json": {
+    "mtime": 1795044210.3088617,
+    "seen": 1795067210.1926317,
+    "ast_hash": "f80b6fbb3dc36a42075d75daf441b146",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/items/eternal_fabric.json": {
+    "mtime": 1795044210.307774,
+    "seen": 1795067210.1926332,
+    "ast_hash": "e9190d3d044d5654a6b4aa626e938275",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/items/fabric_of_reality.json": {
+    "mtime": 1795044210.3071563,
+    "seen": 1795067210.1926343,
+    "ast_hash": "06d463105134cc097c8a4d9207ca4fd9",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/items/monolith_spawn_egg.json": {
+    "mtime": 1795044210.3105257,
+    "seen": 1795067210.1926355,
+    "ast_hash": "068756a2ab77a159658ebea521324bfa",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/items/rift_blade.json": {
+    "mtime": 1795044210.3103395,
+    "seen": 1795067210.1926367,
+    "ast_hash": "af4615c4238f8326fa81f9187e4fea7c",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/items/rift_remover.json": {
+    "mtime": 1795044210.3097804,
+    "seen": 1795067210.192638,
+    "ast_hash": "3a0e6eaa3b0f9a4448ce06ae4899552a",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/items/rift_signature.json": {
+    "mtime": 1795044210.3094187,
+    "seen": 1795067210.1926394,
+    "ast_hash": "9debbcd7c38250b31a12bcc7ecfdcd1c",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/items/stabilized_rift_signature.json": {
+    "mtime": 1795044210.3096015,
+    "seen": 1795067210.1926405,
+    "ast_hash": "471acf0b2ed439c4ffe460f207172a06",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/items/stable_fabric.json": {
+    "mtime": 1795044210.3101637,
+    "seen": 1795067210.1926417,
+    "ast_hash": "b24c049fbb16c8bce2b4078ea6eecf55",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/items/transdimensional_trapdoor.json": {
+    "mtime": 1795044210.3087726,
+    "seen": 1795067210.1926432,
+    "ast_hash": "fa6af1d36f70d37a725c32ecc065526e",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/items/unraveled_fabric.json": {
+    "mtime": 1795044210.308067,
+    "seen": 1795067210.1926441,
+    "ast_hash": "8189fc14e6c7df0caceb8dbc677f407f",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/items/unstable_door.json": {
+    "mtime": 1795044210.3092415,
+    "seen": 1795067210.1926453,
+    "ast_hash": "4e342dae239fcfebda79141479334873",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/items/warp_door.json": {
+    "mtime": 1795044210.309056,
+    "seen": 1795067210.1926467,
+    "ast_hash": "0c50f74a8482caea5bd48e54f4266dca",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/lang/de_de.json": {
+    "mtime": 1795044210.3109648,
+    "seen": 1795067210.1926477,
+    "ast_hash": "8e556878bd55bcd86942419f88fd5d4f",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/lang/en_us.json": {
+    "mtime": 1795044210.3108528,
+    "seen": 1795067210.192649,
+    "ast_hash": "de88c7be7031e0b081fbbebdd63c006c",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/ancient_fabric.json": {
+    "mtime": 1795044210.3074048,
+    "seen": 1795067210.1926503,
+    "ast_hash": "6e0dac6ff8f0a95f9868cf208e314593",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/dimensional_door_bottom_left.json": {
+    "mtime": 1795044210.3028255,
+    "seen": 1795067210.1926513,
+    "ast_hash": "d0de902ec6518b640c14605096c9381a",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/dimensional_door_bottom_left_open.json": {
+    "mtime": 1795044210.302932,
+    "seen": 1795067210.1926525,
+    "ast_hash": "a883e3bc3d75142a94ad5752056119dc",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/dimensional_door_bottom_right.json": {
+    "mtime": 1795044210.3030567,
+    "seen": 1795067210.1926537,
+    "ast_hash": "f8140f504a387c86588934393a869f2f",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/dimensional_door_bottom_right_open.json": {
+    "mtime": 1795044210.303464,
+    "seen": 1795067210.1926548,
+    "ast_hash": "85b7349bee82a5ec61e7e287d4efeff0",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/dimensional_door_top_left.json": {
+    "mtime": 1795044210.3035984,
+    "seen": 1795067210.1926558,
+    "ast_hash": "7149040e6f4d88ebebd8904f3da335f4",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/dimensional_door_top_left_open.json": {
+    "mtime": 1795044210.3036978,
+    "seen": 1795067210.1926572,
+    "ast_hash": "6000db7b8ca4f7069513d1b3436eee67",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/dimensional_door_top_right.json": {
+    "mtime": 1795044210.3038006,
+    "seen": 1795067210.1926582,
+    "ast_hash": "0244fdea40aa7f7d111645b2e80095bf",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/dimensional_door_top_right_open.json": {
+    "mtime": 1795044210.3038924,
+    "seen": 1795067210.1926594,
+    "ast_hash": "32bd51ee424fba584b7d93494ac0d5a3",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/eternal_fabric.json": {
+    "mtime": 1795044210.3076851,
+    "seen": 1795067210.1926608,
+    "ast_hash": "6e0dac6ff8f0a95f9868cf208e314593",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/fabric_of_reality.json": {
+    "mtime": 1795044210.307062,
+    "seen": 1795067210.1926618,
+    "ast_hash": "37593b76636e8a5ec71ba8378c4422bc",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/rift.json": {
+    "mtime": 1795044210.3082588,
+    "seen": 1795067210.1926632,
+    "ast_hash": "7f1eff5ce75d55fd2f2d1b971270ea08",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/transdimensional_trapdoor_bottom.json": {
+    "mtime": 1795044210.3085017,
+    "seen": 1795067210.1926641,
+    "ast_hash": "06d65356a7e8535807667f108ccce6e3",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/transdimensional_trapdoor_open.json": {
+    "mtime": 1795044210.3086817,
+    "seen": 1795067210.1926649,
+    "ast_hash": "239ef09f1bede4a56cac13d1fad9f82b",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/transdimensional_trapdoor_top.json": {
+    "mtime": 1795044210.3085916,
+    "seen": 1795067210.1926658,
+    "ast_hash": "aa61eedb93286ff1c5e1f90586369490",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/transient_door_bottom_left.json": {
+    "mtime": 1795044210.3062067,
+    "seen": 1795067210.1926672,
+    "ast_hash": "15bb7c53ed844a61b40c9bd8dd4e3132",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/transient_door_bottom_left_open.json": {
+    "mtime": 1795044210.3063061,
+    "seen": 1795067210.1926684,
+    "ast_hash": "0b6a5508dc0ab75ef81754c9db86e7c6",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/transient_door_bottom_right.json": {
+    "mtime": 1795044210.3063972,
+    "seen": 1795067210.1926694,
+    "ast_hash": "d3044e0bfab354f916869f05194a7f3d",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/transient_door_bottom_right_open.json": {
+    "mtime": 1795044210.306497,
+    "seen": 1795067210.1926703,
+    "ast_hash": "6a4b8ae803a1f769f0b6410b18ff84b1",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/transient_door_top_left.json": {
+    "mtime": 1795044210.306589,
+    "seen": 1795067210.1926715,
+    "ast_hash": "3f2f3df19a0b9278f69643da8d732d75",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/transient_door_top_left_open.json": {
+    "mtime": 1795044210.306678,
+    "seen": 1795067210.1926725,
+    "ast_hash": "29e01de6e7e43bbe39c56a8ae36de79c",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/transient_door_top_right.json": {
+    "mtime": 1795044210.3067713,
+    "seen": 1795067210.1926737,
+    "ast_hash": "5e82896f7761b428d0e2695a710e9dd7",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/transient_door_top_right_open.json": {
+    "mtime": 1795044210.306862,
+    "seen": 1795067210.192675,
+    "ast_hash": "3600ecc2f028e1838b4ee0709ad7da6a",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/unraveled_fabric.json": {
+    "mtime": 1795044210.3079624,
+    "seen": 1795067210.192676,
+    "ast_hash": "a1cc0d1ef1e46bfa08d0d0387ba89ee3",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/unstable_door_bottom_left.json": {
+    "mtime": 1795044210.305225,
+    "seen": 1795067210.192677,
+    "ast_hash": "17d65604dd8a246d827cf7f490a6d08f",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/unstable_door_bottom_left_open.json": {
+    "mtime": 1795044210.3053236,
+    "seen": 1795067210.1926782,
+    "ast_hash": "d39b8bd140eff908cc8a15c5a9036f31",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/unstable_door_bottom_right.json": {
+    "mtime": 1795044210.3054202,
+    "seen": 1795067210.1926792,
+    "ast_hash": "dcc614b0df456e38e1694f886c12c856",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/unstable_door_bottom_right_open.json": {
+    "mtime": 1795044210.3055117,
+    "seen": 1795067210.1926804,
+    "ast_hash": "9c6b006c388654bc7f90367748b9ef09",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/unstable_door_top_left.json": {
+    "mtime": 1795044210.3056026,
+    "seen": 1795067210.1926816,
+    "ast_hash": "97fcf9ca7859b2103855c8bdc7d38de3",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/unstable_door_top_left_open.json": {
+    "mtime": 1795044210.3056939,
+    "seen": 1795067210.1926825,
+    "ast_hash": "80c6ae52e595f0366856f5e54dc28edc",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/unstable_door_top_right.json": {
+    "mtime": 1795044210.3057914,
+    "seen": 1795067210.1926835,
+    "ast_hash": "f227e4470c4cd0d555ded861ceaafc00",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/unstable_door_top_right_open.json": {
+    "mtime": 1795044210.3058865,
+    "seen": 1795067210.1926847,
+    "ast_hash": "78bc70fcf1c473a2523b987bf3ea8a4e",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/warp_door_bottom_left.json": {
+    "mtime": 1795044210.304235,
+    "seen": 1795067210.1926856,
+    "ast_hash": "8c2ba954c59f688002a090f3f244ed78",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/warp_door_bottom_left_open.json": {
+    "mtime": 1795044210.3043277,
+    "seen": 1795067210.1926863,
+    "ast_hash": "c809cec89dc29c00516fb59fbb11aa97",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/warp_door_bottom_right.json": {
+    "mtime": 1795044210.304435,
+    "seen": 1795067210.1926875,
+    "ast_hash": "a18216814056bdfc24a8dcf7a840270d",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/warp_door_bottom_right_open.json": {
+    "mtime": 1795044210.3045337,
+    "seen": 1795067210.1926887,
+    "ast_hash": "da49e4307538bcca8047cf86c92f598b",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/warp_door_top_left.json": {
+    "mtime": 1795044210.3046243,
+    "seen": 1795067210.1926897,
+    "ast_hash": "7e41b05e134a1f6770f36bce4de7f649",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/warp_door_top_left_open.json": {
+    "mtime": 1795044210.3047142,
+    "seen": 1795067210.1926906,
+    "ast_hash": "1fa40dc30bd72998f556a4d90c116d2f",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/warp_door_top_right.json": {
+    "mtime": 1795044210.3048043,
+    "seen": 1795067210.1926918,
+    "ast_hash": "0a55ae4c242e617abb7cda07089d3760",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/warp_door_top_right_open.json": {
+    "mtime": 1795044210.304894,
+    "seen": 1795067210.1926925,
+    "ast_hash": "091201ea9c470095ea69f7822b7a37ba",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/item/dimensional_door.json": {
+    "mtime": 1795044210.3089538,
+    "seen": 1795067210.1926935,
+    "ast_hash": "6a99887f5782c9a26f073273b5d824fb",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/item/monolith_spawn_egg.json": {
+    "mtime": 1795044210.3106155,
+    "seen": 1795067210.192695,
+    "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/item/rift_blade.json": {
+    "mtime": 1795044210.3104274,
+    "seen": 1795067210.1926956,
+    "ast_hash": "2acfc9236a56e374360346e3c3083ae4",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/item/rift_remover.json": {
+    "mtime": 1795044210.3100688,
+    "seen": 1795067210.1926968,
+    "ast_hash": "56c7a555c0692746aafb476c7b1ec1c4",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/item/rift_signature.json": {
+    "mtime": 1795044210.3095076,
+    "seen": 1795067210.1926975,
+    "ast_hash": "8d78fd7031fc4b91e6a901ecf56a4199",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/item/stabilized_rift_signature.json": {
+    "mtime": 1795044210.3096929,
+    "seen": 1795067210.192699,
+    "ast_hash": "774966ca956e38f7dd5d7122b32284b7",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/item/stable_fabric.json": {
+    "mtime": 1795044210.3102515,
+    "seen": 1795067210.1927,
+    "ast_hash": "2d986f8608d479c408528bbc03e381f0",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/item/unstable_door.json": {
+    "mtime": 1795044210.3093317,
+    "seen": 1795067210.192701,
+    "ast_hash": "5a0b66f3aa42d30fe1216e01f15ab918",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/item/warp_door.json": {
+    "mtime": 1795044210.309145,
+    "seen": 1795067210.1927028,
+    "ast_hash": "8a153818c7f87562ab82b2e79258e69f",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/assets/dimdoors/sounds.json": {
+    "mtime": 1795044210.3107362,
+    "seen": 1795067210.192704,
+    "ast_hash": "1dbd14761b9d9ebb22a9de456c8e20f5",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/data/dimdoors/dimension/limbo.json": {
+    "mtime": 1795044210.3142552,
+    "seen": 1795067210.192705,
+    "ast_hash": "cd53418dbaff07b063022c88302fa2c6",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/data/dimdoors/dimension/pocket.json": {
+    "mtime": 1795044210.3143628,
+    "seen": 1795067210.1927063,
+    "ast_hash": "379a0eff0eaa1263505378c7a2396091",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/data/dimdoors/dimension_type/limbo.json": {
+    "mtime": 1795044210.3140407,
+    "seen": 1795067210.192707,
+    "ast_hash": "4e20b4952b0490010fb9ff3aa3095125",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/data/dimdoors/dimension_type/pocket.json": {
+    "mtime": 1795044210.3141577,
+    "seen": 1795067210.1927083,
+    "ast_hash": "9cdf096d026e6be760bc7dd6f103eb0b",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/data/dimdoors/loot_table/blocks/ancient_fabric.json": {
+    "mtime": 1795044210.311793,
+    "seen": 1795067210.1927097,
+    "ast_hash": "1342a7b6e7a03f5f773d56470ec638ac",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/data/dimdoors/loot_table/blocks/dimensional_door.json": {
+    "mtime": 1795044210.3110986,
+    "seen": 1795067210.1927109,
+    "ast_hash": "3f42508f286d0bbb5f7993c92d0878ce",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/data/dimdoors/loot_table/blocks/fabric_of_reality.json": {
+    "mtime": 1795044210.3116767,
+    "seen": 1795067210.1927114,
+    "ast_hash": "94e3005a1cf945c0e72d747f9935b6c9",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/data/dimdoors/loot_table/blocks/transdimensional_trapdoor.json": {
+    "mtime": 1795044210.3114512,
+    "seen": 1795067210.1927125,
+    "ast_hash": "c65598a5d4cbfefcf70171a02d7083b7",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/data/dimdoors/loot_table/blocks/unraveled_fabric.json": {
+    "mtime": 1795044210.311556,
+    "seen": 1795067210.1927135,
+    "ast_hash": "f3ee19c0be03bce0020ffe5b956c387a",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/data/dimdoors/loot_table/blocks/unstable_door.json": {
+    "mtime": 1795044210.3112116,
+    "seen": 1795067210.1927145,
+    "ast_hash": "3b9250aa600ccdc1212c5a11127aaef9",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/data/dimdoors/loot_table/blocks/warp_door.json": {
+    "mtime": 1795044210.311346,
+    "seen": 1795067210.1927154,
+    "ast_hash": "846594a617ddaf623edcb3633629563b",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/data/dimdoors/recipe/dimensional_door.json": {
+    "mtime": 1795044210.312275,
+    "seen": 1795067210.1927166,
+    "ast_hash": "2465953cc5c074b29fbe5afbd59c4fda",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/data/dimdoors/recipe/dimensional_door_from_stable_fabric.json": {
+    "mtime": 1795044210.312701,
+    "seen": 1795067210.1927176,
+    "ast_hash": "d54ed7225bbd9ddd5a4a48b255838ca8",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/data/dimdoors/recipe/rift_blade.json": {
+    "mtime": 1795044210.3134449,
+    "seen": 1795067210.1927192,
+    "ast_hash": "10c066ec9e7d041a6d95ddc6f5b76e51",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/data/dimdoors/recipe/rift_remover.json": {
+    "mtime": 1795044210.3132412,
+    "seen": 1795067210.1927202,
+    "ast_hash": "e8cba1992f6f9ca694446f19dd9af7eb",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/data/dimdoors/recipe/rift_remover_from_stable_fabric.json": {
+    "mtime": 1795044210.3133435,
+    "seen": 1795067210.1927214,
+    "ast_hash": "e1523d6c8850b5839edee5c4c085cc10",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/data/dimdoors/recipe/rift_signature.json": {
+    "mtime": 1795044210.3125982,
+    "seen": 1795067210.1927922,
+    "ast_hash": "93ecc68a1226c3d170caa42e366c2d6b",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/data/dimdoors/recipe/rift_signature_from_stable_fabric.json": {
+    "mtime": 1795044210.3130288,
+    "seen": 1795067210.1927936,
+    "ast_hash": "f9a39018b2182dc7c97e2bc472ce41b5",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/data/dimdoors/recipe/stabilized_rift_signature.json": {
+    "mtime": 1795044210.3136494,
+    "seen": 1795067210.1927943,
+    "ast_hash": "192d046a1b21d939ea4d44f634f6bbf7",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/data/dimdoors/recipe/stable_fabric.json": {
+    "mtime": 1795044210.3135483,
+    "seen": 1795067210.1927953,
+    "ast_hash": "62a2db18cd2e29ae6b2de83b65a71aba",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/data/dimdoors/recipe/transdimensional_trapdoor.json": {
+    "mtime": 1795044210.3124979,
+    "seen": 1795067210.1927962,
+    "ast_hash": "29d4e9a622f4ff99816d3fb38a3493ce",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/data/dimdoors/recipe/transdimensional_trapdoor_from_stable_fabric.json": {
+    "mtime": 1795044210.3129106,
+    "seen": 1795067210.1927974,
+    "ast_hash": "8b5fcf19c48bb24897b8db2209cf9b7c",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/data/dimdoors/recipe/unstable_door.json": {
+    "mtime": 1795044210.3131316,
+    "seen": 1795067210.1927981,
+    "ast_hash": "2117c09b1a96d9ddcdff53ea21e77931",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/data/dimdoors/recipe/warp_door.json": {
+    "mtime": 1795044210.312385,
+    "seen": 1795067210.1927993,
+    "ast_hash": "0e7f70068d9350f42bbe3a3736bf6d17",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/data/dimdoors/recipe/warp_door_from_stable_fabric.json": {
+    "mtime": 1795044210.312801,
+    "seen": 1795067210.1928,
+    "ast_hash": "fea324e0d96b79b78ef38ee0964982c0",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/data/dimdoors/tags/item/repairs/rift_blade.json": {
+    "mtime": 1795044210.3121724,
+    "seen": 1795067210.192801,
+    "ast_hash": "6b051ecc1880413a65399c064332c7e7",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/data/dimdoors/worldgen/biome/limbo.json": {
+    "mtime": 1795044210.313779,
+    "seen": 1795067210.1928017,
+    "ast_hash": "fb6e9f281c63919a4cb3a1f4400ed261",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/data/dimdoors/worldgen/biome/pocket.json": {
+    "mtime": 1795044210.3139014,
+    "seen": 1795067210.192803,
+    "ast_hash": "ad6e377ae5ab59f9d8e0caa78e9d514a",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/data/minecraft/tags/block/mineable/axe.json": {
+    "mtime": 1795044210.312084,
+    "seen": 1795067210.1928039,
+    "ast_hash": "a2c3baf187dd4e61a89cb84db15ba81f",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/data/minecraft/tags/block/mineable/pickaxe.json": {
+    "mtime": 1795044210.3118837,
+    "seen": 1795067210.1928046,
+    "ast_hash": "4de174bd164b5196ec3a0d90cef2579b",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/src/main/resources/data/minecraft/tags/block/mineable/shovel.json": {
+    "mtime": 1795044210.31198,
+    "seen": 1795067210.1928053,
+    "ast_hash": "03f1d05b2eeaee53ea8102c755d69858",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/tools/gen.py": {
+    "mtime": 1795044210.2784152,
+    "seen": 1795067210.1928062,
+    "ast_hash": "270311eeaa5b6ccb8bedbc18bf8caf1f",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/resources/data/minecraft/recipe/enchanted_golden_apple.json": {
+    "mtime": 1795067028.2752254,
+    "seen": 1795067210.1981168,
+    "ast_hash": "e52672b5e23c8ec0f787ce12165ed226",
+    "semantic_hash": ""
+  },
+  "mods/dimensional-doors/original-assets.txt": {
+    "mtime": 1795044210.3023326,
+    "seen": 1795067210.198177,
+    "ast_hash": "71efef95623d4b50c1b71b020faef91a",
     "semantic_hash": ""
   }
 }

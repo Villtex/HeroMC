@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "yxy"
+  ],
+  "key": {
+    "x": "dimdoors:stable_fabric",
+    "y": "minecraft:oak_door"
+  },
+  "result": {
+    "id": "dimdoors:warp_door",
+    "count": 1
+  }
+}

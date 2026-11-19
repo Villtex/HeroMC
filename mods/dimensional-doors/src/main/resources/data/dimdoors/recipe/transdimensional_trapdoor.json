@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "y",
+    "x",
+    "y"
+  ],
+  "key": {
+    "x": "minecraft:ender_pearl",
+    "y": "minecraft:oak_trapdoor"
+  },
+  "result": {
+    "id": "dimdoors:transdimensional_trapdoor",
+    "count": 1
+  }
+}

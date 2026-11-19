@@ -37,7 +37,9 @@ SIMPLE = {0: 'air', 1: 'stone', 2: 'grass_block', 3: 'dirt', 4: 'cobblestone', 7
           124: 'redstone_lamp', 133: 'emerald_block', 137: 'command_block', 138: 'beacon', 147: 'light_weighted_pressure_plate',
           148: 'heavy_weighted_pressure_plate', 151: 'daylight_detector', 152: 'redstone_block'}
 MODS = {2002: 'betterdungeons:spawner', 254: 'extrabiomesxl:red_rock', 255: 'extrabiomesxl:cracked_sand', 1552: 'wildcaves3:bone_pile', 2011: 'hexxitgear:hexbiscus',
-        1004: 'artifice:basalt', 1005: 'artifice:marble'}
+        1004: 'artifice:basalt', 1005: 'artifice:marble',
+        # Dimensional Doors: rifts of the rift clusters and gateways
+        1113: 'dimdoors:rift'}
 # Wild Caves 3: one block per metadata value
 PIECES = ['stalactite_1', 'stalactite_2', 'stalactite_3', 'stalactite_4', 'stalactite_connection_1', 'stalactite_connection_2',
           'stalactite_connection_3', 'stalactite_connection_4', 'stalactite_end', 'stalagmite_end', 'stalagmite_1', 'stalagmite_2',
@@ -303,12 +305,13 @@ def block(bid, meta):
         return 'minecraft:farmland'
     if bid in (61, 65):
         return f'minecraft:{"furnace" if bid == 61 else "ladder"}[facing={SIDE.get(meta, "north")}]'
-    if bid in (64, 71):
+    if bid in (64, 71, 1115):
         # facing and hinge are completed from the other half by the port; the half itself is what the metadata says
-        name = 'oak_door' if bid == 64 else 'iron_door'
+        # (1115: the transient door of the Dimensional Doors rift gateways)
+        name = {64: 'minecraft:oak_door', 71: 'minecraft:iron_door', 1115: 'dimdoors:transient_door'}[bid]
         if meta & 8:
-            return f'minecraft:{name}[half=upper,hinge={"right" if meta & 1 else "left"}]'
-        return f'minecraft:{name}[half=lower,facing={["east", "south", "west", "north"][meta & 3]},open={flag(meta & 4)}]'
+            return f'{name}[half=upper,hinge={"right" if meta & 1 else "left"}]'
+        return f'{name}[half=lower,facing={["east", "south", "west", "north"][meta & 3]},open={flag(meta & 4)}]'
     if bid == 66:
         return f'minecraft:rail[shape={RAILS[meta if meta < 10 else 0]}]'
     if bid == 69:

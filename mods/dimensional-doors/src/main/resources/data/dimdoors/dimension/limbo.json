@@ -1,0 +1,10 @@
+{
+  "type": "dimdoors:limbo",
+  "generator": {
+    "type": "dimdoors:limbo",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "dimdoors:limbo"
+    }
+  }
+}

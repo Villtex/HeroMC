@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "x",
+    "x",
+    "y"
+  ],
+  "key": {
+    "x": "minecraft:ender_pearl",
+    "y": "dimdoors:rift_remover"
+  },
+  "result": {
+    "id": "dimdoors:rift_blade",
+    "count": 1
+  }
+}

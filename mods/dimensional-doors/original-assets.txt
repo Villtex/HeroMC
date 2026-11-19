@@ -1,0 +1,55 @@
+# path in DimensionalDoors-1.5.2R1.4.1RC1-194.zip -> path in the ported jar (written by tools/gen.py)
+mods/DimDoors/textures/blocks/dimDoor_top.png -> assets/dimdoors/textures/block/dimensional_door_top.png
+mods/DimDoors/textures/blocks/dimDoor_bottom.png -> assets/dimdoors/textures/block/dimensional_door_bottom.png
+mods/DimDoors/textures/blocks/dimDoorWarp_top.png -> assets/dimdoors/textures/block/warp_door_top.png
+mods/DimDoors/textures/blocks/dimDoorWarp_bottom.png -> assets/dimdoors/textures/block/warp_door_bottom.png
+mods/DimDoors/textures/blocks/chaosDoor_top.png -> assets/dimdoors/textures/block/unstable_door_top.png
+mods/DimDoors/textures/blocks/chaosDoor_bottom.png -> assets/dimdoors/textures/block/unstable_door_bottom.png
+mods/DimDoors/textures/blocks/transientDoor_top.png -> assets/dimdoors/textures/block/transient_door_top.png
+mods/DimDoors/textures/blocks/dimHatch.png -> assets/dimdoors/textures/block/transdimensional_trapdoor.png
+mods/DimDoors/textures/blocks/blockDimWall.png -> assets/dimdoors/textures/block/fabric_of_reality.png
+mods/DimDoors/textures/blocks/blockDimWallPerm.png -> assets/dimdoors/textures/block/eternal_fabric.png
+mods/DimDoors/textures/blocks/BlockLimbo.png -> assets/dimdoors/textures/block/unraveled_fabric.png
+mods/DimDoors/textures/blocks/rift.png -> assets/dimdoors/textures/block/rift.png
+mods/DimDoors/textures/items/itemDimDoor.png -> assets/dimdoors/textures/item/dimensional_door.png
+mods/DimDoors/textures/items/itemDimDoorWarp.png -> assets/dimdoors/textures/item/warp_door.png
+mods/DimDoors/textures/items/item.itemChaosDoor.png -> assets/dimdoors/textures/item/unstable_door.png
+mods/DimDoors/textures/items/item.itemLinkSignature.png -> assets/dimdoors/textures/item/rift_signature.png
+mods/DimDoors/textures/items/itemStabilizedRiftSig.png -> assets/dimdoors/textures/item/stabilized_rift_signature.png
+mods/DimDoors/textures/items/item.itemRiftRemover.png -> assets/dimdoors/textures/item/rift_remover.png
+mods/DimDoors/textures/items/itemStableFabric.png -> assets/dimdoors/textures/item/stable_fabric.png
+mods/DimDoors/textures/items/item.ItemRiftBlade.png -> assets/dimdoors/textures/item/rift_blade.png
+mods/DimDoors/textures/mobs/Monolith0.png -> assets/dimdoors/textures/entity/monolith/monolith0.png
+mods/DimDoors/textures/mobs/Monolith1.png -> assets/dimdoors/textures/entity/monolith/monolith1.png
+mods/DimDoors/textures/mobs/Monolith2.png -> assets/dimdoors/textures/entity/monolith/monolith2.png
+mods/DimDoors/textures/mobs/Monolith3.png -> assets/dimdoors/textures/entity/monolith/monolith3.png
+mods/DimDoors/textures/mobs/Monolith4.png -> assets/dimdoors/textures/entity/monolith/monolith4.png
+mods/DimDoors/textures/mobs/Monolith5.png -> assets/dimdoors/textures/entity/monolith/monolith5.png
+mods/DimDoors/textures/mobs/Monolith6.png -> assets/dimdoors/textures/entity/monolith/monolith6.png
+mods/DimDoors/textures/mobs/Monolith7.png -> assets/dimdoors/textures/entity/monolith/monolith7.png
+mods/DimDoors/textures/mobs/Monolith8.png -> assets/dimdoors/textures/entity/monolith/monolith8.png
+mods/DimDoors/textures/mobs/Monolith9.png -> assets/dimdoors/textures/entity/monolith/monolith9.png
+mods/DimDoors/textures/mobs/Monolith10.png -> assets/dimdoors/textures/entity/monolith/monolith10.png
+mods/DimDoors/textures/mobs/Monolith11.png -> assets/dimdoors/textures/entity/monolith/monolith11.png
+mods/DimDoors/textures/mobs/Monolith12.png -> assets/dimdoors/textures/entity/monolith/monolith12.png
+mods/DimDoors/textures/mobs/Monolith13.png -> assets/dimdoors/textures/entity/monolith/monolith13.png
+mods/DimDoors/textures/mobs/Monolith14.png -> assets/dimdoors/textures/entity/monolith/monolith14.png
+mods/DimDoors/textures/mobs/Monolith15.png -> assets/dimdoors/textures/entity/monolith/monolith15.png
+mods/DimDoors/textures/mobs/Monolith16.png -> assets/dimdoors/textures/entity/monolith/monolith16.png
+mods/DimDoors/textures/mobs/Monolith17.png -> assets/dimdoors/textures/entity/monolith/monolith17.png
+mods/DimDoors/textures/mobs/Monolith18.png -> assets/dimdoors/textures/entity/monolith/monolith18.png
+mods/DimDoors/textures/other/limboSun.png -> assets/dimdoors/textures/environment/limbo_sun.png
+mods/DimDoors/textures/other/limboMoon.png -> assets/dimdoors/textures/environment/limbo_moon.png
+mods/DimDoors/sfx/monk.ogg -> assets/dimdoors/sounds/monk.ogg
+mods/DimDoors/sfx/crack.ogg -> assets/dimdoors/sounds/crack.ogg
+mods/DimDoors/sfx/tearing.ogg -> assets/dimdoors/sounds/tearing.ogg
+mods/DimDoors/sfx/rift.ogg -> assets/dimdoors/sounds/rift.ogg
+mods/DimDoors/sfx/riftStart.ogg -> assets/dimdoors/sounds/rift_start.ogg
+mods/DimDoors/sfx/riftEnd.ogg -> assets/dimdoors/sounds/rift_end.ogg
+mods/DimDoors/sfx/riftClose.ogg -> assets/dimdoors/sounds/rift_close.ogg
+mods/DimDoors/sfx/riftDoor.ogg -> assets/dimdoors/sounds/rift_door.ogg
+# the dungeons (SchematicLoader read them from /schematics/ of the jar)
+schematics/ -> dimdoors-original/schematics/
+# the pack's configuration, for reference
+[z-hexxit-configs]
+config/DimDoors.cfg -> dimdoors-original/DimDoors.cfg

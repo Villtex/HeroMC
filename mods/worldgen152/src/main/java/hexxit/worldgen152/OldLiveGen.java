@@ -3,6 +3,7 @@ package hexxit.worldgen152;
 import hexxit.worldgen152.core.OldChunk;
 import hexxit.worldgen152.core.populate.OldBlockInfo;
 import hexxit.worldgen152.core.populate.OldGen;
+import hexxit.worldgen152.core.populate.OldTile;
 import hexxit.worldgen152.core.populate.OldWorld;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -11,7 +12,11 @@ import net.minecraft.tags.FluidTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LeavesBlock;
+import net.minecraft.world.level.block.DoorBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.material.FluidState;
 
 import java.util.ArrayList;
@@ -214,5 +219,67 @@ public final class OldLiveGen {
             level.setBlock(leaves.get(n), leafStates.get(n), Block.UPDATE_CLIENTS);
         }
         return true;
+    }
+
+    /**
+     * Writes what a 1.5.2 builder put into {@code world} (a world that was empty before) into the live level: every
+     * block that is not air in the box, then what the tile entities held, then lets the blocks find their neighbours
+     * (stairs, fences, leaves, door halves). Like setBlockDirectly of the mods, no block reacts to being placed.
+     */
+    public static void place(ServerLevel level, OldWorld world, int minX, int minY, int minZ, int maxX, int maxY, int maxZ) {
+        minY = Math.max(minY, Math.max(0, level.getMinY()));
+        maxY = Math.min(maxY, Math.min(OldWorld.HEIGHT - 1, level.getMaxY()));
+        List<BlockPos> written = new ArrayList<>();
+        for (int x = minX; x <= maxX; x++) {
+            for (int z = minZ; z <= maxZ; z++) {
+                for (int y = minY; y <= maxY; y++) {
+                    int id = world.getBlockId(x, y, z);
+                    if (id == 0) {
+                        continue;
+                    }
+                    BlockState state = OldBlockStates.get(id, world.getBlockMetadata(x, y, z));
+                    if (state.getBlock() instanceof DoorBlock) {
+                        state = door(world, state, x, y, z);
+                    }
+                    BlockPos at = new BlockPos(x, y, z);
+                    level.setBlock(at, state, Block.UPDATE_CLIENTS | Block.UPDATE_KNOWN_SHAPE);
+                    written.add(at);
+                }
+            }
+        }
+        for (BlockPos at : written) {
+            OldTile tile = world.getTile(at.getX(), at.getY(), at.getZ());
+            BlockEntity blockEntity = tile == null ? null : level.getBlockEntity(at);
+            if (blockEntity != null) {
+                OldChunkWriter.fillTile(blockEntity, tile, level.registryAccess(), at);
+                blockEntity.setChanged();
+                level.sendBlockUpdated(at, level.getBlockState(at), level.getBlockState(at), Block.UPDATE_CLIENTS);
+            }
+        }
+        for (BlockPos at : written) {
+            BlockState state = level.getBlockState(at);
+            BlockState shaped = Block.updateFromNeighbourShapes(state, level, at);
+            if (shaped != state && !shaped.isAir()) {
+                level.setBlock(at, shaped, Block.UPDATE_CLIENTS | Block.UPDATE_KNOWN_SHAPE);
+            }
+        }
+    }
+
+    /** A door half with what 1.5.2 kept in the other half (facing and "open" below, the hinge above). */
+    private static BlockState door(OldWorld world, BlockState state, int x, int y, int z) {
+        boolean upper = state.getValue(BlockStateProperties.DOUBLE_BLOCK_HALF) == DoubleBlockHalf.UPPER;
+        int otherY = upper ? y - 1 : y + 1;
+        if (world.getBlockId(x, otherY, z) != world.getBlockId(x, y, z)) {
+            return state;
+        }
+        BlockState other = OldBlockStates.get(world.getBlockId(x, otherY, z), world.getBlockMetadata(x, otherY, z));
+        if (other.getValue(BlockStateProperties.DOUBLE_BLOCK_HALF) == state.getValue(BlockStateProperties.DOUBLE_BLOCK_HALF)) {
+            return state;
+        }
+        BlockState lower = upper ? other : state;
+        BlockState top = upper ? state : other;
+        return state.setValue(BlockStateProperties.HORIZONTAL_FACING, lower.getValue(BlockStateProperties.HORIZONTAL_FACING))
+                .setValue(BlockStateProperties.OPEN, lower.getValue(BlockStateProperties.OPEN))
+                .setValue(BlockStateProperties.DOOR_HINGE, top.getValue(BlockStateProperties.DOOR_HINGE));
     }
 }

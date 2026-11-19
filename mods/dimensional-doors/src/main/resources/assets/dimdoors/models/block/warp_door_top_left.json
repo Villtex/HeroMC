@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_left",
+  "textures": {
+    "bottom": "dimdoors:block/warp_door_bottom",
+    "top": "dimdoors:block/warp_door_top"
+  }
+}

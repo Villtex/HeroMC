@@ -52,7 +52,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 12 | Better Dungeons A: Bau-Engine und Gebäude-Import | ~18.000 | 1 | Fable 5.2, hoch | ✅ erledigt |
 | 13 | Better Dungeons B: Dungeon-Typen, Mobs, Loot | ~18.000 | 12 | Fable 5.2, hoch | ✅ erledigt |
 | 14 | Battle Towers, Ruins (mit allen Ruinen-Vorlagen) | ~5.000 + Vorlagen | 1 | Opus 5.5, mittel | ✅ erledigt |
-| 15 | Dimensional Doors | ~11.000 | 2 | Opus 5.5, mittel | offen |
+| 15 | Dimensional Doors | ~11.000 | 2 | Opus 5.5, mittel | ✅ erledigt |
 | 16 | BiblioCraft | ~21.000 | 3 | Fable 5.2, hoch | offen |
 | 17 | BetterStorage, Backpacks, qCraft | ~17.000 | 3 | Opus 5.5, mittel | offen |
 | 18 | ChocoCraft, Infernal Mobs | ~16.000 | 1, 3 | Opus 5.5, mittel | offen |
@@ -68,6 +68,9 @@ Entfallen ganz: Not Enough Items, NEI Plugins, CodeChickenCore (durch JEI ersetz
 `basemods` (Forge 1.5.2 selbst).
 
 Die Reihenfolge ab Teil 4 ist frei wählbar, solange „Braucht“ erfüllt ist.
+
+**Außerhalb der Teile – Rezept für den verzauberten goldenen Apfel** (`mods/worldgen152`, ✅ erledigt): acht Goldblöcke um
+einen Apfel wie in 1.5.2 (`data/minecraft/recipe/enchanted_golden_apple.json`), am Server über den Crafter geprüft.
 
 **Außerhalb der Teile – Nahkampf wie 1.5.2** (`mods/combat152`, ✅ erledigt), nach `EntityPlayer`/`EntityMob`/
 `EnchantmentHelper` von 1.5.2:
@@ -928,6 +931,60 @@ Ruins bringt rund 1.800 Vorlagen (`.tml`) aus `ruins-data1..3` mit. Dafür einen
 ## Teil 15 – Dimensional Doors
 
 Limbo, Pocket-Dimensionen, Rifts. Braucht Teil 2, weil eigene Dimensionen den Weltgenerator erweitern.
+
+### Teil 15 – Stand
+
+**Status: erledigt.** Teilprojekt `mods/dimensional-doors` (Mod-ID `dimdoors`, FML-ID `DimDoors`), Werte aus der
+Pack-`DimDoors.cfg` (IDs 1111–1117, 217, 220, Limbo −23, alle Rezepte, Beute-Schalter). Ressourcen schreibt
+`mods/dimensional-doors/tools/gen.py`; Texturen, Klänge und die 69 Schematics kommen beim Bauen aus dem Original.
+
+- **Kern ohne Spielklassen** (`dimdoors.gen`): `RiftGen` (RiftGenerator: Cluster 3/10.000, Gateways 40/10.000 mit
+  Steinziegel-Ruine und Transient Door, in Overworld und Nether; Limbo und Taschen populierte das Original nie),
+  `LimboTerrain` (LimboGenerator, Rauschen mit Seed 45, Eternal Fabric unter y 19), `Dungeons` (DungeonHelper: alle
+  Listen, Gewichte, Auswahl `generateDungeonLink`, eigener Ordner `config/DimDoors_Custom_schematics`),
+  `DungeonBuilder` + `Rotation` (generateSchematic, transformMetadata wörtlich mit seinen Durchfällen), `DDLoot`
+  (dimensionalDungeonChest: sieben Kategorien nach Item-ID zusammengelegt, Java-8-HashMap-Reihenfolge, Buch auf 3,
+  fünf Ziehungen).
+- **DDLoot teilt die dungeonChest-Gewichte**: Das Original teilte sie beim Zusammenlegen an Ort und Stelle durch 10
+  (mindestens 1, das verzauberte Buch ausgenommen); seitdem zogen *alle* Dungeon-Kisten des Packs damit
+  (`OldLoot.Category.divideWeights`, wirkt auch auf Vanilla-Dungeons und Ruins).
+- **worldgen152:** `OldLiveGen.place` (Ergebnis eines Kern-Builders samt Kisten/Spawnern/Schildern in die laufende
+  Welt), `OldWorld.setBlockDirect` (setBlockDirectly ohne onBlockAdded), `OldChunkWriter.fillTile`,
+  `OldBlockStates.door` öffentlich. `verify_blocks.py`: Rift 1113, Transient Door 1115.
+- **Spielseite:** Dimensions-, Warp-, Unstable- und Transient-Tür (`DimDoorBlock`, eine Klasse mit Art), Falltür,
+  Fabric of Reality/Ancient Fabric/Eternal Fabric/Unraveled Fabric, Rift (`RiftBlockEntity`: Wachsen, Endermen,
+  Schließen; Zerstörung per Zufallsticks), Items (Türen, Rift Signature und stabilisierte, Rift Remover, Rift Blade,
+  Stable Fabric, Spawn-Ei), Monolith (Zorn, 19 Texturen, Wurf nach Limbo; in neuen Limbo-Chunks und je Chunk
+  geschlossener Dungeons), Dimensionen `dimdoors:limbo` (eigener Generator) und `dimdoors:pocket` (leer), Tod in einer
+  Tasche → Limbo mit Inventar, Eternal Fabric in Limbo → zurück in die Overworld, Limbo-Zerfall, Fallschaden aus in
+  Limbo, Befehle `dd-rift`, `dd-deletelinks`, `dd-???`, `dd-deletedimension`, `dd-dimensiondata`, `dd-prune`,
+  `dd-resetdungeons`. Gespeichert in `DDData` (SavedData).
+- **Prüfung:** `clean pack` grün; Testserver bis `Done` ohne Fehler (Project Zulu wie in Teil 13/14 vorübergehend
+  heraus). `tools/expect.sh 1234 rifts 5`: 9 Chunks, 53.676 Blöcke, 0 Abweichungen (ein Schädel von Wild Caves unter
+  zugeflossenem Wasser); Limbo-Gelände 12.800/12.800 Blöcke gegen den Kern. Per FakePlayer: Gateway → Dungeon
+  (ComplexHall_SK-HiddenStairs) mit Seitentüren und neuen Taschen, Tiefe 2, Kiste mit DD-Beute; persönliche Tasche
+  (Gewebe-Hülle 29³ innen, Ewiges Gewebe außen, Tür nach Norden); Warp-Tür in der Tasche → Overworld an den
+  Koordinaten des Originals; Unstable-Tür → Limbo; geschlossener Dungeon (lockingExitHall) mit 4 Monolithen und
+  Ausgang; 60 Monolithen in den geladenen Limbo-Chunks; Rezepte über den Crafter.
+
+**Offen / bewusst abweichend:**
+
+- **Taschen in einer Ebene:** Jede Tasche war im Original eine eigene Dimension an den Koordinaten ihrer Tür. Hier
+  liegen alle in `dimdoors:pocket`, jede in einem Feld von 512 × 512 Blöcken; ein Versatz je Tasche rechnet zurück auf
+  die Koordinaten des Originals, wo es sie in anderen Dimensionen benutzt (Warp-Türen, Ausgänge, Limbo-Rückkehr,
+  Zufalls-Seed der Kisten). Dimensions-IDs der Taschen sind interne Zahlen; `dd-resetdungeons` leert nur den
+  gespeicherten Bauraum des Dungeons (das Original löschte den Ordner).
+- Licht in Limbo: das Original drehte die Helligkeitstabelle um (dunkle Stellen hell, Fackeln dunkel); hier
+  `ambient_light` 0,75. Eigener Himmel mit Limbo-Sonne und -Mond fehlt (Texturen liegen im Jar).
+- Pocket-Rifts werden nur gesetzt, wo der Chunk geladen ist (das Original setzte sie, sobald die Welt geladen war).
+- Generierte Rifts melden ihre Taschen über `RiftGen.links` an den Server-Thread; jede Stelle nur einmal.
+- Unseeded Random des Originals (Dungeon-Wahl, Monolith-Spawn in Limbo, Zufalls-Links) bleibt zufällig; Limbo-Monolithen
+  ziehen aus einem Zufall aus Seed und Chunk.
+- Rezepte mit Leerzeilen (`"   ","yxy","   "`) passen heute überall im Raster (26.3 kürzt Muster).
+- Nicht portiert: `dd-create`/`dd-export` (Dungeon-Bau-Werkzeuge), die Brille (ItemRiftGoggles war nie registriert),
+  Spells (nur für den Autor).
+- Client-Prüfung offen: Portal in verlinkten Türen (hier mit dem End-Portal-Shader statt der 16 Schichten), Rift-
+  Partikel (schwarzer Staub, in Taschen grau), Monolith-Modell, -Größe und -Texturen, Klänge, Limbo-Himmel und -Nebel.
 
 ## Teil 16 – BiblioCraft
 

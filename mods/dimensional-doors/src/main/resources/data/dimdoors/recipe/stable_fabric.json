@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " y ",
+    "yxy",
+    " y "
+  ],
+  "key": {
+    "x": "minecraft:ender_pearl",
+    "y": "dimdoors:fabric_of_reality"
+  },
+  "result": {
+    "id": "dimdoors:stable_fabric",
+    "count": 4
+  }
+}

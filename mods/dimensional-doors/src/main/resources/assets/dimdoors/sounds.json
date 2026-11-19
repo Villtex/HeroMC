@@ -1,0 +1,42 @@
+{
+  "monk": {
+    "sounds": [
+      "dimdoors:monk"
+    ]
+  },
+  "crack": {
+    "sounds": [
+      "dimdoors:crack"
+    ]
+  },
+  "tearing": {
+    "sounds": [
+      "dimdoors:tearing"
+    ]
+  },
+  "rift": {
+    "sounds": [
+      "dimdoors:rift"
+    ]
+  },
+  "rift_start": {
+    "sounds": [
+      "dimdoors:rift_start"
+    ]
+  },
+  "rift_end": {
+    "sounds": [
+      "dimdoors:rift_end"
+    ]
+  },
+  "rift_close": {
+    "sounds": [
+      "dimdoors:rift_close"
+    ]
+  },
+  "rift_door": {
+    "sounds": [
+      "dimdoors:rift_door"
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_right",
+  "textures": {
+    "bottom": "dimdoors:block/transient_door_top",
+    "top": "dimdoors:block/transient_door_top"
+  }
+}

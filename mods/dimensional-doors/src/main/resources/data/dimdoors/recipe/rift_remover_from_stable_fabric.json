@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "yyy",
+    "yxy",
+    "yyy"
+  ],
+  "key": {
+    "x": "dimdoors:stable_fabric",
+    "y": "minecraft:gold_ingot"
+  },
+  "result": {
+    "id": "dimdoors:rift_remover",
+    "count": 1
+  }
+}

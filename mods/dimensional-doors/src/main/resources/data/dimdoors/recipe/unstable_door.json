@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "yxy"
+  ],
+  "key": {
+    "x": "minecraft:ender_eye",
+    "y": "dimdoors:dimensional_door"
+  },
+  "result": {
+    "id": "dimdoors:unstable_door",
+    "count": 1
+  }
+}

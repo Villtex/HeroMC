@@ -142,40 +142,7 @@ final class OldChunkWriter {
             if (blockEntity == null) {
                 continue;
             }
-            if (entry.getValue() instanceof OldTile.Chest contents && blockEntity instanceof ChestBlockEntity chest) {
-                fill(chest, contents.slots(), registries);
-            } else if (entry.getValue() instanceof OldTile.Dispenser contents && blockEntity instanceof DispenserBlockEntity dispenser) {
-                fill(dispenser, contents.slots(), registries);
-            } else if (entry.getValue() instanceof OldTile.Spawner spawner && blockEntity instanceof SpawnerBlockEntity spawnerEntity) {
-                spawnerEntity.setEntityId(OldGameIds.entity(spawner.mob()), RandomSource.create(pos.asLong()));
-            } else if (entry.getValue() instanceof OldTile.Furnace contents && blockEntity instanceof AbstractFurnaceBlockEntity furnace) {
-                fill(furnace, contents.slots(), registries);
-            } else if (entry.getValue() instanceof OldTile.BrewingStand contents && blockEntity instanceof BrewingStandBlockEntity stand) {
-                fill(stand, contents.slots(), registries);
-            } else if (entry.getValue() instanceof OldTile.Jukebox jukebox && blockEntity instanceof JukeboxBlockEntity player
-                    && jukebox.record() != null) {
-                ItemStack record = item(jukebox.record(), registries);
-                if (!record.isEmpty()) {
-                    // through the saved data: the setters want the level, which a chunk being generated has not yet
-                    CompoundTag tag = new CompoundTag();
-                    tag.put(JukeboxBlockEntity.SONG_ITEM_TAG_ID,
-                            ItemStack.CODEC.encodeStart(registries.createSerializationContext(NbtOps.INSTANCE), record).getOrThrow());
-                    player.loadCustomOnly(TagValueInput.create(ProblemReporter.DISCARDING, registries, tag));
-                }
-            } else if (entry.getValue() instanceof OldTile.Sign sign && blockEntity instanceof SignBlockEntity signEntity) {
-                // through the saved data (setText wants the level)
-                ListTag messages = new ListTag();
-                for (int i = 0; i < 4; i++) {
-                    messages.add(StringTag.valueOf(i < sign.lines().length && sign.lines()[i] != null ? sign.lines()[i] : ""));
-                }
-                CompoundTag front = new CompoundTag();
-                front.put("messages", messages);
-                CompoundTag tag = new CompoundTag();
-                tag.put("front_text", front);
-                signEntity.loadCustomOnly(TagValueInput.create(ProblemReporter.DISCARDING, registries, tag));
-            } else if (entry.getValue() instanceof OldTile.Mod mod) {
-                OldModData.write(mod, blockEntity, registries);
-            }
+            fillTile(blockEntity, entry.getValue(), registries, pos);
             chunk.setBlockEntity(blockEntity);
         }
 
@@ -187,6 +154,44 @@ final class OldChunkWriter {
                 }
                 chunk.addEntity(entity);
             }
+        }
+    }
+
+    /** Puts what a 1.5.2 tile entity held (chest contents, spawner mob, sign text ...) into the block entity of today. */
+    static void fillTile(BlockEntity blockEntity, OldTile tile, RegistryAccess registries, BlockPos pos) {
+        if (tile instanceof OldTile.Chest contents && blockEntity instanceof ChestBlockEntity chest) {
+            fill(chest, contents.slots(), registries);
+        } else if (tile instanceof OldTile.Dispenser contents && blockEntity instanceof DispenserBlockEntity dispenser) {
+            fill(dispenser, contents.slots(), registries);
+        } else if (tile instanceof OldTile.Spawner spawner && blockEntity instanceof SpawnerBlockEntity spawnerEntity) {
+            spawnerEntity.setEntityId(OldGameIds.entity(spawner.mob()), RandomSource.create(pos.asLong()));
+        } else if (tile instanceof OldTile.Furnace contents && blockEntity instanceof AbstractFurnaceBlockEntity furnace) {
+            fill(furnace, contents.slots(), registries);
+        } else if (tile instanceof OldTile.BrewingStand contents && blockEntity instanceof BrewingStandBlockEntity stand) {
+            fill(stand, contents.slots(), registries);
+        } else if (tile instanceof OldTile.Jukebox jukebox && blockEntity instanceof JukeboxBlockEntity player
+                && jukebox.record() != null) {
+            ItemStack record = item(jukebox.record(), registries);
+            if (!record.isEmpty()) {
+                // through the saved data: the setters want the level, which a chunk being generated has not yet
+                CompoundTag tag = new CompoundTag();
+                tag.put(JukeboxBlockEntity.SONG_ITEM_TAG_ID,
+                        ItemStack.CODEC.encodeStart(registries.createSerializationContext(NbtOps.INSTANCE), record).getOrThrow());
+                player.loadCustomOnly(TagValueInput.create(ProblemReporter.DISCARDING, registries, tag));
+            }
+        } else if (tile instanceof OldTile.Sign sign && blockEntity instanceof SignBlockEntity signEntity) {
+            // through the saved data (setText wants the level)
+            ListTag messages = new ListTag();
+            for (int i = 0; i < 4; i++) {
+                messages.add(StringTag.valueOf(i < sign.lines().length && sign.lines()[i] != null ? sign.lines()[i] : ""));
+            }
+            CompoundTag front = new CompoundTag();
+            front.put("messages", messages);
+            CompoundTag tag = new CompoundTag();
+            tag.put("front_text", front);
+            signEntity.loadCustomOnly(TagValueInput.create(ProblemReporter.DISCARDING, registries, tag));
+        } else if (tile instanceof OldTile.Mod mod) {
+            OldModData.write(mod, blockEntity, registries);
         }
     }
 

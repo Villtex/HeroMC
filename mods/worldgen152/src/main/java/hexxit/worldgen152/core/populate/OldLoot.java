@@ -20,6 +20,8 @@ public final class OldLoot {
         private final List<Integer> ranks = new ArrayList<>();
         private final int countMin;
         private final int countMax;
+        /** Divides the weights of the entries, see {@link #divideWeights}. */
+        private int divisor = 1;
 
         Category(int countMin, int countMax) {
             this.countMin = countMin;
@@ -63,6 +65,16 @@ public final class OldLoot {
             }
         }
 
+        /**
+         * Dimensional Doors' DDLoot.mergeCategories divided the weight of every dungeonChest entry by 10 (at least 1),
+         * in place: ChestGenHooks.getItems handed out the stored entries themselves. Only the enchanted book escaped,
+         * getItems gave a fresh entry for it. From then on every dungeon chest of the pack drew with those weights.
+         * All entries count, since every mod of the pack added its loot before (in its init).
+         */
+        public synchronized void divideWeights(int divisor) {
+            this.divisor = divisor;
+        }
+
         /** ChestGenHooks.getItems: enchanted books pick their enchantment here, once per chest. */
         public synchronized Entry[] items(Random random) {
             Entry[] rolled = new Entry[this.entries.size()];
@@ -70,6 +82,8 @@ public final class OldLoot {
                 Entry entry = this.entries.get(i);
                 if (entry.stack.itemId() == ENCHANTED_BOOK) {
                     entry = new Entry(randomBook(random), entry.min, entry.max, entry.weight);
+                } else if (this.divisor != 1) {
+                    entry = new Entry(entry.stack, entry.min, entry.max, Math.max(1, entry.weight / this.divisor));
                 }
                 rolled[i] = entry;
             }

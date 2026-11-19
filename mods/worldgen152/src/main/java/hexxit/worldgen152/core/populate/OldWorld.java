@@ -251,6 +251,31 @@ public final class OldWorld {
         return true;
     }
 
+    /**
+     * What mods did with the block storage of a chunk (Dimensional Doors' setBlockDirectly): the block and its
+     * metadata, without onBlockAdded; a tile entity of another block there goes.
+     */
+    public void setBlockDirect(int x, int y, int z, int id, int meta) {
+        if (y < 0 || y >= HEIGHT) {
+            return;
+        }
+        Column column = this.column(x >> 4, z >> 4);
+        int lx = x & 15;
+        int lz = z & 15;
+        char[] section = column.sections[y >> 4];
+        if (section == null) {
+            if (id == 0) {
+                return;
+            }
+            section = column.section(y >> 4);
+        }
+        int index = (lx * 16 + lz) * 16 + (y & 15);
+        if (section[index] >> 4 != id) {
+            column.tiles.remove((lx * 16 + lz) * HEIGHT + y);
+        }
+        section[index] = (char) (id << 4 | meta & 15);
+    }
+
     public boolean setBlockToAir(int x, int y, int z) {
         return this.setBlock(x, y, z, 0, 0);
     }

@@ -43,6 +43,7 @@ public class Expect {
             betterdungeons.gen.BDWorldGen.register();
             ruins.gen.RuinsGen.register();
             battletowers.gen.BTWorldGen.register();
+            dimdoors.gen.RiftGen.register();
         }
         // "nether" (after "vanilla", if both are given): the Nether of the seed instead of the overworld
         boolean nether = a.length > 1 && a[1].equals("nether");
@@ -174,6 +175,25 @@ public class Expect {
             battletowers.gen.BTWorldGen.built = null;
             for (String t : new LinkedHashSet<>(found)) System.err.println("tower " + t);
             System.err.println(tried + " towers tried, " + new LinkedHashSet<>(found).size() + " built");
+        } else if (a[1].equals("rifts")) {
+            // Dimensional Doors: populate the tiles around 0,0 ring by ring until <count> rift gateways and clusters were made;
+            // their chunk and its neighbours towards -x/-z (the ruin of a gateway reaches 4 blocks out)
+            int count = Integer.parseInt(a[2]);
+            List<String> found = Collections.synchronizedList(new ArrayList<>());
+            dimdoors.gen.RiftGen.built = found::add;
+            Set<Long> picked = new LinkedHashSet<>();
+            for (int d = 0; d <= 400 && found.size() < count; d += 8) for (int tx = -d; tx <= d && found.size() < count; tx += 8) for (int tz = -d; tz <= d && found.size() < count; tz += 8) {
+                if (Math.max(Math.abs(tx), Math.abs(tz)) != d) continue;
+                decoration.chunk(tx, tz);
+            }
+            dimdoors.gen.RiftGen.built = null;
+            for (String r : new LinkedHashSet<>(found)) {
+                System.err.println("rift " + r);
+                String[] p = r.split(" ");
+                int x = Integer.parseInt(p[1]), z = Integer.parseInt(p[3]);
+                for (int dx = -1; dx <= 1; dx++) for (int dz = -1; dz <= 1; dz++) picked.add((long) (((x + dx * 4) >> 4)) << 32 | ((z + dz * 4) >> 4) & 0xFFFFFFFFL);
+            }
+            for (long k : picked) chunks.add(new int[]{(int) (k >> 32), (int) k});
         } else if (a[1].equals("spawn")) {
             int[] spawn = hexxit.worldgen152.core.structure.OldStructures.spawnPoint(seed, layout, source);
             System.out.println("spawn " + spawn[0] + " " + spawn[1]);
