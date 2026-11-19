@@ -1,0 +1,10 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "betterstorage:item/ender_backpack",
+    "model": {
+      "type": "betterstorage:block",
+      "block": "betterstorage:ender_backpack"
+    }
+  }
+}

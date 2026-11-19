@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "betterstorage:unlocking",
+    "betterstorage:lockpicking",
+    "betterstorage:morphing",
+    "betterstorage:persistance",
+    "betterstorage:security",
+    "betterstorage:shock",
+    "betterstorage:trigger"
+  ]
+}

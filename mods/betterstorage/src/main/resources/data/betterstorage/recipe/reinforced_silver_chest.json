@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": "minecraft:chest",
+    "#": "#minecraft:logs",
+    "o": "#c:ingots/silver",
+    "O": "#c:storage_blocks/silver"
+  },
+  "pattern": [
+    "o#o",
+    "#C#",
+    "oOo"
+  ],
+  "result": {
+    "id": "betterstorage:reinforced_silver_chest",
+    "count": 1
+  }
+}

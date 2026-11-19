@@ -1,0 +1,42 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "property": "minecraft:component",
+    "component": "betterstorage:keyring_keys",
+    "cases": [
+      {
+        "when": 1,
+        "model": {
+          "type": "minecraft:model",
+          "model": "betterstorage:item/keyring_1"
+        }
+      },
+      {
+        "when": 2,
+        "model": {
+          "type": "minecraft:model",
+          "model": "betterstorage:item/keyring_2"
+        }
+      },
+      {
+        "when": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "model": {
+          "type": "minecraft:model",
+          "model": "betterstorage:item/keyring_3"
+        }
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "betterstorage:item/keyring_0"
+    }
+  }
+}

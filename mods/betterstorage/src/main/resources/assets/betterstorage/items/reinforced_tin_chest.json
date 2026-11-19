@@ -1,0 +1,10 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "betterstorage:item/reinforced_tin_chest",
+    "model": {
+      "type": "betterstorage:block",
+      "block": "betterstorage:reinforced_tin_chest"
+    }
+  }
+}

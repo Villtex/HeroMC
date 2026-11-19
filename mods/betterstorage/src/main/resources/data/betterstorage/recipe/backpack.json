@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "minecraft:leather",
+    "O": "minecraft:white_wool",
+    "i": "minecraft:gold_ingot"
+  },
+  "pattern": [
+    "#i#",
+    "#O#",
+    "###"
+  ],
+  "result": {
+    "id": "betterstorage:backpack",
+    "count": 1
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "description": {
+    "translate": "enchantment.betterstorage.lockpicking"
+  },
+  "supported_items": "#betterstorage:enchantable/key",
+  "primary_items": "#betterstorage:enchantable/key",
+  "weight": 6,
+  "max_level": 5,
+  "min_cost": {
+    "base": 5,
+    "per_level_above_first": 8
+  },
+  "max_cost": {
+    "base": 35,
+    "per_level_above_first": 8
+  },
+  "anvil_cost": 2,
+  "slots": [
+    "any"
+  ],
+  "exclusive_set": "betterstorage:morphing"
+}

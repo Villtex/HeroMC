@@ -1,0 +1,13 @@
+{
+  "type": "betterstorage:lock",
+  "pattern": [
+    " g ",
+    "gkg",
+    "gig"
+  ],
+  "key": {
+    "g": "minecraft:gold_ingot",
+    "k": "betterstorage:key",
+    "i": "minecraft:iron_ingot"
+  }
+}

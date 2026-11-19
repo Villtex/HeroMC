@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_dye",
+  "category": "equipment",
+  "dye": "#minecraft:dyes",
+  "target": "betterstorage:backpack",
+  "result": {
+    "id": "betterstorage:backpack"
+  }
+}

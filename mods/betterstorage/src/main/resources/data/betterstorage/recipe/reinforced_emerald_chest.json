@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": "minecraft:chest",
+    "#": "#minecraft:logs",
+    "o": "minecraft:emerald",
+    "O": "minecraft:emerald_block"
+  },
+  "pattern": [
+    "o#o",
+    "#C#",
+    "oOo"
+  ],
+  "result": {
+    "id": "betterstorage:reinforced_emerald_chest",
+    "count": 1
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "betterstorage:key",
+  "pattern": [
+    ".o",
+    ".o",
+    " o"
+  ],
+  "key": {
+    "o": "minecraft:gold_ingot",
+    ".": "minecraft:gold_nugget"
+  }
+}

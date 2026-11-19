@@ -1,0 +1,9 @@
+{
+  "type": "betterstorage:key",
+  "pattern": [
+    "k"
+  ],
+  "key": {
+    "k": "betterstorage:key"
+  }
+}

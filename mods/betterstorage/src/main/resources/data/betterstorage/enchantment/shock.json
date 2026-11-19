@@ -1,0 +1,21 @@
+{
+  "description": {
+    "translate": "enchantment.betterstorage.shock"
+  },
+  "supported_items": "#betterstorage:enchantable/lock",
+  "primary_items": "#betterstorage:enchantable/lock",
+  "weight": 3,
+  "max_level": 3,
+  "min_cost": {
+    "base": 5,
+    "per_level_above_first": 10
+  },
+  "max_cost": {
+    "base": 35,
+    "per_level_above_first": 10
+  },
+  "anvil_cost": 4,
+  "slots": [
+    "any"
+  ]
+}

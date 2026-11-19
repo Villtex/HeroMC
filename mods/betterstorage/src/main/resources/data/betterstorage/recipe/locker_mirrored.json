@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "o": "#minecraft:planks",
+    "|": "#minecraft:wooden_trapdoors"
+  },
+  "pattern": [
+    "ooo",
+    "| o",
+    "ooo"
+  ],
+  "result": {
+    "id": "betterstorage:locker",
+    "count": 1
+  }
+}
