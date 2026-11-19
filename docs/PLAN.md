@@ -53,7 +53,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 13 | Better Dungeons B: Dungeon-Typen, Mobs, Loot | ~18.000 | 12 | Fable 5.2, hoch | ✅ erledigt |
 | 14 | Battle Towers, Ruins (mit allen Ruinen-Vorlagen) | ~5.000 + Vorlagen | 1 | Opus 5.5, mittel | ✅ erledigt |
 | 15 | Dimensional Doors | ~11.000 | 2 | Opus 5.5, mittel | ✅ erledigt |
-| 16 | BiblioCraft | ~21.000 | 3 | Fable 5.2, hoch | offen |
+| 16 | BiblioCraft | ~21.000 | 3 | Fable 5.2, hoch | ✅ erledigt |
 | 17 | BetterStorage, Backpacks, qCraft | ~17.000 | 3 | Opus 5.5, mittel | offen |
 | 18 | ChocoCraft, Infernal Mobs | ~16.000 | 1, 3 | Opus 5.5, mittel | offen |
 | 19 | LegendGear, Falling Meteors | ~19.000 | 1, 3 | Opus 5.5, mittel | offen |
@@ -989,6 +989,59 @@ Pack-`DimDoors.cfg` (IDs 1111–1117, 217, 220, Limbo −23, alle Rezepte, Beute
 ## Teil 16 – BiblioCraft
 
 Viele Blöcke mit eigenen Modellen und GUIs. Ein Großteil der Arbeit ist Client-Rendering.
+
+### Teil 16 – Stand
+
+**Status: erledigt.** Teilprojekt `mods/bibliocraft` (Mod-ID `bibliocraft`, FML-ID `BiblioCraft`), Werte aus der
+Pack-`BiblioCraft.cfg` (`BCConfig`, SYNCED: Schlüsselwörter für Bücher/Werkzeuge/Tränke, AllowEmptyBooks=true,
+Textfarbe, Schatten). Ressourcen schreibt `mods/bibliocraft/tools/gen.py`; Texturen, OBJ-Modelle und Klänge kommen beim
+Bauen aus dem Original. Alte IDs (Blöcke 1071–1083 mit Metadaten, Items 5451–5457, Reading 196) in `OldGameIds`.
+
+- **Aufbau:** Metadaten-Varianten sind eigene Blöcke (79: je vier Hölzer für Bücherregal, Trankregal, Regal,
+  Werkzeugregal, Schild, Schreibtisch, Tisch; 16 Vitrinen Holz × Stoff; je 16 Farben Lampe und Laterne;
+  Rüstungsständer, Setzmaschine, Druckerpresse). Jede Gruppe hat ihr Paket (`bookcase`, `shelf`, `display`, `decor`,
+  `printing`) mit eigener `init` und Client-Klasse. Gemeinsam: `common/BiblioBlock` (der „angle“ der TileEntities als
+  Block-Property `angle` 0..3 mit der Formel des Originals, `rotations` für die Formen), `BiblioBlockEntity` (Inventar,
+  ganzer Inhalt per Update-Paket an den Client), `BiblioMenu`, `client/BiblioRender` (Lesebrillen-Blick,
+  Text wie `renderText`, Items in der Welt), `client/BiblioScreen`, `client/BlockItemRenderers` (IItemRenderer →
+  special model `bibliocraft:block`).
+- **Darstellung:** jeder Block wie im Original über seinen Renderer: ModelBase-Modelle mit `tools/modelbase_to_layer.py`
+  als ModelParts (ungespiegelt, Einheit wie `render(scale)`), Tisch/Lampe/Laterne mit eigenem OBJ-Leser
+  (`decor/client/ObjModel`, Gruppen ein-/ausblenden wie im Original), Kerzenflamme als Partikel `bibliocraft:candle_flame`.
+- **Verhalten:** Rechtsklick-Zonen je Winkel, Schleich-Regeln, Ablegen/Herausnehmen, GUIs mit den Slot-Positionen des
+  Originals, Verzauberungskraft des Bücherregals (1/8 je Buch), Redstone-Buch (Signal = Fachnummer, nicht nach vorne),
+  Vitrine (Deckel mit Klang, Redstoneblock darin = 15, Wandmontage), Licht von Regal/Vitrine/Schild/Tisch nach dem
+  Block darauf (NeoForge `AuxiliaryLightManager`), Rüstungsständer zwei Blöcke hoch (Rüstung tauschen, bestromt alle
+  vier; Darstellung über den Vanilla-Equipment-Layer), Tisch verbindet sich mit Nachbartischen, Lampe/Laterne mit
+  Stil nach der Seite, Maßband, Schreibtisch mit eigenem Buch-Editor, Setzmaschine (Bücher als Dateien unter
+  `<Welt>/books` bzw. `config/books`, Redstone-Druck nach 10 Ticks, Verzauberungs-Platten), Druckerpresse (200 Ticks je
+  Tinte und Druck, Animation). Lesebrille, getönte Brille, Monokel (Helm ohne Haltbarkeit) und die Verzauberung
+  Reading (nur auf Büchern am Tisch, `primary_items` leer) zeigen die Namen auf Regalen, Vitrinen, Schildern usw.
+- **Prüfung:** `clean pack` grün; Testserver bis `Done` ohne Fehler (Project Zulu wie in Teil 13–15 vorübergehend
+  heraus). Per RCON: Redstone-Buch in Fach 3 gibt 3 an die Seiten und hinten, 0 nach vorne; Rezepte über den Crafter
+  (Bücherregal, Lampe färben). Im Client (Testserver + `--quickPlayMultiplayer`): alle Blöcke mit Inhalt in der Welt,
+  3D-Items in der Hotbar, Brillentext am Bücherregal, Bücherregal-GUI.
+- **Nebenbei behoben (Teil 15):** `DimDoorBlockEntity.setLevel` führte sein Update beim Chunk-Aufbau sofort aus; der
+  `setChanged` auf den eigenen, noch nicht fertigen Chunk ließ den Server-Thread auf sich selbst warten
+  (Watchdog-Absturz beim Laden eines Chunks mit Tür). Jetzt eingereiht (`schedule(new TickTask(...))`).
+
+**Offen / bewusst abweichend:**
+
+- Item-Darstellung im Inventar/in der Hand: Die IItemRenderer verschoben je Ansicht von Hand; hier wird das Modell im
+  Einheitswürfel gezeichnet und die Vanilla-Block-Transformationen gelten (Laterne 1,4- statt 1,7-fach, Lampe 1,0
+  statt 1,2).
+- Gegenstände auf Regalen, im Schild, in der Vitrine und auf dem Tisch werden mit der GROUND-Ansicht von 26.3 gelegt und
+  auf die Unterkante von 1.5.2 verschoben; nur der „Fancy Graphics“-Weg ist portiert.
+- Pakete: `BiblioMCBEdit` schickt nur Seiten und Titel (kein ganzer ItemStack), der Server prüft alles; `BiblioAStand`
+  entfällt (26.3 synchronisiert die Ausrüstung selbst). Buchdateinamen ohne `/ \ :`.
+- Werkzeug-Test des Werkzeugregals über die Komponenten TOOL/WEAPON statt ItemTool/ItemSword/ItemHoe; Ausrüstbares
+  ohne Blockitem gilt als Rüstung (auch Elytra); Köpfe nach Kopftyp statt Name.
+- Harvest-Level „Axt 2“: in 26.3 sind alle Äxte schnell (das Original baute mit Holz-/Steinaxt in Handgeschwindigkeit ab).
+- Die Druckerpressen-GUI öffnete das Original nie: Menü und Screen sind portiert, werden aber auch hier nicht geöffnet.
+- Redstone-Buch: Der Name „by &lt;Spieler&gt;“ wird nur angezeigt, nicht ins Item geschrieben (Client darf den Stapel
+  nicht ändern).
+- Client-Prüfung offen: genaue Lage, Drehung und Größe von Modellen, Items und Brillentexten aller Blöcke gegen das
+  Original, OBJ-UVs, Rüstung am Ständer, Animation der Presse, Buch-Editor (Tastatur), Bücherliste der Setzmaschine.
 
 ## Teil 17 – BetterStorage, Backpacks, qCraft
 

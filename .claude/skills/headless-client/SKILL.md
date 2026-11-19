@@ -35,3 +35,14 @@ DISPLAY=:99 LIBGL_ALWAYS_SOFTWARE=1 SDL_VIDEO_FORCE_EGL=1 nohup ./gradlew runCli
 
 As of the first test: the client got as far as loading textures. Creating a world and moving in-game have not been tried yet.
 Add to this skill once that is done.
+
+## Dem Testserver beitreten (Teil 16)
+
+- Server starten (`run/server/server.properties` mit RCON, `online-mode=false`), dann im Root-`build.gradle` beim
+  `client`-Run vorübergehend `programArguments.addAll('--quickPlayMultiplayer', 'localhost')` (nicht committen).
+- Erster Start zeigt den Willkommens-/Barrierefreiheits-Bildschirm: „Continue“ klicken (bei 1280×720 etwa 638,567).
+- „not white-listed“: `rcon whitelist add Dev`, dann im Server-Menü den LAN-Eintrag doppelklicken.
+- Szene per RCON bauen, Spieler mit `tp Dev x y z <yaw> <pitch>` ausrichten (`facing` traf nicht zuverlässig),
+  Ausschnitt: `import -window root -crop 854x480+213+120 shot.png`. Die Maus dreht die Kamera nicht (kein Fokus),
+  Klicks (`xdotool click 3` = Rechtsklick auf das Fadenkreuz) und `key Escape` gehen.
+- `./gradlew --stop` (auch von Subagents) beendet laufenden Server und Client mit.

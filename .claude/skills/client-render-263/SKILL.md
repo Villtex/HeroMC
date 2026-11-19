@@ -96,3 +96,24 @@ Logik nur `!level.isClientSide()`. Entitäten: `PlayerInteractEvent.EntityIntera
 Hatte das Original eine eigene Texturdatei je Farbe (`getArmorTexture` mit Metadaten/NBT), in 26.3
 `IClientItemExtensions.getArmorTexture` überschreiben (Vorbild Soulweave/Bloodweave in `mods/harkenscythe`).
 `original-assets.txt` nimmt pro Quelldatei nur ein Ziel: mehrfach gebrauchte Texturen im Modell referenzieren.
+
+## Block mit TileEntitySpecialRenderer und IItemRenderer (Vorlage `mods/bibliocraft`)
+
+- Block: `RenderShape.MODEL` mit Modell nur aus Partikeltextur (`{"textures":{"particle":...}}`), alles andere zeichnet
+  der `BlockEntityRenderer`. Rotation der TileEntity („angle“) als Block-Property; Formen je Winkel vorberechnen.
+- ModelBase → `tools/modelbase_to_layer.py`, Layer über `EntityRenderersEvent.RegisterLayerDefinitions`. 1.5.2-TESRs
+  zeichneten **ohne** Spiegelung: Modell-y = Welt-y; nach `translate(0.5,0.5,0.5)` (Blockmitte wie `glTranslated(i+0.5…)`)
+  `collector.submitModelPart(part, pose, RenderTypes.entityCutout(tex), state.lightCoords, OverlayTexture.NO_OVERLAY, null)`.
+  `render(0.03125F)` → zusätzlich `pose.scale(0.5F,…)`. `glRotatef(a, 0, 1, 0)` = `pose.rotateDegrees(Axis.YP, a)`.
+- Alles im `extractRenderState` aus dem BlockEntity in den State kopieren; Items dort mit
+  `context.itemModelResolver().updateForTopItem(new ItemStackRenderState(), stack, ItemDisplayContext.GROUND, level, null, seed)`
+  auflösen, im `submit` `itemState.submit(pose, collector, light, OverlayTexture.NO_OVERLAY, 0)` (Vorbild Vanilla `ShelfRenderer`).
+- Text in der Welt (`fontRenderer.drawString` im TESR): `collector.submitText(pose, x, y, FormattedCharSequence, shadow,
+  Font.DisplayMode.POLYGON_OFFSET, light, 0xFF000000|rgb, 0, 0)`, Font aus `context.font()`.
+- „Spieler schaut auf diesen Block“ (DrawBlockHighlightEvent): im Extract `Minecraft.getInstance().hitResult` prüfen.
+- IItemRenderer → Item-JSON `{"model":{"type":"minecraft:special","base":"<ns>:item/<kind>","model":{"type":"<ns>:block","block":"<ns>:<id>"}}}`,
+  eigener `SpecialModelRenderer.Unbaked` (MapCodec mit Block-Feld) über `RegisterSpecialModelRendererEvent`; ModelParts
+  im `bake` aus `ctx.entityModelSet().bakeLayer(...)`. Display-Transformationen kommen aus dem Basis-Modell.
+  Fabriken im Mod-Konstruktor nach Block-**Id** ablegen (die Blöcke gibt es dann noch nicht).
+- OBJ mit Gruppen, die zur Laufzeit wechseln: eigener Leser + `submitCustomGeometry` (`bibliocraft/decor/client/ObjModel`).
+- Licht nach dem Inhalt (getLightValue mit TileEntity): `AuxiliaryLightManager` von NeoForge (`bibliocraft/shelf`).

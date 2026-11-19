@@ -6,8 +6,8 @@
     "semantic_hash": ""
   },
   "build.gradle": {
-    "mtime": 1795023670.4925015,
-    "seen": 1795024256.1710663,
+    "mtime": 1795086517.6174314,
+    "seen": 1795086659.1473467,
     "ast_hash": "171124a8f7e713dca425d8eba72e72b6",
     "semantic_hash": ""
   },
@@ -366,8 +366,8 @@
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/OldBlockStates.java": {
-    "mtime": 1795042883.2740054,
-    "seen": 1795067210.197984,
+    "mtime": 1795067893.7610824,
+    "seen": 1795086659.1597884,
     "ast_hash": "59204c5c710f93e8ec97ec545269b8af",
     "semantic_hash": ""
   },
@@ -654,9 +654,9 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1795067183.0957625,
-    "seen": 1795067210.1981661,
-    "ast_hash": "9bc76d9469ab9f595448a8bfe59242ff",
+    "mtime": 1795086631.3521006,
+    "seen": 1795086659.1601033,
+    "ast_hash": "37f80770f174205000ebbbfa9885c99a",
     "semantic_hash": ""
   },
   "mods/ebxl/original-assets.txt": {
@@ -666,20 +666,20 @@
     "semantic_hash": ""
   },
   "tools/expect.sh": {
-    "mtime": 1795044283.9010942,
-    "seen": 1795067210.198144,
+    "mtime": 1795067893.7610824,
+    "seen": 1795086659.160063,
     "ast_hash": "6847d525cf0abf8eff5fa492beb16723",
     "semantic_hash": ""
   },
   "tools/java/Expect.java": {
-    "mtime": 1795044283.9013941,
-    "seen": 1795067210.1981444,
+    "mtime": 1795067893.7610824,
+    "seen": 1795086659.1600647,
     "ast_hash": "635805eba37f3a184410901e48565341",
     "semantic_hash": ""
   },
   "tools/verify_blocks.py": {
-    "mtime": 1795044283.9007308,
-    "seen": 1795067210.1981494,
+    "mtime": 1795067893.7610824,
+    "seen": 1795086659.160075,
     "ast_hash": "70f88dd431487b4159d55a1fff2bfd77",
     "semantic_hash": ""
   },
@@ -690,9 +690,9 @@
     "semantic_hash": ""
   },
   "docs/PLAN.md": {
-    "mtime": 1795067165.6684935,
-    "seen": 1795067210.1981678,
-    "ast_hash": "06d86b83820e62be50b92ade2f94e5f6",
+    "mtime": 1795086606.9006374,
+    "seen": 1795086659.1601064,
+    "ast_hash": "69f4914f7ed198b0179508caeb84e587",
     "semantic_hash": ""
   },
   ".mcp.json": {
@@ -702,14 +702,14 @@
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/OldChunkWriter.java": {
-    "mtime": 1795042883.2735696,
-    "seen": 1795067210.197988,
+    "mtime": 1795067893.7610824,
+    "seen": 1795086659.159793,
     "ast_hash": "8d9aadd6d80fd5ca91ded3e3805e434b",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/OldGameIds.java": {
-    "mtime": 1795042238.5714297,
-    "seen": 1795067210.1979895,
+    "mtime": 1795067893.7610824,
+    "seen": 1795086659.159795,
     "ast_hash": "9fb7fd13a97578a0abd564c11f3119f8",
     "semantic_hash": ""
   },
@@ -756,8 +756,8 @@
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldLoot.java": {
-    "mtime": 1795042770.062081,
-    "seen": 1795067210.1980288,
+    "mtime": 1795067893.7610824,
+    "seen": 1795086659.159873,
     "ast_hash": "f18b26657e118746b45f5ac7fd9425b3",
     "semantic_hash": ""
   },
@@ -804,14 +804,14 @@
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldWorld.java": {
-    "mtime": 1795042890.7379577,
-    "seen": 1795067210.1980424,
+    "mtime": 1795067893.7610824,
+    "seen": 1795086659.159892,
     "ast_hash": "662d3e9c6a67cc11615f42b4d1171699",
     "semantic_hash": ""
   },
   ".claude/skills/worldgen152/SKILL.md": {
-    "mtime": 1795067183.089657,
-    "seen": 1795067210.1981645,
+    "mtime": 1795067893.639724,
+    "seen": 1795086659.1600997,
     "ast_hash": "f4f9d0c8eb426517ab4e8438a0a57640",
     "semantic_hash": ""
   },
@@ -3126,8 +3126,8 @@
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/OldLiveGen.java": {
-    "mtime": 1795042914.8359058,
-    "seen": 1795067210.1979907,
+    "mtime": 1795067893.7610824,
+    "seen": 1795086659.159797,
     "ast_hash": "6a352f959f71f7aa2e8986b1c08f60f8",
     "semantic_hash": ""
   },
@@ -3786,9 +3786,9 @@
     "semantic_hash": ""
   },
   ".claude/skills/client-render-263/SKILL.md": {
-    "mtime": 1795023670.491878,
-    "seen": 1795024256.17866,
-    "ast_hash": "f1357ff6ca3995d14c223d664ebbf48e",
+    "mtime": 1795086626.165438,
+    "seen": 1795086659.1600807,
+    "ast_hash": "0d2697fc8e3cb6cd049a4880995c71d4",
     "semantic_hash": ""
   },
   "mods/armorbar/original-assets.txt": {
@@ -20466,9 +20466,9 @@
     "semantic_hash": ""
   },
   ".claude/skills/headless-client/SKILL.md": {
-    "mtime": 1795023670.4925015,
-    "seen": 1795024256.1786618,
-    "ast_hash": "4be4cc963d621753897d4922586f0b99",
+    "mtime": 1795086626.169438,
+    "seen": 1795086659.1600833,
+    "ast_hash": "f8f2bcab00b7c28ba39e4bde447978d4",
     "semantic_hash": ""
   },
   "mods/asgardshield-addons/src/main/java/asaddons/ASAddons.java": {
@@ -29010,8 +29010,8 @@
     "semantic_hash": ""
   },
   ".claude/skills/templates-152/SKILL.md": {
-    "mtime": 1795067183.074476,
-    "seen": 1795067210.1981611,
+    "mtime": 1795067893.639724,
+    "seen": 1795086659.1600938,
     "ast_hash": "827c49c313efc2c64c411c496ef294a8",
     "semantic_hash": ""
   },
@@ -29112,8 +29112,8 @@
     "semantic_hash": ""
   },
   "mods/betterdungeons/src/main/java/betterdungeons/BDItems.java": {
-    "mtime": 1795042238.569897,
-    "seen": 1795067210.1917067,
+    "mtime": 1795067893.7550743,
+    "seen": 1795086659.1485045,
     "ast_hash": "506fef0407b4eba6ee4e5f6b587eebf2",
     "semantic_hash": ""
   },
@@ -31398,8 +31398,8 @@
     "semantic_hash": ""
   },
   ".claude/skills/items-weapons-263/SKILL.md": {
-    "mtime": 1795042238.447958,
-    "seen": 1795067210.1981568,
+    "mtime": 1795067893.639724,
+    "seen": 1795086659.160086,
     "ast_hash": "e86ba172f6b8a2a5b68303e1c39e6ab6",
     "semantic_hash": ""
   },
@@ -31896,987 +31896,3861 @@
     "semantic_hash": ""
   },
   "mods/combat152/src/main/java/hexxit/combat152/Combat152.java": {
-    "mtime": 1795042238.5708354,
-    "seen": 1795067210.1925673,
+    "mtime": 1795067893.756727,
+    "seen": 1795086659.1504033,
     "ast_hash": "16ce6d8ab4a53d0e38b8672cd0d984c6",
     "semantic_hash": ""
   },
   "mods/combat152/src/main/resources/data/minecraft/enchantment/bane_of_arthropods.json": {
-    "mtime": 1795042238.5710242,
-    "seen": 1795067210.192569,
+    "mtime": 1795067893.7568493,
+    "seen": 1795086659.150406,
     "ast_hash": "dd77c9f70af21d4effa7e1c4e7ef2ad2",
     "semantic_hash": ""
   },
   "mods/combat152/src/main/resources/data/minecraft/enchantment/sharpness.json": {
-    "mtime": 1795042238.5710723,
-    "seen": 1795067210.1925714,
+    "mtime": 1795067893.7568777,
+    "seen": 1795086659.1504085,
     "ast_hash": "566fa9884d6d17ea2859b00d50eae784",
     "semantic_hash": ""
   },
   "mods/combat152/src/main/resources/data/minecraft/enchantment/smite.json": {
-    "mtime": 1795042238.5710723,
-    "seen": 1795067210.1925724,
+    "mtime": 1795067893.7568777,
+    "seen": 1795086659.1504102,
     "ast_hash": "1bf7d500c06685de55fa4c825d3c2ea1",
     "semantic_hash": ""
   },
   "mods/battletowers/src/main/java/battletowers/BattleTowers.java": {
-    "mtime": 1795042238.569114,
-    "seen": 1795067210.1916711,
+    "mtime": 1795067893.7545593,
+    "seen": 1795086659.148472,
     "ast_hash": "65742f71634e0793a916e24355904fd8",
     "semantic_hash": ""
   },
   "mods/battletowers/src/main/java/battletowers/TowerDestroyer.java": {
-    "mtime": 1795042238.5692143,
-    "seen": 1795067210.1916735,
+    "mtime": 1795067893.754605,
+    "seen": 1795086659.1484733,
     "ast_hash": "f85128344e519f86292f3539c5c2963d",
     "semantic_hash": ""
   },
   "mods/battletowers/src/main/java/battletowers/TowerEvents.java": {
-    "mtime": 1795042238.5692143,
-    "seen": 1795067210.1916754,
+    "mtime": 1795067893.754605,
+    "seen": 1795086659.148475,
     "ast_hash": "d7eaf5ed76c29ae6c8b68d28de4cdf0f",
     "semantic_hash": ""
   },
   "mods/battletowers/src/main/java/battletowers/client/BTClient.java": {
-    "mtime": 1795042238.5692143,
-    "seen": 1795067210.191677,
+    "mtime": 1795067893.754605,
+    "seen": 1795086659.1484766,
     "ast_hash": "5e025a294c6a750e43be865256ff240a",
     "semantic_hash": ""
   },
   "mods/battletowers/src/main/java/battletowers/entity/BattleTowerGolem.java": {
-    "mtime": 1795042238.5692143,
-    "seen": 1795067210.1916797,
+    "mtime": 1795067893.754605,
+    "seen": 1795086659.1484785,
     "ast_hash": "bc89f1258442f82c1cfbddade933dd0b",
     "semantic_hash": ""
   },
   "mods/battletowers/src/main/java/battletowers/entity/GolemFireball.java": {
-    "mtime": 1795042238.5694537,
-    "seen": 1795067210.1916816,
+    "mtime": 1795067893.7547767,
+    "seen": 1795086659.1484797,
     "ast_hash": "62e80a207ceb06ecaa167c6c9844a285",
     "semantic_hash": ""
   },
   "mods/battletowers/src/main/java/battletowers/gen/BTConfig.java": {
-    "mtime": 1795042238.5694537,
-    "seen": 1795067210.1916833,
+    "mtime": 1795067893.7547767,
+    "seen": 1795086659.1484816,
     "ast_hash": "60ddc32d351fe041e686cb3f1579048b",
     "semantic_hash": ""
   },
   "mods/battletowers/src/main/java/battletowers/gen/BTItems.java": {
-    "mtime": 1795042238.5695505,
-    "seen": 1795067210.1916854,
+    "mtime": 1795067893.754845,
+    "seen": 1795086659.1484838,
     "ast_hash": "4d57d8949650d6b960e7f1810bc37827",
     "semantic_hash": ""
   },
   "mods/battletowers/src/main/java/battletowers/gen/BTTower.java": {
-    "mtime": 1795042238.5695505,
-    "seen": 1795067210.1916883,
+    "mtime": 1795067893.754845,
+    "seen": 1795086659.1484857,
     "ast_hash": "b27dda87ab5620296746af0da897c7b5",
     "semantic_hash": ""
   },
   "mods/battletowers/src/main/java/battletowers/gen/BTWorldGen.java": {
-    "mtime": 1795042238.5695505,
-    "seen": 1795067210.1916904,
+    "mtime": 1795067893.754845,
+    "seen": 1795086659.1484869,
     "ast_hash": "d95ae576220ea64f7171d2c73a542c52",
     "semantic_hash": ""
   },
   "mods/battletowers/src/main/resources/assets/battletowers/lang/de_de.json": {
-    "mtime": 1795042238.569775,
-    "seen": 1795067210.1916924,
+    "mtime": 1795067893.7549884,
+    "seen": 1795086659.1484885,
     "ast_hash": "78fe0026802cf8a6263847e4ce411e0d",
     "semantic_hash": ""
   },
   "mods/battletowers/src/main/resources/assets/battletowers/lang/en_us.json": {
-    "mtime": 1795042238.5698214,
-    "seen": 1795067210.191694,
+    "mtime": 1795067893.755018,
+    "seen": 1795086659.14849,
     "ast_hash": "6aaebfd42c550f74ee3eb1ad80bdd01b",
     "semantic_hash": ""
   },
   "mods/battletowers/src/main/resources/assets/battletowers/sounds.json": {
-    "mtime": 1795042238.5698214,
-    "seen": 1795067210.1916957,
+    "mtime": 1795067893.755018,
+    "seen": 1795086659.1484916,
     "ast_hash": "e624178202f0212cd76274be848619a6",
     "semantic_hash": ""
   },
   "mods/battletowers/src/main/resources/data/battletowers/loot_table/entities/golem.json": {
-    "mtime": 1795042238.569897,
-    "seen": 1795067210.1916978,
+    "mtime": 1795067893.7550743,
+    "seen": 1795086659.1484938,
     "ast_hash": "7414f34b25cd0e09ac9add22a022b0dc",
     "semantic_hash": ""
   },
   "mods/ruins/src/main/java/ruins/Ruins.java": {
-    "mtime": 1795042238.571287,
-    "seen": 1795067210.197721,
+    "mtime": 1795067893.7609906,
+    "seen": 1795086659.159388,
     "ast_hash": "2ec3fb565a0608fd90156e4727e81197",
     "semantic_hash": ""
   },
   "mods/ruins/src/main/java/ruins/gen/RuinRotation.java": {
-    "mtime": 1795042238.5713801,
-    "seen": 1795067210.197723,
+    "mtime": 1795067893.7610483,
+    "seen": 1795086659.1593904,
     "ast_hash": "d4ae92b1f7afde5359c7bbb0caa4fb0d",
     "semantic_hash": ""
   },
   "mods/ruins/src/main/java/ruins/gen/RuinTemplate.java": {
-    "mtime": 1795042238.5714297,
-    "seen": 1795067210.1977246,
+    "mtime": 1795067893.7610824,
+    "seen": 1795086659.159393,
     "ast_hash": "c89cbcb2d621a3f25f605858b6522ecf",
     "semantic_hash": ""
   },
   "mods/ruins/src/main/java/ruins/gen/RuinTemplateRule.java": {
-    "mtime": 1795042238.5714297,
-    "seen": 1795067210.1977262,
+    "mtime": 1795067893.7610824,
+    "seen": 1795086659.1593947,
     "ast_hash": "595562350ffc2ce12c1ff0096c9b9e12",
     "semantic_hash": ""
   },
   "mods/ruins/src/main/java/ruins/gen/RuinsFiles.java": {
-    "mtime": 1795042238.5714297,
-    "seen": 1795067210.1977284,
+    "mtime": 1795067893.7610824,
+    "seen": 1795086659.159397,
     "ast_hash": "03ae04e605ad9f6139e862e1f6061f6e",
     "semantic_hash": ""
   },
   "mods/ruins/src/main/java/ruins/gen/RuinsGen.java": {
-    "mtime": 1795042238.5714297,
-    "seen": 1795067210.19773,
+    "mtime": 1795067893.7610824,
+    "seen": 1795086659.1593986,
     "ast_hash": "7a31ceb43a614c5a8de372c33ae33424",
     "semantic_hash": ""
   },
   "mods/battletowers/original-assets.txt": {
-    "mtime": 1795042238.5690448,
-    "seen": 1795067210.1981735,
+    "mtime": 1795067893.7545154,
+    "seen": 1795086659.1601157,
     "ast_hash": "99449dc64598a40906a1e62903fc0273",
     "semantic_hash": ""
   },
   "mods/ruins/original-assets.txt": {
-    "mtime": 1795042238.5712283,
-    "seen": 1795067210.1981928,
+    "mtime": 1795067893.7609558,
+    "seen": 1795086659.1601567,
     "ast_hash": "a397d0007d9bfa77a7be52f6c55a83df",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/java/dimdoors/DDCommands.java": {
-    "mtime": 1795044243.9388938,
-    "seen": 1795067210.1925864,
+    "mtime": 1795067893.7569664,
+    "seen": 1795086659.1504261,
     "ast_hash": "a244523e13153bbd0ac1acb1c5b63cf3",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/java/dimdoors/DDEvents.java": {
-    "mtime": 1795067071.8311188,
-    "seen": 1795067210.1925879,
+    "mtime": 1795067893.7570214,
+    "seen": 1795086659.1504285,
     "ast_hash": "b1ed45e2ed121172203d46db8d2480fe",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/java/dimdoors/DimDoors.java": {
-    "mtime": 1795044243.9263248,
-    "seen": 1795067210.192589,
+    "mtime": 1795067893.7570214,
+    "seen": 1795086659.1504304,
     "ast_hash": "7c420ccdfb4848fc7e56dacb242bc38e",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/java/dimdoors/block/DimDoorBlock.java": {
-    "mtime": 1795044236.613072,
-    "seen": 1795067210.19259,
+    "mtime": 1795067893.7570214,
+    "seen": 1795086659.1504328,
     "ast_hash": "06e42d11030ebe01eea8c64307f7c7f7",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/java/dimdoors/block/DimDoorBlockEntity.java": {
-    "mtime": 1795043550.7791514,
-    "seen": 1795067210.1925912,
-    "ast_hash": "cea658ebe373a76e162303387bff16bb",
+    "mtime": 1795086220.5638325,
+    "seen": 1795086659.1504352,
+    "ast_hash": "247015079a9e0a087c3592d915d04d3c",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/java/dimdoors/block/DimHatchBlock.java": {
-    "mtime": 1795043650.6554015,
-    "seen": 1795067210.1925921,
+    "mtime": 1795067893.7572005,
+    "seen": 1795086659.150437,
     "ast_hash": "0863fe0fd7fdb26a307ee3bf4f5dfabb",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/java/dimdoors/block/EternalFabricBlock.java": {
-    "mtime": 1795043650.652748,
-    "seen": 1795067210.1925933,
+    "mtime": 1795067893.7572005,
+    "seen": 1795086659.1504402,
     "ast_hash": "8ce0384a059f5fa19de869f30f4cb05b",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/java/dimdoors/block/FabricBlock.java": {
-    "mtime": 1795043650.6509337,
-    "seen": 1795067210.1925945,
+    "mtime": 1795067893.7572005,
+    "seen": 1795086659.1504426,
     "ast_hash": "c17b990030742bf7b9a1970d5336e114",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/java/dimdoors/block/RiftBlock.java": {
-    "mtime": 1795044236.613498,
-    "seen": 1795067210.1925952,
+    "mtime": 1795067893.7572005,
+    "seen": 1795086659.1504447,
     "ast_hash": "394f25b540028b78a622ada71e2f21d5",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/java/dimdoors/block/RiftBlockEntity.java": {
-    "mtime": 1795044236.6137388,
-    "seen": 1795067210.192597,
+    "mtime": 1795067893.7572005,
+    "seen": 1795086659.150447,
     "ast_hash": "8bc3f724f669ef336a14b06de0b703d7",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/java/dimdoors/block/UnraveledFabricBlock.java": {
-    "mtime": 1795043650.6541002,
-    "seen": 1795067210.1925983,
+    "mtime": 1795067893.7572005,
+    "seen": 1795086659.1504486,
     "ast_hash": "e7f6f01061f311649ad3373178c6db80",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/java/dimdoors/client/DDClient.java": {
-    "mtime": 1795044119.9538932,
-    "seen": 1795067210.1925995,
+    "mtime": 1795067893.7572005,
+    "seen": 1795086659.1504507,
     "ast_hash": "631b2b8bfd513459be430671486f799a",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/java/dimdoors/entity/Monolith.java": {
-    "mtime": 1795043830.6840525,
-    "seen": 1795067210.1926005,
+    "mtime": 1795067893.7572005,
+    "seen": 1795086659.150452,
     "ast_hash": "043ce3d713af9e20a9dd273aa0ef109f",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/java/dimdoors/gen/DDLoot.java": {
-    "mtime": 1795042797.879991,
-    "seen": 1795067210.1926022,
+    "mtime": 1795067893.7572005,
+    "seen": 1795086659.1504538,
     "ast_hash": "a06411367afe5bbfcee9576f45767639",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/java/dimdoors/gen/DDNbt.java": {
-    "mtime": 1795042924.4974144,
-    "seen": 1795067210.192603,
+    "mtime": 1795067893.7576225,
+    "seen": 1795086659.150455,
     "ast_hash": "df49efdba60c4a10d8cc34816bbdf42f",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/java/dimdoors/gen/DungeonBuilder.java": {
-    "mtime": 1795043068.069037,
-    "seen": 1795067210.1926043,
+    "mtime": 1795067893.7576225,
+    "seen": 1795086659.1504571,
     "ast_hash": "b746cbb24bfef815f52be3cb1b5d4018",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/java/dimdoors/gen/Dungeons.java": {
-    "mtime": 1795043014.320004,
-    "seen": 1795067210.1926057,
+    "mtime": 1795067893.7576225,
+    "seen": 1795086659.1504583,
     "ast_hash": "4462547043ba76d8bc45ff4be620e87d",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/java/dimdoors/gen/LimboTerrain.java": {
-    "mtime": 1795042834.6919932,
-    "seen": 1795067210.192607,
+    "mtime": 1795067893.7576225,
+    "seen": 1795086659.1504605,
     "ast_hash": "43af7b98a4cd40f6b3c030d371e4ec14",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/java/dimdoors/gen/RiftGen.java": {
-    "mtime": 1795042739.6479876,
-    "seen": 1795067210.1926076,
+    "mtime": 1795067893.7576225,
+    "seen": 1795086659.150462,
     "ast_hash": "83c824f1768ed16d1c7f06f5face6a26",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/java/dimdoors/gen/Rotation.java": {
-    "mtime": 1795043084.8895457,
-    "seen": 1795067210.192609,
+    "mtime": 1795067893.7576225,
+    "seen": 1795086659.1504653,
     "ast_hash": "aeeb902006fc0402ff4847a31ea930e2",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/java/dimdoors/item/DDItems.java": {
-    "mtime": 1795043700.7423453,
-    "seen": 1795067210.1926105,
+    "mtime": 1795067893.7576225,
+    "seen": 1795086659.1504676,
     "ast_hash": "46b73a2abf4644917b6abc2848f83491",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/java/dimdoors/item/DimDoorItem.java": {
-    "mtime": 1795043700.7441893,
-    "seen": 1795067210.192612,
+    "mtime": 1795067893.757937,
+    "seen": 1795086659.1504693,
     "ast_hash": "6cd72220e430b4bdf9c5471882e61483",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/java/dimdoors/item/RiftBladeItem.java": {
-    "mtime": 1795043772.9720635,
-    "seen": 1795067210.192613,
+    "mtime": 1795067893.757937,
+    "seen": 1795086659.1504712,
     "ast_hash": "d2bd66da530d3491ded7caf564631f1c",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/java/dimdoors/item/RiftRemoverItem.java": {
-    "mtime": 1795043736.720508,
-    "seen": 1795067210.192614,
+    "mtime": 1795067893.757937,
+    "seen": 1795086659.1504734,
     "ast_hash": "c9a545e2e89f7be4bbdf77fd642fb838",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/java/dimdoors/item/RiftSignatureItem.java": {
-    "mtime": 1795043736.7191796,
-    "seen": 1795067210.1926155,
+    "mtime": 1795067893.757937,
+    "seen": 1795086659.150475,
     "ast_hash": "3867847c1e73580084146e855eb6e5b3",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/java/dimdoors/world/DDData.java": {
-    "mtime": 1795044073.1911044,
-    "seen": 1795067210.1926167,
+    "mtime": 1795067893.757937,
+    "seen": 1795086659.1504767,
     "ast_hash": "c985aeda098d348f426dc4b7e73b3466",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/java/dimdoors/world/DDWorld.java": {
-    "mtime": 1795044073.2012458,
-    "seen": 1795067210.1926177,
+    "mtime": 1795067893.758137,
+    "seen": 1795086659.1504786,
     "ast_hash": "ad8cb1a439dd18769bdabd449d8f4e6d",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/java/dimdoors/world/LimboChunkGenerator.java": {
-    "mtime": 1795044236.6151109,
-    "seen": 1795067210.1926188,
+    "mtime": 1795067893.758137,
+    "seen": 1795086659.1504803,
     "ast_hash": "8553b42300900fd1fd90412cea8a9c18",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/blockstates/ancient_fabric.json": {
-    "mtime": 1795044210.3072498,
-    "seen": 1795067210.1926198,
+    "mtime": 1795067893.7583013,
+    "seen": 1795086659.150482,
     "ast_hash": "2b27d749e31089a988d330030cb303b4",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/blockstates/dimensional_door.json": {
-    "mtime": 1795044210.302689,
-    "seen": 1795067210.192621,
+    "mtime": 1795067893.7583196,
+    "seen": 1795086659.1504836,
     "ast_hash": "649fcd3f97d68815e090482fbd9fc734",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/blockstates/eternal_fabric.json": {
-    "mtime": 1795044210.3075957,
-    "seen": 1795067210.1926222,
+    "mtime": 1795067893.7583196,
+    "seen": 1795086659.150486,
     "ast_hash": "a43c96f231e5e8624ca870bcdbefa4d9",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/blockstates/fabric_of_reality.json": {
-    "mtime": 1795044210.3069553,
-    "seen": 1795067210.1926231,
+    "mtime": 1795067893.7583196,
+    "seen": 1795086659.1504881,
     "ast_hash": "0e00d7ddfa882efbcf5ffecf236ccb1e",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/blockstates/rift.json": {
-    "mtime": 1795044210.3081646,
-    "seen": 1795067210.192624,
+    "mtime": 1795067893.7583196,
+    "seen": 1795086659.1504893,
     "ast_hash": "d7bb88b341d79f89f71abece434ef6ac",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/blockstates/transdimensional_trapdoor.json": {
-    "mtime": 1795044210.3084083,
-    "seen": 1795067210.1926255,
+    "mtime": 1795067893.7583196,
+    "seen": 1795086659.1504912,
     "ast_hash": "4d634c6fc6bce12e67fb06814229ff80",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/blockstates/transient_door.json": {
-    "mtime": 1795044210.306108,
-    "seen": 1795067210.1926265,
+    "mtime": 1795067893.7583196,
+    "seen": 1795086659.1504924,
     "ast_hash": "62a59a5ffdef0610a60301de1326b540",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/blockstates/unraveled_fabric.json": {
-    "mtime": 1795044210.3078742,
-    "seen": 1795067210.1926272,
+    "mtime": 1795067893.7583196,
+    "seen": 1795086659.1504936,
     "ast_hash": "83a169c51f9a21b62126c6e6fa35c98b",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/blockstates/unstable_door.json": {
-    "mtime": 1795044210.305119,
-    "seen": 1795067210.192628,
+    "mtime": 1795067893.7583196,
+    "seen": 1795086659.1504948,
     "ast_hash": "e32b920bf95961d61d4ddf7992059646",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/blockstates/warp_door.json": {
-    "mtime": 1795044210.3041224,
-    "seen": 1795067210.1926293,
+    "mtime": 1795067893.7583196,
+    "seen": 1795086659.1504965,
     "ast_hash": "6607912f4f6442b317b0ae30c1bebe40",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/items/ancient_fabric.json": {
-    "mtime": 1795044210.3075025,
-    "seen": 1795067210.1926305,
+    "mtime": 1795067893.7583196,
+    "seen": 1795086659.1504982,
     "ast_hash": "99b85faf60f702787f3421109d689181",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/items/dimensional_door.json": {
-    "mtime": 1795044210.3088617,
-    "seen": 1795067210.1926317,
+    "mtime": 1795067893.7584553,
+    "seen": 1795086659.1504996,
     "ast_hash": "f80b6fbb3dc36a42075d75daf441b146",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/items/eternal_fabric.json": {
-    "mtime": 1795044210.307774,
-    "seen": 1795067210.1926332,
+    "mtime": 1795067893.7584553,
+    "seen": 1795086659.150501,
     "ast_hash": "e9190d3d044d5654a6b4aa626e938275",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/items/fabric_of_reality.json": {
-    "mtime": 1795044210.3071563,
-    "seen": 1795067210.1926343,
+    "mtime": 1795067893.7584553,
+    "seen": 1795086659.1505027,
     "ast_hash": "06d463105134cc097c8a4d9207ca4fd9",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/items/monolith_spawn_egg.json": {
-    "mtime": 1795044210.3105257,
-    "seen": 1795067210.1926355,
+    "mtime": 1795067893.7584553,
+    "seen": 1795086659.150504,
     "ast_hash": "068756a2ab77a159658ebea521324bfa",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/items/rift_blade.json": {
-    "mtime": 1795044210.3103395,
-    "seen": 1795067210.1926367,
+    "mtime": 1795067893.7584553,
+    "seen": 1795086659.150506,
     "ast_hash": "af4615c4238f8326fa81f9187e4fea7c",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/items/rift_remover.json": {
-    "mtime": 1795044210.3097804,
-    "seen": 1795067210.192638,
+    "mtime": 1795067893.7584553,
+    "seen": 1795086659.1505077,
     "ast_hash": "3a0e6eaa3b0f9a4448ce06ae4899552a",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/items/rift_signature.json": {
-    "mtime": 1795044210.3094187,
-    "seen": 1795067210.1926394,
+    "mtime": 1795067893.7584553,
+    "seen": 1795086659.1505094,
     "ast_hash": "9debbcd7c38250b31a12bcc7ecfdcd1c",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/items/stabilized_rift_signature.json": {
-    "mtime": 1795044210.3096015,
-    "seen": 1795067210.1926405,
+    "mtime": 1795067893.7584553,
+    "seen": 1795086659.150511,
     "ast_hash": "471acf0b2ed439c4ffe460f207172a06",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/items/stable_fabric.json": {
-    "mtime": 1795044210.3101637,
-    "seen": 1795067210.1926417,
+    "mtime": 1795067893.7584553,
+    "seen": 1795086659.1505127,
     "ast_hash": "b24c049fbb16c8bce2b4078ea6eecf55",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/items/transdimensional_trapdoor.json": {
-    "mtime": 1795044210.3087726,
-    "seen": 1795067210.1926432,
+    "mtime": 1795067893.7584553,
+    "seen": 1795086659.1505141,
     "ast_hash": "fa6af1d36f70d37a725c32ecc065526e",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/items/unraveled_fabric.json": {
-    "mtime": 1795044210.308067,
-    "seen": 1795067210.1926441,
+    "mtime": 1795067893.7584553,
+    "seen": 1795086659.150516,
     "ast_hash": "8189fc14e6c7df0caceb8dbc677f407f",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/items/unstable_door.json": {
-    "mtime": 1795044210.3092415,
-    "seen": 1795067210.1926453,
+    "mtime": 1795067893.7584553,
+    "seen": 1795086659.150519,
     "ast_hash": "4e342dae239fcfebda79141479334873",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/items/warp_door.json": {
-    "mtime": 1795044210.309056,
-    "seen": 1795067210.1926467,
+    "mtime": 1795067893.7584553,
+    "seen": 1795086659.1505208,
     "ast_hash": "0c50f74a8482caea5bd48e54f4266dca",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/lang/de_de.json": {
-    "mtime": 1795044210.3109648,
-    "seen": 1795067210.1926477,
+    "mtime": 1795067893.7584553,
+    "seen": 1795086659.1505232,
     "ast_hash": "8e556878bd55bcd86942419f88fd5d4f",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/lang/en_us.json": {
-    "mtime": 1795044210.3108528,
-    "seen": 1795067210.192649,
+    "mtime": 1795067893.7590673,
+    "seen": 1795086659.150525,
     "ast_hash": "de88c7be7031e0b081fbbebdd63c006c",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/ancient_fabric.json": {
-    "mtime": 1795044210.3074048,
-    "seen": 1795067210.1926503,
+    "mtime": 1795067893.7590954,
+    "seen": 1795086659.150527,
     "ast_hash": "6e0dac6ff8f0a95f9868cf208e314593",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/dimensional_door_bottom_left.json": {
-    "mtime": 1795044210.3028255,
-    "seen": 1795067210.1926513,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.1505287,
     "ast_hash": "d0de902ec6518b640c14605096c9381a",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/dimensional_door_bottom_left_open.json": {
-    "mtime": 1795044210.302932,
-    "seen": 1795067210.1926525,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.1505303,
     "ast_hash": "a883e3bc3d75142a94ad5752056119dc",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/dimensional_door_bottom_right.json": {
-    "mtime": 1795044210.3030567,
-    "seen": 1795067210.1926537,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.1505322,
     "ast_hash": "f8140f504a387c86588934393a869f2f",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/dimensional_door_bottom_right_open.json": {
-    "mtime": 1795044210.303464,
-    "seen": 1795067210.1926548,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.1505346,
     "ast_hash": "85b7349bee82a5ec61e7e287d4efeff0",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/dimensional_door_top_left.json": {
-    "mtime": 1795044210.3035984,
-    "seen": 1795067210.1926558,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.150537,
     "ast_hash": "7149040e6f4d88ebebd8904f3da335f4",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/dimensional_door_top_left_open.json": {
-    "mtime": 1795044210.3036978,
-    "seen": 1795067210.1926572,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.150538,
     "ast_hash": "6000db7b8ca4f7069513d1b3436eee67",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/dimensional_door_top_right.json": {
-    "mtime": 1795044210.3038006,
-    "seen": 1795067210.1926582,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.1505404,
     "ast_hash": "0244fdea40aa7f7d111645b2e80095bf",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/dimensional_door_top_right_open.json": {
-    "mtime": 1795044210.3038924,
-    "seen": 1795067210.1926594,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.1505423,
     "ast_hash": "32bd51ee424fba584b7d93494ac0d5a3",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/eternal_fabric.json": {
-    "mtime": 1795044210.3076851,
-    "seen": 1795067210.1926608,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.1505442,
     "ast_hash": "6e0dac6ff8f0a95f9868cf208e314593",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/fabric_of_reality.json": {
-    "mtime": 1795044210.307062,
-    "seen": 1795067210.1926618,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.1505458,
     "ast_hash": "37593b76636e8a5ec71ba8378c4422bc",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/rift.json": {
-    "mtime": 1795044210.3082588,
-    "seen": 1795067210.1926632,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.1505473,
     "ast_hash": "7f1eff5ce75d55fd2f2d1b971270ea08",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/transdimensional_trapdoor_bottom.json": {
-    "mtime": 1795044210.3085017,
-    "seen": 1795067210.1926641,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.1505485,
     "ast_hash": "06d65356a7e8535807667f108ccce6e3",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/transdimensional_trapdoor_open.json": {
-    "mtime": 1795044210.3086817,
-    "seen": 1795067210.1926649,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.1505501,
     "ast_hash": "239ef09f1bede4a56cac13d1fad9f82b",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/transdimensional_trapdoor_top.json": {
-    "mtime": 1795044210.3085916,
-    "seen": 1795067210.1926658,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.150552,
     "ast_hash": "aa61eedb93286ff1c5e1f90586369490",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/transient_door_bottom_left.json": {
-    "mtime": 1795044210.3062067,
-    "seen": 1795067210.1926672,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.1505537,
     "ast_hash": "15bb7c53ed844a61b40c9bd8dd4e3132",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/transient_door_bottom_left_open.json": {
-    "mtime": 1795044210.3063061,
-    "seen": 1795067210.1926684,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.1505551,
     "ast_hash": "0b6a5508dc0ab75ef81754c9db86e7c6",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/transient_door_bottom_right.json": {
-    "mtime": 1795044210.3063972,
-    "seen": 1795067210.1926694,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.1505578,
     "ast_hash": "d3044e0bfab354f916869f05194a7f3d",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/transient_door_bottom_right_open.json": {
-    "mtime": 1795044210.306497,
-    "seen": 1795067210.1926703,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.1505597,
     "ast_hash": "6a4b8ae803a1f769f0b6410b18ff84b1",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/transient_door_top_left.json": {
-    "mtime": 1795044210.306589,
-    "seen": 1795067210.1926715,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.150562,
     "ast_hash": "3f2f3df19a0b9278f69643da8d732d75",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/transient_door_top_left_open.json": {
-    "mtime": 1795044210.306678,
-    "seen": 1795067210.1926725,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.150564,
     "ast_hash": "29e01de6e7e43bbe39c56a8ae36de79c",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/transient_door_top_right.json": {
-    "mtime": 1795044210.3067713,
-    "seen": 1795067210.1926737,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.150566,
     "ast_hash": "5e82896f7761b428d0e2695a710e9dd7",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/transient_door_top_right_open.json": {
-    "mtime": 1795044210.306862,
-    "seen": 1795067210.192675,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.1505685,
     "ast_hash": "3600ecc2f028e1838b4ee0709ad7da6a",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/unraveled_fabric.json": {
-    "mtime": 1795044210.3079624,
-    "seen": 1795067210.192676,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.1505702,
     "ast_hash": "a1cc0d1ef1e46bfa08d0d0387ba89ee3",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/unstable_door_bottom_left.json": {
-    "mtime": 1795044210.305225,
-    "seen": 1795067210.192677,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.150572,
     "ast_hash": "17d65604dd8a246d827cf7f490a6d08f",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/unstable_door_bottom_left_open.json": {
-    "mtime": 1795044210.3053236,
-    "seen": 1795067210.1926782,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.1505737,
     "ast_hash": "d39b8bd140eff908cc8a15c5a9036f31",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/unstable_door_bottom_right.json": {
-    "mtime": 1795044210.3054202,
-    "seen": 1795067210.1926792,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.1505756,
     "ast_hash": "dcc614b0df456e38e1694f886c12c856",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/unstable_door_bottom_right_open.json": {
-    "mtime": 1795044210.3055117,
-    "seen": 1795067210.1926804,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.1505773,
     "ast_hash": "9c6b006c388654bc7f90367748b9ef09",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/unstable_door_top_left.json": {
-    "mtime": 1795044210.3056026,
-    "seen": 1795067210.1926816,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.1505792,
     "ast_hash": "97fcf9ca7859b2103855c8bdc7d38de3",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/unstable_door_top_left_open.json": {
-    "mtime": 1795044210.3056939,
-    "seen": 1795067210.1926825,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.1505816,
     "ast_hash": "80c6ae52e595f0366856f5e54dc28edc",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/unstable_door_top_right.json": {
-    "mtime": 1795044210.3057914,
-    "seen": 1795067210.1926835,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.1505828,
     "ast_hash": "f227e4470c4cd0d555ded861ceaafc00",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/unstable_door_top_right_open.json": {
-    "mtime": 1795044210.3058865,
-    "seen": 1795067210.1926847,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.1505845,
     "ast_hash": "78bc70fcf1c473a2523b987bf3ea8a4e",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/warp_door_bottom_left.json": {
-    "mtime": 1795044210.304235,
-    "seen": 1795067210.1926856,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.1505861,
     "ast_hash": "8c2ba954c59f688002a090f3f244ed78",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/warp_door_bottom_left_open.json": {
-    "mtime": 1795044210.3043277,
-    "seen": 1795067210.1926863,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.1505873,
     "ast_hash": "c809cec89dc29c00516fb59fbb11aa97",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/warp_door_bottom_right.json": {
-    "mtime": 1795044210.304435,
-    "seen": 1795067210.1926875,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.150589,
     "ast_hash": "a18216814056bdfc24a8dcf7a840270d",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/warp_door_bottom_right_open.json": {
-    "mtime": 1795044210.3045337,
-    "seen": 1795067210.1926887,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.15059,
     "ast_hash": "da49e4307538bcca8047cf86c92f598b",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/warp_door_top_left.json": {
-    "mtime": 1795044210.3046243,
-    "seen": 1795067210.1926897,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.1505919,
     "ast_hash": "7e41b05e134a1f6770f36bce4de7f649",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/warp_door_top_left_open.json": {
-    "mtime": 1795044210.3047142,
-    "seen": 1795067210.1926906,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.1505935,
     "ast_hash": "1fa40dc30bd72998f556a4d90c116d2f",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/warp_door_top_right.json": {
-    "mtime": 1795044210.3048043,
-    "seen": 1795067210.1926918,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.1505947,
     "ast_hash": "0a55ae4c242e617abb7cda07089d3760",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/block/warp_door_top_right_open.json": {
-    "mtime": 1795044210.304894,
-    "seen": 1795067210.1926925,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.1505961,
     "ast_hash": "091201ea9c470095ea69f7822b7a37ba",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/item/dimensional_door.json": {
-    "mtime": 1795044210.3089538,
-    "seen": 1795067210.1926935,
+    "mtime": 1795067893.7591121,
+    "seen": 1795086659.1505978,
     "ast_hash": "6a99887f5782c9a26f073273b5d824fb",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/item/monolith_spawn_egg.json": {
-    "mtime": 1795044210.3106155,
-    "seen": 1795067210.192695,
+    "mtime": 1795067893.75994,
+    "seen": 1795086659.1505997,
     "ast_hash": "5c9cb6687b0e734573b6d96691f7a4b3",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/item/rift_blade.json": {
-    "mtime": 1795044210.3104274,
-    "seen": 1795067210.1926956,
+    "mtime": 1795067893.75994,
+    "seen": 1795086659.1506011,
     "ast_hash": "2acfc9236a56e374360346e3c3083ae4",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/item/rift_remover.json": {
-    "mtime": 1795044210.3100688,
-    "seen": 1795067210.1926968,
+    "mtime": 1795067893.75994,
+    "seen": 1795086659.1506026,
     "ast_hash": "56c7a555c0692746aafb476c7b1ec1c4",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/item/rift_signature.json": {
-    "mtime": 1795044210.3095076,
-    "seen": 1795067210.1926975,
+    "mtime": 1795067893.75994,
+    "seen": 1795086659.150604,
     "ast_hash": "8d78fd7031fc4b91e6a901ecf56a4199",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/item/stabilized_rift_signature.json": {
-    "mtime": 1795044210.3096929,
-    "seen": 1795067210.192699,
+    "mtime": 1795067893.75994,
+    "seen": 1795086659.150606,
     "ast_hash": "774966ca956e38f7dd5d7122b32284b7",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/item/stable_fabric.json": {
-    "mtime": 1795044210.3102515,
-    "seen": 1795067210.1927,
+    "mtime": 1795067893.75994,
+    "seen": 1795086659.1506076,
     "ast_hash": "2d986f8608d479c408528bbc03e381f0",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/item/unstable_door.json": {
-    "mtime": 1795044210.3093317,
-    "seen": 1795067210.192701,
+    "mtime": 1795067893.75994,
+    "seen": 1795086659.1506095,
     "ast_hash": "5a0b66f3aa42d30fe1216e01f15ab918",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/models/item/warp_door.json": {
-    "mtime": 1795044210.309145,
-    "seen": 1795067210.1927028,
+    "mtime": 1795067893.75994,
+    "seen": 1795086659.1506104,
     "ast_hash": "8a153818c7f87562ab82b2e79258e69f",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/assets/dimdoors/sounds.json": {
-    "mtime": 1795044210.3107362,
-    "seen": 1795067210.192704,
+    "mtime": 1795067893.75994,
+    "seen": 1795086659.1506126,
     "ast_hash": "1dbd14761b9d9ebb22a9de456c8e20f5",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/data/dimdoors/dimension/limbo.json": {
-    "mtime": 1795044210.3142552,
-    "seen": 1795067210.192705,
+    "mtime": 1795067893.7600558,
+    "seen": 1795086659.1506138,
     "ast_hash": "cd53418dbaff07b063022c88302fa2c6",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/data/dimdoors/dimension/pocket.json": {
-    "mtime": 1795044210.3143628,
-    "seen": 1795067210.1927063,
+    "mtime": 1795067893.7600846,
+    "seen": 1795086659.1506155,
     "ast_hash": "379a0eff0eaa1263505378c7a2396091",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/data/dimdoors/dimension_type/limbo.json": {
-    "mtime": 1795044210.3140407,
-    "seen": 1795067210.192707,
+    "mtime": 1795067893.7600846,
+    "seen": 1795086659.1506174,
     "ast_hash": "4e20b4952b0490010fb9ff3aa3095125",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/data/dimdoors/dimension_type/pocket.json": {
-    "mtime": 1795044210.3141577,
-    "seen": 1795067210.1927083,
+    "mtime": 1795067893.7601259,
+    "seen": 1795086659.150619,
     "ast_hash": "9cdf096d026e6be760bc7dd6f103eb0b",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/data/dimdoors/loot_table/blocks/ancient_fabric.json": {
-    "mtime": 1795044210.311793,
-    "seen": 1795067210.1927097,
+    "mtime": 1795067893.760425,
+    "seen": 1795086659.1506214,
     "ast_hash": "1342a7b6e7a03f5f773d56470ec638ac",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/data/dimdoors/loot_table/blocks/dimensional_door.json": {
-    "mtime": 1795044210.3110986,
-    "seen": 1795067210.1927109,
+    "mtime": 1795067893.7604547,
+    "seen": 1795086659.150623,
     "ast_hash": "3f42508f286d0bbb5f7993c92d0878ce",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/data/dimdoors/loot_table/blocks/fabric_of_reality.json": {
-    "mtime": 1795044210.3116767,
-    "seen": 1795067210.1927114,
+    "mtime": 1795067893.7604547,
+    "seen": 1795086659.1506248,
     "ast_hash": "94e3005a1cf945c0e72d747f9935b6c9",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/data/dimdoors/loot_table/blocks/transdimensional_trapdoor.json": {
-    "mtime": 1795044210.3114512,
-    "seen": 1795067210.1927125,
+    "mtime": 1795067893.7604547,
+    "seen": 1795086659.1506267,
     "ast_hash": "c65598a5d4cbfefcf70171a02d7083b7",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/data/dimdoors/loot_table/blocks/unraveled_fabric.json": {
-    "mtime": 1795044210.311556,
-    "seen": 1795067210.1927135,
+    "mtime": 1795067893.7604547,
+    "seen": 1795086659.1506279,
     "ast_hash": "f3ee19c0be03bce0020ffe5b956c387a",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/data/dimdoors/loot_table/blocks/unstable_door.json": {
-    "mtime": 1795044210.3112116,
-    "seen": 1795067210.1927145,
+    "mtime": 1795067893.7604547,
+    "seen": 1795086659.1506293,
     "ast_hash": "3b9250aa600ccdc1212c5a11127aaef9",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/data/dimdoors/loot_table/blocks/warp_door.json": {
-    "mtime": 1795044210.311346,
-    "seen": 1795067210.1927154,
+    "mtime": 1795067893.7604547,
+    "seen": 1795086659.150631,
     "ast_hash": "846594a617ddaf623edcb3633629563b",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/data/dimdoors/recipe/dimensional_door.json": {
-    "mtime": 1795044210.312275,
-    "seen": 1795067210.1927166,
+    "mtime": 1795067893.7604547,
+    "seen": 1795086659.1506324,
     "ast_hash": "2465953cc5c074b29fbe5afbd59c4fda",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/data/dimdoors/recipe/dimensional_door_from_stable_fabric.json": {
-    "mtime": 1795044210.312701,
-    "seen": 1795067210.1927176,
+    "mtime": 1795067893.7605462,
+    "seen": 1795086659.1506338,
     "ast_hash": "d54ed7225bbd9ddd5a4a48b255838ca8",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/data/dimdoors/recipe/rift_blade.json": {
-    "mtime": 1795044210.3134449,
-    "seen": 1795067210.1927192,
+    "mtime": 1795067893.7605462,
+    "seen": 1795086659.1506357,
     "ast_hash": "10c066ec9e7d041a6d95ddc6f5b76e51",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/data/dimdoors/recipe/rift_remover.json": {
-    "mtime": 1795044210.3132412,
-    "seen": 1795067210.1927202,
+    "mtime": 1795067893.7605462,
+    "seen": 1795086659.1506376,
     "ast_hash": "e8cba1992f6f9ca694446f19dd9af7eb",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/data/dimdoors/recipe/rift_remover_from_stable_fabric.json": {
-    "mtime": 1795044210.3133435,
-    "seen": 1795067210.1927214,
+    "mtime": 1795067893.7605462,
+    "seen": 1795086659.1506395,
     "ast_hash": "e1523d6c8850b5839edee5c4c085cc10",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/data/dimdoors/recipe/rift_signature.json": {
-    "mtime": 1795044210.3125982,
-    "seen": 1795067210.1927922,
+    "mtime": 1795067893.7605462,
+    "seen": 1795086659.1506424,
     "ast_hash": "93ecc68a1226c3d170caa42e366c2d6b",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/data/dimdoors/recipe/rift_signature_from_stable_fabric.json": {
-    "mtime": 1795044210.3130288,
-    "seen": 1795067210.1927936,
+    "mtime": 1795067893.7605462,
+    "seen": 1795086659.150644,
     "ast_hash": "f9a39018b2182dc7c97e2bc472ce41b5",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/data/dimdoors/recipe/stabilized_rift_signature.json": {
-    "mtime": 1795044210.3136494,
-    "seen": 1795067210.1927943,
+    "mtime": 1795067893.7605462,
+    "seen": 1795086659.1506453,
     "ast_hash": "192d046a1b21d939ea4d44f634f6bbf7",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/data/dimdoors/recipe/stable_fabric.json": {
-    "mtime": 1795044210.3135483,
-    "seen": 1795067210.1927953,
+    "mtime": 1795067893.7605462,
+    "seen": 1795086659.1506476,
     "ast_hash": "62a2db18cd2e29ae6b2de83b65a71aba",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/data/dimdoors/recipe/transdimensional_trapdoor.json": {
-    "mtime": 1795044210.3124979,
-    "seen": 1795067210.1927962,
+    "mtime": 1795067893.7605462,
+    "seen": 1795086659.1506495,
     "ast_hash": "29d4e9a622f4ff99816d3fb38a3493ce",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/data/dimdoors/recipe/transdimensional_trapdoor_from_stable_fabric.json": {
-    "mtime": 1795044210.3129106,
-    "seen": 1795067210.1927974,
+    "mtime": 1795067893.7605462,
+    "seen": 1795086659.1506515,
     "ast_hash": "8b5fcf19c48bb24897b8db2209cf9b7c",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/data/dimdoors/recipe/unstable_door.json": {
-    "mtime": 1795044210.3131316,
-    "seen": 1795067210.1927981,
+    "mtime": 1795067893.7605462,
+    "seen": 1795086659.1506531,
     "ast_hash": "2117c09b1a96d9ddcdff53ea21e77931",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/data/dimdoors/recipe/warp_door.json": {
-    "mtime": 1795044210.312385,
-    "seen": 1795067210.1927993,
+    "mtime": 1795067893.7605462,
+    "seen": 1795086659.150656,
     "ast_hash": "0e7f70068d9350f42bbe3a3736bf6d17",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/data/dimdoors/recipe/warp_door_from_stable_fabric.json": {
-    "mtime": 1795044210.312801,
-    "seen": 1795067210.1928,
+    "mtime": 1795067893.7605462,
+    "seen": 1795086659.1506581,
     "ast_hash": "fea324e0d96b79b78ef38ee0964982c0",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/data/dimdoors/tags/item/repairs/rift_blade.json": {
-    "mtime": 1795044210.3121724,
-    "seen": 1795067210.192801,
+    "mtime": 1795067893.7606828,
+    "seen": 1795086659.1506598,
     "ast_hash": "6b051ecc1880413a65399c064332c7e7",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/data/dimdoors/worldgen/biome/limbo.json": {
-    "mtime": 1795044210.313779,
-    "seen": 1795067210.1928017,
+    "mtime": 1795067893.7607143,
+    "seen": 1795086659.150662,
     "ast_hash": "fb6e9f281c63919a4cb3a1f4400ed261",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/data/dimdoors/worldgen/biome/pocket.json": {
-    "mtime": 1795044210.3139014,
-    "seen": 1795067210.192803,
+    "mtime": 1795067893.760735,
+    "seen": 1795086659.1506636,
     "ast_hash": "ad6e377ae5ab59f9d8e0caa78e9d514a",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/data/minecraft/tags/block/mineable/axe.json": {
-    "mtime": 1795044210.312084,
-    "seen": 1795067210.1928039,
+    "mtime": 1795067893.7607703,
+    "seen": 1795086659.1506653,
     "ast_hash": "a2c3baf187dd4e61a89cb84db15ba81f",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/data/minecraft/tags/block/mineable/pickaxe.json": {
-    "mtime": 1795044210.3118837,
-    "seen": 1795067210.1928046,
+    "mtime": 1795067893.7607884,
+    "seen": 1795086659.1506665,
     "ast_hash": "4de174bd164b5196ec3a0d90cef2579b",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/data/minecraft/tags/block/mineable/shovel.json": {
-    "mtime": 1795044210.31198,
-    "seen": 1795067210.1928053,
+    "mtime": 1795067893.7607884,
+    "seen": 1795086659.1506684,
     "ast_hash": "03f1d05b2eeaee53ea8102c755d69858",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/tools/gen.py": {
-    "mtime": 1795044210.2784152,
-    "seen": 1795067210.1928062,
+    "mtime": 1795067893.7607884,
+    "seen": 1795086659.1506703,
     "ast_hash": "270311eeaa5b6ccb8bedbc18bf8caf1f",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/resources/data/minecraft/recipe/enchanted_golden_apple.json": {
-    "mtime": 1795067028.2752254,
-    "seen": 1795067210.1981168,
+    "mtime": 1795067893.7610824,
+    "seen": 1795086659.1600122,
     "ast_hash": "e52672b5e23c8ec0f787ce12165ed226",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/original-assets.txt": {
-    "mtime": 1795044210.3023326,
-    "seen": 1795067210.198177,
+    "mtime": 1795067893.7569196,
+    "seen": 1795086659.1601262,
     "ast_hash": "71efef95623d4b50c1b71b020faef91a",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/BiblioCraft.java": {
+    "mtime": 1795068954.690556,
+    "seen": 1795086659.149565,
+    "ast_hash": "bf2a3a008659a86df559a5e84a67fbb0",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/Woods.java": {
+    "mtime": 1795068469.991997,
+    "seen": 1795086659.1495676,
+    "ast_hash": "43dab34e1262c7f05dfa6b92e08f5860",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/bookcase/BookcaseBlock.java": {
+    "mtime": 1795068834.490457,
+    "seen": 1795086659.149569,
+    "ast_hash": "9c2ae9d078c44863e42fd1fe759b3e50",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/bookcase/BookcaseBlockEntity.java": {
+    "mtime": 1795068822.6870687,
+    "seen": 1795086659.1495705,
+    "ast_hash": "26c5446951192ba42b416b499e03e511",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/bookcase/BookcaseMenu.java": {
+    "mtime": 1795068834.4923139,
+    "seen": 1795086659.1495721,
+    "ast_hash": "ba39dc1d0d0e88072c6aaebbc5630446",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/bookcase/Bookcases.java": {
+    "mtime": 1795068781.6186574,
+    "seen": 1795086659.1495745,
+    "ast_hash": "651f303f51397cd7bc8d45bf8cdc1c48",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/bookcase/RedstoneBookItem.java": {
+    "mtime": 1795068781.6204588,
+    "seen": 1795086659.1495762,
+    "ast_hash": "2a1765d111c030ae8409b884f1ca8d67",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/bookcase/client/BookcaseModels.java": {
+    "mtime": 1795068895.0539057,
+    "seen": 1795086659.149578,
+    "ast_hash": "c3567dd8deb806dec7a13c997dd9224c",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/bookcase/client/BookcaseRenderer.java": {
+    "mtime": 1795068895.0582886,
+    "seen": 1795086659.1495793,
+    "ast_hash": "56701c32cb29ff976a7d6d6cf5ce38cf",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/bookcase/client/BookcasesClient.java": {
+    "mtime": 1795068941.8012807,
+    "seen": 1795086659.1495805,
+    "ast_hash": "e8db9f5d2f518fe982c6963703c37855",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/client/BCClient.java": {
+    "mtime": 1795068608.6077666,
+    "seen": 1795086659.1495824,
+    "ast_hash": "b8a5ee0707fb010bc39a2a9350bc6089",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/client/BiblioRender.java": {
+    "mtime": 1795068941.8010147,
+    "seen": 1795086659.1495838,
+    "ast_hash": "426623ebc8c2dafa12607d23dda89adf",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/client/BiblioScreen.java": {
+    "mtime": 1795068859.3128345,
+    "seen": 1795086659.149585,
+    "ast_hash": "306f987efed628382ca2f6b9304c61e0",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/client/BlockItemRenderers.java": {
+    "mtime": 1795068918.9554188,
+    "seen": 1795086659.1495867,
+    "ast_hash": "dc515ae1b657144c2875b5653eed4c88",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/common/BCConfig.java": {
+    "mtime": 1795068497.8453734,
+    "seen": 1795086659.149588,
+    "ast_hash": "90805e3ff8277eaae64cf42614c0d12c",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/common/BiblioBlock.java": {
+    "mtime": 1795068941.8005502,
+    "seen": 1795086659.1495898,
+    "ast_hash": "d8f505c7ff815c316e79e25060768392",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/common/BiblioBlockEntity.java": {
+    "mtime": 1795068539.036033,
+    "seen": 1795086659.149591,
+    "ast_hash": "5f67ed4bb2dd2532b3da542e6989058c",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/common/BiblioMenu.java": {
+    "mtime": 1795068722.0377238,
+    "seen": 1795086659.1495926,
+    "ast_hash": "cb7187966060b5ab2dc3083c46a871dc",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/decor/Decor.java": {
+    "mtime": 1795085055.3955252,
+    "seen": 1795086659.1495943,
+    "ast_hash": "10b2b27e56cd62a1861e797ebe9d4922",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/decor/LampBlock.java": {
+    "mtime": 1795085055.395607,
+    "seen": 1795086659.1495962,
+    "ast_hash": "ae0731c94d55a96a313213d1a026fbee",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/decor/LanternBlock.java": {
+    "mtime": 1795085055.395597,
+    "seen": 1795086659.1495974,
+    "ast_hash": "b09da543aa606f125bfa3bebeba22341",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/decor/LightBlock.java": {
+    "mtime": 1795085055.3955142,
+    "seen": 1795086659.1495988,
+    "ast_hash": "1302abab923442f506ccbc030a17a900",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/decor/LightBlockEntity.java": {
+    "mtime": 1795085055.3955765,
+    "seen": 1795086659.1496003,
+    "ast_hash": "9d60536bae4670b01d2ea0ccc6ea92bd",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/decor/LightBlockItem.java": {
+    "mtime": 1795085055.3955865,
+    "seen": 1795086659.149602,
+    "ast_hash": "08d91cd0b0a8337c5296008f41b9d0d1",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/decor/TableBlock.java": {
+    "mtime": 1795085055.3955383,
+    "seen": 1795086659.1496038,
+    "ast_hash": "ac4746f5044df3838cc7273e6e49f51d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/decor/TableBlockEntity.java": {
+    "mtime": 1795085055.3955538,
+    "seen": 1795086659.149605,
+    "ast_hash": "79da45485eeb3eaa7e7d5e97a467d8bb",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/decor/TableMenu.java": {
+    "mtime": 1795085055.3955662,
+    "seen": 1795086659.1496067,
+    "ast_hash": "0d71940e68415748e320e402c4ae39ff",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/decor/TapeMeasureItem.java": {
+    "mtime": 1795085055.3956237,
+    "seen": 1795086659.149608,
+    "ast_hash": "e753837cd21d91729309fa302536c2f7",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/decor/client/CandleFlameParticle.java": {
+    "mtime": 1795085055.3954196,
+    "seen": 1795086659.1496093,
+    "ast_hash": "784e82c51f16a940e95b9a9c65ea8e73",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/decor/client/DecorClient.java": {
+    "mtime": 1795085055.3954434,
+    "seen": 1795086659.1496105,
+    "ast_hash": "8695813c74d027ec7d58971bb5c84722",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/decor/client/LightRenderer.java": {
+    "mtime": 1795085055.3954947,
+    "seen": 1795086659.1496117,
+    "ast_hash": "4fdc7aa5df5d58fa15ceffc63002fc2b",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/decor/client/ObjModel.java": {
+    "mtime": 1795085055.3954625,
+    "seen": 1795086659.149613,
+    "ast_hash": "2290fc5fc5f40d95d43abb49443c9ea4",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/decor/client/TableRenderer.java": {
+    "mtime": 1795085055.395478,
+    "seen": 1795086659.149614,
+    "ast_hash": "f9ffc5bd43c3a946a6efa039b10c0256",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/display/ArmorRules.java": {
+    "mtime": 1795086227.9984581,
+    "seen": 1795086659.149615,
+    "ast_hash": "dfb28544f09ae4da909c11bb0a1af5e0",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/display/ArmorStandBlock.java": {
+    "mtime": 1795086227.9985511,
+    "seen": 1795086659.1496162,
+    "ast_hash": "d3793afaf8752cfeaa2e2b40ac688204",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/display/ArmorStandBlockEntity.java": {
+    "mtime": 1795086227.9985402,
+    "seen": 1795086659.1496174,
+    "ast_hash": "5f525593e06b6dd946bcd51a4c9d8947",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/display/ArmorStandMenu.java": {
+    "mtime": 1795086227.9985657,
+    "seen": 1795086659.1496186,
+    "ast_hash": "034b5b08965c0ec190a37335ddc37f05",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/display/DisplayLight.java": {
+    "mtime": 1795086227.9983056,
+    "seen": 1795086659.14962,
+    "ast_hash": "e1ba3a3332dc583cbd8de5f29aa3d09b",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/display/Displays.java": {
+    "mtime": 1795086227.9985776,
+    "seen": 1795086659.149621,
+    "ast_hash": "5b6ea1685e0cd222d55b9c151001ea2d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/display/LabelBlock.java": {
+    "mtime": 1795086227.9985187,
+    "seen": 1795086659.1496224,
+    "ast_hash": "2b713d10c048b2e4a4bd7e664f62ecd3",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/display/LabelBlockEntity.java": {
+    "mtime": 1795086227.998507,
+    "seen": 1795086659.149624,
+    "ast_hash": "3ff98f3ad51cc5970b3948e5ea5c781f",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/display/LabelMenu.java": {
+    "mtime": 1795086227.998529,
+    "seen": 1795086659.1496253,
+    "ast_hash": "78b333cc790c0cead0d9b49008b8e3e7",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/display/WeaponCaseBlock.java": {
+    "mtime": 1795086227.99847,
+    "seen": 1795086659.1496267,
+    "ast_hash": "f19a10b3843d81ecd25dd4f56d3733ff",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/display/WeaponCaseBlockEntity.java": {
+    "mtime": 1795086227.998448,
+    "seen": 1795086659.1496282,
+    "ast_hash": "df6758bf6a18a3df00ffa32e4ce3e82c",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/display/WeaponCaseItem.java": {
+    "mtime": 1795086227.9984937,
+    "seen": 1795086659.1496294,
+    "ast_hash": "599aafbdc848291f46917f1e63a4542b",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/display/WeaponCaseMenu.java": {
+    "mtime": 1795086227.9984837,
+    "seen": 1795086659.149631,
+    "ast_hash": "63a3db9a676755f6b38c804c854c91ec",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/display/client/ArmorStandRenderer.java": {
+    "mtime": 1795086227.9984052,
+    "seen": 1795086659.149632,
+    "ast_hash": "cee5ebfcd79632fd957145d7bc88aef6",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/display/client/DisplayModels.java": {
+    "mtime": 1795086227.9984329,
+    "seen": 1795086659.1496332,
+    "ast_hash": "4cccaa1cc639e922958a9f0ecb376a95",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/display/client/DisplayText.java": {
+    "mtime": 1795086227.9983563,
+    "seen": 1795086659.1496348,
+    "ast_hash": "21155e30dce1c46bf9425abec61becd2",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/display/client/DisplaysClient.java": {
+    "mtime": 1795086227.9984195,
+    "seen": 1795086659.1496363,
+    "ast_hash": "7b79fde4ff8b1806d590febc3370736b",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/display/client/LabelRenderer.java": {
+    "mtime": 1795086227.9983912,
+    "seen": 1795086659.1496382,
+    "ast_hash": "b14e48e36bf6140ff14d72fb21b64fd1",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/display/client/WeaponCaseRenderer.java": {
+    "mtime": 1795086227.998372,
+    "seen": 1795086659.1496398,
+    "ast_hash": "f21d67bbf1e2233b1a499aa1c7ab47d2",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/printing/BookFiles.java": {
+    "mtime": 1795085055.4667122,
+    "seen": 1795086659.149642,
+    "ast_hash": "7767185574e8e04e00b1d86093d28639",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/printing/ChaseItem.java": {
+    "mtime": 1795085055.4665656,
+    "seen": 1795086659.1496441,
+    "ast_hash": "b9c23b2b00b39b031a47d07dc39b204b",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/printing/Desks.java": {
+    "mtime": 1795085055.4666047,
+    "seen": 1795086659.1496463,
+    "ast_hash": "06b282338c8bb01a33e7e43592363101",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/printing/EnchantedPlateItem.java": {
+    "mtime": 1795085055.466646,
+    "seen": 1795086659.1496484,
+    "ast_hash": "0074e83e84d0ba2c3ee69c9eebcb0615",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/printing/PlateItem.java": {
+    "mtime": 1795085055.466593,
+    "seen": 1795086659.1496503,
+    "ast_hash": "568949fe39001d5b280c965155419246",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/printing/Presses.java": {
+    "mtime": 1795085055.466726,
+    "seen": 1795086659.1496522,
+    "ast_hash": "655b72c22acde31278a603992da1a9b4",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/printing/PrintPressBlock.java": {
+    "mtime": 1795085055.4665782,
+    "seen": 1795086659.1496544,
+    "ast_hash": "3a137bb34f3350d1cadd1c69c0edfcd5",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/printing/PrintPressBlockEntity.java": {
+    "mtime": 1795085055.4665265,
+    "seen": 1795086659.149656,
+    "ast_hash": "5c2c662643fd89b2ba84a77167849cab",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/printing/PrintPressMenu.java": {
+    "mtime": 1795085055.4666164,
+    "seen": 1795086659.1496582,
+    "ast_hash": "77dbe8e4e0772247130859593aab5a06",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/printing/Printing.java": {
+    "mtime": 1795085055.4666944,
+    "seen": 1795086659.1496606,
+    "ast_hash": "dcf5733a2511775e40db2624491687bb",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/printing/PrintingNetwork.java": {
+    "mtime": 1795085055.4667835,
+    "seen": 1795086659.1496625,
+    "ast_hash": "ca1c36f8af1659f1c729814e1ac9a25a",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/printing/TypesettingBlock.java": {
+    "mtime": 1795085055.4667673,
+    "seen": 1795086659.1497397,
+    "ast_hash": "04a15fae61bcbdbe8430f1fdf7fbc968",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/printing/TypesettingBlockEntity.java": {
+    "mtime": 1795085055.4667432,
+    "seen": 1795086659.149743,
+    "ast_hash": "d005e2f0d60ae38cb172974165660801",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/printing/WritingDeskBlock.java": {
+    "mtime": 1795085055.4666631,
+    "seen": 1795086659.1497455,
+    "ast_hash": "d451c1c63c370f6e6a0960bfecb654ba",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/printing/WritingDeskBlockEntity.java": {
+    "mtime": 1795085055.4666283,
+    "seen": 1795086659.1497471,
+    "ast_hash": "4411ee4ed003efac6a60fd6b7c4edc28",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/printing/WritingDeskMenu.java": {
+    "mtime": 1795085055.4666781,
+    "seen": 1795086659.1497486,
+    "ast_hash": "05e5a87466147d179fda1f3bd6adf6e5",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/printing/client/BookWritingScreen.java": {
+    "mtime": 1795085055.4669874,
+    "seen": 1795086659.1497505,
+    "ast_hash": "2cce97a115fd3b5ac0ed25defaee1a94",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/printing/client/PrintPressRenderer.java": {
+    "mtime": 1795085055.4668717,
+    "seen": 1795086659.1497524,
+    "ast_hash": "d17bffc2a13480515b27d4cf59a12246",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/printing/client/PrintRender.java": {
+    "mtime": 1795085055.4668581,
+    "seen": 1795086659.1497538,
+    "ast_hash": "d880cf2ad8a670ecd4ea3352d1820022",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/printing/client/PrintingClient.java": {
+    "mtime": 1795085055.4669373,
+    "seen": 1795086659.1497552,
+    "ast_hash": "050099701e90e442954f343cc7d298d6",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/printing/client/PrintingModels.java": {
+    "mtime": 1795085055.4668229,
+    "seen": 1795086659.1497564,
+    "ast_hash": "b2eee2bb17bb8d0364a822338eb2a711",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/printing/client/TypesettingRenderer.java": {
+    "mtime": 1795085055.4669185,
+    "seen": 1795086659.1497588,
+    "ast_hash": "41861ca3a8077a7824e3eaede84e00f8",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/printing/client/TypesettingScreen.java": {
+    "mtime": 1795085055.466973,
+    "seen": 1795086659.1497607,
+    "ast_hash": "581b073baab4595e233752c1be01a178",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/printing/client/WritingDeskRenderer.java": {
+    "mtime": 1795085055.4669604,
+    "seen": 1795086659.1497624,
+    "ast_hash": "27e4af406ff59e2aced2487beb6e7f5f",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/reading/Reading.java": {
+    "mtime": 1795068571.7370822,
+    "seen": 1795086659.1497633,
+    "ast_hash": "1b5607e99d7604208325c1a295d978d6",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/shelf/PotionShelfBlock.java": {
+    "mtime": 1795085055.3724866,
+    "seen": 1795086659.1497648,
+    "ast_hash": "57d2f8a99ccef2912d355173af767e19",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/shelf/PotionShelfBlockEntity.java": {
+    "mtime": 1795085055.3721688,
+    "seen": 1795086659.1497662,
+    "ast_hash": "5c74519d37b61fd6d09ad78d233d7f21",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/shelf/PotionShelfMenu.java": {
+    "mtime": 1795085055.3727324,
+    "seen": 1795086659.1497676,
+    "ast_hash": "ca972ae97c15108ce399f17cd40e6eb6",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/shelf/ShelfBlock.java": {
+    "mtime": 1795085055.3714957,
+    "seen": 1795086659.1497686,
+    "ast_hash": "43844d70ddbb382f2952d18173637830",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/shelf/ShelfBlockEntity.java": {
+    "mtime": 1795085055.3734455,
+    "seen": 1795086659.14977,
+    "ast_hash": "1a2ddd9beffc4350b42544809558ca6f",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/shelf/ShelfMenu.java": {
+    "mtime": 1795085055.373223,
+    "seen": 1795086659.1497712,
+    "ast_hash": "344d7b88234ce69c3bee775d172e1946",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/shelf/Shelves.java": {
+    "mtime": 1795085055.3718631,
+    "seen": 1795086659.149773,
+    "ast_hash": "0fa83cd865072fc28821d4b14d95cc13",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/shelf/ToolRackBlock.java": {
+    "mtime": 1795085055.3736453,
+    "seen": 1795086659.149774,
+    "ast_hash": "211b34b534d5039828aa120aa372e50e",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/shelf/ToolRackBlockEntity.java": {
+    "mtime": 1795085055.3735628,
+    "seen": 1795086659.1497753,
+    "ast_hash": "dc30ccfce3e14f80355c8f96257b0500",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/shelf/ToolRackMenu.java": {
+    "mtime": 1795085055.3733313,
+    "seen": 1795086659.149777,
+    "ast_hash": "e5f8ffef2031bbd75a6722c385f11edd",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/shelf/client/GenericShelfRenderer.java": {
+    "mtime": 1795085055.3710775,
+    "seen": 1795086659.1497786,
+    "ast_hash": "e150ef6bcc5ee2801741c5bcc28079d6",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/shelf/client/PotionShelfRenderer.java": {
+    "mtime": 1795085055.371064,
+    "seen": 1795086659.14978,
+    "ast_hash": "8ce3a92fd89b0fbb75fdad2c959775a4",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/shelf/client/ShelfItems.java": {
+    "mtime": 1795085055.3710508,
+    "seen": 1795086659.1497817,
+    "ast_hash": "54ffa47cfe4efec4b29327cda0cecbd2",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/shelf/client/ShelfModels.java": {
+    "mtime": 1795085055.3710315,
+    "seen": 1795086659.1497831,
+    "ast_hash": "2c701d34ea04ba2ea6c0e9b3684cc546",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/shelf/client/ShelvesClient.java": {
+    "mtime": 1795085055.3711102,
+    "seen": 1795086659.149785,
+    "ast_hash": "4c63686adcd26550e85c68f1f506fb35",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/java/bibliocraft/shelf/client/ToolRackRenderer.java": {
+    "mtime": 1795085055.3710938,
+    "seen": 1795086659.1497867,
+    "ast_hash": "eac6ab973950f7c649745abd0a4b1f2d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/armor_stand.json": {
+    "mtime": 1795086228.2003224,
+    "seen": 1795086659.149788,
+    "ast_hash": "a6dc6d3487c55b6d8d97f823bdac9f64",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/birch_bookcase.json": {
+    "mtime": 1795086228.1911519,
+    "seen": 1795086659.1497889,
+    "ast_hash": "95007477b63c427007308da48d9bea2f",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/birch_case_black.json": {
+    "mtime": 1795086228.1966987,
+    "seen": 1795086659.1497903,
+    "ast_hash": "2e6b3d8b2dcab3f6e5b8cb8797c3bb8d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/birch_case_blue.json": {
+    "mtime": 1795086228.1961489,
+    "seen": 1795086659.1497915,
+    "ast_hash": "2e6b3d8b2dcab3f6e5b8cb8797c3bb8d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/birch_case_green.json": {
+    "mtime": 1795086228.1965008,
+    "seen": 1795086659.149793,
+    "ast_hash": "2e6b3d8b2dcab3f6e5b8cb8797c3bb8d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/birch_case_red.json": {
+    "mtime": 1795086228.195727,
+    "seen": 1795086659.1497948,
+    "ast_hash": "2e6b3d8b2dcab3f6e5b8cb8797c3bb8d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/birch_desk.json": {
+    "mtime": 1795086228.1905794,
+    "seen": 1795086659.149796,
+    "ast_hash": "68c7222195d60c5cc39e3459aecf619b",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/birch_label.json": {
+    "mtime": 1795086228.1990976,
+    "seen": 1795086659.1497974,
+    "ast_hash": "efee58e050bb01ada0e1d080d01ac01d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/birch_potion_shelf.json": {
+    "mtime": 1795086228.1916378,
+    "seen": 1795086659.149799,
+    "ast_hash": "9b794855273baad752f335479366563d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/birch_shelf.json": {
+    "mtime": 1795086228.1935642,
+    "seen": 1795086659.1498003,
+    "ast_hash": "a8332b3194385fe56af0678542df0a3b",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/birch_table.json": {
+    "mtime": 1795086228.2000608,
+    "seen": 1795086659.1498013,
+    "ast_hash": "12075a9506d71420b2d801e7f3cd1ada",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/birch_tool_rack.json": {
+    "mtime": 1795086228.1945746,
+    "seen": 1795086659.1498027,
+    "ast_hash": "c0d77f09a082faf3d6678f3d8c0eb293",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/black_lamp.json": {
+    "mtime": 1795086228.203187,
+    "seen": 1795086659.1498039,
+    "ast_hash": "d66221e60e7108a88892b0bc5a0ee2e2",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/black_lantern.json": {
+    "mtime": 1795086228.20122,
+    "seen": 1795086659.1498053,
+    "ast_hash": "915e2370e33d80394a9cd16b52307abc",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/blue_lamp.json": {
+    "mtime": 1795086228.204233,
+    "seen": 1795086659.1498065,
+    "ast_hash": "d66221e60e7108a88892b0bc5a0ee2e2",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/blue_lantern.json": {
+    "mtime": 1795086228.2023075,
+    "seen": 1795086659.1498084,
+    "ast_hash": "915e2370e33d80394a9cd16b52307abc",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/brown_lamp.json": {
+    "mtime": 1795086228.2046227,
+    "seen": 1795086659.1498096,
+    "ast_hash": "d66221e60e7108a88892b0bc5a0ee2e2",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/brown_lantern.json": {
+    "mtime": 1795086228.2026956,
+    "seen": 1795086659.149811,
+    "ast_hash": "915e2370e33d80394a9cd16b52307abc",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/cyan_lamp.json": {
+    "mtime": 1795086228.2037737,
+    "seen": 1795086659.1498122,
+    "ast_hash": "d66221e60e7108a88892b0bc5a0ee2e2",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/cyan_lantern.json": {
+    "mtime": 1795086228.2021067,
+    "seen": 1795086659.1498132,
+    "ast_hash": "915e2370e33d80394a9cd16b52307abc",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/gray_lamp.json": {
+    "mtime": 1795086228.2030914,
+    "seen": 1795086659.1498144,
+    "ast_hash": "d66221e60e7108a88892b0bc5a0ee2e2",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/gray_lantern.json": {
+    "mtime": 1795086228.2011132,
+    "seen": 1795086659.1498363,
+    "ast_hash": "915e2370e33d80394a9cd16b52307abc",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/green_lamp.json": {
+    "mtime": 1795086228.2036734,
+    "seen": 1795086659.1498406,
+    "ast_hash": "d66221e60e7108a88892b0bc5a0ee2e2",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/green_lantern.json": {
+    "mtime": 1795086228.2020059,
+    "seen": 1795086659.1498435,
+    "ast_hash": "915e2370e33d80394a9cd16b52307abc",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/jungle_bookcase.json": {
+    "mtime": 1795086228.1912546,
+    "seen": 1795086659.1498456,
+    "ast_hash": "95007477b63c427007308da48d9bea2f",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/jungle_case_black.json": {
+    "mtime": 1795086228.1982653,
+    "seen": 1795086659.1498473,
+    "ast_hash": "2e6b3d8b2dcab3f6e5b8cb8797c3bb8d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/jungle_case_blue.json": {
+    "mtime": 1795086228.197759,
+    "seen": 1795086659.1498492,
+    "ast_hash": "2e6b3d8b2dcab3f6e5b8cb8797c3bb8d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/jungle_case_green.json": {
+    "mtime": 1795086228.1980505,
+    "seen": 1795086659.1498513,
+    "ast_hash": "2e6b3d8b2dcab3f6e5b8cb8797c3bb8d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/jungle_case_red.json": {
+    "mtime": 1795086228.197096,
+    "seen": 1795086659.1498537,
+    "ast_hash": "2e6b3d8b2dcab3f6e5b8cb8797c3bb8d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/jungle_desk.json": {
+    "mtime": 1795086228.1906924,
+    "seen": 1795086659.1498566,
+    "ast_hash": "68c7222195d60c5cc39e3459aecf619b",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/jungle_label.json": {
+    "mtime": 1795086228.1993177,
+    "seen": 1795086659.14986,
+    "ast_hash": "efee58e050bb01ada0e1d080d01ac01d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/jungle_potion_shelf.json": {
+    "mtime": 1795086228.1917396,
+    "seen": 1795086659.1498628,
+    "ast_hash": "9b794855273baad752f335479366563d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/jungle_shelf.json": {
+    "mtime": 1795086228.1937976,
+    "seen": 1795086659.149865,
+    "ast_hash": "a8332b3194385fe56af0678542df0a3b",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/jungle_table.json": {
+    "mtime": 1795086228.200165,
+    "seen": 1795086659.149867,
+    "ast_hash": "12075a9506d71420b2d801e7f3cd1ada",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/jungle_tool_rack.json": {
+    "mtime": 1795086228.1946788,
+    "seen": 1795086659.149869,
+    "ast_hash": "c0d77f09a082faf3d6678f3d8c0eb293",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/light_blue_lamp.json": {
+    "mtime": 1795086228.203912,
+    "seen": 1795086659.1498704,
+    "ast_hash": "d66221e60e7108a88892b0bc5a0ee2e2",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/light_blue_lantern.json": {
+    "mtime": 1795086228.2022028,
+    "seen": 1795086659.1498713,
+    "ast_hash": "915e2370e33d80394a9cd16b52307abc",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/light_gray_lamp.json": {
+    "mtime": 1795086228.202993,
+    "seen": 1795086659.1498725,
+    "ast_hash": "d66221e60e7108a88892b0bc5a0ee2e2",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/light_gray_lantern.json": {
+    "mtime": 1795086228.2009993,
+    "seen": 1795086659.1498742,
+    "ast_hash": "915e2370e33d80394a9cd16b52307abc",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/lime_lamp.json": {
+    "mtime": 1795086228.2035785,
+    "seen": 1795086659.1498756,
+    "ast_hash": "d66221e60e7108a88892b0bc5a0ee2e2",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/lime_lantern.json": {
+    "mtime": 1795086228.2018914,
+    "seen": 1795086659.149877,
+    "ast_hash": "915e2370e33d80394a9cd16b52307abc",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/magenta_lamp.json": {
+    "mtime": 1795086228.2044315,
+    "seen": 1795086659.1498783,
+    "ast_hash": "d66221e60e7108a88892b0bc5a0ee2e2",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/magenta_lantern.json": {
+    "mtime": 1795086228.2025065,
+    "seen": 1795086659.1498797,
+    "ast_hash": "915e2370e33d80394a9cd16b52307abc",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/oak_bookcase.json": {
+    "mtime": 1795086228.190923,
+    "seen": 1795086659.1498816,
+    "ast_hash": "95007477b63c427007308da48d9bea2f",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/oak_case_black.json": {
+    "mtime": 1795086228.1952176,
+    "seen": 1795086659.1498828,
+    "ast_hash": "2e6b3d8b2dcab3f6e5b8cb8797c3bb8d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/oak_case_blue.json": {
+    "mtime": 1795086228.1950006,
+    "seen": 1795086659.1498842,
+    "ast_hash": "2e6b3d8b2dcab3f6e5b8cb8797c3bb8d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/oak_case_green.json": {
+    "mtime": 1795086228.1951115,
+    "seen": 1795086659.1498854,
+    "ast_hash": "2e6b3d8b2dcab3f6e5b8cb8797c3bb8d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/oak_case_red.json": {
+    "mtime": 1795086228.1948829,
+    "seen": 1795086659.149887,
+    "ast_hash": "2e6b3d8b2dcab3f6e5b8cb8797c3bb8d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/oak_desk.json": {
+    "mtime": 1795086228.1902237,
+    "seen": 1795086659.1498885,
+    "ast_hash": "68c7222195d60c5cc39e3459aecf619b",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/oak_label.json": {
+    "mtime": 1795086228.1986158,
+    "seen": 1795086659.1498907,
+    "ast_hash": "efee58e050bb01ada0e1d080d01ac01d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/oak_potion_shelf.json": {
+    "mtime": 1795086228.191421,
+    "seen": 1795086659.1498926,
+    "ast_hash": "9b794855273baad752f335479366563d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/oak_shelf.json": {
+    "mtime": 1795086228.19216,
+    "seen": 1795086659.149894,
+    "ast_hash": "a8332b3194385fe56af0678542df0a3b",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/oak_table.json": {
+    "mtime": 1795086228.1996756,
+    "seen": 1795086659.1498954,
+    "ast_hash": "12075a9506d71420b2d801e7f3cd1ada",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/oak_tool_rack.json": {
+    "mtime": 1795086228.1942086,
+    "seen": 1795086659.149897,
+    "ast_hash": "c0d77f09a082faf3d6678f3d8c0eb293",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/orange_lamp.json": {
+    "mtime": 1795086228.2033792,
+    "seen": 1795086659.1498988,
+    "ast_hash": "d66221e60e7108a88892b0bc5a0ee2e2",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/orange_lantern.json": {
+    "mtime": 1795086228.201653,
+    "seen": 1795086659.1499,
+    "ast_hash": "915e2370e33d80394a9cd16b52307abc",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/pink_lamp.json": {
+    "mtime": 1795086228.2045267,
+    "seen": 1795086659.1499016,
+    "ast_hash": "d66221e60e7108a88892b0bc5a0ee2e2",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/pink_lantern.json": {
+    "mtime": 1795086228.202601,
+    "seen": 1795086659.149903,
+    "ast_hash": "915e2370e33d80394a9cd16b52307abc",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/printing_press.json": {
+    "mtime": 1795086228.2006552,
+    "seen": 1795086659.149905,
+    "ast_hash": "2ad10295bf6a2dc678a3fc5e633fb7c8",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/purple_lamp.json": {
+    "mtime": 1795086228.2043355,
+    "seen": 1795086659.1499064,
+    "ast_hash": "d66221e60e7108a88892b0bc5a0ee2e2",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/purple_lantern.json": {
+    "mtime": 1795086228.2024047,
+    "seen": 1795086659.149908,
+    "ast_hash": "915e2370e33d80394a9cd16b52307abc",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/red_lamp.json": {
+    "mtime": 1795086228.2032814,
+    "seen": 1795086659.14991,
+    "ast_hash": "d66221e60e7108a88892b0bc5a0ee2e2",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/red_lantern.json": {
+    "mtime": 1795086228.201327,
+    "seen": 1795086659.1499119,
+    "ast_hash": "915e2370e33d80394a9cd16b52307abc",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/spruce_bookcase.json": {
+    "mtime": 1795086228.1910422,
+    "seen": 1795086659.1499133,
+    "ast_hash": "95007477b63c427007308da48d9bea2f",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/spruce_case_black.json": {
+    "mtime": 1795086228.1956282,
+    "seen": 1795086659.149915,
+    "ast_hash": "2e6b3d8b2dcab3f6e5b8cb8797c3bb8d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/spruce_case_blue.json": {
+    "mtime": 1795086228.1954215,
+    "seen": 1795086659.1499164,
+    "ast_hash": "2e6b3d8b2dcab3f6e5b8cb8797c3bb8d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/spruce_case_green.json": {
+    "mtime": 1795086228.195523,
+    "seen": 1795086659.1499174,
+    "ast_hash": "2e6b3d8b2dcab3f6e5b8cb8797c3bb8d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/spruce_case_red.json": {
+    "mtime": 1795086228.1953235,
+    "seen": 1795086659.1499188,
+    "ast_hash": "2e6b3d8b2dcab3f6e5b8cb8797c3bb8d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/spruce_desk.json": {
+    "mtime": 1795086228.1904588,
+    "seen": 1795086659.14992,
+    "ast_hash": "68c7222195d60c5cc39e3459aecf619b",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/spruce_label.json": {
+    "mtime": 1795086228.1988292,
+    "seen": 1795086659.149921,
+    "ast_hash": "efee58e050bb01ada0e1d080d01ac01d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/spruce_potion_shelf.json": {
+    "mtime": 1795086228.1915305,
+    "seen": 1795086659.1499224,
+    "ast_hash": "9b794855273baad752f335479366563d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/spruce_shelf.json": {
+    "mtime": 1795086228.1928089,
+    "seen": 1795086659.1499236,
+    "ast_hash": "a8332b3194385fe56af0678542df0a3b",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/spruce_table.json": {
+    "mtime": 1795086228.1999273,
+    "seen": 1795086659.1499245,
+    "ast_hash": "12075a9506d71420b2d801e7f3cd1ada",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/spruce_tool_rack.json": {
+    "mtime": 1795086228.194445,
+    "seen": 1795086659.1499257,
+    "ast_hash": "c0d77f09a082faf3d6678f3d8c0eb293",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/typesetting_table.json": {
+    "mtime": 1795086228.200494,
+    "seen": 1795086659.1499271,
+    "ast_hash": "23e38586d3d45f6c841b25635cf0f340",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/white_lamp.json": {
+    "mtime": 1795086228.2028863,
+    "seen": 1795086659.1499288,
+    "ast_hash": "d66221e60e7108a88892b0bc5a0ee2e2",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/white_lantern.json": {
+    "mtime": 1795086228.2008195,
+    "seen": 1795086659.14993,
+    "ast_hash": "915e2370e33d80394a9cd16b52307abc",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/yellow_lamp.json": {
+    "mtime": 1795086228.2034817,
+    "seen": 1795086659.1499312,
+    "ast_hash": "d66221e60e7108a88892b0bc5a0ee2e2",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/blockstates/yellow_lantern.json": {
+    "mtime": 1795086228.201754,
+    "seen": 1795086659.1499326,
+    "ast_hash": "915e2370e33d80394a9cd16b52307abc",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/equipment/glasses.json": {
+    "mtime": 1795086228.2172203,
+    "seen": 1795086659.149934,
+    "ast_hash": "9d6b99db651f7d77cd44b7bbd9467736",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/equipment/glasses_darktint.json": {
+    "mtime": 1795086228.2181265,
+    "seen": 1795086659.149936,
+    "ast_hash": "945a79884f9d183c3a66bb90aaf333cf",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/equipment/glasses_mono.json": {
+    "mtime": 1795086228.2192369,
+    "seen": 1795086659.1499376,
+    "ast_hash": "b45e16e4c53492ce7e75212bb3b455c3",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/armor_stand.json": {
+    "mtime": 1795086228.2003517,
+    "seen": 1795086659.1499398,
+    "ast_hash": "066896c7d72fa9ffe67c62783f202eba",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/birch_bookcase.json": {
+    "mtime": 1795086228.1911824,
+    "seen": 1795086659.1499412,
+    "ast_hash": "37144612540e0b8ec8aca31d16263e2f",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/birch_case_black.json": {
+    "mtime": 1795086228.1967497,
+    "seen": 1795086659.1499429,
+    "ast_hash": "7b6499506bce0a9d4d27e3c87df8d2a0",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/birch_case_blue.json": {
+    "mtime": 1795086228.1961894,
+    "seen": 1795086659.1499448,
+    "ast_hash": "27216a370f13fb608d1b37ce15f580cd",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/birch_case_green.json": {
+    "mtime": 1795086228.1965728,
+    "seen": 1795086659.1499462,
+    "ast_hash": "a3df63bf420ab9b46bba80a90c2dba80",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/birch_case_red.json": {
+    "mtime": 1795086228.195758,
+    "seen": 1795086659.1499476,
+    "ast_hash": "79752e4a1eb880970d5cecd1959a1d45",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/birch_desk.json": {
+    "mtime": 1795086228.1906111,
+    "seen": 1795086659.1499498,
+    "ast_hash": "ba0702811739ee2250fdd483256fa3fb",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/birch_label.json": {
+    "mtime": 1795086228.1991644,
+    "seen": 1795086659.149951,
+    "ast_hash": "55feb59494a2f0f5d9605022a3b950a0",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/birch_potion_shelf.json": {
+    "mtime": 1795086228.191668,
+    "seen": 1795086659.1499524,
+    "ast_hash": "289be61a4d9f2583844b2464303bf066",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/birch_shelf.json": {
+    "mtime": 1795086228.1936378,
+    "seen": 1795086659.149954,
+    "ast_hash": "f98c5af8704ad5d4836934519abf0834",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/birch_table.json": {
+    "mtime": 1795086228.2000923,
+    "seen": 1795086659.1499553,
+    "ast_hash": "635d4a25fcc8548cd1e542ad3214688f",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/birch_tool_rack.json": {
+    "mtime": 1795086228.1946068,
+    "seen": 1795086659.1499567,
+    "ast_hash": "2aefd6d7b0ddf330e8adb686074524b6",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/black_lamp.json": {
+    "mtime": 1795086228.2032154,
+    "seen": 1795086659.149958,
+    "ast_hash": "fd87cc3c7aa099d33fac65454257678c",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/black_lantern.json": {
+    "mtime": 1795086228.2012522,
+    "seen": 1795086659.149959,
+    "ast_hash": "e9508172487fcf39844343d0f35a91b2",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/blue_lamp.json": {
+    "mtime": 1795086228.2042663,
+    "seen": 1795086659.1499605,
+    "ast_hash": "2ea184823d3688fa0456eb150b69355a",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/blue_lantern.json": {
+    "mtime": 1795086228.2023373,
+    "seen": 1795086659.1499622,
+    "ast_hash": "20ec0b4d19fdaf2328365dd1bf453133",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/brown_lamp.json": {
+    "mtime": 1795086228.204652,
+    "seen": 1795086659.1499636,
+    "ast_hash": "88f9207994fe10342a4790d7cf91e3b5",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/brown_lantern.json": {
+    "mtime": 1795086228.2027242,
+    "seen": 1795086659.149965,
+    "ast_hash": "96f6fdbf69e3223c6377cb8c05cceaa4",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/chase.json": {
+    "mtime": 1795086228.2049081,
+    "seen": 1795086659.1499665,
+    "ast_hash": "88fd29397daf92027aba4f1b2dc3aa5c",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/cyan_lamp.json": {
+    "mtime": 1795086228.2038088,
+    "seen": 1795086659.149968,
+    "ast_hash": "9dd3933f85db50392c8ac87a856b1148",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/cyan_lantern.json": {
+    "mtime": 1795086228.2021358,
+    "seen": 1795086659.1499698,
+    "ast_hash": "e4dd328b2c2a4a112d2bdb25bbc63c6a",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/enchanted_plate.json": {
+    "mtime": 1795086228.2051039,
+    "seen": 1795086659.1499715,
+    "ast_hash": "a872c9cefb8c4c771e9c3047aa789ec6",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/gray_lamp.json": {
+    "mtime": 1795086228.2031207,
+    "seen": 1795086659.149973,
+    "ast_hash": "dc0176b4e808dcbda4cf803e76a0f1fc",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/gray_lantern.json": {
+    "mtime": 1795086228.2011442,
+    "seen": 1795086659.1499746,
+    "ast_hash": "7058eb24503f6d62479b9c0cdd9ba918",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/green_lamp.json": {
+    "mtime": 1795086228.2037024,
+    "seen": 1795086659.1499763,
+    "ast_hash": "311892b5bad60f3302ab3c4df24996a7",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/green_lantern.json": {
+    "mtime": 1795086228.2020369,
+    "seen": 1795086659.149978,
+    "ast_hash": "35f9d1a0ea749582e8a77a35ebfe38ce",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/jungle_bookcase.json": {
+    "mtime": 1795086228.1912904,
+    "seen": 1795086659.1499789,
+    "ast_hash": "f1f4659312a3416bb904aba7d70e543a",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/jungle_case_black.json": {
+    "mtime": 1795086228.1983368,
+    "seen": 1795086659.14998,
+    "ast_hash": "f070182073889a4528e57efc69eb240d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/jungle_case_blue.json": {
+    "mtime": 1795086228.1978624,
+    "seen": 1795086659.149982,
+    "ast_hash": "8779ef7cc77e1352078d4125d4322d89",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/jungle_case_green.json": {
+    "mtime": 1795086228.1981192,
+    "seen": 1795086659.1499832,
+    "ast_hash": "2166c896942b8c7f513078040d6b30da",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/jungle_case_red.json": {
+    "mtime": 1795086228.1971738,
+    "seen": 1795086659.149985,
+    "ast_hash": "4f5cbd5fda850d462d73a6dcd39050da",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/jungle_desk.json": {
+    "mtime": 1795086228.1907241,
+    "seen": 1795086659.1499863,
+    "ast_hash": "84c66fb64880645b10ac376ced6f9675",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/jungle_label.json": {
+    "mtime": 1795086228.1993935,
+    "seen": 1795086659.149988,
+    "ast_hash": "4b8e517b3cfba7c98b9dc1c4c8526bcd",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/jungle_potion_shelf.json": {
+    "mtime": 1795086228.1917698,
+    "seen": 1795086659.1499894,
+    "ast_hash": "4ac6ed1b8e3d32882cc40d67d116f7bf",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/jungle_shelf.json": {
+    "mtime": 1795086228.1939087,
+    "seen": 1795086659.1499908,
+    "ast_hash": "1764be3a5e726f7f4dac35a6f1131d18",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/jungle_table.json": {
+    "mtime": 1795086228.200196,
+    "seen": 1795086659.1499922,
+    "ast_hash": "e3b0f9d0076628bdbaff480a986234cd",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/jungle_tool_rack.json": {
+    "mtime": 1795086228.1947107,
+    "seen": 1795086659.1499937,
+    "ast_hash": "c1ba23ecf8b5a95dcccf1b6f9669618c",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/light_blue_lamp.json": {
+    "mtime": 1795086228.2039452,
+    "seen": 1795086659.1499956,
+    "ast_hash": "e962f4cfb094498f84af61a2eec5c57b",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/light_blue_lantern.json": {
+    "mtime": 1795086228.202233,
+    "seen": 1795086659.1499965,
+    "ast_hash": "6bf4be51a827214d7a0bdef8b41f3fd9",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/light_gray_lamp.json": {
+    "mtime": 1795086228.203024,
+    "seen": 1795086659.1499977,
+    "ast_hash": "ff22d8fde035815bf6b320adc9d83603",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/light_gray_lantern.json": {
+    "mtime": 1795086228.2010367,
+    "seen": 1795086659.1499994,
+    "ast_hash": "18778acfe75f2d022aff1eb78c7e3388",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/lime_lamp.json": {
+    "mtime": 1795086228.2036066,
+    "seen": 1795086659.1500006,
+    "ast_hash": "d908cb85f7422f4c3d4ab34a0799d3b0",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/lime_lantern.json": {
+    "mtime": 1795086228.201928,
+    "seen": 1795086659.1500022,
+    "ast_hash": "9dab474d262e81c1f59a24587a69b3c3",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/magenta_lamp.json": {
+    "mtime": 1795086228.2044592,
+    "seen": 1795086659.1500034,
+    "ast_hash": "5a2f83ea6d6c8b3a0f6220af2c20bc39",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/magenta_lantern.json": {
+    "mtime": 1795086228.2025359,
+    "seen": 1795086659.150005,
+    "ast_hash": "0e19f5448d51a022fd7bcaa873ff82c5",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/monocle.json": {
+    "mtime": 1795086228.2053144,
+    "seen": 1795086659.1500065,
+    "ast_hash": "a7b9fc67bd2ea77113a825b091b18a5a",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/oak_bookcase.json": {
+    "mtime": 1795086228.1909585,
+    "seen": 1795086659.1500082,
+    "ast_hash": "7296a8c1b6d8effa3e88a2e1b282f602",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/oak_case_black.json": {
+    "mtime": 1795086228.19525,
+    "seen": 1795086659.1500099,
+    "ast_hash": "9aa8e4c900b11d9efcc3100b021ff5f5",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/oak_case_blue.json": {
+    "mtime": 1795086228.1950321,
+    "seen": 1795086659.150011,
+    "ast_hash": "ff591b874fe4cdc17e422d348d819f14",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/oak_case_green.json": {
+    "mtime": 1795086228.195145,
+    "seen": 1795086659.1500125,
+    "ast_hash": "9788f52e85064f5547a6db4e84433095",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/oak_case_red.json": {
+    "mtime": 1795086228.1949224,
+    "seen": 1795086659.150014,
+    "ast_hash": "492b7dd6c1be91a08f226821e58e5b78",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/oak_desk.json": {
+    "mtime": 1795086228.1903048,
+    "seen": 1795086659.150015,
+    "ast_hash": "97480416af2012d777c2b9e4dd085782",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/oak_label.json": {
+    "mtime": 1795086228.1986802,
+    "seen": 1795086659.1500165,
+    "ast_hash": "de460c799a66c3718c9ca34f6c41f22c",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/oak_potion_shelf.json": {
+    "mtime": 1795086228.191454,
+    "seen": 1795086659.1500175,
+    "ast_hash": "9932ce75ba2022930f08917fb946c0e0",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/oak_shelf.json": {
+    "mtime": 1795086228.1926124,
+    "seen": 1795086659.1500194,
+    "ast_hash": "a3a5f70bac4ae39ae4e8103353f29136",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/oak_table.json": {
+    "mtime": 1795086228.1997447,
+    "seen": 1795086659.1500213,
+    "ast_hash": "1fc276c5dd68683062e47af575825606",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/oak_tool_rack.json": {
+    "mtime": 1795086228.194283,
+    "seen": 1795086659.150023,
+    "ast_hash": "340a3df001fa9e01d54d4ad57a2c97bd",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/orange_lamp.json": {
+    "mtime": 1795086228.2034082,
+    "seen": 1795086659.150024,
+    "ast_hash": "1516c7e123a714f588cd2c94940e25e4",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/orange_lantern.json": {
+    "mtime": 1795086228.201684,
+    "seen": 1795086659.1500251,
+    "ast_hash": "207aee708e35813c0f1b6c2c19f6ad21",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/pink_lamp.json": {
+    "mtime": 1795086228.2045557,
+    "seen": 1795086659.1500266,
+    "ast_hash": "36e63d64df597f26125e6670cffce1d2",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/pink_lantern.json": {
+    "mtime": 1795086228.202629,
+    "seen": 1795086659.1500275,
+    "ast_hash": "dd6dbb87b0fd25f366a0580ae7cab894",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/plate.json": {
+    "mtime": 1795086228.2050416,
+    "seen": 1795086659.1500287,
+    "ast_hash": "d12b48add3314271f2ea6eb6f4e28c17",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/printing_press.json": {
+    "mtime": 1795086228.2006834,
+    "seen": 1795086659.1500304,
+    "ast_hash": "e00a51ac704e175f48031c295e03a0b4",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/purple_lamp.json": {
+    "mtime": 1795086228.204364,
+    "seen": 1795086659.1500318,
+    "ast_hash": "c98129faec91f1ce35f3678d5b1f2396",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/purple_lantern.json": {
+    "mtime": 1795086228.2024333,
+    "seen": 1795086659.1500332,
+    "ast_hash": "ff03d0e232bce725402a1267e886bf6a",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/reading_glasses.json": {
+    "mtime": 1795086228.2052128,
+    "seen": 1795086659.1500344,
+    "ast_hash": "4d171bd1d43ed8ca9129621d9365f20a",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/red_lamp.json": {
+    "mtime": 1795086228.2033114,
+    "seen": 1795086659.1500359,
+    "ast_hash": "1ff7437129637e4981b173d8fd112fd0",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/red_lantern.json": {
+    "mtime": 1795086228.2013583,
+    "seen": 1795086659.1500375,
+    "ast_hash": "7c07a4b2004a6e733ba52aa26ed4a689",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/redstone_book.json": {
+    "mtime": 1795086228.2051609,
+    "seen": 1795086659.150039,
+    "ast_hash": "a9825c6e3e82b5799275e10d7c5ed1d6",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/spruce_bookcase.json": {
+    "mtime": 1795086228.191076,
+    "seen": 1795086659.1500406,
+    "ast_hash": "afb3e95cd6067c5743180a2c9ff06ee2",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/spruce_case_black.json": {
+    "mtime": 1795086228.1956587,
+    "seen": 1795086659.1500423,
+    "ast_hash": "945b796bcb9761fa7661d5e4364bf53c",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/spruce_case_blue.json": {
+    "mtime": 1795086228.195452,
+    "seen": 1795086659.150044,
+    "ast_hash": "d4b9e47d470e11aed1169e37e8c75eb7",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/spruce_case_green.json": {
+    "mtime": 1795086228.1955545,
+    "seen": 1795086659.1500454,
+    "ast_hash": "cc183edc71b42ef20578468ff419015b",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/spruce_case_red.json": {
+    "mtime": 1795086228.1953526,
+    "seen": 1795086659.1500468,
+    "ast_hash": "d85762a48d3cc0f3d4692b0328ca465a",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/spruce_desk.json": {
+    "mtime": 1795086228.1904974,
+    "seen": 1795086659.1500485,
+    "ast_hash": "e84aa86d4f5da8cae5b4d45e59184696",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/spruce_label.json": {
+    "mtime": 1795086228.1989427,
+    "seen": 1795086659.1500502,
+    "ast_hash": "c4dfc3efd8b8267bcd447620c95dce60",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/spruce_potion_shelf.json": {
+    "mtime": 1795086228.1915653,
+    "seen": 1795086659.1500514,
+    "ast_hash": "5e63ff4e3d6dcd26750b3ff1565672fb",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/spruce_shelf.json": {
+    "mtime": 1795086228.1933358,
+    "seen": 1795086659.1500528,
+    "ast_hash": "e13cd956f07de2a93fab5ccd1f9e767c",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/spruce_table.json": {
+    "mtime": 1795086228.1999817,
+    "seen": 1795086659.1500542,
+    "ast_hash": "ad37550fc7358145cfa450aaef5a930d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/spruce_tool_rack.json": {
+    "mtime": 1795086228.194488,
+    "seen": 1795086659.1500554,
+    "ast_hash": "c0086e6c52bdda9d2902c717387633cc",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/tape_measure.json": {
+    "mtime": 1795086228.204761,
+    "seen": 1795086659.1500564,
+    "ast_hash": "70b8269b7108f192f84586d72ceaf0af",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/tape_reel.json": {
+    "mtime": 1795086228.2048225,
+    "seen": 1795086659.1500576,
+    "ast_hash": "82ce03f7a71b2af2e2ccb158b81dada2",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/tinted_glasses.json": {
+    "mtime": 1795086228.2052655,
+    "seen": 1795086659.1500587,
+    "ast_hash": "85c9dfe410b2bd3e18195c2f0c9c91a1",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/typesetting_table.json": {
+    "mtime": 1795086228.200524,
+    "seen": 1795086659.15006,
+    "ast_hash": "923f117c61f71101a265902760f96934",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/white_lamp.json": {
+    "mtime": 1795086228.2029195,
+    "seen": 1795086659.1500616,
+    "ast_hash": "6686e5c88675ca50b86abf615eb64c78",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/white_lantern.json": {
+    "mtime": 1795086228.2008789,
+    "seen": 1795086659.150063,
+    "ast_hash": "a18172b2b2a3ece6a1fc4998f008df6e",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/yellow_lamp.json": {
+    "mtime": 1795086228.2035103,
+    "seen": 1795086659.1500645,
+    "ast_hash": "aa0c57171a386480bbf30e45de230a7e",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/items/yellow_lantern.json": {
+    "mtime": 1795086228.2017827,
+    "seen": 1795086659.1500654,
+    "ast_hash": "aa03bbd046a6a0fc11343c11c7e07427",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/lang/en_us.json": {
+    "mtime": 1795086228.2211497,
+    "seen": 1795086659.1500661,
+    "ast_hash": "be632cb7dc7c253194826dca9a093c3a",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/block/armor_stand.json": {
+    "mtime": 1795086228.200265,
+    "seen": 1795086659.150068,
+    "ast_hash": "389c7b0129e82830b1f4d11b6947698c",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/block/bookcase.json": {
+    "mtime": 1795086228.190801,
+    "seen": 1795086659.150069,
+    "ast_hash": "16651da7f98563791fc383c472acc742",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/block/desk.json": {
+    "mtime": 1795086228.1899915,
+    "seen": 1795086659.1500702,
+    "ast_hash": "16651da7f98563791fc383c472acc742",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/block/label.json": {
+    "mtime": 1795086228.1984906,
+    "seen": 1795086659.1500716,
+    "ast_hash": "16651da7f98563791fc383c472acc742",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/block/lamp.json": {
+    "mtime": 1795086228.2027965,
+    "seen": 1795086659.1500726,
+    "ast_hash": "76e8b88126c0c578342cf227f0306599",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/block/lantern.json": {
+    "mtime": 1795086228.200757,
+    "seen": 1795086659.150074,
+    "ast_hash": "76e8b88126c0c578342cf227f0306599",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/block/potion_shelf.json": {
+    "mtime": 1795086228.1913595,
+    "seen": 1795086659.1500757,
+    "ast_hash": "16651da7f98563791fc383c472acc742",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/block/printing_press.json": {
+    "mtime": 1795086228.2005997,
+    "seen": 1795086659.150077,
+    "ast_hash": "8bc520f4221c01f7b2e24593b57ae82e",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/block/shelf.json": {
+    "mtime": 1795086228.19197,
+    "seen": 1795086659.1500788,
+    "ast_hash": "16651da7f98563791fc383c472acc742",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/block/table.json": {
+    "mtime": 1795086228.1995478,
+    "seen": 1795086659.1500797,
+    "ast_hash": "16651da7f98563791fc383c472acc742",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/block/tool_rack.json": {
+    "mtime": 1795086228.194079,
+    "seen": 1795086659.150081,
+    "ast_hash": "16651da7f98563791fc383c472acc742",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/block/typesetting_table.json": {
+    "mtime": 1795086228.2004368,
+    "seen": 1795086659.150082,
+    "ast_hash": "16651da7f98563791fc383c472acc742",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/block/weapon_case.json": {
+    "mtime": 1795086228.1947916,
+    "seen": 1795086659.150083,
+    "ast_hash": "16651da7f98563791fc383c472acc742",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/item/armor_stand.json": {
+    "mtime": 1795086228.2002923,
+    "seen": 1795086659.1500845,
+    "ast_hash": "8185d1d549dcfe970f307c8d222acef3",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/item/bookcase.json": {
+    "mtime": 1795086228.1908705,
+    "seen": 1795086659.1500857,
+    "ast_hash": "7f4cd55f657f786557cc5b0dc15d621a",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/item/chase.json": {
+    "mtime": 1795086228.204875,
+    "seen": 1795086659.1500869,
+    "ast_hash": "c4f83cf20990ba9edf13dd73c956196c",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/item/desk.json": {
+    "mtime": 1795086228.1900616,
+    "seen": 1795086659.1500883,
+    "ast_hash": "7f4cd55f657f786557cc5b0dc15d621a",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/item/enchanted_plate.json": {
+    "mtime": 1795086228.2050724,
+    "seen": 1795086659.15009,
+    "ast_hash": "f7c4a69a77317fb34a3c7fddc7d4f02f",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/item/label.json": {
+    "mtime": 1795086228.1985538,
+    "seen": 1795086659.150091,
+    "ast_hash": "7f4cd55f657f786557cc5b0dc15d621a",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/item/lamp.json": {
+    "mtime": 1795086228.2028308,
+    "seen": 1795086659.1500921,
+    "ast_hash": "ed8ea472c61203ea12ded79611fd4c29",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/item/lantern.json": {
+    "mtime": 1795086228.2007837,
+    "seen": 1795086659.1500936,
+    "ast_hash": "ed8ea472c61203ea12ded79611fd4c29",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/item/monocle.json": {
+    "mtime": 1795086228.20529,
+    "seen": 1795086659.150095,
+    "ast_hash": "8c7ca479603ae28bfd497d612fd34e17",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/item/plate.json": {
+    "mtime": 1795086228.2050023,
+    "seen": 1795086659.1500962,
+    "ast_hash": "f7c4a69a77317fb34a3c7fddc7d4f02f",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/item/potion_shelf.json": {
+    "mtime": 1795086228.1913905,
+    "seen": 1795086659.1500974,
+    "ast_hash": "7f4cd55f657f786557cc5b0dc15d621a",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/item/printing_press.json": {
+    "mtime": 1795086228.2006269,
+    "seen": 1795086659.1500988,
+    "ast_hash": "8d06c7fd85c2980ef2045e1eda830f5a",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/item/reading_glasses.json": {
+    "mtime": 1795086228.205187,
+    "seen": 1795086659.1501,
+    "ast_hash": "775af920f5493bf91fa3efa5e7438acf",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/item/redstone_book.json": {
+    "mtime": 1795086228.205133,
+    "seen": 1795086659.1501012,
+    "ast_hash": "717ff3d7a015c6af977ecc969939d9ed",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/item/shelf.json": {
+    "mtime": 1795086228.1921048,
+    "seen": 1795086659.1501026,
+    "ast_hash": "7f4cd55f657f786557cc5b0dc15d621a",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/item/table.json": {
+    "mtime": 1795086228.19961,
+    "seen": 1795086659.150104,
+    "ast_hash": "7f4cd55f657f786557cc5b0dc15d621a",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/item/tape_measure.json": {
+    "mtime": 1795086228.2047315,
+    "seen": 1795086659.1501052,
+    "ast_hash": "a5260da9b10833f2eb3713ae4eedc763",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/item/tape_reel.json": {
+    "mtime": 1795086228.2047887,
+    "seen": 1795086659.1501064,
+    "ast_hash": "38021e74d444a03e7b6c2eb64b3764a2",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/item/tinted_glasses.json": {
+    "mtime": 1795086228.2052402,
+    "seen": 1795086659.1501076,
+    "ast_hash": "4c9cd1c7342e694ec49bc4fb5ca898d9",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/item/tool_rack.json": {
+    "mtime": 1795086228.194145,
+    "seen": 1795086659.1501086,
+    "ast_hash": "7f4cd55f657f786557cc5b0dc15d621a",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/item/typesetting_table.json": {
+    "mtime": 1795086228.2004647,
+    "seen": 1795086659.15011,
+    "ast_hash": "7f4cd55f657f786557cc5b0dc15d621a",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/models/item/weapon_case.json": {
+    "mtime": 1795086228.1948237,
+    "seen": 1795086659.1501112,
+    "ast_hash": "7f4cd55f657f786557cc5b0dc15d621a",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/particles/candle_flame.json": {
+    "mtime": 1795086228.2128654,
+    "seen": 1795086659.1501126,
+    "ast_hash": "1df0176c0b489661c57bb331866893a6",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/assets/bibliocraft/sounds.json": {
+    "mtime": 1795086228.2201624,
+    "seen": 1795086659.1501138,
+    "ast_hash": "2037ca4e712db60761c672ccd61676e2",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/enchantment/reading.json": {
+    "mtime": 1795086228.2147279,
+    "seen": 1795086659.150115,
+    "ast_hash": "5c0ba6438264b08504342007b15d6715",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/armor_stand.json": {
+    "mtime": 1795086228.2004066,
+    "seen": 1795086659.1501167,
+    "ast_hash": "a5dab14cf1eb5152c7dfd2266930e7fc",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/birch_bookcase.json": {
+    "mtime": 1795086228.1912224,
+    "seen": 1795086659.1501176,
+    "ast_hash": "791d77289e196fcc7384a53d085a74f5",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/birch_case_black.json": {
+    "mtime": 1795086228.1970093,
+    "seen": 1795086659.1501188,
+    "ast_hash": "e4642fb61a1197882e78f4c157a836b0",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/birch_case_blue.json": {
+    "mtime": 1795086228.1963067,
+    "seen": 1795086659.1501203,
+    "ast_hash": "bd5b7f33617a8a35034132897d241184",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/birch_case_green.json": {
+    "mtime": 1795086228.196642,
+    "seen": 1795086659.1501215,
+    "ast_hash": "b2945304d4d8895f30b1d9c599a76045",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/birch_case_red.json": {
+    "mtime": 1795086228.1960928,
+    "seen": 1795086659.1501224,
+    "ast_hash": "ac1753d0e43d44a4cc10bd13ff963896",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/birch_desk.json": {
+    "mtime": 1795086228.1906574,
+    "seen": 1795086659.1501238,
+    "ast_hash": "5fae548b8c856912cbead7c0f4461a5b",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/birch_label.json": {
+    "mtime": 1795086228.1992507,
+    "seen": 1795086659.150125,
+    "ast_hash": "230686e445396711bc623c28facb8d6b",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/birch_potion_shelf.json": {
+    "mtime": 1795086228.1917074,
+    "seen": 1795086659.1501272,
+    "ast_hash": "84cf3ced6992967ed3fc5b4f1950b08b",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/birch_shelf.json": {
+    "mtime": 1795086228.1937275,
+    "seen": 1795086659.1501284,
+    "ast_hash": "e5d11ae9ebd415d5f3b3073c95ccc28d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/birch_table.json": {
+    "mtime": 1795086228.2001345,
+    "seen": 1795086659.1501293,
+    "ast_hash": "2f74c2be15e629cff2b0af50f7ffeed4",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/birch_tool_rack.json": {
+    "mtime": 1795086228.1946492,
+    "seen": 1795086659.1501305,
+    "ast_hash": "14ce332089f31836059c0db9c38fb70d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/black_lamp.json": {
+    "mtime": 1795086228.2032526,
+    "seen": 1795086659.1501317,
+    "ast_hash": "c4c0c6fbcad88483b41317daa1f46a53",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/black_lantern.json": {
+    "mtime": 1795086228.2012947,
+    "seen": 1795086659.1501331,
+    "ast_hash": "07ae1a2eb3029caf47f55249ffb2d1d4",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/blue_lamp.json": {
+    "mtime": 1795086228.204306,
+    "seen": 1795086659.1501346,
+    "ast_hash": "162287452ed80eb54fd76df14992f382",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/blue_lantern.json": {
+    "mtime": 1795086228.2023761,
+    "seen": 1795086659.1501362,
+    "ast_hash": "ffdc7ca4f50244e1f9672aae9388b7aa",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/brown_lamp.json": {
+    "mtime": 1795086228.2046976,
+    "seen": 1795086659.1501377,
+    "ast_hash": "9ac578559e43cf9e9136235cb6929b8e",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/brown_lantern.json": {
+    "mtime": 1795086228.2027633,
+    "seen": 1795086659.1501389,
+    "ast_hash": "ec1514841dc24ca25a0817e44b73db61",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/cyan_lamp.json": {
+    "mtime": 1795086228.203874,
+    "seen": 1795086659.15014,
+    "ast_hash": "b9d8940abe4951a412698b9ffc608b82",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/cyan_lantern.json": {
+    "mtime": 1795086228.2021735,
+    "seen": 1795086659.1501415,
+    "ast_hash": "80ef039878cdd1fb97bd883bb3d4d9fc",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/gray_lamp.json": {
+    "mtime": 1795086228.2031584,
+    "seen": 1795086659.150143,
+    "ast_hash": "e89b2bbde4b1a6aae7ff2c79669eda0b",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/gray_lantern.json": {
+    "mtime": 1795086228.2011871,
+    "seen": 1795086659.1501446,
+    "ast_hash": "437eb7d62e9ae150cdab9a20c6402eda",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/green_lamp.json": {
+    "mtime": 1795086228.203743,
+    "seen": 1795086659.1501455,
+    "ast_hash": "8c213033e52dca70c78a5be238c9c38e",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/green_lantern.json": {
+    "mtime": 1795086228.2020772,
+    "seen": 1795086659.150147,
+    "ast_hash": "53c99de59d2c51d6dfb00abc6dc2565f",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/jungle_bookcase.json": {
+    "mtime": 1795086228.1913314,
+    "seen": 1795086659.1501484,
+    "ast_hash": "6a3670c1151fbe253c9c33ad41a58cc8",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/jungle_case_black.json": {
+    "mtime": 1795086228.1984174,
+    "seen": 1795086659.15015,
+    "ast_hash": "c83dbacc27b326270e4845068d1d98a3",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/jungle_case_blue.json": {
+    "mtime": 1795086228.1979802,
+    "seen": 1795086659.1501515,
+    "ast_hash": "62f4fdb548d334502d552d54f48e54b0",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/jungle_case_green.json": {
+    "mtime": 1795086228.1982038,
+    "seen": 1795086659.1501532,
+    "ast_hash": "b71d535266d4fec5755a4379397b487f",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/jungle_case_red.json": {
+    "mtime": 1795086228.1972768,
+    "seen": 1795086659.1501546,
+    "ast_hash": "8eb0e4fe8f830e0f2d7f1a818fa53c16",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/jungle_desk.json": {
+    "mtime": 1795086228.190769,
+    "seen": 1795086659.1501555,
+    "ast_hash": "6a10d0504a4932786e3dc602aa491994",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/jungle_label.json": {
+    "mtime": 1795086228.1994812,
+    "seen": 1795086659.150157,
+    "ast_hash": "12b96a568f41ba6d99ae9f12f5c33930",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/jungle_potion_shelf.json": {
+    "mtime": 1795086228.1918097,
+    "seen": 1795086659.1501594,
+    "ast_hash": "1c153851d0f8a34012829965fa5c772f",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/jungle_shelf.json": {
+    "mtime": 1795086228.1940067,
+    "seen": 1795086659.1501606,
+    "ast_hash": "faa03f6e3a5d223955ff4c0bad46150e",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/jungle_table.json": {
+    "mtime": 1795086228.200235,
+    "seen": 1795086659.150162,
+    "ast_hash": "ac338d90fae3cf70f455d137dd65b330",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/jungle_tool_rack.json": {
+    "mtime": 1795086228.194754,
+    "seen": 1795086659.1501632,
+    "ast_hash": "359550e9a68b2286b9395fb837ecfb42",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/light_blue_lamp.json": {
+    "mtime": 1795086228.2039893,
+    "seen": 1795086659.1501644,
+    "ast_hash": "6de6e2db04b5c0cd82d5b16c5a5afa92",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/light_blue_lantern.json": {
+    "mtime": 1795086228.202274,
+    "seen": 1795086659.1501658,
+    "ast_hash": "9a1717a8e415ce11e728b53737df7c3a",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/light_gray_lamp.json": {
+    "mtime": 1795086228.2030628,
+    "seen": 1795086659.1501672,
+    "ast_hash": "5c67856306ef881c6223af2ff6af682c",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/light_gray_lantern.json": {
+    "mtime": 1795086228.2010813,
+    "seen": 1795086659.1501684,
+    "ast_hash": "2ca7a5ce5084452961a8b7ac54911f46",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/lime_lamp.json": {
+    "mtime": 1795086228.2036452,
+    "seen": 1795086659.1501696,
+    "ast_hash": "917187b80317c8ba805c668429d24442",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/lime_lantern.json": {
+    "mtime": 1795086228.2019732,
+    "seen": 1795086659.150171,
+    "ast_hash": "63a773c5741f08e25bc7fb0ce4461940",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/magenta_lamp.json": {
+    "mtime": 1795086228.2044985,
+    "seen": 1795086659.1501732,
+    "ast_hash": "4d858235b59985d6095b9f6e90562ed5",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/magenta_lantern.json": {
+    "mtime": 1795086228.202572,
+    "seen": 1795086659.1501744,
+    "ast_hash": "79cd43ff1ef8d0830aff51543ccb5bd2",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/oak_bookcase.json": {
+    "mtime": 1795086228.191009,
+    "seen": 1795086659.150176,
+    "ast_hash": "c2429a72e63cb01d28e268aa4d8b2c9a",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/oak_case_black.json": {
+    "mtime": 1795086228.195291,
+    "seen": 1795086659.150177,
+    "ast_hash": "70fde41da0bd80656f68f3645a1188dd",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/oak_case_blue.json": {
+    "mtime": 1795086228.1950786,
+    "seen": 1795086659.1501787,
+    "ast_hash": "e15380026fddc2de8e6f407cbac97be3",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/oak_case_green.json": {
+    "mtime": 1795086228.1951864,
+    "seen": 1795086659.1501796,
+    "ast_hash": "16b43342038a1540fc4cd8009d1de1c9",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/oak_case_red.json": {
+    "mtime": 1795086228.1949685,
+    "seen": 1795086659.1501808,
+    "ast_hash": "d85a3919fd1397f12e1bc2aa94a4cb53",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/oak_desk.json": {
+    "mtime": 1795086228.1904132,
+    "seen": 1795086659.1501825,
+    "ast_hash": "5567cc831927778e948cdb265e8df294",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/oak_label.json": {
+    "mtime": 1795086228.1987593,
+    "seen": 1795086659.150184,
+    "ast_hash": "4f46e1aeb595c6cdbad2a42fb7c704fd",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/oak_potion_shelf.json": {
+    "mtime": 1795086228.1914988,
+    "seen": 1795086659.1501858,
+    "ast_hash": "217e0498e1dc111db52ab380a2856313",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/oak_shelf.json": {
+    "mtime": 1795086228.1927278,
+    "seen": 1795086659.150187,
+    "ast_hash": "8e986695b23ca434d67aae653c79b346",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/oak_table.json": {
+    "mtime": 1795086228.199853,
+    "seen": 1795086659.1501884,
+    "ast_hash": "4db9c9f5a213db20b3c16b8fbca68337",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/oak_tool_rack.json": {
+    "mtime": 1795086228.1943793,
+    "seen": 1795086659.1501906,
+    "ast_hash": "f49b7cabc68476d9270c2d2aa2a0997f",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/orange_lamp.json": {
+    "mtime": 1795086228.2034476,
+    "seen": 1795086659.1501918,
+    "ast_hash": "93718383a22dcdd2aac318ab0439691a",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/orange_lantern.json": {
+    "mtime": 1795086228.201726,
+    "seen": 1795086659.1501935,
+    "ast_hash": "3b7f735af0c2a204bb6e8b2776d8f25c",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/pink_lamp.json": {
+    "mtime": 1795086228.2045944,
+    "seen": 1795086659.1501946,
+    "ast_hash": "eb8930c052d8b9b5d42877460a7724cb",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/pink_lantern.json": {
+    "mtime": 1795086228.202665,
+    "seen": 1795086659.150196,
+    "ast_hash": "50c0a42be11f7ab3983f760cf60aeabe",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/printing_press.json": {
+    "mtime": 1795086228.200726,
+    "seen": 1795086659.1501973,
+    "ast_hash": "fdb9f1fba69a05588cab753039fd27ff",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/purple_lamp.json": {
+    "mtime": 1795086228.2044027,
+    "seen": 1795086659.1501982,
+    "ast_hash": "30d9b1a40c4f4b68532c1bede7445d45",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/purple_lantern.json": {
+    "mtime": 1795086228.2024708,
+    "seen": 1795086659.1501994,
+    "ast_hash": "2f1e14d1ea1936a779641f9b3c3a90fd",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/red_lamp.json": {
+    "mtime": 1795086228.2033508,
+    "seen": 1795086659.1502006,
+    "ast_hash": "f2d3fb870584cb0fda34fdff6be64dd3",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/red_lantern.json": {
+    "mtime": 1795086228.2016194,
+    "seen": 1795086659.1502023,
+    "ast_hash": "5a2b2747e0b778bdc346070af1564939",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/spruce_bookcase.json": {
+    "mtime": 1795086228.1911185,
+    "seen": 1795086659.1502037,
+    "ast_hash": "14e3aa922c1f9b6ca427e291759e6997",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/spruce_case_black.json": {
+    "mtime": 1795086228.1956975,
+    "seen": 1795086659.150205,
+    "ast_hash": "2f9374a2d09cf42b3580cfb6b174c0f5",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/spruce_case_blue.json": {
+    "mtime": 1795086228.1954923,
+    "seen": 1795086659.150207,
+    "ast_hash": "72c0dd60ca4e844e5d3fa80c860aa408",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/spruce_case_green.json": {
+    "mtime": 1795086228.195593,
+    "seen": 1795086659.150208,
+    "ast_hash": "5c22f23193052b74629e0a4d4efd41be",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/spruce_case_red.json": {
+    "mtime": 1795086228.1953921,
+    "seen": 1795086659.1502094,
+    "ast_hash": "8a6dc60f2a5f13db556977c87c48df3d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/spruce_desk.json": {
+    "mtime": 1795086228.190546,
+    "seen": 1795086659.1502109,
+    "ast_hash": "043cfa776a533928ba29133daa539549",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/spruce_label.json": {
+    "mtime": 1795086228.199033,
+    "seen": 1795086659.150212,
+    "ast_hash": "6a289ecc00109d932b371639cead257d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/spruce_potion_shelf.json": {
+    "mtime": 1795086228.1916058,
+    "seen": 1795086659.1502137,
+    "ast_hash": "8be7ae3935f6b416643ac547b890e33c",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/spruce_shelf.json": {
+    "mtime": 1795086228.193481,
+    "seen": 1795086659.150215,
+    "ast_hash": "bc089c700f37086e756c52006f100eb8",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/spruce_table.json": {
+    "mtime": 1795086228.2000284,
+    "seen": 1795086659.150216,
+    "ast_hash": "b93ae822a1d06df558379f26a605a6eb",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/spruce_tool_rack.json": {
+    "mtime": 1795086228.194539,
+    "seen": 1795086659.1502178,
+    "ast_hash": "b718aacc9ee54b645c261fd8328b4455",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/typesetting_table.json": {
+    "mtime": 1795086228.200568,
+    "seen": 1795086659.1502192,
+    "ast_hash": "75c30562c24ed8d93779199392839718",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/white_lamp.json": {
+    "mtime": 1795086228.2029612,
+    "seen": 1795086659.150221,
+    "ast_hash": "b025199c7cf6a7cfaaa8da2b5788b994",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/white_lantern.json": {
+    "mtime": 1795086228.200929,
+    "seen": 1795086659.1502223,
+    "ast_hash": "b342c7ef961d525da6de16c875c87f3c",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/yellow_lamp.json": {
+    "mtime": 1795086228.2035484,
+    "seen": 1795086659.150224,
+    "ast_hash": "122c6085dfc06c262d42313b4a61c0e6",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/loot_table/blocks/yellow_lantern.json": {
+    "mtime": 1795086228.201831,
+    "seen": 1795086659.1502252,
+    "ast_hash": "e34c80551d2fc9df0604c1c29dbfdeeb",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/armor_stand.json": {
+    "mtime": 1795086228.2085302,
+    "seen": 1795086659.1502264,
+    "ast_hash": "6782e21eb8ea7dedf61f1cab3765afd2",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/birch_bookcase.json": {
+    "mtime": 1795086228.207732,
+    "seen": 1795086659.150228,
+    "ast_hash": "27d37af9284da62768b419e7e4ee26a1",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/birch_case_black.json": {
+    "mtime": 1795086228.2080626,
+    "seen": 1795086659.1502295,
+    "ast_hash": "65eea80da293b5586d4baa96203fe331",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/birch_case_blue.json": {
+    "mtime": 1795086228.207994,
+    "seen": 1795086659.1502311,
+    "ast_hash": "ed682d4ae82daf4845f5135415e163f4",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/birch_case_green.json": {
+    "mtime": 1795086228.208029,
+    "seen": 1795086659.1502328,
+    "ast_hash": "30d400c55630a4f780ab60a4d3be319c",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/birch_case_red.json": {
+    "mtime": 1795086228.2079563,
+    "seen": 1795086659.1502337,
+    "ast_hash": "2b49e381f48acef6fb268d40b7ae738a",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/birch_desk.json": {
+    "mtime": 1795086228.2081006,
+    "seen": 1795086659.150236,
+    "ast_hash": "045254ee72151b128455063a4a6d407c",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/birch_label.json": {
+    "mtime": 1795086228.2079155,
+    "seen": 1795086659.1502378,
+    "ast_hash": "4c97619565ee8d311f39045689117a70",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/birch_potion_shelf.json": {
+    "mtime": 1795086228.2077637,
+    "seen": 1795086659.1502395,
+    "ast_hash": "426444a331fb3eea3e9349fd931f7082",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/birch_shelf.json": {
+    "mtime": 1795086228.207795,
+    "seen": 1795086659.1502404,
+    "ast_hash": "0fa1049d127f481fe8ddac154bfe1f62",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/birch_table.json": {
+    "mtime": 1795086228.2081363,
+    "seen": 1795086659.1502419,
+    "ast_hash": "6a7b26a3d710f272e1de83fd330f2eed",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/birch_tool_rack.json": {
+    "mtime": 1795086228.2078588,
+    "seen": 1795086659.1502428,
+    "ast_hash": "1b8753f152c8f79b43200a3932f0312d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/black_lamp_from_dye.json": {
+    "mtime": 1795086228.2057326,
+    "seen": 1795086659.1502442,
+    "ast_hash": "9f00704442978d0af2e36b3d9de669a2",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/black_lantern_from_dye.json": {
+    "mtime": 1795086228.2057605,
+    "seen": 1795086659.1502457,
+    "ast_hash": "d799030a8997ea80b5b8963a5acee763",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/blue_lamp_from_dye.json": {
+    "mtime": 1795086228.2062576,
+    "seen": 1795086659.150247,
+    "ast_hash": "5d4cca89d7a2fdc4de991720882176f1",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/blue_lantern_from_dye.json": {
+    "mtime": 1795086228.206288,
+    "seen": 1795086659.1502485,
+    "ast_hash": "4aa04cc04ede022d8dd263fe9148ac7e",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/brown_lamp_from_dye.json": {
+    "mtime": 1795086228.206522,
+    "seen": 1795086659.15025,
+    "ast_hash": "f37a88560681a6f89870176ac05a0d40",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/brown_lantern_from_dye.json": {
+    "mtime": 1795086228.2067816,
+    "seen": 1795086659.1502516,
+    "ast_hash": "64a2fc770a1bb02ca19f902f715b6ec7",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/chase.json": {
+    "mtime": 1795086228.208633,
+    "seen": 1795086659.150253,
+    "ast_hash": "fe37ca5b653cec504c91e73a25d78e63",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/cyan_lamp_from_dye.json": {
+    "mtime": 1795086228.206138,
+    "seen": 1795086659.150254,
+    "ast_hash": "aade0e054dd890fc24b64dc57519411c",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/cyan_lantern_from_dye.json": {
+    "mtime": 1795086228.206166,
+    "seen": 1795086659.1502552,
+    "ast_hash": "2f036074725e48c8c58b17fbfd34d40b",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/fancy_lamp.json": {
+    "mtime": 1795086228.2054467,
+    "seen": 1795086659.1502566,
+    "ast_hash": "e9c7fe80633ff27d753081ba95a316f6",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/golden_lantern.json": {
+    "mtime": 1795086228.2053752,
+    "seen": 1795086659.1502578,
+    "ast_hash": "b333998f9ca903fba45516f20a1266f0",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/golden_lantern_2.json": {
+    "mtime": 1795086228.2054126,
+    "seen": 1795086659.1502595,
+    "ast_hash": "f28a3d918f4cb1e1f4acbdda697bfdad",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/gray_lamp_from_dye.json": {
+    "mtime": 1795086228.2056723,
+    "seen": 1795086659.1502607,
+    "ast_hash": "5dc513613889b5e8f1aae41b9f2f48a5",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/gray_lantern_from_dye.json": {
+    "mtime": 1795086228.2057023,
+    "seen": 1795086659.150262,
+    "ast_hash": "d27ae3141a2b0f2a47d6c860ec1ace5e",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/green_lamp_from_dye.json": {
+    "mtime": 1795086228.206078,
+    "seen": 1795086659.1502635,
+    "ast_hash": "9918874fb7ae89363aaeaa5045a93637",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/green_lantern_from_dye.json": {
+    "mtime": 1795086228.2061088,
+    "seen": 1795086659.150265,
+    "ast_hash": "236f06fc4428b0a2295cd9756b6aaf63",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/jungle_bookcase.json": {
+    "mtime": 1795086228.2081695,
+    "seen": 1795086659.1502664,
+    "ast_hash": "fb40366c11274b1e8472bd8e7a4297e4",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/jungle_case_black.json": {
+    "mtime": 1795086228.208433,
+    "seen": 1795086659.150268,
+    "ast_hash": "d111cca4a770b742a1b82b6591e2d57a",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/jungle_case_blue.json": {
+    "mtime": 1795086228.2083685,
+    "seen": 1795086659.1502695,
+    "ast_hash": "e7c3f32eabf3b5045ed42eabd9c716ee",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/jungle_case_green.json": {
+    "mtime": 1795086228.2083998,
+    "seen": 1795086659.1502707,
+    "ast_hash": "026a81f775a962580b394fd5d22f7985",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/jungle_case_red.json": {
+    "mtime": 1795086228.2083359,
+    "seen": 1795086659.150272,
+    "ast_hash": "58f7d842470e090d460bed3dbc70240e",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/jungle_desk.json": {
+    "mtime": 1795086228.2084653,
+    "seen": 1795086659.1502736,
+    "ast_hash": "d8a6371e5065a4883e9749821137bab2",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/jungle_label.json": {
+    "mtime": 1795086228.2083,
+    "seen": 1795086659.150275,
+    "ast_hash": "f9b5302c44e0bde66976ba5320fe0171",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/jungle_potion_shelf.json": {
+    "mtime": 1795086228.2082026,
+    "seen": 1795086659.1502764,
+    "ast_hash": "34497edbc065253b311e1ce525fc388f",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/jungle_shelf.json": {
+    "mtime": 1795086228.208235,
+    "seen": 1795086659.1502776,
+    "ast_hash": "fbc3bd828e7dba6f447efb9b6cf10435",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/jungle_table.json": {
+    "mtime": 1795086228.2084982,
+    "seen": 1795086659.1502788,
+    "ast_hash": "8f9ecb939d00f5ed7e276d935900f3f4",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/jungle_tool_rack.json": {
+    "mtime": 1795086228.208268,
+    "seen": 1795086659.1502807,
+    "ast_hash": "c140c7fff618de326250c79e6e9ab1f5",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/light_blue_lamp_from_dye.json": {
+    "mtime": 1795086228.2061949,
+    "seen": 1795086659.1502821,
+    "ast_hash": "86dbf734f510e8cba7a6926401e6aabc",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/light_blue_lantern_from_dye.json": {
+    "mtime": 1795086228.2062263,
+    "seen": 1795086659.1502836,
+    "ast_hash": "2e6628302a259977965893ab377f5c9f",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/light_gray_lamp_from_dye.json": {
+    "mtime": 1795086228.205611,
+    "seen": 1795086659.150285,
+    "ast_hash": "42caa19fc21e9749fb08a47c294a6728",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/light_gray_lantern_from_dye.json": {
+    "mtime": 1795086228.2056422,
+    "seen": 1795086659.150287,
+    "ast_hash": "ca91895aa562312989527ec1ab44207e",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/lime_lamp_from_dye.json": {
+    "mtime": 1795086228.2060196,
+    "seen": 1795086659.150288,
+    "ast_hash": "8833bba0194cfcb0e00a561b08555f79",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/lime_lantern_from_dye.json": {
+    "mtime": 1795086228.206049,
+    "seen": 1795086659.1502893,
+    "ast_hash": "34854dae8e88a50b07b90991b817cad7",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/magenta_lamp_from_dye.json": {
+    "mtime": 1795086228.2063842,
+    "seen": 1795086659.1502907,
+    "ast_hash": "d8ba5b29edddd0a4ac14206fd9436e58",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/magenta_lantern_from_dye.json": {
+    "mtime": 1795086228.2064118,
+    "seen": 1795086659.1502924,
+    "ast_hash": "43dfa3865f30d478283990e610c1bc46",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/monocle.json": {
+    "mtime": 1795086228.208595,
+    "seen": 1795086659.1502938,
+    "ast_hash": "e1e74660692f649a3a74ff0456e6be76",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/oak_bookcase.json": {
+    "mtime": 1795086228.206827,
+    "seen": 1795086659.1502953,
+    "ast_hash": "b46f91d05f13db55e55a85b84e4a75ba",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/oak_case_black.json": {
+    "mtime": 1795086228.2072613,
+    "seen": 1795086659.150297,
+    "ast_hash": "c557d1150e137fd1cf86bab1852af0a7",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/oak_case_blue.json": {
+    "mtime": 1795086228.2071953,
+    "seen": 1795086659.150298,
+    "ast_hash": "c42f8efe07f47856f04b4e695ad0fd4e",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/oak_case_green.json": {
+    "mtime": 1795086228.2072284,
+    "seen": 1795086659.1502995,
+    "ast_hash": "6bb21b895b6cc763be8eeca2b29c19d3",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/oak_case_red.json": {
+    "mtime": 1795086228.2071607,
+    "seen": 1795086659.1503012,
+    "ast_hash": "0766a3e8895832d7f1138c8d9eaa6ca8",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/oak_desk.json": {
+    "mtime": 1795086228.2072966,
+    "seen": 1795086659.150303,
+    "ast_hash": "f3d6fc79c469d4a518e12b9978e2a9d0",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/oak_label.json": {
+    "mtime": 1795086228.2071216,
+    "seen": 1795086659.1503048,
+    "ast_hash": "fc493bc5eebb47466e9e8a4d384abf76",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/oak_potion_shelf.json": {
+    "mtime": 1795086228.2068963,
+    "seen": 1795086659.150306,
+    "ast_hash": "fff96ad9db58cf13825af67938d6f1d6",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/oak_shelf.json": {
+    "mtime": 1795086228.2069476,
+    "seen": 1795086659.1503077,
+    "ast_hash": "611c5f8809ea067ca601e737c2ea0d01",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/oak_table.json": {
+    "mtime": 1795086228.2073321,
+    "seen": 1795086659.1503086,
+    "ast_hash": "96319120348d071c11cc28673b1944da",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/oak_tool_rack.json": {
+    "mtime": 1795086228.2070785,
+    "seen": 1795086659.15031,
+    "ast_hash": "04ef7dfaf3ad33a9883c3601dc8b3917",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/orange_lamp_from_dye.json": {
+    "mtime": 1795086228.20589,
+    "seen": 1795086659.1503115,
+    "ast_hash": "0715050ed1ec7d19099b52775c890e32",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/orange_lantern_from_dye.json": {
+    "mtime": 1795086228.205927,
+    "seen": 1795086659.150313,
+    "ast_hash": "b0bb4216c4bee2297272cd727009b3f5",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/pink_lamp_from_dye.json": {
+    "mtime": 1795086228.2064586,
+    "seen": 1795086659.1503148,
+    "ast_hash": "7b82860b3e47e7e89cd0a436cba66451",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/pink_lantern_from_dye.json": {
+    "mtime": 1795086228.206493,
+    "seen": 1795086659.1503162,
+    "ast_hash": "c9e261481193f836226dd4504d361207",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/printing_press.json": {
+    "mtime": 1795086228.2054806,
+    "seen": 1795086659.1503177,
+    "ast_hash": "92537abc74b45c23e4bd9e1bf5b7d056",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/purple_lamp_from_dye.json": {
+    "mtime": 1795086228.206323,
+    "seen": 1795086659.150319,
+    "ast_hash": "1fe368272f38ae8c9adeaad4508ae035",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/purple_lantern_from_dye.json": {
+    "mtime": 1795086228.2063553,
+    "seen": 1795086659.1503203,
+    "ast_hash": "ab87d417a76ea5368081b4e14aaa27d6",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/reading_glasses.json": {
+    "mtime": 1795086228.208665,
+    "seen": 1795086659.1503217,
+    "ast_hash": "f8aea9efd2f3f6df16029db81a5a1ba1",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/red_lamp_from_dye.json": {
+    "mtime": 1795086228.2057896,
+    "seen": 1795086659.150323,
+    "ast_hash": "46face042ec5f9c88b3d7c39cb898289",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/red_lantern_from_dye.json": {
+    "mtime": 1795086228.2058287,
+    "seen": 1795086659.1503248,
+    "ast_hash": "b715778cbf34c1177a53c46431e3e372",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/redstone_book.json": {
+    "mtime": 1795086228.2085621,
+    "seen": 1795086659.1503258,
+    "ast_hash": "ec58d46dc2feb8d130329a4a29905883",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/spruce_bookcase.json": {
+    "mtime": 1795086228.207366,
+    "seen": 1795086659.1503274,
+    "ast_hash": "c4cc6e33489307cd773fc22d441bd6e2",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/spruce_case_black.json": {
+    "mtime": 1795086228.2076287,
+    "seen": 1795086659.1503286,
+    "ast_hash": "3cb4e219987ef33537e2d14d4adab9f4",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/spruce_case_blue.json": {
+    "mtime": 1795086228.207564,
+    "seen": 1795086659.1503303,
+    "ast_hash": "9c15e8f361cc29d024a475b1f7bfc8bd",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/spruce_case_green.json": {
+    "mtime": 1795086228.2075975,
+    "seen": 1795086659.1503317,
+    "ast_hash": "a97168caefd3750f20ad0922a3cfc6ea",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/spruce_case_red.json": {
+    "mtime": 1795086228.2075312,
+    "seen": 1795086659.1503332,
+    "ast_hash": "0608d0b5b16101031b13e1627a17b1f1",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/spruce_desk.json": {
+    "mtime": 1795086228.207661,
+    "seen": 1795086659.1503348,
+    "ast_hash": "6ac73b7e404f0555547457a48d763081",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/spruce_label.json": {
+    "mtime": 1795086228.207494,
+    "seen": 1795086659.150336,
+    "ast_hash": "e742f5a1e205405a6122d7c8fde07797",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/spruce_potion_shelf.json": {
+    "mtime": 1795086228.2073987,
+    "seen": 1795086659.1503377,
+    "ast_hash": "0391b6b3b321ef954f9ed07926b84738",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/spruce_shelf.json": {
+    "mtime": 1795086228.2074304,
+    "seen": 1795086659.1503391,
+    "ast_hash": "bfb7b6d466aff682674b7bc3bd088e45",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/spruce_table.json": {
+    "mtime": 1795086228.2076993,
+    "seen": 1795086659.1503403,
+    "ast_hash": "64aa5c3469d226e7ac9de2b6dfcf0188",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/spruce_tool_rack.json": {
+    "mtime": 1795086228.207462,
+    "seen": 1795086659.1503417,
+    "ast_hash": "10592b1a0984be85979806f5106f55ae",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/tape_measure.json": {
+    "mtime": 1795086228.2087634,
+    "seen": 1795086659.1503432,
+    "ast_hash": "f609594bbbb12c0c4f35da2622ab653f",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/tape_reel.json": {
+    "mtime": 1795086228.208734,
+    "seen": 1795086659.1503448,
+    "ast_hash": "447c0dde33bf962ee4eaf68695bb904f",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/tinted_glasses.json": {
+    "mtime": 1795086228.2086964,
+    "seen": 1795086659.1503465,
+    "ast_hash": "6a51b545c3e44c4c40e85acc1087e927",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/typesetting_table.json": {
+    "mtime": 1795086228.2055135,
+    "seen": 1795086659.1503477,
+    "ast_hash": "a5436a6548610c905d98f027deddc5a5",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/white_lamp_from_dye.json": {
+    "mtime": 1795086228.20555,
+    "seen": 1795086659.1503491,
+    "ast_hash": "ba300e4c92fc42473e89475b66f25224",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/white_lantern_from_dye.json": {
+    "mtime": 1795086228.2055807,
+    "seen": 1795086659.1503506,
+    "ast_hash": "5534f4152a9734ce2d11c9003a3411d8",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/yellow_lamp_from_dye.json": {
+    "mtime": 1795086228.205959,
+    "seen": 1795086659.1503518,
+    "ast_hash": "2fa1d052cd4bcad06eb081dbdb7c1d4d",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/recipe/yellow_lantern_from_dye.json": {
+    "mtime": 1795086228.2059896,
+    "seen": 1795086659.1503537,
+    "ast_hash": "47dd3a43c8d0be172c064d9ac459415e",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/tags/item/lamps.json": {
+    "mtime": 1795086228.2105289,
+    "seen": 1795086659.1503549,
+    "ast_hash": "685278df401e4c315b3f7123dd51007a",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/tags/item/lanterns.json": {
+    "mtime": 1795086228.2116036,
+    "seen": 1795086659.1503563,
+    "ast_hash": "a228b6d86f6938b554c9b0cb7287fa66",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/bibliocraft/tags/item/no_primary_items.json": {
+    "mtime": 1795086228.2155328,
+    "seen": 1795086659.1503575,
+    "ast_hash": "223ac8b96934402033de66b36f11f618",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/minecraft/tags/block/mineable/axe.json": {
+    "mtime": 1795086228.2119393,
+    "seen": 1795086659.1503587,
+    "ast_hash": "736cf5f5d119c2b183c54cc75fe7da3f",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/minecraft/tags/block/mineable/pickaxe.json": {
+    "mtime": 1795086228.2120395,
+    "seen": 1795086659.1503599,
+    "ast_hash": "b0c9f56bef8b8b9f29cb546a0741c6f7",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/minecraft/tags/enchantment/non_treasure.json": {
+    "mtime": 1795086228.21636,
+    "seen": 1795086659.150361,
+    "ast_hash": "be7331c30426cd3aa5b3153643961515",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/src/main/resources/data/minecraft/tags/item/enchantable/head_armor.json": {
+    "mtime": 1795086228.213745,
+    "seen": 1795086659.150362,
+    "ast_hash": "f0a980b383370bc7178b553dac3eed6f",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/tools/gen.py": {
+    "mtime": 1795086228.0073965,
+    "seen": 1795086659.1503637,
+    "ast_hash": "afeda35b9501028f859eda8d760871de",
+    "semantic_hash": ""
+  },
+  "mods/bibliocraft/original-assets.txt": {
+    "mtime": 1795068166.979921,
+    "seen": 1795086659.1601205,
+    "ast_hash": "0789e6cdd121d13f1807260a122c15ce",
     "semantic_hash": ""
   }
 }

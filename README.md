@@ -39,7 +39,7 @@ Der Port ist in Teile aufgeteilt, die je in eine Session passen: [`docs/PLAN.md`
 | `gradle/neoforge.mods.toml` | gemeinsame Vorlage für die Mod-Metadaten |
 | `docs/JEI.md` | Vorlage für das JEI-Plugin eines Mods (JEI ersetzt NEI) |
 | `.claude/skills/worldgen152/` | Projekt-Skill: Weltgenerierung eines Mods in `worldgen152` einhängen, Setzlinge, Nether, eigene Dimensionen, Prüfung |
-| `.claude/skills/client-render-263/` | Projekt-Skill: HUD-Ebenen, Gegenstände am Spielermodell, Rüstungen mit eigenen Helm-Modellen, durchscheinende Blockmodelle, Rechtsklick vor dem Block abfangen (26.3) |
+| `.claude/skills/client-render-263/` | Projekt-Skill: HUD-Ebenen, Gegenstände am Spielermodell, Rüstungen mit eigenen Helm-Modellen, durchscheinende Blockmodelle, Rechtsklick vor dem Block abfangen, Blöcke mit TESR/IItemRenderer als BlockEntityRenderer + Special-Item-Renderer (26.3), Vorlage BiblioCraft |
 | `.claude/skills/menu-gui-263/` | Projekt-Skill: eigene GUI mit Container (Menü, Screen, Pakete Client → Server, Server-Konfiguration für die Vorschau im Client) |
 | `.claude/skills/wood-sets-263/` | Projekt-Skill: Holzarten und Pflanzen eines Mods (Planken, Stämme, Blätter, Setzlinge, Treppen bis Werkbänke, Brennwert, Rezeptkonflikte mit Vanilla), Vorlage Natura |
 | `.claude/skills/mobs-263/` | Projekt-Skill: Mobs, Spawn-Eier, Boote, Mob-Drops und Spawns (Biome-Modifier), viele Mobs auf einmal (Modell-Konverter, Easing, Fliegen, Reiten, Mehrteiler, Boss), Prüfen ohne Spieler; Vorlagen Natura, Project Zulu |
@@ -47,7 +47,7 @@ Der Port ist in Teile aufgeteilt, die je in eine Session passen: [`docs/PLAN.md`
 | `.claude/skills/treecapitator-trees/` | Projekt-Skill: Bäume und Äxte eines Mods bei TreeCapitator anmelden (Daten-Registry `treecapitator:tree`, Item-Tags) |
 | `.claude/skills/templates-152/` | Projekt-Skill: Gebäude-Vorlagen und Schematics eines 1.5.2-Mods übernehmen (Daten-Archive beim Bauen ins Jar, NBT ohne Spielklassen, Kisten/Schilder/Bilder/Mobs über worldgen152, Text-Vorlagen ohne Umwandlung, Vorlagen zur Laufzeit in die Welt, Prüfung), Vorlagen Better Dungeons, Ruins, Dimensional Doors |
 | `.claude/skills/items-weapons-263/` | Projekt-Skill: Waffen, Stäbe, Bögen, Geschosse und Spezial-Items (Schwert-Werte, Blocken, Geschoss-Entity je Typ, magische Pfeile/Köcher, Taschen, Damage-Varianten mit alten IDs, Kapseln, Einmal-Spawner), Vorlage Better Dungeons |
-| `.claude/skills/headless-client/` | Projekt-Skill: Testclient im Cloud-Container ohne Bildschirm starten (Xvfb, `SDL_VIDEO_FORCE_EGL=1`, Screenshots, xdotool) |
+| `.claude/skills/headless-client/` | Projekt-Skill: Testclient im Cloud-Container ohne Bildschirm starten (Xvfb, `SDL_VIDEO_FORCE_EGL=1`, Screenshots, xdotool, Testserver beitreten) |
 
 ## Bauen und Starten
 
@@ -207,7 +207,7 @@ Prüfen: `tools/expect.sh 1234 nether structures 60 > expect.txt`, dann `verify_
 | CodeChickenCore | `codechickencore` 0.8.7.3 | ChickenBones | 14.969 | entfällt (Bibliothek von NEI) |
 | Not Enough Items | `nei` 1.5.2.28 | ChickenBones | 16.239 | entfällt, stattdessen JEI |
 | Natura | `natura` 2.1.5.1 | mDiyo | 20.430 | ✅ Teil 7, Nether ✅ Teil 7b |
-| BiblioCraft | `bibliocraft` 1.3.3 | Nuchaz | 20.970 | offen |
+| BiblioCraft | `bibliocraft` 1.3.3 | Nuchaz | 20.970 | ✅ Teil 16 (13 Blockarten in 79 Varianten, Lesebrille, Druckerei; Feinlage im Client offen) |
 | Harken Scythe | `harkenscythe` 2.1.6 | Jade Knightblazer | 27.284 | ✅ Teil 9 (Seelen/Blut, Altäre, 26 Mobs; Client-Prüfung offen) |
 | Better Dungeons (Chocolate Quest) | `betterdungeons` 1.09b | Chocolatin | 36.118 | ✅ Teil 12 und 13 (Client-Prüfung offen) |
 | Project Zulu | `projectzulu` 1.0.3.8 | — | 42.845 | Kreaturen ✅ Teil 10 (40 Mobs, Spawns, Drops; Client-Prüfung offen), Blöcke/Welt offen (Teil 11) |
