@@ -1,0 +1,15 @@
+# path in qCraft1.01.zip -> path in the ported jar
+mods/quantumcraft/textures/blocks/quantum_ore.png -> assets/quantumcraft/textures/block/quantum_ore.png
+mods/quantumcraft/textures/blocks/qblock_fuzz.png -> assets/quantumcraft/textures/block/qblock_fuzz.png
+mods/quantumcraft/textures/blocks/qblock_unobserved.png -> assets/quantumcraft/textures/block/qblock_unobserved.png
+mods/quantumcraft/textures/blocks/quantum_computer.png -> assets/quantumcraft/textures/block/quantum_computer.png
+mods/quantumcraft/textures/blocks/quantum_computer_side.png -> assets/quantumcraft/textures/block/quantum_computer_side.png
+mods/quantumcraft/textures/blocks/quantum_computer_top.png -> assets/quantumcraft/textures/block/quantum_computer_top.png
+mods/quantumcraft/textures/items/eos.png -> assets/quantumcraft/textures/item/eos.png
+mods/quantumcraft/textures/items/eoo.png -> assets/quantumcraft/textures/item/eoo.png
+mods/quantumcraft/textures/items/eoe.png -> assets/quantumcraft/textures/item/eoe.png
+mods/quantumcraft/textures/items/quantum_dust.png -> assets/quantumcraft/textures/item/quantum_dust.png
+mods/quantumcraft/textures/items/quantum_goggles.png -> assets/quantumcraft/textures/item/quantum_goggles.png
+mods/quantumcraft/textures/armor/quantum_goggles.png -> assets/quantumcraft/textures/entity/equipment/humanoid/quantum_goggles.png
+mods/quantumcraft/textures/gui/goggles.png -> assets/quantumcraft/textures/misc/goggles.png
+mods/quantumcraft/textures/gui/quantumcomputer.png -> assets/quantumcraft/textures/gui/quantumcomputer.png
