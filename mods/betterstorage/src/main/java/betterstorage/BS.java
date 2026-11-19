@@ -195,7 +195,7 @@ public final class BS {
     // ---- backpack data of entities (IExtendedEntityProperties "BetterStorage.Backpack" and the data watcher) ----
 
     public static final DeferredHolder<AttachmentType<?>, AttachmentType<BackpackData>> BACKPACK_DATA = ATTACHMENTS.register("backpack",
-            () -> AttachmentType.builder(BackpackData::new).serialize(BackpackData.CODEC, BackpackData::shouldSave).build());
+            () -> AttachmentType.builder(BackpackData::new).serialize(BackpackData.CODEC, BackpackData::shouldSave).copyOnDeath().build());
     /** Open (lid) and has-items flags, sent to every client that sees the entity. */
     public static final DeferredHolder<AttachmentType<?>, AttachmentType<BackpackState>> BACKPACK_STATE = ATTACHMENTS.register("backpack_state",
             () -> AttachmentType.builder(() -> BackpackState.CLOSED).sync(BackpackState.STREAM_CODEC).build());

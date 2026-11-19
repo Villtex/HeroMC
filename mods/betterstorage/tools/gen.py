@@ -169,8 +169,14 @@ write(f"data/{NS}/loot_table/entities/frienderman.json", {"type": "minecraft:ent
 
 # ---- recipes ----
 def shaped(name, result, pattern, key, category="misc"):
-    write(f"data/{NS}/recipe/{name}.json", {"type": "minecraft:crafting_shaped", "category": category, "key": key,
-                                            "pattern": pattern, "result": {"id": result, "count": 1}})
+    recipe = {"type": "minecraft:crafting_shaped", "category": category, "key": key, "pattern": pattern,
+              "result": {"id": result, "count": 1}}
+    # ShapedOreRecipe with ore names: only there when some mod adds the metal (else the recipe would not load)
+    tags = [v[1:] for v in key.values() if v.startswith("#c:")]
+    if tags:
+        recipe = {"neoforge:conditions": [{"type": "neoforge:not", "value": {"type": "neoforge:tag_empty", "tag": t}}
+                                          for t in tags], **recipe}
+    write(f"data/{NS}/recipe/{name}.json", recipe)
 
 
 shaped("crate", f"{NS}:crate", ["o/o", "/ /", "o/o"], {"o": "#minecraft:planks", "/": "minecraft:stick"})
