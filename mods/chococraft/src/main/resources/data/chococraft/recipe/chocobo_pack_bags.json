@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": "minecraft:white_wool",
+    "X": "minecraft:leather",
+    "Y": "chococraft:chocobo_feather",
+    "-": "minecraft:string"
+  },
+  "pattern": [
+    "-Y-",
+    "C C",
+    "-X-"
+  ],
+  "result": {
+    "count": 1,
+    "id": "chococraft:chocobo_pack_bags"
+  }
+}

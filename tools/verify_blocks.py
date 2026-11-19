@@ -41,7 +41,9 @@ MODS = {2002: 'betterdungeons:spawner', 254: 'extrabiomesxl:red_rock', 255: 'ext
         # Dimensional Doors: rifts of the rift clusters and gateways
         1113: 'dimdoors:rift',
         # qCraft: quantum ore (CoFH World template QOre)
-        2373: 'quantumcraft:quantum_ore'}
+        2373: 'quantumcraft:quantum_ore',
+        # ChocoCraft: wild gysahl greens (WorldGenGysahls)
+        1101: 'chococraft:gysahl_green'}
 # Wild Caves 3: one block per metadata value
 PIECES = ['stalactite_1', 'stalactite_2', 'stalactite_3', 'stalactite_4', 'stalactite_connection_1', 'stalactite_connection_2',
           'stalactite_connection_3', 'stalactite_connection_4', 'stalactite_end', 'stalagmite_end', 'stalagmite_1', 'stalagmite_2',

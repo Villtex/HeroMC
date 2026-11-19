@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "minecraft:book",
+    "F": "chococraft:chocobo_feather",
+    "I": "minecraft:ink_sac",
+    "L": "minecraft:lapis_lazuli",
+    "G": "minecraft:gold_nugget"
+  },
+  "pattern": [
+    "FGF",
+    "IBI",
+    "FLF"
+  ],
+  "result": {
+    "count": 1,
+    "id": "chococraft:chocopedia"
+  }
+}

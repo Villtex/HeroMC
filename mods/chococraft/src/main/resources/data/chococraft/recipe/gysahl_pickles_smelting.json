@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": "chococraft:gysahl_raw_pickles",
+  "result": {
+    "id": "chococraft:gysahl_pickles"
+  }
+}

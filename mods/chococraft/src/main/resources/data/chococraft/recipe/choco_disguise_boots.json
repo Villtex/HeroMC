@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "Y": "chococraft:chocobo_feather"
+  },
+  "pattern": [
+    "Y Y",
+    "Y Y"
+  ],
+  "result": {
+    "count": 1,
+    "id": "chococraft:choco_disguise_boots"
+  }
+}

@@ -1,0 +1,201 @@
+{
+  "type": "minecraft:block",
+  "modifier": {
+    "type": "minecraft:explosion_decay"
+  },
+  "pools": [
+    {
+      "rolls": 1,
+      "condition": {
+        "type": "minecraft:match_block",
+        "blocks": "chococraft:gysahl_stem",
+        "state": {
+          "age": "4"
+        }
+      },
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "name": "chococraft:gysahl_green",
+              "condition": {
+                "type": "minecraft:random_chance",
+                "chance": 0.899
+              }
+            },
+            {
+              "type": "minecraft:item",
+              "name": "chococraft:gysahl_loverly",
+              "condition": {
+                "type": "minecraft:random_chance",
+                "chance": 0.899
+              }
+            },
+            {
+              "type": "minecraft:item",
+              "name": "chococraft:gysahl_golden"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "condition": {
+        "type": "minecraft:match_block",
+        "blocks": "chococraft:gysahl_stem",
+        "state": {
+          "age": "0"
+        }
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "chococraft:gysahl_seeds",
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": 0
+            },
+            {
+              "type": "minecraft:apply_bonus",
+              "enchantment": "minecraft:fortune",
+              "formula": "minecraft:binomial_with_bonus_count",
+              "parameters": {
+                "extra": 3,
+                "probability": 0.06666666666666667
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "condition": {
+        "type": "minecraft:match_block",
+        "blocks": "chococraft:gysahl_stem",
+        "state": {
+          "age": "1"
+        }
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "chococraft:gysahl_seeds",
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": 0
+            },
+            {
+              "type": "minecraft:apply_bonus",
+              "enchantment": "minecraft:fortune",
+              "formula": "minecraft:binomial_with_bonus_count",
+              "parameters": {
+                "extra": 3,
+                "probability": 0.13333333333333333
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "condition": {
+        "type": "minecraft:match_block",
+        "blocks": "chococraft:gysahl_stem",
+        "state": {
+          "age": "2"
+        }
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "chococraft:gysahl_seeds",
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": 0
+            },
+            {
+              "type": "minecraft:apply_bonus",
+              "enchantment": "minecraft:fortune",
+              "formula": "minecraft:binomial_with_bonus_count",
+              "parameters": {
+                "extra": 3,
+                "probability": 0.2
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "condition": {
+        "type": "minecraft:match_block",
+        "blocks": "chococraft:gysahl_stem",
+        "state": {
+          "age": "3"
+        }
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "chococraft:gysahl_seeds",
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": 0
+            },
+            {
+              "type": "minecraft:apply_bonus",
+              "enchantment": "minecraft:fortune",
+              "formula": "minecraft:binomial_with_bonus_count",
+              "parameters": {
+                "extra": 3,
+                "probability": 0.26666666666666666
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "condition": {
+        "type": "minecraft:match_block",
+        "blocks": "chococraft:gysahl_stem",
+        "state": {
+          "age": "4"
+        }
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "chococraft:gysahl_seeds",
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": 0
+            },
+            {
+              "type": "minecraft:apply_bonus",
+              "enchantment": "minecraft:fortune",
+              "formula": "minecraft:binomial_with_bonus_count",
+              "parameters": {
+                "extra": 3,
+                "probability": 0.3333333333333333
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "random_sequence": "chococraft:blocks/gysahl_stem"
+}

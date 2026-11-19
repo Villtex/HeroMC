@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "condition": {
+        "type": "minecraft:all_of",
+        "terms": [
+          {
+            "type": "minecraft:inverted",
+            "term": {
+              "type": "minecraft:match_tool",
+              "predicate": {
+                "items": "#minecraft:shears"
+              }
+            }
+          },
+          {
+            "type": "minecraft:random_chance",
+            "chance": 0.019736842105263157
+          }
+        ]
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "chococraft:gysahl_seeds"
+        }
+      ]
+    }
+  ]
+}

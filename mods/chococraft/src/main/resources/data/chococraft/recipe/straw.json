@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "W": "minecraft:wheat"
+  },
+  "pattern": [
+    "WW"
+  ],
+  "result": {
+    "count": 8,
+    "id": "chococraft:straw"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "chococraft:gysahl_green",
+    "minecraft:sugar"
+  ],
+  "result": {
+    "count": 2,
+    "id": "chococraft:gysahl_raw_pickles"
+  }
+}

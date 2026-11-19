@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "F": "minecraft:flint",
+    "S": "minecraft:stick",
+    "Y": "chococraft:chocobo_feather"
+  },
+  "pattern": [
+    " F ",
+    " S ",
+    " Y "
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft:arrow"
+  }
+}

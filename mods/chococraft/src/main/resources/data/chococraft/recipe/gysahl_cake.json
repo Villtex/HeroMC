@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": "chococraft:gysahl_green",
+    "M": "minecraft:milk_bucket",
+    "S": "minecraft:sugar",
+    "W": "minecraft:wheat",
+    "E": "minecraft:egg"
+  },
+  "pattern": [
+    "MGM",
+    "SES",
+    "WGW"
+  ],
+  "result": {
+    "count": 1,
+    "id": "chococraft:gysahl_cake"
+  }
+}

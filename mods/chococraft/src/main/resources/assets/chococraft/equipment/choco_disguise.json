@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "chococraft:choco_disguise"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "chococraft:choco_disguise"
+      }
+    ]
+  }
+}
