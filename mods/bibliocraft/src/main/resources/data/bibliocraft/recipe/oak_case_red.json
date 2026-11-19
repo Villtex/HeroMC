@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "YZY",
+    "YXY",
+    "YYY"
+  ],
+  "key": {
+    "X": "minecraft:red_wool",
+    "Y": "minecraft:oak_slab",
+    "Z": "minecraft:glass"
+  },
+  "result": {
+    "id": "bibliocraft:oak_case_red",
+    "count": 1
+  }
+}

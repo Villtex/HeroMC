@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "YYY",
+    "XBX",
+    "YYY"
+  ],
+  "key": {
+    "X": "minecraft:spruce_planks",
+    "Y": "minecraft:spruce_slab",
+    "B": "minecraft:glass_bottle"
+  },
+  "result": {
+    "id": "bibliocraft:spruce_potion_shelf",
+    "count": 1
+  }
+}

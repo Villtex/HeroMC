@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "#bibliocraft:lanterns",
+    "#c:dyes/cyan"
+  ],
+  "result": {
+    "id": "bibliocraft:cyan_lantern",
+    "count": 1
+  }
+}

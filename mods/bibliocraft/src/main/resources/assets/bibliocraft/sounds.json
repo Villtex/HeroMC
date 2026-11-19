@@ -1,0 +1,22 @@
+{
+  "copen": {
+    "sounds": [
+      "bibliocraft:copen"
+    ]
+  },
+  "cclose": {
+    "sounds": [
+      "bibliocraft:cclose"
+    ]
+  },
+  "tapeopen": {
+    "sounds": [
+      "bibliocraft:tapeopen"
+    ]
+  },
+  "tapeclose": {
+    "sounds": [
+      "bibliocraft:tapeclose"
+    ]
+  }
+}

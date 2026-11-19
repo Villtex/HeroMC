@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "YZY",
+    "YXY",
+    "YYY"
+  ],
+  "key": {
+    "X": "minecraft:blue_wool",
+    "Y": "minecraft:spruce_slab",
+    "Z": "minecraft:glass"
+  },
+  "result": {
+    "id": "bibliocraft:spruce_case_blue",
+    "count": 1
+  }
+}

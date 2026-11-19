@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "YYY",
+    "YYY"
+  ],
+  "key": {
+    "Y": "minecraft:birch_slab"
+  },
+  "result": {
+    "id": "bibliocraft:birch_label",
+    "count": 1
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "XXX",
+    " Y ",
+    " Y "
+  ],
+  "key": {
+    "X": "minecraft:spruce_slab",
+    "Y": "minecraft:spruce_planks"
+  },
+  "result": {
+    "id": "bibliocraft:spruce_table",
+    "count": 1
+  }
+}

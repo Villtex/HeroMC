@@ -1,0 +1,10 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "bibliocraft:item/potion_shelf",
+    "model": {
+      "type": "bibliocraft:block",
+      "block": "bibliocraft:oak_potion_shelf"
+    }
+  }
+}

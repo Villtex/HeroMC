@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "XXX",
+    " Y ",
+    " Y "
+  ],
+  "key": {
+    "X": "minecraft:birch_slab",
+    "Y": "minecraft:birch_planks"
+  },
+  "result": {
+    "id": "bibliocraft:birch_table",
+    "count": 1
+  }
+}

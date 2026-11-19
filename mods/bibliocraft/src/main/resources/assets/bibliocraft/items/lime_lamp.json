@@ -1,0 +1,10 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "bibliocraft:item/lamp",
+    "model": {
+      "type": "bibliocraft:block",
+      "block": "bibliocraft:lime_lamp"
+    }
+  }
+}

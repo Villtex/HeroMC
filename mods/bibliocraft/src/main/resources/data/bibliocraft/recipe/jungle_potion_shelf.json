@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "YYY",
+    "XBX",
+    "YYY"
+  ],
+  "key": {
+    "X": "minecraft:jungle_planks",
+    "Y": "minecraft:jungle_slab",
+    "B": "minecraft:glass_bottle"
+  },
+  "result": {
+    "id": "bibliocraft:jungle_potion_shelf",
+    "count": 1
+  }
+}

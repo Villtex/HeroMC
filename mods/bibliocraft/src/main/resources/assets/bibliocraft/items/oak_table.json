@@ -1,0 +1,10 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "bibliocraft:item/table",
+    "model": {
+      "type": "bibliocraft:block",
+      "block": "bibliocraft:oak_table"
+    }
+  }
+}

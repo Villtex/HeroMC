@@ -1,0 +1,10 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "bibliocraft:item/typesetting_table",
+    "model": {
+      "type": "bibliocraft:block",
+      "block": "bibliocraft:typesetting_table"
+    }
+  }
+}

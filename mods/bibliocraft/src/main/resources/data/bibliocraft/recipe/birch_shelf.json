@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "YYY",
+    " X ",
+    "YYY"
+  ],
+  "key": {
+    "X": "minecraft:birch_planks",
+    "Y": "minecraft:birch_slab"
+  },
+  "result": {
+    "id": "bibliocraft:birch_shelf",
+    "count": 1
+  }
+}

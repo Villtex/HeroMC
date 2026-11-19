@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "YYY",
+    "YXY",
+    "YYY"
+  ],
+  "key": {
+    "X": "minecraft:iron_ingot",
+    "Y": "minecraft:birch_slab"
+  },
+  "result": {
+    "id": "bibliocraft:birch_tool_rack",
+    "count": 1
+  }
+}

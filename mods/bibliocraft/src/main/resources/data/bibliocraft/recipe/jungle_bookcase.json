@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "XYX",
+    "XYX",
+    "XYX"
+  ],
+  "key": {
+    "X": "minecraft:jungle_planks",
+    "Y": "minecraft:jungle_slab"
+  },
+  "result": {
+    "id": "bibliocraft:jungle_bookcase",
+    "count": 1
+  }
+}

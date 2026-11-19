@@ -1,0 +1,10 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "bibliocraft:item/weapon_case",
+    "model": {
+      "type": "bibliocraft:block",
+      "block": "bibliocraft:jungle_case_blue"
+    }
+  }
+}

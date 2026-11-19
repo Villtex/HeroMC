@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " I ",
+    "IQI",
+    " I "
+  ],
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "Q": "bibliocraft:tape_reel"
+  },
+  "result": {
+    "id": "bibliocraft:tape_measure",
+    "count": 1
+  }
+}

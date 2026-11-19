@@ -1,0 +1,10 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "bibliocraft:item/bookcase",
+    "model": {
+      "type": "bibliocraft:block",
+      "block": "bibliocraft:jungle_bookcase"
+    }
+  }
+}

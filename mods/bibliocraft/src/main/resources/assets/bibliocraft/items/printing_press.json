@@ -1,0 +1,10 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "bibliocraft:item/printing_press",
+    "model": {
+      "type": "bibliocraft:block",
+      "block": "bibliocraft:printing_press"
+    }
+  }
+}

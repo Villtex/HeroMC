@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "T F",
+    "XXX",
+    "Y Y"
+  ],
+  "key": {
+    "T": "minecraft:torch",
+    "F": "minecraft:feather",
+    "X": "minecraft:oak_slab",
+    "Y": "minecraft:oak_planks"
+  },
+  "result": {
+    "id": "bibliocraft:oak_desk",
+    "count": 1
+  }
+}

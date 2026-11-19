@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "BGB",
+    " I ",
+    "NIN"
+  ],
+  "key": {
+    "B": "minecraft:glass",
+    "G": "minecraft:glowstone",
+    "I": "minecraft:gold_ingot",
+    "N": "minecraft:gold_nugget"
+  },
+  "result": {
+    "id": "bibliocraft:white_lamp",
+    "count": 1
+  }
+}

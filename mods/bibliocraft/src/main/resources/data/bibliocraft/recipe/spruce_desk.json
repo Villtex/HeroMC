@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "T F",
+    "XXX",
+    "Y Y"
+  ],
+  "key": {
+    "T": "minecraft:torch",
+    "F": "minecraft:feather",
+    "X": "minecraft:spruce_slab",
+    "Y": "minecraft:spruce_planks"
+  },
+  "result": {
+    "id": "bibliocraft:spruce_desk",
+    "count": 1
+  }
+}

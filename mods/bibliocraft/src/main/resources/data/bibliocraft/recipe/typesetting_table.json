@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ICI",
+    "SSS",
+    "PRP"
+  ],
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "C": "bibliocraft:chase",
+    "S": "#minecraft:wooden_slabs",
+    "P": "#minecraft:planks",
+    "R": "minecraft:redstone"
+  },
+  "result": {
+    "id": "bibliocraft:typesetting_table",
+    "count": 1
+  }
+}

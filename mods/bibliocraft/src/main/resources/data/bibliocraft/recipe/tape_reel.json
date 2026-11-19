@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "QQQ",
+    "QDQ",
+    "QQQ"
+  ],
+  "key": {
+    "Q": "minecraft:string",
+    "D": "minecraft:yellow_dye"
+  },
+  "result": {
+    "id": "bibliocraft:tape_reel",
+    "count": 1
+  }
+}

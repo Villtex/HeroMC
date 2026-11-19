@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " W ",
+    "WIW",
+    " W "
+  ],
+  "key": {
+    "W": "#minecraft:wooden_slabs",
+    "I": "minecraft:iron_ingot"
+  },
+  "result": {
+    "id": "bibliocraft:chase",
+    "count": 1
+  }
+}

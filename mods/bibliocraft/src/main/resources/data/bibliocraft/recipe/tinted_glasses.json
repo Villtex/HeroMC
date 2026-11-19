@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " G ",
+    " D "
+  ],
+  "key": {
+    "G": "bibliocraft:reading_glasses",
+    "D": "#c:dyes/gray"
+  },
+  "result": {
+    "id": "bibliocraft:tinted_glasses",
+    "count": 1
+  }
+}

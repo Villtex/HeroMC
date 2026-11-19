@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "#bibliocraft:lanterns",
+    "#c:dyes/magenta"
+  ],
+  "result": {
+    "id": "bibliocraft:magenta_lantern",
+    "count": 1
+  }
+}

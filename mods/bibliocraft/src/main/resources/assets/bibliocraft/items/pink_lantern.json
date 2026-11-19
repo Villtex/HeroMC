@@ -1,0 +1,10 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "bibliocraft:item/lantern",
+    "model": {
+      "type": "bibliocraft:block",
+      "block": "bibliocraft:pink_lantern"
+    }
+  }
+}

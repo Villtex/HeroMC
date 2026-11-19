@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "T F",
+    "XXX",
+    "Y Y"
+  ],
+  "key": {
+    "T": "minecraft:torch",
+    "F": "minecraft:feather",
+    "X": "minecraft:jungle_slab",
+    "Y": "minecraft:jungle_planks"
+  },
+  "result": {
+    "id": "bibliocraft:jungle_desk",
+    "count": 1
+  }
+}

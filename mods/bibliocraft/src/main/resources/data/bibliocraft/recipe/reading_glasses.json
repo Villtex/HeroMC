@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "PIP",
+    "S S"
+  ],
+  "key": {
+    "P": "minecraft:glass_pane",
+    "I": "minecraft:iron_ingot",
+    "S": "#c:dyes/black"
+  },
+  "result": {
+    "id": "bibliocraft:reading_glasses",
+    "count": 1
+  }
+}

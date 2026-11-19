@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "YZY",
+    "YXY",
+    "YYY"
+  ],
+  "key": {
+    "X": "minecraft:black_wool",
+    "Y": "minecraft:birch_slab",
+    "Z": "minecraft:glass"
+  },
+  "result": {
+    "id": "bibliocraft:birch_case_black",
+    "count": 1
+  }
+}

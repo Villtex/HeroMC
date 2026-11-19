@@ -1,0 +1,10 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "bibliocraft:item/armor_stand",
+    "model": {
+      "type": "bibliocraft:block",
+      "block": "bibliocraft:armor_stand"
+    }
+  }
+}

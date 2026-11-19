@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "#bibliocraft:lamps",
+    "#c:dyes/light_blue"
+  ],
+  "result": {
+    "id": "bibliocraft:light_blue_lamp",
+    "count": 1
+  }
+}
