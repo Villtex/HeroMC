@@ -8,6 +8,8 @@
 #   tools/expect.sh <seed> towers <count>            > expect.txt   (chunks of the first <count> Battle Towers around 0,0)
 #   tools/expect.sh <seed> rifts <count>             > expect.txt   (chunks of the first <count> Dimensional Doors rift gateways and clusters around 0,0)
 #   tools/expect.sh <seed> spawn                     (the world spawn)
+#   tools/expect.sh <seed> twilight find <radius>    (the Twilight Forest: one chunk per biome, centre chunks of the features)
+#   tools/expect.sh <seed> twilight <chunkX> <chunkZ> [...]
 # "vanilla" after the seed leaves out the biomes of mods (to compare with a vanilla 1.5.2 world).
 # Compiles hexxit.worldgen152.core, the ExtrabiomesXL biome table and the core classes of the mod generators with plain javac (JDK 21+).
 set -e
@@ -40,6 +42,7 @@ JAVA=${JAVA_HOME:+$JAVA_HOME/bin/}java
   $(find "$ROOT/mods/chococraft/src/main/java/chococraft/gen" -name '*.java') \
   $(find "$ROOT/mods/legendgear/src/main/java/legendgear/gen" -name '*.java') \
   $(find "$ROOT/mods/meteorsmod/src/main/java/meteors/gen" -name '*.java') \
+  $(find "$ROOT/mods/twilightforest/src/main/java/twilightforest/gen" -name '*.java') \
   "$ROOT/tools/java/Expect.java"
 # Better Dungeons reads its templates from the original archives, which the build imports
 BD="$ROOT/mods/betterdungeons/build/generated/original-assets"

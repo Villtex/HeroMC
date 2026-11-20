@@ -1,0 +1,23 @@
+{
+  "block.twilightforest.twilight_portal": "Twilight Portal",
+  "block.twilightforest.hedge": "Hedge",
+  "block.twilightforest.darkwood_leaves": "Darkwood Leaves",
+  "biome.twilightforest.twilight_lake": "Twilight Lake",
+  "biome.twilightforest.twilight_forest": "Twilight Forest",
+  "biome.twilightforest.dense_twilight_forest": "Dense Twilight Forest",
+  "biome.twilightforest.highlands": "Highlands",
+  "biome.twilightforest.mushrooms": "Mushrooms",
+  "biome.twilightforest.twilight_swamp": "Twilight Swamp",
+  "biome.twilightforest.twilight_stream": "Twilight Stream",
+  "biome.twilightforest.snowy_forest": "Snowy Forest",
+  "biome.twilightforest.glacier": "Glacier",
+  "biome.twilightforest.twilight_clearing": "Twilight Clearing",
+  "biome.twilightforest.clearing_border": "Clearing Border",
+  "biome.twilightforest.lake_border": "Lake Border",
+  "biome.twilightforest.deep_mushrooms": "Lots of Mushrooms",
+  "biome.twilightforest.major_feature": "Major Feature",
+  "biome.twilightforest.minor_feature": "Minor Feature",
+  "biome.twilightforest.dark_forest": "Dark Forest",
+  "biome.twilightforest.enchanted_forest": "Enchanted Forest",
+  "biome.twilightforest.fire_swamp": "Fire Swamp"
+}

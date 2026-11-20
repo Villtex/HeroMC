@@ -237,6 +237,20 @@ erzeugt worldgen152 nicht: dafür einen Global Loot Modifier. Vorbild `harkenscy
 - Beute, die ein Mod in fremden Kategorien änderte (DDLoot teilte dungeonChest an Ort und Stelle durch 10):
   `OldLoot.Category.divideWeights`.
 
+## Mod-Dimension mit eigenem Gelände und Population (Twilight Forest, Teil 24a)
+
+- Kern ohne Spielklassen in `<mod>/gen` (Vorlage `twilightforest.gen`): Layout (`TFLayout`, Layer aus
+  `Layers.Zoom/Smooth/RiverMix/VoronoiZoom` + eigene `Layer`-Unterklassen), Gelände → `OldChunk.wide(cx, cz, cells,
+  biomes)` mit `id << 4 | meta` (IDs bis 4095, z. B. Hecke 1356:1 im Gelände), Population als
+  `OldDecoration.dimension(seed, terrain, dimId, populator)`; im Populator am Ende die Mod-Generatoren mit eigenem
+  `modRandom` wie `OldPopulator` (`OldTerrainGen.generators()`, sie prüfen `world.dimension()` selbst). Biome mit
+  `key = null` registrieren (sonst listet sie die Oberwelt-Biomquelle), Schlüssel im Mod (`TFBiomes.key`).
+- Spielseite: eigener `ChunkGenerator` + `BiomeSource`, Terrain mit `old.cell(x, y, z)` → `OldBlockStates.get(id, meta)`,
+  Population mit `OldChunkWriter.write`. Seed binden in `LevelEvent.Load` (Datapack-Dimensionen fehlen in
+  `getWorldGenSettings().dimensions()`!), sonst „Parent chunk missing“.
+- Prüfen: `tools/expect.sh <seed> twilight find <r>` (Muster für weitere Dimensionen in `tools/java/Expect.java`),
+  Blöcke der Dimension in `verify_blocks.py` (`mod_meta`) eintragen, Kern-Klassen in die javac-Zeile von `expect.sh`.
+
 ## Häufigkeit von Strukturen gegen das Original messen
 
 Wenn der Nutzer meldet, im Original seien Bauten seltener/häufiger (gemessen für Ruins, Battle Towers, Better Dungeons):

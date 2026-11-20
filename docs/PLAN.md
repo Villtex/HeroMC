@@ -61,7 +61,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 21 | Immibis Core, Immibis's Microblocks | ~26.000 | 3 | Fable 5.2, extra hoch | offen |
 | 22 | Client-Mods: Damage Indicators, MapWriter | ~12.000 | – | Sonnet 5.5, niedrig | ✅ erledigt |
 | 23 | Gesamttest und Modpack-Export | – | alle | Opus 5.5, mittel | offen |
-| 24a | Twilight Forest A: Dimension, Gelände, Biome, Portal, Struktur-Raster | ~8.000 | 2 | Fable 5.2, extra hoch | offen |
+| 24a | Twilight Forest A: Dimension, Gelände, Biome, Portal, Struktur-Raster | ~8.000 | 2 | Fable 5.2, extra hoch | ✅ erledigt |
 | 24b | Twilight Forest B: Blöcke, Holz, Pflanzen, Kleintiere-Blöcke, Biom-Dekoration, magische Bäume | ~9.000 | 24a | Fable 5.2, hoch | offen |
 | 24c | Twilight Forest C: normale Mobs mit Modellen, Spawns je Biom, Spawn-Eier | ~11.000 | 24a | Opus 5.5, hoch | offen |
 | 24d | Twilight Forest D: Strukturen A (Hügel, Hecken-Labyrinth, Naga-Hof, Hain, Lich-Turm, Labyrinth, Hohle Bäume), Beute | ~9.000 | 24b | Fable 5.2, extra hoch | offen |
@@ -1442,6 +1442,30 @@ Dekoration erst 24b, Spawns 24c), `TFFeature` + `TFFeatureCache*` (wo welche Str
 - Dimension mit 1.5.2-Himmel/-Nebel/-Licht (ewiges Zwielicht), Seed wie im Original aus dem Welt-Seed.
 - Gelände, Biom-Verteilung (GenLayer-Kette), Höhlen, Schluchten bitgenau.
 - Portal bauen, Hin- und Rückreise, Portal am Zielort.
+
+#### Teil 24a – Stand (✅ erledigt)
+
+`mods/twilightforest` (Mod-ID `twilightforest`, braucht `worldgen152`), Daten aus `mods/twilightforest/tools/gen.py`,
+Offenes für 24b–24f in `mods/twilightforest/TODO.md`, Muster im Skill `worldgen152` („Mod-Dimension“).
+- Kern ohne Spielklassen (`twilightforest.gen`): 18 Biome (IDs 64–81, Höhen/Klima der Konstruktoren), Layer-Kette von
+  `GenLayerTF.makeTheWorld` (Biome, Ränder, Bäche), Gelände von `ChunkProviderTwilightForest` (64 Blöcke hoch, Meer
+  bei 32, Gletscher, hohle Hügel und Hydra-Höhle heben sich, Heckenlabyrinth/Naga-Hof/Hain werden geebnet,
+  Dunkelholz-Blätterdach als Hecke 1356:1, Deckschichten, Merk-Grundgestein der Bauwerks-Chunks), Höhlen
+  (`TFGenCaves`: Wasser unter y 10, Erdmantel) und Schluchten, Bauwerks-Raster `TFFeature` (alle 16 Chunks, Art nach
+  Biom), Population (Seen, Lavaseen, 8 Dungeons, Eis/Schnee, danach die Generatoren der anderen Mods).
+- `worldgen152` erweitert: `OldChunk.wide` (IDs bis 4095 + Metadaten im Gelände), `OldWorld.dimension`,
+  `OldDecoration.dimension` mit eigenem Populator, öffentliche Layer und `OldChunkWriter`.
+- Spiel: Dimension `twilightforest:twilight_forest` (Höhe 0–256, Himmel/Nebel von `WorldProviderTwilightForest`, feste
+  Zeit), Chunk-Generator, Biomquelle, Blöcke Portal, Hecke, Dunkelholzlaub (alte IDs 1366, 1356:0/1).
+- Portal: Diamant in einem 2×2-Wasserbecken mit Gras-/Erdrand und Pflanzen darauf (Prüfung alle 20 Ticks je
+  Spieler im Umkreis 32, Oberwelt und Twilight) → Blitz, Portal; Hin- und Rückreise mit `TFTeleporter` (nächstes Portal
+  bis 200 Blöcke über den POI-Index, sonst neues Portal auf Gras mit Blumenring; y × 2 bzw. × 0,5).
+- Geprüft: Kern gegen Spiel (`tools/expect.sh 1234 twilight find 120`, 39 Chunks mit allen Biomen und je einem
+  Bauwerks-Chunk jeder Art) 92.193 Blöcke und 640 Biome, 0 Abweichungen; Portal am Testserver (temporärer Befehl):
+  Becken wird Portal, Schwein reist hin (neues Portal bei y 36) und zurück (neues Portal am Boden der Oberwelt).
+- Offen: Kern gegen Original (der 1.5.2-Server erzeugt ohne Spieler keine Chunks der Dimension 7); Bauwerke ziehen im
+  Original als Erstes Zufallszahlen der Population, bis 24d liegen Seen/Dungeons in Bauwerks-Chunks anders; Biom-
+  Dekoration 24b, Mobs 24c; Client-Prüfung (Himmel, Nebel, Licht, Portalmodell, Wasserfarben).
 
 ### Teil 24b – Blöcke, Pflanzen, Dekoration
 Quellen: `block/*` (ohne Boss-Spawner, Turm-Geräte, Trophäe, Entwerkbank), `item/ItemBlock*`, `tileentity/

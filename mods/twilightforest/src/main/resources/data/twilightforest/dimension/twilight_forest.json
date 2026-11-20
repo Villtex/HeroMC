@@ -1,0 +1,9 @@
+{
+  "type": "twilightforest:twilight_forest",
+  "generator": {
+    "type": "twilightforest:twilight_forest",
+    "biome_source": {
+      "type": "twilightforest:twilight_forest"
+    }
+  }
+}

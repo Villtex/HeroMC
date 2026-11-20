@@ -151,7 +151,7 @@ public final class OldTerrainGen {
         return REACHES;
     }
 
-    static List<WorldGenerator> generators() {
+    public static List<WorldGenerator> generators() {
         return GENERATORS;
     }
 

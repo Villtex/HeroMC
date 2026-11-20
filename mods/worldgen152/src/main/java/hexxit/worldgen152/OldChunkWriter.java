@@ -63,13 +63,13 @@ import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.chunk.ChunkAccess;
 
 /** Puts what 1.5.2 population did to a chunk into the game's chunk, on top of the bare terrain already there. */
-final class OldChunkWriter {
+public final class OldChunkWriter {
     private static final org.slf4j.Logger LOGGER = com.mojang.logging.LogUtils.getLogger();
 
     private OldChunkWriter() {
     }
 
-    static void write(WorldGenLevel level, ChunkAccess chunk, OldChunk bare, OldDecoratedChunk populated) {
+    public static void write(WorldGenLevel level, ChunkAccess chunk, OldChunk bare, OldDecoratedChunk populated) {
         RegistryAccess registries = level.registryAccess();
         int minX = chunk.getPos().getMinBlockX();
         int minZ = chunk.getPos().getMinBlockZ();
@@ -82,7 +82,7 @@ final class OldChunkWriter {
             for (int z = 0; z < 16; z++) {
                 for (int y = minY; y < maxY; y++) {
                     int cell = populated.cell(x, y, z);
-                    if (cell == (y < OldChunk.HEIGHT ? bare.blockId(x, y, z) << 4 : 0)) {
+                    if (cell == (y < OldChunk.HEIGHT ? bare.cell(x, y, z) : 0)) {
                         continue;
                     }
                     int id = cell >> 4;

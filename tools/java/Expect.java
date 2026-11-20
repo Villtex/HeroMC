@@ -52,17 +52,43 @@ public class Expect {
         // "nether" (after "vanilla", if both are given): the Nether of the seed instead of the overworld
         boolean nether = a.length > 1 && a[1].equals("nether");
         if (nether) a = java.util.stream.Stream.concat(java.util.stream.Stream.of(a[0]), Arrays.stream(a).skip(2)).toArray(String[]::new);
-        BiomeLayout layout = nether ? null : new BiomeLayout(seed);
-        OldTerrain terrain = nether ? null : new OldTerrain(layout);
+        // "twilight": the Twilight Forest (dimension 7) of the seed
+        boolean twilight = a.length > 1 && a[1].equals("twilight");
+        if (twilight) a = java.util.stream.Stream.concat(java.util.stream.Stream.of(a[0]), Arrays.stream(a).skip(2)).toArray(String[]::new);
+        twilightforest.gen.TFWorld tf = twilight ? new twilightforest.gen.TFWorld(seed) : null;
+        BiomeLayout layout = nether || twilight ? null : new BiomeLayout(seed);
+        OldTerrain terrain = nether || twilight ? null : new OldTerrain(layout);
         hexxit.worldgen152.core.nether.NetherTerrain netherTerrain = nether ? new hexxit.worldgen152.core.nether.NetherTerrain(seed) : null;
         Map<Long, OldChunk> raw = new HashMap<>();
         OldWorld.TerrainSource source = (x, z) -> {
             synchronized (raw) {
-                return raw.computeIfAbsent((long) x << 32 | z & 0xFFFFFFFFL, k -> nether ? netherTerrain.generate(x, z) : terrain.generate(x, z));
+                return raw.computeIfAbsent((long) x << 32 | z & 0xFFFFFFFFL, k -> nether ? netherTerrain.generate(x, z) : twilight ? tf.terrain(x, z) : terrain.generate(x, z));
             }
         };
-        OldDecoration decoration = nether ? OldDecoration.nether(seed, source) : new OldDecoration(seed, source, layout);
+        OldDecoration decoration = twilight ? tf.decoration() : nether ? OldDecoration.nether(seed, source) : new OldDecoration(seed, source, layout);
         List<int[]> chunks = new ArrayList<>();
+        if (twilight && a[1].equals("find")) {
+            // one chunk per biome on a coarse scan, and the centre chunk of the nearest feature of each kind
+            Map<Integer, int[]> first = new TreeMap<>();
+            Map<String, int[]> features = new TreeMap<>();
+            int r = Integer.parseInt(a[2]);
+            for (int d = 0; d <= r; d++) for (int cx = -d; cx <= d; cx++) for (int cz = -d; cz <= d; cz++) {
+                if (Math.max(Math.abs(cx), Math.abs(cz)) != d) continue;
+                if ((cx & 3) == 0 && (cz & 3) == 0) first.putIfAbsent(tf.layout().chunkIds(cx, cz)[8 + 8 * 16] & 0xFF, new int[]{cx, cz});
+                twilightforest.gen.TFFeature f = twilightforest.gen.TFFeature.getFeatureDirectlyAt(cx, cz, tf.layout());
+                if (f != twilightforest.gen.TFFeature.NOTHING) features.putIfAbsent(f.name, new int[]{cx, cz});
+            }
+            StringBuilder sb = new StringBuilder();
+            for (var e : first.entrySet()) { chunks.add(e.getValue()); sb.append(OldBiomes.byId(e.getKey()).name).append("@").append(e.getValue()[0]).append(",").append(e.getValue()[1]).append("  "); }
+            for (var e : features.entrySet()) {
+                sb.append(e.getKey()).append("@").append(e.getValue()[0]).append(",").append(e.getValue()[1]).append("  ");
+                // the feature chunk and one towards its rim (hills rise, courtyards are flattened)
+                chunks.add(e.getValue());
+                chunks.add(new int[]{e.getValue()[0] + 1, e.getValue()[1] + 1});
+            }
+            System.err.println(first.size() + " biomes, " + features.size() + " features found: " + sb);
+            a = new String[]{a[0], "picked"};
+        }
         if (nether && a[1].equals("structures")) {
             // two by two chunks at the first piece of the two fortresses nearest to 0,0
             List<hexxit.worldgen152.core.structure.MapGenNetherBridge.Found> found = new hexxit.worldgen152.core.structure.MapGenNetherBridge(seed).find(Integer.parseInt(a[2]));
@@ -202,6 +228,8 @@ public class Expect {
             int[] spawn = hexxit.worldgen152.core.structure.OldStructures.spawnPoint(seed, layout, source);
             System.out.println("spawn " + spawn[0] + " " + spawn[1]);
             return;
+        } else if (a[1].equals("picked")) {
+            // chunks chosen above
         } else if (!a[1].equals("raw")) {
             for (int i = 1; i + 1 < a.length; i += 2) chunks.add(new int[]{Integer.parseInt(a[i]), Integer.parseInt(a[i + 1])});
         }
@@ -231,6 +259,7 @@ public class Expect {
         }
         StringBuilder out = new StringBuilder();
         if (nether) out.append("D minecraft:the_nether\n");
+        if (twilight) out.append("D twilightforest:twilight_forest\n");
         Map<Integer, Integer> changed = new TreeMap<>();
         long start = System.nanoTime();
         for (int[] ch : chunks) {
@@ -242,13 +271,13 @@ public class Expect {
                 boolean column = (x == 1 || x == 8 || x == 15) && (z == 2 || z == 9);
                 for (int y = 0; y < top; y++) {
                     int cell = c.cell(x, y, z);
-                    boolean differs = cell != (y < 128 ? bare.blockId(x, y, z) << 4 : 0);
+                    boolean differs = cell != (y < 128 ? bare.cell(x, y, z) : 0);
                     if (differs) changed.merge(cell >> 4, 1, Integer::sum);
                     if (column || differs) out.append(cx * 16 + x).append(' ').append(y).append(' ').append(cz * 16 + z).append(' ').append(cell >> 4).append(' ').append(cell & 15).append('\n');
                 }
             }
             for (int x = 2; x < 16; x += 4) for (int z = 2; z < 16; z += 4)
-                out.append("B ").append(cx * 16 + x).append(' ').append(cz * 16 + z).append(' ').append(nether ? "worldgen152:hell" : OldBiomes.byId(c.biomeId(x, z)).key).append('\n');
+                out.append("B ").append(cx * 16 + x).append(' ').append(cz * 16 + z).append(' ').append(nether ? "worldgen152:hell" : twilight ? twilightforest.gen.TFBiomes.key(c.biomeId(x, z)) : OldBiomes.byId(c.biomeId(x, z)).key).append('\n');
             for (var e : c.tiles().entrySet()) {
                 int k = e.getKey();
                 String pos = (cx * 16 + (k >> 12)) + " " + (k & 255) + " " + (cz * 16 + (k >> 8 & 15));

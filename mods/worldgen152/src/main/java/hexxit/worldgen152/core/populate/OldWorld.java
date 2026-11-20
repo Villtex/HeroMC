@@ -45,6 +45,16 @@ public final class OldWorld {
             this.chunkX = terrain.chunkX();
             this.chunkZ = terrain.chunkZ();
             this.biomes = terrain.biomes();
+            char[] cells = terrain.cells();
+            if (cells != null) {
+                for (int i = 0; i < cells.length; i++) {
+                    if (cells[i] != 0) {
+                        int y = i & 127;
+                        this.section(y >> 4)[(i >> 7) * 16 + (y & 15)] = cells[i];
+                    }
+                }
+                return;
+            }
             byte[] blocks = terrain.blocks();
             for (int column = 0; column < 256; column++) {
                 int base = column * OldChunk.HEIGHT;
@@ -116,12 +126,32 @@ public final class OldWorld {
         this.netherBridge = netherBridge;
     }
 
+    private OldWorld(long seed, TerrainSource terrain, int dimension) {
+        this.seed = seed;
+        this.terrain = terrain;
+        this.structures = null;
+        this.layout = null;
+        this.dimension = dimension;
+        this.netherBridge = null;
+    }
+
+    /**
+     * A dimension of a mod (Twilight Forest: 7) with its own chunk provider: biomes come from its terrain, there are
+     * no vanilla structures and no overworld layout.
+     */
+    public static OldWorld dimension(long seed, TerrainSource terrain, int dimension) {
+        if (dimension == 0 || dimension == -1) {
+            throw new IllegalArgumentException("dimension " + dimension + " has its own constructor");
+        }
+        return new OldWorld(seed, terrain, dimension);
+    }
+
     /** The Nether (dimension -1) of the seed: every column is the biome Hell, the only structures are nether fortresses. */
     public static OldWorld nether(long seed, TerrainSource terrain) {
         return new OldWorld(seed, terrain, new MapGenNetherBridge(seed));
     }
 
-    /** {@code world.provider.dimensionId}: 0 for the overworld, -1 for the Nether. */
+    /** {@code world.provider.dimensionId}: 0 for the overworld, -1 for the Nether, the id of a mod dimension. */
     public int dimension() {
         return this.dimension;
     }
@@ -177,7 +207,8 @@ public final class OldWorld {
         return this.bigTree;
     }
 
-    void beginChunk() {
+    /** Starts the population of a chunk: per-chunk generator state is reset. */
+    public void beginChunk() {
         this.bigTree = new OldTreeGens.BigTree();
         this.chunkState.clear();
     }

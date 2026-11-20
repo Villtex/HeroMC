@@ -33,6 +33,14 @@ public final class OldDecoration {
     private final OldWorld.TerrainSource terrain;
     private final BiomeLayout layout;
     private final boolean nether;
+    /** Dimension id and population of a mod dimension ({@link #dimension}), else {@code null}. */
+    private final Integer dimension;
+    private final ChunkPopulator populator;
+
+    /** Populates one chunk of a mod dimension, as its chunk provider's {@code populate} plus the mod generators did. */
+    public interface ChunkPopulator {
+        void populate(OldWorld world, int chunkX, int chunkZ);
+    }
     private final Map<Long, FutureTask<OldDecoratedChunk[]>> tiles = new LinkedHashMap<>(16, 0.75F, true) {
         @Override
         protected boolean removeEldestEntry(Map.Entry<Long, FutureTask<OldDecoratedChunk[]>> eldest) {
@@ -51,10 +59,22 @@ public final class OldDecoration {
     }
 
     private OldDecoration(long seed, OldWorld.TerrainSource terrain, BiomeLayout layout, boolean nether) {
+        this(seed, terrain, layout, nether, null, null);
+    }
+
+    private OldDecoration(long seed, OldWorld.TerrainSource terrain, BiomeLayout layout, boolean nether, Integer dimension,
+                          ChunkPopulator populator) {
         this.seed = seed;
         this.terrain = terrain;
         this.layout = layout;
         this.nether = nether;
+        this.dimension = dimension;
+        this.populator = populator;
+    }
+
+    /** Population of a mod dimension ({@link OldWorld#dimension}); {@code populator} runs for every chunk in order. */
+    public static OldDecoration dimension(long seed, OldWorld.TerrainSource terrain, int dimension, ChunkPopulator populator) {
+        return new OldDecoration(seed, terrain, null, false, dimension, populator);
     }
 
     /** Population of the Nether (dimension -1); {@code terrain} supplies its bare chunks. */
@@ -100,11 +120,15 @@ public final class OldDecoration {
     private OldDecoratedChunk[] populateTile(int tileX, int tileZ) {
         int x0 = tileX * TILE;
         int z0 = tileZ * TILE;
-        OldWorld world = this.nether ? OldWorld.nether(this.seed, this.terrain) : new OldWorld(this.seed, this.terrain, this.layout);
+        OldWorld world = this.dimension != null ? OldWorld.dimension(this.seed, this.terrain, this.dimension)
+                : this.nether ? OldWorld.nether(this.seed, this.terrain) : new OldWorld(this.seed, this.terrain, this.layout);
         int[] margin = this.margin(x0, z0);
         for (int x = x0 - margin[0]; x < x0 + TILE + margin[2]; x++) {
             for (int z = z0 - margin[1]; z < z0 + TILE + margin[3]; z++) {
-                if (this.nether) {
+                if (this.populator != null) {
+                    world.beginChunk();
+                    this.populator.populate(world, x, z);
+                } else if (this.nether) {
                     OldNetherPopulator.populate(world, x, z);
                 } else {
                     OldPopulator.populate(world, x, z);

@@ -1,0 +1,3 @@
+# path in twilightforest-1.18.1.zip -> path in the ported jar (written by tools/gen.py)
+mods/twilightforest/textures/blocks/hedge.png -> assets/twilightforest/textures/block/hedge.png
+mods/twilightforest/textures/blocks/darkwood_leaves.png -> assets/twilightforest/textures/block/darkwood_leaves.png

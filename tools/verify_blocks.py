@@ -198,6 +198,10 @@ def natura(bid, meta):
 
 def mod_meta(bid, meta):
     """Blocks of mods whose metadata matters."""
+    if bid == 1356:  # Twilight Forest hedge: metadata 1 is the darkwood leaves of the dark forest canopy
+        return 'twilightforest:darkwood_leaves' if meta == 1 else 'twilightforest:hedge'
+    if bid == 1366:  # Twilight Forest portal
+        return 'twilightforest:twilight_portal'
     if bid == 1290:  # offLawn sunflower: 0 lower, 1 upper half
         return f'offlawn:sunflower[half={"upper" if meta == 1 else "lower"}]'
     if bid == 144:  # skulls: 1 on the floor (kind and rotation in "K" lines), 2 to 5 on a wall

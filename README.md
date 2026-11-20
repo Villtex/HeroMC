@@ -38,7 +38,7 @@ Der Port ist in Teile aufgeteilt, die je in eine Session passen: [`docs/PLAN.md`
 | `tools/modelbase_to_layer.py` | überträgt die Geometrie eines 1.5.2-`ModelBase` (Boxen, Hierarchie, Texturversätze) in 26.3-`createBodyLayer`-Zeilen |
 | `gradle/neoforge.mods.toml` | gemeinsame Vorlage für die Mod-Metadaten |
 | `docs/JEI.md` | Vorlage für das JEI-Plugin eines Mods (JEI ersetzt NEI) |
-| `.claude/skills/worldgen152/` | Projekt-Skill: Weltgenerierung eines Mods in `worldgen152` einhängen, Setzlinge, Nether, eigene Dimensionen, Prüfung |
+| `.claude/skills/worldgen152/` | Projekt-Skill: Weltgenerierung eines Mods in `worldgen152` einhängen, Setzlinge, Nether, eigene Dimensionen (auch mit eigenem Gelände und Population wie Twilight Forest), Prüfung |
 | `.claude/skills/client-render-263/` | Projekt-Skill: HUD-Ebenen, Gegenstände am Spielermodell, Rüstungen mit eigenen Helm-Modellen, durchscheinende Blockmodelle, Rechtsklick vor dem Block abfangen, Blöcke mit dem Modell eines anderen Blocks (Tarnblöcke), Blöcke mit TESR/IItemRenderer als BlockEntityRenderer + Special-Item-Renderer (26.3), Vorlage BiblioCraft |
 | `.claude/skills/menu-gui-263/` | Projekt-Skill: eigene GUI mit Container (Menü, Screen, Pakete Client → Server, Server-Konfiguration für die Vorschau im Client) |
 | `.claude/skills/wood-sets-263/` | Projekt-Skill: Holzarten und Pflanzen eines Mods (Planken, Stämme, Blätter, Setzlinge, Treppen bis Werkbänke, Brennwert, Rezeptkonflikte mit Vanilla), Vorlage Natura |
@@ -213,7 +213,7 @@ Prüfen: `tools/expect.sh 1234 nether structures 60 > expect.txt`, dann `verify_
 | Harken Scythe | `harkenscythe` 2.1.6 | Jade Knightblazer | 27.284 | ✅ Teil 9 (Seelen/Blut, Altäre, 26 Mobs; Client-Prüfung offen) |
 | Better Dungeons (Chocolate Quest) | `betterdungeons` 1.09b | Chocolatin | 36.118 | ✅ Teil 12 und 13 (Client-Prüfung offen) |
 | Project Zulu | `projectzulu` 1.0.3.8 | — | 42.845 | ✅ Teil 10 Kreaturen, Teil 11 Blöcke, Items, Tränke, Strukturen (Client-Prüfung offen) |
-| The Twilight Forest | `twilightforest` 1.18.1 | Benimatic | 50.329 | offen (Teile 24a–24f) |
+| The Twilight Forest | `twilightforest` 1.18.1 | Benimatic | 50.329 | Teil 24a erledigt (Dimension, Gelände, Portal), 24b–24f offen |
 | Tinkers' Construct | `tconstruct` 1.4.3 | mDiyo | 59.808 | aufgeteilt in Teil 25a–25f; ✅ 25a (Werkzeug-Kern: Materialien, Teile, Muster, Tische, Zusammenbau, Modifikatoren anbringen; Client-Prüfung offen), ✅ 25b (Fähigkeiten, Modifikator-Effekte, Bogen/Pfeile, Dolch, Bratpfanne, Werkzeugmodelle in Schichten; Client-Prüfung offen), 25c–25f offen |
 
 Weitere Archive des Packs, die kein eigener Mod sind:

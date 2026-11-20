@@ -103,8 +103,8 @@ public final class Layers {
         }
     }
 
-    static class Zoom extends Layer {
-        Zoom(long salt, Layer parent) {
+    public static class Zoom extends Layer {
+        public Zoom(long salt, Layer parent) {
             super(salt);
             this.parent = parent;
         }
@@ -379,8 +379,8 @@ public final class Layers {
         }
     }
 
-    static final class Smooth extends Layer {
-        Smooth(long salt, Layer parent) {
+    public static final class Smooth extends Layer {
+        public Smooth(long salt, Layer parent) {
             super(salt);
             this.parent = parent;
         }
@@ -574,11 +574,11 @@ public final class Layers {
         }
     }
 
-    static final class RiverMix extends Layer {
+    public static final class RiverMix extends Layer {
         private final Layer biomes;
         private final Layer rivers;
 
-        RiverMix(long salt, Layer biomes, Layer rivers) {
+        public RiverMix(long salt, Layer biomes, Layer rivers) {
             super(salt);
             this.biomes = biomes;
             this.rivers = rivers;
@@ -615,8 +615,8 @@ public final class Layers {
         }
     }
 
-    static final class VoronoiZoom extends Layer {
-        VoronoiZoom(long salt, Layer parent) {
+    public static final class VoronoiZoom extends Layer {
+        public VoronoiZoom(long salt, Layer parent) {
             super(salt);
             this.parent = parent;
         }
