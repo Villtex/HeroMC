@@ -1,0 +1,55 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "down": "twilightforest:block/nagastone_bottom_tip",
+    "up": "twilightforest:block/nagastone_cross_section",
+    "north": "twilightforest:block/nagastone_cross_section",
+    "south": "twilightforest:block/nagastone_tip_left",
+    "west": "twilightforest:block/nagastone_left_up",
+    "east": "twilightforest:block/nagastone_right_up",
+    "particle": "twilightforest:block/nagastone_cross_section"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "down": {
+          "texture": "#down",
+          "cullface": "down",
+          "rotation": 90
+        },
+        "up": {
+          "texture": "#up",
+          "cullface": "up",
+          "rotation": 270
+        },
+        "north": {
+          "texture": "#north",
+          "cullface": "north"
+        },
+        "south": {
+          "texture": "#south",
+          "cullface": "south",
+          "rotation": 270
+        },
+        "west": {
+          "texture": "#west",
+          "cullface": "west"
+        },
+        "east": {
+          "texture": "#east",
+          "cullface": "east"
+        }
+      }
+    }
+  ]
+}

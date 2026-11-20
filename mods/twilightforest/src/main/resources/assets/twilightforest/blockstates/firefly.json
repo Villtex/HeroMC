@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "twilightforest:block/firefly"
+    },
+    "facing=up": {
+      "model": "twilightforest:block/firefly"
+    },
+    "facing=north": {
+      "model": "twilightforest:block/firefly"
+    },
+    "facing=south": {
+      "model": "twilightforest:block/firefly"
+    },
+    "facing=west": {
+      "model": "twilightforest:block/firefly"
+    },
+    "facing=east": {
+      "model": "twilightforest:block/firefly"
+    }
+  }
+}

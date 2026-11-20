@@ -1,0 +1,24 @@
+{
+  "values": [
+    "twilightforest:canopy_log",
+    "twilightforest:canopy_wood",
+    "twilightforest:darkwood_log",
+    "twilightforest:darkwood_wood",
+    "twilightforest:mangrove_log",
+    "twilightforest:mangrove_wood",
+    "twilightforest:mining_core",
+    "twilightforest:mining_log",
+    "twilightforest:mining_wood",
+    "twilightforest:sorting_engine",
+    "twilightforest:sorting_log",
+    "twilightforest:sorting_wood",
+    "twilightforest:time_clock",
+    "twilightforest:time_log",
+    "twilightforest:time_wood",
+    "twilightforest:transformation_heart",
+    "twilightforest:transformation_log",
+    "twilightforest:transformation_wood",
+    "twilightforest:twilight_oak_log",
+    "twilightforest:twilight_oak_wood"
+  ]
+}

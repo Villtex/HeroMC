@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "active=true": {
+      "model": "twilightforest:block/transformation_heart"
+    },
+    "active=false": {
+      "model": "twilightforest:block/transformation_heart_off"
+    }
+  }
+}

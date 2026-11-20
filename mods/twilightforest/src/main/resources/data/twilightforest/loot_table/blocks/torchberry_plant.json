@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "name": "twilightforest:torchberry_plant",
+              "condition": "minecraft:tool/can_shear"
+            },
+            {
+              "type": "minecraft:item",
+              "name": "twilightforest:torchberries"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "random_sequence": "twilightforest:blocks/torchberry_plant"
+}

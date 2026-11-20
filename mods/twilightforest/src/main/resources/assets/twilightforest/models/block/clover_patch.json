@@ -1,0 +1,70 @@
+{
+  "parent": "minecraft:block/block",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "particle": "twilightforest:block/clover_patch",
+    "c": "twilightforest:block/clover_patch"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        2,
+        0
+      ],
+      "to": [
+        16,
+        2,
+        16
+      ],
+      "faces": {
+        "up": {
+          "texture": "#c",
+          "tintindex": 0
+        },
+        "down": {
+          "texture": "#c",
+          "tintindex": 0
+        }
+      }
+    },
+    {
+      "from": [
+        1,
+        0,
+        1
+      ],
+      "to": [
+        15,
+        1.84,
+        15
+      ],
+      "faces": {
+        "down": {
+          "texture": "#c",
+          "tintindex": 0
+        },
+        "up": {
+          "texture": "#c",
+          "tintindex": 0
+        },
+        "north": {
+          "texture": "#c",
+          "tintindex": 0
+        },
+        "south": {
+          "texture": "#c",
+          "tintindex": 0
+        },
+        "west": {
+          "texture": "#c",
+          "tintindex": 0
+        },
+        "east": {
+          "texture": "#c",
+          "tintindex": 0
+        }
+      }
+    }
+  ]
+}

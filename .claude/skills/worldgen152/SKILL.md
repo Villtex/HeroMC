@@ -248,6 +248,12 @@ erzeugt worldgen152 nicht: dafür einen Global Loot Modifier. Vorbild `harkenscy
 - Spielseite: eigener `ChunkGenerator` + `BiomeSource`, Terrain mit `old.cell(x, y, z)` → `OldBlockStates.get(id, meta)`,
   Population mit `OldChunkWriter.write`. Seed binden in `LevelEvent.Load` (Datapack-Dimensionen fehlen in
   `getWorldGenSettings().dimensions()`!), sonst „Parent chunk missing“.
+- Biom-Dekoration der Dimension (Teil 24b): eigener Dekorator als Unterklasse von `OldDecorator` (Vorlage
+  `twilightforest.gen.TFDecorator`), was das Original vor `super.decorate` tat davor, was es in seinem überschriebenen
+  `decorate()` danach tat dahinter. Daten, die der Populator schon berechnet hat (nächstes Bauwerk), über
+  `world.chunkState(key, …)` weitergeben. `onBlockAdded` von Mod-Blöcken (Kleintiere, die sich eine Wand suchen oder
+  abfallen): `OldBlockInfo.registerAdded(id, (world, x, y, z) -> …)`. Seltene Bauten prüfen: Raster von Chunks an
+  `expect.sh` geben, Chunks mit den seltenen IDs herausfiltern und nur diese mit `verify_blocks.py` abgleichen.
 - Prüfen: `tools/expect.sh <seed> twilight find <r>` (Muster für weitere Dimensionen in `tools/java/Expect.java`),
   Blöcke der Dimension in `verify_blocks.py` (`mod_meta`) eintragen, Kern-Klassen in die javac-Zeile von `expect.sh`.
 

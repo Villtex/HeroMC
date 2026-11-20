@@ -1,0 +1,10 @@
+{
+  "logs": [
+    "twilightforest:twilight_oak_log",
+    "twilightforest:twilight_oak_wood"
+  ],
+  "leaves": [
+    "twilightforest:twilight_oak_leaves",
+    "twilightforest:rainbow_oak_leaves"
+  ]
+}

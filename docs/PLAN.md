@@ -62,7 +62,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 22 | Client-Mods: Damage Indicators, MapWriter | ~12.000 | – | Sonnet 5.5, niedrig | ✅ erledigt |
 | 23 | Gesamttest und Modpack-Export | – | alle | Opus 5.5, mittel | offen |
 | 24a | Twilight Forest A: Dimension, Gelände, Biome, Portal, Struktur-Raster | ~8.000 | 2 | Fable 5.2, extra hoch | ✅ erledigt |
-| 24b | Twilight Forest B: Blöcke, Holz, Pflanzen, Kleintiere-Blöcke, Biom-Dekoration, magische Bäume | ~9.000 | 24a | Fable 5.2, hoch | offen |
+| 24b | Twilight Forest B: Blöcke, Holz, Pflanzen, Kleintiere-Blöcke, Biom-Dekoration, magische Bäume | ~9.000 | 24a | Fable 5.2, hoch | ✅ erledigt |
 | 24c | Twilight Forest C: normale Mobs mit Modellen, Spawns je Biom, Spawn-Eier | ~11.000 | 24a | Opus 5.5, hoch | offen |
 | 24d | Twilight Forest D: Strukturen A (Hügel, Hecken-Labyrinth, Naga-Hof, Hain, Lich-Turm, Labyrinth, Hohle Bäume), Beute | ~9.000 | 24b | Fable 5.2, extra hoch | offen |
 | 24e | Twilight Forest E: Strukturen B (Dunkler Turm mit Turm-Mechanik, Ritter-Festung, Hydra-Höhle) | ~6.000 | 24d | Fable 5.2, hoch | offen |
@@ -1476,6 +1476,28 @@ magische Bäume (Baum der Zeit, Verwandlung, Bergarbeiter, Sortierung) mit ihrer
 - Holzarten, Blätter, Setzlinge, Hecke, Wurzeln, Pflanzen, Glühwürmchen/Zikade/Mondwurm (Modelle, Licht, Ton),
   Glühwürmchenglas, Feuerdüsen, Labyrinth-/Nagastein, Turmholz.
 - Biom-Dekoration bitgenau, Prüfung mit `verify_blocks.py`.
+
+#### Teil 24b – Stand (✅ erledigt)
+
+Offenes in `mods/twilightforest/TODO.md` (Abschnitte „Teil 24b – Dekoration (Kern)“ und „Teil 24b – Spielseite“).
+- Kern (`twilightforest.gen`): `TFDecorator` (TFBiomeDecorator, Dunkelwald-Dekorator) mit den Werten aller 18 Biome
+  in `TFBiomes` (Bäume, Gras, Vines/Pinguine/Feuerdüsen nach `decorate()`), Bäume `TFTrees` (Blätterdach, Riesen-
+  Blätterdach, Dunkelholz, Pilz, hohler Baum mit Blätterverlies, Stumpf, Mangrove, kleine Eiche, Regenbogeneichen,
+  Baum der Zeit/Verwandlung/Bergarbeiter/Sortierung), ruinList `TFRuins`, `TFPlants` (Wurzeln, Fackelbeeren, Myzel,
+  Feuerdüsen, Pinguine, TF-Pflanzen), Truhen `TFTreasure` (Tabellen 9 und 14). `worldgen152`: `OldBlockInfo
+  .registerAdded` (onBlockAdded der Kleintiere), Laub mit Lichtdämpfung 2, `BigTree` mit eigenem Holz/Laub.
+- Spiel (`TFBlocks`, `block/*`, `client/*`): 4 Holzarten + 4 magische (Stamm, Holz, Laub, Setzling; Kerne mit
+  Wirkung: Zufallsticks, Biom-Verwandlung, Erzmagnet `block/OreMagnet`, Kisten sortieren), Pflanzen, Wurzeln,
+  Glühwürmchen/Zikade/Mondwurm (Modelle, Licht, Zikadengesang), Glühwürmchenglas, Rauchquelle/Feuerdüsen
+  (Lava ziehen, Flammen), Labyrinthstein (8), Nagastein (Kopf/Körper), Turmholz (5), Hecke mit Schaden beim
+  Weiterschlagen, Dunkelholzlaub mit Setzling, Rezepte (Planken, Holzkohle, Glas, Fackeln, Stock), TreeCapitator.
+  Setzlinge wachsen mit den 1.5.2-Generatoren (`TFSaplings`, `OldLiveGen`, Reichweiten gemessen).
+- Geprüft: Kern gegen Spiel `tools/expect.sh 1234 twilight find 120` (40 Chunks, 117.687 Blöcke) und 155 Chunks aus
+  einem Raster mit allen seltenen Bauten (493.651 Blöcke, 35 Spawner/Truhen): 0 Abweichungen. Testserver: alle zehn
+  Setzlinge wachsen, Rezepte über Crafter, keine Fehler im Log.
+- Offen: Pinguine/Raben und die Mobs der Spawner (bis dahin Höhlenspinne/Skelett) mit 24c; Truhentabellen der
+  Bauwerke 24d/24e; Kern gegen Original (keine Original-Chunks der Dimension 7); Client-Prüfung (Modelle der
+  Kleintiere, Nagastein-UVs, Tönungen, Partikel).
 
 ### Teil 24c – Mobs
 Quellen: `entity/*` ohne Bosse und ihre Teile (Naga, Lich, Hydra, Minoshroom, Ur-Ghast samt Geschossen), `entity/ai`,

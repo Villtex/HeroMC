@@ -1,0 +1,63 @@
+{
+  "parent": "minecraft:block/block",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "particle": "twilightforest:block/mayapple",
+    "top": "twilightforest:block/mayapple",
+    "stem": "twilightforest:block/mayapple_side"
+  },
+  "elements": [
+    {
+      "from": [
+        4,
+        6,
+        4
+      ],
+      "to": [
+        13,
+        6,
+        13
+      ],
+      "faces": {
+        "up": {
+          "texture": "#top",
+          "tintindex": 0
+        },
+        "down": {
+          "texture": "#top",
+          "tintindex": 0
+        }
+      }
+    },
+    {
+      "from": [
+        8,
+        0,
+        8
+      ],
+      "to": [
+        9,
+        6,
+        9
+      ],
+      "faces": {
+        "north": {
+          "texture": "#stem",
+          "tintindex": 0
+        },
+        "south": {
+          "texture": "#stem",
+          "tintindex": 0
+        },
+        "west": {
+          "texture": "#stem",
+          "tintindex": 0
+        },
+        "east": {
+          "texture": "#stem",
+          "tintindex": 0
+        }
+      }
+    }
+  ]
+}

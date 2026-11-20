@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "twilightforest:block/mangrove_wood"
+    },
+    "axis=y": {
+      "model": "twilightforest:block/mangrove_wood"
+    },
+    "axis=z": {
+      "model": "twilightforest:block/mangrove_wood"
+    }
+  }
+}

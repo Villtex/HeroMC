@@ -1,0 +1,12 @@
+{
+  "logs": [
+    "twilightforest:darkwood_log",
+    "twilightforest:darkwood_wood"
+  ],
+  "leaves": [
+    "twilightforest:darkwood_leaves"
+  ],
+  "maxHorLeafBreakDist": 5,
+  "maxLeafIDDist": 2,
+  "requireLeafDecayCheck": false
+}

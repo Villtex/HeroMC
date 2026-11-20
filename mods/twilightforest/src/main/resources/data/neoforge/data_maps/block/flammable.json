@@ -1,0 +1,76 @@
+{
+  "values": {
+    "twilightforest:twilight_oak_log": {
+      "ignite_odds": 5,
+      "burn_odds": 5
+    },
+    "twilightforest:twilight_oak_wood": {
+      "ignite_odds": 5,
+      "burn_odds": 5
+    },
+    "twilightforest:canopy_log": {
+      "ignite_odds": 5,
+      "burn_odds": 5
+    },
+    "twilightforest:canopy_wood": {
+      "ignite_odds": 5,
+      "burn_odds": 5
+    },
+    "twilightforest:mangrove_log": {
+      "ignite_odds": 5,
+      "burn_odds": 5
+    },
+    "twilightforest:mangrove_wood": {
+      "ignite_odds": 5,
+      "burn_odds": 5
+    },
+    "twilightforest:darkwood_log": {
+      "ignite_odds": 5,
+      "burn_odds": 5
+    },
+    "twilightforest:darkwood_wood": {
+      "ignite_odds": 5,
+      "burn_odds": 5
+    },
+    "twilightforest:twilight_oak_leaves": {
+      "ignite_odds": 30,
+      "burn_odds": 60
+    },
+    "twilightforest:canopy_leaves": {
+      "ignite_odds": 30,
+      "burn_odds": 60
+    },
+    "twilightforest:mangrove_leaves": {
+      "ignite_odds": 30,
+      "burn_odds": 60
+    },
+    "twilightforest:rainbow_oak_leaves": {
+      "ignite_odds": 30,
+      "burn_odds": 60
+    },
+    "twilightforest:darkwood_leaves": {
+      "ignite_odds": 0,
+      "burn_odds": 1
+    },
+    "twilightforest:tower_wood": {
+      "ignite_odds": 0,
+      "burn_odds": 1
+    },
+    "twilightforest:encased_tower_wood": {
+      "ignite_odds": 0,
+      "burn_odds": 1
+    },
+    "twilightforest:tower_wood_cracked": {
+      "ignite_odds": 0,
+      "burn_odds": 1
+    },
+    "twilightforest:tower_wood_mossy": {
+      "ignite_odds": 0,
+      "burn_odds": 1
+    },
+    "twilightforest:tower_wood_infested": {
+      "ignite_odds": 0,
+      "burn_odds": 1
+    }
+  }
+}

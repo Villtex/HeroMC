@@ -1,0 +1,11 @@
+{
+  "logs": [
+    "twilightforest:mining_log",
+    "twilightforest:mining_wood",
+    "twilightforest:mining_core"
+  ],
+  "leaves": [
+    "twilightforest:mining_leaves"
+  ],
+  "onlyDestroyUpwards": false
+}

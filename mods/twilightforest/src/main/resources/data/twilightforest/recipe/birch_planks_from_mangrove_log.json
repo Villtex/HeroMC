@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "w": "twilightforest:mangrove_log"
+  },
+  "pattern": [
+    "w"
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft:birch_planks"
+  }
+}

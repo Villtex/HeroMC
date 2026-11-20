@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "twilightforest:block/moonworm"
+    },
+    "facing=up": {
+      "model": "twilightforest:block/moonworm"
+    },
+    "facing=north": {
+      "model": "twilightforest:block/moonworm"
+    },
+    "facing=south": {
+      "model": "twilightforest:block/moonworm"
+    },
+    "facing=west": {
+      "model": "twilightforest:block/moonworm"
+    },
+    "facing=east": {
+      "model": "twilightforest:block/moonworm"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "twilightforest:darkwood_sapling"
+        }
+      ],
+      "condition": {
+        "type": "minecraft:all_of",
+        "terms": [
+          {
+            "type": "minecraft:survives_explosion"
+          },
+          {
+            "type": "minecraft:random_chance",
+            "chance": 0.025
+          }
+        ]
+      }
+    }
+  ],
+  "random_sequence": "twilightforest:blocks/darkwood_leaves"
+}

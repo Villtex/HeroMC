@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "twilightforest:root_strand"
+        }
+      ],
+      "condition": "minecraft:tool/can_shear"
+    }
+  ],
+  "random_sequence": "twilightforest:blocks/root_strand"
+}

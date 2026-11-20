@@ -64,7 +64,8 @@ WILDCAVES = {1554: PIECES, 1553: ['sandstone_' + p for p in PIECES], 1550: ['ici
 SKULLS = ['skeleton_skull', 'wither_skeleton_skull', 'zombie_head', 'player_head', 'creeper_head']
 WOOD = ['oak', 'spruce', 'birch', 'jungle']
 FACING = ['south', 'west', 'north', 'east']
-MOBS = {'Skeleton': 'minecraft:skeleton', 'Zombie': 'minecraft:zombie', 'Spider': 'minecraft:spider',
+MOBS = {'TwilightForest.Swarm Spider': 'minecraft:cave_spider', 'TwilightForest.Skeleton Druid': 'minecraft:skeleton',  # until Teil 24c
+        'Skeleton': 'minecraft:skeleton', 'Zombie': 'minecraft:zombie', 'Spider': 'minecraft:spider',
         'CaveSpider': 'minecraft:cave_spider', 'Silverfish': 'minecraft:silverfish', 'Blaze': 'minecraft:blaze',
         'Creeper': 'minecraft:creeper',
         # Better Dungeons: its mobs since Teil 13 (BDEntityIds.registerOldNames); names of the templates that match no
@@ -196,12 +197,56 @@ def natura(bid, meta):
     return None
 
 
+TF_LOGS = {1358: ['twilight_oak', 'canopy', 'mangrove', 'darkwood'], 1360: ['time', 'transformation', 'mining', 'sorting']}
+TF_LEAVES = {1357: ['twilight_oak', 'canopy', 'mangrove', 'rainbow_oak'], 1359: ['time', 'transformation', 'mining', 'sorting']}
+TF_PLANTS = {3: 'moss_patch', 4: 'mayapple', 5: 'clover_patch', 8: 'fiddlehead', 9: 'mushgloom', 13: 'torchberry_plant',
+             14: 'root_strand'}
+TF_CRITTERS = {1352: 'cicada', 1353: 'firefly', 1363: 'moonworm'}
+TF_CRITTER_FACING = {1: 'east', 2: 'west', 3: 'south', 4: 'north', 5: 'up', 6: 'down'}
+
+
+def twilight(bid, meta):
+    """Twilight Forest blocks (Teil 24b)."""
+    if bid in TF_LOGS:
+        kind = TF_LOGS[bid][meta & 3]
+        if meta & 12 == 12:
+            return f'twilightforest:{kind}_wood'
+        return f'twilightforest:{kind}_log[axis={AXIS[meta & 12]}]'
+    if bid in TF_LEAVES:
+        return f'twilightforest:{TF_LEAVES[bid][meta & 3]}_leaves[persistent=false]'
+    if bid == 1361:
+        core = ['time_clock', 'transformation_heart', 'mining_core', 'sorting_engine'][meta & 3]
+        return f'twilightforest:{core}[active={flag(meta & 12 != 12)}]'
+    if bid == 1365:
+        return 'twilightforest:' + TF_PLANTS[meta] if meta in TF_PLANTS else 'minecraft:air'
+    if bid == 1367:
+        return 'twilightforest:' + ('liveroot_block' if meta == 1 else 'root')
+    if bid in TF_CRITTERS:
+        return f'twilightforest:{TF_CRITTERS[bid]}[facing={TF_CRITTER_FACING.get(meta & 7, "up")}]'
+    if bid == 1354:
+        if meta == 0:
+            return 'twilightforest:smoker'
+        if meta in (1, 2):
+            return f'twilightforest:encased_smoker[active={flag(meta == 2)}]'
+        if 11 <= meta <= 13:
+            return f'twilightforest:encased_fire_jet[state={["idle", "popping", "flame"][meta - 11]}]'
+        return f'twilightforest:fire_jet[state={ {9: "popping", 10: "flame"}.get(meta, "idle") }]'
+    if bid == 1368:
+        names = ['twilight_oak', 'canopy', 'mangrove', 'darkwood', 'hollow_oak', 'time', 'transformation', 'mining', 'sorting',
+                 'rainbow_oak']
+        return f'twilightforest:{pick(names, meta)}_sapling'
+    return None
+
+
 def mod_meta(bid, meta):
     """Blocks of mods whose metadata matters."""
     if bid == 1356:  # Twilight Forest hedge: metadata 1 is the darkwood leaves of the dark forest canopy
         return 'twilightforest:darkwood_leaves' if meta == 1 else 'twilightforest:hedge'
     if bid == 1366:  # Twilight Forest portal
         return 'twilightforest:twilight_portal'
+    tf = twilight(bid, meta)
+    if tf:
+        return tf
     if bid == 1290:  # offLawn sunflower: 0 lower, 1 upper half
         return f'offlawn:sunflower[half={"upper" if meta == 1 else "lower"}]'
     if bid == 144:  # skulls: 1 on the floor (kind and rotation in "K" lines), 2 to 5 on a wall
@@ -378,6 +423,8 @@ def block(bid, meta):
     if bid in (99, 100):
         if meta == 10:
             return 'minecraft:mushroom_stem[up=false,down=false,north=true,south=true,east=true,west=true]'
+        if meta == 15:  # stem on all six sides (Twilight Forest's canopy mushrooms)
+            return 'minecraft:mushroom_stem[up=true,down=true,north=true,south=true,east=true,west=true]'
         cap = 'brown' if bid == 99 else 'red'
         top = 1 <= meta <= 9
         return (f'minecraft:{cap}_mushroom_block[up={flag(top)},down=false,north={flag(1 <= meta <= 3)},'

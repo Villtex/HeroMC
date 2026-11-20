@@ -27,8 +27,10 @@ import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.AABB;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.level.LevelEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
@@ -54,7 +56,7 @@ import java.util.Set;
 @Mod(TwilightForest.MOD_ID)
 public final class TwilightForest {
     public static final String MOD_ID = "twilightforest";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public static final ResourceKey<Level> DIMENSION = ResourceKey.create(Registries.DIMENSION, id("twilight_forest"));
 
@@ -72,9 +74,12 @@ public final class TwilightForest {
     /** BlockTFHedge metadata 0. */
     public static final DeferredBlock<HedgeBlock> HEDGE = BLOCKS.registerBlock("hedge", HedgeBlock::new,
             p -> p.mapColor(MapColor.PLANT).strength(2.0F, 10.0F).sound(SoundType.GRASS).noLootTable());
-    /** BlockTFHedge metadata 1: the leaves of the dark forest canopy (flammable, drops a darkwood sapling with Teil 24b). */
+    /**
+     * BlockTFHedge metadata 1: the leaves of the dark forest canopy. Flammability 1, spreads no fire (data map); drops
+     * a darkwood sapling 1 in 40 (loot table).
+     */
     public static final DeferredBlock<Block> DARKWOOD_LEAVES = BLOCKS.registerBlock("darkwood_leaves", Block::new,
-            p -> p.mapColor(MapColor.PLANT).strength(2.0F, 10.0F).sound(SoundType.GRASS).ignitedByLava().noLootTable());
+            p -> p.mapColor(MapColor.PLANT).strength(2.0F, 10.0F).sound(SoundType.GRASS).ignitedByLava());
 
     public static final DeferredItem<?> HEDGE_ITEM = ITEMS.registerSimpleBlockItem(HEDGE);
     public static final DeferredItem<?> DARKWOOD_LEAVES_ITEM = ITEMS.registerSimpleBlockItem(DARKWOOD_LEAVES);
@@ -88,6 +93,7 @@ public final class TwilightForest {
             .displayItems((params, output) -> {
                 output.accept(HEDGE_ITEM.get());
                 output.accept(DARKWOOD_LEAVES_ITEM.get());
+                TFBlocks.TAB_ITEMS.forEach(item -> output.accept(item.get()));
             }).build());
 
     public TwilightForest(IEventBus modBus) {
@@ -96,11 +102,17 @@ public final class TwilightForest {
         ITEMS.register(modBus);
         TABS.register(modBus);
         POI_TYPES.register(modBus);
+        TFBlocks.register(modBus);
         GENERATORS.register("twilight_forest", () -> TFChunkGenerator.CODEC);
         BIOME_SOURCES.register("twilight_forest", () -> TFBiomeSource.CODEC);
         GENERATORS.register(modBus);
         BIOME_SOURCES.register(modBus);
         registerOldBlocks();
+        TFBlocks.registerOldBlocks();
+        TFBlocks.GROWER = TFSaplings::grow;
+        if (FMLEnvironment.getDist() == Dist.CLIENT) {
+            twilightforest.client.TFClient.register(modBus);
+        }
         NeoForge.EVENT_BUS.addListener(TwilightForest::onLevelLoad);
         NeoForge.EVENT_BUS.addListener(TwilightForest::onPlayerTick);
     }
@@ -111,6 +123,9 @@ public final class TwilightForest {
 
     /** The block ids of the pack's TwilightForest.cfg, for worldgen152. */
     private static void registerOldBlocks() {
+        // spawners of the decoration (leaf dungeons, witch huts); the Twilight mobs come with Teil 24c
+        hexxit.worldgen152.OldGameIds.registerEntity(twilightforest.gen.TFTreasure.SPAWNER_PREFIX + "Swarm Spider", "minecraft:cave_spider");
+        hexxit.worldgen152.OldGameIds.registerEntity(twilightforest.gen.TFTreasure.SPAWNER_PREFIX + "Skeleton Druid", "minecraft:skeleton");
         OldBlockStates.registerMeta(TFTerrain.HEDGE, meta -> (meta == 1 ? DARKWOOD_LEAVES.get() : HEDGE.get()).defaultBlockState());
         OldBlockStates.register(TFWorld.PORTAL, () -> PORTAL.get().defaultBlockState());
     }

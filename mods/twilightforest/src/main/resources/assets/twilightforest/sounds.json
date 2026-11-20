@@ -1,0 +1,9 @@
+{
+  "cicada": {
+    "sounds": [
+      "twilightforest:cicada2",
+      "twilightforest:cicada3"
+    ],
+    "subtitle": "subtitles.twilightforest.cicada"
+  }
+}

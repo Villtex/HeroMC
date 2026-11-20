@@ -1,0 +1,10 @@
+{
+  "logs": [
+    "twilightforest:time_log",
+    "twilightforest:time_wood",
+    "twilightforest:time_clock"
+  ],
+  "leaves": [
+    "twilightforest:time_leaves"
+  ]
+}

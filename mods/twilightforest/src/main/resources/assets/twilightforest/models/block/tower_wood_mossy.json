@@ -1,0 +1,58 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "down": "twilightforest:block/tower_wood_mossy",
+    "up": "twilightforest:block/tower_wood_mossy",
+    "north": "twilightforest:block/tower_wood_mossy",
+    "south": "twilightforest:block/tower_wood_mossy",
+    "west": "twilightforest:block/tower_wood_mossy",
+    "east": "twilightforest:block/tower_wood_mossy",
+    "particle": "twilightforest:block/tower_wood_mossy"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "down": {
+          "texture": "#down",
+          "cullface": "down",
+          "tintindex": 0
+        },
+        "up": {
+          "texture": "#up",
+          "cullface": "up",
+          "tintindex": 0
+        },
+        "north": {
+          "texture": "#north",
+          "cullface": "north",
+          "tintindex": 0
+        },
+        "south": {
+          "texture": "#south",
+          "cullface": "south",
+          "tintindex": 0
+        },
+        "west": {
+          "texture": "#west",
+          "cullface": "west",
+          "tintindex": 0
+        },
+        "east": {
+          "texture": "#east",
+          "cullface": "east",
+          "tintindex": 0
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "meta=0": {
+      "model": "twilightforest:block/nagastone_0"
+    },
+    "meta=1": {
+      "model": "twilightforest:block/nagastone_1"
+    },
+    "meta=2": {
+      "model": "twilightforest:block/nagastone_2"
+    },
+    "meta=3": {
+      "model": "twilightforest:block/nagastone_3"
+    }
+  }
+}

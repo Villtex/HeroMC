@@ -1,0 +1,40 @@
+{
+  "variants": {
+    "meta=4": {
+      "model": "twilightforest:block/nagastone_4"
+    },
+    "meta=5": {
+      "model": "twilightforest:block/nagastone_5"
+    },
+    "meta=6": {
+      "model": "twilightforest:block/nagastone_6"
+    },
+    "meta=7": {
+      "model": "twilightforest:block/nagastone_7"
+    },
+    "meta=8": {
+      "model": "twilightforest:block/nagastone_8"
+    },
+    "meta=9": {
+      "model": "twilightforest:block/nagastone_9"
+    },
+    "meta=10": {
+      "model": "twilightforest:block/nagastone_10"
+    },
+    "meta=11": {
+      "model": "twilightforest:block/nagastone_11"
+    },
+    "meta=12": {
+      "model": "twilightforest:block/nagastone_12"
+    },
+    "meta=13": {
+      "model": "twilightforest:block/nagastone_13"
+    },
+    "meta=14": {
+      "model": "twilightforest:block/nagastone_14"
+    },
+    "meta=15": {
+      "model": "twilightforest:block/nagastone_15"
+    }
+  }
+}

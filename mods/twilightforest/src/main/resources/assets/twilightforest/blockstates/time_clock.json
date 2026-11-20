@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "active=true": {
+      "model": "twilightforest:block/time_clock"
+    },
+    "active=false": {
+      "model": "twilightforest:block/time_clock_off"
+    }
+  }
+}

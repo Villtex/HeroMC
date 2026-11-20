@@ -1,0 +1,52 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "down": "twilightforest:block/encased_tower_wood",
+    "up": "twilightforest:block/tower_device_lid_on",
+    "north": "twilightforest:block/encased_smoker_on",
+    "south": "twilightforest:block/encased_smoker_on",
+    "west": "twilightforest:block/encased_smoker_on",
+    "east": "twilightforest:block/encased_smoker_on",
+    "particle": "twilightforest:block/encased_smoker_on"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "down": {
+          "texture": "#down",
+          "cullface": "down"
+        },
+        "up": {
+          "texture": "#up",
+          "cullface": "up"
+        },
+        "north": {
+          "texture": "#north",
+          "cullface": "north"
+        },
+        "south": {
+          "texture": "#south",
+          "cullface": "south"
+        },
+        "west": {
+          "texture": "#west",
+          "cullface": "west"
+        },
+        "east": {
+          "texture": "#east",
+          "cullface": "east"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "twilightforest:block/sorting_wood"
+    },
+    "axis=y": {
+      "model": "twilightforest:block/sorting_wood"
+    },
+    "axis=z": {
+      "model": "twilightforest:block/sorting_wood"
+    }
+  }
+}

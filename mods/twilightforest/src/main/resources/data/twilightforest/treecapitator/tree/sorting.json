@@ -1,0 +1,10 @@
+{
+  "logs": [
+    "twilightforest:sorting_log",
+    "twilightforest:sorting_wood",
+    "twilightforest:sorting_engine"
+  ],
+  "leaves": [
+    "twilightforest:sorting_leaves"
+  ]
+}
