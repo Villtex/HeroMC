@@ -255,8 +255,7 @@ write(f'data/{NS}/loot_modifiers/grass_seeds.json', {'type': 'neoforge:add_table
     {'type': 'neoforge:loot_table_id', 'loot_table_id': 'minecraft:blocks/short_grass'},
     {'type': 'neoforge:loot_table_id', 'loot_table_id': 'minecraft:blocks/fern'}]}, 'table': n('gameplay/grass_seeds')})
 write(f'data/{NS}/loot_table/gameplay/grass_seeds.json', {'type': 'minecraft:block', 'pools': [{'rolls': 1, 'condition': {
-    'type': 'minecraft:all_of', 'terms': [{'type': 'minecraft:inverted', 'term': {'type': 'minecraft:match_tool', 'predicate': {
-        'items': '#minecraft:shears'}}}, {'type': 'minecraft:random_chance', 'chance': 0.125 * 3 / 19}]},
+    'type': 'minecraft:all_of', 'terms': [{'type': 'minecraft:inverted', 'term': 'minecraft:tool/can_shear'}, {'type': 'minecraft:random_chance', 'chance': 0.125 * 3 / 19}]},
     'entries': [{'type': 'minecraft:item', 'name': n('gysahl_seeds')}]}]})
 # onSkeletonAndZombiDropEvent: 3 % a Chocopedia from zombies, skeletons, zombie pigmen, witches and villagers
 DROPPERS = ['zombie', 'zombie_villager', 'skeleton', 'wither_skeleton', 'zombified_piglin', 'witch', 'villager']
@@ -264,7 +263,6 @@ write(f'data/{NS}/loot_modifiers/chocopedia_drops.json', {'type': 'neoforge:add_
     {'type': 'neoforge:loot_table_id', 'loot_table_id': f'minecraft:entities/{e}'} for e in DROPPERS]}, 'table': n('gameplay/chocopedia_drop')})
 write(f'data/{NS}/loot_table/gameplay/chocopedia_drop.json', {'type': 'minecraft:entity', 'pools': [{'rolls': 1, 'condition': {
     'type': 'minecraft:random_chance', 'chance': 0.03}, 'entries': [{'type': 'minecraft:item', 'name': n('chocopedia')}]}]})
-write('data/neoforge/loot_modifiers/global_loot_modifiers.json', {'replace': False, 'entries': [n('grass_seeds'), n('chocopedia_drops')]})
 
 # ---------------------------------------------------------------- language: GUI and Chocopedia
 lang.update({

@@ -8,12 +8,7 @@
         "terms": [
           {
             "type": "minecraft:inverted",
-            "term": {
-              "type": "minecraft:match_tool",
-              "predicate": {
-                "items": "#minecraft:shears"
-              }
-            }
+            "term": "minecraft:tool/can_shear"
           },
           {
             "type": "minecraft:random_chance",
