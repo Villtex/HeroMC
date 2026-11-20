@@ -180,6 +180,13 @@ Teil 7b), ein Abgleich mit Original-Welten ist dort nicht möglich.
 
 ## Stolperfallen
 
+- **`setBlock` mit 4 Argumenten (Flag 3)** löste in 1.5.2 Nachbar-Updates aus (`onNeighborBlockChange` mit der
+  **alten** Block-ID; auch `setBlockToAir` ist Flag 3): Pflanzen ohne Boden verschwinden, Türhälften reichen weiter,
+  Seerosen/Fackeln fallen ab. Der Kern macht das nicht von selbst: eigenes Modell wie `projectzulu/gen/ZuluUpdates.java`.
+- **Block mit Tile-Entity, der stehen bleibt, aber seine Daten verliert** (Project Zulus `HandleBlockPlacement`):
+  `world.removeTile(x, y, z)`. Einzelnes Item aus einer Beutekategorie (`ChestGenHooks.getOneItem`):
+  `OldLoot.<KATEGORIE>.oneItem(random)`.
+
 - **Versatz +8.** Population arbeitet auf dem 16×16-Feld, das 8 Blöcke in +x/+z verschoben ist. Die meisten
   Generatoren rechnen `x + nextInt(16) + 8`, Erze nur `x + nextInt(16)` (`WorldGenMinable` addiert die 8 selbst).
   Genau übernehmen, was im Original steht.

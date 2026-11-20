@@ -211,7 +211,7 @@ Prüfen: `tools/expect.sh 1234 nether structures 60 > expect.txt`, dann `verify_
 | BiblioCraft | `bibliocraft` 1.3.3 | Nuchaz | 20.970 | ✅ Teil 16 (13 Blockarten in 79 Varianten, Lesebrille, Druckerei; Feinlage im Client offen) |
 | Harken Scythe | `harkenscythe` 2.1.6 | Jade Knightblazer | 27.284 | ✅ Teil 9 (Seelen/Blut, Altäre, 26 Mobs; Client-Prüfung offen) |
 | Better Dungeons (Chocolate Quest) | `betterdungeons` 1.09b | Chocolatin | 36.118 | ✅ Teil 12 und 13 (Client-Prüfung offen) |
-| Project Zulu | `projectzulu` 1.0.3.8 | — | 42.845 | Kreaturen ✅ Teil 10 (40 Mobs, Spawns, Drops; Client-Prüfung offen), Blöcke/Welt offen (Teil 11) |
+| Project Zulu | `projectzulu` 1.0.3.8 | — | 42.845 | ✅ Teil 10 Kreaturen, Teil 11 Blöcke, Items, Tränke, Strukturen (Client-Prüfung offen) |
 | The Twilight Forest | `twilightforest` 1.18.1 | Benimatic | 50.329 | zurückgestellt |
 | Tinkers' Construct | `tconstruct` 1.4.3 | mDiyo | 59.808 | zurückgestellt |
 

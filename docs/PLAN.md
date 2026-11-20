@@ -48,7 +48,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 8 | Artifice, CoFHCore (nur was das Pack nutzt) | ~27.000 | 1, 3 | Opus 5.5, mittel | ✅ erledigt |
 | 9 | Harken Scythe, Asgard Shield, Asgard Shield Addons | ~30.000 | 3 | Opus 5.5, mittel | ✅ erledigt |
 | 10 | Project Zulu A: Kreaturen | ~25.000 | 3 | Fable 5.2, hoch | ✅ erledigt |
-| 11 | Project Zulu B: Blöcke, Items, Weltgenerierung, Spawns | ~18.000 | 10 | Opus 5.5, mittel | offen |
+| 11 | Project Zulu B: Blöcke, Items, Weltgenerierung, Spawns | ~18.000 | 10 | Opus 5.5, mittel | ✅ erledigt |
 | 12 | Better Dungeons A: Bau-Engine und Gebäude-Import | ~18.000 | 1 | Fable 5.2, hoch | ✅ erledigt |
 | 13 | Better Dungeons B: Dungeon-Typen, Mobs, Loot | ~18.000 | 12 | Fable 5.2, hoch | ✅ erledigt |
 | 14 | Battle Towers, Ruins (mit allen Ruinen-Vorlagen) | ~5.000 + Vorlagen | 1 | Opus 5.5, mittel | ✅ erledigt |
@@ -741,10 +741,48 @@ nötig – die Modelle werden aus dem 1.5.2-Code exakt übernommen (`tools/model
   Sattel wird nicht verbraucht und nicht gedroppt; Finken-Sounds vertauscht; einige Modellfehler des Originals.
 - Abweichend: Zähm-GUI (Paper), Namensschilder mit Zustands-Icon und Temperatur-System nicht portiert; Fuchs-Wachmodus
   nur gegen Monster; Echsen-Kragen bewegt sich (im Original nie synchronisiert); Pharao speichert Phase und Startpunkt.
-- **Für Teil 11:** Mob-Köpfe (seltene Drops, `MobSkulls`), Jasper-Drop des Pharaos, eigener Kreativ-Tab (bis dahin
+- **Für Teil 11 (erledigt):** Mob-Köpfe (seltene Drops, `MobSkulls`), Jasper-Drop des Pharaos, eigener Kreativ-Tab (bis dahin
   Vanilla-Tabs „Spawn Eggs“/„Ingredients“), Strukturen mit Pharao/Mimic/Minotaurus/Spukrüstung (`setSummoned`,
   `setHovering`, `setRandomArmor` liegen bereit), Sound-Events `mummy_roar`/`summon_whispers` für BlockJasper,
   `LimitedMobSpawner`. Mob-Spawn-Abgleich der Biome mit dem Original.
+
+### Teil 11 – Stand
+
+**Status: erledigt.** Vier Pakete in `mods/projectzulu` (Aufteilung: `tools/PORTING.md`, Abschnitt „Teil 11“), Ressourcen
+je Paket über `tools/gen_<paket>.py`, die `tools/gen.py` am Ende ausführt. Eigener Kreativ-Tab „Project Zulu“.
+
+- **Plants** (`ZuluPlants`): Aloe Vera (+ Samen, Wachstum, Tumbleweed-Umwandlung), Watered Dirt, Water Droplet,
+  Tumbleweed, Treibsand, Night Bloom, Creeper Blossom (+ gezündete Blüte), Palme komplett (Setzling über `OldLiveGen`,
+  TreeCapitator), Kokosnuss + Kokos-Items, Universal Flower Pot (Vanilla-Blumentopf-Item setzt ihn), Crafting-Handler.
+- **Gear** (`ZuluGear`): 10 Rüstungssets mit Original-Texturen, Jasper, Ivory Spikes, Lagerfeuer (4 Varianten,
+  Gamerule `does_campfire_burn`), 18 Mob-Köpfe (Modelle aus `blocks/heads`, seltene Drops), Grabstein mit Text-GUI und
+  Inventar beim Tod, Ankh-Feuerball, Kaktus-Rüstung, Wüstensonne; Truhenbeute (`gen/ZuluLoot`).
+- **Potions** (`ZuluPotions`): 6 Effekte, Tränke und Brau-Rezepte aus den 1.5.2-Bitmasken übersetzt (Tabelle im
+  Commit `fcff790`), Zulu-Zutaten brauen auch Vanilla-Effekte.
+- **World** (`gen/ZuluWorldGen` u. a., `ZuluWorld`): `ProjectZuluGenerator` bitgenau – Pyramide, Labyrinth, Friedhof,
+  Oase nach `ProjectZuluStructureBiomeConfig.cfg`, Sand über Wüstenwasser, Pflanzen auf der Oberfläche; Truhen, Spawner,
+  Mimics, Minotaurus-/Spukrüstungs-Spawner; Limited Mob Spawner (Block, BlockEntity, Renderer). Nachbar-Updates von
+  `setBlock` mit Flag 3 in `gen/ZuluUpdates`.
+- **Mob-Spawn-Abgleich:** Spawn-Kategorie aller 40 Kreaturen = „Spawn List Type“ der Pack-Konfig; Pharao, Mimic,
+  Minotaurus, Spukrüstung nur in Strukturen.
+- **Prüfung:** `pack` grün; Seed 1234: Friedhof 157 63 −457, Labyrinth 803 66 −274, Pyramide −275 65 −1964, Oase
+  858 63 −2963 – `verify_blocks.py` auf diesen 56 Chunks 0 Abweichungen (Blöcke, Biome, Spawner/Truhen/Entities),
+  `find 260` 0 Abweichungen (eine Schädel-Meldung im Spawn-Chunk durch geflossenes Wasser vor `tick freeze`).
+  Testserver bis `Done` ohne Fehler; RCON: Pharao-Loot mit Jasper, Spikes-Rezept per Crafter, Blöcke mit BlockEntity.
+
+**Offen / bewusst abweichend:**
+
+- Client-Prüfung offen: alle Block-/Item-Modelle (Spikes-Ausrichtung, Lagerfeuer-Stämme vereinfacht), Mob-Köpfe,
+  Grabstein-Renderer und -GUI, Rüstungen am Spieler, Effekt-Icons, Blumentopf-Renderer.
+- Nicht portiert (`mods/projectzulu/TODO.md`): Structure Placer, Editor-GUI des Limited Mob Spawners, Dungeon-Befehle;
+  Schwebe-Flag von Mimic/Spukrüstung wird nicht gespeichert.
+- Weltgenerierung: `world.rand` (Friedhof) und `new Random()` (Pyramiden-Labyrinth, Beute) durch Random aus Seed und
+  Position ersetzt; `blockExists` immer wahr; Pyramiden-Spawner leer (Original-Mobname existierte nicht); Rails,
+  Redstone und fallender Sand bei Nachbar-Updates nicht nachgebildet.
+- Tränke: „Shiny“-Stufe der Vanilla-Effekte fehlt, Cleansing nur im Kreativ-Tab (wie Original nicht braubar),
+  Leaping + Spinnenauge → Slowfall; Wurftränke nach 26.3-Regel; Null-Potion-Handler entfällt.
+- Fell-Rüstung (außer Stiefeln) und weiße Stoffrüstung ohne Rezept wie im Original; kein Item `coconut_milk`
+  (im Original nie angelegt); Blumentopf ohne GUI (Rechtsklick).
 
 ## Teil 12 und 13 – Better Dungeons (Chocolate Quest)
 
