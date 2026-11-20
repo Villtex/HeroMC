@@ -47,7 +47,13 @@ MODS = {2002: 'betterdungeons:spawner', 254: 'extrabiomesxl:red_rock', 255: 'ext
         # LegendGear: mystic shrubs (ShrubGenerator), bomb flowers (BombFlowerGenerator)
         1182: 'legendgear:mystic_shrub', 1176: 'legendgear:bomb_flower',
         # Falling Meteors: underground meteor ore
-        1210: 'meteors:meteor_ore'}
+        1210: 'meteors:meteor_ore',
+        # Project Zulu (ZuluPlants, ZuluGear, ZuluWorld OldBlockStates): blocks without states that matter here
+        952: 'projectzulu:campfire', 953: 'projectzulu:coconut', 954: 'projectzulu:creeper_blossom', 955: 'projectzulu:jasper',
+        956: 'projectzulu:limited_mob_spawner', 957: 'projectzulu:mob_head', 960: 'projectzulu:palm_leaves',
+        961: 'projectzulu:palm_log[axis=y]', 962: 'projectzulu:palm_planks', 963: 'projectzulu:palm_sapling', 965: 'projectzulu:palm_stairs',
+        966: 'projectzulu:quicksand', 967: 'projectzulu:spikes', 969: 'projectzulu:tumbleweed', 970: 'projectzulu:universal_flower_pot',
+        971: 'projectzulu:watered_dirt'}
 # Wild Caves 3: one block per metadata value
 PIECES = ['stalactite_1', 'stalactite_2', 'stalactite_3', 'stalactite_4', 'stalactite_connection_1', 'stalactite_connection_2',
           'stalactite_connection_3', 'stalactite_connection_4', 'stalactite_end', 'stalagmite_end', 'stalagmite_1', 'stalagmite_2',
@@ -67,7 +73,9 @@ MOBS = {'Skeleton': 'minecraft:skeleton', 'Zombie': 'minecraft:zombie', 'Spider'
         'BetterDungeons.Goblin': 'betterdungeons:goblin', 'BetterDungeons.SnowGoblin': 'betterdungeons:snow_goblin',
         'BetterDungeons.ArmoredEnderman': 'betterdungeons:armored_enderman', 'BetterDungeons.triton': 'minecraft:drowned',
         'BetterDungeons.OgreArmored': 'betterdungeons:ogre_armored', 'BetterDungeons.minotaurArmored': 'minecraft:zombie',
-        'BetterDungeons.GremlinArmored': 'minecraft:zombie'}
+        'BetterDungeons.GremlinArmored': 'minecraft:zombie',
+        # Project Zulu: spawners of the labyrinth (ZuluWorld)
+        'ProjectZulu|Core.Minotaur': 'projectzulu:minotaur', 'ProjectZulu|Core.Haunted Armor': 'projectzulu:haunted_armor'}
 ENTITIES = {'Villager': 'minecraft:villager', 'Witch': 'minecraft:witch', 'MinecartChest': 'minecraft:chest_minecart',
             'Painting': 'minecraft:painting', 'ItemFrame': 'minecraft:item_frame', 'Item': 'minecraft:item',
             'Mob:Cow': 'minecraft:cow', 'Mob:Pig': 'minecraft:pig', 'Mob:Zombie': 'minecraft:zombie', 'Mob:Skeleton': 'minecraft:skeleton',
@@ -78,7 +86,9 @@ ENTITIES = {'Villager': 'minecraft:villager', 'Witch': 'minecraft:witch', 'Minec
             'Mob:BetterDungeons.Monking': 'betterdungeons:monking',
             # Ruins (end crystals of the templates) and the Battle Towers golem of each tower type
             'Mob:EnderCrystal': 'minecraft:end_crystal',
-            **{f'Mob:BattleTowers.Battletower Golem#{t}': 'battletowers:golem' for t in range(7)}}
+            **{f'Mob:BattleTowers.Battletower Golem#{t}': 'battletowers:golem' for t in range(7)},
+            # Project Zulu: mimics in dead ends, haunted armour on cemeteries (ZuluStructureContent)
+            'Mob:ProjectZulu|Core.Mimic#hovering': 'projectzulu:mimic', 'Mob:ProjectZulu|Core.Haunted Armor#hovering': 'projectzulu:haunted_armor'}
 WOOL = ['white', 'orange', 'magenta', 'light_blue', 'yellow', 'lime', 'pink', 'gray', 'light_gray', 'cyan', 'purple', 'blue',
         'brown', 'green', 'red', 'black']
 SIDE = {2: 'north', 3: 'south', 4: 'west', 5: 'east'}
@@ -195,6 +205,17 @@ def mod_meta(bid, meta):
     if bid in WILDCAVES:
         names = WILDCAVES[bid]
         return 'wildcaves3:' + names[min(meta, len(names) - 1)]
+    # Project Zulu
+    if bid == 951:
+        return f'projectzulu:aloe_vera[age={min(meta, 8)}]'
+    if bid == 958:
+        return f'projectzulu:night_bloom[stage={min(meta, 4)}]'
+    if bid == 959:
+        return 'projectzulu:palm_slab[type=double]'
+    if bid == 964:
+        return f'projectzulu:palm_slab[type={"top" if meta & 8 else "bottom"}]'
+    if bid == 968:
+        return f'projectzulu:tombstone[rotation={meta & 7}]'
     return None
 
 
