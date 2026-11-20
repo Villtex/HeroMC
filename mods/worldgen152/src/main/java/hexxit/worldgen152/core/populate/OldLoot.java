@@ -95,6 +95,29 @@ public final class OldLoot {
             return this.countMin < this.countMax ? this.countMin + random.nextInt(this.countMax - this.countMin) : this.countMin;
         }
 
+        /**
+         * ChestGenHooks.getOneItem: one weighted pick (WeightedRandom.getRandomItem) and its stack size drawn once
+         * (generateStacks); a size beyond the item's stack limit gives a single item (the first of the stacks).
+         */
+        public OldStack oneItem(Random random) {
+            Entry[] items = this.items(random);
+            int total = 0;
+            for (Entry item : items) {
+                total += item.weight;
+            }
+            int pick = random.nextInt(total);
+            Entry chosen = null;
+            for (Entry item : items) {
+                pick -= item.weight;
+                if (pick < 0) {
+                    chosen = item;
+                    break;
+                }
+            }
+            int size = chosen.min + random.nextInt(chosen.max - chosen.min + 1);
+            return chosen.stack.withCount(size > stackLimit(chosen.stack.itemId()) ? 1 : size);
+        }
+
         /** Fills a chest: WeightedRandomChestContent.generateChestContents with this category's items and count. */
         public void fill(Random random, OldTile.Chest chest) {
             Entry[] items = this.items(random);
