@@ -191,6 +191,15 @@ public final class OldBlockInfo {
         LEAVES[id] = true;
     }
 
+    /**
+     * Leaves with explicit Block.opaqueCubeLookup and renderAsNormalBlock (Project Zulu's palm leaves are a
+     * BlockLeavesBase that overrides both to {@code false}).
+     */
+    public static void registerLeaves(int id, boolean opaqueCube, boolean normalRender) {
+        register(id, Material.LEAVES, opaqueCube, 1, normalRender);
+        LEAVES[id] = true;
+    }
+
     /** Block.isWood: a log, which trees may grow through and leaves hang on. */
     public static void registerLog(int id) {
         registerCube(id, Material.WOOD);

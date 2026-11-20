@@ -3,6 +3,7 @@
   "values": [
     "projectzulu:jasper",
     "projectzulu:spikes",
-    "projectzulu:tombstone"
+    "projectzulu:tombstone",
+    "projectzulu:limited_mob_spawner"
   ]
 }

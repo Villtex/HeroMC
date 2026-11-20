@@ -520,6 +520,13 @@ public final class OldWorld {
         return java.util.Collections.unmodifiableList(this.column(chunkX, chunkZ).entities);
     }
 
+    /** World.removeBlockTileEntity: the block stays, its tile data is gone. */
+    public void removeTile(int x, int y, int z) {
+        if (y >= 0 && y < HEIGHT) {
+            this.column(x >> 4, z >> 4).tiles.remove(((x & 15) * 16 + (z & 15)) * HEIGHT + y);
+        }
+    }
+
     public OldTile getTile(int x, int y, int z) {
         return this.column(x >> 4, z >> 4).tiles.get(((x & 15) * 16 + (z & 15)) * HEIGHT + y);
     }
