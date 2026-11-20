@@ -21,6 +21,7 @@ public final class TConstruct {
     public TConstruct(IEventBus modBus) {
         TItems.register(modBus);
         TBlocks.register(modBus);
+        TSmeltery.register(modBus);
         TSounds.register(modBus);
         tconstruct.menu.TMenus.register(modBus);
         TNetwork.register(modBus);
@@ -43,6 +44,7 @@ public final class TConstruct {
             OldGameIds.registerItem(old.id() + 256, old.damage(), BuiltIn.name(old.item()));
         }
         TBlocks.registerOldIds();
+        TSmeltery.registerOldIds();
     }
 
     /** Registry names without touching the registry (the items are not registered yet in the constructor). */

@@ -127,7 +127,10 @@ public final class TBlocks {
             .title(Component.translatable("itemGroup.tconstruct.blocks"))
             .icon(() -> new net.minecraft.world.item.ItemStack(TOOL_STATION.get()))
             .withTabsBefore(TItems.MATERIAL_TAB.getKey())
-            .displayItems((params, output) -> BLOCK_ITEMS.forEach(item -> output.accept(item.get())))
+            .displayItems((params, output) -> {
+                BLOCK_ITEMS.forEach(item -> output.accept(item.get()));
+                TSmeltery.ITEMS.forEach(item -> output.accept(item.get()));
+            })
             .build());
 
     private TBlocks() {

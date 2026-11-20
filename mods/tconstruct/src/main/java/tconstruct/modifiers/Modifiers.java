@@ -97,8 +97,7 @@ public final class Modifiers {
         MODS.add(new Piston(list(piston, piston), 3, 2));
         MODS.add(new IntegerMod(list(item(Items.OBSIDIAN), item(Items.ENDER_PEARL)), 13, "Beheading", 1, "§d", "Beheading"));
         // consecrated soil (craftedSoil 4) comes with the decorative soils of part 25f
-        Supplier<ToolMod.Ingredient> holySoil = () -> TItems.CONSECRATED_SOIL == null ? new ToolMod.Ingredient(stack -> false, List::of)
-                : ToolMod.Ingredient.of(TItems.CONSECRATED_SOIL);
+        Supplier<ToolMod.Ingredient> holySoil = () -> ToolMod.Ingredient.of(tconstruct.TSmeltery.CONSECRATED_SOIL);
         MODS.add(new Smite("Smite", list(holySoil), 14, 1));
         MODS.add(new Smite("Smite", list(holySoil, holySoil), 14, 2));
         Supplier<ToolMod.Ingredient> eye = item(Items.FERMENTED_SPIDER_EYE);

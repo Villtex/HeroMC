@@ -84,8 +84,6 @@ public final class TItems {
     public static final DeferredItem<Item> NECROTIC_BONE = MATERIALS.get("necrotic_bone");
     public static final DeferredItem<Item> OBSIDIAN_INGOT = MATERIALS.get("obsidian_ingot");
     public static final DeferredItem<Item> SILKY_JEWEL = MATERIALS.get("silky_jewel");
-    /** craftedSoil 4 (consecrated soil, the smite modifier) comes with part 25f. */
-    public static final @Nullable DeferredItem<Item> CONSECRATED_SOIL = null;
 
     /** blankPattern 0, 1 (cast from aluminum brass) and 2 (cast from gold). */
     public static final DeferredItem<Item> BLANK_PATTERN = ITEMS.registerSimpleItem("blank_pattern");
@@ -268,6 +266,7 @@ public final class TItems {
                 }
                 output.accept(BOWSTRING.get());
                 FLETCHINGS.forEach(item -> output.accept(item.get()));
+                tconstruct.smeltery.TFluids.ALL.forEach(liquid -> output.accept(liquid.bucket().get()));
             })
             .build());
 
