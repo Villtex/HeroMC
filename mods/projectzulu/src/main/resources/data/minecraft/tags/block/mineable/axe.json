@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "projectzulu:campfire",
     "projectzulu:palm_log",
     "projectzulu:palm_planks",
     "projectzulu:palm_slab",

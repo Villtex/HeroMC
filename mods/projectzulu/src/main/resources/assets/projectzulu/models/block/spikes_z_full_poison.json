@@ -1,0 +1,41 @@
+{
+  "textures": {
+    "particle": "projectzulu:block/spikes_poison",
+    "t": "projectzulu:block/spikes_poison"
+  },
+  "elements": [
+    {
+      "from": [
+        8,
+        0,
+        0
+      ],
+      "to": [
+        8,
+        9.6,
+        16
+      ],
+      "shade": false,
+      "faces": {
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#t"
+        },
+        "east": {
+          "uv": [
+            16,
+            0,
+            0,
+            16
+          ],
+          "texture": "#t"
+        }
+      }
+    }
+  ]
+}

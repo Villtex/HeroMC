@@ -1,0 +1,41 @@
+{
+  "textures": {
+    "particle": "projectzulu:block/spikes",
+    "t": "projectzulu:block/spikes"
+  },
+  "elements": [
+    {
+      "from": [
+        8,
+        0,
+        8
+      ],
+      "to": [
+        8,
+        9.6,
+        16
+      ],
+      "shade": false,
+      "faces": {
+        "west": {
+          "uv": [
+            8,
+            0,
+            16,
+            16
+          ],
+          "texture": "#t"
+        },
+        "east": {
+          "uv": [
+            16,
+            0,
+            8,
+            16
+          ],
+          "texture": "#t"
+        }
+      }
+    }
+  ]
+}

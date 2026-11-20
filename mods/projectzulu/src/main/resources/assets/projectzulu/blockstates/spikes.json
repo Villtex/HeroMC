@@ -1,0 +1,511 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "type": "normal",
+        "mount": "none",
+        "facing": "up"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_cross_normal"
+      }
+    },
+    {
+      "when": {
+        "type": "normal",
+        "mount": "none",
+        "facing": "down"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_cross_normal",
+        "x": 180
+      }
+    },
+    {
+      "when": {
+        "type": "normal",
+        "mount": "none",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_cross_normal",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "type": "normal",
+        "mount": "none",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_cross_normal",
+        "x": 90,
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "type": "normal",
+        "mount": "none",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_cross_normal",
+        "x": 90,
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "type": "normal",
+        "mount": "none",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_cross_normal",
+        "x": 90,
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "type": "normal",
+        "mount": "fence"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_fence_normal"
+      }
+    },
+    {
+      "when": {
+        "type": "normal",
+        "mount": "bars",
+        "north": "true",
+        "south": "true"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_z_full_normal"
+      }
+    },
+    {
+      "when": {
+        "type": "normal",
+        "mount": "bars",
+        "north": "false",
+        "south": "true"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_z_south_normal"
+      }
+    },
+    {
+      "when": {
+        "type": "normal",
+        "mount": "bars",
+        "north": "true",
+        "south": "false"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_z_north_normal"
+      }
+    },
+    {
+      "when": {
+        "type": "normal",
+        "mount": "bars",
+        "west": "true",
+        "east": "true"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_x_full_normal"
+      }
+    },
+    {
+      "when": {
+        "type": "normal",
+        "mount": "bars",
+        "west": "false",
+        "east": "true"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_x_east_normal"
+      }
+    },
+    {
+      "when": {
+        "type": "normal",
+        "mount": "bars",
+        "west": "true",
+        "east": "false"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_x_west_normal"
+      }
+    },
+    {
+      "when": {
+        "type": "normal",
+        "mount": "bars",
+        "north": "false",
+        "south": "false",
+        "west": "false",
+        "east": "false"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_z_full_normal"
+      }
+    },
+    {
+      "when": {
+        "type": "normal",
+        "mount": "bars",
+        "north": "false",
+        "south": "false",
+        "west": "false",
+        "east": "false"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_x_full_normal"
+      }
+    },
+    {
+      "when": {
+        "type": "poison",
+        "mount": "none",
+        "facing": "up"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_cross_poison"
+      }
+    },
+    {
+      "when": {
+        "type": "poison",
+        "mount": "none",
+        "facing": "down"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_cross_poison",
+        "x": 180
+      }
+    },
+    {
+      "when": {
+        "type": "poison",
+        "mount": "none",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_cross_poison",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "type": "poison",
+        "mount": "none",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_cross_poison",
+        "x": 90,
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "type": "poison",
+        "mount": "none",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_cross_poison",
+        "x": 90,
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "type": "poison",
+        "mount": "none",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_cross_poison",
+        "x": 90,
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "type": "poison",
+        "mount": "fence"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_fence_poison"
+      }
+    },
+    {
+      "when": {
+        "type": "poison",
+        "mount": "bars",
+        "north": "true",
+        "south": "true"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_z_full_poison"
+      }
+    },
+    {
+      "when": {
+        "type": "poison",
+        "mount": "bars",
+        "north": "false",
+        "south": "true"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_z_south_poison"
+      }
+    },
+    {
+      "when": {
+        "type": "poison",
+        "mount": "bars",
+        "north": "true",
+        "south": "false"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_z_north_poison"
+      }
+    },
+    {
+      "when": {
+        "type": "poison",
+        "mount": "bars",
+        "west": "true",
+        "east": "true"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_x_full_poison"
+      }
+    },
+    {
+      "when": {
+        "type": "poison",
+        "mount": "bars",
+        "west": "false",
+        "east": "true"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_x_east_poison"
+      }
+    },
+    {
+      "when": {
+        "type": "poison",
+        "mount": "bars",
+        "west": "true",
+        "east": "false"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_x_west_poison"
+      }
+    },
+    {
+      "when": {
+        "type": "poison",
+        "mount": "bars",
+        "north": "false",
+        "south": "false",
+        "west": "false",
+        "east": "false"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_z_full_poison"
+      }
+    },
+    {
+      "when": {
+        "type": "poison",
+        "mount": "bars",
+        "north": "false",
+        "south": "false",
+        "west": "false",
+        "east": "false"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_x_full_poison"
+      }
+    },
+    {
+      "when": {
+        "type": "sticky",
+        "mount": "none",
+        "facing": "up"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_cross_sticky"
+      }
+    },
+    {
+      "when": {
+        "type": "sticky",
+        "mount": "none",
+        "facing": "down"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_cross_sticky",
+        "x": 180
+      }
+    },
+    {
+      "when": {
+        "type": "sticky",
+        "mount": "none",
+        "facing": "north"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_cross_sticky",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "type": "sticky",
+        "mount": "none",
+        "facing": "east"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_cross_sticky",
+        "x": 90,
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "type": "sticky",
+        "mount": "none",
+        "facing": "south"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_cross_sticky",
+        "x": 90,
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "type": "sticky",
+        "mount": "none",
+        "facing": "west"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_cross_sticky",
+        "x": 90,
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "type": "sticky",
+        "mount": "fence"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_fence_sticky"
+      }
+    },
+    {
+      "when": {
+        "type": "sticky",
+        "mount": "bars",
+        "north": "true",
+        "south": "true"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_z_full_sticky"
+      }
+    },
+    {
+      "when": {
+        "type": "sticky",
+        "mount": "bars",
+        "north": "false",
+        "south": "true"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_z_south_sticky"
+      }
+    },
+    {
+      "when": {
+        "type": "sticky",
+        "mount": "bars",
+        "north": "true",
+        "south": "false"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_z_north_sticky"
+      }
+    },
+    {
+      "when": {
+        "type": "sticky",
+        "mount": "bars",
+        "west": "true",
+        "east": "true"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_x_full_sticky"
+      }
+    },
+    {
+      "when": {
+        "type": "sticky",
+        "mount": "bars",
+        "west": "false",
+        "east": "true"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_x_east_sticky"
+      }
+    },
+    {
+      "when": {
+        "type": "sticky",
+        "mount": "bars",
+        "west": "true",
+        "east": "false"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_x_west_sticky"
+      }
+    },
+    {
+      "when": {
+        "type": "sticky",
+        "mount": "bars",
+        "north": "false",
+        "south": "false",
+        "west": "false",
+        "east": "false"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_z_full_sticky"
+      }
+    },
+    {
+      "when": {
+        "type": "sticky",
+        "mount": "bars",
+        "north": "false",
+        "south": "false",
+        "west": "false",
+        "east": "false"
+      },
+      "apply": {
+        "model": "projectzulu:block/spikes_x_full_sticky"
+      }
+    }
+  ]
+}

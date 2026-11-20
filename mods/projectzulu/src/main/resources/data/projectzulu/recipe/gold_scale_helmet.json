@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "X": "minecraft:gold_ingot",
+    "Y": "projectzulu:scale_helmet"
+  },
+  "pattern": [
+    "XXX",
+    "XYX"
+  ],
+  "result": {
+    "count": 1,
+    "id": "projectzulu:gold_scale_helmet"
+  }
+}

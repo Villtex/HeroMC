@@ -1,0 +1,92 @@
+{
+  "textures": {
+    "particle": "projectzulu:block/spikes_sticky",
+    "t": "projectzulu:block/spikes_sticky"
+  },
+  "elements": [
+    {
+      "from": [
+        5.17,
+        0,
+        8
+      ],
+      "to": [
+        10.83,
+        9.6,
+        8
+      ],
+      "rotation": {
+        "origin": [
+          8,
+          0,
+          8
+        ],
+        "axis": "y",
+        "angle": 45
+      },
+      "shade": false,
+      "faces": {
+        "north": {
+          "uv": [
+            4,
+            0,
+            12,
+            16
+          ],
+          "texture": "#t"
+        },
+        "south": {
+          "uv": [
+            4,
+            0,
+            12,
+            16
+          ],
+          "texture": "#t"
+        }
+      }
+    },
+    {
+      "from": [
+        5.17,
+        0,
+        8
+      ],
+      "to": [
+        10.83,
+        9.6,
+        8
+      ],
+      "rotation": {
+        "origin": [
+          8,
+          0,
+          8
+        ],
+        "axis": "y",
+        "angle": -45
+      },
+      "shade": false,
+      "faces": {
+        "north": {
+          "uv": [
+            4,
+            0,
+            12,
+            16
+          ],
+          "texture": "#t"
+        },
+        "south": {
+          "uv": [
+            4,
+            0,
+            12,
+            16
+          ],
+          "texture": "#t"
+        }
+      }
+    }
+  ]
+}

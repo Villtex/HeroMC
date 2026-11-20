@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=up": {
+      "model": "projectzulu:block/mob_head"
+    },
+    "facing=north": {
+      "model": "projectzulu:block/mob_head"
+    },
+    "facing=south": {
+      "model": "projectzulu:block/mob_head"
+    },
+    "facing=east": {
+      "model": "projectzulu:block/mob_head"
+    },
+    "facing=west": {
+      "model": "projectzulu:block/mob_head"
+    }
+  }
+}

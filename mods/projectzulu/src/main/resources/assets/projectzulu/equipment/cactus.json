@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "projectzulu:cactus"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "projectzulu:cactus"
+      }
+    ]
+  }
+}

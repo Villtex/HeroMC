@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "X": "minecraft:diamond",
+    "Y": "projectzulu:scale_leggings"
+  },
+  "pattern": [
+    "XXX",
+    "XYX",
+    "X X"
+  ],
+  "result": {
+    "count": 1,
+    "id": "projectzulu:diamond_scale_leggings"
+  }
+}

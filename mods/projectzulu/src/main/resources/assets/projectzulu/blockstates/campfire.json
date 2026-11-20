@@ -1,0 +1,28 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "kind": "wood"
+      },
+      "apply": {
+        "model": "projectzulu:block/campfire_wood"
+      }
+    },
+    {
+      "when": {
+        "kind": "stone"
+      },
+      "apply": {
+        "model": "projectzulu:block/campfire_stone"
+      }
+    },
+    {
+      "when": {
+        "lit": "true"
+      },
+      "apply": {
+        "model": "projectzulu:block/campfire_flame"
+      }
+    }
+  ]
+}

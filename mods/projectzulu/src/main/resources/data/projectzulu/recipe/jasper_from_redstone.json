@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": "minecraft:sand",
+    "C": "minecraft:redstone"
+  },
+  "pattern": [
+    "XXX",
+    "XCX",
+    "XXX"
+  ],
+  "result": {
+    "count": 1,
+    "id": "projectzulu:jasper"
+  }
+}

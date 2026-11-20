@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "projectzulu:mammoth_fur"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "projectzulu:mammoth_fur"
+      }
+    ]
+  }
+}

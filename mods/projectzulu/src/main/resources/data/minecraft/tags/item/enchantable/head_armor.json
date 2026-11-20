@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "projectzulu:scale_helmet",
+    "projectzulu:gold_scale_helmet",
+    "projectzulu:iron_scale_helmet",
+    "projectzulu:diamond_scale_helmet",
+    "projectzulu:white_cloth_helmet",
+    "projectzulu:red_cloth_helmet",
+    "projectzulu:green_cloth_helmet",
+    "projectzulu:blue_cloth_helmet",
+    "projectzulu:cactus_helmet",
+    "projectzulu:fur_helmet"
+  ]
+}

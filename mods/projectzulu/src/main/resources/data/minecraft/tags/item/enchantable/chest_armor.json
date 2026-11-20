@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "projectzulu:scale_chestplate",
+    "projectzulu:gold_scale_chestplate",
+    "projectzulu:iron_scale_chestplate",
+    "projectzulu:diamond_scale_chestplate",
+    "projectzulu:white_cloth_chestplate",
+    "projectzulu:red_cloth_chestplate",
+    "projectzulu:green_cloth_chestplate",
+    "projectzulu:blue_cloth_chestplate",
+    "projectzulu:cactus_chestplate",
+    "projectzulu:fur_chestplate"
+  ]
+}

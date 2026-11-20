@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "projectzulu:gold_scale"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "projectzulu:gold_scale"
+      }
+    ]
+  }
+}

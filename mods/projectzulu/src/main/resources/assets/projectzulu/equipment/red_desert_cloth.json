@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "projectzulu:red_desert_cloth"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "projectzulu:red_desert_cloth"
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "rotation=0": {
+      "model": "projectzulu:block/tombstone"
+    },
+    "rotation=1": {
+      "model": "projectzulu:block/tombstone"
+    },
+    "rotation=2": {
+      "model": "projectzulu:block/tombstone"
+    },
+    "rotation=3": {
+      "model": "projectzulu:block/tombstone"
+    },
+    "rotation=4": {
+      "model": "projectzulu:block/tombstone"
+    },
+    "rotation=5": {
+      "model": "projectzulu:block/tombstone"
+    },
+    "rotation=6": {
+      "model": "projectzulu:block/tombstone"
+    },
+    "rotation=7": {
+      "model": "projectzulu:block/tombstone"
+    }
+  }
+}

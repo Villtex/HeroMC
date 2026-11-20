@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "extrabiomesxl"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "L": "#minecraft:logs",
+    "C": "extrabiomesxl:red_cobblestone"
+  },
+  "pattern": [
+    "LLL",
+    "CCC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "projectzulu:stone_campfire"
+  }
+}
