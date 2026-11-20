@@ -87,6 +87,8 @@ public final class OldWorld {
     private OldTreeGens.BigTree bigTree;
     private final Map<Object, Object> chunkState = new HashMap<>();
     private final OldStructures structures;
+    /** The biome layout of the overworld, or {@code null} (Nether, or a world made without one). */
+    private final hexxit.worldgen152.core.BiomeLayout layout;
     private final int dimension;
     private final MapGenNetherBridge netherBridge;
 
@@ -100,6 +102,7 @@ public final class OldWorld {
         this.seed = seed;
         this.terrain = terrain;
         this.structures = layout == null ? null : new OldStructures(seed, layout);
+        this.layout = layout;
         this.dimension = 0;
         this.netherBridge = null;
     }
@@ -108,6 +111,7 @@ public final class OldWorld {
         this.seed = seed;
         this.terrain = terrain;
         this.structures = null;
+        this.layout = null;
         this.dimension = -1;
         this.netherBridge = netherBridge;
     }
@@ -139,6 +143,14 @@ public final class OldWorld {
 
     public long seed() {
         return this.seed;
+    }
+
+    /**
+     * The biome layout of the overworld, or {@code null}: biomes far from the populated area without generating their
+     * terrain (for generators that emulate what the original had generated before).
+     */
+    public hexxit.worldgen152.core.BiomeLayout layout() {
+        return this.layout;
     }
 
     Column column(int chunkX, int chunkZ) {

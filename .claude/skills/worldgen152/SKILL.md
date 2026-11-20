@@ -229,3 +229,22 @@ erzeugt worldgen152 nicht: dafür einen Global Loot Modifier. Vorbild `harkenscy
   Dimensionswechsel die Position nicht (FakePlayer-Netz), zum Prüfen reicht die Ebene.
 - Beute, die ein Mod in fremden Kategorien änderte (DDLoot teilte dungeonChest an Ort und Stelle durch 10):
   `OldLoot.Category.divideWeights`.
+
+## Häufigkeit von Strukturen gegen das Original messen
+
+Wenn der Nutzer meldet, im Original seien Bauten seltener/häufiger (gemessen für Ruins, Battle Towers, Better Dungeons):
+- Original-Welt: `tools/original_server.sh hexxit 420` (Einrichtung `docs/PLAN.md` Teil 2), Spawn 329, 60 bei Seed
+  1234; zweite Stichprobe per `tools/original_spawn.py <welt> 2000 2000` (Weltordner ohne `region/`, `DIM*`, `data/`).
+  Ruins schreibt jede Ruine ins Log mit `disableRuinSpawnCoordsLogging=false` in `mods/ruins.txt` (vor dem ersten Start;
+  die Welt kopiert sich die Datei als `world/ruins.txt`).
+- Zählen: Tile-Entities je Chunk mit `region_chunks` aus `tools/compare_original.py` (Spawner mit `EntityId`, Truhen,
+  `BetterDungeonSpwaner`, Golems in `Entities`). Port-Welt (26.3) liegt in `run/server/world/dimensions/minecraft/
+  overworld/{region,entities}`, Wurzel ohne `Level`, `block_entities`; der NBT-Leser braucht dort Tag 12 (Long-Array).
+  Gleiches Gebiet im Port: frische Welt, `forceload add` in Streifen ≤ 256 Chunks, 150 s warten, `save-all flush`.
+- Erst die Vorhersage (`tools/expect.sh`) gegen das Spiel prüfen, dann gegen das Original. Reihenfolge von
+  `File.listFiles()` (Linux-Server ≠ alphabetisch) ändert *welche* Bauten, nicht *wie viele*: Reihenfolge des Servers
+  steht im Log („Registered dungeon: …“), vorübergehend im Port einsetzen und vergleichen.
+- Abweichende Dichte kommt meist aus Zustand zwischen Chunks, den der Port auf den Chunk beschränkt hat (Ruins: letzte
+  zehn Ruinen weltweit). Nachbilden als reine Funktion von Seed und Chunk (Randchunks werden in mehreren Kacheln
+  gerechnet): Vorgeschichte über die Chunks davor in Ladereihenfolge, eigener Zufall, Geländeprüfung durch gemessene
+  Erfolgsquote (Zähler vorübergehend einbauen). Vorbild `ruins.gen.RuinsGen.History`.

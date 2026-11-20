@@ -17,16 +17,17 @@ import java.util.Random;
  * depended on the order chunks were loaded in and on when the server had last restarted. Here the world is cut into
  * cells of {@value #SPACING} by {@value #SPACING} chunks; each cell has one candidate chunk, chosen from the seed at
  * least {@value #SEPARATION} chunks from the cell's far edges, and the tower is tried there with the checks of the
- * original. The cell size (960 blocks) gives about as many towers as the original had: one per square of about
- * 1,000 blocks, which is how densely towers 850 blocks apart fill the world when they are placed one by one, and
- * about nine in ten tries succeed (measured with tools/expect.sh). Two towers are at least 320 blocks apart.
+ * original. Two candidates are therefore at least {@value #SEPARATION} + 1 chunks (880 blocks) apart in x or in z, so
+ * the original's minimum distance of 850 blocks holds. The cell size (1,024 blocks) gives about as many towers as
+ * the original had: one per square of about 1,000 blocks, which is how densely towers 850 blocks apart fill the
+ * world when they are placed one by one, and nearly all tries succeed (12 of 12 with tools/expect.sh).
  */
 public final class BTWorldGen {
     public static final String FML_ID = "BattleTowers";
     /** Cell edge in chunks. */
-    static final int SPACING = 60;
+    static final int SPACING = 64;
     /** Candidates keep this many chunks off the far edges of their cell, so two towers are at least that far apart. */
-    static final int SEPARATION = 20;
+    static final int SEPARATION = 54;
     /** Told of every tower built ("x y z type underground"), for tools/expect.sh; {@code null} in the game. */
     public static volatile java.util.function.Consumer<String> built;
 

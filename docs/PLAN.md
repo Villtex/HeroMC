@@ -864,8 +864,13 @@ Projekt-Skill `templates-152` (Vorlagen und Schematics übernehmen, für Teil 13
   bräuchten die Builder in der laufenden Welt); GUI der bearbeitbaren Kapselstation (fest 15×9).
 - Nachbar-Updates beim Setzen (Flag 3) nicht nachgebildet: Wasser der Sumpf- und Schildkrötenhöhlen fließt erst beim
   nächsten Block-Update. Spawn-Regeln der Vanilla-Spawner (Pirat 20 %, Zwerg unter y 60) brauchen einen Spieler.
-- Bei Seed 1234 ist die Mauerlinie fast nur Ozean; ein Monking kam in der Prüfsuche nicht vor. Kein Abgleich gegen eine
-  Original-Welt (keine vorhanden; Chunk-Höhlen, Mauer, leere Höhlen wären seed-fest vergleichbar).
+- Bei Seed 1234 ist die Mauerlinie fast nur Ozean; ein Monking kam in der Prüfsuche nicht vor.
+- **Abgleich mit dem Original-Server** (Seed 1234, Spawngebiet um 329, 60): Welche Dungeon-Art und welche Vorlage
+  gewählt wird, hängt von der Reihenfolge von `File.listFiles()` ab (Dateisystem des Servers; der Port liest
+  alphabetisch, wie NTFS unter Windows). Mit der Reihenfolge jenes Servers (`volcano, stronghold, swampTurtleCave,
+  slimeCave, netherCity, castleSnow, castles, undergroundDungeon, ship, iceCave, jungleCave`) sagt der Port genau die
+  Dungeons des Originals voraus (Schiff 15,10, Festungen 20,−5 und 25,0). Die Anzahl hängt von der Reihenfolge nicht
+  ab: auf 301×301 Chunks 561 Dungeons mit der Server-Reihenfolge, 556 alphabetisch.
 - **Project Zulu blockiert den Serverstart:** Loot-Tabelle `mummy_pharaoh` nennt das fehlende `projectzulu:jasper`
   (Zwischenstand Teil 11). Für alle Tests vorübergehend herausgenommen.
 - Client-Prüfung offen: Item-Modelle, Geschoss-Renderer, Rüstungstexturen, Mob-Modelle/Animationen (Golem-Blitze,
@@ -910,12 +915,20 @@ Ruins bringt rund 1.800 Vorlagen (`.tml`) aus `ruins-data1..3` mit. Dafür einen
 **Offen / bewusst abweichend:**
 
 - **Battle Towers, Abstand:** Das Original merkte sich die Türme der laufenden Sitzung (nicht gespeichert) und
-  baute am ersten geladenen Chunk mit 850 Blöcken Abstand. Hier: Raster aus 60×60 Chunks, je Zelle ein
-  Kandidat aus dem Seed (mindestens 20 Chunks von den fernen Zellrändern), dort die Prüfungen des Originals. Etwa
-  9 von 10 Versuchen gelingen, die Dichte entspricht ungefähr dem Original. Kein Turm mehr zuverlässig nahe dem Spawn.
-- **Ruins, Zustand zwischen Chunks:** Die letzten zehn Ruinen (Überlappungsprüfung) und das Entfernen einzigartiger
-  Vorlagen (`unique`, 43 Vorlagen) gelten nur noch im selben Chunk und seiner Gruppe; einzigartige Ruinen können
-  mehrfach vorkommen. Folgeruinen einer Gruppe, die weiter als 3 Chunks nach −x/−z oder 4 nach +x/+z reichen
+  baute am ersten geladenen Chunk mit 850 Blöcken Abstand. Hier: Raster aus 64×64 Chunks, je Zelle ein
+  Kandidat aus dem Seed (mindestens 54 Chunks von den fernen Zellrändern, also mindestens 880 Blöcke zum nächsten
+  Turm wie die 850 des Originals), dort die Prüfungen des Originals. Fast alle Versuche gelingen (8 von 8), etwa
+  ein Turm je 1.000×1.000 Blöcke wie im Original. Kein Turm mehr zuverlässig nahe dem Spawn.
+- **Ruins, Zustand zwischen Chunks:** Das Entfernen einzigartiger Vorlagen (`unique`, 43 Vorlagen) gilt nur noch
+  im selben Chunk und seiner Gruppe; einzigartige Ruinen können mehrfach vorkommen. Die letzten zehn Ruinen der
+  Überlappungsprüfung waren im Original die zuletzt irgendwo gebauten; weil `RuinBoundingBox.collides` schon eine
+  Überschneidung in x *oder* z zählte, scheiterten die meisten Versuche daran (oder sprangen nach 0, 0), und das
+  Original baute nur etwa ein Viertel der Ruinen, die seine Chancen versprechen. Hier startet jeder Chunk mit den
+  letzten zehn einer nachgerechneten Vorgeschichte (`RuinsGen.History`: der Generator des Originals über die zwei
+  Chunk-Spalten davor und die eigene Spalte bis zum Chunk, je ±12 Chunks, wie der Server sein Spawngebiet erzeugte;
+  eigener Zufall je Chunk, Geländeprüfung durch die gemessene Erfolgsquote 47 % ersetzt), hängt also nur von Seed
+  und Chunk ab. Gegen den Original-Server (Seed 1234, je 25×25 Chunks um den Spawn, Koordinaten aus dem Ruins-Log):
+  um 329, 60 Original 16, Port 24 (vorher 64); um 2000, 2000 Original 22, Port 14; zusammen 38 zu 38. Folgeruinen einer Gruppe, die weiter als 3 Chunks nach −x/−z oder 4 nach +x/+z reichen
   würden, entfallen (etwa jede dritte Folgeruine), damit an Kachelgrenzen nichts abgeschnitten wird. Der Fehler
   des Originals, dass ausweichende Ruinen nahe 0, 0 landen, fällt dadurch fast immer weg.
 - Reihenfolge der Vorlagen: `HashSet` nach dem Pfad wie im Original, aber mit einem festen Pfad

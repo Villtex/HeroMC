@@ -18,11 +18,18 @@ import java.util.logging.Logger;
  * classes, so that tools/expect.sh can run it. Options are the pack's mods/ruins.txt (3 % per try, 6 tries per chunk,
  * 75 % for another ruin nearby), templates those of the pack's ruins-data archives.
  *
- * <p>Two things of the original depended on what had been generated before and are bound to the chunk here: the
- * last ten ruins whose bounding boxes a new ruin must not touch (here only those of the same chunk and its site),
- * and unique templates, which the original took out of the world for good after building them once (here only
- * for the rest of the chunk). A site that would reach further from its chunk than the population of a tile covers
- * (3 chunks towards -x/-z, 4 towards +x/+z) is not built, so that no ruin is cut at a tile border.
+ * <p>Two things of the original depended on what had been generated before. Unique templates, which the original
+ * took out of the world for good after building them once, are only taken out for the rest of the chunk here. The
+ * last ten ruins whose bounding boxes a new ruin must not touch were those the server had built last, anywhere; as
+ * RuinBoundingBox.collides counted an overlap in x <em>or</em> in z, a new ruin hit one of those nearby ten most of
+ * the time and jumped to 0, 0 (getRandomAdjustment ignored its base), so the original built only about a quarter of
+ * the ruins its chances promise (16 ruins in the 25 x 25 chunks the server generates around the spawn of seed 1234,
+ * against 64 without that). Here a chunk starts from the last ten ruins of a {@link History}: the original's
+ * generator run over the chunks generated before it in the order the server prepared its spawn area (column by
+ * column, {@value #HISTORY_HALF} chunks to either side), with its own random and the terrain checks replaced by
+ * their measured success rate, so that it depends on the seed and the chunk alone. A site that would reach further
+ * from its chunk than the population of a tile covers (3 chunks towards -x/-z, 4 towards +x/+z) is not built, so
+ * that no ruin is cut at a tile border.
  */
 public final class RuinsGen {
     public static final String FML_ID = "AS_Ruins";
@@ -30,6 +37,12 @@ public final class RuinsGen {
     private static final int BIOME_NONE = 500;
     /** Where the original found its templates: mods/resources/ruins below the installation (its canonical path). */
     private static final String PATH = "mods/resources/ruins/";
+    /** Columns of chunks before the chunk's own that the history runs over. */
+    static final int HISTORY_COLUMNS = 2;
+    /** Chunks to either side in z of each history column (the spawn area was 25 chunks deep). */
+    static final int HISTORY_HALF = 12;
+    /** Of 100 ruins that got past the bounding boxes, how many passed findSuitableY and checkArea (measured: 2391 of 5101). */
+    static final int HISTORY_SUCCESS = 47;
     private static volatile Handler handler;
     /** Told of every ruin built ("x y z rotation template"), for tools/expect.sh; {@code null} in the game. */
     public static volatile java.util.function.Consumer<String> built;
@@ -45,7 +58,9 @@ public final class RuinsGen {
         if (Math.abs(chunkX) >= 3 || Math.abs(chunkZ) >= 3) {
             Handler h = handler();
             if (h.loaded) {
-                new Generator(h, world, chunkX * 16, chunkZ * 16).generate(random, world.isHellWorld());
+                Generator generator = new Generator(h, world, chunkX * 16, chunkZ * 16);
+                generator.lastTen.addAll(new History(h, world).before(chunkX, chunkZ));
+                generator.generate(random, world.isHellWorld());
             }
         }
     }
@@ -215,13 +230,114 @@ public final class RuinsGen {
         }
     }
 
+    /**
+     * What the original's generator had built before a chunk, as far as the bounding boxes of the last ten ruins go:
+     * RuinGenerator.generateNormal/generateNether and createBuilding over the chunks before it, each with a random of
+     * its own (seed and chunk), the overlap test and the jump towards 0, 0 as in the original, and findSuitableY plus
+     * checkArea replaced by {@value #HISTORY_SUCCESS} in 100. Unique templates stay in.
+     */
+    static final class History {
+        private final Handler handler;
+        private final OldWorld world;
+        private final boolean nether;
+        private final List<int[]> lastTen = new ArrayList<>();
+
+        History(Handler handler, OldWorld world) {
+            this.handler = handler;
+            this.world = world;
+            this.nether = world.isHellWorld();
+        }
+
+        /** The last ten boxes after the chunks before (chunkX, chunkZ): whole columns before it, then its own up to it. */
+        List<int[]> before(int chunkX, int chunkZ) {
+            for (int cx = chunkX - HISTORY_COLUMNS; cx <= chunkX; cx++) {
+                int last = cx == chunkX ? chunkZ - 1 : chunkZ + HISTORY_HALF;
+                for (int cz = chunkZ - HISTORY_HALF; cz <= last; cz++) {
+                    if (Math.abs(cx) >= 3 || Math.abs(cz) >= 3) {
+                        this.chunk(cx, cz);
+                    }
+                }
+            }
+            return this.lastTen;
+        }
+
+        private void chunk(int chunkX, int chunkZ) {
+            Random random = new Random(this.world.seed() ^ chunkX * 0x2F0B3E1D7L ^ chunkZ * 0x6C8E9CF57L ^ 0x5275696E73L);
+            Handler h = this.handler;
+            int tries = this.nether ? h.triesPerChunkNether : h.triesPerChunkNormal;
+            int chance = this.nether ? h.chanceToSpawnNether : h.chanceToSpawnNormal;
+            for (int c = 0; c < tries; c++) {
+                if (random.nextInt(100) < chance) {
+                    int xMod;
+                    int zMod;
+                    if (this.nether) {
+                        xMod = random.nextInt(2) == 1 ? random.nextInt(16) : -random.nextInt(16);
+                        zMod = random.nextInt(2) == 1 ? random.nextInt(16) : -random.nextInt(16);
+                    } else {
+                        xMod = random.nextInt(16);
+                        zMod = random.nextInt(16);
+                    }
+                    this.createBuilding(random, chunkX * 16 + xMod, chunkZ * 16 + zMod, 0);
+                }
+            }
+        }
+
+        private void createBuilding(Random random, int x, int z, int minDistance) {
+            int rotate = random.nextInt(4);
+            int biomeID = this.biomeId(x, z);
+            if (this.handler.useGeneric(random, biomeID)) {
+                biomeID = BIOME_NONE;
+            }
+            RuinTemplate ruin = this.handler.getTemplate(random, biomeID, Set.of());
+            if (ruin == null) {
+                return;
+            }
+            if (minDistance != 0) {
+                minDistance += random.nextInt(3) + ruin.getMinDistance();
+                x += random.nextInt(2) == 1 ? -minDistance : minDistance;
+                z += random.nextInt(2) == 1 ? -minDistance : minDistance;
+            }
+            if (Generator.overlaps(this.lastTen, ruin, x, z, rotate)) {
+                int xTemp = Generator.getRandomAdjustment(random, minDistance);
+                int zTemp = Generator.getRandomAdjustment(random, minDistance);
+                if (Generator.overlaps(this.lastTen, ruin, xTemp, zTemp, rotate)) {
+                    xTemp = Generator.getRandomAdjustment(random, minDistance);
+                    zTemp = Generator.getRandomAdjustment(random, minDistance);
+                    if (Generator.overlaps(this.lastTen, ruin, xTemp, zTemp, rotate)) {
+                        return;
+                    }
+                }
+                x = xTemp;
+                z = zTemp;
+            }
+            if (random.nextInt(100) >= HISTORY_SUCCESS) {
+                return;
+            }
+            this.lastTen.add(ruin.getBoundingBox(x, z, rotate));
+            if (this.lastTen.size() > 10) {
+                this.lastTen.remove(0);
+            }
+            if (random.nextInt(100) < (this.nether ? this.handler.chanceForSiteNether : this.handler.chanceForSiteNormal)) {
+                this.createBuilding(random, x, z, ruin.getMinDistance());
+            }
+        }
+
+        private int biomeId(int x, int z) {
+            hexxit.worldgen152.core.BiomeLayout layout = this.world.layout();
+            if (this.nether || layout == null) {
+                return this.world.getBiome(x, z).id;
+            }
+            return layout.biomeAt(x, z).id;
+        }
+    }
+
     /** RuinGenerator for one chunk. */
     static final class Generator {
         private final Handler handler;
         private final OldWorld world;
         private final int originX;
         private final int originZ;
-        private final List<int[]> lastTen = new ArrayList<>();
+        final List<int[]> lastTen = new ArrayList<>();
         private final java.util.Map<Integer, Set<RuinTemplate>> removed = new java.util.HashMap<>();
 
         Generator(Handler handler, OldWorld world, int originX, int originZ) {
@@ -314,15 +430,19 @@ public final class RuinsGen {
                     && extent[2] < this.originX + 80 && extent[3] < this.originZ + 80;
         }
 
-        private static int getRandomAdjustment(Random random, int minDistance) {
+        static int getRandomAdjustment(Random random, int minDistance) {
             return random.nextInt(8) - random.nextInt(8) + (random.nextInt(2) == 1 ? -minDistance : minDistance);
         }
 
-        /** RuinBoundingBox.collides of the original: touching in x or in z is enough. */
         private boolean willOverlap(RuinTemplate r, int x, int z, int rotate) {
+            return overlaps(this.lastTen, r, x, z, rotate);
+        }
+
+        /** RuinBoundingBox.collides of the original against each of {@code lastTen}: touching in x or in z is enough. */
+        static boolean overlaps(List<int[]> lastTen, RuinTemplate r, int x, int z, int rotate) {
             int[] current = r.getBoundingBox(x, z, rotate);
-            for (int i = this.lastTen.size() - 1; i >= 0; i--) {
-                int[] box = this.lastTen.get(i);
+            for (int i = lastTen.size() - 1; i >= 0; i--) {
+                int[] box = lastTen.get(i);
                 if (current[0] >= box[0] && current[0] <= box[1] || current[1] >= box[0] && current[1] <= box[1]
                         || current[2] >= box[2] && current[2] <= box[3] || current[3] >= box[2] && current[3] <= box[3]) {
                     return true;
