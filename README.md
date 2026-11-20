@@ -187,10 +187,10 @@ Prüfen: `tools/expect.sh 1234 nether structures 60 > expect.txt`, dann `verify_
 | TreeCapitator | `treecapitator` 1.5.2.r14 | DaftPVF, bspkrs, Lunatrius | 4.498 | ✅ portiert, am Server verifiziert (Vanilla- und ExtrabiomesXL-Bäume) |
 | Custom LAN Ports | `customport` 1.5.2 | CptHunter | 4.521 | ✅ portiert (nur integrierter Server; Client-Prüfung offen) |
 | qCraft | `qcraft` 1.0.1 | Daniel Ratcliffe, TeacherGaming | 5.221 | ✅ Teil 17 (qBlocks, Quantencomputer, Erz/Staub, Essenzen, Brille; Weltgenerierung wie im Pack aus; Client-Prüfung offen) |
-| MapWriter | `mapwriter` 2.0.5 | — | 5.356 | offen |
+| MapWriter | `mapwriter` 2.0.5 | — | 5.356 | ✅ Teil 22 (Minikarte, Vollbildkarte mit Markern und Gruppen, Spur, Kartenbilder je Welt; im Client geprüft) |
 | Secret Rooms | `secretrooms` 4.6.0.283 | AbrarSyed | 5.692 | ✅ Teil 20 (Tarnblöcke mit dem Modell des Nachbarn, Geheimtüren und -falltür, Truhen, Redstone, Platten, Einwegglas, feste Luft, Fackelhebel; Client-Prüfung offen) |
 | Inventory Tweaks | `inventorytweaks` 1.54b | Jimeo Wan, Kobata | 6.626 | ✅ portiert (reiner Client-Mod; Client-Prüfung offen) |
-| Damage Indicators | `damageindicators` 2.7.0.1 | rich1051414 | 6.783 | offen |
+| Damage Indicators | `damageindicators` 2.7.0.1 | rich1051414 | 6.783 | ✅ Teil 22 (Portrait mit Lebensbalken, Effekten und Mob-Vorschau, Schadenszahlen; im Client geprüft) |
 | Falling Meteors | `meteorsmod` 2.10.2a | AlexDGr8r | 6.957 | ✅ Teil 19 (Meteoriten mit Kratern, Schild, Timer, Detektoren, Beschwörer, Werkzeuge, Rüstungen, Alien Creeper, Kometenkatze, Meteoritenerz in der Welt; Client-Prüfung offen) |
 | Infernal Mobs | `infernalmobs` 1.5.2 | AtomicStryker | 7.089 | ✅ Teil 18 (Rare/Ultra/Infernal mit 26 Modifikatoren, Leben, Beute, HUD; Client-Prüfung offen) |
 | BetterStorage | `betterstorage` 0.6.2.23.h2 | copygirl, copyboy | 9.015 | ✅ Teil 17 (Kisten-Stapel, verstärkte Truhen mit Schloss/Schlüssel, Spind, Rüstungsständer, Rucksäcke, Frienderman; Client-Prüfung offen) |

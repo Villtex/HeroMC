@@ -7,11 +7,14 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.common.ModConfigSpec;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.tick.ServerTickEvent;
 
 /**
  * Damage Indicators 2.7.0.1: a portrait (skin "Default") with name, health bar, effects and a mob preview for the mob
  * under the crosshair, and numbers that pop off mobs when their health changes. The original's server part only told
- * the client the health and effects of nearby mobs; 26.3 already synchronizes both, so the whole mod is client-only.
+ * the client the health and effects of nearby mobs; 26.3 synchronizes the health by itself, the effects of other
+ * entities it does not, so those still come from the server (see {@link DINetwork}).
  * Standard values are those of the pack's DamageIndicatorsMod.cfg.
  */
 @Mod(DamageIndicatorsMod.MOD_ID)
@@ -47,6 +50,8 @@ public final class DamageIndicatorsMod {
 
     public DamageIndicatorsMod(IEventBus modBus, ModContainer container) {
         container.registerConfig(ModConfig.Type.CLIENT, SPEC);
+        modBus.addListener(DINetwork::register);
+        NeoForge.EVENT_BUS.addListener(ServerTickEvent.Post.class, e -> DINetwork.serverTick(e.getServer()));
         if (FMLEnvironment.getDist() == Dist.CLIENT) {
             damageindicators.client.DIClient.register(modBus);
         }

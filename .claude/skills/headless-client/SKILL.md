@@ -46,3 +46,17 @@ Add to this skill once that is done.
   Ausschnitt: `import -window root -crop 854x480+213+120 shot.png`. Die Maus dreht die Kamera nicht (kein Fokus),
   Klicks (`xdotool click 3` = Rechtsklick auf das Fadenkreuz) und `key Escape` gehen.
 - `./gradlew --stop` (auch von Subagents) beendet laufenden Server und Client mit.
+
+## Erfahrungen aus Teil 22
+
+- Beitritt ohne Klicken im Menü: im Root-`build.gradle` beim `client`-Run
+  `programArguments.addAll('--quickPlayMultiplayer', 'localhost', '--username', 'Dev')` (nicht committen,
+  nach dem Test `git checkout build.gradle`). Danach einmal „Continue“ bei 638,567 klicken.
+- **Rechtsklick (`xdotool click 3`) wird erst nach einem vorangegangenen `click 1` zugestellt** (Fokus). Also
+  erst links in die GUI klicken, dann rechts. Tastatureingaben gehen sonst ins Spiel statt in den Dialog.
+- Szene bauen: `tp Dev <x> <y> <z> <yaw> <pitch>`, Mob mit `{NoAI:1b,NoGravity:1b}` auf feste Koordinaten
+  (`NoAI` allein verhindert das Fallen nicht). Ins Fadenkreuz zielen heißt Neigung ausrechnen, nicht raten.
+- Nachts stürzt der Client an Mod-Entities ab, die auf dem Client `move()` rufen: `gamerule doDaylightCycle false`
+  und `time set noon` setzen, dann bleibt die Szene stabil und hell genug für Screenshots.
+- Ausschnitt vergrößern: `import` kennt `-scale` nicht, deshalb `import -window root shot.png` und danach
+  `convert shot.png -crop BxH+X+Y -scale 250% zoom.png`.

@@ -59,7 +59,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 19 | LegendGear, Falling Meteors | ~19.000 | 1, 3 | Opus 5.5, mittel | ✅ erledigt |
 | 20 | Xeno's Reliquary, Secret Rooms | ~18.000 | 3 | Opus 5.5, mittel | ✅ erledigt |
 | 21 | Immibis Core, Immibis's Microblocks | ~26.000 | 3 | Fable 5.2, extra hoch | offen |
-| 22 | Client-Mods: Damage Indicators, MapWriter | ~12.000 | – | Sonnet 5.5, niedrig | offen |
+| 22 | Client-Mods: Damage Indicators, MapWriter | ~12.000 | – | Sonnet 5.5, niedrig | ✅ erledigt |
 | 23 | Gesamttest und Modpack-Export | – | alle | Opus 5.5, mittel | offen |
 | 24 | später: Twilight Forest | ~50.000 | – | Fable 5.2, hoch | zurückgestellt |
 | 25a | Tinkers' Construct A: Werkzeug-Kern (Materialien, Teile, Muster, Tische, Zusammenbau, Modifikatoren anbringen) | ~10.000 | 3 | Opus 5.5, hoch | offen |
@@ -1357,6 +1357,49 @@ Mikroblöcke sind der schwierigste technische Teil. Sie brauchen Teilblock-Kolli
 
 - Damage Indicators: Lebensanzeige über Mobs.
 - MapWriter: Minimap und Weltkarte.
+
+### Teil 22 – Stand
+
+**Status: erledigt.** Zwei Teilprojekte; `clean pack` grün, Testserver mit allen Mods bis `Done` ohne Fehler.
+Keine Weltgenerierung (kein `expect.sh`-Lauf nötig). **Diesmal im Client geprüft** (Skill `headless-client`,
+Testclient über `--quickPlayMultiplayer` am Testserver, Screenshots).
+
+**Damage Indicators** – Teilprojekt `mods/damageindicators` (Mod-ID `damageindicatorsmod`), Werte der
+Pack-`DamageIndicatorsMod.cfg`. Texturen der Haut „Default“ aus dem Original (`original-assets.txt`).
+
+- **Aufbau:** `DamageIndicatorsMod` (Konfiguration, Client-Teil nur unter `Dist.CLIENT`), `client/Portrait`
+  (Hintergrund, Mob-Vorschau, Lebensbalken, Rahmen, Namensschild, Typ-Symbol, Effekt-Kasten, Texte – in der
+  Reihenfolge der `skin.cfg`), `client/Popoffs` (Schadenszahlen), `client/DIClient` (Taste `.`, Tick, HUD-Ebenen),
+  `DINetwork` (Effekte vom Server).
+- **Effekte brauchen den Server:** 26.3 schickt dem Client nur die eigenen Mob-Effekte, deshalb sendet der Server
+  wie das Original (`DIEntityWatcher`) alle zwei Ticks die Effekte der Lebewesen im Umkreis von 30 Blöcken, und nur
+  wenn sie sich ändern; der Client zählt zwischen zwei Paketen selbst herunter. Leben und Name kommen vom Spiel.
+- **Mob-Vorschau:** `InventoryScreen.renderEntityInInventoryFollowsAngle`. `g.entity` folgt `g.pose()` nicht, der
+  Kasten wird deshalb selbst in Bildschirmkoordinaten umgerechnet und mit `enableScissor` zugeschnitten.
+- **Prüfung (Client):** Portrait mit Kuh und Zombie (Name, 35/40 nach `damage`, Trefferblinken), Typ-Symbol grün
+  (friedlich) und rot (feindlich), Effekt-Kasten mit Regeneration und Langsamkeit samt Countdown, Schadenszahl „4“
+  und „5“ springt vom Mob ab.
+
+**MapWriter** – Teilprojekt `mods/mapwriter` (Mod-ID `mapwriter`), Werte der Pack-`MapWriter.cfg`, keine
+Original-Assets (das Original zeichnete alles aus Code).
+
+- **Aufbau:** `MapWriterMod` (Konfiguration mit den Kategorien `options`, `smallMap`, `largeMap`, `fullScreenMap`),
+  `client/Mw` (Zustand je Welt, Tick, Chunk-Abtastung), `client/ChunkScanner` + `client/BlockColours` (Farbe je
+  Säule mit Höhenschattierung und Biomtönung), `client/Region`/`RegionStore` (512×512-Kacheln als PNG),
+  `client/MapPainter` (Karte, Rand, Marker, Spur, Spielerpfeil in eine `DynamicTexture`), `client/MapMode` und
+  `client/MapView` (Lage und Ausschnitt), `client/MwGui` (Vollbildkarte), `client/MwOptionsScreen`,
+  `client/PromptScreen`, `client/Marker`/`MarkerManager`/`Trail`.
+- **Prüfung (Client):** Minikarte rund mit Rand und Koordinaten, Vollbildkarte mit Küste, Schiffswrack und
+  Biomanzeige unter dem Mauszeiger, Marker „Hafen“ über Rechtsklick angelegt (Name, Gruppe, x/y/z), auf beiden
+  Karten gezeichnet und am Kartenrand festgehalten, Zoom mit Bild auf/ab, gespeicherte Regionsbilder
+  (`mapwriter/<welt>/dim_minecraft_overworld/r.0.0.png`) und `markers.txt` stimmen.
+
+**Offen:** `mods/damageindicators/TODO.md` (nur die Haut „Default“, keine Einstell-GUIs) und
+`mods/mapwriter/TODO.md` (keine Untergrundkarte, eigenes Dateiformat, Blockfarben aus den Texturen).
+
+**Nebenbei behoben (Teil 19):** LegendGears Sternschnuppe (`FallingStarEntity`) bewegte sich auch auf dem Client
+und riss ihn nachts mit `IllegalStateException: Attempted to move entity on a logical side not permitted to
+simulate movement` ab; Schwerkraft und `move` laufen jetzt nur auf dem Server.
 
 ## Teil 23 – Gesamttest und Modpack
 

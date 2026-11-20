@@ -11,7 +11,7 @@ import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -177,7 +177,7 @@ final class Portrait {
         g.pose().scale(scale, scale);
         // Ordering of the Default skin: background, preview, health bar, frame, name plate, type icon, effects, texts
         g.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND, lx + BG_X, ly + BG_Y, 0, 0, BG_W, BG_H, 64, 64, 64, 64);
-        drawPreview(g, el, lx + PREVIEW_X, ly + PREVIEW_Y);
+        drawPreview(g, el, scale, lx, ly);
         float fill = hp < max ? Math.max(0.0F, (float) hp / max) : 1.0F;
         int fillW = Math.round(BAR_W * fill);
         g.blit(RenderPipelines.GUI_TEXTURED, DAMAGE, lx + BAR_X, ly + BAR_Y, 0, 0, BAR_W, BAR_H, 2, 32, 2, 32);
@@ -198,21 +198,38 @@ final class Portrait {
         g.pose().popMatrix();
     }
 
-    /** drawTargettedMobPreview: the mob in the box left of the plates, turned like the original's locked view. */
-    private static void drawPreview(GuiGraphicsExtractor g, LivingEntity el, int x, int y) {
-        float size = Math.max(el.getBbHeight(), el.getBbWidth() * 1.2F);
-        int s = Math.max(6, Math.min(120, (int) (40.0F / Math.max(0.3F, size))));
-        int cx = x + BG_W / 2;
-        int cy = y + BG_H / 2;
-        float mouseX = DamageIndicatorsMod.LOCK_MOB.get() ? cx - 15 : cx;
-        InventoryScreen.extractEntityInInventoryFollowsMouse(g, x, y, x + BG_W, y + BG_H, s, 0.0625F, mouseX, cy - 10, el);
+    /**
+     * drawTargettedMobPreview: the mob in the box left of the plates. {@code g.entity} draws into a rectangle of the
+     * screen and is not moved by {@code g.pose()}, so the box is converted into screen coordinates by hand and the
+     * mob is clipped to it; the size is chosen so that its bounding box fits in with a little air.
+     */
+    private static void drawPreview(GuiGraphicsExtractor g, LivingEntity el, float scale, int lx, int ly) {
+        // the same transformation the pose does for everything else: translate((1-s)*loc) then scale(s)
+        int x0 = Math.round((1.0F - scale) * lx + scale * (lx + PREVIEW_X));
+        int y0 = Math.round((1.0F - scale) * ly + scale * (ly + PREVIEW_Y));
+        int x1 = Math.round(x0 + BG_W * scale);
+        int y1 = Math.round(y0 + BG_H * scale);
+        // the model is usually longer than the bounding box is wide (a cow), so the width counts for more; the
+        // remaining air is what the original got from its extra 0.85 scaling
+        float extent = Math.max(0.8F, Math.max(el.getBbHeight(), el.getBbWidth() * 1.4F));
+        int size = (int) Math.max(1.0F, (y1 - y0) * 0.45F / extent);
+        // locked: a fixed three-quarter view (the original turned by renderYawOffset - 30 degrees);
+        // unlocked: the mob keeps the direction it faces in the world
+        float angle = 1.5F;
+        if (!DamageIndicatorsMod.LOCK_MOB.get() && Minecraft.getInstance().player != null) {
+            angle = Mth.wrapDegrees(el.getYRot() - Minecraft.getInstance().player.getYRot()) / 20.0F;
+        }
+        g.enableScissor(x0, y0, x1, y1);
+        InventoryScreen.renderEntityInInventoryFollowsAngle(g, x0, y0, x1, y1, size, 0.0625F, angle, 0.0F, el);
+        g.disableScissor();
     }
 
     private static void drawEffects(GuiGraphicsExtractor g, Minecraft mc, LivingEntity el, int lx, int ly) {
         int position = 0;
         boolean boxDrawn = false;
-        for (MobEffectInstance effect : el.getActiveEffects()) {
-            int duration = effect.isInfiniteDuration() ? 20 * 3600 : effect.getDuration();
+        for (damageindicators.DINetwork.Effect effect : DIClient.effects(el.getId())) {
+            boolean infinite = effect.duration() < 0;
+            int duration = infinite ? 20 * 3600 : effect.duration();
             if (duration <= 10) {
                 continue;
             }
@@ -224,8 +241,8 @@ final class Portrait {
             }
             int cx = bx + position * 20 + BOX_SIDE;
             g.blit(RenderPipelines.GUI_TEXTURED, POTIONS_CENTER, cx, by, 0, 0, 20, BOX_H, 2, 64, 2, 64);
-            g.blitSprite(RenderPipelines.GUI_TEXTURED, Hud.getMobEffectSprite(effect.getEffect()), cx + 2, by + 2, BOX_H - 4, BOX_H - 4);
-            if (!effect.isInfiniteDuration()) {
+            g.blitSprite(RenderPipelines.GUI_TEXTURED, Hud.getMobEffectSprite(effect.effect()), cx + 2, by + 2, BOX_H - 4, BOX_H - 4);
+            if (!infinite) {
                 int seconds = duration / 20;
                 int minutes = seconds / 60;
                 if (minutes < 10) {

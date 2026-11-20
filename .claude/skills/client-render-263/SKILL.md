@@ -31,6 +31,30 @@ static void render(GuiGraphicsExtractor g, DeltaTracker delta) { ... }   // Mine
 - Gegenstand: `g.fakeItem(stack, x, y)`. Skalieren: `g.pose()` ist `Matrix3x2fStack` (`pushMatrix/translate/scale/popMatrix`).
 - Was „alle N Frames“ aktualisierte, auf `ClientTickEvent.Post` (NeoForge-Bus) legen.
 
+## Mob im HUD zeigen (Portrait, Vorschaukasten)
+
+Vorlage: `mods/damageindicators/client/Portrait.java`.
+- `InventoryScreen.renderEntityInInventoryFollowsAngle(g, x0, y0, x1, y1, size, 0.0625F, xAngle, yAngle, entity)`.
+  `size` = GUI-Pixel je Block (Vanilla: Spieler 1,8 Blöcke mit `size` 30 in einem Kasten von 70). `xAngle`/`yAngle`
+  werden mit 20 multipliziert und ergeben `bodyRot = 180 + xAngle*20`; `1.5F` gibt eine Dreiviertelansicht.
+- **`g.entity(...)` folgt `g.pose()` nicht** (die Render-State merkt sich nur die rohen Koordinaten und den
+  Scissor-Stack). Steht das HUD unter `pose().translate/scale`, den Kasten selbst in Bildschirmkoordinaten
+  umrechnen (`x0 = (1-s)*loc + s*(loc+offset)`, Breite `w*s`) und `size` mit skalieren.
+- **Nichts schneidet zu:** vorher `g.enableScissor(x0,y0,x1,y1)`, nachher `g.disableScissor()`, sonst ragt der Mob
+  aus dem Rahmen. Lange Mobs (Kuh) sind breiter als ihre Hitbox: `size` aus `max(bbHeight, bbWidth*1.4)` und nur
+  etwa 45 % der Kastenhöhe, sonst stößt das Modell an.
+
+## Fremde Effekte, Leben und Bewegung auf dem Client
+
+- 26.3 schickt dem Client **nur die eigenen Mob-Effekte**: `getActiveEffects()` eines anderen Lebewesens ist dort
+  leer. Wer sie anzeigen will (Lebensanzeigen, Portraits), braucht eine eigene Payload vom Server
+  (Vorlage `mods/damageindicators/DINetwork.java`: alle zwei Ticks je Spieler, nur bei Änderung). Leben,
+  Maximalleben und Namen synchronisiert das Spiel von selbst.
+- Eine vom Server verfolgte Entity darf auf dem Client **nicht `move()` aufrufen**, sonst
+  `IllegalStateException: Attempted to move entity on a logical side not permitted to simulate movement`.
+  Schwerkraft und `move` in `tick()` mit `if (!level().isClientSide())` klammern; der Client bekommt die Position
+  aus den Paketen und darf `getDeltaMovement()` nur lesen (gefunden an `legendgear` FallingStarEntity).
+
 ## Etwas am Spielermodell zeichnen (Rücken, Schultern)
 
 1. Zustand pro Spieler im Client-Tick führen (`mc.level.players()`, Map nach `getId()`, beim Weltwechsel leeren).

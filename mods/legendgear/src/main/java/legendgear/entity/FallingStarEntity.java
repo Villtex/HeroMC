@@ -77,8 +77,12 @@ public class FallingStarEntity extends Entity {
 
     @Override
     public void tick() {
-        this.setDeltaMovement(this.getDeltaMovement().add(0.0, -0.05, 0.0));
-        this.move(MoverType.SELF, this.getDeltaMovement());
+        // 26.3 lets only the server move an entity it tracks; the client follows its position packets and just
+        // reads the (synchronized) motion for the sparkle trail below
+        if (!this.level().isClientSide()) {
+            this.setDeltaMovement(this.getDeltaMovement().add(0.0, -0.05, 0.0));
+            this.move(MoverType.SELF, this.getDeltaMovement());
+        }
         if (this.tickCount == 2 && !this.impact()) {
             LGFx.sound(this, LGSounds.STARFALL.get(), 100.0F, 1.0F);
         }
