@@ -1,0 +1,10 @@
+# path in damageindicators-v2.7.0.1.zip (inside the mod jar) -> path in the ported jar (skin "Default")
+DITextures/Default/DIFrameSkin.png -> assets/damageindicatorsmod/textures/gui/frame.png
+DITextures/Default/DITypeIcons.png -> assets/damageindicatorsmod/textures/gui/type_icons.png
+DITextures/Default/NamePlate.png -> assets/damageindicatorsmod/textures/gui/name_plate.png
+DITextures/Default/background.png -> assets/damageindicatorsmod/textures/gui/background.png
+DITextures/Default/health.png -> assets/damageindicatorsmod/textures/gui/health.png
+DITextures/Default/damage.png -> assets/damageindicatorsmod/textures/gui/damage.png
+DITextures/Default/leftPotions.png -> assets/damageindicatorsmod/textures/gui/potions_left.png
+DITextures/Default/rightPotions.png -> assets/damageindicatorsmod/textures/gui/potions_right.png
+DITextures/Default/centerPotions.png -> assets/damageindicatorsmod/textures/gui/potions_center.png
