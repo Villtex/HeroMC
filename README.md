@@ -42,7 +42,7 @@ Der Port ist in Teile aufgeteilt, die je in eine Session passen: [`docs/PLAN.md`
 | `.claude/skills/client-render-263/` | Projekt-Skill: HUD-Ebenen, Gegenstände am Spielermodell, Rüstungen mit eigenen Helm-Modellen, durchscheinende Blockmodelle, Rechtsklick vor dem Block abfangen, Blöcke mit TESR/IItemRenderer als BlockEntityRenderer + Special-Item-Renderer (26.3), Vorlage BiblioCraft |
 | `.claude/skills/menu-gui-263/` | Projekt-Skill: eigene GUI mit Container (Menü, Screen, Pakete Client → Server, Server-Konfiguration für die Vorschau im Client) |
 | `.claude/skills/wood-sets-263/` | Projekt-Skill: Holzarten und Pflanzen eines Mods (Planken, Stämme, Blätter, Setzlinge, Treppen bis Werkbänke, Brennwert, Rezeptkonflikte mit Vanilla), Vorlage Natura |
-| `.claude/skills/mobs-263/` | Projekt-Skill: Mobs, Spawn-Eier, Boote, Mob-Drops und Spawns (Biome-Modifier), viele Mobs auf einmal (Modell-Konverter, Easing, Fliegen, Reiten, Mehrteiler, Boss), Prüfen ohne Spieler; Vorlagen Natura, Project Zulu |
+| `.claude/skills/mobs-263/` | Projekt-Skill: Mobs, Spawn-Eier, Boote, Mob-Drops und Spawns (Biome-Modifier), viele Mobs auf einmal (Modell-Konverter, Easing, Fliegen, Reiten, Mehrteiler, Boss), Mobs ohne KI und Reiter-Bewegung, eigene Spawner, Zusatzdaten an fremden Mobs, Prüfen ohne Spieler; Vorlagen Natura, Project Zulu, ChocoCraft |
 | `.claude/skills/server-tests-263/` | Projekt-Skill: Verhalten ohne Spieler am Testserver prüfen (Rezepte über Crafter + RCON, temporärer FakePlayer-Befehl, forceloaded Chunks) |
 | `.claude/skills/treecapitator-trees/` | Projekt-Skill: Bäume und Äxte eines Mods bei TreeCapitator anmelden (Daten-Registry `treecapitator:tree`, Item-Tags) |
 | `.claude/skills/templates-152/` | Projekt-Skill: Gebäude-Vorlagen und Schematics eines 1.5.2-Mods übernehmen (Daten-Archive beim Bauen ins Jar, NBT ohne Spielklassen, Kisten/Schilder/Bilder/Mobs über worldgen152, Text-Vorlagen ohne Umwandlung, Vorlagen zur Laufzeit in die Welt, Prüfung), Vorlagen Better Dungeons, Ruins, Dimensional Doors |
@@ -191,9 +191,9 @@ Prüfen: `tools/expect.sh 1234 nether structures 60 > expect.txt`, dann `verify_
 | Inventory Tweaks | `inventorytweaks` 1.54b | Jimeo Wan, Kobata | 6.626 | ✅ portiert (reiner Client-Mod; Client-Prüfung offen) |
 | Damage Indicators | `damageindicators` 2.7.0.1 | rich1051414 | 6.783 | offen |
 | Falling Meteors | `meteorsmod` 2.10.2a | AlexDGr8r | 6.957 | offen |
-| Infernal Mobs | `infernalmobs` 1.5.2 | AtomicStryker | 7.089 | offen |
+| Infernal Mobs | `infernalmobs` 1.5.2 | AtomicStryker | 7.089 | ✅ Teil 18 (Rare/Ultra/Infernal mit 26 Modifikatoren, Leben, Beute, HUD; Client-Prüfung offen) |
 | BetterStorage | `betterstorage` 0.6.2.23.h2 | copygirl, copyboy | 9.015 | ✅ Teil 17 (Kisten-Stapel, verstärkte Truhen mit Schloss/Schlüssel, Spind, Rüstungsständer, Rucksäcke, Frienderman; Client-Prüfung offen) |
-| ChocoCraft | `chococraft` 2.8.8 | Torojima | 9.331 | offen |
+| ChocoCraft | `chococraft` 2.8.8 | Torojima | 9.331 | ✅ Teil 18 (Chocobos in neun Farben, Zucht, Reiten, Taschen, Chocopedia, Gysahl-Pflanzen in der Welt; Client-Prüfung offen) |
 | Dimensional Doors | `dimensional-doors` 1.4.1.194 | StevenRS11, SenseiKiwi | 10.746 | ✅ Teil 15 (Taschen, Dungeons, Limbo, Rifts; Client-Prüfung offen) |
 | ExtrabiomesXL | `ebxl` 3.13.4 | ScottKillen u. a. | 10.762 | ✅ portiert, am Server verifiziert (Client-Prüfung offen) |
 | (Vanilla 1.5.2) Weltgenerierung | `worldgen152` | Mojang | – | Gelände, Dekoration, Strukturen und Spawnpunkt ✅ gegen Spiel und gegen Original-Welten verifiziert; Nether ✅ (Teil 7b) |

@@ -159,3 +159,27 @@ Abschnitt „ENTITIES“ in `mods/natura/tools/gen.py`.
   `ModelLayers.ZOMBIFIED_PIGLIN`. Drehen: `poseStack.rotateDegrees(Axis, deg)` / `rotate(Quaternionf)`.
 - **Söldner-Steuerung:** GUI nur auf dem Client öffnen (statischer Hook `BDHumans.openControlScreen`, vom Client gesetzt),
   Befehl per `playToServer`-Payload, Server prüft Entfernung und Wertebereich.
+
+## Mobs ohne KI und Reittiere mit Reiter-Bewegung (aus Teil 18, ChocoCraft `mods/chococraft`)
+
+- **`isAIEnabled() == false`** (alte `updateEntityActionState` mit eigenem Pfad): als *ein* Goal mit allen Flags und
+  `requiresUpdateEveryTick`, das die Reihenfolge des Originals nachbaut (`Chocobo.ActionGoal`). `entityAge < 100`
+  (nur mit Spieler in 32 Blöcken) → `getNoActionTime() < 100`. Geschwindigkeit: alte Beschleunigung
+  `moveSpeed · landMovementFactor` (0,7 · 0,2 = 0,14) → `MOVEMENT_SPEED = sqrt(a / 1,327)`; alte KI-Aufgaben mit
+  absoluter Geschwindigkeit v: Beschleunigung v² → Attribut `v / sqrt(1,327)`.
+- **`EntityAgeable`-Alter doppelt gezählt** (Unterklasse zählt selbst noch einmal runter): Rate genau übernehmen
+  (Chicobo −2 je Tick).
+- **Reiter-Bewegung × Faktor** (`moveEntity` mit `riddenByEntity.motionX * speedFactor`): in `travel()` bei
+  `getControllingPassenger() instanceof Player` selbst rechnen: Eingabe `rider.xxa/zza` wie `moveFlying(…, 0,02)`
+  normiert, × Faktor, dann `move(SELF, …)` und Schwerkraft/Reibung je Medium wie im Original. Sprungtaste:
+  `rider.isJumping()` (läuft auf dem steuernden Client). `isAirBorne`-Zweige galten nur einen Tick (der Tracker setzt
+  es zurück): praktisch nie. Schleichen steigt in 26.3 ab – Abweichung notieren.
+- **Lava wie Luft** (`handleLavaMovement() == false`): `shouldTravelInFluid(FluidState)` für Lava `false`.
+- **Satteltaschen als Entity-Inventar:** `SimpleContainer`-Unterklasse mit `stillValid` (Abstand), Öffnen mit
+  `new ChestMenu(MenuType.GENERIC_9xN, id, inv, container, N)`; speichern mit
+  `ContainerHelper.saveAllItems(output.child("…"), list)`.
+- **Eigener Spawner statt Biome-Modifier** (Tick-Handler je Spieler, Gruppen, Mindestabstand): `ServerTickEvent.Post`,
+  Biom-Liste als Konfig mit Biom-IDs; Namen aus der Pack-Konfig, die in 1.5.2 kein Biom trafen, weglassen.
+- **Zusatzdaten an fremden Mobs** (Infernal Mobs, `mods/infernalmobs`): Zustand im Entity-NBT
+  (`getPersistentData()`) plus synchronisiertes Data Attachment für den Client; Leben über das Maximum hinaus als
+  `max_health`-Modifikator (Obergrenze 1024).

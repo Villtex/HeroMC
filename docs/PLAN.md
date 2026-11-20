@@ -55,7 +55,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 15 | Dimensional Doors | ~11.000 | 2 | Opus 5.5, mittel | ✅ erledigt |
 | 16 | BiblioCraft | ~21.000 | 3 | Fable 5.2, hoch | ✅ erledigt |
 | 17 | BetterStorage, Backpacks, qCraft | ~17.000 | 3 | Opus 5.5, mittel | ✅ erledigt |
-| 18 | ChocoCraft, Infernal Mobs | ~16.000 | 1, 3 | Opus 5.5, mittel | offen |
+| 18 | ChocoCraft, Infernal Mobs | ~16.000 | 1, 3 | Opus 5.5, mittel | ✅ erledigt |
 | 19 | LegendGear, Falling Meteors | ~19.000 | 1, 3 | Opus 5.5, mittel | offen |
 | 20 | Xeno's Reliquary, Secret Rooms | ~18.000 | 3 | Opus 5.5, mittel | offen |
 | 21 | Immibis Core, Immibis's Microblocks | ~26.000 | 3 | Fable 5.2, extra hoch | offen |
@@ -1131,15 +1131,71 @@ und Fuzz-Textur, Brillen-Overlay und -Rüstung, Computer-GUI, Staub-Partikel, an
 - ChocoCraft: Chocobos (Zucht, Reiten, Farben) und Gysahl-Pflanzen in der Welt.
 - Infernal Mobs: Elite-Mobs mit Modifikatoren, Loot.
 
+### Teil 18 – Stand
+
+**Status: erledigt.** Zwei Teilprojekte; `clean pack` grün, Testserver mit allen Mods bis `Done` ohne Fehler (Project
+Zulu wie in Teil 13–17 vorübergehend heraus).
+
+**ChocoCraft** – Teilprojekt `mods/chococraft` (Mod-ID `chococraft`), Konfiguration `ChocoConfig` (STARTUP, Werte der
+Pack-`chocobo_config.txt`). Ressourcen schreibt `mods/chococraft/tools/gen.py` (Chocopedia-Seiten aus dem Original),
+Texturen und der Kweh-Sound kommen beim Bauen aus dem Original. Alte IDs: Blöcke 1101–1103, Items 5476–5496 (+256),
+Entity-Namen `chococraft.Chocobo<Farbe>`/`chococraft.Chicobo` in `OldGameIds`/`OldBlockStates`.
+
+- **Aufbau:** `AbstractChocobo` (TamableAnimal: Name, Geschlecht, folgen/wandern/bleiben, Zähmen mit Gysahl 1/3,
+  Heilen, Strohheilung am Kessel), `Chocobo` (eine Klasse, Farbe = Entity-Typ, Werte in `ChocoboColor`; Sattel,
+  Satteltaschen 36 / Packtaschen 54 Plätze als ChestMenu, Reiten, Federn legen, Paarung), `Chicobo` (Farbe synchron,
+  Wachstum −2 je Tick wie im Original, Kuchen), `ChocoboBreeding` (die neun Zuchttabellen Zweig für Zweig, mit den
+  Durchfall-Fehlern des Originals), `PurpleChocoboEgg`, `ChocoboSpawner` (eigener Spawner alle 200 Ticks je Spieler wie
+  `ServerSpawnTickHandler`, gelb in den Pack-Biomen, lila im Nether/End). Die alte Nicht-KI-Steuerung
+  (`updateEntityActionState`) als ein Goal (`Chocobo.ActionGoal`), Küken mit den KI-Aufgaben des Originals.
+  Blöcke: Gysahl (Blume), Gysahl-Stängel (5 Stufen, Wachstum und Mutation wie BlockGysahlStem), Stroh. Chocopedia
+  (Buch und Chocobo-Seite mit Umbenennen, Name zeigen, folgen, Ausrüstung abwerfen, Besitzer wechseln; Paket
+  `chococraft:chocobo_action`), Feder auf Bücherregal → Chocopedia, Buch und Feder am Chocobo → Chocopedia.
+- **Weltgenerierung:** `chococraft.gen.ChocoWorldGen` (WorldGenGysahls, 161/1000 Chunks, mit dem Höhenfehler
+  `getTopSolidOrLiquidBlock(x, x)` des Originals, deshalb selten an der Oberfläche) und die Chocopedia in sieben
+  Truhenkategorien (Gewicht 2); in `tools/expect.sh` und `verify_blocks.py` (1101) eingetragen.
+- **Prüfung:** per RCON und temporärem FakePlayer-Befehl: Zähmen, Liebe mit goldenem Gysahl → Küken, Abklingzeit
+  ♂ 3000/♀ 9000, Zuchttabelle gelb×gelb (10.000 Würfe: 51/25/24 %), Sattel/Taschen/Feder-Umschalten, Todesdrops
+  (Ausrüstung, Federn, Keulen), Küken wächst zum Chocobo seiner Farbe, Ei schlüpft lila, Stängel-Ernte
+  (40 reife: 34 grün, 6 Loverly, 47 Samen), Rezepte über den Crafter. `tools/expect.sh 1234 find 260` +
+  `verify_blocks.py`: 0 Blöcke abweichend (zwei Schädel in Chunk 0 von Lava/Wasser überflossen, weil der Chunk
+  vorher für Tests geladen war).
+
+**Offen / bewusst abweichend (ChocoCraft):** Hunger nicht portiert (im Pack aus); Schleichen steigt in 26.3 ab, darum
+sinken Flieger ohne gedrückte Sprungtaste statt mit Schleichen; der seitliche Versatz von Reiter und Modell entfällt;
+Mutationsraten und Generierungsrate fest aus dem Pack (Loot-Tabelle, `ChocoWorldGen`); Gras-Samen 1/8 · 3/19
+(Natura rechnet noch mit 3/16); Besitzer wechseln nur auf einem Server; Packtaschen-Inhalt geht bei „Drop Gear“ wie im
+Original verloren. Reiten, Menüs per FakePlayer nicht prüfbar, Spawner nur im Code geprüft. Client-Prüfung offen:
+Modelle und Animationen (Flügel, Beine), Texturen je Ausrüstung, Namensschild, Chocopedia-Bildschirme, Reiten und
+Fliegen, Verkleidung.
+
+**Infernal Mobs** – Teilprojekt `mods/infernalmobs` (Mod-ID `infernalmobs`), portiert von einem Subagenten, in der
+Hauptsession geprüft. Konfiguration `IMConfig` mit den Pack-Werten (eliteRarity 30, ultra 10, inferno 10, alle 26
+Modifikatoren an, verbotene Mobs von Harken Scythe, Project Zulu und Dimensional Doors als Entity-IDs, Beuteliste als
+Item-IDs aus den alten Nummern).
+
+- **Aufbau:** `InfernalMobsCore` (Auswahl der Modifikatoren wie `createMobModifiers`, Leben als `max_health`-Modifikator
+  = Leben × Anzahl × Faktor, Beute mit Verzauberung je 5 Modifikatoren und 25 XP), `MobModifier` als verkettete Liste,
+  26 `MM_*`-Klassen, Modifikator-Namen im Entity-NBT „InfernalMobsMod“ und als synchronisiertes Attachment,
+  `InfernalMobsClient` (HUD mit Name, Lebensleiste, Modifikator-Zeilen; Partikel um Rare-Mobs).
+- **Prüfung:** Zombie mit „Regen 1UP Vengeance Bulwark“ per NBT: Leben 80/80, Bulwark halbiert, Regen heilt, Tod durch
+  Spieler gibt ein Item der Liste und 25 XP.
+
+**Offen (Infernal Mobs):** Abweichungen und Offenes in `mods/infernalmobs/TODO.md`; Beuteliste um Falling Meteors
+(Teil 19) und Xeno's Reliquary (Teil 20) ergänzen. Client-Prüfung offen: HUD, Partikel.
+
 ## Teil 19 – LegendGear, Falling Meteors
 
 - LegendGear: Zelda-Ausrüstung, Bombenblumen und Sträucher per Weltgenerierung.
 - Falling Meteors: Meteoriten-Events und -Erze.
+- Infernal Mobs: die Meteors-Items der alten Beuteliste (IDs 6058–6081, siehe `mods/infernalmobs/TODO.md`) in
+  `IMConfig.DEFAULT_ITEMS` eintragen.
 
 ## Teil 20 – Xeno's Reliquary, Secret Rooms
 
 - Xeno's Reliquary: Artefakte, Handgun, Alkahest-Rezepte → JEI.
 - Secret Rooms: Tarnblöcke. Die Tarnung zeigt das Modell eines anderen Blocks und ist damit ein Render-Thema.
+- Infernal Mobs: das Reliquary-Item der alten Beuteliste (ID 6408) in `IMConfig.DEFAULT_ITEMS` eintragen.
 
 ## Teil 21 – Immibis Core, Immibis's Microblocks
 
