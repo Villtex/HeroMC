@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    "XXX",
+    "X0X",
+    "XXX"
+  ],
+  "key": {
+    "X": "#c:dyes",
+    "0": "minecraft:sand"
+  },
+  "result": {
+    "id": "secretroomsmod:camo_paste",
+    "count": 9
+  }
+}

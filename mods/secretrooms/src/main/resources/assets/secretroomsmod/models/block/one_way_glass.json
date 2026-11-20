@@ -1,0 +1,13 @@
+{
+  "parent": "minecraft:block/cube",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "particle": "minecraft:block/glass",
+    "down": "minecraft:block/glass",
+    "up": "minecraft:block/glass",
+    "north": "minecraft:block/glass",
+    "south": "secretroomsmod:block/camo_base",
+    "west": "minecraft:block/glass",
+    "east": "minecraft:block/glass"
+  }
+}

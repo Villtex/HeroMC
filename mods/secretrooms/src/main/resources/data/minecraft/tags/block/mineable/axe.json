@@ -1,0 +1,23 @@
+{
+  "replace": false,
+  "values": [
+    "secretroomsmod:camo_gate",
+    "secretroomsmod:camo_dummy",
+    "secretroomsmod:ghost_block",
+    "secretroomsmod:secret_lever",
+    "secretroomsmod:secret_redstone",
+    "secretroomsmod:secret_stone_button",
+    "secretroomsmod:secret_wood_button",
+    "secretroomsmod:secret_pressure_plate",
+    "secretroomsmod:secret_player_plate",
+    "secretroomsmod:secret_light_plate",
+    "secretroomsmod:secret_heavy_plate",
+    "secretroomsmod:secret_stairs",
+    "secretroomsmod:secret_chest",
+    "secretroomsmod:secret_trapped_chest",
+    "secretroomsmod:secret_light_detector",
+    "secretroomsmod:one_way_glass",
+    "secretroomsmod:secret_wooden_door",
+    "secretroomsmod:secret_trapdoor"
+  ]
+}

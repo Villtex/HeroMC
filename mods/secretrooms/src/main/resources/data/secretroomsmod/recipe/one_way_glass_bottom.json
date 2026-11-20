@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    "000",
+    "000",
+    "XXX"
+  ],
+  "key": {
+    "X": "secretroomsmod:camo_paste",
+    "0": "minecraft:glass"
+  },
+  "result": {
+    "id": "secretroomsmod:one_way_glass",
+    "count": 9
+  }
+}

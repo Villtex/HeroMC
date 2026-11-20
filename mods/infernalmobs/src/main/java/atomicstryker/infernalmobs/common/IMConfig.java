@@ -78,7 +78,8 @@ public final class IMConfig {
             "meteors:meteorite_chestplate",
             "meteors:meteorite_boots",
             "meteors:meteorite_helmet",
-            "meteors:meteorite_leggings");
+            "meteors:meteorite_leggings",
+            "xreliquary:glowing_bread");
 
     /** permittedentities=false of the pack: EntityHSSoulLost, Harbinger, SandWorm, entity.DimDoors.Monolith.name. */
     public static final List<String> DEFAULT_FORBIDDEN = List.of(

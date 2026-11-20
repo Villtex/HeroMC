@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    "secretroomsmod:camo_paste",
+    "minecraft:glass"
+  ],
+  "result": {
+    "id": "secretroomsmod:one_way_glass"
+  }
+}

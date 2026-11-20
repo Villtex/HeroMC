@@ -1,7 +1,5 @@
 # Infernal Mobs – offen
 
-- **Beuteliste ergänzen**, sobald die Mods portiert sind (in `IMConfig.DEFAULT_ITEMS`):
-  - Teil 20, Xeno's Reliquary: alte ID 6408 (`xreliquary.cfg`).
 - **Client-Prüfung offen:** HUD (Name, Lebensleiste, Modifikator-Zeilen) und die Zauber-Partikel um Rare-Mobs nur
   im Code geprüft, nicht im laufenden Client.
 

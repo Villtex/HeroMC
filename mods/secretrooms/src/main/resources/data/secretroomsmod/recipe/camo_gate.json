@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    "#0#",
+    "0A0",
+    "#@#"
+  ],
+  "key": {
+    "#": "#minecraft:planks",
+    "0": "secretroomsmod:camo_paste",
+    "@": "minecraft:redstone",
+    "A": "minecraft:ender_pearl"
+  },
+  "result": {
+    "id": "secretroomsmod:camo_gate"
+  }
+}

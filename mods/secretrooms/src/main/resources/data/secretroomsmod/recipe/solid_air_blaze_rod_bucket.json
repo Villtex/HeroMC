@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    "secretroomsmod:camo_paste",
+    "minecraft:blaze_rod",
+    "minecraft:water_bucket"
+  ],
+  "result": {
+    "id": "secretroomsmod:solid_air"
+  }
+}

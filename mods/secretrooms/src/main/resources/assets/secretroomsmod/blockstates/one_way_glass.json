@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "secretroomsmod:block/one_way_glass",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "secretroomsmod:block/one_way_glass"
+    },
+    "facing=west": {
+      "model": "secretroomsmod:block/one_way_glass",
+      "y": 90
+    },
+    "facing=east": {
+      "model": "secretroomsmod:block/one_way_glass",
+      "y": 270
+    },
+    "facing=up": {
+      "model": "secretroomsmod:block/one_way_glass",
+      "x": 270
+    },
+    "facing=down": {
+      "model": "secretroomsmod:block/one_way_glass",
+      "x": 90
+    }
+  }
+}
