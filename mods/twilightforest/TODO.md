@@ -4,9 +4,6 @@ Stand nach 24a (Dimension, Gelände, Biome, Portal, Struktur-Raster). Was die n�
 
 ## Einhängepunkte
 
-- Biom-Dekoration (24b): `gen/TFBiomes.biome()` setzt `decoration` auf leer; je Biom den `TFBiomeDecorator` (und
-  `TFDarkForestBiomeDecorator`) als `OldBiome.decoration` eintragen. `TFPopulator` ruft sie schon an der Stelle des
-  Originals (nach Seen und Dungeons, vor Eis/Schnee).
 - Strukturen (24d/24e): `majorFeatureGenerator.generateStructuresInChunk` fehlt in `TFPopulator.populate` (Kommentar
   an der Stelle). Es zieht als Erstes Zufallszahlen aus dem Chunk-Zufall: bis dahin liegen Seen/Dungeons in den
   Chunks, die ein Bauwerk schneidet, anders als im Original. Auch `majorFeatureGenerator.generate` in
@@ -14,8 +11,6 @@ Stand nach 24a (Dimension, Gelände, Biome, Portal, Struktur-Raster). Was die n�
 - `TFFeature`: Mob-Listen der Bauwerke und `getSpawnableList` (24c), `structureEnabled` für 24d/24e.
 - Mob-Spawns (24c): Biom-JSONs haben leere Listen (`tools/gen.py`, `BIOMES`), `TFChunkGenerator.spawnOriginalMobs`
   und `getMobsAt` (Untergrund-Liste `TFFeature.underground` unter y 32, Listen der Bauwerke) fehlen.
-- Hecke (24b): Schaden beim Weiterschlagen (`updateTick` mit Schwung), Dunkelholzlaub lässt 1 in 40 einen
-  Dunkelholz-Setzling fallen (Loot-Tabelle fehlt), Brennbarkeit.
 - Fortschritte „Portal“/„Ankunft“ (24f, `TFAchievementPage`).
 
 ## Abweichungen
@@ -33,3 +28,21 @@ Stand nach 24a (Dimension, Gelände, Biome, Portal, Struktur-Raster). Was die n�
 - Kern gegen Original: offen. Der 1.5.2-Server erzeugt ohne Spieler keine Chunks der Dimension 7.
 - Client-Prüfung offen: Himmel, Nebel, Sterne, Helligkeit; Portalmodell und Partikel; Wasserfarben der Sümpfe; die
   zufälligen Graskolorierungen des Verzauberten Walds (`getBiomeGrassColor` mit Zufall) sind nicht nachgebaut.
+
+## Teil 24b – Dekoration (Kern)
+
+- `gen/TFDecorator` (TFBiomeDecorator + Dunkelwald), Werte je Biom in `gen/TFBiomes` (Konstruktoren der TFBiome*,
+  `getRandomWorldGenForTrees/Grass`, was `decorate()` danach anhängt). Bäume in `gen/TFTrees`, kleine Bauten
+  (ruinList) in `gen/TFRuins`, Wurzeln/Beeren/Myzel/Feuerdüsen/Pinguine/Pflanzen in `gen/TFPlants`, Truhen in
+  `gen/TFTreasure` (nur Tabellen 9 Keller und 14 Baumversteck; die übrigen 14 Tabellen mit 24d/24e).
+- Die nächste Bauwerks-Art (`TFFeature.getNearestFeature`) legt `TFPopulator` in `world.chunkState` ab
+  (`TFDecorator.NEAR_FEATURE`), Dekorator und Feuersumpf lesen sie dort.
+- Mobs der Dekoration (Pinguine im Gletscher, Raben am Monolithen): Zufallszahlen werden gezogen, gespawnt wird erst
+  mit 24c (`gen/TFMobs.spawn`). Spawner der Blätterverliese („TwilightForest.Swarm Spider“) und Hexenhütten
+  („TwilightForest.Skeleton Druid“) zeigen bis 24c auf Vanilla-Spinne/-Skelett (`OldGameIds.registerEntity`).
+- Abweichungen, die das Original selbst hat und die bleiben: `TFGenFallenSmallLog` setzt wegen fehlender `break`
+  immer Tropenholz (17:3); `TFTreasure` Typ 3 trägt `add(sapling, 1, 4)` als Gewicht 4 statt Metadaten 4 ein.
+- `worldgen152` erweitert: `OldBlockInfo.registerAdded` (onBlockAdded von Mod-Blöcken: Kleintiere suchen sich eine
+  Seite oder fallen ab), `registerLeaves(id, opaque, normal, lightOpacity)`, `OldTreeGens.BigTree(log, leaves, meta,
+  replaceable)` für die große Regenbogeneiche.
+- Setzlinge: `TFSaplings` lässt die Generatoren über `OldLiveGen` wachsen (Reichweiten gemessen).

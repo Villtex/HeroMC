@@ -712,6 +712,26 @@ public final class OldTreeGens {
         private int heightLimitLimit = 12;
         private int leafDistanceLimit = 4;
         private int[][] leafNodes;
+        private final int logId;
+        private final int leafId;
+        private final int leafMeta;
+        /** Leaves go where Block.canBeReplacedByLeaves allows, not only into air and vanilla leaves. */
+        private final boolean replaceableLeaves;
+
+        public BigTree() {
+            this(LOG, LEAVES, 0, false);
+        }
+
+        /**
+         * A big oak of other blocks (Twilight Forest's large rainbow oak: its own log with the axis bits and leaves
+         * of metadata 3, which may replace everything Block.canBeReplacedByLeaves allows).
+         */
+        public BigTree(int logId, int leafId, int leafMeta, boolean replaceableLeaves) {
+            this.logId = logId;
+            this.leafId = leafId;
+            this.leafMeta = leafMeta;
+            this.replaceableLeaves = replaceableLeaves;
+        }
 
         private void generateLeafNodeList() {
             this.height = (int) (this.heightLimit * this.heightAttenuation);
@@ -788,8 +808,8 @@ public final class OldTreeGens {
                     if (distance <= radius * radius) {
                         pos[b] = center[b] + db;
                         int id = this.world.getBlockId(pos[0], pos[1], pos[2]);
-                        if (id == 0 || id == LEAVES) {
-                            this.world.setBlock(pos[0], pos[1], pos[2], blockId, 0);
+                        if (id == 0 || (this.replaceableLeaves ? OldBlockInfo.replacedByLeaves(id) : id == LEAVES)) {
+                            this.world.setBlock(pos[0], pos[1], pos[2], blockId, this.leafMeta);
                         }
                     }
                 }
@@ -819,7 +839,7 @@ public final class OldTreeGens {
 
         private void generateLeafNode(int x, int y, int z) {
             for (int by = y; by < y + this.leafDistanceLimit; by++) {
-                this.genTreeLayer(x, by, z, this.leafSize(by - y), (byte) 1, LEAVES);
+                this.genTreeLayer(x, by, z, this.leafSize(by - y), (byte) 1, this.leafId);
             }
         }
 
@@ -869,7 +889,7 @@ public final class OldTreeGens {
         private void generateTrunk() {
             int[] bottom = {this.basePos[0], this.basePos[1], this.basePos[2]};
             int[] top = {this.basePos[0], this.basePos[1] + this.height, this.basePos[2]};
-            this.placeBlockLine(bottom, top, LOG);
+            this.placeBlockLine(bottom, top, this.logId);
         }
 
         private void generateLeafNodeBases() {
@@ -878,7 +898,7 @@ public final class OldTreeGens {
                 int[] end = {node[0], node[1], node[2]};
                 base[1] = node[3];
                 if (base[1] - this.basePos[1] >= this.heightLimit * 0.2) {
-                    this.placeBlockLine(base, end, LOG);
+                    this.placeBlockLine(base, end, this.logId);
                 }
             }
         }

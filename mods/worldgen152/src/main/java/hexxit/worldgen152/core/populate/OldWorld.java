@@ -290,6 +290,11 @@ public final class OldWorld {
             this.setBlockMetadata(x, y, z, meta & 4 | (this.hasSolidTop(x, y - 1, z) ? 0 : 2));
         } else if (OldRails.isRail(id)) {
             OldRails.added(this, x, y, z);
+        } else if (id > 0) {
+            OldBlockInfo.Added added = OldBlockInfo.added(id);
+            if (added != null) {
+                added.added(this, x, y, z);
+            }
         }
         return true;
     }

@@ -2,13 +2,18 @@ package twilightforest.gen;
 
 import hexxit.worldgen152.core.OldBiome;
 import hexxit.worldgen152.core.OldBiomes;
+import hexxit.worldgen152.core.populate.OldGen;
+import hexxit.worldgen152.core.populate.OldPlantGens;
+import hexxit.worldgen152.core.populate.OldTreeGens;
 
 /**
  * The biomes of the Twilight Forest (TFBiomeBase) with the ids of the pack's TwilightForest.cfg and the values of
  * their constructors: height range and climate. They are only produced by the Twilight Forest's own layout, never
  * by the overworld one, so they have no key in {@link OldBiome} (the game side names them in {@code TFBiomeSource}).
  *
- * <p>Decoration of the chunks follows in Teil 24b; until then they decorate nothing.
+ * <p>Decoration (Teil 24b): every biome has a {@link TFDecorator} with the per-chunk counts of its constructor, its
+ * trees and grass (getRandomWorldGenForTrees / getRandomWorldGenForGrass) and what its decorate() adds after the
+ * decorator (vines, penguins, fire jets).
  */
 public final class TFBiomes {
     public static final OldBiome LAKE = biome(72, "Twilight Lake").height(-1.9F, 0.5F).climate(0.66F, 1.0F);
@@ -39,10 +44,143 @@ public final class TFBiomes {
 
     private static OldBiome biome(int id, String name) {
         OldBiome biome = OldBiomes.register(new OldBiome(id, name, null));
-        // TFBiomeDecorator comes with Teil 24b
-        biome.decoration = (b, world, random, x, z) -> {
-        };
+        // TFBiomeBase: TFBiomeDecorator with 10 trees and 2 grass per chunk, no big oak of the biome
+        biome.decorator = new TFDecorator();
+        biome.decorator.treesPerChunk = 10;
+        biome.decorator.grassPerChunk = 2;
+        biome.trees = (world, random) -> random.nextInt(5) == 0 ? OldBiome.BIRCH
+                : random.nextInt(10) == 0 ? new OldTreeGens.BigTree() : OldBiome.OAK;
+        biome.grass = random -> random.nextInt(4) == 0 ? FERN : GRASS;
         return biome;
+    }
+
+    private static final OldGen GRASS = new OldPlantGens.TallGrass(1);
+    private static final OldGen FERN = new OldPlantGens.TallGrass(2);
+    private static final OldGen SHRUB = new OldTreeGens.Shrub(3, 0);
+    private static final OldGen PINE = new OldTreeGens.Pine();
+    private static final OldGen SPRUCE = new OldTreeGens.Spruce();
+    private static final OldGen VINES = new OldPlantGens.Vines();
+
+    private static TFDecorator tf(OldBiome biome) {
+        return (TFDecorator) biome.decorator;
+    }
+
+    /** WorldGenVines from the sea level, {@code count} times (the swamps and the enchanted forest). */
+    private static OldBiome.Decoration vines(int count) {
+        return (b, world, random, x, z) -> {
+            for (int i = 0; i < count; i++) {
+                int j = x + random.nextInt(16) + 8;
+                int k = z + random.nextInt(16) + 8;
+                VINES.generate(world, random, j, TFTerrain.SEALEVEL, k);
+            }
+        };
+    }
+
+    static {
+        // TFBiomeTwilightForestVariant
+        TWILIGHT_FOREST_2.decorator.treesPerChunk = 25;
+        TWILIGHT_FOREST_2.decorator.grassPerChunk = 15;
+        TWILIGHT_FOREST_2.decorator.flowersPerChunk = 8;
+        TWILIGHT_FOREST_2.trees = (world, random) -> random.nextInt(5) == 0 ? SHRUB
+                : random.nextInt(10) == 0 ? new OldTreeGens.BigTree() : OldBiome.OAK;
+        TWILIGHT_FOREST_2.grass = random -> random.nextInt(4) != 0 ? FERN
+                : random.nextBoolean() ? new TFPlants.TallPlant(4) : GRASS;
+        // TFBiomeHighlands
+        tf(HIGHLANDS).canopyPerChunk = -999;
+        HIGHLANDS.trees = (world, random) -> random.nextInt(4) == 0 ? new OldTreeGens.BigTree()
+                : random.nextInt(10) == 0 ? SPRUCE : OldBiome.BIRCH;
+        // TFBiomeMushrooms
+        MUSHROOMS.decorator.treesPerChunk = 8;
+        MUSHROOMS.decorator.mushroomsPerChunk = 8;
+        MUSHROOMS.decorator.bigMushroomsPerChunk = 2;
+        tf(MUSHROOMS).chanceCanopyIsMushroom = 0.2F;
+        // TFBiomeSwamp
+        SWAMP.decorator.deadBushPerChunk = 1;
+        SWAMP.decorator.mushroomsPerChunk = 8;
+        SWAMP.decorator.reedsPerChunk = 10;
+        SWAMP.decorator.clayPerChunk = 1;
+        SWAMP.decorator.treesPerChunk = 2;
+        SWAMP.decorator.waterlilyPerChunk = 6;
+        tf(SWAMP).canopyPerChunk = -999;
+        tf(SWAMP).lakesPerChunk = 2;
+        tf(SWAMP).mangrovesPerChunk = 3;
+        SWAMP.trees = (world, random) -> random.nextInt(3) == 0 ? SHRUB : OldBiome.SWAMP_OAK;
+        SWAMP.grass = random -> random.nextInt(4) == 0 ? FERN : random.nextInt(4) == 0 ? new TFPlants.TallPlant(4) : GRASS;
+        SWAMP.afterDecoration(vines(50));
+        // TFBiomeStream
+        STREAM.decorator.waterlilyPerChunk = 2;
+        // TFBiomeSnow
+        SNOW.decorator.treesPerChunk = 7;
+        SNOW.decorator.grassPerChunk = 1;
+        tf(SNOW).canopyPerChunk = -999;
+        SNOW.trees = (world, random) -> random.nextInt(3) == 0 ? PINE : SPRUCE;
+        // TFBiomeGlacier
+        GLACIER.decorator.treesPerChunk = 1;
+        GLACIER.decorator.grassPerChunk = 0;
+        tf(GLACIER).canopyPerChunk = -999;
+        GLACIER.trees = (world, random) -> random.nextInt(3) == 0 ? PINE : SPRUCE;
+        GLACIER.afterDecoration((b, world, random, x, z) -> {
+            if (random.nextInt(4) == 0) {
+                int j = x + random.nextInt(16) + 8;
+                int k = z + random.nextInt(16) + 8;
+                new TFPlants.Penguins().generate(world, random, j, TFTerrain.SEALEVEL, k);
+            }
+        });
+        // TFBiomeClearing
+        tf(CLEARING).canopyPerChunk = -999;
+        CLEARING.decorator.treesPerChunk = -999;
+        CLEARING.decorator.flowersPerChunk = 4;
+        CLEARING.decorator.grassPerChunk = 10;
+        CLEARING.grass = random -> GRASS;
+        // TFBiomeDeepMushrooms
+        DEEP_MUSHROOMS.decorator.treesPerChunk = 1;
+        DEEP_MUSHROOMS.decorator.mushroomsPerChunk = 12;
+        DEEP_MUSHROOMS.decorator.bigMushroomsPerChunk = 8;
+        tf(DEEP_MUSHROOMS).myceliumPerChunk = 3;
+        tf(DEEP_MUSHROOMS).chanceCanopyIsMushroom = 0.9F;
+        // TFBiomeDarkForest with TFDarkForestBiomeDecorator
+        DARK_FOREST.decorator = new TFDecorator.DarkForest();
+        tf(DARK_FOREST).canopyPerChunk = 5;
+        DARK_FOREST.decorator.treesPerChunk = 10;
+        DARK_FOREST.decorator.grassPerChunk = -99;
+        DARK_FOREST.decorator.flowersPerChunk = -99;
+        DARK_FOREST.decorator.mushroomsPerChunk = 1;
+        DARK_FOREST.decorator.deadBushPerChunk = 10;
+        DARK_FOREST.trees = (world, random) -> random.nextInt(5) == 0 ? SHRUB : random.nextInt(8) == 0 ? OldBiome.BIRCH : OldBiome.OAK;
+        // TFBiomeEnchantedForest
+        ENCHANTED_FOREST.decorator.grassPerChunk = 15;
+        ENCHANTED_FOREST.decorator.flowersPerChunk = 8;
+        ENCHANTED_FOREST.trees = (world, random) -> random.nextInt(15) == 0 ? new TFTrees.SmallOak(3)
+                : random.nextInt(50) == 0 ? TFTrees.largeRainboak()
+                : random.nextInt(5) == 0 ? OldBiome.BIRCH
+                : random.nextInt(10) == 0 ? new OldTreeGens.BigTree() : OldBiome.OAK;
+        ENCHANTED_FOREST.grass = random -> random.nextInt(3) > 0 ? FERN : random.nextInt(3) == 0 ? new TFPlants.TallPlant(8) : GRASS;
+        ENCHANTED_FOREST.afterDecoration(vines(20));
+        // TFBiomeFireSwamp
+        FIRE_SWAMP.decorator.deadBushPerChunk = 2;
+        FIRE_SWAMP.decorator.mushroomsPerChunk = 8;
+        FIRE_SWAMP.decorator.reedsPerChunk = 4;
+        FIRE_SWAMP.decorator.clayPerChunk = 1;
+        FIRE_SWAMP.decorator.treesPerChunk = 3;
+        FIRE_SWAMP.decorator.waterlilyPerChunk = 6;
+        tf(FIRE_SWAMP).canopyPerChunk = -999;
+        tf(FIRE_SWAMP).lavaPoolChance = 0.125F;
+        tf(FIRE_SWAMP).mangrovesPerChunk = 3;
+        FIRE_SWAMP.trees = (world, random) -> random.nextInt(3) == 0 ? SHRUB : OldBiome.SWAMP_OAK;
+        OldBiome.Decoration fireVines = vines(50);
+        FIRE_SWAMP.afterDecoration((b, world, random, x, z) -> {
+            if (TFDecorator.nearFeature(world).chunkDecorationsEnabled) {
+                fireVines.decorate(b, world, random, x, z);
+                if (random.nextInt(4) == 0) {
+                    int j = x + random.nextInt(16) + 8;
+                    int k = z + random.nextInt(16) + 8;
+                    new TFPlants.FireJet(TFGen.FIRE_JET, 0).generate(world, random, j, TFTerrain.SEALEVEL, k);
+                }
+                int j = x + random.nextInt(16) + 8;
+                int k = z + random.nextInt(16) + 8;
+                new TFPlants.FireJet(TFGen.FIRE_JET, 8).generate(world, random, j, TFTerrain.SEALEVEL, k);
+            }
+        });
     }
 
     private static final String[] PATHS = new String[256];

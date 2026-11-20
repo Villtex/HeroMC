@@ -200,6 +200,28 @@ public final class OldBlockInfo {
         LEAVES[id] = true;
     }
 
+    /** Leaves with their own Block.lightOpacity (Twilight Forest leaves: setLightOpacity(2)). */
+    public static void registerLeaves(int id, boolean opaqueCube, boolean normalRender, int lightOpacity) {
+        register(id, Material.LEAVES, opaqueCube, lightOpacity, normalRender);
+        LEAVES[id] = true;
+    }
+
+    /** What a mod block does in Block.onBlockAdded, which World.setBlock ran for every block it set. */
+    public interface Added {
+        void added(OldWorld world, int x, int y, int z);
+    }
+
+    private static final Added[] ADDED = new Added[MAX_ID];
+
+    /** Registers the onBlockAdded of a mod block (critters that pick a side or drop, for example). */
+    public static synchronized void registerAdded(int id, Added added) {
+        ADDED[id] = added;
+    }
+
+    static Added added(int id) {
+        return ADDED[id];
+    }
+
     /** Block.isWood: a log, which trees may grow through and leaves hang on. */
     public static void registerLog(int id) {
         registerCube(id, Material.WOOD);

@@ -15,8 +15,7 @@ import java.util.Random;
  * The chunk provider fired no terrain events, so listeners of {@link OldTerrainGen} do not apply here.
  *
  * <p>Still missing: the buildings of the major features (they draw from the chunk's random numbers first, Teil
- * 24d/24e) and the biome decoration (Teil 24b). Until then lakes and dungeons in feature chunks lie elsewhere than
- * in the original, and nothing is decorated.
+ * 24d/24e). Until then lakes, dungeons and decoration in feature chunks lie elsewhere than in the original.
  */
 public final class TFPopulator implements OldDecoration.ChunkPopulator {
     public static final int DIMENSION = 7;
@@ -43,7 +42,9 @@ public final class TFPopulator implements OldDecoration.ChunkPopulator {
         rand.setSeed(chunkX * l1 + chunkZ * l2 ^ seed);
         boolean disableFeatures = false;
         // majorFeatureGenerator.generateStructuresInChunk (Teil 24d/24e)
-        disableFeatures |= !TFFeature.getNearestFeature(chunkX, chunkZ, this.layout).chunkDecorationsEnabled;
+        TFFeature nearFeature = TFFeature.getNearestFeature(chunkX, chunkZ, this.layout);
+        world.chunkState(TFDecorator.NEAR_FEATURE, () -> nearFeature);
+        disableFeatures |= !nearFeature.chunkDecorationsEnabled;
         if (!disableFeatures && rand.nextInt(4) == 0) {
             int i1 = mapX + rand.nextInt(16) + 8;
             int i2 = rand.nextInt(TFTerrain.WORLDHEIGHT);

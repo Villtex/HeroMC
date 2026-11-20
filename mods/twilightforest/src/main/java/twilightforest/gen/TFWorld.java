@@ -50,6 +50,29 @@ public final class TFWorld {
         OldBlockInfo.registerCube(TFTerrain.HEDGE, OldBlockInfo.Material.CACTUS);
         // BlockTFPortal: BlockBreakable of Material.portal, not opaque
         OldBlockInfo.register(PORTAL, OldBlockInfo.Material.PORTAL, false, 0, false);
+        // Teil 24b: the blocks of the decoration and of the saplings
+        for (int critter : new int[] {TFGen.CICADA, TFGen.FIREFLY, TFGen.MOONWORM}) {
+            // BlockTFCritter: Material.circuits, not opaque, not a normal block; onBlockAdded picks a side or drops
+            OldBlockInfo.register(critter, OldBlockInfo.Material.CIRCUITS, false, 0, false);
+            OldBlockInfo.registerAdded(critter, TFGen::critterAdded);
+        }
+        OldBlockInfo.registerCube(TFGen.FIRE_JET, OldBlockInfo.Material.ROCK);
+        // BlockTFFireflyJar: glass, neither opaque nor a normal block
+        OldBlockInfo.register(TFGen.FIREFLY_JAR, OldBlockInfo.Material.GLASS, false, 0, false);
+        // BlockTFLeaves asks Block.leaves.isOpaqueCube() (true while the blocks are made), light opacity 2
+        OldBlockInfo.registerLeaves(TFGen.LEAVES, true, true, 2);
+        OldBlockInfo.registerLog(TFGen.LOG);
+        // BlockTFMagicLeaves: isOpaqueCube false, light opacity 2
+        OldBlockInfo.registerLeaves(TFGen.MAGIC_LEAVES, false, true, 2);
+        OldBlockInfo.registerLog(TFGen.MAGIC_LOG);
+        OldBlockInfo.registerLog(TFGen.MAGIC_LOG_SPECIAL);
+        OldBlockInfo.registerCube(TFGen.MAZESTONE, OldBlockInfo.Material.ROCK);
+        OldBlockInfo.registerCube(TFGen.NAGASTONE, OldBlockInfo.Material.ROCK);
+        // BlockTFPlant (a BlockFlower): plants, no light opacity
+        OldBlockInfo.register(TFGen.PLANT, OldBlockInfo.Material.PLANTS, false, 0, false);
+        OldBlockInfo.registerCube(TFGen.ROOT, OldBlockInfo.Material.WOOD);
+        OldBlockInfo.register(TFGen.SAPLING, OldBlockInfo.Material.PLANTS, false, 0, false);
+        OldBlockInfo.registerCube(TFGen.TOWER_WOOD, OldBlockInfo.Material.WOOD);
     }
 
     public long seed() {
