@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "tconstruct:item/arrow/wood_arrow_shaft",
-    "layer1": "tconstruct:item/arrow/flint_arrow_head",
-    "layer2": "tconstruct:item/arrow/feather_arrow_fletching"
-  }
-}

@@ -24,6 +24,8 @@ public final class TConstruct {
         TSounds.register(modBus);
         tconstruct.menu.TMenus.register(modBus);
         TNetwork.register(modBus);
+        tconstruct.entity.TEntities.register(modBus);
+        tconstruct.recipe.TRecipes.register(modBus);
         TEvents.register();
         registerOldIds();
         if (FMLEnvironment.getDist() == Dist.CLIENT) {

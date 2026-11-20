@@ -1,6 +1,1451 @@
 {
   "model": {
-    "type": "minecraft:model",
-    "model": "tconstruct:item/scythe"
+    "type": "minecraft:composite",
+    "models": [
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "handle",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/wood_scythe_handle"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/stone_scythe_handle"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/iron_scythe_handle"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/flint_scythe_handle"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/cactus_scythe_handle"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/bone_scythe_handle"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/obsidian_scythe_handle"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/netherrack_scythe_handle"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/slime_scythe_handle"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/paper_scythe_handle"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/cobalt_scythe_handle"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/ardite_scythe_handle"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/manyullyn_scythe_handle"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/copper_scythe_handle"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/bronze_scythe_handle"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/alumite_scythe_handle"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/steel_scythe_handle"
+            }
+          },
+          {
+            "when": "17",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/blueslime_scythe_handle"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "head",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/wood_scythe_head"
+            }
+          },
+          {
+            "when": "0_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/wood_scythe_head_broken"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/stone_scythe_head"
+            }
+          },
+          {
+            "when": "1_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/stone_scythe_head_broken"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/iron_scythe_head"
+            }
+          },
+          {
+            "when": "2_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/iron_scythe_head_broken"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/flint_scythe_head"
+            }
+          },
+          {
+            "when": "3_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/flint_scythe_head_broken"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/cactus_scythe_head"
+            }
+          },
+          {
+            "when": "4_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/cactus_scythe_head_broken"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/bone_scythe_head"
+            }
+          },
+          {
+            "when": "5_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/bone_scythe_head_broken"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/obsidian_scythe_head"
+            }
+          },
+          {
+            "when": "6_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/obsidian_scythe_head_broken"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/netherrack_scythe_head"
+            }
+          },
+          {
+            "when": "7_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/netherrack_scythe_head_broken"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/slime_scythe_head"
+            }
+          },
+          {
+            "when": "8_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/slime_scythe_head_broken"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/paper_scythe_head"
+            }
+          },
+          {
+            "when": "9_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/paper_scythe_head_broken"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/cobalt_scythe_head"
+            }
+          },
+          {
+            "when": "10_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/cobalt_scythe_head_broken"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/ardite_scythe_head"
+            }
+          },
+          {
+            "when": "11_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/ardite_scythe_head_broken"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/manyullyn_scythe_head"
+            }
+          },
+          {
+            "when": "12_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/manyullyn_scythe_head_broken"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/copper_scythe_head"
+            }
+          },
+          {
+            "when": "13_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/copper_scythe_head_broken"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/bronze_scythe_head"
+            }
+          },
+          {
+            "when": "14_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/bronze_scythe_head_broken"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/alumite_scythe_head"
+            }
+          },
+          {
+            "when": "15_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/alumite_scythe_head_broken"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/steel_scythe_head"
+            }
+          },
+          {
+            "when": "16_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/steel_scythe_head_broken"
+            }
+          },
+          {
+            "when": "17",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/blueslime_scythe_head"
+            }
+          },
+          {
+            "when": "17_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/blueslime_scythe_head_broken"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "accessory",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/wood_scythe_binding"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/stone_scythe_binding"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/iron_scythe_binding"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/flint_scythe_binding"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/cactus_scythe_binding"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/bone_scythe_binding"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/obsidian_scythe_binding"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/netherrack_scythe_binding"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/slime_scythe_binding"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/paper_scythe_binding"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/cobalt_scythe_binding"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/ardite_scythe_binding"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/manyullyn_scythe_binding"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/copper_scythe_binding"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/bronze_scythe_binding"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/alumite_scythe_binding"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/steel_scythe_binding"
+            }
+          },
+          {
+            "when": "17",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/blueslime_scythe_binding"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "extra",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/wood_scythe_accessory"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/stone_scythe_accessory"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/iron_scythe_accessory"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/flint_scythe_accessory"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/cactus_scythe_accessory"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/bone_scythe_accessory"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/obsidian_scythe_accessory"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/netherrack_scythe_accessory"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/slime_scythe_accessory"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/paper_scythe_accessory"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/cobalt_scythe_accessory"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/ardite_scythe_accessory"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/manyullyn_scythe_accessory"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/copper_scythe_accessory"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/bronze_scythe_accessory"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/alumite_scythe_accessory"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/steel_scythe_accessory"
+            }
+          },
+          {
+            "when": "17",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/blueslime_scythe_accessory"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "effect1",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/diamond_scythe_effect"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/emerald_scythe_effect"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/redstone_scythe_effect"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/piston_scythe_effect"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/moss_scythe_effect"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/ice_scythe_effect"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/lava_scythe_effect"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/blaze_scythe_effect"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/necrotic_scythe_effect"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/electric_scythe_effect"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/lapis_scythe_effect"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/quartz_scythe_effect"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/silk_scythe_effect"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/beheading_scythe_effect"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/smite_scythe_effect"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/spider_scythe_effect"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/reinforced_scythe_effect"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "effect2",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/diamond_scythe_effect"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/emerald_scythe_effect"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/redstone_scythe_effect"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/piston_scythe_effect"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/moss_scythe_effect"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/ice_scythe_effect"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/lava_scythe_effect"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/blaze_scythe_effect"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/necrotic_scythe_effect"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/electric_scythe_effect"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/lapis_scythe_effect"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/quartz_scythe_effect"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/silk_scythe_effect"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/beheading_scythe_effect"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/smite_scythe_effect"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/spider_scythe_effect"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/reinforced_scythe_effect"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "effect3",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/diamond_scythe_effect"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/emerald_scythe_effect"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/redstone_scythe_effect"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/piston_scythe_effect"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/moss_scythe_effect"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/ice_scythe_effect"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/lava_scythe_effect"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/blaze_scythe_effect"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/necrotic_scythe_effect"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/electric_scythe_effect"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/lapis_scythe_effect"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/quartz_scythe_effect"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/silk_scythe_effect"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/beheading_scythe_effect"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/smite_scythe_effect"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/spider_scythe_effect"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/reinforced_scythe_effect"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "effect4",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/diamond_scythe_effect"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/emerald_scythe_effect"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/redstone_scythe_effect"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/piston_scythe_effect"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/moss_scythe_effect"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/ice_scythe_effect"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/lava_scythe_effect"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/blaze_scythe_effect"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/necrotic_scythe_effect"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/electric_scythe_effect"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/lapis_scythe_effect"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/quartz_scythe_effect"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/silk_scythe_effect"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/beheading_scythe_effect"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/smite_scythe_effect"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/spider_scythe_effect"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/reinforced_scythe_effect"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "effect5",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/diamond_scythe_effect"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/emerald_scythe_effect"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/redstone_scythe_effect"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/piston_scythe_effect"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/moss_scythe_effect"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/ice_scythe_effect"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/lava_scythe_effect"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/blaze_scythe_effect"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/necrotic_scythe_effect"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/electric_scythe_effect"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/lapis_scythe_effect"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/quartz_scythe_effect"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/silk_scythe_effect"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/beheading_scythe_effect"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/smite_scythe_effect"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/spider_scythe_effect"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/reinforced_scythe_effect"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "effect6",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/diamond_scythe_effect"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/emerald_scythe_effect"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/redstone_scythe_effect"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/piston_scythe_effect"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/moss_scythe_effect"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/ice_scythe_effect"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/lava_scythe_effect"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/blaze_scythe_effect"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/necrotic_scythe_effect"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/electric_scythe_effect"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/lapis_scythe_effect"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/quartz_scythe_effect"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/silk_scythe_effect"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/beheading_scythe_effect"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/smite_scythe_effect"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/spider_scythe_effect"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/scythe/reinforced_scythe_effect"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      }
+    ]
   }
 }

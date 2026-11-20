@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:item/handheld",
-  "textures": {
-    "layer0": "tconstruct:item/broadsword/wood_sword_handle",
-    "layer1": "tconstruct:item/broadsword/iron_sword_blade",
-    "layer2": "tconstruct:item/broadsword/iron_sword_accessory"
-  }
-}

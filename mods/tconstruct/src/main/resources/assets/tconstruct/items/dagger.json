@@ -1,6 +1,1315 @@
 {
   "model": {
-    "type": "minecraft:model",
-    "model": "tconstruct:item/dagger"
+    "type": "minecraft:composite",
+    "models": [
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "handle",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/wood_dagger_handle"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/stone_dagger_handle"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/iron_dagger_handle"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/flint_dagger_handle"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/cactus_dagger_handle"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/bone_dagger_handle"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/obsidian_dagger_handle"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/netherrack_dagger_handle"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/slime_dagger_handle"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/paper_dagger_handle"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/cobalt_dagger_handle"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/ardite_dagger_handle"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/manyullyn_dagger_handle"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/copper_dagger_handle"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/bronze_dagger_handle"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/alumite_dagger_handle"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/steel_dagger_handle"
+            }
+          },
+          {
+            "when": "17",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/blueslime_dagger_handle"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "head",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/wood_dagger_blade"
+            }
+          },
+          {
+            "when": "0_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/wood_dagger_blade_broken"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/stone_dagger_blade"
+            }
+          },
+          {
+            "when": "1_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/stone_dagger_blade_broken"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/iron_dagger_blade"
+            }
+          },
+          {
+            "when": "2_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/iron_dagger_blade_broken"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/flint_dagger_blade"
+            }
+          },
+          {
+            "when": "3_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/flint_dagger_blade_broken"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/cactus_dagger_blade"
+            }
+          },
+          {
+            "when": "4_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/cactus_dagger_blade_broken"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/bone_dagger_blade"
+            }
+          },
+          {
+            "when": "5_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/bone_dagger_blade_broken"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/obsidian_dagger_blade"
+            }
+          },
+          {
+            "when": "6_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/obsidian_dagger_blade_broken"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/netherrack_dagger_blade"
+            }
+          },
+          {
+            "when": "7_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/netherrack_dagger_blade_broken"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/slime_dagger_blade"
+            }
+          },
+          {
+            "when": "8_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/slime_dagger_blade_broken"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/paper_dagger_blade"
+            }
+          },
+          {
+            "when": "9_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/paper_dagger_blade_broken"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/cobalt_dagger_blade"
+            }
+          },
+          {
+            "when": "10_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/cobalt_dagger_blade_broken"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/ardite_dagger_blade"
+            }
+          },
+          {
+            "when": "11_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/ardite_dagger_blade_broken"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/manyullyn_dagger_blade"
+            }
+          },
+          {
+            "when": "12_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/manyullyn_dagger_blade_broken"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/copper_dagger_blade"
+            }
+          },
+          {
+            "when": "13_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/copper_dagger_blade_broken"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/bronze_dagger_blade"
+            }
+          },
+          {
+            "when": "14_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/bronze_dagger_blade_broken"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/alumite_dagger_blade"
+            }
+          },
+          {
+            "when": "15_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/alumite_dagger_blade_broken"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/steel_dagger_blade"
+            }
+          },
+          {
+            "when": "16_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/steel_dagger_blade_broken"
+            }
+          },
+          {
+            "when": "17",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/blueslime_dagger_blade"
+            }
+          },
+          {
+            "when": "17_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/blueslime_dagger_blade_broken"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "accessory",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/wood_dagger_accessory"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/stone_dagger_accessory"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/iron_dagger_accessory"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/flint_dagger_accessory"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/cactus_dagger_accessory"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/bone_dagger_accessory"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/obsidian_dagger_accessory"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/netherrack_dagger_accessory"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/slime_dagger_accessory"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/paper_dagger_accessory"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/cobalt_dagger_accessory"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/ardite_dagger_accessory"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/manyullyn_dagger_accessory"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/copper_dagger_accessory"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/bronze_dagger_accessory"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/alumite_dagger_accessory"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/steel_dagger_accessory"
+            }
+          },
+          {
+            "when": "17",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/blueslime_dagger_accessory"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "effect1",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/diamond_dagger_effect"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/emerald_dagger_effect"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/redstone_dagger_effect"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/piston_dagger_effect"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/moss_dagger_effect"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/ice_dagger_effect"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/lava_dagger_effect"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/blaze_dagger_effect"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/necrotic_dagger_effect"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/electric_dagger_effect"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/lapis_dagger_effect"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/quartz_dagger_effect"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/silk_dagger_effect"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/beheading_dagger_effect"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/smite_dagger_effect"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/spider_dagger_effect"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/reinforced_dagger_effect"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "effect2",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/diamond_dagger_effect"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/emerald_dagger_effect"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/redstone_dagger_effect"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/piston_dagger_effect"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/moss_dagger_effect"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/ice_dagger_effect"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/lava_dagger_effect"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/blaze_dagger_effect"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/necrotic_dagger_effect"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/electric_dagger_effect"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/lapis_dagger_effect"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/quartz_dagger_effect"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/silk_dagger_effect"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/beheading_dagger_effect"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/smite_dagger_effect"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/spider_dagger_effect"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/reinforced_dagger_effect"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "effect3",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/diamond_dagger_effect"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/emerald_dagger_effect"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/redstone_dagger_effect"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/piston_dagger_effect"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/moss_dagger_effect"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/ice_dagger_effect"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/lava_dagger_effect"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/blaze_dagger_effect"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/necrotic_dagger_effect"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/electric_dagger_effect"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/lapis_dagger_effect"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/quartz_dagger_effect"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/silk_dagger_effect"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/beheading_dagger_effect"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/smite_dagger_effect"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/spider_dagger_effect"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/reinforced_dagger_effect"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "effect4",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/diamond_dagger_effect"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/emerald_dagger_effect"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/redstone_dagger_effect"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/piston_dagger_effect"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/moss_dagger_effect"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/ice_dagger_effect"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/lava_dagger_effect"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/blaze_dagger_effect"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/necrotic_dagger_effect"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/electric_dagger_effect"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/lapis_dagger_effect"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/quartz_dagger_effect"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/silk_dagger_effect"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/beheading_dagger_effect"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/smite_dagger_effect"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/spider_dagger_effect"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/reinforced_dagger_effect"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "effect5",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/diamond_dagger_effect"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/emerald_dagger_effect"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/redstone_dagger_effect"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/piston_dagger_effect"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/moss_dagger_effect"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/ice_dagger_effect"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/lava_dagger_effect"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/blaze_dagger_effect"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/necrotic_dagger_effect"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/electric_dagger_effect"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/lapis_dagger_effect"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/quartz_dagger_effect"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/silk_dagger_effect"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/beheading_dagger_effect"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/smite_dagger_effect"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/spider_dagger_effect"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/reinforced_dagger_effect"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "effect6",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/diamond_dagger_effect"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/emerald_dagger_effect"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/redstone_dagger_effect"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/piston_dagger_effect"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/moss_dagger_effect"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/ice_dagger_effect"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/lava_dagger_effect"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/blaze_dagger_effect"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/necrotic_dagger_effect"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/electric_dagger_effect"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/lapis_dagger_effect"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/quartz_dagger_effect"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/silk_dagger_effect"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/beheading_dagger_effect"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/smite_dagger_effect"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/spider_dagger_effect"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/dagger/reinforced_dagger_effect"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      }
+    ]
   }
 }

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "tconstruct:item/pickaxe/flint_pickaxe_head_broken"
+  }
+}

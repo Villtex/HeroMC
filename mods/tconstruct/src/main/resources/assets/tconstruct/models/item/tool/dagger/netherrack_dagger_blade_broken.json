@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "tconstruct:item/dagger/netherrack_dagger_blade_broken"
+  }
+}

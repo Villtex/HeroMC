@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "tconstruct:item/hammer/manyullyn_hammer_handle_broken"
+  }
+}

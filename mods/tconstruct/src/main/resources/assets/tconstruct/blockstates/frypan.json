@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "tconstruct:block/frypan"
+    },
+    "lit=true": {
+      "model": "tconstruct:block/frypan"
+    }
+  }
+}

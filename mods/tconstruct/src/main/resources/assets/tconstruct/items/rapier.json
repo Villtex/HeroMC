@@ -1,6 +1,1315 @@
 {
   "model": {
-    "type": "minecraft:model",
-    "model": "tconstruct:item/rapier"
+    "type": "minecraft:composite",
+    "models": [
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "handle",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/wood_rapier_handle"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/stone_rapier_handle"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/iron_rapier_handle"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/flint_rapier_handle"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/cactus_rapier_handle"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/bone_rapier_handle"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/obsidian_rapier_handle"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/netherrack_rapier_handle"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/slime_rapier_handle"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/paper_rapier_handle"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/cobalt_rapier_handle"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/ardite_rapier_handle"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/manyullyn_rapier_handle"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/copper_rapier_handle"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/bronze_rapier_handle"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/alumite_rapier_handle"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/steel_rapier_handle"
+            }
+          },
+          {
+            "when": "17",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/blueslime_rapier_handle"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "head",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/wood_rapier_blade"
+            }
+          },
+          {
+            "when": "0_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/wood_rapier_blade_broken"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/stone_rapier_blade"
+            }
+          },
+          {
+            "when": "1_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/stone_rapier_blade_broken"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/iron_rapier_blade"
+            }
+          },
+          {
+            "when": "2_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/iron_rapier_blade_broken"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/flint_rapier_blade"
+            }
+          },
+          {
+            "when": "3_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/flint_rapier_blade_broken"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/cactus_rapier_blade"
+            }
+          },
+          {
+            "when": "4_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/cactus_rapier_blade_broken"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/bone_rapier_blade"
+            }
+          },
+          {
+            "when": "5_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/bone_rapier_blade_broken"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/obsidian_rapier_blade"
+            }
+          },
+          {
+            "when": "6_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/obsidian_rapier_blade_broken"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/netherrack_rapier_blade"
+            }
+          },
+          {
+            "when": "7_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/netherrack_rapier_blade_broken"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/slime_rapier_blade"
+            }
+          },
+          {
+            "when": "8_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/slime_rapier_blade_broken"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/paper_rapier_blade"
+            }
+          },
+          {
+            "when": "9_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/paper_rapier_blade_broken"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/cobalt_rapier_blade"
+            }
+          },
+          {
+            "when": "10_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/cobalt_rapier_blade_broken"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/ardite_rapier_blade"
+            }
+          },
+          {
+            "when": "11_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/ardite_rapier_blade_broken"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/manyullyn_rapier_blade"
+            }
+          },
+          {
+            "when": "12_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/manyullyn_rapier_blade_broken"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/copper_rapier_blade"
+            }
+          },
+          {
+            "when": "13_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/copper_rapier_blade_broken"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/bronze_rapier_blade"
+            }
+          },
+          {
+            "when": "14_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/bronze_rapier_blade_broken"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/alumite_rapier_blade"
+            }
+          },
+          {
+            "when": "15_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/alumite_rapier_blade_broken"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/steel_rapier_blade"
+            }
+          },
+          {
+            "when": "16_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/steel_rapier_blade_broken"
+            }
+          },
+          {
+            "when": "17",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/blueslime_rapier_blade"
+            }
+          },
+          {
+            "when": "17_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/blueslime_rapier_blade_broken"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "accessory",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/wood_rapier_accessory"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/stone_rapier_accessory"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/iron_rapier_accessory"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/flint_rapier_accessory"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/cactus_rapier_accessory"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/bone_rapier_accessory"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/obsidian_rapier_accessory"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/netherrack_rapier_accessory"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/slime_rapier_accessory"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/paper_rapier_accessory"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/cobalt_rapier_accessory"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/ardite_rapier_accessory"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/manyullyn_rapier_accessory"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/copper_rapier_accessory"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/bronze_rapier_accessory"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/alumite_rapier_accessory"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/steel_rapier_accessory"
+            }
+          },
+          {
+            "when": "17",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/blueslime_rapier_accessory"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "effect1",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/diamond_rapier_effect"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/emerald_rapier_effect"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/redstone_rapier_effect"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/piston_rapier_effect"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/moss_rapier_effect"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/ice_rapier_effect"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/lava_rapier_effect"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/blaze_rapier_effect"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/necrotic_rapier_effect"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/electric_rapier_effect"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/lapis_rapier_effect"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/quartz_rapier_effect"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/silk_rapier_effect"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/beheading_rapier_effect"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/smite_rapier_effect"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/spider_rapier_effect"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/reinforced_rapier_effect"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "effect2",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/diamond_rapier_effect"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/emerald_rapier_effect"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/redstone_rapier_effect"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/piston_rapier_effect"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/moss_rapier_effect"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/ice_rapier_effect"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/lava_rapier_effect"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/blaze_rapier_effect"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/necrotic_rapier_effect"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/electric_rapier_effect"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/lapis_rapier_effect"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/quartz_rapier_effect"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/silk_rapier_effect"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/beheading_rapier_effect"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/smite_rapier_effect"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/spider_rapier_effect"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/reinforced_rapier_effect"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "effect3",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/diamond_rapier_effect"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/emerald_rapier_effect"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/redstone_rapier_effect"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/piston_rapier_effect"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/moss_rapier_effect"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/ice_rapier_effect"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/lava_rapier_effect"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/blaze_rapier_effect"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/necrotic_rapier_effect"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/electric_rapier_effect"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/lapis_rapier_effect"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/quartz_rapier_effect"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/silk_rapier_effect"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/beheading_rapier_effect"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/smite_rapier_effect"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/spider_rapier_effect"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/reinforced_rapier_effect"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "effect4",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/diamond_rapier_effect"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/emerald_rapier_effect"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/redstone_rapier_effect"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/piston_rapier_effect"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/moss_rapier_effect"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/ice_rapier_effect"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/lava_rapier_effect"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/blaze_rapier_effect"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/necrotic_rapier_effect"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/electric_rapier_effect"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/lapis_rapier_effect"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/quartz_rapier_effect"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/silk_rapier_effect"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/beheading_rapier_effect"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/smite_rapier_effect"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/spider_rapier_effect"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/reinforced_rapier_effect"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "effect5",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/diamond_rapier_effect"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/emerald_rapier_effect"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/redstone_rapier_effect"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/piston_rapier_effect"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/moss_rapier_effect"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/ice_rapier_effect"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/lava_rapier_effect"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/blaze_rapier_effect"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/necrotic_rapier_effect"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/electric_rapier_effect"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/lapis_rapier_effect"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/quartz_rapier_effect"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/silk_rapier_effect"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/beheading_rapier_effect"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/smite_rapier_effect"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/spider_rapier_effect"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/reinforced_rapier_effect"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "effect6",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/diamond_rapier_effect"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/emerald_rapier_effect"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/redstone_rapier_effect"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/piston_rapier_effect"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/moss_rapier_effect"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/ice_rapier_effect"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/lava_rapier_effect"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/blaze_rapier_effect"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/necrotic_rapier_effect"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/electric_rapier_effect"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/lapis_rapier_effect"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/quartz_rapier_effect"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/silk_rapier_effect"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/beheading_rapier_effect"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/smite_rapier_effect"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/spider_rapier_effect"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/rapier/reinforced_rapier_effect"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      }
+    ]
   }
 }

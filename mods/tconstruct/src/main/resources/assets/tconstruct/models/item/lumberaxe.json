@@ -1,9 +1,0 @@
-{
-  "parent": "minecraft:item/handheld",
-  "textures": {
-    "layer0": "tconstruct:item/lumberaxe/wood_lumberaxe_handle",
-    "layer1": "tconstruct:item/lumberaxe/iron_lumberaxe_head",
-    "layer2": "tconstruct:item/lumberaxe/iron_lumberaxe_shield",
-    "layer3": "tconstruct:item/lumberaxe/iron_lumberaxe_binding"
-  }
-}

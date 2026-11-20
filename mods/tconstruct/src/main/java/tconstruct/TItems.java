@@ -170,9 +170,37 @@ public final class TItems {
                 if (type.blocks()) {
                     p.component(net.minecraft.core.component.DataComponents.BLOCKS_ATTACKS, blocking());
                 }
+                float speed = useSpeed(type);
+                if (speed != 0.2F) {
+                    p.component(net.minecraft.core.component.DataComponents.USE_EFFECTS,
+                            new net.minecraft.world.item.component.UseEffects(false, true, speed));
+                }
                 return p;
             }));
         }
+    }
+
+    /** PotionLauncher (6070, creative only, no recipe in 1.5.2). */
+    public static final DeferredItem<tconstruct.items.PotionLauncherItem> POTION_LAUNCHER = ITEMS.registerItem("potion_launcher",
+            tconstruct.items.PotionLauncherItem::new, p -> p.stacksTo(1));
+
+    static {
+        OLD_IDS.add(new OldId(6070, -1, POTION_LAUNCHER));
+    }
+
+    /**
+     * The walking speed while the tool is used: 1.5.2 slowed to 0.2 and the tools multiplied it back in onUpdate
+     * (blocking weapons x2.5, longsword and battleaxe x5, chisel and shortbow x2).
+     */
+    private static float useSpeed(ToolType type) {
+        if (type.blocks()) {
+            return 0.5F;
+        }
+        return switch (type) {
+            case LONGSWORD, BATTLEAXE -> 1.0F;
+            case CHISEL, SHORTBOW -> 0.4F;
+            default -> 0.2F;
+        };
     }
 
     /** Weapon EnumAction.block: halves the damage like a sword of 1.5.2 (combat152). */
@@ -209,6 +237,7 @@ public final class TItems {
                 for (ToolType type : ToolType.values()) {
                     ToolBuilder.creativeTools(type).forEach(output::accept);
                 }
+                output.accept(POTION_LAUNCHER.get());
             })
             .build());
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MATERIAL_TAB = TABS.register("materials", () -> CreativeModeTab.builder()

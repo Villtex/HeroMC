@@ -1,6 +1,1179 @@
 {
   "model": {
-    "type": "minecraft:model",
-    "model": "tconstruct:item/hatchet"
+    "type": "minecraft:composite",
+    "models": [
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "handle",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/wood_axe_handle"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/stone_axe_handle"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/iron_axe_handle"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/flint_axe_handle"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/cactus_axe_handle"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/bone_axe_handle"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/obsidian_axe_handle"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/netherrack_axe_handle"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/slime_axe_handle"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/paper_axe_handle"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/cobalt_axe_handle"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/ardite_axe_handle"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/manyullyn_axe_handle"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/copper_axe_handle"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/bronze_axe_handle"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/alumite_axe_handle"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/steel_axe_handle"
+            }
+          },
+          {
+            "when": "17",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/blueslime_axe_handle"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "head",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/wood_axe_head"
+            }
+          },
+          {
+            "when": "0_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/wood_axe_head_broken"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/stone_axe_head"
+            }
+          },
+          {
+            "when": "1_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/stone_axe_head_broken"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/iron_axe_head"
+            }
+          },
+          {
+            "when": "2_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/iron_axe_head_broken"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/flint_axe_head"
+            }
+          },
+          {
+            "when": "3_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/flint_axe_head_broken"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/cactus_axe_head"
+            }
+          },
+          {
+            "when": "4_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/cactus_axe_head_broken"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/bone_axe_head"
+            }
+          },
+          {
+            "when": "5_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/bone_axe_head_broken"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/obsidian_axe_head"
+            }
+          },
+          {
+            "when": "6_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/obsidian_axe_head_broken"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/netherrack_axe_head"
+            }
+          },
+          {
+            "when": "7_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/netherrack_axe_head_broken"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/slime_axe_head"
+            }
+          },
+          {
+            "when": "8_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/slime_axe_head_broken"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/paper_axe_head"
+            }
+          },
+          {
+            "when": "9_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/paper_axe_head_broken"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/cobalt_axe_head"
+            }
+          },
+          {
+            "when": "10_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/cobalt_axe_head_broken"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/ardite_axe_head"
+            }
+          },
+          {
+            "when": "11_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/ardite_axe_head_broken"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/manyullyn_axe_head"
+            }
+          },
+          {
+            "when": "12_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/manyullyn_axe_head_broken"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/copper_axe_head"
+            }
+          },
+          {
+            "when": "13_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/copper_axe_head_broken"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/bronze_axe_head"
+            }
+          },
+          {
+            "when": "14_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/bronze_axe_head_broken"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/alumite_axe_head"
+            }
+          },
+          {
+            "when": "15_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/alumite_axe_head_broken"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/steel_axe_head"
+            }
+          },
+          {
+            "when": "16_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/steel_axe_head_broken"
+            }
+          },
+          {
+            "when": "17",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/blueslime_axe_head"
+            }
+          },
+          {
+            "when": "17_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/blueslime_axe_head_broken"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "effect1",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/diamond_axe_effect"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/emerald_axe_effect"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/redstone_axe_effect"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/piston_axe_effect"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/moss_axe_effect"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/ice_axe_effect"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/lava_axe_effect"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/blaze_axe_effect"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/necrotic_axe_effect"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/electric_axe_effect"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/lapis_axe_effect"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/quartz_axe_effect"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/silk_axe_effect"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/beheading_axe_effect"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/smite_axe_effect"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/spider_axe_effect"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/reinforced_axe_effect"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "effect2",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/diamond_axe_effect"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/emerald_axe_effect"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/redstone_axe_effect"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/piston_axe_effect"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/moss_axe_effect"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/ice_axe_effect"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/lava_axe_effect"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/blaze_axe_effect"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/necrotic_axe_effect"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/electric_axe_effect"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/lapis_axe_effect"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/quartz_axe_effect"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/silk_axe_effect"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/beheading_axe_effect"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/smite_axe_effect"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/spider_axe_effect"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/reinforced_axe_effect"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "effect3",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/diamond_axe_effect"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/emerald_axe_effect"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/redstone_axe_effect"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/piston_axe_effect"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/moss_axe_effect"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/ice_axe_effect"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/lava_axe_effect"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/blaze_axe_effect"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/necrotic_axe_effect"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/electric_axe_effect"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/lapis_axe_effect"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/quartz_axe_effect"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/silk_axe_effect"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/beheading_axe_effect"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/smite_axe_effect"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/spider_axe_effect"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/reinforced_axe_effect"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "effect4",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/diamond_axe_effect"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/emerald_axe_effect"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/redstone_axe_effect"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/piston_axe_effect"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/moss_axe_effect"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/ice_axe_effect"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/lava_axe_effect"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/blaze_axe_effect"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/necrotic_axe_effect"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/electric_axe_effect"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/lapis_axe_effect"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/quartz_axe_effect"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/silk_axe_effect"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/beheading_axe_effect"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/smite_axe_effect"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/spider_axe_effect"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/reinforced_axe_effect"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "effect5",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/diamond_axe_effect"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/emerald_axe_effect"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/redstone_axe_effect"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/piston_axe_effect"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/moss_axe_effect"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/ice_axe_effect"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/lava_axe_effect"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/blaze_axe_effect"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/necrotic_axe_effect"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/electric_axe_effect"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/lapis_axe_effect"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/quartz_axe_effect"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/silk_axe_effect"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/beheading_axe_effect"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/smite_axe_effect"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/spider_axe_effect"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/reinforced_axe_effect"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "effect6",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/diamond_axe_effect"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/emerald_axe_effect"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/redstone_axe_effect"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/piston_axe_effect"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/moss_axe_effect"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/ice_axe_effect"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/lava_axe_effect"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/blaze_axe_effect"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/necrotic_axe_effect"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/electric_axe_effect"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/lapis_axe_effect"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/quartz_axe_effect"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/silk_axe_effect"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/beheading_axe_effect"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/smite_axe_effect"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/spider_axe_effect"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/axe/reinforced_axe_effect"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      }
+    ]
   }
 }

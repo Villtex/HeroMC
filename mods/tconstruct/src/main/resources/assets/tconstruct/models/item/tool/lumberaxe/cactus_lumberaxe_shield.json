@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "tconstruct:item/lumberaxe/cactus_lumberaxe_shield"
+  }
+}

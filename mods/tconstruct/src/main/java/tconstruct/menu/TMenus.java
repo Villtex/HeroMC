@@ -30,6 +30,9 @@ public final class TMenus {
     public static final DeferredHolder<MenuType<?>, MenuType<StencilTableMenu>> STENCIL_TABLE = MENUS.register("stencil_table",
             () -> IMenuTypeExtension.create((id, inv, buf) -> new StencilTableMenu(id, inv, new SimpleContainer(2))));
 
+    public static final DeferredHolder<MenuType<?>, MenuType<FrypanMenu>> FRYPAN = MENUS.register("frypan",
+            () -> IMenuTypeExtension.create((id, inv, buf) -> new FrypanMenu(id, inv)));
+
     private TMenus() {
     }
 

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/bow",
+  "textures": {
+    "layer0": "tconstruct:item/shortbow/lava_bow_effect_3"
+  }
+}

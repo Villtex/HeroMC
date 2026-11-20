@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/bow",
+  "textures": {
+    "layer0": "tconstruct:item/shortbow/obsidian_bow_bottom_1"
+  }
+}

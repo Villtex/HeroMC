@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "tconstruct:item/pickaxe/beheading_pickaxe_effect"
+  }
+}

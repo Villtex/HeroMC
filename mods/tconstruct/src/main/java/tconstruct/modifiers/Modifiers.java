@@ -27,6 +27,8 @@ import java.util.function.Supplier;
  * "Modifiers increase Mining Level" is on in the pack. The electric modifier needs IC2 (not in the pack) and is left out.
  */
 public final class Modifiers {
+    /** ModLapis max. */
+    public static final int LAPIS_MAX = 450;
     private static final List<ToolMod> MODS = new ArrayList<>();
 
     private Modifiers() {
@@ -106,7 +108,7 @@ public final class Modifiers {
     }
 
     /** addEnchantment of ModLapis / ModButtertouch: sets the level of the enchantment (adds it if missing). */
-    static void enchant(ItemStack stack, HolderLookup.@Nullable Provider registries, ResourceKey<Enchantment> key, int level) {
+    public static void enchant(ItemStack stack, HolderLookup.@Nullable Provider registries, ResourceKey<Enchantment> key, int level) {
         if (registries == null) {
             return;
         }

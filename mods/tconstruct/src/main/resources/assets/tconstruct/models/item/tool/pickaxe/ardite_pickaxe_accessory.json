@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "tconstruct:item/pickaxe/ardite_pickaxe_accessory"
+  }
+}

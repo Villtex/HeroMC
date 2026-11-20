@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "tconstruct:item/battleaxe/paper_battleaxe_fronthead_broken"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/bow",
+  "textures": {
+    "layer0": "tconstruct:item/shortbow/manyullyn_bow_top_2"
+  }
+}

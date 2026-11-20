@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:item/handheld",
-  "textures": {
-    "layer0": "tconstruct:item/pickaxe/wood_pickaxe_handle",
-    "layer1": "tconstruct:item/pickaxe/iron_pickaxe_head",
-    "layer2": "tconstruct:item/pickaxe/iron_pickaxe_accessory"
-  }
-}

@@ -1,6 +1,4062 @@
 {
   "model": {
-    "type": "minecraft:model",
-    "model": "tconstruct:item/shortbow"
+    "type": "minecraft:composite",
+    "models": [
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "handle",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/string_bowstring"
+            }
+          },
+          {
+            "when": "0_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/string_bowstring_1"
+            }
+          },
+          {
+            "when": "0_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/string_bowstring_2"
+            }
+          },
+          {
+            "when": "0_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/string_bowstring_3"
+            }
+          },
+          {
+            "when": "0_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/string_bowstring_broken"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/magicfabric_bowstring"
+            }
+          },
+          {
+            "when": "1_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/magicfabric_bowstring_1"
+            }
+          },
+          {
+            "when": "1_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/magicfabric_bowstring_2"
+            }
+          },
+          {
+            "when": "1_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/magicfabric_bowstring_3"
+            }
+          },
+          {
+            "when": "1_broken",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/magicfabric_bowstring_broken"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "head",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/wood_bow_top"
+            }
+          },
+          {
+            "when": "0_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/wood_bow_top_1"
+            }
+          },
+          {
+            "when": "0_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/wood_bow_top_2"
+            }
+          },
+          {
+            "when": "0_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/wood_bow_top_3"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/stone_bow_top"
+            }
+          },
+          {
+            "when": "1_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/stone_bow_top_1"
+            }
+          },
+          {
+            "when": "1_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/stone_bow_top_2"
+            }
+          },
+          {
+            "when": "1_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/stone_bow_top_3"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/iron_bow_top"
+            }
+          },
+          {
+            "when": "2_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/iron_bow_top_1"
+            }
+          },
+          {
+            "when": "2_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/iron_bow_top_2"
+            }
+          },
+          {
+            "when": "2_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/iron_bow_top_3"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/flint_bow_top"
+            }
+          },
+          {
+            "when": "3_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/flint_bow_top_1"
+            }
+          },
+          {
+            "when": "3_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/flint_bow_top_2"
+            }
+          },
+          {
+            "when": "3_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/flint_bow_top_3"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/cactus_bow_top"
+            }
+          },
+          {
+            "when": "4_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/cactus_bow_top_1"
+            }
+          },
+          {
+            "when": "4_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/cactus_bow_top_2"
+            }
+          },
+          {
+            "when": "4_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/cactus_bow_top_3"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/bone_bow_top"
+            }
+          },
+          {
+            "when": "5_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/bone_bow_top_1"
+            }
+          },
+          {
+            "when": "5_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/bone_bow_top_2"
+            }
+          },
+          {
+            "when": "5_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/bone_bow_top_3"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/obsidian_bow_top"
+            }
+          },
+          {
+            "when": "6_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/obsidian_bow_top_1"
+            }
+          },
+          {
+            "when": "6_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/obsidian_bow_top_2"
+            }
+          },
+          {
+            "when": "6_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/obsidian_bow_top_3"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/netherrack_bow_top"
+            }
+          },
+          {
+            "when": "7_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/netherrack_bow_top_1"
+            }
+          },
+          {
+            "when": "7_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/netherrack_bow_top_2"
+            }
+          },
+          {
+            "when": "7_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/netherrack_bow_top_3"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/slime_bow_top"
+            }
+          },
+          {
+            "when": "8_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/slime_bow_top_1"
+            }
+          },
+          {
+            "when": "8_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/slime_bow_top_2"
+            }
+          },
+          {
+            "when": "8_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/slime_bow_top_3"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/paper_bow_top"
+            }
+          },
+          {
+            "when": "9_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/paper_bow_top_1"
+            }
+          },
+          {
+            "when": "9_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/paper_bow_top_2"
+            }
+          },
+          {
+            "when": "9_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/paper_bow_top_3"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/cobalt_bow_top"
+            }
+          },
+          {
+            "when": "10_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/cobalt_bow_top_1"
+            }
+          },
+          {
+            "when": "10_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/cobalt_bow_top_2"
+            }
+          },
+          {
+            "when": "10_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/cobalt_bow_top_3"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/ardite_bow_top"
+            }
+          },
+          {
+            "when": "11_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/ardite_bow_top_1"
+            }
+          },
+          {
+            "when": "11_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/ardite_bow_top_2"
+            }
+          },
+          {
+            "when": "11_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/ardite_bow_top_3"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/manyullyn_bow_top"
+            }
+          },
+          {
+            "when": "12_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/manyullyn_bow_top_1"
+            }
+          },
+          {
+            "when": "12_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/manyullyn_bow_top_2"
+            }
+          },
+          {
+            "when": "12_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/manyullyn_bow_top_3"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/copper_bow_top"
+            }
+          },
+          {
+            "when": "13_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/copper_bow_top_1"
+            }
+          },
+          {
+            "when": "13_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/copper_bow_top_2"
+            }
+          },
+          {
+            "when": "13_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/copper_bow_top_3"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/bronze_bow_top"
+            }
+          },
+          {
+            "when": "14_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/bronze_bow_top_1"
+            }
+          },
+          {
+            "when": "14_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/bronze_bow_top_2"
+            }
+          },
+          {
+            "when": "14_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/bronze_bow_top_3"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/alumite_bow_top"
+            }
+          },
+          {
+            "when": "15_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/alumite_bow_top_1"
+            }
+          },
+          {
+            "when": "15_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/alumite_bow_top_2"
+            }
+          },
+          {
+            "when": "15_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/alumite_bow_top_3"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/steel_bow_top"
+            }
+          },
+          {
+            "when": "16_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/steel_bow_top_1"
+            }
+          },
+          {
+            "when": "16_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/steel_bow_top_2"
+            }
+          },
+          {
+            "when": "16_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/steel_bow_top_3"
+            }
+          },
+          {
+            "when": "17",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/blueslime_bow_top"
+            }
+          },
+          {
+            "when": "17_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/blueslime_bow_top_1"
+            }
+          },
+          {
+            "when": "17_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/blueslime_bow_top_2"
+            }
+          },
+          {
+            "when": "17_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/blueslime_bow_top_3"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "accessory",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/wood_bow_bottom"
+            }
+          },
+          {
+            "when": "0_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/wood_bow_bottom_1"
+            }
+          },
+          {
+            "when": "0_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/wood_bow_bottom_2"
+            }
+          },
+          {
+            "when": "0_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/wood_bow_bottom_3"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/stone_bow_bottom"
+            }
+          },
+          {
+            "when": "1_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/stone_bow_bottom_1"
+            }
+          },
+          {
+            "when": "1_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/stone_bow_bottom_2"
+            }
+          },
+          {
+            "when": "1_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/stone_bow_bottom_3"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/iron_bow_bottom"
+            }
+          },
+          {
+            "when": "2_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/iron_bow_bottom_1"
+            }
+          },
+          {
+            "when": "2_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/iron_bow_bottom_2"
+            }
+          },
+          {
+            "when": "2_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/iron_bow_bottom_3"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/flint_bow_bottom"
+            }
+          },
+          {
+            "when": "3_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/flint_bow_bottom_1"
+            }
+          },
+          {
+            "when": "3_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/flint_bow_bottom_2"
+            }
+          },
+          {
+            "when": "3_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/flint_bow_bottom_3"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/cactus_bow_bottom"
+            }
+          },
+          {
+            "when": "4_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/cactus_bow_bottom_1"
+            }
+          },
+          {
+            "when": "4_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/cactus_bow_bottom_2"
+            }
+          },
+          {
+            "when": "4_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/cactus_bow_bottom_3"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/bone_bow_bottom"
+            }
+          },
+          {
+            "when": "5_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/bone_bow_bottom_1"
+            }
+          },
+          {
+            "when": "5_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/bone_bow_bottom_2"
+            }
+          },
+          {
+            "when": "5_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/bone_bow_bottom_3"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/obsidian_bow_bottom"
+            }
+          },
+          {
+            "when": "6_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/obsidian_bow_bottom_1"
+            }
+          },
+          {
+            "when": "6_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/obsidian_bow_bottom_2"
+            }
+          },
+          {
+            "when": "6_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/obsidian_bow_bottom_3"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/netherrack_bow_bottom"
+            }
+          },
+          {
+            "when": "7_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/netherrack_bow_bottom_1"
+            }
+          },
+          {
+            "when": "7_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/netherrack_bow_bottom_2"
+            }
+          },
+          {
+            "when": "7_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/netherrack_bow_bottom_3"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/slime_bow_bottom"
+            }
+          },
+          {
+            "when": "8_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/slime_bow_bottom_1"
+            }
+          },
+          {
+            "when": "8_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/slime_bow_bottom_2"
+            }
+          },
+          {
+            "when": "8_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/slime_bow_bottom_3"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/paper_bow_bottom"
+            }
+          },
+          {
+            "when": "9_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/paper_bow_bottom_1"
+            }
+          },
+          {
+            "when": "9_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/paper_bow_bottom_2"
+            }
+          },
+          {
+            "when": "9_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/paper_bow_bottom_3"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/cobalt_bow_bottom"
+            }
+          },
+          {
+            "when": "10_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/cobalt_bow_bottom_1"
+            }
+          },
+          {
+            "when": "10_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/cobalt_bow_bottom_2"
+            }
+          },
+          {
+            "when": "10_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/cobalt_bow_bottom_3"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/ardite_bow_bottom"
+            }
+          },
+          {
+            "when": "11_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/ardite_bow_bottom_1"
+            }
+          },
+          {
+            "when": "11_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/ardite_bow_bottom_2"
+            }
+          },
+          {
+            "when": "11_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/ardite_bow_bottom_3"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/manyullyn_bow_bottom"
+            }
+          },
+          {
+            "when": "12_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/manyullyn_bow_bottom_1"
+            }
+          },
+          {
+            "when": "12_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/manyullyn_bow_bottom_2"
+            }
+          },
+          {
+            "when": "12_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/manyullyn_bow_bottom_3"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/copper_bow_bottom"
+            }
+          },
+          {
+            "when": "13_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/copper_bow_bottom_1"
+            }
+          },
+          {
+            "when": "13_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/copper_bow_bottom_2"
+            }
+          },
+          {
+            "when": "13_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/copper_bow_bottom_3"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/bronze_bow_bottom"
+            }
+          },
+          {
+            "when": "14_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/bronze_bow_bottom_1"
+            }
+          },
+          {
+            "when": "14_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/bronze_bow_bottom_2"
+            }
+          },
+          {
+            "when": "14_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/bronze_bow_bottom_3"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/alumite_bow_bottom"
+            }
+          },
+          {
+            "when": "15_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/alumite_bow_bottom_1"
+            }
+          },
+          {
+            "when": "15_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/alumite_bow_bottom_2"
+            }
+          },
+          {
+            "when": "15_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/alumite_bow_bottom_3"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/steel_bow_bottom"
+            }
+          },
+          {
+            "when": "16_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/steel_bow_bottom_1"
+            }
+          },
+          {
+            "when": "16_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/steel_bow_bottom_2"
+            }
+          },
+          {
+            "when": "16_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/steel_bow_bottom_3"
+            }
+          },
+          {
+            "when": "17",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/blueslime_bow_bottom"
+            }
+          },
+          {
+            "when": "17_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/blueslime_bow_bottom_1"
+            }
+          },
+          {
+            "when": "17_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/blueslime_bow_bottom_2"
+            }
+          },
+          {
+            "when": "17_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/blueslime_bow_bottom_3"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "effect1",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/diamond_bow_effect"
+            }
+          },
+          {
+            "when": "0_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/diamond_bow_effect_1"
+            }
+          },
+          {
+            "when": "0_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/diamond_bow_effect_2"
+            }
+          },
+          {
+            "when": "0_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/diamond_bow_effect_3"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/emerald_bow_effect"
+            }
+          },
+          {
+            "when": "1_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/emerald_bow_effect_1"
+            }
+          },
+          {
+            "when": "1_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/emerald_bow_effect_2"
+            }
+          },
+          {
+            "when": "1_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/emerald_bow_effect_3"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/redstone_bow_effect"
+            }
+          },
+          {
+            "when": "2_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/redstone_bow_effect_1"
+            }
+          },
+          {
+            "when": "2_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/redstone_bow_effect_2"
+            }
+          },
+          {
+            "when": "2_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/redstone_bow_effect_3"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/piston_bow_effect"
+            }
+          },
+          {
+            "when": "3_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/piston_bow_effect_1"
+            }
+          },
+          {
+            "when": "3_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/piston_bow_effect_2"
+            }
+          },
+          {
+            "when": "3_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/piston_bow_effect_3"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/moss_bow_effect"
+            }
+          },
+          {
+            "when": "4_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/moss_bow_effect_1"
+            }
+          },
+          {
+            "when": "4_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/moss_bow_effect_2"
+            }
+          },
+          {
+            "when": "4_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/moss_bow_effect_3"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/ice_bow_effect"
+            }
+          },
+          {
+            "when": "5_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/ice_bow_effect_1"
+            }
+          },
+          {
+            "when": "5_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/ice_bow_effect_2"
+            }
+          },
+          {
+            "when": "5_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/ice_bow_effect_3"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lava_bow_effect"
+            }
+          },
+          {
+            "when": "6_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lava_bow_effect_1"
+            }
+          },
+          {
+            "when": "6_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lava_bow_effect_2"
+            }
+          },
+          {
+            "when": "6_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lava_bow_effect_3"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/blaze_bow_effect"
+            }
+          },
+          {
+            "when": "7_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/blaze_bow_effect_1"
+            }
+          },
+          {
+            "when": "7_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/blaze_bow_effect_2"
+            }
+          },
+          {
+            "when": "7_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/blaze_bow_effect_3"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/necrotic_bow_effect"
+            }
+          },
+          {
+            "when": "8_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/necrotic_bow_effect_1"
+            }
+          },
+          {
+            "when": "8_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/necrotic_bow_effect_2"
+            }
+          },
+          {
+            "when": "8_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/necrotic_bow_effect_3"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/electric_bow_effect"
+            }
+          },
+          {
+            "when": "9_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/electric_bow_effect_1"
+            }
+          },
+          {
+            "when": "9_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/electric_bow_effect_2"
+            }
+          },
+          {
+            "when": "9_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/electric_bow_effect_3"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lapis_bow_effect"
+            }
+          },
+          {
+            "when": "10_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lapis_bow_effect_1"
+            }
+          },
+          {
+            "when": "10_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lapis_bow_effect_2"
+            }
+          },
+          {
+            "when": "10_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lapis_bow_effect_3"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/quartz_bow_effect"
+            }
+          },
+          {
+            "when": "11_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/quartz_bow_effect_1"
+            }
+          },
+          {
+            "when": "11_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/quartz_bow_effect_2"
+            }
+          },
+          {
+            "when": "11_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/quartz_bow_effect_3"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/silk_bow_effect"
+            }
+          },
+          {
+            "when": "12_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/silk_bow_effect_1"
+            }
+          },
+          {
+            "when": "12_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/silk_bow_effect_2"
+            }
+          },
+          {
+            "when": "12_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/silk_bow_effect_3"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/beheading_bow_effect"
+            }
+          },
+          {
+            "when": "13_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/beheading_bow_effect_1"
+            }
+          },
+          {
+            "when": "13_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/beheading_bow_effect_2"
+            }
+          },
+          {
+            "when": "13_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/beheading_bow_effect_3"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/smite_bow_effect"
+            }
+          },
+          {
+            "when": "14_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/smite_bow_effect_1"
+            }
+          },
+          {
+            "when": "14_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/smite_bow_effect_2"
+            }
+          },
+          {
+            "when": "14_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/smite_bow_effect_3"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/spider_bow_effect"
+            }
+          },
+          {
+            "when": "15_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/spider_bow_effect_1"
+            }
+          },
+          {
+            "when": "15_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/spider_bow_effect_2"
+            }
+          },
+          {
+            "when": "15_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/spider_bow_effect_3"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/reinforced_bow_effect"
+            }
+          },
+          {
+            "when": "16_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/reinforced_bow_effect_1"
+            }
+          },
+          {
+            "when": "16_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/reinforced_bow_effect_2"
+            }
+          },
+          {
+            "when": "16_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/reinforced_bow_effect_3"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "effect2",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/diamond_bow_effect"
+            }
+          },
+          {
+            "when": "0_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/diamond_bow_effect_1"
+            }
+          },
+          {
+            "when": "0_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/diamond_bow_effect_2"
+            }
+          },
+          {
+            "when": "0_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/diamond_bow_effect_3"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/emerald_bow_effect"
+            }
+          },
+          {
+            "when": "1_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/emerald_bow_effect_1"
+            }
+          },
+          {
+            "when": "1_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/emerald_bow_effect_2"
+            }
+          },
+          {
+            "when": "1_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/emerald_bow_effect_3"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/redstone_bow_effect"
+            }
+          },
+          {
+            "when": "2_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/redstone_bow_effect_1"
+            }
+          },
+          {
+            "when": "2_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/redstone_bow_effect_2"
+            }
+          },
+          {
+            "when": "2_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/redstone_bow_effect_3"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/piston_bow_effect"
+            }
+          },
+          {
+            "when": "3_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/piston_bow_effect_1"
+            }
+          },
+          {
+            "when": "3_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/piston_bow_effect_2"
+            }
+          },
+          {
+            "when": "3_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/piston_bow_effect_3"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/moss_bow_effect"
+            }
+          },
+          {
+            "when": "4_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/moss_bow_effect_1"
+            }
+          },
+          {
+            "when": "4_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/moss_bow_effect_2"
+            }
+          },
+          {
+            "when": "4_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/moss_bow_effect_3"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/ice_bow_effect"
+            }
+          },
+          {
+            "when": "5_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/ice_bow_effect_1"
+            }
+          },
+          {
+            "when": "5_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/ice_bow_effect_2"
+            }
+          },
+          {
+            "when": "5_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/ice_bow_effect_3"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lava_bow_effect"
+            }
+          },
+          {
+            "when": "6_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lava_bow_effect_1"
+            }
+          },
+          {
+            "when": "6_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lava_bow_effect_2"
+            }
+          },
+          {
+            "when": "6_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lava_bow_effect_3"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/blaze_bow_effect"
+            }
+          },
+          {
+            "when": "7_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/blaze_bow_effect_1"
+            }
+          },
+          {
+            "when": "7_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/blaze_bow_effect_2"
+            }
+          },
+          {
+            "when": "7_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/blaze_bow_effect_3"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/necrotic_bow_effect"
+            }
+          },
+          {
+            "when": "8_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/necrotic_bow_effect_1"
+            }
+          },
+          {
+            "when": "8_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/necrotic_bow_effect_2"
+            }
+          },
+          {
+            "when": "8_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/necrotic_bow_effect_3"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/electric_bow_effect"
+            }
+          },
+          {
+            "when": "9_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/electric_bow_effect_1"
+            }
+          },
+          {
+            "when": "9_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/electric_bow_effect_2"
+            }
+          },
+          {
+            "when": "9_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/electric_bow_effect_3"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lapis_bow_effect"
+            }
+          },
+          {
+            "when": "10_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lapis_bow_effect_1"
+            }
+          },
+          {
+            "when": "10_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lapis_bow_effect_2"
+            }
+          },
+          {
+            "when": "10_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lapis_bow_effect_3"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/quartz_bow_effect"
+            }
+          },
+          {
+            "when": "11_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/quartz_bow_effect_1"
+            }
+          },
+          {
+            "when": "11_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/quartz_bow_effect_2"
+            }
+          },
+          {
+            "when": "11_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/quartz_bow_effect_3"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/silk_bow_effect"
+            }
+          },
+          {
+            "when": "12_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/silk_bow_effect_1"
+            }
+          },
+          {
+            "when": "12_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/silk_bow_effect_2"
+            }
+          },
+          {
+            "when": "12_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/silk_bow_effect_3"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/beheading_bow_effect"
+            }
+          },
+          {
+            "when": "13_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/beheading_bow_effect_1"
+            }
+          },
+          {
+            "when": "13_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/beheading_bow_effect_2"
+            }
+          },
+          {
+            "when": "13_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/beheading_bow_effect_3"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/smite_bow_effect"
+            }
+          },
+          {
+            "when": "14_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/smite_bow_effect_1"
+            }
+          },
+          {
+            "when": "14_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/smite_bow_effect_2"
+            }
+          },
+          {
+            "when": "14_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/smite_bow_effect_3"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/spider_bow_effect"
+            }
+          },
+          {
+            "when": "15_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/spider_bow_effect_1"
+            }
+          },
+          {
+            "when": "15_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/spider_bow_effect_2"
+            }
+          },
+          {
+            "when": "15_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/spider_bow_effect_3"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/reinforced_bow_effect"
+            }
+          },
+          {
+            "when": "16_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/reinforced_bow_effect_1"
+            }
+          },
+          {
+            "when": "16_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/reinforced_bow_effect_2"
+            }
+          },
+          {
+            "when": "16_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/reinforced_bow_effect_3"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "effect3",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/diamond_bow_effect"
+            }
+          },
+          {
+            "when": "0_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/diamond_bow_effect_1"
+            }
+          },
+          {
+            "when": "0_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/diamond_bow_effect_2"
+            }
+          },
+          {
+            "when": "0_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/diamond_bow_effect_3"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/emerald_bow_effect"
+            }
+          },
+          {
+            "when": "1_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/emerald_bow_effect_1"
+            }
+          },
+          {
+            "when": "1_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/emerald_bow_effect_2"
+            }
+          },
+          {
+            "when": "1_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/emerald_bow_effect_3"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/redstone_bow_effect"
+            }
+          },
+          {
+            "when": "2_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/redstone_bow_effect_1"
+            }
+          },
+          {
+            "when": "2_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/redstone_bow_effect_2"
+            }
+          },
+          {
+            "when": "2_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/redstone_bow_effect_3"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/piston_bow_effect"
+            }
+          },
+          {
+            "when": "3_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/piston_bow_effect_1"
+            }
+          },
+          {
+            "when": "3_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/piston_bow_effect_2"
+            }
+          },
+          {
+            "when": "3_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/piston_bow_effect_3"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/moss_bow_effect"
+            }
+          },
+          {
+            "when": "4_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/moss_bow_effect_1"
+            }
+          },
+          {
+            "when": "4_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/moss_bow_effect_2"
+            }
+          },
+          {
+            "when": "4_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/moss_bow_effect_3"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/ice_bow_effect"
+            }
+          },
+          {
+            "when": "5_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/ice_bow_effect_1"
+            }
+          },
+          {
+            "when": "5_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/ice_bow_effect_2"
+            }
+          },
+          {
+            "when": "5_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/ice_bow_effect_3"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lava_bow_effect"
+            }
+          },
+          {
+            "when": "6_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lava_bow_effect_1"
+            }
+          },
+          {
+            "when": "6_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lava_bow_effect_2"
+            }
+          },
+          {
+            "when": "6_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lava_bow_effect_3"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/blaze_bow_effect"
+            }
+          },
+          {
+            "when": "7_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/blaze_bow_effect_1"
+            }
+          },
+          {
+            "when": "7_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/blaze_bow_effect_2"
+            }
+          },
+          {
+            "when": "7_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/blaze_bow_effect_3"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/necrotic_bow_effect"
+            }
+          },
+          {
+            "when": "8_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/necrotic_bow_effect_1"
+            }
+          },
+          {
+            "when": "8_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/necrotic_bow_effect_2"
+            }
+          },
+          {
+            "when": "8_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/necrotic_bow_effect_3"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/electric_bow_effect"
+            }
+          },
+          {
+            "when": "9_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/electric_bow_effect_1"
+            }
+          },
+          {
+            "when": "9_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/electric_bow_effect_2"
+            }
+          },
+          {
+            "when": "9_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/electric_bow_effect_3"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lapis_bow_effect"
+            }
+          },
+          {
+            "when": "10_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lapis_bow_effect_1"
+            }
+          },
+          {
+            "when": "10_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lapis_bow_effect_2"
+            }
+          },
+          {
+            "when": "10_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lapis_bow_effect_3"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/quartz_bow_effect"
+            }
+          },
+          {
+            "when": "11_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/quartz_bow_effect_1"
+            }
+          },
+          {
+            "when": "11_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/quartz_bow_effect_2"
+            }
+          },
+          {
+            "when": "11_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/quartz_bow_effect_3"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/silk_bow_effect"
+            }
+          },
+          {
+            "when": "12_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/silk_bow_effect_1"
+            }
+          },
+          {
+            "when": "12_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/silk_bow_effect_2"
+            }
+          },
+          {
+            "when": "12_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/silk_bow_effect_3"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/beheading_bow_effect"
+            }
+          },
+          {
+            "when": "13_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/beheading_bow_effect_1"
+            }
+          },
+          {
+            "when": "13_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/beheading_bow_effect_2"
+            }
+          },
+          {
+            "when": "13_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/beheading_bow_effect_3"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/smite_bow_effect"
+            }
+          },
+          {
+            "when": "14_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/smite_bow_effect_1"
+            }
+          },
+          {
+            "when": "14_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/smite_bow_effect_2"
+            }
+          },
+          {
+            "when": "14_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/smite_bow_effect_3"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/spider_bow_effect"
+            }
+          },
+          {
+            "when": "15_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/spider_bow_effect_1"
+            }
+          },
+          {
+            "when": "15_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/spider_bow_effect_2"
+            }
+          },
+          {
+            "when": "15_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/spider_bow_effect_3"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/reinforced_bow_effect"
+            }
+          },
+          {
+            "when": "16_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/reinforced_bow_effect_1"
+            }
+          },
+          {
+            "when": "16_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/reinforced_bow_effect_2"
+            }
+          },
+          {
+            "when": "16_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/reinforced_bow_effect_3"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "effect4",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/diamond_bow_effect"
+            }
+          },
+          {
+            "when": "0_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/diamond_bow_effect_1"
+            }
+          },
+          {
+            "when": "0_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/diamond_bow_effect_2"
+            }
+          },
+          {
+            "when": "0_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/diamond_bow_effect_3"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/emerald_bow_effect"
+            }
+          },
+          {
+            "when": "1_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/emerald_bow_effect_1"
+            }
+          },
+          {
+            "when": "1_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/emerald_bow_effect_2"
+            }
+          },
+          {
+            "when": "1_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/emerald_bow_effect_3"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/redstone_bow_effect"
+            }
+          },
+          {
+            "when": "2_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/redstone_bow_effect_1"
+            }
+          },
+          {
+            "when": "2_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/redstone_bow_effect_2"
+            }
+          },
+          {
+            "when": "2_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/redstone_bow_effect_3"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/piston_bow_effect"
+            }
+          },
+          {
+            "when": "3_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/piston_bow_effect_1"
+            }
+          },
+          {
+            "when": "3_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/piston_bow_effect_2"
+            }
+          },
+          {
+            "when": "3_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/piston_bow_effect_3"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/moss_bow_effect"
+            }
+          },
+          {
+            "when": "4_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/moss_bow_effect_1"
+            }
+          },
+          {
+            "when": "4_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/moss_bow_effect_2"
+            }
+          },
+          {
+            "when": "4_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/moss_bow_effect_3"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/ice_bow_effect"
+            }
+          },
+          {
+            "when": "5_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/ice_bow_effect_1"
+            }
+          },
+          {
+            "when": "5_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/ice_bow_effect_2"
+            }
+          },
+          {
+            "when": "5_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/ice_bow_effect_3"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lava_bow_effect"
+            }
+          },
+          {
+            "when": "6_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lava_bow_effect_1"
+            }
+          },
+          {
+            "when": "6_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lava_bow_effect_2"
+            }
+          },
+          {
+            "when": "6_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lava_bow_effect_3"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/blaze_bow_effect"
+            }
+          },
+          {
+            "when": "7_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/blaze_bow_effect_1"
+            }
+          },
+          {
+            "when": "7_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/blaze_bow_effect_2"
+            }
+          },
+          {
+            "when": "7_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/blaze_bow_effect_3"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/necrotic_bow_effect"
+            }
+          },
+          {
+            "when": "8_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/necrotic_bow_effect_1"
+            }
+          },
+          {
+            "when": "8_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/necrotic_bow_effect_2"
+            }
+          },
+          {
+            "when": "8_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/necrotic_bow_effect_3"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/electric_bow_effect"
+            }
+          },
+          {
+            "when": "9_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/electric_bow_effect_1"
+            }
+          },
+          {
+            "when": "9_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/electric_bow_effect_2"
+            }
+          },
+          {
+            "when": "9_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/electric_bow_effect_3"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lapis_bow_effect"
+            }
+          },
+          {
+            "when": "10_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lapis_bow_effect_1"
+            }
+          },
+          {
+            "when": "10_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lapis_bow_effect_2"
+            }
+          },
+          {
+            "when": "10_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lapis_bow_effect_3"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/quartz_bow_effect"
+            }
+          },
+          {
+            "when": "11_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/quartz_bow_effect_1"
+            }
+          },
+          {
+            "when": "11_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/quartz_bow_effect_2"
+            }
+          },
+          {
+            "when": "11_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/quartz_bow_effect_3"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/silk_bow_effect"
+            }
+          },
+          {
+            "when": "12_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/silk_bow_effect_1"
+            }
+          },
+          {
+            "when": "12_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/silk_bow_effect_2"
+            }
+          },
+          {
+            "when": "12_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/silk_bow_effect_3"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/beheading_bow_effect"
+            }
+          },
+          {
+            "when": "13_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/beheading_bow_effect_1"
+            }
+          },
+          {
+            "when": "13_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/beheading_bow_effect_2"
+            }
+          },
+          {
+            "when": "13_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/beheading_bow_effect_3"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/smite_bow_effect"
+            }
+          },
+          {
+            "when": "14_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/smite_bow_effect_1"
+            }
+          },
+          {
+            "when": "14_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/smite_bow_effect_2"
+            }
+          },
+          {
+            "when": "14_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/smite_bow_effect_3"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/spider_bow_effect"
+            }
+          },
+          {
+            "when": "15_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/spider_bow_effect_1"
+            }
+          },
+          {
+            "when": "15_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/spider_bow_effect_2"
+            }
+          },
+          {
+            "when": "15_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/spider_bow_effect_3"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/reinforced_bow_effect"
+            }
+          },
+          {
+            "when": "16_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/reinforced_bow_effect_1"
+            }
+          },
+          {
+            "when": "16_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/reinforced_bow_effect_2"
+            }
+          },
+          {
+            "when": "16_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/reinforced_bow_effect_3"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "effect5",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/diamond_bow_effect"
+            }
+          },
+          {
+            "when": "0_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/diamond_bow_effect_1"
+            }
+          },
+          {
+            "when": "0_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/diamond_bow_effect_2"
+            }
+          },
+          {
+            "when": "0_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/diamond_bow_effect_3"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/emerald_bow_effect"
+            }
+          },
+          {
+            "when": "1_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/emerald_bow_effect_1"
+            }
+          },
+          {
+            "when": "1_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/emerald_bow_effect_2"
+            }
+          },
+          {
+            "when": "1_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/emerald_bow_effect_3"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/redstone_bow_effect"
+            }
+          },
+          {
+            "when": "2_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/redstone_bow_effect_1"
+            }
+          },
+          {
+            "when": "2_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/redstone_bow_effect_2"
+            }
+          },
+          {
+            "when": "2_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/redstone_bow_effect_3"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/piston_bow_effect"
+            }
+          },
+          {
+            "when": "3_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/piston_bow_effect_1"
+            }
+          },
+          {
+            "when": "3_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/piston_bow_effect_2"
+            }
+          },
+          {
+            "when": "3_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/piston_bow_effect_3"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/moss_bow_effect"
+            }
+          },
+          {
+            "when": "4_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/moss_bow_effect_1"
+            }
+          },
+          {
+            "when": "4_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/moss_bow_effect_2"
+            }
+          },
+          {
+            "when": "4_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/moss_bow_effect_3"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/ice_bow_effect"
+            }
+          },
+          {
+            "when": "5_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/ice_bow_effect_1"
+            }
+          },
+          {
+            "when": "5_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/ice_bow_effect_2"
+            }
+          },
+          {
+            "when": "5_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/ice_bow_effect_3"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lava_bow_effect"
+            }
+          },
+          {
+            "when": "6_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lava_bow_effect_1"
+            }
+          },
+          {
+            "when": "6_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lava_bow_effect_2"
+            }
+          },
+          {
+            "when": "6_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lava_bow_effect_3"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/blaze_bow_effect"
+            }
+          },
+          {
+            "when": "7_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/blaze_bow_effect_1"
+            }
+          },
+          {
+            "when": "7_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/blaze_bow_effect_2"
+            }
+          },
+          {
+            "when": "7_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/blaze_bow_effect_3"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/necrotic_bow_effect"
+            }
+          },
+          {
+            "when": "8_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/necrotic_bow_effect_1"
+            }
+          },
+          {
+            "when": "8_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/necrotic_bow_effect_2"
+            }
+          },
+          {
+            "when": "8_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/necrotic_bow_effect_3"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/electric_bow_effect"
+            }
+          },
+          {
+            "when": "9_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/electric_bow_effect_1"
+            }
+          },
+          {
+            "when": "9_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/electric_bow_effect_2"
+            }
+          },
+          {
+            "when": "9_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/electric_bow_effect_3"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lapis_bow_effect"
+            }
+          },
+          {
+            "when": "10_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lapis_bow_effect_1"
+            }
+          },
+          {
+            "when": "10_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lapis_bow_effect_2"
+            }
+          },
+          {
+            "when": "10_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lapis_bow_effect_3"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/quartz_bow_effect"
+            }
+          },
+          {
+            "when": "11_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/quartz_bow_effect_1"
+            }
+          },
+          {
+            "when": "11_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/quartz_bow_effect_2"
+            }
+          },
+          {
+            "when": "11_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/quartz_bow_effect_3"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/silk_bow_effect"
+            }
+          },
+          {
+            "when": "12_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/silk_bow_effect_1"
+            }
+          },
+          {
+            "when": "12_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/silk_bow_effect_2"
+            }
+          },
+          {
+            "when": "12_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/silk_bow_effect_3"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/beheading_bow_effect"
+            }
+          },
+          {
+            "when": "13_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/beheading_bow_effect_1"
+            }
+          },
+          {
+            "when": "13_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/beheading_bow_effect_2"
+            }
+          },
+          {
+            "when": "13_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/beheading_bow_effect_3"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/smite_bow_effect"
+            }
+          },
+          {
+            "when": "14_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/smite_bow_effect_1"
+            }
+          },
+          {
+            "when": "14_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/smite_bow_effect_2"
+            }
+          },
+          {
+            "when": "14_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/smite_bow_effect_3"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/spider_bow_effect"
+            }
+          },
+          {
+            "when": "15_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/spider_bow_effect_1"
+            }
+          },
+          {
+            "when": "15_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/spider_bow_effect_2"
+            }
+          },
+          {
+            "when": "15_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/spider_bow_effect_3"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/reinforced_bow_effect"
+            }
+          },
+          {
+            "when": "16_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/reinforced_bow_effect_1"
+            }
+          },
+          {
+            "when": "16_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/reinforced_bow_effect_2"
+            }
+          },
+          {
+            "when": "16_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/reinforced_bow_effect_3"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "effect6",
+        "cases": [
+          {
+            "when": "0",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/diamond_bow_effect"
+            }
+          },
+          {
+            "when": "0_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/diamond_bow_effect_1"
+            }
+          },
+          {
+            "when": "0_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/diamond_bow_effect_2"
+            }
+          },
+          {
+            "when": "0_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/diamond_bow_effect_3"
+            }
+          },
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/emerald_bow_effect"
+            }
+          },
+          {
+            "when": "1_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/emerald_bow_effect_1"
+            }
+          },
+          {
+            "when": "1_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/emerald_bow_effect_2"
+            }
+          },
+          {
+            "when": "1_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/emerald_bow_effect_3"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/redstone_bow_effect"
+            }
+          },
+          {
+            "when": "2_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/redstone_bow_effect_1"
+            }
+          },
+          {
+            "when": "2_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/redstone_bow_effect_2"
+            }
+          },
+          {
+            "when": "2_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/redstone_bow_effect_3"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/piston_bow_effect"
+            }
+          },
+          {
+            "when": "3_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/piston_bow_effect_1"
+            }
+          },
+          {
+            "when": "3_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/piston_bow_effect_2"
+            }
+          },
+          {
+            "when": "3_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/piston_bow_effect_3"
+            }
+          },
+          {
+            "when": "4",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/moss_bow_effect"
+            }
+          },
+          {
+            "when": "4_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/moss_bow_effect_1"
+            }
+          },
+          {
+            "when": "4_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/moss_bow_effect_2"
+            }
+          },
+          {
+            "when": "4_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/moss_bow_effect_3"
+            }
+          },
+          {
+            "when": "5",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/ice_bow_effect"
+            }
+          },
+          {
+            "when": "5_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/ice_bow_effect_1"
+            }
+          },
+          {
+            "when": "5_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/ice_bow_effect_2"
+            }
+          },
+          {
+            "when": "5_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/ice_bow_effect_3"
+            }
+          },
+          {
+            "when": "6",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lava_bow_effect"
+            }
+          },
+          {
+            "when": "6_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lava_bow_effect_1"
+            }
+          },
+          {
+            "when": "6_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lava_bow_effect_2"
+            }
+          },
+          {
+            "when": "6_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lava_bow_effect_3"
+            }
+          },
+          {
+            "when": "7",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/blaze_bow_effect"
+            }
+          },
+          {
+            "when": "7_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/blaze_bow_effect_1"
+            }
+          },
+          {
+            "when": "7_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/blaze_bow_effect_2"
+            }
+          },
+          {
+            "when": "7_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/blaze_bow_effect_3"
+            }
+          },
+          {
+            "when": "8",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/necrotic_bow_effect"
+            }
+          },
+          {
+            "when": "8_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/necrotic_bow_effect_1"
+            }
+          },
+          {
+            "when": "8_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/necrotic_bow_effect_2"
+            }
+          },
+          {
+            "when": "8_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/necrotic_bow_effect_3"
+            }
+          },
+          {
+            "when": "9",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/electric_bow_effect"
+            }
+          },
+          {
+            "when": "9_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/electric_bow_effect_1"
+            }
+          },
+          {
+            "when": "9_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/electric_bow_effect_2"
+            }
+          },
+          {
+            "when": "9_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/electric_bow_effect_3"
+            }
+          },
+          {
+            "when": "10",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lapis_bow_effect"
+            }
+          },
+          {
+            "when": "10_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lapis_bow_effect_1"
+            }
+          },
+          {
+            "when": "10_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lapis_bow_effect_2"
+            }
+          },
+          {
+            "when": "10_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/lapis_bow_effect_3"
+            }
+          },
+          {
+            "when": "11",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/quartz_bow_effect"
+            }
+          },
+          {
+            "when": "11_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/quartz_bow_effect_1"
+            }
+          },
+          {
+            "when": "11_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/quartz_bow_effect_2"
+            }
+          },
+          {
+            "when": "11_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/quartz_bow_effect_3"
+            }
+          },
+          {
+            "when": "12",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/silk_bow_effect"
+            }
+          },
+          {
+            "when": "12_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/silk_bow_effect_1"
+            }
+          },
+          {
+            "when": "12_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/silk_bow_effect_2"
+            }
+          },
+          {
+            "when": "12_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/silk_bow_effect_3"
+            }
+          },
+          {
+            "when": "13",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/beheading_bow_effect"
+            }
+          },
+          {
+            "when": "13_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/beheading_bow_effect_1"
+            }
+          },
+          {
+            "when": "13_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/beheading_bow_effect_2"
+            }
+          },
+          {
+            "when": "13_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/beheading_bow_effect_3"
+            }
+          },
+          {
+            "when": "14",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/smite_bow_effect"
+            }
+          },
+          {
+            "when": "14_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/smite_bow_effect_1"
+            }
+          },
+          {
+            "when": "14_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/smite_bow_effect_2"
+            }
+          },
+          {
+            "when": "14_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/smite_bow_effect_3"
+            }
+          },
+          {
+            "when": "15",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/spider_bow_effect"
+            }
+          },
+          {
+            "when": "15_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/spider_bow_effect_1"
+            }
+          },
+          {
+            "when": "15_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/spider_bow_effect_2"
+            }
+          },
+          {
+            "when": "15_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/spider_bow_effect_3"
+            }
+          },
+          {
+            "when": "16",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/reinforced_bow_effect"
+            }
+          },
+          {
+            "when": "16_1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/reinforced_bow_effect_1"
+            }
+          },
+          {
+            "when": "16_2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/reinforced_bow_effect_2"
+            }
+          },
+          {
+            "when": "16_3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/reinforced_bow_effect_3"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      },
+      {
+        "type": "minecraft:select",
+        "property": "tconstruct:tool_part",
+        "part": "arrow",
+        "cases": [
+          {
+            "when": "1",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/arrow_1"
+            }
+          },
+          {
+            "when": "2",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/arrow_2"
+            }
+          },
+          {
+            "when": "3",
+            "model": {
+              "type": "minecraft:model",
+              "model": "tconstruct:item/tool/shortbow/arrow_3"
+            }
+          }
+        ],
+        "fallback": {
+          "type": "minecraft:empty"
+        }
+      }
+    ]
   }
 }

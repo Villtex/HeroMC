@@ -1,9 +1,0 @@
-{
-  "parent": "minecraft:item/handheld",
-  "textures": {
-    "layer0": "tconstruct:item/excavator/wood_excavator_handle",
-    "layer1": "tconstruct:item/excavator/iron_excavator_head",
-    "layer2": "tconstruct:item/excavator/iron_excavator_binding",
-    "layer3": "tconstruct:item/excavator/iron_excavator_grip"
-  }
-}

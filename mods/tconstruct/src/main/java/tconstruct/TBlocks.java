@@ -139,6 +139,13 @@ public final class TBlocks {
         TABS.register(modBus);
     }
 
+    /** EquipBlock "HeldItemBlock" (1311): the frying pan put down; no item of its own. */
+    public static final DeferredBlock<tconstruct.blocks.FrypanBlock> FRYPAN = BLOCKS.registerBlock("frypan", tconstruct.blocks.FrypanBlock::new,
+            () -> BlockBehaviour.Properties.of().strength(0.3F).sound(net.minecraft.world.level.block.SoundType.METAL).noOcclusion()
+                    .lightLevel(state -> state.getValue(tconstruct.blocks.FrypanBlock.LIT) ? 9 : 0));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<tconstruct.blocks.FrypanBlockEntity>> FRYPAN_ENTITY = BLOCK_ENTITIES.register(
+            "frypan", () -> new BlockEntityType<>(tconstruct.blocks.FrypanBlockEntity::new, FRYPAN.get()));
+
     /** ToolStationBlock 1326 (0 station, 1-4 part builders, 5-9 pattern chest, 10-13 stencil tables), forge, station, slab. */
     static void registerOldIds() {
         OldBlockStates.registerMeta(1326, meta -> {
@@ -155,6 +162,7 @@ public final class TBlocks {
         });
         OldBlockStates.registerMeta(1341, meta -> TOOL_FORGES.get(Math.min(meta, 13)).get().defaultBlockState());
         OldBlockStates.register(1347, () -> CRAFTING_STATION.get().defaultBlockState());
+        OldBlockStates.register(1311, () -> FRYPAN.get().defaultBlockState());
         OldBlockStates.registerMeta(1346, meta -> SLABS.get(Math.min(meta % 8, 5)).get().defaultBlockState().setValue(TableSlabBlock.TOP, meta >= 8));
         String ns = TConstruct.MOD_ID + ":";
         OldGameIds.registerItem(1326, 0, ns + "tool_station");

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:item/handheld",
-  "textures": {
-    "layer0": "tconstruct:item/dagger/wood_dagger_handle",
-    "layer1": "tconstruct:item/dagger/iron_dagger_blade",
-    "layer2": "tconstruct:item/dagger/iron_dagger_accessory"
-  }
-}

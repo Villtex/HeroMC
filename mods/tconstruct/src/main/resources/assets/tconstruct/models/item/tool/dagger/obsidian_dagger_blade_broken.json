@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "tconstruct:item/dagger/obsidian_dagger_blade_broken"
+  }
+}

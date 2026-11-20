@@ -1,9 +1,0 @@
-{
-  "parent": "minecraft:item/handheld",
-  "textures": {
-    "layer0": "tconstruct:item/hammer/wood_hammer_handle",
-    "layer1": "tconstruct:item/hammer/iron_hammer_head",
-    "layer2": "tconstruct:item/hammer/iron_hammer_front",
-    "layer3": "tconstruct:item/hammer/iron_hammer_back"
-  }
-}

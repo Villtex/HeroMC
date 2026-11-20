@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Generates the assets/data JSON of the Tinkers' Construct port (mods/tconstruct/src/main/resources), the language
 files and original-assets.txt. Everything under resources/assets and resources/data is overwritten.
-Part 25a: materials, patterns, casts, parts, tools, the tables, their recipes and tags."""
+Part 25a: materials, patterns, casts, parts, tools, the tables, their recipes and tags. Part 25b: the layered
+tool models, the potion launcher, the chisel recipe, the TreeCapitator axes."""
 import json, os, shutil
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -193,37 +194,132 @@ for key, t, e, g in (('feather', 'feather', 'Feather Fletching', 'Federne Befied
     flat(f'{key}_fletching', [tex(f'items/parts/{t}_fletching.png', f'item/parts/{t}_fletching')])
     name(f'item.{NS}.{key}_fletching', e, g)
 
-# ---------------------------------------------------------------- tools: a fixed icon (handle, head, accessory, extra) until part 25b
-TOOLS = [  # key, folder, [(material texture, suffix) in render order handle, head, accessory, extra], English, German
-    ('pickaxe', 'pickaxe', [('wood', '_pickaxe_handle'), ('iron', '_pickaxe_head'), ('iron', '_pickaxe_accessory')], 'Pickaxe', 'Spitzhacke'),
-    ('shovel', 'shovel', [('wood', '_shovel_handle'), ('iron', '_shovel_head')], 'Shovel', 'Schaufel'),
-    ('hatchet', 'axe', [('wood', '_axe_handle'), ('iron', '_axe_head')], 'Hatchet', 'Beil'),
-    ('broadsword', 'broadsword', [('wood', '_sword_handle'), ('iron', '_sword_blade'), ('iron', '_sword_accessory')], 'Broadsword', 'Breitschwert'),
-    ('longsword', 'longsword', [('wood', '_longsword_handle'), ('iron', '_longsword_blade'), ('iron', '_longsword_accessory')], 'Longsword', 'Langschwert'),
-    ('rapier', 'rapier', [('wood', '_rapier_handle'), ('iron', '_rapier_blade'), ('iron', '_rapier_accessory')], 'Rapier', 'Rapier'),
-    ('frypan', 'frypan', [('wood', '_frypan_handle'), ('iron', '_frypan_head')], 'Frying Pan', 'Bratpfanne'),
-    ('battlesign', 'battlesign', [('wood', '_battlesign_handle'), ('iron', '_battlesign_head')], 'Battlesign', 'Kampfschild'),
-    ('mattock', 'mattock', [('wood', '_mattock_handle'), ('iron', '_mattock_head'), ('iron', '_mattock_back')], 'Mattock', 'Hacke'),
-    ('dagger', 'dagger', [('wood', '_dagger_handle'), ('iron', '_dagger_blade'), ('iron', '_dagger_accessory')], 'Dagger', 'Dolch'),
-    ('cutlass', 'cutlass', [('wood', '_cutlass_handle'), ('iron', '_cutlass_blade'), ('iron', '_cutlass_guard')], 'Cutlass', 'Entermesser'),
-    ('chisel', 'chisel', [('wood', '_chisel_handle'), ('iron', '_chisel_head')], 'Chisel', 'Meißel'),
-    ('scythe', 'scythe', [('wood', '_scythe_handle'), ('iron', '_scythe_head'), ('iron', '_scythe_binding'), ('wood', '_scythe_accessory')],
-     'Scythe', 'Sense'),
-    ('lumberaxe', 'lumberaxe', [('wood', '_lumberaxe_handle'), ('iron', '_lumberaxe_head'), ('iron', '_lumberaxe_shield'), ('iron', '_lumberaxe_binding')],
-     'Lumber Axe', 'Holzfälleraxt'),
-    ('cleaver', 'cleaver', [('wood', '_cleaver_handle'), ('iron', '_cleaver_head'), ('iron', '_cleaver_shield'), ('wood', '_cleaver_guard')],
-     'Cleaver', 'Hackmesser'),
-    ('excavator', 'excavator', [('wood', '_excavator_handle'), ('iron', '_excavator_head'), ('iron', '_excavator_binding'), ('iron', '_excavator_grip')],
-     'Excavator', 'Exkavator'),
-    ('hammer', 'hammer', [('wood', '_hammer_handle'), ('iron', '_hammer_head'), ('iron', '_hammer_front'), ('iron', '_hammer_back')], 'Hammer', 'Hammer'),
-    ('battleaxe', 'battleaxe', [('wood', '_battleaxe_handle'), ('iron', '_battleaxe_fronthead'), ('iron', '_battleaxe_backhead'),
-                                ('iron', '_battleaxe_binding')], 'Battleaxe', 'Streitaxt'),
-    ('shortbow', 'shortbow', [('string', '_bowstring'), ('wood', '_bow_top'), ('wood', '_bow_bottom')], 'Shortbow', 'Kurzbogen'),
-    ('arrow', 'arrow', [('wood', '_arrow_shaft'), ('flint', '_arrow_head'), ('feather', '_arrow_fletching')], 'Arrow', 'Pfeil'),
+# ---------------------------------------------------------------- tools: layered models (ToolCore.getIcon, BowBase.getIcon1..3)
+REF = os.path.join(os.path.dirname(os.path.dirname(ROOT)), '.reference/tconstruct/res/')
+if not os.path.isdir(REF + T):
+    raise SystemExit('needs the original textures: python3 tools/reference.py --only tconstruct')
+EFFECTS = ['diamond', 'emerald', 'redstone', 'piston', 'moss', 'ice', 'lava', 'blaze', 'necrotic', 'electric', 'lapis', 'quartz', 'silk',
+           'beheading', 'smite', 'spider', 'reinforced']  # effect id = index (TProxyClient.addRenderMappings)
+MAT_TEX = [t for _, t, _, _ in TMATS]  # material id = index
+FLETCH_TEX = ['feather', 'leaf', 'slime', 'blueslime']
+TOOLS = [  # key, folder, English, German, {part: suffix} (getIconSuffix), broken part, effect suffix
+    ('pickaxe', 'pickaxe', 'Pickaxe', 'Spitzhacke', {'handle': '_pickaxe_handle', 'head': '_pickaxe_head', 'accessory': '_pickaxe_accessory'},
+     ('head', '_pickaxe_head_broken'), '_pickaxe_effect'),
+    ('shovel', 'shovel', 'Shovel', 'Schaufel', {'handle': '_shovel_handle', 'head': '_shovel_head'}, ('head', '_shovel_head_broken'), '_shovel_effect'),
+    ('hatchet', 'axe', 'Hatchet', 'Beil', {'handle': '_axe_handle', 'head': '_axe_head'}, ('head', '_axe_head_broken'), '_axe_effect'),
+    ('broadsword', 'broadsword', 'Broadsword', 'Breitschwert', {'handle': '_sword_handle', 'head': '_sword_blade', 'accessory': '_sword_accessory'},
+     ('head', '_sword_blade_broken'), '_sword_effect'),
+    ('longsword', 'longsword', 'Longsword', 'Langschwert',
+     {'handle': '_longsword_handle', 'head': '_longsword_blade', 'accessory': '_longsword_accessory'}, ('head', '_longsword_blade_broken'),
+     '_longsword_effect'),
+    ('rapier', 'rapier', 'Rapier', 'Rapier', {'handle': '_rapier_handle', 'head': '_rapier_blade', 'accessory': '_rapier_accessory'},
+     ('head', '_rapier_blade_broken'), '_rapier_effect'),
+    ('frypan', 'frypan', 'Frying Pan', 'Bratpfanne', {'handle': '_frypan_handle', 'head': '_frypan_head'}, ('head', '_frypan_head_broken'),
+     '_frypan_effect'),
+    ('battlesign', 'battlesign', 'Battlesign', 'Kampfschild', {'handle': '_battlesign_handle', 'head': '_battlesign_head'},
+     ('head', '_battlesign_head_broken'), '_battlesign_effect'),
+    ('mattock', 'mattock', 'Mattock', 'Hacke', {'handle': '_mattock_handle', 'head': '_mattock_head', 'accessory': '_mattock_back'},
+     ('head', '_mattock_head_broken'), '_mattock_effect'),
+    ('dagger', 'dagger', 'Dagger', 'Dolch', {'handle': '_dagger_handle', 'head': '_dagger_blade', 'accessory': '_dagger_accessory'},
+     ('head', '_dagger_blade_broken'), '_dagger_effect'),
+    ('cutlass', 'cutlass', 'Cutlass', 'Entermesser', {'handle': '_cutlass_handle', 'head': '_cutlass_blade', 'accessory': '_cutlass_guard'},
+     ('head', '_cutlass_blade_broken'), '_cutlass_effect'),
+    ('chisel', 'chisel', 'Chisel', 'Meißel', {'handle': '_chisel_handle', 'head': '_chisel_head'}, ('head', '_chisel_head_broken'), '_chisel_effect'),
+    ('scythe', 'scythe', 'Scythe', 'Sense',
+     {'handle': '_scythe_handle', 'head': '_scythe_head', 'accessory': '_scythe_binding', 'extra': '_scythe_accessory'},
+     ('head', '_scythe_head_broken'), '_scythe_effect'),
+    ('lumberaxe', 'lumberaxe', 'Lumber Axe', 'Holzfälleraxt',
+     {'handle': '_lumberaxe_handle', 'head': '_lumberaxe_head', 'accessory': '_lumberaxe_shield', 'extra': '_lumberaxe_binding'},
+     ('head', '_lumberaxe_head_broken'), '_lumberaxe_effect'),
+    ('cleaver', 'cleaver', 'Cleaver', 'Hackmesser',
+     {'handle': '_cleaver_handle', 'head': '_cleaver_head', 'accessory': '_cleaver_shield', 'extra': '_cleaver_guard'},
+     ('head', '_cleaver_head_broken'), '_cleaver_effect'),
+    ('excavator', 'excavator', 'Excavator', 'Exkavator',
+     {'handle': '_excavator_handle', 'head': '_excavator_head', 'accessory': '_excavator_binding', 'extra': '_excavator_grip'},
+     ('head', '_excavator_head_broken'), '_excavator_effect'),
+    ('hammer', 'hammer', 'Hammer', 'Hammer', {'handle': '_hammer_handle', 'head': '_hammer_head', 'accessory': '_hammer_front', 'extra': '_hammer_back'},
+     ('head', '_hammer_handle_broken'), '_hammer_effect'),
+    ('battleaxe', 'battleaxe', 'Battleaxe', 'Streitaxt',
+     {'handle': '_battleaxe_handle', 'head': '_battleaxe_fronthead', 'accessory': '_battleaxe_backhead', 'extra': '_battleaxe_binding'},
+     ('head', '_battleaxe_fronthead_broken'), '_battleaxe_effect'),
+    ('shortbow', 'shortbow', 'Shortbow', 'Kurzbogen', {'handle': '_bowstring', 'head': '_bow_top', 'accessory': '_bow_bottom'},
+     ('handle', '_bowstring_broken'), '_bow_effect'),
+    ('arrow', 'arrow', 'Arrow', 'Pfeil', {'handle': '_arrow_shaft', 'head': '_arrow_head', 'accessory': '_arrow_fletching'}, None, '_arrow_effect'),
 ]
-for key, folder, layers, e, g in TOOLS:
-    flat(key, [tex(f'items/{folder}/{m}{s}.png', f'item/{folder}/{m}{s}') for m, s in layers], handheld=key != 'arrow')
+
+
+def has_tex(path):
+    return os.path.isfile(REF + T + path)
+
+
+def layer_model(folder, file, parent):
+    """One layer of a tool: textures/item/<folder>/<file>.png as a flat item model."""
+    model = f'item/tool/{folder}/{file}'
+    write(f'assets/{NS}/models/{model}.json', {'parent': parent, 'textures': {'layer0': tex(f'items/{folder}/{file}.png', f'item/{folder}/{file}')}})
+    return {'type': 'minecraft:model', 'model': n(model)}
+
+
+def select(part, cases):
+    """A layer chosen by the property tconstruct:tool_part (client/ToolPartProperty): material or effect id, "_broken", "_<draw state>"."""
+    return {'type': 'minecraft:select', 'property': n('tool_part'), 'part': part,
+            'cases': [{'when': w, 'model': m} for w, m in cases], 'fallback': {'type': 'minecraft:empty'}}
+
+
+for key, folder, e, g, parts, broken, effect in TOOLS:
+    parent = 'minecraft:item/generated' if key == 'arrow' else 'minecraft:item/bow' if key == 'shortbow' else 'minecraft:item/handheld'
+    states = ['', '_1', '_2', '_3'] if key == 'shortbow' else ['']
+    layers = []
+    for part in ('handle', 'head', 'accessory', 'extra'):
+        if part not in parts:
+            continue
+        names = MAT_TEX
+        if key == 'shortbow' and part == 'handle':
+            names = ['string', 'magicfabric']
+        if key == 'arrow' and part == 'accessory':
+            names = FLETCH_TEX
+        cases = []
+        for i, t in enumerate(names):
+            for st in states:
+                file = f'{t}{parts[part]}{st}'
+                if has_tex(f'items/{folder}/{file}.png'):
+                    cases.append((f'{i}{st}', layer_model(folder, file, parent)))
+            if broken and broken[0] == part and has_tex(f'items/{folder}/{t}{broken[1]}.png'):
+                cases.append((f'{i}_broken', layer_model(folder, f'{t}{broken[1]}', parent)))
+        layers.append(select(part, cases))
+    for k in range(1, 7):
+        cases = []
+        for i, fx in enumerate(EFFECTS):
+            for st in states:
+                file = f'{fx}{effect}{st}'
+                if has_tex(f'items/{folder}/{file}.png'):
+                    cases.append((f'{i}{st}', layer_model(folder, file, parent)))
+        layers.append(select(f'effect{k}', cases))
+    if key == 'shortbow':
+        layers.append(select('arrow', [(f'{st[1:]}', layer_model(folder, f'arrow{st}', parent)) for st in states[1:]]))
+    write(f'assets/{NS}/items/{key}.json', {'model': {'type': 'minecraft:composite', 'models': layers}})
     name(f'item.{NS}.{key}', e, g)
+
+flat('potion_launcher', [tex('items/potionlauncher.png', 'item/potionlauncher')], handheld=True)
+name(f'item.{NS}.potion_launcher', 'Potion Launcher', 'Trankwerfer')
+for k, e, g in (('arrow', 'Arrow', 'Pfeil'), ('dagger', 'Dagger', 'Dolch')):
+    name(f'entity.{NS}.{k}', e, g)
+
+# the frying pan put down (EquipBlock, FrypanRender: plate, rim, handle sticking out; the iron block texture)
+def box(f, t):
+    return {'from': f, 'to': t, 'faces': {d: {'texture': '#iron'} for d in ('down', 'up', 'north', 'south', 'west', 'east')}}
+
+
+write(f'assets/{NS}/models/block/frypan.json', {'parent': 'minecraft:block/block', 'textures': {'iron': M + 'block/iron_block', 'particle': M + 'block/iron_block'},
+                                               'elements': [box([0, 0, 0], [16, 2, 16]), box([0, 2, 0], [2, 4, 16]), box([2, 2, 14], [14, 4, 16]),
+                                                            box([14, 2, 0], [16, 4, 16]), box([2, 2, 0], [14, 4, 2]), box([16, 0, 7], [32, 2, 9])]})
+write(f'assets/{NS}/blockstates/frypan.json', {'variants': {'lit=false': {'model': n('block/frypan')}, 'lit=true': {'model': n('block/frypan')}}})
+tex('gui/frypan.png', 'gui/frypan')
+name(f'block.{NS}.frypan', 'Frying Pan', 'Bratpfanne')
+name(f'container.{NS}.frypan', 'Frying Pan', 'Bratpfanne')
+
+# what the chisel makes (Detailing): a code recipe; TreeCapitator counts hatchet, lumber axe and mattock as axes (pack config)
+write(f'data/{NS}/recipe/chisel_detailing.json', {'type': n('chisel_detailing')})
+write('data/treecapitator/tags/item/axes.json', {'values': [n('hatchet'), n('lumberaxe'), n('mattock')]})
 
 # ---------------------------------------------------------------- the tables
 def block_tex(t):

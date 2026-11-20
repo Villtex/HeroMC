@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:item/handheld",
-  "textures": {
-    "layer0": "tconstruct:item/mattock/wood_mattock_handle",
-    "layer1": "tconstruct:item/mattock/iron_mattock_head",
-    "layer2": "tconstruct:item/mattock/iron_mattock_back"
-  }
-}
