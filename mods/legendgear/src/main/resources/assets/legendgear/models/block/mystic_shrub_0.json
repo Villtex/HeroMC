@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cross",
   "textures": {
-    "cross": "legendgear:block/blockShrub_plain"
+    "cross": "legendgear:block/blockshrub_plain"
   },
   "render_type": "minecraft:cutout"
 }

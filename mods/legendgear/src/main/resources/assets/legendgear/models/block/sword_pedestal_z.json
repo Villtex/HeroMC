@@ -1,10 +1,10 @@
 {
   "parent": "minecraft:block/block",
   "textures": {
-    "face": "legendgear:block/blockSwordPedestal_front",
-    "side": "legendgear:block/blockSwordPedestal_side",
-    "top": "legendgear:block/blockSwordPedestal_top_v",
-    "particle": "legendgear:block/blockSwordPedestal_side"
+    "face": "legendgear:block/blockswordpedestal_front",
+    "side": "legendgear:block/blockswordpedestal_side",
+    "top": "legendgear:block/blockswordpedestal_top_v",
+    "particle": "legendgear:block/blockswordpedestal_side"
   },
   "elements": [
     {

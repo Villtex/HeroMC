@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "meteors:item/FrezariteSpade"
+    "layer0": "meteors:item/frezaritespade"
   }
 }

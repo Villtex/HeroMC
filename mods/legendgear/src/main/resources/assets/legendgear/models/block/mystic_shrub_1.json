@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cross",
   "textures": {
-    "cross": "legendgear:block/blockShrub_charged"
+    "cross": "legendgear:block/blockshrub_charged"
   },
   "render_type": "minecraft:cutout"
 }

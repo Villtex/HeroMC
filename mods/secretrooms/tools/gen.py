@@ -207,7 +207,7 @@ for filler, tag in ((M + 'rotten_flesh', 'flesh'), (WOOL, 'wool')):
                              ('secret_stairs_cobble', M + 'cobblestone_stairs', 4), ('secret_chest', M + 'chest', 1),
                              ('secret_trapped_chest', M + 'trapped_chest', 1), ('secret_light_detector', M + 'daylight_detector', 1)):
         shaped(f'{out}_{tag}', ['X0X', '0@0', 'X0X'], {'X': P, '0': filler, '@': core}, out.replace('_cobble', ''), count)
-WATER_BOTTLE = {'type': 'neoforge:components', 'items': M + 'potion', 'components': {M + 'potion_contents': {'potion': M + 'water'}}}
+WATER_BOTTLE = {'neoforge:ingredient_type': 'neoforge:components', 'items': M + 'potion', 'components': {M + 'potion_contents': {'potion': M + 'water'}}}
 for fuel in ('blaze_powder', 'blaze_rod', 'magma_cream'):
     shapeless(f'solid_air_{fuel}_bucket', [P, M + fuel, M + 'water_bucket'], 'solid_air')
     shapeless(f'solid_air_{fuel}_bottle', [P, M + fuel, WATER_BOTTLE], 'solid_air')

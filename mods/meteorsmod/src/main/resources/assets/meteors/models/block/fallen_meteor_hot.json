@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "meteors:block/Meteor_Hot"
+    "all": "meteors:block/meteor_hot"
   }
 }

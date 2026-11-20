@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "legendgear:item/itemAmuletAero"
+    "layer0": "legendgear:item/itemamuletaero"
   }
 }

@@ -13,7 +13,20 @@ for d in ('assets', 'data'):
     shutil.rmtree(os.path.join(RES, d), ignore_errors=True)
 
 
+def _lower(obj):
+    """26.3 resource paths are lowercase only: every own resource id in the JSON is written in lower case."""
+    if isinstance(obj, str):
+        return obj.lower() if obj.startswith(NS + ':') else obj
+    if isinstance(obj, list):
+        return [_lower(x) for x in obj]
+    if isinstance(obj, dict):
+        return {k: _lower(v) for k, v in obj.items()}
+    return obj
+
+
 def write(path, obj):
+    path = path.lower()
+    obj = _lower(obj)
     full = os.path.join(RES, path)
     os.makedirs(os.path.dirname(full), exist_ok=True)
     with open(full, 'w') as f:
@@ -403,4 +416,4 @@ with open(ROOT + '/original-assets.txt', 'w') as f:
     for src, dst in assets:
         if dst not in seen:
             seen.add(dst)
-            f.write(f'{src} -> {dst}\n')
+            f.write(f'{src} -> {dst.lower()}\n')

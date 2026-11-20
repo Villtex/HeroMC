@@ -39,7 +39,7 @@ Der Port ist in Teile aufgeteilt, die je in eine Session passen: [`docs/PLAN.md`
 | `gradle/neoforge.mods.toml` | gemeinsame Vorlage für die Mod-Metadaten |
 | `docs/JEI.md` | Vorlage für das JEI-Plugin eines Mods (JEI ersetzt NEI) |
 | `.claude/skills/worldgen152/` | Projekt-Skill: Weltgenerierung eines Mods in `worldgen152` einhängen, Setzlinge, Nether, eigene Dimensionen, Prüfung |
-| `.claude/skills/client-render-263/` | Projekt-Skill: HUD-Ebenen, Gegenstände am Spielermodell, Rüstungen mit eigenen Helm-Modellen, durchscheinende Blockmodelle, Rechtsklick vor dem Block abfangen, Blöcke mit TESR/IItemRenderer als BlockEntityRenderer + Special-Item-Renderer (26.3), Vorlage BiblioCraft |
+| `.claude/skills/client-render-263/` | Projekt-Skill: HUD-Ebenen, Gegenstände am Spielermodell, Rüstungen mit eigenen Helm-Modellen, durchscheinende Blockmodelle, Rechtsklick vor dem Block abfangen, Blöcke mit dem Modell eines anderen Blocks (Tarnblöcke), Blöcke mit TESR/IItemRenderer als BlockEntityRenderer + Special-Item-Renderer (26.3), Vorlage BiblioCraft |
 | `.claude/skills/menu-gui-263/` | Projekt-Skill: eigene GUI mit Container (Menü, Screen, Pakete Client → Server, Server-Konfiguration für die Vorschau im Client) |
 | `.claude/skills/wood-sets-263/` | Projekt-Skill: Holzarten und Pflanzen eines Mods (Planken, Stämme, Blätter, Setzlinge, Treppen bis Werkbänke, Brennwert, Rezeptkonflikte mit Vanilla), Vorlage Natura |
 | `.claude/skills/mobs-263/` | Projekt-Skill: Mobs, Spawn-Eier, Boote, Mob-Drops und Spawns (Biome-Modifier), viele Mobs auf einmal (Modell-Konverter, Easing, Fliegen, Reiten, Mehrteiler, Boss), Mobs ohne KI und Reiter-Bewegung, eigene Spawner, Zusatzdaten an fremden Mobs, Prüfen ohne Spieler; Vorlagen Natura, Project Zulu, ChocoCraft |
@@ -47,7 +47,7 @@ Der Port ist in Teile aufgeteilt, die je in eine Session passen: [`docs/PLAN.md`
 | `.claude/skills/treecapitator-trees/` | Projekt-Skill: Bäume und Äxte eines Mods bei TreeCapitator anmelden (Daten-Registry `treecapitator:tree`, Item-Tags) |
 | `.claude/skills/templates-152/` | Projekt-Skill: Gebäude-Vorlagen und Schematics eines 1.5.2-Mods übernehmen (Daten-Archive beim Bauen ins Jar, NBT ohne Spielklassen, Kisten/Schilder/Bilder/Mobs über worldgen152, Text-Vorlagen ohne Umwandlung, Vorlagen zur Laufzeit in die Welt, Prüfung), Vorlagen Better Dungeons, Ruins, Dimensional Doors |
 | `.claude/skills/items-weapons-263/` | Projekt-Skill: Waffen, Stäbe, Bögen, Geschosse und Spezial-Items (Schwert-Werte, Blocken, Geschoss-Entity je Typ, magische Pfeile/Köcher, Taschen, Damage-Varianten mit alten IDs, Kapseln, Einmal-Spawner), Vorlage Better Dungeons |
-| `.claude/skills/api-263-lookup/` | Projekt-Skill: 26.3-Signaturen und Vanilla-Daten lokal nachschlagen (javap, Vineflower, NeoForge-Quellen), Loot-/Advancement-Format, bekannte Umbenennungen, WAV→Ogg beim Asset-Import |
+| `.claude/skills/api-263-lookup/` | Projekt-Skill: 26.3-Signaturen und Vanilla-Daten lokal nachschlagen (javap, Vineflower, NeoForge-Quellen), Loot-/Advancement-Format, bekannte Umbenennungen, Ressourcenpfade nur klein, ICraftingHandler über ItemCraftedEvent, WAV→Ogg beim Asset-Import |
 | `.claude/skills/headless-client/` | Projekt-Skill: Testclient im Cloud-Container ohne Bildschirm starten (Xvfb, `SDL_VIDEO_FORCE_EGL=1`, Screenshots, xdotool, Testserver beitreten) |
 
 ## Bauen und Starten
@@ -188,7 +188,7 @@ Prüfen: `tools/expect.sh 1234 nether structures 60 > expect.txt`, dann `verify_
 | Custom LAN Ports | `customport` 1.5.2 | CptHunter | 4.521 | ✅ portiert (nur integrierter Server; Client-Prüfung offen) |
 | qCraft | `qcraft` 1.0.1 | Daniel Ratcliffe, TeacherGaming | 5.221 | ✅ Teil 17 (qBlocks, Quantencomputer, Erz/Staub, Essenzen, Brille; Weltgenerierung wie im Pack aus; Client-Prüfung offen) |
 | MapWriter | `mapwriter` 2.0.5 | — | 5.356 | offen |
-| Secret Rooms | `secretrooms` 4.6.0.283 | AbrarSyed | 5.692 | offen |
+| Secret Rooms | `secretrooms` 4.6.0.283 | AbrarSyed | 5.692 | ✅ Teil 20 (Tarnblöcke mit dem Modell des Nachbarn, Geheimtüren und -falltür, Truhen, Redstone, Platten, Einwegglas, feste Luft, Fackelhebel; Client-Prüfung offen) |
 | Inventory Tweaks | `inventorytweaks` 1.54b | Jimeo Wan, Kobata | 6.626 | ✅ portiert (reiner Client-Mod; Client-Prüfung offen) |
 | Damage Indicators | `damageindicators` 2.7.0.1 | rich1051414 | 6.783 | offen |
 | Falling Meteors | `meteorsmod` 2.10.2a | AlexDGr8r | 6.957 | ✅ Teil 19 (Meteoriten mit Kratern, Schild, Timer, Detektoren, Beschwörer, Werkzeuge, Rüstungen, Alien Creeper, Kometenkatze, Meteoritenerz in der Welt; Client-Prüfung offen) |
@@ -200,7 +200,7 @@ Prüfen: `tools/expect.sh 1234 nether structures 60 > expect.txt`, dann `verify_
 | (Vanilla 1.5.2) Weltgenerierung | `worldgen152` | Mojang | – | Gelände, Dekoration, Strukturen und Spawnpunkt ✅ gegen Spiel und gegen Original-Welten verifiziert; Nether ✅ (Teil 7b) |
 | LegendGear | `legendgear` 1.5.2 | NMcCoy | 11.590 | ✅ Teil 19 (Medaillons, Amulette, Bumerang, Enterhaken, Bomben, Köcher, Zauberspiegel, Sternschnuppen, Sockel, Sternenstrahl-Fackeln, mystische Sträucher und Bombenblumen in der Welt; Client-Prüfung offen) |
 | NEI Plugins | `nei-plugins` 1.0.9.3 | mistaqur | 11.790 | entfällt, stattdessen JEI |
-| Xeno's Reliquary | `xreliquary` 1.0.6d | x3n0ph0b3 | 11.868 | offen |
+| Xeno's Reliquary | `xreliquary` 1.0.6d | x3n0ph0b3 | 11.868 | ✅ Teil 20 (Pistole mit neun Kugeln, Seren und Elixiere, Alkahestrie mit JEI-Erklärung, Relikte, Altar des Lichts; Client-Prüfung offen) |
 | CoFHCore | `cofhcore` 1.5.2.5 | KingLemmingCoFH, Cynycal, Zeldo | 12.302 | ✅ Teil 8 (Erz-Ersatz, flaches Grundgestein, Köpfe, `/cofh tps`) |
 | Immibis Core | `immibiscore` 55.1.6 | immibis | 12.512 | offen |
 | Immibis's Microblocks | `immibismicroblocks` 55.0.7 | immibis | 13.474 | offen |

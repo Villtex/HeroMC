@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "legendgear:item/itemKey_gold"
+    "layer0": "legendgear:item/itemkey_gold"
   }
 }

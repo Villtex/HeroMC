@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "meteors:item/MeteoriteAxe"
+    "layer0": "meteors:item/meteoriteaxe"
   }
 }

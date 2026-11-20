@@ -68,8 +68,8 @@
     }
   },
   "textures": {
-    "strip": "meteors:item/MeteorDetectorTime",
-    "particle": "meteors:item/MeteorDetectorTime"
+    "strip": "meteors:item/meteordetectortime",
+    "particle": "meteors:item/meteordetectortime"
   },
   "elements": [
     {

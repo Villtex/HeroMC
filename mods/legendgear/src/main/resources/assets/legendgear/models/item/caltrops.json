@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "legendgear:block/blockCaltrops"
+    "layer0": "legendgear:block/blockcaltrops"
   }
 }

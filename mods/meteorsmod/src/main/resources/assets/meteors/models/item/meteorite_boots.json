@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "meteors:item/MeteoriteBoots"
+    "layer0": "meteors:item/meteoriteboots"
   }
 }

@@ -1,9 +1,9 @@
 {
   "textures": {
-    "top": "legendgear:block/blockJar_top",
-    "side": "legendgear:block/blockJar_side",
-    "bottom": "legendgear:block/blockJar_bottom",
-    "particle": "legendgear:block/blockJar_side"
+    "top": "legendgear:block/blockjar_top",
+    "side": "legendgear:block/blockjar_side",
+    "bottom": "legendgear:block/blockjar_bottom",
+    "particle": "legendgear:block/blockjar_side"
   },
   "elements": [
     {

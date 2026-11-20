@@ -57,7 +57,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 17 | BetterStorage, Backpacks, qCraft | ~17.000 | 3 | Opus 5.5, mittel | ✅ erledigt |
 | 18 | ChocoCraft, Infernal Mobs | ~16.000 | 1, 3 | Opus 5.5, mittel | ✅ erledigt |
 | 19 | LegendGear, Falling Meteors | ~19.000 | 1, 3 | Opus 5.5, mittel | ✅ erledigt |
-| 20 | Xeno's Reliquary, Secret Rooms | ~18.000 | 3 | Opus 5.5, mittel | offen |
+| 20 | Xeno's Reliquary, Secret Rooms | ~18.000 | 3 | Opus 5.5, mittel | ✅ erledigt |
 | 21 | Immibis Core, Immibis's Microblocks | ~26.000 | 3 | Fable 5.2, extra hoch | offen |
 | 22 | Client-Mods: Damage Indicators, MapWriter | ~12.000 | – | Sonnet 5.5, niedrig | offen |
 | 23 | Gesamttest und Modpack-Export | – | alle | Opus 5.5, mittel | offen |
@@ -1299,6 +1299,55 @@ Abweichungen). Client-Prüfung offen.
 - Xeno's Reliquary: Artefakte, Handgun, Alkahest-Rezepte → JEI.
 - Secret Rooms: Tarnblöcke. Die Tarnung zeigt das Modell eines anderen Blocks und ist damit ein Render-Thema.
 - Infernal Mobs: das Reliquary-Item der alten Beuteliste (ID 6408) in `IMConfig.DEFAULT_ITEMS` eintragen.
+
+### Teil 20 – Stand
+
+**Status: erledigt.** Zwei Teilprojekte; `clean pack` grün, Testserver mit allen Mods (Project Zulu wieder drin) bis
+`Done` ohne Fehler. Beide Mods haben keine Weltgenerierung (kein `expect.sh`-Lauf nötig).
+
+**Xeno's Reliquary** – Teilprojekt `mods/xreliquary` (Mod-ID `xreliquary`), Ids der Pack-`xreliquary.cfg` (Items
+6151–6176 + 256, Blöcke 1571–1574). Ressourcen schreibt `mods/xreliquary/tools/gen.py` (Texturnamen klein, z. B.
+`reliquary_bullet`), Texturen und die zwei Sounds aus dem Original.
+
+- **Aufbau:** `XRItems` (alle Items; Kugeln, Magazine, Pistolenteile und die 29 kondensierten Tränke als eigene Items),
+  `XRBlocks` (Altar des Lichts mit `lit`, Seerose der Fruchtbarkeit, Gespensterknoten), `XREntities` (eine Kugel-Entity
+  `shot` mit `ShotType`, eine Wurf-Entity `thrown` für Glühwasser, Granate, zehn Seren und die Eisstab-Kugel),
+  `ConcussiveExplosion`, `XREvents` (WaterHandler, AlkahestHandler, Überlauf der Leerentasche), `SatchelRecipe`
+  (beide Taschen-Rezepte als Code-Rezept), Elixiere über `minecraft:consumable`, Client mit Billboard-Renderer und der
+  Tint-Quelle `xreliquary:time` (TimeKeeperHandler) für die schimmernden Seren und den Umhang.
+- **Alkahest-Rezepte:** Alkahestrie (Foliant bleibt als Rest im Raster) und die Rückwärts-Rezepte sind normale
+  Werkbankrezepte; das JEI-Plugin `compat/ReliquaryJeiPlugin` erklärt die Punkte je Item und zeigt die Taschen-Rezepte.
+- **Infernal Mobs:** `xreliquary:glowing_bread` (alte ID 6408) in `IMConfig.DEFAULT_ITEMS`.
+- **Prüfung:** Kugeln per FakePlayer gegen Zombies (Neutral 8+W6, Exorzismus 16+W12 gegen Untote, Lohe, Ender
+  durchschlagend, Sucher 12+W6, Sand, Sturm, Erschütterung und Sprengkugel töten), Wurf-Seren (Säure 20 → 8, Verderben
+  gibt Langsamkeit + Schwäche, Gift wirkt nicht auf Untote, Dünger lässt Weizen wachsen), Granate und Glühwasser töten
+  Zombies; Alkahest über das Crafting-Event (10 Diamanten → 20 Lapisblöcke, 1 → 2); Rezepte über den Crafter
+  (Alkahestrie-Erde 17 mit Foliant als Rest, Pistole, Lösungsmittel, Leerentasche mit 64 Bruchstein / Kapazität 64).
+
+**Offen (Reliquary):** `mods/xreliquary/TODO.md` (Blinzeln der Augen, bewusste Abweichungen). Client-Prüfung offen.
+
+**SecretRoomsMod** – Teilprojekt `mods/secretrooms` (Mod-ID `secretroomsmod`), Ids der Pack-`secretroomsmod.cfg`
+(Blöcke 2321–2340, die Holztür wie im Code als 2080; Items 7501, 7502, 7759). Ressourcen schreibt
+`mods/secretrooms/tools/gen.py` (Tür-, Falltür- und Wandfackel-Blockstates aus dem Vanilla-Jar).
+
+- **Aufbau:** `CamoBlockEntity` (kopierter Blockzustand, ModelData `CAMO`, Wahl im ersten Tick nach dem Setzen über
+  `CamoSource`: BlockCamoFull- und BlockOneWay-Regel), Tarnblöcke Tor (+ Attrappe), Geisterblock, Hebel, Stein-/Holzknopf,
+  Redstone (mit dem Abschalten der Vanilla-Leitung per Reflection wie im Original), Druck-, Spieler- und Wägeplatten,
+  Treppe, Truhe und Redstone-Truhe (27 Plätze, „Hidden Chest“), Tageslichtsensor, Einwegglas; Geheimtüren (Holz/Eisen,
+  tragen den Block darunter), Geheimfalltür (trägt den Block, an dem sie hängt), Fackelhebel, feste Luft, Tarnpaste.
+  `/srm-show` (Alias `/show`) und die Einweg-Taste (Backslash) über `SRNetwork`.
+- **Render:** `client/CamoModel` ersetzt in `ModelEvent.ModifyBakingResult` die Modelle der Tarnblöcke: volles Modell
+  des kopierten Blocks, beim Einwegglas nur die Blickseite (sonst Glas), bei Türen und Falltür die Flächen des kopierten
+  Blocks auf die Platte zugeschnitten (UV wie die Bounds-Texturierung von 1.5.2). Tönung über `BlockTintSources`.
+- **Prüfung:** Tarnung übernommen (Ziegel, Planken, Tür vom Boden), Tor schiebt 10 Attrappen aus und holt sie zurück,
+  Geisterblock wird mit Strom fest, geheimes Redstone leitet (15 → 14) und schaltet eine Lampe ein und aus, Wägeplatten
+  (32 Items: leicht 8, schwer 1), Druckplatte mit Schwein 15, Tageslichtsensor mittags 15.
+
+**Offen (Secret Rooms):** `mods/secretrooms/TODO.md` (copyTE, Lichtdurchlässigkeit, bewusste Abweichungen).
+Client-Prüfung offen (Tarn-Modelle, Tönung).
+
+**Nebenbei behoben (Teil 19):** LegendGear und Falling Meteors schrieben Texturpfade mit Großbuchstaben
+(`legendgear:item/itemHeadband`), die 26.3 nicht lädt; beide `gen.py` schreiben eigene Ressourcen-Ids jetzt klein.
 
 ## Teil 21 – Immibis Core, Immibis's Microblocks
 

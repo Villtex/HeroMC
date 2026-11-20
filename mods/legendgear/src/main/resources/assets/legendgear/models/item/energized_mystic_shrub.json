@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "legendgear:block/blockShrub_charged"
+    "layer0": "legendgear:block/blockshrub_charged"
   }
 }

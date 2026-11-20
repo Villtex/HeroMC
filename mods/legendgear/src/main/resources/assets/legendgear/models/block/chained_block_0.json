@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "legendgear:block/blockChained"
+    "all": "legendgear:block/blockchained"
   },
   "render_type": "minecraft:cutout"
 }

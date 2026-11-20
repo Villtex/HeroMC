@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/crop",
   "textures": {
-    "crop": "legendgear:block/blockCaltrops"
+    "crop": "legendgear:block/blockcaltrops"
   },
   "render_type": "minecraft:cutout"
 }

@@ -1,6 +1,6 @@
 ---
 name: client-render-263
-description: Beim Portieren von Client-Darstellung eines Hexxit-Mods auf 26.3 benutzen. Greift bei HUD-Anzeigen (Tick-Handler mit TickType.RENDER, Overlays), Gegenständen oder Modellen am Spielermodell (Rücken, Schild, Rucksack), Rüstungen (ItemArmor mit eigener Textur oder eigenem Helm-Modell, getArmorModel), durchscheinenden oder halbtransparenten Blöcken (ISimpleBlockRenderingHandler mit Alpha), und bei Rechtsklick-Logik, die vor dem Block greifen muss (PlayerInteractEvent). Beispiele im Repo: armorbar, buffbar, backtools, obsidiplates, chesttransporter, hexxitgear.
+description: Beim Portieren von Client-Darstellung eines Hexxit-Mods auf 26.3 benutzen. Greift bei HUD-Anzeigen (Tick-Handler mit TickType.RENDER, Overlays), Gegenständen oder Modellen am Spielermodell (Rücken, Schild, Rucksack), Rüstungen (ItemArmor mit eigener Textur oder eigenem Helm-Modell, getArmorModel), durchscheinenden oder halbtransparenten Blöcken (ISimpleBlockRenderingHandler mit Alpha), und bei Rechtsklick-Logik, die vor dem Block greifen muss (PlayerInteractEvent), sowie bei Blöcken, die das Modell eines anderen Blocks zeigen (Tarnblöcke, Mikroblöcke). Beispiele im Repo: armorbar, buffbar, backtools, obsidiplates, chesttransporter, hexxitgear.
 ---
 
 # Client-Darstellung in 26.3 (NeoForge 26.3.0.102)
@@ -123,3 +123,18 @@ Hatte das Original eine eigene Texturdatei je Farbe (`getArmorTexture` mit Metad
   Fabriken im Mod-Konstruktor nach Block-**Id** ablegen (die Blöcke gibt es dann noch nicht).
 - OBJ mit Gruppen, die zur Laufzeit wechseln: eigener Leser + `submitCustomGeometry` (`bibliocraft/decor/client/ObjModel`).
 - Licht nach dem Inhalt (getLightValue mit TileEntity): `AuxiliaryLightManager` von NeoForge (`bibliocraft/shelf`).
+
+## Block mit dem Modell eines anderen Blocks (Tarnblöcke, Vorlage `mods/secretrooms`)
+
+- Block-Entity hält den kopierten `BlockState`, `getModelData()` → `ModelData.of(PROP, state)`, bei Änderung
+  `requestModelDataUpdate()` + `sendBlockUpdated`; Wahl des Zustands erst in `onLoad()` (Server), denn in `onPlace`
+  gibt es die Block-Entity noch nicht.
+- Modell: `ModelEvent.ModifyBakingResult` → `getBakingResult().blockStateModels()` der eigenen Zustände durch eine
+  `DynamicBlockStateModel`-Hülle ersetzen; in `collectParts(level, pos, state, …)` `level.getModelData(pos).get(PROP)`
+  lesen und `Minecraft.getInstance().getModelManager().getBlockStateModelSet().get(copy).collectParts(...)` aufrufen.
+  Quads tragen ihre Render-Schicht selbst (`materialInfo().layer()`).
+- Teilflächen (Türplatte mit fremder Textur): `BakedQuad(pos0..3, packedUV0..3, dir, materialInfo, bakedNormals,
+  bakedColors)` neu bauen, UV mit `UVPair.unpackU/V/pack` interpolieren (`secretrooms/client/CamoModel.cut`).
+- Tönung: `RegisterColorHandlersEvent.BlockTintSources` mit einer Liste von `BlockTintSource` je Tint-Index, die
+  `Minecraft.getInstance().getBlockColors().getTintSource(copy, i).colorInWorld(copy, level, pos)` zurückgeben.
+- Neu zeichnen ohne Blockänderung: `clientLevel.setSectionRangeDirty(...)`.

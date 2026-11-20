@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/template_torch_wall",
   "textures": {
-    "torch": "meteors:block/ProtectedLandTester"
+    "torch": "meteors:block/protectedlandtester"
   }
 }

@@ -5,7 +5,7 @@
     "secretroomsmod:camo_paste",
     "minecraft:blaze_rod",
     {
-      "type": "neoforge:components",
+      "neoforge:ingredient_type": "neoforge:components",
       "items": "minecraft:potion",
       "components": {
         "minecraft:potion_contents": {

@@ -1,6 +1,6 @@
 ---
 name: api-263-lookup
-description: Beim Schreiben von 26.3-Code für einen Port benutzen, wenn eine Klasse/Methode/ein Feld nicht gefunden wird oder das Datenformat (Loot, Advancements, Prädikate) unklar ist – Signaturen und Vanilla-Daten von 26.3 nachschlagen statt raten, plus die Umbenennungen, auf die Teil 19 (LegendGear, Falling Meteors) gestoßen ist. Auch für WAV-Sounds aus 1.5.2-Archiven.
+description: Beim Schreiben von 26.3-Code für einen Port benutzen, wenn eine Klasse/Methode/ein Feld nicht gefunden wird oder das Datenformat (Loot, Advancements, Prädikate) unklar ist; auch bei Texturnamen mit Großbuchstaben und ICraftingHandlern (ItemCraftedEvent) – Signaturen und Vanilla-Daten von 26.3 nachschlagen statt raten, plus die Umbenennungen, auf die Teil 19 (LegendGear, Falling Meteors) gestoßen ist. Auch für WAV-Sounds aus 1.5.2-Archiven.
 ---
 
 # 26.3 nachschlagen statt raten
@@ -53,6 +53,19 @@ zeigt meist alle Abweichungen auf einmal – dann gesammelt korrigieren.
 | `TriState` | `net.minecraft.util.TriState` |
 
 Private Synch-Daten (z. B. `Creeper.DATA_IS_POWERED`): zur Laufzeit gelten Mojang-Namen, Reflection auf das Feld geht.
+
+## Ressourcenpfade nur klein
+
+`Identifier` erlaubt im Pfad nur `[a-z0-9/._-]`: 1.5.2-Texturnamen wie `itemHeadband.png` beim Import klein bzw. in
+snake_case schreiben (Ziel in `original-assets.txt` und alle Verweise in Modellen). Teil 19 hatte das übersehen; die
+`gen.py` von LegendGear und Meteors schreiben eigene Ids jetzt über `_lower` klein.
+
+## ICraftingHandler (onCrafting) von 1.5.2
+
+`PlayerEvent.ItemCraftedEvent` (NeoForge-Bus) kommt wie damals **vor** dem Verbrauch des Rasters (`ResultSlot.checkTakeAchievements`,
+auch beim Shift-Klick einmal je Fertigung): Raster ändern (ganzen Stapel verbrauchen = Stapel auf 1 setzen), Belohnung
+nur auf dem Server geben. Der Crafter-Block löst es nicht aus. Ergebnis mit Daten aus den Zutaten lieber als
+`CustomRecipe` (`assemble`), sonst stimmt es beim Shift-Klick nicht (Vorlage `xreliquary`: `XREvents`, `SatchelRecipe`).
 
 ## WAV-Sounds aus 1.5.2
 

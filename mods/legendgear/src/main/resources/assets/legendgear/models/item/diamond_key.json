@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "legendgear:item/itemKey_diamond"
+    "layer0": "legendgear:item/itemkey_diamond"
   }
 }

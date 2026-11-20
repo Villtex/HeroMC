@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cross",
   "textures": {
-    "cross": "legendgear:block/blockBombFlower_cut"
+    "cross": "legendgear:block/blockbombflower_cut"
   },
   "render_type": "minecraft:cutout"
 }

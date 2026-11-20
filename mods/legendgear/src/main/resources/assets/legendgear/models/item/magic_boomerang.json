@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "legendgear:item/itemBoomerang"
+    "layer0": "legendgear:item/itemboomerang"
   }
 }

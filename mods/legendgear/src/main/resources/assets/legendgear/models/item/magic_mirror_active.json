@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "legendgear:item/itemMirror_active"
+    "layer0": "legendgear:item/itemmirror_active"
   }
 }

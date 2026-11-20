@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "legendgear:block/blockBombFlower"
+    "layer0": "legendgear:block/blockbombflower"
   }
 }
