@@ -62,7 +62,12 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 22 | Client-Mods: Damage Indicators, MapWriter | ~12.000 | – | Sonnet 5.5, niedrig | offen |
 | 23 | Gesamttest und Modpack-Export | – | alle | Opus 5.5, mittel | offen |
 | 24 | später: Twilight Forest | ~50.000 | – | Fable 5.2, hoch | zurückgestellt |
-| 25 | später: Tinkers' Construct | ~60.000 | – | Fable 5.2, hoch | zurückgestellt |
+| 25a | Tinkers' Construct A: Werkzeug-Kern (Materialien, Teile, Muster, Tische, Zusammenbau, Modifikatoren anbringen) | ~10.000 | 3 | Opus 5.5, hoch | offen |
+| 25b | Tinkers' Construct B: Werkzeuge im Einsatz (Fähigkeiten, Modifikator-Effekte, Bogen, Wurfwaffen) und ihre Darstellung | ~9.000 | 25a | Fable 5.2, hoch | offen |
+| 25c | Tinkers' Construct C: Schmelzerei, flüssige Metalle, Gießen, Legierungen, Trockengestell | ~11.000 | 25a | Fable 5.2, hoch | offen |
+| 25d | Tinkers' Construct D: Weltgenerierung, Schleiminseln, Dorf-Bauteile, Dorfbewohner | ~4.000 | 25c | Fable 5.2, extra hoch | offen |
+| 25e | Tinkers' Construct E: Spieler (Rucksack, Herzen, Handschuh, Ereignisse), Handbücher, Essen, Mobs | ~8.000 | 25a | Opus 5.5, mittel | offen |
+| 25f | Tinkers' Construct F: Deko-Blöcke, Fallen, Landmine, Redstone-Maschinen, Kristall/Essenz | ~9.000 | 25a | Opus 5.5, mittel | offen |
 
 Entfallen ganz: Not Enough Items, NEI Plugins, CodeChickenCore (durch JEI ersetzt), Lumy Skin Patch,
 `basemods` (Forge 1.5.2 selbst).
@@ -1313,3 +1318,105 @@ Mikroblöcke sind der schwierigste technische Teil. Sie brauchen Teilblock-Kolli
   - Import für den CurseForge- oder Prism-Launcher
   - Hinweis: Die Jars enthalten Original-Assets, nur für den eigenen Gebrauch.
 - Client-Prüfliste für den Nutzer.
+
+## Teil 25 – Tinkers' Construct (25a–25f)
+
+Original: `tconstruct` 1.4.3 (`python3 tools/reference.py --only tconstruct,z-hexxit-configs`), Paket
+`mods.tinker.tconstruct`, ~60.000 Zeilen. Ein Teilprojekt `mods/tconstruct/` (Mod-ID `tconstruct`), das die Teile
+nacheinander füllen. Nicht portiert werden die mitgelieferten Fremd-APIs (`ic2.api`, `powercrystals...`, ~2.500 Zeilen)
+und das MFR-Plugin. `client/tmt` (Turbo Model Thingy, ~2.400 Zeilen) nur, soweit ein Modell es braucht.
+
+Pack-Konfiguration `config/TinkersWorkshop.txt` (gilt vor den Defaults in `util/PHConstruct.java`): alle Mod-Werkzeug-
+materialien an, Stencil-Tische craftbar, Metall nicht mit Holzmustern, Auto-Smelt + Glück an, Modifikatoren heben die
+Abbaustufe, Hunger und Level bleiben beim Tod, passive Heilung an, Void-Fog in der Oberwelt aus, klares Wasser,
+Einsteigerbuch beim ersten Betreten, alle Erze/Büsche/Oberflächenerze und Dorf-Generierung an, Weltgrenze aus,
+UHC-Rezeptänderungen aus. Die `I:`-Werte (IDs, Seltenheit, Dichte) dort ablesen.
+
+Gemeinsame Regeln für alle Unterteile:
+- Alte IDs (Blöcke/Items aus der Konfiguration, Metadaten-Varianten) für Better Dungeons, Infernal Mobs und
+  Ruinen-Vorlagen über die vorhandenen ID-Tabellen der anderen Mods auflösbar halten (siehe Teil 12/13, 19).
+- Werkzeuge werden ein Item je Werkzeugart mit Daten-Komponenten (Materialien je Teil, Modifikatoren, Haltbarkeit,
+  Abbaustufe, Tempo, Schaden), nicht NBT-Tags. Nahkampf-Werte laufen über `combat152` (1.5.2-Formeln).
+- Offenes je Unterteil in `mods/tconstruct/TODO.md`, damit der nächste Unterteil weiß, was fehlt.
+- Ein Skill `tinkers-tools-263` lohnt sich ab 25a (Werkzeug-Komponenten, Teil-/Material-Tabelle, Modell-Schichten),
+  weil 25b–25f darauf aufbauen.
+
+### Teil 25a – Werkzeug-Kern
+Quellen: `library/` (ohne `client`), `library/crafting/{ToolBuilder,ToolRecipe,ShapelessToolRecipe,PatternBuilder,
+Detailing}`, `library/tools/{ToolCore,ToolMaterial,ToolMod,…Material}`, `common/TContent.java` (Materialien ab
+`registerMaterials`, Items, Rezepte), `items/` (Teile, Muster, Splitter, Materialien), `blocks/{ToolStationBlock,
+ToolForgeBlock,CraftingStationBlock,CraftingSlab}`, `blocks/logic/{ToolStation,ToolForge,PartCrafter,StencilTable,
+PatternChest,CraftingStation}Logic`, `inventory/`, `client/gui/` der Tische, `modifiers/` (nur das Anbringen:
+Zutaten, Slots, NBT→Komponenten), `util/TEventHandler` (`craftTool`, `craftPart`, Erz-Wörterbuch).
+- Alle 19 Materialien mit Werten, alle Teile und Muster, Holz- und Metall-Gussform-Items (Gussformen selbst erst in 25c).
+- Schablonentisch, Teilbauer, Musterkiste, Werkzeugstation, Werkzeugschmiede, Werkbank-Station/-Stufe mit GUI.
+- Zusammenbau aller 21 Werkzeugarten mit richtigen Werten, Reparieren, Modifikatoren anbringen (Effekte erst in 25b).
+- Werkzeuge ohne Spezialfähigkeit benutzbar (Abbau-Tempo/-Stufe, Schaden, Haltbarkeit).
+- Vorläufige Darstellung (Icon je Werkzeugart), die schichtweise Darstellung folgt in 25b.
+- JEI: Teilbauer, Werkzeugzusammenbau, Modifikatoren.
+
+### Teil 25b – Werkzeuge im Einsatz und Darstellung
+Quellen: `items/tools/*`, `library/tools/{AbilityHelper,HarvestTool,DualHarvestTool,Weapon,BowBase}`, `modifiers/*`
+(Effekte), `entity/projectile/*`, `client/ToolCoreRenderer`, `client/TProxyClient` (Werkzeug-Icons), `client/entity`
+(Projektile).
+- Fähigkeiten: Hammer/Bagger 3×3, Holzfälleraxt fällt Bäume (über TreeCapitator, Skill `treecapitator-trees`),
+  Sense mäht Bereich, Breitaxt, Hackmesser, Mattock, Meißel (Detailing), Bratpfanne, Kampfschild (Blocken über
+  `Combat152.BLOCKING`), Dolch werfen, Kurzbogen + Pfeile aus Teilen, Trank-Werfer.
+- Modifikator-Effekte: Auto-Smelt, Glück/Lapis, Redstone, Bann, Gliederfüßer, Lohe, Rückstoß/Kolben, Seidenhand,
+  Haltbarkeit/Verstärkt, Reparatur, Nekrotisch, Elektro nur wenn sinnvoll (kein IC2 → notieren).
+- Darstellung: Werkzeug-Modell aus Schichten (Kopf, Griff, Zubehör, Extra je Material + Effekt-Schicht),
+  kaputtes Werkzeug, Bogen-Spannzustände; Skill `client-render-263`. Client-Prüfung.
+
+### Teil 25c – Schmelzerei
+Quellen: `blocks/{SmelteryBlock,SearedBlock,LavaTankBlock,CastingChannelBlock}`, `blocks/fluid/*`,
+`blocks/logic/{Smeltery,SmelteryDrain,MultiServant,LavaTank,Faucet,CastingTable,CastingBasin,CastingChannel,
+DryingRack,LiquidTexture}Logic`, `library/crafting/{Smeltery,AlloyMix,LiquidCasting,CastingRecipe,DryingRackRecipes}`,
+`client/block/{Smeltery,Tank,CastingTable/Basin,DryingRack,Fluid,RenderLiquid,BlockRenderCastingChannel,Seared}*`,
+`client/gui/SmelteryGui`, Rezepte in `TContent` (`addCraftingRecipes`: Schmelzen, Legieren, Gießen, Eimer).
+- Multiblock-Erkennung wie im Original, Brennstoff Lava, Temperaturen, Schmelzdauer, Lagen-Füllstand, Abfluss + Hahn.
+- Alle flüssigen Metalle als NeoForge-Fluids mit Eimern, Quell-/Fließblöcken.
+- Gießtisch, Gießbecken, Gießkanal, Gussformen (Teile, Barren, Nuggets, Blöcke), Legierungen (Bronze, Alubrass,
+  Manyullyn, Aluminium, Obsidian…), Trockengestell (Dörrfleisch).
+- Erze und Metallblöcke, die die Schmelzerei braucht (Kupfer, Zinn, Aluminium, Kobalt, Ardit, Seared-Ziegel/Grout),
+  als Blöcke/Items schon hier; die Generierung erst in 25d.
+- JEI: Schmelzen, Legieren, Gießtisch, Gießbecken, Trockengestell. Renderer für Füllstände (Client-Prüfung).
+
+### Teil 25d – Weltgenerierung, Schleiminseln, Dörfer
+Quellen: `worldgen/*`, `worldgen/village/*`, `blocks/{OreberryBush,OreberryBushEssence,MetalOre,GravelOre}`,
+`blocks/slime/*`, `entity/BlueSlime`, `TConstruct.java` (Reihenfolge der Generatoren, Dorfbewohner 78943).
+- `TBaseWorldGenerator` und `SlimeIslandGen` über `worldgen152` in der Ladereihenfolge des Originals (nach
+  `SoulShards`, vor `WildCaves3`), inkl. Nether-Erze (Kobalt/Ardit) und Oberflächenerze; Skill `worldgen152`.
+- Erzbeeren-Büsche (Eisen, Gold, Kupfer, Zinn, Aluminium, Silber, Essenz) mit Wachstum und Ernte.
+- Schleiminseln: Schleimgel, Schleimgras, hohes Gras, Blätter, Setzlinge, Schleimbaum, Schleimbecken (Flüssigkeit),
+  blauer Schleim (Mob, Spawn auf den Inseln; Konfig „Activate Blue Slime Spawns“ wird im Original nicht gelesen –
+  prüfen).
+- Dorf-Bauteile Werkzeugschmiede und Schmelzerei über `OldStructures.VILLAGE_HANDLERS` (Abschnitt „Dörfer“ oben);
+  Tinkers-Dorfbewohner mit Handel, Kistenbeute `tinkerHouseChest`/`tinkerHousePatterns`.
+- Danach `tools/expect.sh` + `tools/verify_blocks.py` mit 0 Abweichungen; `compare_original.py` gegen die
+  Hexxit-Welt, Dorf-Grundrisse jetzt originalgetreu.
+
+### Teil 25e – Spieler, Ausrüstung, Bücher, Essen, Mobs
+Quellen: `util/player/*`, `items/armor/*`, `client/gui/{ArmorExtendedGui,KnapsackGui,InventoryTab,NewContainerGui,
+GuiManual,TurnPageButton}`, `client/pages/*`, `items/{Manual,DiamondApple,GoldenHead,StrangeFood,SpecialFood,
+EssenceCrystal}`, `util/TEventHandler` (Rest: Drops, Spawns, Bonemeal, Eimer), `entity/{SlimeClone,Automaton,
+Gardeslime,FancyEntityItem}` + `entity/ai`, `client/entity`, `client/armor`, `skill/*`, `util/network`.
+- Erweitertes Inventar (Tabs), Rucksack, Herzbehälter (+Leben), Handschuh, Herz-Anzeige im HUD.
+- Spieler-Regeln aus der Konfiguration: Hunger/Level bleiben beim Tod, passive Heilung, Einsteigerbuch beim ersten
+  Betreten, Void-Fog aus, klares Wasser (Client).
+- Handbücher (`manuals/firstday,materials,smeltery,diary.xml`) mit allen Seitentypen.
+- Essen: Diamantapfel, Goldener Kopf, Fleischblock, Dörrfleisch-Items (falls nicht schon in 25c), Schleim-Essen.
+- Mob-Drops (Köpfe, Nekrotischer Knochen von Wither-Skeletten, Mini-Gardy u. a.) und die Mobs mit Spawn-Eiern;
+  Skill `mobs-263`.
+
+### Teil 25f – Deko, Fallen, Redstone, Kristall
+Quellen: `blocks/decorative/*`, `blocks/traps/*`, `landmine/*`, `blocks/{RedstoneMachine,EquipBlock,MeatBlock,
+TMetalBlock,SoilBlock,SoilSlab,PaneBase,AntiLight,Aggregator,CrystalBlock,EssenceExtractor}`, `blocks/logic/{Drawbridge,
+Firestarter,Aggregator,LightAggregator,Crystal,EssenceExtractor,Equip,Frypan,GolemCore,GolemPedestal,Redwire,
+Aqueduct}Logic`, `crystal/*`, zugehörige `client/block`-Renderer und GUIs.
+- Glas, Klarglas-Scheiben und gefärbtes Klarglas, Ziegel (Multi/Fancy), Metallblöcke, Woll-Stufen, Tempo-Blöcke und
+  -Stufen, Seared-Stufen, Erdarten (Grout, Friedhof, geweihte Erde), Steinfackel.
+- Fallen: Punji-Stöcke, Barrikaden (4 Hölzer), Landmine mit allen Auslöse-Verhalten.
+- Redstone-Maschinen: Zugbrücke (mit GUI und Tarnung), Feueranzünder; Lichtaggregator, Kristall, Antilicht und
+  Essenz-Extraktor nur so weit, wie sie in 1.4.3 überhaupt funktionieren (prüfen, ob craftbar; Unfertiges notieren
+  statt erfinden). `dimension/*` ist im Original nicht registriert und entfällt.
+- Kompat zum Schluss nachholen: Natura-Integration aus Teil 7 („Tinkers weggelassen“), JEI-Infos, TreeCapitator.
