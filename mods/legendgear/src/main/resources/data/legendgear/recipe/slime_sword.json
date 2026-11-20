@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "b",
+    "b",
+    "s"
+  ],
+  "key": {
+    "b": "minecraft:slime_ball",
+    "s": "minecraft:stick"
+  },
+  "result": {
+    "id": "legendgear:slime_sword"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "ooo",
+    "oso",
+    "ooo"
+  ],
+  "key": {
+    "o": "minecraft:obsidian",
+    "s": "legendgear:starstone"
+  },
+  "result": {
+    "id": "legendgear:skybeam"
+  }
+}

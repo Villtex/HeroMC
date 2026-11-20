@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    " s ",
+    "sss"
+  ],
+  "key": {
+    "s": "minecraft:stone"
+  },
+  "result": {
+    "id": "legendgear:sword_pedestal"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "legendgear:stardust",
+    "minecraft:red_mushroom"
+  ],
+  "result": {
+    "id": "legendgear:magic_powder"
+  }
+}

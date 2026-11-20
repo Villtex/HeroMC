@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "e"
+  ],
+  "key": {
+    "e": "minecraft:emerald"
+  },
+  "result": {
+    "id": "legendgear:emerald_piece",
+    "count": 8
+  }
+}

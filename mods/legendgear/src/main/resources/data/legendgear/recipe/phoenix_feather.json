@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "tpt",
+    "pfp",
+    "tpt"
+  ],
+  "key": {
+    "t": "minecraft:ghast_tear",
+    "p": "minecraft:blaze_powder",
+    "f": "minecraft:feather"
+  },
+  "result": {
+    "id": "legendgear:phoenix_feather"
+  }
+}

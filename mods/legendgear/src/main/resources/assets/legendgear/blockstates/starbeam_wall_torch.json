@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "legendgear:block/starbeam_wall_torch"
+    },
+    "facing=south": {
+      "model": "legendgear:block/starbeam_wall_torch",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "legendgear:block/starbeam_wall_torch",
+      "y": 180
+    },
+    "facing=north": {
+      "model": "legendgear:block/starbeam_wall_torch",
+      "y": 270
+    }
+  }
+}

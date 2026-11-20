@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "b b",
+    "b b",
+    "bbb"
+  ],
+  "key": {
+    "b": "minecraft:brick"
+  },
+  "result": {
+    "id": "legendgear:clay_jar",
+    "count": 16
+  }
+}

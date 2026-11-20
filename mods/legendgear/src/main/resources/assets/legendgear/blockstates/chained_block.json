@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "kind=0": {
+      "model": "legendgear:block/chained_block_0"
+    },
+    "kind=1": {
+      "model": "legendgear:block/chained_block_1"
+    },
+    "kind=2": {
+      "model": "legendgear:block/chained_block_2"
+    },
+    "kind=3": {
+      "model": "legendgear:block/chained_block_3"
+    },
+    "kind=4": {
+      "model": "legendgear:block/chained_block_4"
+    }
+  }
+}

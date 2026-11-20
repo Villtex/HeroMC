@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "g g",
+    "wmw"
+  ],
+  "key": {
+    "g": "minecraft:gold_ingot",
+    "w": "#minecraft:wool",
+    "m": "legendgear:wind_medallion"
+  },
+  "result": {
+    "id": "legendgear:wind_boots"
+  }
+}

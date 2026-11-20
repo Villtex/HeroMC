@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "glg",
+    "lml",
+    "glg"
+  ],
+  "key": {
+    "g": "minecraft:gold_ingot",
+    "l": "minecraft:leather",
+    "m": "legendgear:earth_medallion"
+  },
+  "result": {
+    "id": "legendgear:titan_band"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "l l",
+    "lbl",
+    "lll"
+  ],
+  "key": {
+    "l": "minecraft:leather",
+    "b": "legendgear:bomb"
+  },
+  "result": {
+    "id": "legendgear:bomb_bag",
+    "components": {
+      "legendgear:ammo": 1
+    }
+  }
+}

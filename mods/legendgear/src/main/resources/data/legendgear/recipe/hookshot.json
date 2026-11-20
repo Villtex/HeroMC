@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " ii",
+    " fi",
+    "d  "
+  ],
+  "key": {
+    "i": "minecraft:iron_ingot",
+    "f": "minecraft:fishing_rod",
+    "d": "minecraft:dispenser"
+  },
+  "result": {
+    "id": "legendgear:hookshot"
+  }
+}

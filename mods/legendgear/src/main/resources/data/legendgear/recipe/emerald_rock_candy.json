@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "legendgear:sugar_cube",
+    "legendgear:sugar_cube",
+    "legendgear:sugar_cube",
+    "legendgear:sugar_cube",
+    "legendgear:sugar_cube",
+    "legendgear:sugar_cube",
+    "minecraft:stick",
+    "minecraft:emerald",
+    "minecraft:water_bucket"
+  ],
+  "result": {
+    "id": "legendgear:emerald_rock_candy"
+  }
+}

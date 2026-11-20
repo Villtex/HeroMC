@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "gbg",
+    "bcb",
+    "gbg"
+  ],
+  "key": {
+    "g": "minecraft:gold_nugget",
+    "b": "minecraft:brick",
+    "c": [
+      "minecraft:coal",
+      "minecraft:charcoal"
+    ]
+  },
+  "result": {
+    "id": "legendgear:fire_medallion",
+    "components": {
+      "minecraft:damage": 50
+    }
+  }
+}

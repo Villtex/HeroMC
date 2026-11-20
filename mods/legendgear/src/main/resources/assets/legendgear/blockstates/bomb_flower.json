@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "cut=false": {
+      "model": "legendgear:block/bomb_flower"
+    },
+    "cut=true": {
+      "model": "legendgear:block/bomb_flower_cut"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "stage=0": {
+      "model": "legendgear:block/mystic_shrub_0"
+    },
+    "stage=1": {
+      "model": "legendgear:block/mystic_shrub_1"
+    },
+    "stage=2": {
+      "model": "legendgear:block/mystic_shrub_2"
+    }
+  }
+}

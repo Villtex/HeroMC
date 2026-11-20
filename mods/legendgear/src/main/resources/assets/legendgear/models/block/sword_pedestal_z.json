@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "face": "legendgear:block/blockSwordPedestal_front",
+    "side": "legendgear:block/blockSwordPedestal_side",
+    "top": "legendgear:block/blockSwordPedestal_top_v",
+    "particle": "legendgear:block/blockSwordPedestal_side"
+  },
+  "elements": [
+    {
+      "from": [
+        4,
+        0,
+        0
+      ],
+      "to": [
+        12,
+        8,
+        16
+      ],
+      "faces": {
+        "north": {
+          "texture": "#side"
+        },
+        "south": {
+          "texture": "#side"
+        },
+        "west": {
+          "texture": "#face"
+        },
+        "east": {
+          "texture": "#face"
+        },
+        "up": {
+          "texture": "#top"
+        },
+        "down": {
+          "texture": "#top"
+        }
+      }
+    }
+  ]
+}

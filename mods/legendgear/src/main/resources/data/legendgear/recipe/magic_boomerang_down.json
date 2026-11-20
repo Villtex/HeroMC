@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "  g",
+    "  g",
+    "ggd"
+  ],
+  "key": {
+    "g": "minecraft:gold_ingot",
+    "d": "minecraft:diamond"
+  },
+  "result": {
+    "id": "legendgear:magic_boomerang"
+  }
+}

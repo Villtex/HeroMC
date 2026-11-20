@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "along_x=false": {
+      "model": "legendgear:block/sword_pedestal_technical"
+    },
+    "along_x=true": {
+      "model": "legendgear:block/sword_pedestal_technical"
+    }
+  }
+}

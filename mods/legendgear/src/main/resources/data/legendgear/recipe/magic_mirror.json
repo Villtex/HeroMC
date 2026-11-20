@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "ege",
+    "gdg",
+    "ege"
+  ],
+  "key": {
+    "e": "minecraft:ender_pearl",
+    "g": "minecraft:gold_ingot",
+    "d": "minecraft:diamond"
+  },
+  "result": {
+    "id": "legendgear:magic_mirror"
+  }
+}

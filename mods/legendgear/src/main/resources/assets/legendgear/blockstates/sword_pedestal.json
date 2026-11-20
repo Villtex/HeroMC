@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "along_x=false,has_sword=false": {
+      "model": "legendgear:block/sword_pedestal_z"
+    },
+    "along_x=false,has_sword=true": {
+      "model": "legendgear:block/sword_pedestal_z"
+    },
+    "along_x=true,has_sword=false": {
+      "model": "legendgear:block/sword_pedestal_x"
+    },
+    "along_x=true,has_sword=true": {
+      "model": "legendgear:block/sword_pedestal_x"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " g ",
+    "g g",
+    " m "
+  ],
+  "key": {
+    "g": "minecraft:gold_ingot",
+    "m": "legendgear:earth_medallion"
+  },
+  "result": {
+    "id": "legendgear:geo_amulet"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "gbg",
+    "bcb",
+    "gbg"
+  ],
+  "key": {
+    "g": "minecraft:gold_nugget",
+    "b": "minecraft:brick",
+    "c": "minecraft:dirt"
+  },
+  "result": {
+    "id": "legendgear:earth_medallion",
+    "components": {
+      "minecraft:damage": 50
+    }
+  }
+}

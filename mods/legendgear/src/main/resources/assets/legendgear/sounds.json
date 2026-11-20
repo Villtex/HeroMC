@@ -1,0 +1,200 @@
+{
+  "sine": {
+    "sounds": [
+      "legendgear:sine"
+    ],
+    "subtitle": "subtitles.legendgear.sine"
+  },
+  "heart": {
+    "sounds": [
+      "legendgear:aheart"
+    ],
+    "subtitle": "subtitles.legendgear.heart"
+  },
+  "speedboost": {
+    "sounds": [
+      "legendgear:speedboost"
+    ],
+    "subtitle": "subtitles.legendgear.speedboost"
+  },
+  "moneysmall": {
+    "sounds": [
+      "legendgear:moneysmall"
+    ],
+    "subtitle": "subtitles.legendgear.moneysmall"
+  },
+  "moneymid": {
+    "sounds": [
+      "legendgear:moneymid"
+    ],
+    "subtitle": "subtitles.legendgear.moneymid"
+  },
+  "moneybig": {
+    "sounds": [
+      "legendgear:moneybig"
+    ],
+    "subtitle": "subtitles.legendgear.moneybig"
+  },
+  "partialcharge": {
+    "sounds": [
+      "legendgear:partialcharge"
+    ],
+    "subtitle": "subtitles.legendgear.partialcharge"
+  },
+  "fullcharge": {
+    "sounds": [
+      "legendgear:fullcharge"
+    ],
+    "subtitle": "subtitles.legendgear.fullcharge"
+  },
+  "repel": {
+    "sounds": [
+      "legendgear:repel"
+    ],
+    "subtitle": "subtitles.legendgear.repel"
+  },
+  "boomerang": {
+    "sounds": [
+      "legendgear:boomerang"
+    ],
+    "subtitle": "subtitles.legendgear.boomerang"
+  },
+  "lift": {
+    "sounds": [
+      "legendgear:lift"
+    ],
+    "subtitle": "subtitles.legendgear.lift"
+  },
+  "throw": {
+    "sounds": [
+      "legendgear:throw"
+    ],
+    "subtitle": "subtitles.legendgear.throw"
+  },
+  "firebuild": {
+    "sounds": [
+      "legendgear:firebuild"
+    ],
+    "subtitle": "subtitles.legendgear.firebuild"
+  },
+  "highcharge": {
+    "sounds": [
+      "legendgear:highcharge"
+    ],
+    "subtitle": "subtitles.legendgear.highcharge"
+  },
+  "swordcharge": {
+    "sounds": [
+      "legendgear:swordcharge"
+    ],
+    "subtitle": "subtitles.legendgear.swordcharge"
+  },
+  "whirlwind": {
+    "sounds": [
+      "legendgear:whirlwind"
+    ],
+    "subtitle": "subtitles.legendgear.whirlwind"
+  },
+  "popin": {
+    "sounds": [
+      "legendgear:popin"
+    ],
+    "subtitle": "subtitles.legendgear.popin"
+  },
+  "swordplace": {
+    "sounds": [
+      "legendgear:swordplace"
+    ],
+    "subtitle": "subtitles.legendgear.swordplace"
+  },
+  "swordtake": {
+    "sounds": [
+      "legendgear:swordtake"
+    ],
+    "subtitle": "subtitles.legendgear.swordtake"
+  },
+  "unchain": {
+    "sounds": [
+      "legendgear:unchain"
+    ],
+    "subtitle": "subtitles.legendgear.unchain"
+  },
+  "wah": {
+    "sounds": [
+      "legendgear:wah"
+    ],
+    "subtitle": "subtitles.legendgear.wah"
+  },
+  "wahwah": {
+    "sounds": [
+      "legendgear:wahwah"
+    ],
+    "subtitle": "subtitles.legendgear.wahwah"
+  },
+  "bah": {
+    "sounds": [
+      "legendgear:bah"
+    ],
+    "subtitle": "subtitles.legendgear.bah"
+  },
+  "gah": {
+    "sounds": [
+      "legendgear:gah"
+    ],
+    "subtitle": "subtitles.legendgear.gah"
+  },
+  "starfall": {
+    "sounds": [
+      "legendgear:starfall"
+    ],
+    "subtitle": "subtitles.legendgear.starfall"
+  },
+  "starcaught": {
+    "sounds": [
+      "legendgear:starcaught"
+    ],
+    "subtitle": "subtitles.legendgear.starcaught"
+  },
+  "twinkle": {
+    "sounds": [
+      "legendgear:twinkle"
+    ],
+    "subtitle": "subtitles.legendgear.twinkle"
+  },
+  "sprinkle": {
+    "sounds": [
+      "legendgear:sprinkle"
+    ],
+    "subtitle": "subtitles.legendgear.sprinkle"
+  },
+  "transform": {
+    "sounds": [
+      "legendgear:transform"
+    ],
+    "subtitle": "subtitles.legendgear.transform"
+  },
+  "fluteattack": {
+    "sounds": [
+      "legendgear:fluteattack"
+    ],
+    "subtitle": "subtitles.legendgear.fluteattack"
+  },
+  "flutesustain": {
+    "sounds": [
+      "legendgear:flutesustain"
+    ],
+    "subtitle": "subtitles.legendgear.flutesustain"
+  },
+  "dash": {
+    "sounds": [
+      "legendgear:dash"
+    ],
+    "subtitle": "subtitles.legendgear.dash"
+  },
+  "escalate": {
+    "sounds": [
+      "legendgear:escalate"
+    ],
+    "subtitle": "subtitles.legendgear.escalate"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "legendgear:star_piece"
+  ],
+  "result": {
+    "id": "legendgear:stardust",
+    "count": 3
+  }
+}

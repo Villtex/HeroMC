@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "legendgear:sugar_cube"
+  ],
+  "result": {
+    "id": "minecraft:sugar",
+    "count": 9
+  }
+}
