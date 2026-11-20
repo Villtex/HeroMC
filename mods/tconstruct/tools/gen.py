@@ -408,6 +408,10 @@ write(f'data/{NS}/tags/block/effective/mattock_axe.json', {'values': [
     M + 'dead_bush', M + 'sugar_cane', M + 'lily_pad', M + 'brown_mushroom', M + 'red_mushroom', M + 'nether_wart']})
 write(f'data/{NS}/tags/block/effective/mattock_shovel.json', {'values': ['#minecraft:dirt', M + 'grass_block', M + 'clay', M + 'farmland',
                                                                          M + 'dirt_path', M + 'mycelium', M + 'podzol']})
+write(f'data/{NS}/tags/block/effective/scythe.json', {'values': [  # Material web, cactus, pumpkin, plants, vine, leaves
+    M + 'cobweb', M + 'cactus', M + 'pumpkin', M + 'carved_pumpkin', M + 'jack_o_lantern', M + 'melon', '#minecraft:leaves', M + 'vine',
+    '#minecraft:replaceable_by_trees', '#minecraft:flowers', '#minecraft:saplings', '#minecraft:crops', M + 'sugar_cane', M + 'brown_mushroom',
+    M + 'red_mushroom', M + 'lily_pad', M + 'cocoa', M + 'nether_wart', M + 'sweet_berry_bush', M + 'dead_bush']})
 write(f'data/{NS}/tags/block/effective/web.json', {'values': [M + 'cobweb']})
 write(f'data/{NS}/tags/block/needs_cobalt_tool.json', {'values': []})
 write(f'data/{NS}/tags/block/needs_manyullyn_tool.json', {'values': []})

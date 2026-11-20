@@ -1,0 +1,24 @@
+{
+  "values": [
+    "minecraft:cobweb",
+    "minecraft:cactus",
+    "minecraft:pumpkin",
+    "minecraft:carved_pumpkin",
+    "minecraft:jack_o_lantern",
+    "minecraft:melon",
+    "#minecraft:leaves",
+    "minecraft:vine",
+    "#minecraft:replaceable_by_trees",
+    "#minecraft:flowers",
+    "#minecraft:saplings",
+    "#minecraft:crops",
+    "minecraft:sugar_cane",
+    "minecraft:brown_mushroom",
+    "minecraft:red_mushroom",
+    "minecraft:lily_pad",
+    "minecraft:cocoa",
+    "minecraft:nether_wart",
+    "minecraft:sweet_berry_bush",
+    "minecraft:dead_bush"
+  ]
+}

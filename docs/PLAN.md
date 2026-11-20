@@ -63,7 +63,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 23 | Gesamttest und Modpack-Export | – | alle | Opus 5.5, mittel | offen |
 | 24 | später: Twilight Forest | ~50.000 | – | Fable 5.2, hoch | zurückgestellt |
 | 25a | Tinkers' Construct A: Werkzeug-Kern (Materialien, Teile, Muster, Tische, Zusammenbau, Modifikatoren anbringen) | ~10.000 | 3 | Opus 5.5, hoch | ✅ erledigt |
-| 25b | Tinkers' Construct B: Werkzeuge im Einsatz (Fähigkeiten, Modifikator-Effekte, Bogen, Wurfwaffen) und ihre Darstellung | ~9.000 | 25a | Fable 5.2, hoch | offen |
+| 25b | Tinkers' Construct B: Werkzeuge im Einsatz (Fähigkeiten, Modifikator-Effekte, Bogen, Wurfwaffen) und ihre Darstellung | ~9.000 | 25a | Fable 5.2, hoch | ✅ erledigt |
 | 25c | Tinkers' Construct C: Schmelzerei, flüssige Metalle, Gießen, Legierungen, Trockengestell | ~11.000 | 25a | Fable 5.2, hoch | offen |
 | 25d | Tinkers' Construct D: Weltgenerierung, Schleiminseln, Dorf-Bauteile, Dorfbewohner | ~4.000 | 25c | Fable 5.2, extra hoch | offen |
 | 25e | Tinkers' Construct E: Spieler (Rucksack, Herzen, Handschuh, Ereignisse), Handbücher, Essen, Mobs | ~8.000 | 25a | Opus 5.5, mittel | offen |
@@ -1487,6 +1487,38 @@ Quellen: `items/tools/*`, `library/tools/{AbilityHelper,HarvestTool,DualHarvestT
   Haltbarkeit/Verstärkt, Reparatur, Nekrotisch, Elektro nur wenn sinnvoll (kein IC2 → notieren).
 - Darstellung: Werkzeug-Modell aus Schichten (Kopf, Griff, Zubehör, Extra je Material + Effekt-Schicht),
   kaputtes Werkzeug, Bogen-Spannzustände; Skill `client-render-263`. Client-Prüfung.
+
+#### Teil 25b – Stand (✅ erledigt)
+
+Alles in `mods/tconstruct` (Daten aus `tools/gen.py`), Offenes in `mods/tconstruct/TODO.md`.
+- Abbau-Fähigkeiten (`tools/ToolAbilities`, über `BreakBlockEvent`; die übrigen Blöcke eines Bereichs bricht der Spieler
+  selbst ab, Drops/Abnutzung bleiben Vanilla): Hammer/Exkavator 3×3 quer zur Blickseite (höchstens 1,5 härter, Stufe),
+  Holzfälleraxt (Baum mit > 3 Blättern oben: gleicher Stamm aufwärts/seitlich, sonst Holz im 3×3×3), Streitaxt (bis zu
+  8 Holzblöcke darüber), Sense (Pflanzen, Blätter, Netze … im 3×3×3, Tag `effective/scythe`). Hacke pflügt (25a).
+  TreeCapitator erkennt Beil, Holzfälleraxt, Hacke als Äxte (Pack-Konfiguration).
+- Modifikator-Effekte: Auto-Smelt (Lava: erster Drop geschmolzen, Glück vervielfacht Nicht-Blöcke, Erfahrung, Partikel),
+  Lapis wächst je Block/Treffer (1 in 50) und würfelt Glück/Plünderung nach `midStreamModify`, Moos repariert
+  (350/1150 je nach Himmel), Lohe/Lava zünden, Nekrotisch heilt, Rückstoß, Bann/Gliederfüßer/Hammer gegen Untote
+  als Zusatzschaden (`tools/TEvents`, `ToolCombat`), Kolben-Rückstoß. Elektro entfällt (kein IC2).
+- Waffen: Langschwert (Sprint ×1,5; Rechtsklick laden und springen), Streitaxt (laden: Tempo, Sprung, Stärke, Hunger,
+  Sprung nach vorn; Treffer ×1,5 Rückstoß), Rapier (durchschlägt Rüstung, Rücksprung, kürzere Unverwundbarkeit),
+  Hackmesser (+7 Ticks Unverwundbarkeit, Abbaulähmung beim Halten), Entermesser (1 in 10 kritisch), Bratpfanne (×1,7,
+  Langsamkeit, Klang; Schleichen + Rechtsklick stellt sie als Kochblock ab: 8 Essens-Slots, eigene Brennwerte,
+  GUI, alte ID 1311), Sense (trifft alles um das Ziel, ganze 1.5.2-Trefferformel), Dolch werfen (`entity/ThrownDagger`:
+  4 Schaden + Dolch-Treffer, steckt fest, aufheben), Blocken mit Gehtempo ×2,5 (`USE_EFFECTS`).
+- Meißel: Rechtsklick (Dauer 20 − Tempo/100) meißelt Stein → Steinziegel, Sandstein → glatt → gemeißelt; dasselbe als
+  Rezept (Meißel + Block, Meißel bleibt und nutzt sich ab, `recipe/ChiselRecipe`). Weitere Stufen (Multi-Ziegel,
+  versengte Blöcke) hängen 25c/25f mit `Detailing.add` ein.
+- Kurzbogen + Pfeile aus Teilen (`entity/TinkerArrow`: Schaden Tempo × 2 × Angriff / 5, Masse → Schwerkraft,
+  Befiederung, Rückkehr ins Inventar/Mob-Slot), Vanilla-Pfeile gehen auch; Trankwerfer (Testitem, nur Kreativ).
+- Darstellung: jedes Werkzeug ein `minecraft:composite` aus Schichten (Griff, Kopf, Zubehör, Extra, Effekt 1–6, bei
+  Bogen Spannzustände 1–3 und Pfeil), gewählt über die Eigenschaft `tconstruct:tool_part` (`client/ToolPartProperty`);
+  kaputter Kopf bzw. kaputte Sehne. Geschosse rendern das Werkzeug-Item (`client/ToolProjectileRenderer`).
+- Geprüft am Testserver (temporärer Befehl): Hammer 9 Blöcke/9 Drops, Exkavator, Baum gefällt, Streitaxt Block + 8 darüber (3 von 12
+  Planken bleiben), Sense 9 Gräser, Auto-Smelt Eisenerz → Barren, Meißel (Welt + Rezept, Abnutzung), Sense trifft 3 Zombies,
+  Dolch fliegt, Bogen schießt Tinkers-Pfeil (Tempo 2,0, kritisch), Moos 100 → 69 in 3500 Ticks, Bratpfanne abgestellt,
+  kocht 1 Rindfleisch je 1000 Ticks mit Kohle (2000 Ticks Feuer).
+- Offen: Client-Prüfung (Schicht-Modelle, Bogen-Spannen, Geschoss-Renderer, Bratpfannen-GUI und -Modell).
 
 ### Teil 25c – Schmelzerei
 Quellen: `blocks/{SmelteryBlock,SearedBlock,LavaTankBlock,CastingChannelBlock}`, `blocks/fluid/*`,

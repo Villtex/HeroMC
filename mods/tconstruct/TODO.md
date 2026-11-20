@@ -1,24 +1,21 @@
-# Tinkers' Construct – offen nach Teil 25a
+# Tinkers' Construct – offen nach Teil 25b
 
-Stand nach 25a (Werkzeug-Kern). Was die nächsten Unterteile brauchen oder nachholen müssen.
+Stand nach 25a (Werkzeug-Kern) und 25b (Werkzeuge im Einsatz, Darstellung). Was die nächsten Unterteile brauchen oder nachholen müssen.
 
-## 25b – Werkzeuge im Einsatz und Darstellung
+## Nach 25b – kleine Abweichungen und Offenes
 
-- Modifikator-Effekte (`TActiveOmniMod`, `ActiveToolMod`): Moos-Reparatur, Auto-Smelt, Glück-Zufallsstufen
-  (`ModLapis.afterBlockBreak`), Redstone nur Tempo (schon), Lohe/Feurig (`Fiery`, `Lava` setzen Feuer), Nekrotisch
-  (Leben), Rückstoß (`Knockback`), Bann/Gliederfüßer (`ModSmite`, `ModAntiSpider` Schaden), Enthaupten (Köpfe, 25e),
-  Elektro entfällt (kein IC2). Die Werte stehen schon im Werkzeug (`InfiTool`-Schlüssel wie in 1.5.2).
-- Fähigkeiten: Hammer/Exkavator 3×3, Holzfälleraxt (TreeCapitator), Sense, Streitaxt (Rechtsklick), Langschwert
-  (Ausfall + Sprint-Ladeangriff `chargeAttack`), Rapier (Rüstungsdurchschlag `pierceArmor`, Rücksprung), Dolch werfen,
-  Hackmesser/Sense/Bratpfanne eigene `onLeftClickEntity`, Bratpfanne abstellen (`EquipBlock`/`FrypanLogic`),
-  Meißel (`Detailing`), Kurzbogen + Pfeile, Trankwerfer (`PotionLauncher`, Item noch nicht registriert).
-- Blocken: die Waffen mit `EnumAction.block` haben schon `Combat152.BLOCKING`; die Geh-Geschwindigkeit ×2,5 beim
-  Blocken (`Weapon.onUpdate`) fehlt noch.
-- Schadens-Multiplikator (Hackmesser/Rapier/Sense) läuft in `TEvents` nach dem Blocken des Ziels (combat152 halbiert
-  in derselben Ereignis-Stufe); im Original kam er davor. Kleine Abweichung, ggf. in 25b genauer.
-- Darstellung: Werkzeug-Modelle aus Schichten je Material (Griff, Kopf, Zubehör, Extra, Effekt1..6, kaputter Kopf),
-  Bogen-Spannzustände. Heute zeigt jedes Werkzeug ein festes Symbol (Holzgriff, Eisenkopf). Texturen liegen schon
-  unter `textures/item/<werkzeug>/` nur für die Symbole; für alle Materialien in `tools/gen.py` ergänzen.
+- Bei normalen Schlägen (Vanilla-Angriff + combat152) kommen Zusatzschaden der Modifikatoren, Sprint-Ausfall des
+  Langschwerts und Schadensfaktor nach Krit und Blocken des Ziels (im Original davor); Rückstoß-Modifikator ohne die
+  0,1 nach oben. Sense und geworfener Dolch nutzen die ganze 1.5.2-Formel (`ToolCombat.attack`), dort ohne
+  Verzauberungsschaden (Tinkers-Werkzeuge sind nicht verzauberbar außer über Lapis/Seide).
+- Meißel-Stufen der späteren Teile: `Detailing.add(...)` für Obsidian/Sandstein/Barren → Multi-Ziegel (multiBrick 0–13,
+  multiBrickFancy 0–15, 25f), Geschwindigkeitsblöcke (speedBlock 0–6, 25f), versengte Blöcke (smeltery 2/4/6/8–11, 25c);
+  die Gegenstands-Zutaten (Eisenbarren, Gold, Lapis, Diamant, Redstone, Knochen, Schleim, Fleischblock, Endstein,
+  Aluminium) brauchen dann eigene Einträge, weil `Detailing` heute nur Blöcke kennt.
+- Kein JEI für die Meißel-Rezepte (Code-Rezept).
+- Trankwerfer: das Geräusch "launcher_clank" fehlt im Archiv, ersetzt durch das Armbrust-Laden.
+- Pfeile, die einen Mob treffen, landen wie im Original in einem leeren Ausrüstungs-Slot (sichtbar in der Hand).
+- Enthaupten (Köpfe) folgt mit 25e.
 
 ## 25c – Schmelzerei
 
@@ -41,6 +38,8 @@ Stand nach 25a (Werkzeug-Kern). Was die nächsten Unterteile brauchen oder nachh
 
 ## Client-Prüfung offen
 
+- 25b: Werkzeugmodelle aus Schichten (alle Materialien, Effekte, kaputt), Bogen-Spannzustände und Pfeil im Bogen,
+  Pfeil-/Dolch-Renderer (Lage, Drehung), Bratpfanne (Modell mit Griff, GUI-Anzeigen), Gehtempo beim Benutzen.
 - Alle GUIs (Werkzeugstation mit Knöpfen und Werte-Panel, Schmiede, Teilbauer mit Musterkiste, Schablonentisch,
   Musterkiste, Werkbank-Station), Tischmodelle, Stufen, Item-Symbole, JEI-Kategorien.
 - Das Verschieben der Eingabe-Slots je Werkzeug (Reflection auf `Slot.x/y`, nur Client).

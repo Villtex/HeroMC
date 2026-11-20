@@ -46,6 +46,9 @@ import java.util.Optional;
  */
 public final class ToolAbilities {
     private static final RandomSource RANDOM = RandomSource.create();
+    /** Scythe.materials: web, cactus, pumpkin, plants, vine, leaves. */
+    private static final net.minecraft.tags.TagKey<Block> SCYTHE = net.minecraft.tags.TagKey.create(Registries.BLOCK,
+            tconstruct.TConstruct.id("effective/scythe"));
     /** True while a tool breaks the other blocks of its area (the 1.5.2 loops called the modifiers directly). */
     private static final ThreadLocal<Boolean> AREA = ThreadLocal.withInitial(() -> false);
 
@@ -362,7 +365,7 @@ public final class ToolAbilities {
                 continue;
             }
             BlockState local = level.getBlockState(p);
-            if (!local.isAir() && tool.type.effective != null && local.is(tool.type.effective)) {
+            if (!local.isAir() && local.is(SCYTHE)) {
                 areaBreak(player, p.immutable());
             }
         }

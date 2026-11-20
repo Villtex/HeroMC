@@ -3,7 +3,7 @@ name: tinkers-tools-263
 description: Beim Weiterbauen von Tinkers' Construct (mods/tconstruct, Teile 25b–25f) benutzen – wie Werkzeuge, Teile, Materialien, Muster und Modifikatoren im Port abgebildet sind (Komponente tconstruct:tool statt InfiTool-NBT, ein Item je Teil und Material, alte IDs), wo neue Fähigkeiten, Modifikator-Effekte, Gussformen und Werkzeug-Modelle eingehängt werden und wie man es ohne Spieler prüft.
 ---
 
-# Tinkers' Construct im Port (Stand Teil 25a)
+# Tinkers' Construct im Port (Stand Teil 25b)
 
 Code: `mods/tconstruct/src/main/java/tconstruct/`, Daten/Assets aus `mods/tconstruct/tools/gen.py`
 (`python3 mods/tconstruct/tools/gen.py` überschreibt `src/main/resources/assets|data` und `original-assets.txt`).
@@ -42,13 +42,22 @@ Alte IDs: `TItems.OLD_IDS` (Item-ID aus `TinkersWorkshop.txt` + 256, Damage) und
 
 ## Neues einhängen
 
-- Fähigkeit eines Werkzeugs (25b): in `ToolCoreItem` nach `type` verzweigen oder eine Unterklasse je `ToolType`
-  in `TItems.TOOLS` registrieren (Konstruktor `(ToolType, Properties)`).
-- Modifikator-Effekt: Schlüssel aus `InfiTool` lesen (z. B. `t.getInt("Moss")`, `t.getArray("Lapis")[0]`) in
-  `inventoryTick`/`mineBlock`/`hurtEnemy` oder Ereignissen.
-- Werkzeug-Modell aus Schichten (25b): heute festes Symbol je Werkzeug (gen.py `TOOLS`). Texturen
-  `items/<ordner>/<material><suffix>.png`, Suffixe stehen in gen.py; Material je Schicht aus `ToolData` lesen
-  (eigene `SelectItemModelProperty` je Teil + `minecraft:composite`).
+- Fähigkeit beim Abbau: `tools/ToolAbilities.onBreak` (`BreakBlockEvent`, Priorität HIGH, vor TreeCapitator) nach
+  `tool.type` verzweigen. Weitere Blöcke eines Bereichs mit `areaBreak(player, pos)` abbauen (ruft
+  `player.gameMode.destroyBlock` mit gesetztem `AREA`-Flag: dann laufen nur die Modifikatoren, keine Rekursion; Drops,
+  Abnutzung über `mineBlock`, Schutz bleiben Vanilla). `true` zurückgeben = normalen Abbau abbrechen.
+- Modifikator vor dem Abbau (`TActiveOmniMod.beforeBlockBreak`): `ToolAbilities.beforeBlockBreak`; beim Treffer:
+  `ToolCombat.afterHit` (aus `hurtEnemy`), Zusatzschaden `ToolCombat.modDamage` (über `TEvents`, LivingIncomingDamage).
+  Ganzer 1.5.2-Treffer ohne Spielerschlag (Flächen, Geschosse): `ToolCombat.attack(stack, angreifer, ziel, tool, basis)`.
+- Rechtsklick/Laden/Werfen: `ToolCoreItem.use/releaseUsing/finishUsingItem/getUseAnimation/getUseDuration` je `type`.
+  Gehtempo beim Benutzen = Komponente `USE_EFFECTS` (`TItems.useSpeed`, 1.5.2: 0,2 × Faktor des Werkzeugs).
+- Meißel-Stufen: `recipe/Detailing.add(() -> eingabeBlock, () -> ausgabeZustand)`; gilt für Welt und Rezept.
+- Geschosse: `entity/TinkerArrow`, `entity/ThrownDagger` (beide `AbstractArrow`, Stack per `SynchedEntityData` für den
+  Renderer), Zielen mit 1.5.2-Streuung `TinkerArrow.aim`.
+- Werkzeug-Modell: gen.py `TOOLS` (Suffixe aus `getIconSuffix`, kaputter Teil, Effekt-Suffix) erzeugt je Werkzeug ein
+  `minecraft:composite` aus `minecraft:select` mit Eigenschaft `tconstruct:tool_part` (`part` = handle/head/accessory/
+  extra/effect1..6/arrow; Wert = Material-/Effekt-ID, `_broken`, `_1.._3` beim gespannten Bogen,
+  `client/ToolPartProperty`). Nur vorhandene Texturen werden Fälle (gen.py braucht `.reference/tconstruct`).
 - JEI: `compat/TConstructJeiPlugin` + `TinkerCategory` (Zeile aus Eingabe-Listen und Ausgaben, fokus-verknüpft).
 
 ## Prüfen ohne Spieler
@@ -56,3 +65,7 @@ Alte IDs: `TItems.OLD_IDS` (Item-ID aus `TinkersWorkshop.txt` + 256, Damage) und
 Temporärer Befehl (nie committen), Block-Entities direkt füllen: `PartBuilderBlockEntity.setItem/removeItem` (Logik
 wie `PartCrafterLogic`), `ToolStationBlockEntity.setItem(1..3)` → Ergebnis in Slot 0, `InfiTool.of(...)` ausgeben;
 Abbau mit `stack.getDestroySpeed(state)` / `isCorrectToolForDrops`. Vorlage siehe Teil 25a in `docs/PLAN.md`.
+- FakePlayer: `isSwinging()` bleibt true (er tickt nicht) → für Moos & Co. einen Mob als Träger nehmen. Mit
+  `fp.gameMode.destroyBlock(pos)` laufen die Abbau-Fähigkeiten echt (Blickrichtung mit `fp.snapTo(..., yaw, pitch)`).
+- Neue Entities (Drops, Geschosse) findet `getEntitiesOfClass` im selben Befehl oft nicht: danach per RCON zählen
+  (`execute if entity @e[type=tconstruct:arrow]`, `execute as @e[type=item] run data get entity @s Item`).
