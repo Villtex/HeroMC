@@ -61,7 +61,12 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 21 | Immibis Core, Immibis's Microblocks | ~26.000 | 3 | Fable 5.2, extra hoch | offen |
 | 22 | Client-Mods: Damage Indicators, MapWriter | ~12.000 | – | Sonnet 5.5, niedrig | ✅ erledigt |
 | 23 | Gesamttest und Modpack-Export | – | alle | Opus 5.5, mittel | offen |
-| 24 | später: Twilight Forest | ~50.000 | – | Fable 5.2, hoch | zurückgestellt |
+| 24a | Twilight Forest A: Dimension, Gelände, Biome, Portal, Struktur-Raster | ~8.000 | 2 | Fable 5.2, extra hoch | offen |
+| 24b | Twilight Forest B: Blöcke, Holz, Pflanzen, Kleintiere-Blöcke, Biom-Dekoration, magische Bäume | ~9.000 | 24a | Fable 5.2, hoch | offen |
+| 24c | Twilight Forest C: normale Mobs mit Modellen, Spawns je Biom, Spawn-Eier | ~11.000 | 24a | Opus 5.5, hoch | offen |
+| 24d | Twilight Forest D: Strukturen A (Hügel, Hecken-Labyrinth, Naga-Hof, Hain, Lich-Turm, Labyrinth, Hohle Bäume), Beute | ~9.000 | 24b | Fable 5.2, extra hoch | offen |
+| 24e | Twilight Forest E: Strukturen B (Dunkler Turm mit Turm-Mechanik, Ritter-Festung, Hydra-Höhle) | ~6.000 | 24d | Fable 5.2, hoch | offen |
+| 24f | Twilight Forest F: Bosse, Boss-Spawner, Trophäen, Ausrüstung, Zauberstäbe, Karten, Entwerkbank, Fortschritte | ~10.000 | 24c, 24d | Opus 5.5, hoch | offen |
 | 25a | Tinkers' Construct A: Werkzeug-Kern (Materialien, Teile, Muster, Tische, Zusammenbau, Modifikatoren anbringen) | ~10.000 | 3 | Opus 5.5, hoch | ✅ erledigt |
 | 25b | Tinkers' Construct B: Werkzeuge im Einsatz (Fähigkeiten, Modifikator-Effekte, Bogen, Wurfwaffen) und ihre Darstellung | ~9.000 | 25a | Fable 5.2, hoch | ✅ erledigt |
 | 25c | Tinkers' Construct C: Schmelzerei, flüssige Metalle, Gießen, Legierungen, Trockengestell | ~11.000 | 25a | Fable 5.2, hoch | offen |
@@ -347,7 +352,7 @@ Drei davon sind reine Client-HUDs: ArmorBar, BuffBar und Back Tools. Back Tools 
 - Sprungkraft beim Truhentragen: Sprungkraft −2 gibt es als Effekt nicht mehr (Stufen < 0 werden 0). Ersatz: Attribut
   `jump_strength` −0,1, solange ein voller Transporter im Inventar liegt (gleiche Sprunghöhe, kein Effekt-Symbol).
 - Soul Shards: Witherskelett und Zombiedorfbewohner sind eigene Mobs statt „spezieller“ Skelette/Zombies (gleiches
-  Verhalten). Twilight-Forest-Mobs der Liste fehlen bis Teil 24. Ein zweiter Splitter in einem Käfig ersetzt den ersten
+  Verhalten). Twilight-Forest-Mobs der Liste fehlen bis Teil 24c. Ein zweiter Splitter in einem Käfig ersetzt den ersten
   (der erste geht verloren, wie im Original). Die Persistenz ab Stufe 3 endet nach 600 Ticks Lebenszeit (1.5.2: Alter
   ohne Spieler in der Nähe). Shadow Blade und Shadow Pickaxe hatten keine Textur und kein Rezept: hier mit den Texturen
   von Diamantschwert und -spitzhacke, nur im Kreativmodus.
@@ -1410,6 +1415,77 @@ simulate movement` ab; Schwerkraft und `move` laufen jetzt nur auf dem Server.
   - Import für den CurseForge- oder Prism-Launcher
   - Hinweis: Die Jars enthalten Original-Assets, nur für den eigenen Gebrauch.
 - Client-Prüfliste für den Nutzer.
+
+## Teil 24 – Twilight Forest (24a–24f)
+
+Original: `twilightforest` 1.18.1 (`python3 tools/reference.py --only twilightforest,z-hexxit-configs`), Paket
+`twilightforest`, ~50.000 Zeilen. Ein Teilprojekt `mods/twilightforest/` (Mod-ID `twilightforest`), das die Teile
+nacheinander füllen.
+
+Pack-Konfiguration `config/TwilightForest.cfg`: Dimension 7, Biom-IDs 64–81, Block-IDs 1351–1374 (alte IDs für
+Better Dungeons, Infernal Mobs, Soul Shards, Ruinen-Vorlagen über `OldGameIds`/`OldBlockStates` auflösbar halten),
+Portale für alle, nur aus der Oberwelt, Entwerkbank an, Zikaden mit Ton, Verzauberung „Fiery Aura“ 206.
+
+Gemeinsame Regeln für alle Unterteile:
+- Die Dimension läuft mit einem eigenen Chunk-Generator nach `ChunkProviderTwilightForest` (wie `worldgen152` für die
+  Oberwelt) und wird gegen eine Twilight-Welt des Original-Servers geprüft (`tools/expect.sh`, `tools/verify_blocks.py`,
+  Dimension 7): Ziel 0 Abweichungen für Gelände (24a), Dekoration (24b) und Strukturen (24d, 24e).
+- Reihenfolge der Generierung wie im Original (`ChunkProviderTwilightForest.populate`, `TFBiomeDecorator`).
+- Offenes je Unterteil in `mods/twilightforest/TODO.md`. Bei Bedarf ein Skill `twilight-forest-263` (Dimension,
+  Struktur-Raster, Komponenten-Basis), weil 24b–24f darauf aufbauen.
+
+### Teil 24a – Dimension, Gelände, Biome, Portal
+Quellen: `TwilightForestMod` (Registrierung), `world/{WorldProviderTwilightForest,ChunkProviderTwilightForest,
+TFWorldChunkManager,GenLayer*,MapGenBase4096,TFGenCaves,TFGenRavine,TFWorld}`, `biomes/*` (Werte, Farben, Höhen;
+Dekoration erst 24b, Spawns 24c), `TFFeature` + `TFFeatureCache*` (wo welche Struktur liegt, noch ohne Bauten),
+`block/BlockTFPortal`, `TFTeleporter`, `TFTickHandler` (Portal aus Diamant im Blumenring), `CommandTFLocate`.
+- Dimension mit 1.5.2-Himmel/-Nebel/-Licht (ewiges Zwielicht), Seed wie im Original aus dem Welt-Seed.
+- Gelände, Biom-Verteilung (GenLayer-Kette), Höhlen, Schluchten bitgenau.
+- Portal bauen, Hin- und Rückreise, Portal am Zielort.
+
+### Teil 24b – Blöcke, Pflanzen, Dekoration
+Quellen: `block/*` (ohne Boss-Spawner, Turm-Geräte, Trophäe, Entwerkbank), `item/ItemBlock*`, `tileentity/
+{Firefly,Cicada,Moonworm,Critter,FlameJet,PoppingJet,Smoker}`, `world/TFGen*` und `TFTreeGenerator` (Bäume, Pilze,
+Strünke, Wurzeln, Steinkreise, Brunnen, Hexenhütten, Monolithen, Pinguine, Feuerdüsen …), `biomes/TFBiomeDecorator`,
+magische Bäume (Baum der Zeit, Verwandlung, Bergarbeiter, Sortierung) mit ihrer Wirkung, Rezepte aus `TFRecipes`
+(soweit Blöcke). Skills `wood-sets-263`, `treecapitator-trees`, `worldgen152`.
+- Holzarten, Blätter, Setzlinge, Hecke, Wurzeln, Pflanzen, Glühwürmchen/Zikade/Mondwurm (Modelle, Licht, Ton),
+  Glühwürmchenglas, Feuerdüsen, Labyrinth-/Nagastein, Turmholz.
+- Biom-Dekoration bitgenau, Prüfung mit `verify_blocks.py`.
+
+### Teil 24c – Mobs
+Quellen: `entity/*` ohne Bosse und ihre Teile (Naga, Lich, Hydra, Minoshroom, Ur-Ghast samt Geschossen), `entity/ai`,
+`entity/passive`, `client/model` + `client/` Renderer dazu, `TFCreatures`, Spawnlisten der Biome, `ItemTFSpawnEgg`,
+`BehaviorTFMobEggDispense`. Skill `mobs-263`.
+- Tiere (Hirsch, Wildschwein, Bighorn, Pinguin, Eichhörnchen, Hase, Rabe, kleine Vögel, Quest-Widder, fliegende Glühwürmchen) und Gegner (Kobold,
+  Redcap, Wölfe, Hecken-/Königsspinne, Mücken, Skelett-Druide, Wraith, Käfer, Minotaurus, Turm-Mobs, Goblin-Ritter)
+  mit Drops, KI, Modellen.
+- Twilight-Mobs in den Listen anderer Mods nachtragen (Soul Shards, Teil 4; Infernal Mobs).
+
+### Teil 24d – Strukturen A
+Quellen: `structures/` ohne `darktower`, `stronghold`, `ComponentTFHydraLair`: `StructureTFComponent`,
+`StructureTFMajorFeatureStart`, `MapGenTFMajorFeature`, Hügel (`HollowHill`), Hecken-Labyrinth, Naga-Hof, Quest-Hain,
+Lich-Turm (`ComponentTFTower*`), Minotaurus-Labyrinth (`*Maze*`, `TFMaze`), Hohle Bäume (`MapGenTFHollowTree`,
+`*HollowTree*`), `TFTreasure*`, `TFTreasureItem`. Skills `templates-152`, `worldgen152`.
+- Alle Bauten bitgenau samt Kisten-Beute und Spawnern; Boss-Spawner als Platzhalter-Block (Bosse in 24f).
+
+### Teil 24e – Strukturen B
+Quellen: `structures/darktower/*`, `structures/stronghold/*`, `ComponentTFHydraLair`, `MapGenTFStronghold`,
+`block/BlockTFTowerDevice` + `BlockTFTowerTranslucent`, `tileentity/{TowerBuilder,Reverter,GhastTrap*,CReactorActive,
+TowerBossSpawner}`, `item/ItemTFTowerKey`.
+- Dunkler Turm mit Bau-Geräten (Turmbauer, Umkehrer, Ghast-Falle, Kristall-Reaktor, Türen, Schlüssel), Ritter-Festung,
+  Hydra-Höhle, bitgenau.
+
+### Teil 24f – Bosse und Ausrüstung
+Quellen: Boss-Entities (Naga, Lich + Bolzen/Bombe/Diener, Hydra + Köpfe/Hals/Mörser, Minoshroom, Ur-Ghast + Feuerball,
+Turm-Ghast) mit Modellen und Renderern, `block/BlockTFBossSpawner` + `tileentity/*Spawner`, `BlockTFTrophy` +
+`ItemTFTrophy`, `item/*` (Eisenholz, Stahlblatt, Feurig, Naga-Rüstung, Minotaurus-Axt, Labyrinth-Spitzhacke,
+Zauberstäbe, Pfauenfächer, Erzmagnet, Erzmesser, Zerbröselhorn, Verwandlungspulver, Mondwurm-Königin, Talismane,
+Essen), Karten (`TFMagicMapData`, `TFMazeMapData`, `TFMapCloningRecipe`), Entwerkbank (`ContainerTFUncrafting`,
+`*Goblin*`), `TFEnchantment`, `TFEventListener`, `TFAchievementPage` → Fortschritte, Rezepte aus `TFRecipes`.
+Skills `items-weapons-263`, `menu-gui-263`, `client-render-263`.
+- Bosse mit allen Phasen, Musik/Geräusche, Beute, Trophäen; Boss-Spawner in den Bauten aus 24d/24e scharf schalten.
+- Magische Karte und Labyrinth-Karte (Client-Prüfung), JEI für die Entwerkbank.
 
 ## Teil 25 – Tinkers' Construct (25a–25f)
 

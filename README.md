@@ -16,7 +16,7 @@ Jeder Mod wird deshalb gegen das dekompilierte Original als Referenz **neu gesch
   (`mods/worldgen152`) und gegen Welten des Original-Servers geprüft wird.
 - **Rezeptanzeige:** Not Enough Items wird nicht portiert. Stattdessen sind alle portierten Mods mit
   **JEI** kompatibel; eigene Rezepttypen bekommen ein JEI-Plugin.
-- **Twilight Forest** ist vorerst zurückgestellt. **Tinkers' Construct** ist in die Teile 25a–25f aufgeteilt.
+- **Twilight Forest** ist in die Teile 24a–24f aufgeteilt, **Tinkers' Construct** in die Teile 25a–25f.
 
 ## Arbeitsplan
 
@@ -213,7 +213,7 @@ Prüfen: `tools/expect.sh 1234 nether structures 60 > expect.txt`, dann `verify_
 | Harken Scythe | `harkenscythe` 2.1.6 | Jade Knightblazer | 27.284 | ✅ Teil 9 (Seelen/Blut, Altäre, 26 Mobs; Client-Prüfung offen) |
 | Better Dungeons (Chocolate Quest) | `betterdungeons` 1.09b | Chocolatin | 36.118 | ✅ Teil 12 und 13 (Client-Prüfung offen) |
 | Project Zulu | `projectzulu` 1.0.3.8 | — | 42.845 | ✅ Teil 10 Kreaturen, Teil 11 Blöcke, Items, Tränke, Strukturen (Client-Prüfung offen) |
-| The Twilight Forest | `twilightforest` 1.18.1 | Benimatic | 50.329 | zurückgestellt |
+| The Twilight Forest | `twilightforest` 1.18.1 | Benimatic | 50.329 | offen (Teile 24a–24f) |
 | Tinkers' Construct | `tconstruct` 1.4.3 | mDiyo | 59.808 | aufgeteilt in Teil 25a–25f; ✅ 25a (Werkzeug-Kern: Materialien, Teile, Muster, Tische, Zusammenbau, Modifikatoren anbringen; Client-Prüfung offen), ✅ 25b (Fähigkeiten, Modifikator-Effekte, Bogen/Pfeile, Dolch, Bratpfanne, Werkzeugmodelle in Schichten; Client-Prüfung offen), 25c–25f offen |
 
 Weitere Archive des Packs, die kein eigener Mod sind:
