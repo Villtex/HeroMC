@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "m"
+  ],
+  "key": {
+    "m": "tconstruct:ardite_ingot"
+  },
+  "result": {
+    "id": "tconstruct:ardite_nugget",
+    "count": 9
+  }
+}

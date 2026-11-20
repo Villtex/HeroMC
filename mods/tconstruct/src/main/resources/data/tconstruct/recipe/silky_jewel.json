@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " c ",
+    "cec",
+    " c "
+  ],
+  "key": {
+    "c": "tconstruct:silky_cloth",
+    "e": "minecraft:emerald"
+  },
+  "result": {
+    "id": "tconstruct:silky_jewel"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "tconstruct:item/scythe/wood_scythe_handle",
+    "layer1": "tconstruct:item/scythe/iron_scythe_head",
+    "layer2": "tconstruct:item/scythe/iron_scythe_binding",
+    "layer3": "tconstruct:item/scythe/wood_scythe_accessory"
+  }
+}

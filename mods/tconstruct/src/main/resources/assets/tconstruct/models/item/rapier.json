@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "tconstruct:item/rapier/wood_rapier_handle",
+    "layer1": "tconstruct:item/rapier/iron_rapier_blade",
+    "layer2": "tconstruct:item/rapier/iron_rapier_accessory"
+  }
+}

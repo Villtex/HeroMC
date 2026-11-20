@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "tconstruct:item/cleaver/wood_cleaver_handle",
+    "layer1": "tconstruct:item/cleaver/iron_cleaver_head",
+    "layer2": "tconstruct:item/cleaver/iron_cleaver_shield",
+    "layer3": "tconstruct:item/cleaver/wood_cleaver_guard"
+  }
+}

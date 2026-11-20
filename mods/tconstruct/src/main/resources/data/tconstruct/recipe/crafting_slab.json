@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "bbb"
+  ],
+  "key": {
+    "b": "minecraft:crafting_table"
+  },
+  "result": {
+    "id": "tconstruct:crafting_slab",
+    "count": 6
+  }
+}

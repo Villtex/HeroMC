@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "tconstruct:blank_pattern",
+    "tconstruct:blank_pattern",
+    "minecraft:paper",
+    "minecraft:paper",
+    "minecraft:paper",
+    "minecraft:string"
+  ],
+  "result": {
+    "id": "minecraft:book"
+  }
+}

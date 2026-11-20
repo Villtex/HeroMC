@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "m"
+  ],
+  "key": {
+    "m": "tconstruct:bronze_ingot"
+  },
+  "result": {
+    "id": "tconstruct:bronze_nugget",
+    "count": 9
+  }
+}

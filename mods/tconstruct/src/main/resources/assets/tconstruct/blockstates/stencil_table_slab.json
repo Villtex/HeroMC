@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "top=false": {
+      "model": "tconstruct:block/stencil_table_slab"
+    },
+    "top=true": {
+      "model": "tconstruct:block/stencil_table_slab_top"
+    }
+  }
+}

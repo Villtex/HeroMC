@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "m"
+  ],
+  "key": {
+    "m": "tconstruct:copper_ingot"
+  },
+  "result": {
+    "id": "tconstruct:copper_nugget",
+    "count": 9
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "tconstruct:item/shortbow/string_bowstring",
+    "layer1": "tconstruct:item/shortbow/wood_bow_top",
+    "layer2": "tconstruct:item/shortbow/wood_bow_bottom"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "tconstruct:item/axe/wood_axe_handle",
+    "layer1": "tconstruct:item/axe/iron_axe_head"
+  }
+}

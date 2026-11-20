@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "tconstruct:item/chisel/wood_chisel_handle",
+    "layer1": "tconstruct:item/chisel/iron_chisel_head"
+  }
+}

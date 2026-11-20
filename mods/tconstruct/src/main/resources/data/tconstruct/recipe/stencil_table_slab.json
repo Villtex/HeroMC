@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "b"
+  ],
+  "key": {
+    "b": [
+      "tconstruct:oak_stencil_table",
+      "tconstruct:spruce_stencil_table",
+      "tconstruct:birch_stencil_table",
+      "tconstruct:jungle_stencil_table"
+    ]
+  },
+  "result": {
+    "id": "tconstruct:stencil_table_slab"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "top=false": {
+      "model": "tconstruct:block/part_builder_slab"
+    },
+    "top=true": {
+      "model": "tconstruct:block/part_builder_slab_top"
+    }
+  }
+}

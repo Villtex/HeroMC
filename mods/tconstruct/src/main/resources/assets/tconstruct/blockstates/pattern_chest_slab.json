@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "top=false": {
+      "model": "tconstruct:block/pattern_chest_slab"
+    },
+    "top=true": {
+      "model": "tconstruct:block/pattern_chest_slab_top"
+    }
+  }
+}

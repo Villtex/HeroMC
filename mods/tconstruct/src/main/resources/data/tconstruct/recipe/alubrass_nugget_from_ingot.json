@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "m"
+  ],
+  "key": {
+    "m": "tconstruct:alubrass_ingot"
+  },
+  "result": {
+    "id": "tconstruct:alubrass_nugget",
+    "count": 9
+  }
+}

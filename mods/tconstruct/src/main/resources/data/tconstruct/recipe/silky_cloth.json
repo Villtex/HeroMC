@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "sss",
+    "sns",
+    "sss"
+  ],
+  "key": {
+    "n": [
+      "tconstruct:alubrass_nugget",
+      "minecraft:gold_nugget"
+    ],
+    "s": "minecraft:string"
+  },
+  "result": {
+    "id": "tconstruct:silky_cloth"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "little_saw": {
+    "sounds": [
+      "tconstruct:little_saw"
+    ]
+  },
+  "frypan_hit": {
+    "sounds": [
+      "tconstruct:frypan_hit"
+    ]
+  }
+}

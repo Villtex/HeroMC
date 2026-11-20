@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "m"
+  ],
+  "key": {
+    "m": "tconstruct:cobalt_ingot"
+  },
+  "result": {
+    "id": "tconstruct:cobalt_nugget",
+    "count": 9
+  }
+}

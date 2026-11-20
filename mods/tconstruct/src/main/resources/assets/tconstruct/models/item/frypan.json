@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "tconstruct:item/frypan/wood_frypan_handle",
+    "layer1": "tconstruct:item/frypan/iron_frypan_head"
+  }
+}

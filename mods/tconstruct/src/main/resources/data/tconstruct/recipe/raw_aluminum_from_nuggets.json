@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "mmm",
+    "mmm",
+    "mmm"
+  ],
+  "key": {
+    "m": "tconstruct:aluminum_nugget"
+  },
+  "result": {
+    "id": "tconstruct:raw_aluminum"
+  }
+}

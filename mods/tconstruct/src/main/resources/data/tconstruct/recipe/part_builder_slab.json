@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "b"
+  ],
+  "key": {
+    "b": [
+      "tconstruct:oak_part_builder",
+      "tconstruct:spruce_part_builder",
+      "tconstruct:birch_part_builder",
+      "tconstruct:jungle_part_builder"
+    ]
+  },
+  "result": {
+    "id": "tconstruct:part_builder_slab"
+  }
+}

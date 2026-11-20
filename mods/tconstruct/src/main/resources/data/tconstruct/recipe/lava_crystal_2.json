@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "xcx",
+    "cbc",
+    "xcx"
+  ],
+  "key": {
+    "b": "minecraft:lava_bucket",
+    "x": "minecraft:fire_charge",
+    "c": "minecraft:blaze_rod"
+  },
+  "result": {
+    "id": "tconstruct:lava_crystal"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "p",
+    "w"
+  ],
+  "key": {
+    "p": "tconstruct:blank_pattern",
+    "w": "minecraft:spruce_log"
+  },
+  "result": {
+    "id": "tconstruct:spruce_part_builder"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "b"
+  ],
+  "key": {
+    "b": [
+      "tconstruct:iron_tool_forge",
+      "tconstruct:gold_tool_forge",
+      "tconstruct:diamond_tool_forge",
+      "tconstruct:emerald_tool_forge",
+      "tconstruct:cobalt_tool_forge",
+      "tconstruct:ardite_tool_forge",
+      "tconstruct:manyullyn_tool_forge",
+      "tconstruct:copper_tool_forge",
+      "tconstruct:bronze_tool_forge",
+      "tconstruct:tin_tool_forge",
+      "tconstruct:aluminum_tool_forge",
+      "tconstruct:alubrass_tool_forge",
+      "tconstruct:alumite_tool_forge",
+      "tconstruct:steel_tool_forge"
+    ]
+  },
+  "result": {
+    "id": "tconstruct:tool_forge_slab"
+  }
+}

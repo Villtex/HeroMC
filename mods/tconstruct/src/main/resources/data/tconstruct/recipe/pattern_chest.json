@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "p",
+    "w"
+  ],
+  "key": {
+    "p": "tconstruct:blank_pattern",
+    "w": "minecraft:chest"
+  },
+  "result": {
+    "id": "tconstruct:pattern_chest"
+  }
+}

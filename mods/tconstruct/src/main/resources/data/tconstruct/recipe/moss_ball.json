@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ppp",
+    "ppp",
+    "ppp"
+  ],
+  "key": {
+    "p": [
+      "minecraft:mossy_stone_bricks",
+      "minecraft:mossy_cobblestone"
+    ]
+  },
+  "result": {
+    "id": "tconstruct:moss_ball"
+  }
+}

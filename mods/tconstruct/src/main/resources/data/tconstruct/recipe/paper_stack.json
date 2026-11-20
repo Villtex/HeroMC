@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "pp",
+    "pp"
+  ],
+  "key": {
+    "p": "minecraft:paper"
+  },
+  "result": {
+    "id": "tconstruct:paper_stack"
+  }
+}

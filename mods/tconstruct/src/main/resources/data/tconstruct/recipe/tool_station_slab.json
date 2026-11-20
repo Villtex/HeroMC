@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "b"
+  ],
+  "key": {
+    "b": "tconstruct:tool_station"
+  },
+  "result": {
+    "id": "tconstruct:tool_station_slab"
+  }
+}
