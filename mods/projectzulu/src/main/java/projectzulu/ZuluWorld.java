@@ -1,22 +1,53 @@
 package projectzulu;
 
+import hexxit.worldgen152.OldBlockStates;
 import hexxit.worldgen152.OldGameIds;
 import hexxit.worldgen152.OldModData;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredBlock;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredItem;
+import net.neoforged.neoforge.registries.DeferredRegister;
 import projectzulu.block.gear.TombstoneBlockEntity;
 import projectzulu.entity.HauntedArmorEntity;
 import projectzulu.entity.MimicEntity;
+import projectzulu.gen.ZuluIds;
 import projectzulu.gen.ZuluStructureContent;
+import projectzulu.world.LimitedMobSpawnerBlock;
+import projectzulu.world.LimitedMobSpawnerBlockEntity;
 
 /**
- * Teil 11, batch World: what the structures of {@code projectzulu.gen.ZuluWorldGen} need in the game (the mobs of
- * their spawners and dead ends, the tombstone text).
+ * Teil 11, batch World: the limited mob spawner of Project Zulu|Dungeon, and what the structures of
+ * {@code projectzulu.gen.ZuluWorldGen} need in the game (the mobs of their spawners and dead ends, the tombstone text).
  */
 public final class ZuluWorld {
+    private static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(ProjectZulu.MOD_ID);
+    private static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ProjectZulu.MOD_ID);
+    private static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE,
+            ProjectZulu.MOD_ID);
+
+    /** BlockLimitedMobSpawner: Material.rock, hardness 0.5, metal sound, not opaque, drops nothing. */
+    public static final DeferredBlock<LimitedMobSpawnerBlock> LIMITED_MOB_SPAWNER = BLOCKS.registerBlock("limited_mob_spawner",
+            LimitedMobSpawnerBlock::new,
+            p -> p.mapColor(MapColor.STONE).strength(0.5F).requiresCorrectToolForDrops().noOcclusion().sound(SoundType.METAL).noLootTable());
+    public static final DeferredItem<BlockItem> LIMITED_MOB_SPAWNER_ITEM = ITEMS.registerSimpleBlockItem(LIMITED_MOB_SPAWNER);
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<LimitedMobSpawnerBlockEntity>> LIMITED_MOB_SPAWNER_ENTITY =
+            BLOCK_ENTITIES.register("limited_mob_spawner", () -> new BlockEntityType<>(LimitedMobSpawnerBlockEntity::new, LIMITED_MOB_SPAWNER.get()));
+
     private ZuluWorld() {
     }
 
     public static void register(IEventBus modBus) {
+        BLOCKS.register(modBus);
+        ITEMS.register(modBus);
+        BLOCK_ENTITIES.register(modBus);
+        OldBlockStates.register(ZuluIds.LIMITED_MOB_SPAWNER, () -> LIMITED_MOB_SPAWNER.get().defaultBlockState());
+        OldGameIds.registerItem(ZuluIds.LIMITED_MOB_SPAWNER, ProjectZulu.MOD_ID + ":limited_mob_spawner");
         registerStructureContent();
     }
 
