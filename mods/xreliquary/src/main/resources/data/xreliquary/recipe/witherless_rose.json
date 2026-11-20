@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "hnh",
+    "nrn",
+    "hnh"
+  ],
+  "key": {
+    "h": "xreliquary:glowing_water",
+    "n": "minecraft:nether_star",
+    "r": "minecraft:poppy"
+  },
+  "result": {
+    "id": "xreliquary:witherless_rose"
+  }
+}

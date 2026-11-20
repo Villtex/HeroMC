@@ -1,0 +1,14 @@
+{
+  "load": {
+    "sounds": [
+      "xreliquary:load"
+    ],
+    "subtitle": "subtitles.xreliquary.load"
+  },
+  "shot": {
+    "sounds": [
+      "xreliquary:shot"
+    ],
+    "subtitle": "subtitles.xreliquary.shot"
+  }
+}

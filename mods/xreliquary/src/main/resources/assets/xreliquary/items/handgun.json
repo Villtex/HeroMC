@@ -1,0 +1,25 @@
+{
+  "model": {
+    "type": "minecraft:condition",
+    "property": "minecraft:damaged",
+    "on_true": {
+      "type": "minecraft:model",
+      "model": "xreliquary:item/handgun_loaded",
+      "tints": [
+        {
+          "type": "minecraft:constant",
+          "value": 16777215
+        },
+        {
+          "type": "minecraft:custom_model_data",
+          "index": 0,
+          "default": 16777215
+        }
+      ]
+    },
+    "on_false": {
+      "type": "minecraft:model",
+      "model": "xreliquary:item/handgun"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "bim",
+    "isi",
+    "igi"
+  ],
+  "key": {
+    "i": "minecraft:iron_ingot",
+    "b": "xreliquary:barrel_assembly",
+    "m": "xreliquary:hammer_assembly",
+    "g": "xreliquary:grip_assembly",
+    "s": "minecraft:slime_ball"
+  },
+  "result": {
+    "id": "xreliquary:handgun"
+  }
+}

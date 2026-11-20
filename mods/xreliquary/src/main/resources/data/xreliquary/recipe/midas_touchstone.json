@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "bbb",
+    "rtr",
+    "ggg"
+  ],
+  "key": {
+    "b": "minecraft:gold_block",
+    "r": "minecraft:blaze_rod",
+    "g": "minecraft:gold_ingot",
+    "t": "minecraft:ghast_tear"
+  },
+  "result": {
+    "id": "xreliquary:midas_touchstone"
+  }
+}

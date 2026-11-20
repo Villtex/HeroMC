@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "xreliquary:alkahest",
+    "minecraft:cod"
+  ],
+  "result": {
+    "id": "xreliquary:alkahest"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "xreliquary:potion_strength",
+    "xreliquary:potion_strength",
+    "xreliquary:potion_strength",
+    "xreliquary:potion_strength",
+    "minecraft:glowstone_dust",
+    "xreliquary:potion_bounding",
+    "xreliquary:potion_bounding",
+    "xreliquary:potion_bounding",
+    "xreliquary:potion_bounding"
+  ],
+  "result": {
+    "id": "xreliquary:potion_potence",
+    "count": 8
+  }
+}

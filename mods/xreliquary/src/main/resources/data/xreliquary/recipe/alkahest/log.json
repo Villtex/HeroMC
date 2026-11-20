@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "xreliquary:alkahest",
+    [
+      "minecraft:oak_log",
+      "minecraft:spruce_log",
+      "minecraft:birch_log",
+      "minecraft:jungle_log"
+    ]
+  ],
+  "result": {
+    "id": "xreliquary:alkahest"
+  }
+}

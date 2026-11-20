@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "xreliquary:alkahest",
+    "minecraft:magma_cream"
+  ],
+  "result": {
+    "id": "xreliquary:alkahest"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "xreliquary:alkahestry_tome",
+    "minecraft:end_stone",
+    "minecraft:redstone"
+  ],
+  "result": {
+    "id": "minecraft:end_stone",
+    "count": 17
+  }
+}

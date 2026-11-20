@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "iii",
+    "eme",
+    "iii"
+  ],
+  "key": {
+    "i": "minecraft:iron_ingot",
+    "e": "minecraft:ender_pearl",
+    "m": "minecraft:magma_cream"
+  },
+  "result": {
+    "id": "xreliquary:barrel_assembly"
+  }
+}

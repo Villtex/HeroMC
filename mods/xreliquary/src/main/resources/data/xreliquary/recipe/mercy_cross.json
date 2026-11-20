@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "wgw",
+    "glg",
+    "wgw"
+  ],
+  "key": {
+    "w": "xreliquary:glowing_water",
+    "g": "minecraft:gold_ingot",
+    "l": "minecraft:leather"
+  },
+  "result": {
+    "id": "xreliquary:mercy_cross"
+  }
+}

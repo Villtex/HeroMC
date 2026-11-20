@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "sis",
+    "ngn",
+    "ngn"
+  ],
+  "key": {
+    "s": "minecraft:stone",
+    "i": "minecraft:iron_ingot",
+    "n": "minecraft:gold_nugget",
+    "g": "minecraft:gunpowder"
+  },
+  "result": {
+    "id": "xreliquary:neutral_shot",
+    "count": 4
+  }
+}

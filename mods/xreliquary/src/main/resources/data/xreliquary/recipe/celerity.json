@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "xreliquary:potion_digging",
+    "xreliquary:potion_digging",
+    "xreliquary:potion_digging",
+    "xreliquary:potion_digging",
+    "minecraft:glowstone_dust",
+    "xreliquary:potion_speed",
+    "xreliquary:potion_speed",
+    "xreliquary:potion_speed",
+    "xreliquary:potion_speed"
+  ],
+  "result": {
+    "id": "xreliquary:potion_celerity",
+    "count": 8
+  }
+}

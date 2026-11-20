@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "xreliquary:item/distortion_cloak",
+    "layer1": "xreliquary:item/distortion_cloak_overlay"
+  }
+}

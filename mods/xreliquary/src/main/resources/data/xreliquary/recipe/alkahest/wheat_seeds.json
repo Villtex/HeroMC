@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "xreliquary:alkahest",
+    "minecraft:wheat_seeds"
+  ],
+  "result": {
+    "id": "xreliquary:alkahest"
+  }
+}

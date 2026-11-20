@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "eee",
+    "ewe",
+    "eee"
+  ],
+  "key": {
+    "e": "minecraft:ender_eye",
+    "w": "minecraft:blue_wool"
+  },
+  "result": {
+    "id": "xreliquary:distortion_cloak"
+  }
+}

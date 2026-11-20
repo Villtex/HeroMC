@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "xreliquary:item/magazine_loaded",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": 6710886
+      },
+      {
+        "type": "minecraft:constant",
+        "value": 48025
+      }
+    ]
+  }
+}

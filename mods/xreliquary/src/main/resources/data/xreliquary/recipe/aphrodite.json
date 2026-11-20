@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "xreliquary:potion_splash_base",
+    "minecraft:cocoa_beans",
+    "minecraft:red_dye",
+    "minecraft:redstone"
+  ],
+  "result": {
+    "id": "xreliquary:potion_aphrodite"
+  }
+}

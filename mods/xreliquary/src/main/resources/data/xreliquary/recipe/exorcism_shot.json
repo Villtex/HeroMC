@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "bbb",
+    "bhb",
+    "bbb"
+  ],
+  "key": {
+    "b": "xreliquary:neutral_shot",
+    "h": "xreliquary:glowing_water"
+  },
+  "result": {
+    "id": "xreliquary:exorcism_shot",
+    "count": 8
+  }
+}

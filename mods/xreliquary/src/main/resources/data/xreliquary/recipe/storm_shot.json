@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "bbb",
+    "bhb",
+    "bbb"
+  ],
+  "key": {
+    "b": "xreliquary:neutral_shot",
+    "h": "minecraft:lapis_lazuli"
+  },
+  "result": {
+    "id": "xreliquary:storm_shot",
+    "count": 8
+  }
+}

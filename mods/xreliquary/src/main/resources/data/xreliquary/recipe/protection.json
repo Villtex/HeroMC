@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "xreliquary:potion_fire_warding",
+    "xreliquary:potion_fire_warding",
+    "xreliquary:potion_fire_warding",
+    "xreliquary:potion_fire_warding",
+    "minecraft:glowstone_dust",
+    "xreliquary:potion_resistance",
+    "xreliquary:potion_resistance",
+    "xreliquary:potion_resistance",
+    "xreliquary:potion_resistance"
+  ],
+  "result": {
+    "id": "xreliquary:potion_protection",
+    "count": 8
+  }
+}

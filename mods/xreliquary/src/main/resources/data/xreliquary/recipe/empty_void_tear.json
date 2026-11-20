@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "et",
+    "te"
+  ],
+  "key": {
+    "e": "minecraft:ender_eye",
+    "t": "minecraft:ghast_tear"
+  },
+  "result": {
+    "id": "xreliquary:empty_void_tear"
+  }
+}

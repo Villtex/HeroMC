@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "xreliquary:alkahestry_tome",
+    "minecraft:spruce_log",
+    "minecraft:redstone"
+  ],
+  "result": {
+    "id": "minecraft:spruce_log",
+    "count": 3
+  }
+}

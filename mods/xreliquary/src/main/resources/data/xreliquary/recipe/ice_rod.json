@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "dtd",
+    "tit",
+    "tit"
+  ],
+  "key": {
+    "d": "minecraft:diamond",
+    "t": "minecraft:ghast_tear",
+    "i": "minecraft:iron_ingot"
+  },
+  "result": {
+    "id": "xreliquary:ice_rod"
+  }
+}

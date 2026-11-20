@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "xreliquary:neutral_shot",
+    "xreliquary:neutral_shot",
+    "xreliquary:neutral_shot",
+    "xreliquary:neutral_shot",
+    "minecraft:sand",
+    "minecraft:sand",
+    "minecraft:sand",
+    "minecraft:sand",
+    "minecraft:sandstone"
+  ],
+  "result": {
+    "id": "xreliquary:sand_shot",
+    "count": 4
+  }
+}

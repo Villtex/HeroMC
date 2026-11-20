@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ddd",
+    "dtd",
+    "ddd"
+  ],
+  "key": {
+    "d": "minecraft:diamond_block",
+    "t": "xreliquary:alkahestry_tome"
+  },
+  "result": {
+    "id": "minecraft:dragon_egg"
+  }
+}

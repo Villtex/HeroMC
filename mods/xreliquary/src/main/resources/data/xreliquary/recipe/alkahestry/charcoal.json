@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "xreliquary:alkahestry_tome",
+    "minecraft:charcoal",
+    "minecraft:redstone"
+  ],
+  "result": {
+    "id": "minecraft:charcoal",
+    "count": 3
+  }
+}

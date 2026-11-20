@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "gtg",
+    "ege",
+    "tgt"
+  ],
+  "key": {
+    "t": "minecraft:ghast_tear",
+    "e": "minecraft:emerald",
+    "g": "minecraft:gold_ingot"
+  },
+  "result": {
+    "id": "xreliquary:emperor_chalice"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "iii",
+    "imi",
+    "ici"
+  ],
+  "key": {
+    "i": "minecraft:iron_ingot",
+    "c": "xreliquary:empty_magazine",
+    "m": "minecraft:magma_cream"
+  },
+  "result": {
+    "id": "xreliquary:grip_assembly"
+  }
+}

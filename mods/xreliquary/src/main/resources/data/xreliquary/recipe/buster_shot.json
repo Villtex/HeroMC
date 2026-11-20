@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "xreliquary:concussive_shot",
+    "xreliquary:concussive_shot",
+    "xreliquary:concussive_shot",
+    "xreliquary:concussive_shot",
+    "minecraft:gunpowder",
+    "minecraft:gunpowder",
+    "minecraft:gunpowder",
+    "minecraft:gunpowder",
+    "minecraft:tnt"
+  ],
+  "result": {
+    "id": "xreliquary:buster_shot",
+    "count": 4
+  }
+}

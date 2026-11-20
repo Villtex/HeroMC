@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "xreliquary:item/distortion_cloak",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": 3355443
+      },
+      {
+        "type": "xreliquary:time",
+        "kind": "cloak"
+      }
+    ]
+  }
+}

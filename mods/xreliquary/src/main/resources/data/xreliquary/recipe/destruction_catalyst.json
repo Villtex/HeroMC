@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "rrr",
+    "rtr",
+    "rrf"
+  ],
+  "key": {
+    "f": "minecraft:flint",
+    "t": "xreliquary:midas_touchstone",
+    "r": "minecraft:blaze_rod"
+  },
+  "result": {
+    "id": "xreliquary:destruction_catalyst"
+  }
+}

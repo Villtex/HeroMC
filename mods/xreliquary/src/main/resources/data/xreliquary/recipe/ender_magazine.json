@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "xreliquary:ender_shot",
+    "xreliquary:ender_shot",
+    "xreliquary:ender_shot",
+    "xreliquary:ender_shot",
+    "xreliquary:ender_shot",
+    "xreliquary:ender_shot",
+    "xreliquary:ender_shot",
+    "xreliquary:ender_shot",
+    "xreliquary:empty_magazine"
+  ],
+  "result": {
+    "id": "xreliquary:ender_magazine"
+  }
+}

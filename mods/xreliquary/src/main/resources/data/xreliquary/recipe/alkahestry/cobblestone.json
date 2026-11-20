@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "xreliquary:alkahestry_tome",
+    "minecraft:cobblestone",
+    "minecraft:redstone"
+  ],
+  "result": {
+    "id": "minecraft:cobblestone",
+    "count": 17
+  }
+}

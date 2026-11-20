@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "xreliquary:concussive_shot",
+    "xreliquary:concussive_shot",
+    "xreliquary:concussive_shot",
+    "xreliquary:concussive_shot",
+    "xreliquary:concussive_shot",
+    "xreliquary:concussive_shot",
+    "xreliquary:concussive_shot",
+    "xreliquary:concussive_shot",
+    "xreliquary:empty_magazine"
+  ],
+  "result": {
+    "id": "xreliquary:concussive_magazine"
+  }
+}

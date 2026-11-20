@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "eee",
+    "ege",
+    "iee"
+  ],
+  "key": {
+    "e": "minecraft:ender_eye",
+    "g": "minecraft:gold_ingot",
+    "i": "minecraft:iron_ingot"
+  },
+  "result": {
+    "id": "xreliquary:magicbane"
+  }
+}

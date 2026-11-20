@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "eee",
+    "bsb",
+    "eee"
+  ],
+  "key": {
+    "e": "xreliquary:empty_void_tear",
+    "s": "xreliquary:salamander_eye",
+    "b": "minecraft:emerald_block"
+  },
+  "result": {
+    "id": "xreliquary:wraith_eye"
+  }
+}

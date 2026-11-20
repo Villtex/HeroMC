@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "xreliquary:sand_shot",
+    "xreliquary:sand_shot",
+    "xreliquary:sand_shot",
+    "xreliquary:sand_shot",
+    "xreliquary:sand_shot",
+    "xreliquary:sand_shot",
+    "xreliquary:sand_shot",
+    "xreliquary:sand_shot",
+    "xreliquary:empty_magazine"
+  ],
+  "result": {
+    "id": "xreliquary:sand_magazine"
+  }
+}

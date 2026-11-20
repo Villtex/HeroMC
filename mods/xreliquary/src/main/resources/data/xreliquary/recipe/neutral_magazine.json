@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "xreliquary:neutral_shot",
+    "xreliquary:neutral_shot",
+    "xreliquary:neutral_shot",
+    "xreliquary:neutral_shot",
+    "xreliquary:neutral_shot",
+    "xreliquary:neutral_shot",
+    "xreliquary:neutral_shot",
+    "xreliquary:neutral_shot",
+    "xreliquary:empty_magazine"
+  ],
+  "result": {
+    "id": "xreliquary:neutral_magazine"
+  }
+}

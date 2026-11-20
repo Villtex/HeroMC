@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "cgc",
+    "gbg",
+    "wgw"
+  ],
+  "key": {
+    "w": "xreliquary:glowing_water",
+    "g": "minecraft:gold_ingot",
+    "b": "minecraft:blaze_rod",
+    "c": "minecraft:magma_cream"
+  },
+  "result": {
+    "id": "xreliquary:sojourner_staff"
+  }
+}

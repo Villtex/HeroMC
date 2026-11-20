@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "xreliquary:potion_splash_base",
+    "minecraft:blaze_powder",
+    "minecraft:fermented_spider_eye",
+    "minecraft:glowstone_dust"
+  ],
+  "result": {
+    "id": "xreliquary:potion_weakness"
+  }
+}

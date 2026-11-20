@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "xreliquary:alkahestry_tome",
+    "minecraft:nether_bricks",
+    "minecraft:redstone"
+  ],
+  "result": {
+    "id": "minecraft:nether_bricks",
+    "count": 17
+  }
+}

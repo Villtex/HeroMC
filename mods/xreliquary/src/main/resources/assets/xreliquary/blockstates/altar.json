@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "xreliquary:block/altar_idle"
+    },
+    "lit=true": {
+      "model": "xreliquary:block/altar_active"
+    }
+  }
+}

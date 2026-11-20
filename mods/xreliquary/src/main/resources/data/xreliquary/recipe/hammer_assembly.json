@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "iib",
+    "rmi",
+    "iii"
+  ],
+  "key": {
+    "i": "minecraft:iron_ingot",
+    "b": "minecraft:stone_button",
+    "r": "minecraft:blaze_rod",
+    "m": "minecraft:magma_cream"
+  },
+  "result": {
+    "id": "xreliquary:hammer_assembly"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "bcb",
+    "tet",
+    "bcb"
+  ],
+  "key": {
+    "b": "minecraft:blaze_rod",
+    "c": "minecraft:magma_cream",
+    "t": "minecraft:ghast_tear",
+    "e": "minecraft:ender_eye"
+  },
+  "result": {
+    "id": "xreliquary:salamander_eye"
+  }
+}

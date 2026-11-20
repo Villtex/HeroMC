@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "xreliquary:potion_slowing",
+    "xreliquary:potion_weakness",
+    "xreliquary:potion_poison",
+    "minecraft:glowstone_dust"
+  ],
+  "result": {
+    "id": "xreliquary:potion_ruination",
+    "count": 3
+  }
+}

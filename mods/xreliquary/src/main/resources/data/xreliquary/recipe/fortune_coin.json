@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ege",
+    "ghg",
+    "ege"
+  ],
+  "key": {
+    "e": "minecraft:ender_eye",
+    "g": "minecraft:gold_ingot",
+    "h": "xreliquary:glowing_water"
+  },
+  "result": {
+    "id": "xreliquary:fortune_coin"
+  }
+}

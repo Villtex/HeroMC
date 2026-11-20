@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "xreliquary:exorcism_shot",
+    "xreliquary:exorcism_shot",
+    "xreliquary:exorcism_shot",
+    "xreliquary:exorcism_shot",
+    "xreliquary:exorcism_shot",
+    "xreliquary:exorcism_shot",
+    "xreliquary:exorcism_shot",
+    "xreliquary:exorcism_shot",
+    "xreliquary:empty_magazine"
+  ],
+  "result": {
+    "id": "xreliquary:exorcism_magazine"
+  }
+}

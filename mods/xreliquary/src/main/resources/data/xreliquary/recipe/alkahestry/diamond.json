@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "xreliquary:alkahestry_tome",
+    "minecraft:diamond",
+    "minecraft:lapis_block",
+    "minecraft:lapis_block",
+    "minecraft:lapis_block",
+    "minecraft:lapis_block"
+  ],
+  "result": {
+    "id": "minecraft:diamond",
+    "count": 2
+  }
+}

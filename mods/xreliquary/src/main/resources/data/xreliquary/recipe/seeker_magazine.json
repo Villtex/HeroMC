@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "xreliquary:seeker_shot",
+    "xreliquary:seeker_shot",
+    "xreliquary:seeker_shot",
+    "xreliquary:seeker_shot",
+    "xreliquary:seeker_shot",
+    "xreliquary:seeker_shot",
+    "xreliquary:seeker_shot",
+    "xreliquary:seeker_shot",
+    "xreliquary:empty_magazine"
+  ],
+  "result": {
+    "id": "xreliquary:seeker_magazine"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "xreliquary:potion_healing",
+    "xreliquary:potion_healing",
+    "xreliquary:potion_healing",
+    "xreliquary:potion_healing",
+    "minecraft:milk_bucket",
+    "xreliquary:potion_regeneration",
+    "xreliquary:potion_regeneration",
+    "xreliquary:potion_regeneration",
+    "xreliquary:potion_regeneration"
+  ],
+  "result": {
+    "id": "xreliquary:potion_panacea",
+    "count": 8
+  }
+}

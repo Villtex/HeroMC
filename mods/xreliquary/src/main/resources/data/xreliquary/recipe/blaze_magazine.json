@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "xreliquary:blaze_shot",
+    "xreliquary:blaze_shot",
+    "xreliquary:blaze_shot",
+    "xreliquary:blaze_shot",
+    "xreliquary:blaze_shot",
+    "xreliquary:blaze_shot",
+    "xreliquary:blaze_shot",
+    "xreliquary:blaze_shot",
+    "xreliquary:empty_magazine"
+  ],
+  "result": {
+    "id": "xreliquary:blaze_magazine"
+  }
+}

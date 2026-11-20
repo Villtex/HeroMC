@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "bbb",
+    "beb",
+    "bbb"
+  ],
+  "key": {
+    "b": "xreliquary:seeker_shot",
+    "e": "minecraft:ender_eye"
+  },
+  "result": {
+    "id": "xreliquary:ender_shot",
+    "count": 8
+  }
+}

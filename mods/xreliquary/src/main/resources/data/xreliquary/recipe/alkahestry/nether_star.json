@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "tds",
+    "www",
+    "hhh"
+  ],
+  "key": {
+    "d": "minecraft:diamond",
+    "w": "minecraft:wither_skeleton_skull",
+    "t": "xreliquary:alkahestry_tome",
+    "s": "minecraft:nether_star",
+    "h": "xreliquary:glowing_water"
+  },
+  "result": {
+    "id": "minecraft:nether_star",
+    "count": 2
+  }
+}

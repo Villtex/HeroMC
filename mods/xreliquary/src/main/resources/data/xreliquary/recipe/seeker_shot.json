@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "sls",
+    "nbn",
+    "ngn"
+  ],
+  "key": {
+    "s": "minecraft:string",
+    "l": "minecraft:lapis_lazuli",
+    "b": "minecraft:slime_ball",
+    "n": "minecraft:gold_nugget",
+    "g": "minecraft:gunpowder"
+  },
+  "result": {
+    "id": "xreliquary:seeker_shot",
+    "count": 4
+  }
+}

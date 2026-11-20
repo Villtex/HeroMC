@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "xreliquary:storm_shot",
+    "xreliquary:storm_shot",
+    "xreliquary:storm_shot",
+    "xreliquary:storm_shot",
+    "xreliquary:storm_shot",
+    "xreliquary:storm_shot",
+    "xreliquary:storm_shot",
+    "xreliquary:storm_shot",
+    "xreliquary:empty_magazine"
+  ],
+  "result": {
+    "id": "xreliquary:storm_magazine"
+  }
+}

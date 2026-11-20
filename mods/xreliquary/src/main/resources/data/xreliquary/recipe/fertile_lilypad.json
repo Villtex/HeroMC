@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "www",
+    "wlw",
+    "www"
+  ],
+  "key": {
+    "w": "xreliquary:potion_fertilizer",
+    "l": "minecraft:lily_pad"
+  },
+  "result": {
+    "id": "xreliquary:fertile_lilypad"
+  }
+}

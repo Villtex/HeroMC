@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "vv",
+    "vv"
+  ],
+  "key": {
+    "v": "xreliquary:empty_void_tear"
+  },
+  "result": {
+    "id": "xreliquary:wraith_node"
+  }
+}

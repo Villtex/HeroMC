@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "xreliquary:potion_splash_base",
+    "minecraft:golden_carrot",
+    "minecraft:fermented_spider_eye",
+    "minecraft:redstone"
+  ],
+  "result": {
+    "id": "xreliquary:potion_confusion"
+  }
+}

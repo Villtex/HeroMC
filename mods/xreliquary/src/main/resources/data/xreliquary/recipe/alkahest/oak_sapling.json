@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "xreliquary:alkahest",
+    "minecraft:oak_sapling"
+  ],
+  "result": {
+    "id": "xreliquary:alkahest"
+  }
+}

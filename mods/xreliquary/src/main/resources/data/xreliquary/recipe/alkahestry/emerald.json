@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "xreliquary:alkahestry_tome",
+    "minecraft:emerald",
+    "minecraft:lapis_block"
+  ],
+  "result": {
+    "id": "minecraft:emerald",
+    "count": 2
+  }
+}

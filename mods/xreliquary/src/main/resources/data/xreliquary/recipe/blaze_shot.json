@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "prp",
+    "npn",
+    "ngn"
+  ],
+  "key": {
+    "p": "minecraft:blaze_powder",
+    "r": "minecraft:blaze_rod",
+    "n": "minecraft:gold_nugget",
+    "g": "minecraft:gunpowder"
+  },
+  "result": {
+    "id": "xreliquary:blaze_shot",
+    "count": 4
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "olo",
+    "lel",
+    "olo"
+  ],
+  "key": {
+    "o": "minecraft:obsidian",
+    "l": "minecraft:redstone_lamp",
+    "e": "minecraft:emerald"
+  },
+  "result": {
+    "id": "xreliquary:altar"
+  }
+}

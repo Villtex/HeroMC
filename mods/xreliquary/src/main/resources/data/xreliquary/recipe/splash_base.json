@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:nether_wart",
+    "minecraft:gunpowder",
+    "minecraft:glowstone_dust",
+    "xreliquary:potion_water"
+  ],
+  "result": {
+    "id": "xreliquary:potion_splash_base"
+  }
+}
