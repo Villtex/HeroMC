@@ -451,7 +451,7 @@ def main():
                     bbad += 1
                     report('BIOME MISMATCH', ' '.join(l))
             elif l[0] == 'S':
-                if test(f'block {l[1]} {l[2]} {l[3]} minecraft:spawner{{SpawnData:{{entity:{{id:"{MOBS[l[4]]}"}}}}}}'):
+                if test(f'block {l[1]} {l[2]} {l[3]} minecraft:spawner{{SpawnData:{{entity:{{id:"{MOBS[" ".join(l[4:])]}"}}}}}}'):
                     tok += 1
                 else:
                     tbad += 1
