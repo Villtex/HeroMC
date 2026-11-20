@@ -1,0 +1,58 @@
+---
+name: tinkers-tools-263
+description: Beim Weiterbauen von Tinkers' Construct (mods/tconstruct, Teile 25b–25f) benutzen – wie Werkzeuge, Teile, Materialien, Muster und Modifikatoren im Port abgebildet sind (Komponente tconstruct:tool statt InfiTool-NBT, ein Item je Teil und Material, alte IDs), wo neue Fähigkeiten, Modifikator-Effekte, Gussformen und Werkzeug-Modelle eingehängt werden und wie man es ohne Spieler prüft.
+---
+
+# Tinkers' Construct im Port (Stand Teil 25a)
+
+Code: `mods/tconstruct/src/main/java/tconstruct/`, Daten/Assets aus `mods/tconstruct/tools/gen.py`
+(`python3 mods/tconstruct/tools/gen.py` überschreibt `src/main/resources/assets|data` und `original-assets.txt`).
+Original: `python3 tools/reference.py --only tconstruct,z-hexxit-configs`, Paket `mods.tinker.tconstruct`.
+Offenes je Unterteil: `mods/tconstruct/TODO.md`.
+
+## Abbildung 1.5.2 → 26.3
+
+| 1.5.2 | Port |
+|---|---|
+| `TConstructRegistry.addToolMaterial` (id 0–17) | `tools/TMaterial` (Enum, `id` = alte Material-ID, auch Bogen/Pfeil-Werte) |
+| `ToolPart` / `ToolShard` mit Damage = Material | ein Item je Teil und Material: `tconstruct:<material>_<teil>` (`PartType`, `ToolPartItem`), `TItems.part(type, mat)` |
+| `Bowstring`, `Fletching` | `bowstring`, `<feather|leaf|slime|blue_slime>_fletching` (`CustomPartItem`, `CustomMaterials`) |
+| `woodPattern` / `metalPattern` Damage n | `<name>_pattern` / `<name>_cast` (`PatternItem.meta` = altes Damage, `TItems.PATTERN_NAMES`) |
+| `materials` Damage 0–33 | eigene Items (`TItems.MATERIAL_NAMES`), 19 = `minecraft:iron_nugget` |
+| `ToolCore`-Unterklassen | ein `ToolCoreItem` je `ToolType` (Werte, Teile, Kategorien, Effektiv-Tags) |
+| NBT `InfiTool` | Komponente `tconstruct:tool` = `ToolData`; bearbeiten über `InfiTool.of(stack)` … `t.save(stack)` |
+| `tags.getInteger("Redstone")`, `getIntArray`, `getFloat` | `t.getInt/getArray/getFloat/getBool/has(...)` mit denselben Schlüsseln wie 1.5.2 |
+| `Tooltip#` / `ModifierTip#`, `Effect1..6` | `t.tips` (String-Paare), `t.effects` |
+| `ToolBuilder`, `PatternBuilder`, `ToolMod` | `tools/ToolBuilder`, `items/PatternBuilder`, `modifiers/Modifiers` (alle in Original-Reihenfolge) |
+| `AbilityHelper.damageTool` | `ToolCoreItem.damageTool(stack, n, entity)`; kaputt = `t.broken`, keine Vanilla-Haltbarkeit |
+| Tische (`ToolStationBlock` Meta 0–13, Forge, CraftingStation, CraftingSlab) | `TBlocks` (ein Block je Holz/Metall), BEs in `blocks/`, Menüs in `menu/`, Screens in `client/` |
+
+Alte IDs: `TItems.OLD_IDS` (Item-ID aus `TinkersWorkshop.txt` + 256, Damage) und `TBlocks.registerOldIds`
+(`OldBlockStates` 1326/1341/1346/1347). Neue Items mit alter ID dort eintragen.
+
+## Werte und Regeln
+
+- Pack-Konfiguration ist fest eingebaut: Metallteile **nicht** aus Holzmustern (`TMaterial.nonMetal()`), Modifikatoren
+  heben die Abbaustufe, Schablonentische craftbar.
+- Abbau: `ToolCoreItem.getDestroySpeed/isCorrectToolForDrops` mit den Block-Tags `tconstruct:effective/<name>` (aus
+  gen.py) und der Stufe aus `needs_*_tool` (+ `tconstruct:needs_cobalt_tool` = 4, `needs_manyullyn_tool` = 5 für 25d).
+- Schaden: `Attack` als `ATTACK_DAMAGE`-Modifikator (`getDefaultAttributeModifiers`, Wert − 1), damit combat152 die
+  1.5.2-Kampfregeln anwendet; `damageModifier` (Hackmesser, Rapier, Sense) in `tools/TEvents`.
+- Blocken: `ToolType.blocks()` → `Combat152.BLOCKING`.
+
+## Neues einhängen
+
+- Fähigkeit eines Werkzeugs (25b): in `ToolCoreItem` nach `type` verzweigen oder eine Unterklasse je `ToolType`
+  in `TItems.TOOLS` registrieren (Konstruktor `(ToolType, Properties)`).
+- Modifikator-Effekt: Schlüssel aus `InfiTool` lesen (z. B. `t.getInt("Moss")`, `t.getArray("Lapis")[0]`) in
+  `inventoryTick`/`mineBlock`/`hurtEnemy` oder Ereignissen.
+- Werkzeug-Modell aus Schichten (25b): heute festes Symbol je Werkzeug (gen.py `TOOLS`). Texturen
+  `items/<ordner>/<material><suffix>.png`, Suffixe stehen in gen.py; Material je Schicht aus `ToolData` lesen
+  (eigene `SelectItemModelProperty` je Teil + `minecraft:composite`).
+- JEI: `compat/TConstructJeiPlugin` + `TinkerCategory` (Zeile aus Eingabe-Listen und Ausgaben, fokus-verknüpft).
+
+## Prüfen ohne Spieler
+
+Temporärer Befehl (nie committen), Block-Entities direkt füllen: `PartBuilderBlockEntity.setItem/removeItem` (Logik
+wie `PartCrafterLogic`), `ToolStationBlockEntity.setItem(1..3)` → Ergebnis in Slot 0, `InfiTool.of(...)` ausgeben;
+Abbau mit `stack.getDestroySpeed(state)` / `isCorrectToolForDrops`. Vorlage siehe Teil 25a in `docs/PLAN.md`.

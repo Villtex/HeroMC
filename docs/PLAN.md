@@ -62,7 +62,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 22 | Client-Mods: Damage Indicators, MapWriter | ~12.000 | – | Sonnet 5.5, niedrig | ✅ erledigt |
 | 23 | Gesamttest und Modpack-Export | – | alle | Opus 5.5, mittel | offen |
 | 24 | später: Twilight Forest | ~50.000 | – | Fable 5.2, hoch | zurückgestellt |
-| 25a | Tinkers' Construct A: Werkzeug-Kern (Materialien, Teile, Muster, Tische, Zusammenbau, Modifikatoren anbringen) | ~10.000 | 3 | Opus 5.5, hoch | offen |
+| 25a | Tinkers' Construct A: Werkzeug-Kern (Materialien, Teile, Muster, Tische, Zusammenbau, Modifikatoren anbringen) | ~10.000 | 3 | Opus 5.5, hoch | ✅ erledigt |
 | 25b | Tinkers' Construct B: Werkzeuge im Einsatz (Fähigkeiten, Modifikator-Effekte, Bogen, Wurfwaffen) und ihre Darstellung | ~9.000 | 25a | Fable 5.2, hoch | offen |
 | 25c | Tinkers' Construct C: Schmelzerei, flüssige Metalle, Gießen, Legierungen, Trockengestell | ~11.000 | 25a | Fable 5.2, hoch | offen |
 | 25d | Tinkers' Construct D: Weltgenerierung, Schleiminseln, Dorf-Bauteile, Dorfbewohner | ~4.000 | 25c | Fable 5.2, extra hoch | offen |
@@ -1446,6 +1446,35 @@ Zutaten, Slots, NBT→Komponenten), `util/TEventHandler` (`craftTool`, `craftPar
 - Werkzeuge ohne Spezialfähigkeit benutzbar (Abbau-Tempo/-Stufe, Schaden, Haltbarkeit).
 - Vorläufige Darstellung (Icon je Werkzeugart), die schichtweise Darstellung folgt in 25b.
 - JEI: Teilbauer, Werkzeugzusammenbau, Modifikatoren.
+
+#### Teil 25a – Stand (✅ erledigt)
+
+`mods/tconstruct` (Mod-ID `tconstruct`, braucht `worldgen152`, `combat152`), Daten aus `mods/tconstruct/tools/gen.py`,
+Skill `tinkers-tools-263`, Offenes für 25b–25f in `mods/tconstruct/TODO.md`.
+- 18 Materialien (Holz bis Blauschleim, Thaumium nur mit Thaumcraft) mit allen Werten inkl. Bogen/Pfeil (`TMaterial`);
+  der Plan nannte 19, das Original hat 18 ohne Thaumcraft.
+- Items: 33 Materialien (Eisenklumpen = `minecraft:iron_nugget`), leere Schablone/Gussformen, 25 Holzmuster,
+  24 Gussformen (Gießen erst 25c), 23 Teilarten × 18 Materialien, 15 Splitter, Bogensehne, 4 Befiederungen,
+  20 Werkzeuge (`ToolCoreItem` je `ToolType`, Werte als Komponente `tconstruct:tool` statt `InfiTool`-NBT).
+  Trankwerfer folgt in 25b. Alle alten IDs (Items + Blöcke 1326/1341/1346/1347) über `OldGameIds`/`OldBlockStates`.
+- Tische mit GUI: Werkzeugstation (Knöpfe je Werkzeug, Namensfeld, Werte-Panel, Slots je Werkzeug verschoben),
+  4 Teilbauer (mit Musterkiste daneben), Musterkiste, 4 Schablonentische (Knöpfe nächste/vorige Schablone, auch die
+  Gussform-Umwandlung des Originals), 14 Werkzeugschmieden, Werkbank-Station (behält ihr Raster), 6 Werkbank-Stufen.
+  Tische behalten ihren Inhalt beim Schließen und werfen ihn beim Abbauen aus.
+- Zusammenbau aller 20 Werkzeugarten nach `ToolBuilder` (Haltbarkeit, Angriff, Tempo, Stufe, Verstärkt, Steingebunden,
+  Papier-Bonus, Bogen-/Pfeilwerte aus `TEventHandler.craftTool`), Reparieren (`ModRepair`), alle Modifikatoren
+  anbringen (Diamant, Smaragd, Redstone, Lapis, Moos, Lohe, Lava, Nekrotisch, Quarz, Extra-Slots, Seidig, Kolben,
+  Enthaupten, Bann (Zutat erst 25f), Gliederfüßer, Verstärkt); Elektro entfällt (kein IC2).
+- Benutzen ohne Spezialfähigkeit: Abbautempo/-stufe über Block-Tags `tconstruct:effective/*`, Abnutzung mit
+  Verstärkt-Chance, kaputt statt zerstört, Angriff über das Attribut (combat152), Schadensfaktor von Hackmesser/
+  Rapier/Sense, Blocken der Blockwaffen, Blöcke aus dem Nachbar-Slot setzen, Hacke pflügt.
+- Rezepte (Tische, Stufen, Schablone, Buch, Papierstapel, Moosballen, Lavakristall, Seide, Klumpen ↔ Barren),
+  Werkzeugschmieden erst mit 25c (brauchen versengte Ziegel und Metallblöcke).
+- JEI: Teilbauer, Werkzeugbau, Modifikatoren.
+- Geprüft am Testserver (temporärer Befehl): Teilbauer (Kopf aus Planken, Griff + Splitter aus Bruchstein, Verbrauch),
+  Werkzeugstation (Steinspitzhacke 131/2/4,0/Stufe 1), Redstone ×2 (+16), Diamant (631, Stufe 3), Reparatur,
+  Werte aller Eisenwerkzeuge gegen die Formeln, Abbaustufe (Eisenerz ja, Diamanterz nein), Rezept über Crafter.
+- Offen: Client-Prüfung (GUIs, Modelle, JEI); Werkzeug-Darstellung in Schichten und Fähigkeiten → 25b.
 
 ### Teil 25b – Werkzeuge im Einsatz und Darstellung
 Quellen: `items/tools/*`, `library/tools/{AbilityHelper,HarvestTool,DualHarvestTool,Weapon,BowBase}`, `modifiers/*`
