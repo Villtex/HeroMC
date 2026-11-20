@@ -1,0 +1,9 @@
+{
+  "key.mapwriter.gui": "Open Map GUI",
+  "key.mapwriter.mode": "Next Map Mode",
+  "key.mapwriter.group": "Next Marker Group",
+  "key.mapwriter.teleport": "Teleport to Marker",
+  "key.mapwriter.zoom_in": "Map Zoom In",
+  "key.mapwriter.zoom_out": "Map Zoom Out",
+  "key.categories.mapwriter": "MapWriter"
+}
