@@ -308,9 +308,9 @@ def self_drop(block, item_=None, count=None):
     entry = {'type': 'minecraft:item', 'name': n(item_ or block)}
     if count:
         entry['name'] = item_
-        entry['functions'] = [{'function': 'minecraft:set_count', 'count': count}]
+        entry['modifier'] = [{'type': 'minecraft:set_count', 'count': count}]
     write(f'data/{NS}/loot_table/blocks/{block}.json', {'type': 'minecraft:block', 'pools': [
-        {'rolls': 1, 'entries': [entry], 'conditions': [{'condition': 'minecraft:survives_explosion'}]}]})
+        {'rolls': 1, 'entries': [entry], 'condition': {'type': 'minecraft:survives_explosion'}}]})
 
 
 self_drop('caltrops')

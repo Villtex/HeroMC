@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "rmr",
+    "mrm",
+    "rmr"
+  ],
+  "key": {
+    "m": "meteors:meteor_chips",
+    "r": "meteors:red_meteor_gem"
+  },
+  "result": {
+    "id": "meteors:meteor_summoner"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " f ",
+    "frf",
+    " f "
+  ],
+  "key": {
+    "f": "meteors:frezarite_crystal",
+    "r": "meteors:red_meteor_gem"
+  },
+  "result": {
+    "id": "meteors:meteor_time_detector"
+  }
+}

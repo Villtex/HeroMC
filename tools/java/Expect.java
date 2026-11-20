@@ -47,6 +47,7 @@ public class Expect {
             qcraft.gen.QCraftWorldGen.register();
             chococraft.gen.ChocoWorldGen.register();
             legendgear.gen.LGWorldGen.register();
+            meteors.gen.MeteorsWorldGen.register();
         }
         // "nether" (after "vanilla", if both are given): the Nether of the seed instead of the overworld
         boolean nether = a.length > 1 && a[1].equals("nether");

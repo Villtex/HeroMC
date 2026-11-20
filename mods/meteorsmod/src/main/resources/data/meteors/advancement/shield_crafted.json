@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "id": "meteors:meteor_shield"
+    },
+    "title": {
+      "translate": "advancements.meteors.shield_crafted.title"
+    },
+    "description": {
+      "translate": "advancements.meteors.shield_crafted.description"
+    }
+  },
+  "criteria": {
+    "has": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "meteors:meteor_shield"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "parent": "meteors:material_gather"
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "heat=0": {
+      "model": "meteors:block/kreknorite"
+    },
+    "heat=1": {
+      "model": "meteors:block/kreknorite"
+    },
+    "heat=2": {
+      "model": "meteors:block/kreknorite"
+    },
+    "heat=3": {
+      "model": "meteors:block/kreknorite"
+    },
+    "heat=4": {
+      "model": "meteors:block/kreknorite"
+    }
+  }
+}

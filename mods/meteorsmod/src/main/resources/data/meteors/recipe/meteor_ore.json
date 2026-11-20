@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "mm",
+    "mm"
+  ],
+  "key": {
+    "m": "meteors:meteor_chips"
+  },
+  "result": {
+    "id": "meteors:meteor_ore"
+  }
+}

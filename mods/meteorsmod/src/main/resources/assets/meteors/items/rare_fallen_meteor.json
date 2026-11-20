@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "meteors:block/rare_fallen_meteor"
+  }
+}

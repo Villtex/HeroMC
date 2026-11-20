@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "rmr",
+    "ksk",
+    "rfr"
+  ],
+  "key": {
+    "m": "meteors:meteor_chips",
+    "s": "meteors:meteor_summoner",
+    "k": "meteors:kreknorite_chip",
+    "f": "meteors:frezarite_crystal",
+    "r": "meteors:red_meteor_gem"
+  },
+  "result": {
+    "id": "meteors:unknown_meteor_summoner"
+  }
+}

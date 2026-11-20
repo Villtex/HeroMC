@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "mmm",
+    "m m"
+  ],
+  "key": {
+    "m": "meteors:kreknorite_chip"
+  },
+  "result": {
+    "id": "meteors:kreknorite_helmet"
+  }
+}

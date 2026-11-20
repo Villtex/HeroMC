@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " m ",
+    "mrm",
+    " m "
+  ],
+  "key": {
+    "m": "meteors:meteor_chips",
+    "r": "minecraft:redstone"
+  },
+  "result": {
+    "id": "meteors:meteor_proximity_detector"
+  }
+}

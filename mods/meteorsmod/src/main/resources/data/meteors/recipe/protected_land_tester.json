@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "m",
+    "s"
+  ],
+  "key": {
+    "m": "meteors:meteor_chips",
+    "s": "minecraft:stick"
+  },
+  "result": {
+    "id": "meteors:protected_land_tester",
+    "count": 4
+  }
+}

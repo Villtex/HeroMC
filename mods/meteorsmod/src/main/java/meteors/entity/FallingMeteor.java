@@ -111,6 +111,7 @@ public class FallingMeteor extends Entity {
         this.yo = this.getY();
         this.zo = this.getZ();
         Vec3 motion = this.getDeltaMovement().add(0.0, -0.04F, 0.0);
+        this.setDeltaMovement(motion);
         this.move(MoverType.SELF, motion);
         this.setDeltaMovement(this.getDeltaMovement().scale(0.98F));
         if (this.onGround()) {

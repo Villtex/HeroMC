@@ -1,0 +1,14 @@
+{
+  "meteor.crash": {
+    "sounds": [
+      "meteors:meteor/crash"
+    ],
+    "subtitle": "subtitles.meteors.meteor.crash"
+  },
+  "shield.powerup": {
+    "sounds": [
+      "meteors:shield/powerup"
+    ],
+    "subtitle": "subtitles.meteors.shield.powerup"
+  }
+}

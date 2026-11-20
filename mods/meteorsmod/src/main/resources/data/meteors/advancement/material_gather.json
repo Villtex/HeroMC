@@ -1,0 +1,19 @@
+{
+  "display": {
+    "icon": {
+      "id": "meteors:meteor_chips"
+    },
+    "title": {
+      "translate": "advancements.meteors.material_gather.title"
+    },
+    "description": {
+      "translate": "advancements.meteors.material_gather.description"
+    },
+    "background": "minecraft:block/obsidian"
+  },
+  "criteria": {
+    "done": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

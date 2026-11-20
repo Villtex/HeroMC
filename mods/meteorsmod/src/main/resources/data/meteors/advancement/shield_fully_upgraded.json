@@ -1,0 +1,19 @@
+{
+  "display": {
+    "icon": {
+      "id": "meteors:red_meteor_gem"
+    },
+    "title": {
+      "translate": "advancements.meteors.shield_fully_upgraded.title"
+    },
+    "description": {
+      "translate": "advancements.meteors.shield_fully_upgraded.description"
+    }
+  },
+  "criteria": {
+    "done": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "meteors:shield_crafted"
+}

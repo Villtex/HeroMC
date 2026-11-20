@@ -1,0 +1,19 @@
+{
+  "display": {
+    "icon": {
+      "id": "meteors:fallen_meteor"
+    },
+    "title": {
+      "translate": "advancements.meteors.found_meteor.title"
+    },
+    "description": {
+      "translate": "advancements.meteors.found_meteor.description"
+    }
+  },
+  "criteria": {
+    "done": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "meteors:crafted_detector"
+}

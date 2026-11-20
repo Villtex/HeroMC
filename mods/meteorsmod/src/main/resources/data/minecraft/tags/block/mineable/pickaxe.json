@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "meteors:fallen_meteor",
+    "meteors:rare_fallen_meteor",
+    "meteors:frezarite",
+    "meteors:kreknorite",
+    "meteors:meteor_ore",
+    "meteors:red_meteor_gem_block",
+    "meteors:meteor_shield"
+  ]
+}

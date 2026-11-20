@@ -1,0 +1,19 @@
+{
+  "display": {
+    "icon": {
+      "id": "meteors:kitty_comet_summoner"
+    },
+    "title": {
+      "translate": "advancements.meteors.comet_kitty_event.title"
+    },
+    "description": {
+      "translate": "advancements.meteors.comet_kitty_event.description"
+    }
+  },
+  "criteria": {
+    "done": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "meteors:summon_meteor"
+}

@@ -108,7 +108,19 @@ abstract class ImportOriginalAssets extends DefaultTask {
                     throw new GradleException("Target escapes the output directory: ${target}")
                 }
                 file.parentFile.mkdirs()
-                file.bytes = data
+                if (name.toLowerCase().endsWith('.wav') && target.endsWith('.ogg')) {
+                    // 26.3 only plays Ogg Vorbis: 1.5.2 sound packs (Falling Meteors) shipped WAV, converted with ffmpeg
+                    File wav = File.createTempFile('original', '.wav')
+                    wav.bytes = data
+                    def proc = ['ffmpeg', '-y', '-loglevel', 'error', '-i', wav.absolutePath, '-c:a', 'libvorbis', '-q:a', '5', file.absolutePath].execute()
+                    proc.waitForProcessOutput(System.out, System.err)
+                    wav.delete()
+                    if (proc.exitValue() != 0) {
+                        throw new GradleException("ffmpeg could not convert ${name} (ffmpeg with libvorbis is needed for WAV sounds)")
+                    }
+                } else {
+                    file.bytes = data
+                }
                 found << source
             }
         }

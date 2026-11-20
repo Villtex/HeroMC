@@ -1,0 +1,19 @@
+{
+  "display": {
+    "icon": {
+      "id": "meteors:meteorite_pickaxe"
+    },
+    "title": {
+      "translate": "advancements.meteors.attracted_drop.title"
+    },
+    "description": {
+      "translate": "advancements.meteors.attracted_drop.description"
+    }
+  },
+  "criteria": {
+    "done": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "meteors:material_gather"
+}

@@ -62,7 +62,23 @@ public final class IMConfig {
             "morebows:iron_bow",
             "morebows:diamond_bow",
             "morebows:stone_bow",
-            "hexxitgear:hexical_diamond");
+            "hexxitgear:hexical_diamond",
+            "meteors:frezarite_axe",
+            "meteors:frezarite_chestplate",
+            "meteors:frezarite_boots",
+            "meteors:frezarite_helmet",
+            "meteors:frezarite_leggings",
+            "meteors:frezarite_sword",
+            "meteors:kreknorite_chestplate",
+            "meteors:kreknorite_boots",
+            "meteors:kreknorite_helmet",
+            "meteors:kreknorite_leggings",
+            "meteors:kreknorite_sword",
+            "meteors:meteorite_axe",
+            "meteors:meteorite_chestplate",
+            "meteors:meteorite_boots",
+            "meteors:meteorite_helmet",
+            "meteors:meteorite_leggings");
 
     /** permittedentities=false of the pack: EntityHSSoulLost, Harbinger, SandWorm, entity.DimDoors.Monolith.name. */
     public static final List<String> DEFAULT_FORBIDDEN = List.of(

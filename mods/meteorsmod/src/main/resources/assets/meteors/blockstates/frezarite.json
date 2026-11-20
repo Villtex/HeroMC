@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "heat=0": {
+      "model": "meteors:block/frezarite"
+    },
+    "heat=1": {
+      "model": "meteors:block/frezarite"
+    },
+    "heat=2": {
+      "model": "meteors:block/frezarite"
+    },
+    "heat=3": {
+      "model": "meteors:block/frezarite"
+    },
+    "heat=4": {
+      "model": "meteors:block/frezarite"
+    }
+  }
+}

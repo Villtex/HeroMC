@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    "mfk",
+    "brb"
+  ],
+  "key": {
+    "m": "meteors:meteor_chips",
+    "f": "meteors:frezarite_crystal",
+    "k": "meteors:kreknorite_chip",
+    "b": [
+      "meteors:meteor_ore",
+      "meteors:fallen_meteor"
+    ],
+    "r": "minecraft:redstone"
+  },
+  "result": {
+    "id": "meteors:meteor_timer"
+  }
+}

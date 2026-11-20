@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "mmm",
+    "m m",
+    "m m"
+  ],
+  "key": {
+    "m": "meteors:frezarite_crystal"
+  },
+  "result": {
+    "id": "meteors:frezarite_leggings"
+  }
+}

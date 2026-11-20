@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "mmm",
+    "msm",
+    "mmm"
+  ],
+  "key": {
+    "m": "meteors:meteor_chips",
+    "s": "meteors:meteor_summoner"
+  },
+  "result": {
+    "id": "meteors:meteorite_meteor_summoner"
+  }
+}

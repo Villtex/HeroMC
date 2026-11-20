@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "up": "meteors:block/shieldTop_lit",
+    "down": "meteors:block/shieldBottom",
+    "north": "meteors:block/shieldSideCracked",
+    "south": "meteors:block/shieldSideCracked",
+    "west": "meteors:block/shieldSideCracked",
+    "east": "meteors:block/sideGem",
+    "particle": "meteors:block/sideNoGem"
+  }
+}

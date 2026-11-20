@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:water_bucket",
+    "meteors:frezarite_crystal"
+  ],
+  "result": {
+    "id": "minecraft:ice",
+    "count": 4
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "power=0": {
+      "model": "meteors:block/meteor_timer"
+    },
+    "power=1": {
+      "model": "meteors:block/meteor_timer"
+    },
+    "power=2": {
+      "model": "meteors:block/meteor_timer"
+    },
+    "power=3": {
+      "model": "meteors:block/meteor_timer"
+    },
+    "power=4": {
+      "model": "meteors:block/meteor_timer"
+    },
+    "power=5": {
+      "model": "meteors:block/meteor_timer"
+    },
+    "power=6": {
+      "model": "meteors:block/meteor_timer"
+    },
+    "power=7": {
+      "model": "meteors:block/meteor_timer"
+    },
+    "power=8": {
+      "model": "meteors:block/meteor_timer"
+    },
+    "power=9": {
+      "model": "meteors:block/meteor_timer"
+    },
+    "power=10": {
+      "model": "meteors:block/meteor_timer"
+    },
+    "power=11": {
+      "model": "meteors:block/meteor_timer"
+    },
+    "power=12": {
+      "model": "meteors:block/meteor_timer"
+    },
+    "power=13": {
+      "model": "meteors:block/meteor_timer"
+    },
+    "power=14": {
+      "model": "meteors:block/meteor_timer"
+    },
+    "power=15": {
+      "model": "meteors:block/meteor_timer"
+    }
+  }
+}

@@ -1,8 +1,6 @@
 # Infernal Mobs – offen
 
 - **Beuteliste ergänzen**, sobald die Mods portiert sind (in `IMConfig.DEFAULT_ITEMS`):
-  - Teil 19, Falling Meteors: alte IDs 6058, 6059, 6060, 6062, 6064, 6067, 6068, 6069, 6071, 6072, 6073, 6074, 6075,
-    6076, 6079, 6081 (= Config-ID + 256, siehe `Meteors.cfg` des Packs).
   - Teil 20, Xeno's Reliquary: alte ID 6408 (`xreliquary.cfg`).
 - **Client-Prüfung offen:** HUD (Name, Lebensleiste, Modifikator-Zeilen) und die Zauber-Partikel um Rare-Mobs nur
   im Code geprüft, nicht im laufenden Client.

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "mmm",
+    " s ",
+    " s "
+  ],
+  "key": {
+    "m": "meteors:frezarite_crystal",
+    "s": "minecraft:stick"
+  },
+  "result": {
+    "id": "meteors:frezarite_pickaxe"
+  }
+}

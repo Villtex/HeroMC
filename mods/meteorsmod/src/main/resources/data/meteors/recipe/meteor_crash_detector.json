@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " k ",
+    "krk",
+    " k "
+  ],
+  "key": {
+    "k": "meteors:kreknorite_chip",
+    "r": "meteors:red_meteor_gem"
+  },
+  "result": {
+    "id": "meteors:meteor_crash_detector"
+  }
+}

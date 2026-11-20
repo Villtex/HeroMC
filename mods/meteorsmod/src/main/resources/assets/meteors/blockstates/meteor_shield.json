@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "power=0": {
+      "model": "meteors:block/meteor_shield_0"
+    },
+    "power=1": {
+      "model": "meteors:block/meteor_shield_1"
+    },
+    "power=2": {
+      "model": "meteors:block/meteor_shield_2"
+    },
+    "power=3": {
+      "model": "meteors:block/meteor_shield_3"
+    },
+    "power=4": {
+      "model": "meteors:block/meteor_shield_4"
+    },
+    "power=5": {
+      "model": "meteors:block/meteor_shield_5"
+    }
+  }
+}

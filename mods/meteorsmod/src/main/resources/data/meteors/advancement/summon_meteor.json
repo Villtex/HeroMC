@@ -1,0 +1,19 @@
+{
+  "display": {
+    "icon": {
+      "id": "meteors:meteor_summoner"
+    },
+    "title": {
+      "translate": "advancements.meteors.summon_meteor.title"
+    },
+    "description": {
+      "translate": "advancements.meteors.summon_meteor.description"
+    }
+  },
+  "criteria": {
+    "done": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "meteors:material_gather"
+}

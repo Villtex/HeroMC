@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "meteors:fallen_meteor",
+    "meteors:rare_fallen_meteor",
+    "meteors:frezarite",
+    "meteors:kreknorite",
+    "meteors:meteor_ore"
+  ]
+}

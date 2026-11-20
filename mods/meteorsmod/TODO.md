@@ -1,10 +1,20 @@
-# Falling Meteors – offen (work in progress)
+# Falling Meteors – offen und bewusste Abweichungen
 
-Zwischenstand eines abgebrochenen Subagenten, in der Hauptsession weitergeführt. `gradle.properties` liegt als
-`gradle.properties.wip` daneben, damit das Teilprojekt noch nicht gebaut wird, bis es kompiliert und Ressourcen hat.
+Port begonnen von einem Subagenten (Kern, Blöcke, Items, Entities, Krater, Ereignisse), in der Hauptsession
+fertiggestellt (Netzwerk, Client, Ressourcen, Prüfung, Fallgeschwindigkeit des Meteoriten).
 
-- Client fehlt: `meteors.client.MeteorsClient` (Renderer Meteor, Alien Creeper, Comet Kitty, Schildstrahl, Partikel,
-  Detektor-Nadeln aus `MeteorNetwork`).
-- Ressourcen fehlen: Modelle, Sprachdateien, Rezepte, Loot, Verzauberungen, `original-assets.txt` (Sounds sind .wav).
-- Weltgenerierung `gen/MeteorsWorldGen` noch nicht in `tools/expect.sh` / `verify_blocks.py`.
-- Infernal Mobs: Meteors-Items in `IMConfig.DEFAULT_ITEMS`.
+## Client-Prüfung offen
+Meteor-Modell (ModelMeteor als 1/8/14 Würfel), Alien Creeper (Creeper-Modell mit meteorcreeper.png, immer geladen),
+Kometenkatze (Katzenmodell mit cometKitty.png), Detektor-Nadeln (32 Bilder des Streifens über die Eigenschaft
+`meteors:detector`), Partikel, Rüstungen am Spieler.
+
+## Nicht portiert (Client)
+Schildstrahl (TileEntityMeteorShieldRayRenderer), Raumhelm der Kometenkatze, Meteor-Timer-Modell (als halbe Stufe),
+Partikelbilder aus particles.png (getönte Vanilla-Puffs).
+
+## Bewusste Abweichungen
+- Konfiguration als STARTUP-Config mit den Pack-Werten (`MeteorsConfig`).
+- Pakete MetSettings und MetChunk entfallen (nur für Tooltips); der Rest ist eine Sync-Nutzlast (`MeteorNetwork`).
+- Cold Touch und Magnetization: Kosten des Originals (min 40 über max 31), also nie am Zaubertisch, wie damals.
+- Blockdrops nach Hitze als Loot-Tabellen (Glück als uniform_bonus_count genähert).
+- Sounds .wav → .ogg beim Asset-Import (ffmpeg).

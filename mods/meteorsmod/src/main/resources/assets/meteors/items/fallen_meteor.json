@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "meteors:block/fallen_meteor"
+  }
+}

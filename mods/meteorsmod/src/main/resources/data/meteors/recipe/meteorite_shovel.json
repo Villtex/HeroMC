@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "m",
+    "s",
+    "s"
+  ],
+  "key": {
+    "m": "meteors:meteor_chips",
+    "s": "minecraft:iron_ingot"
+  },
+  "result": {
+    "id": "meteors:meteorite_shovel"
+  }
+}

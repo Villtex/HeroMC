@@ -1,0 +1,19 @@
+{
+  "display": {
+    "icon": {
+      "id": "meteors:protected_land_tester"
+    },
+    "title": {
+      "translate": "advancements.meteors.meteor_blocked.title"
+    },
+    "description": {
+      "translate": "advancements.meteors.meteor_blocked.description"
+    }
+  },
+  "criteria": {
+    "done": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "meteors:shield_crafted"
+}

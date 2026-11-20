@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    "mmm",
+    "crc",
+    "ccc"
+  ],
+  "key": {
+    "m": "meteors:meteor_chips",
+    "c": "minecraft:cobblestone",
+    "r": "minecraft:redstone"
+  },
+  "result": {
+    "id": "meteors:meteor_shield"
+  }
+}

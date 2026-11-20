@@ -56,7 +56,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 16 | BiblioCraft | ~21.000 | 3 | Fable 5.2, hoch | ✅ erledigt |
 | 17 | BetterStorage, Backpacks, qCraft | ~17.000 | 3 | Opus 5.5, mittel | ✅ erledigt |
 | 18 | ChocoCraft, Infernal Mobs | ~16.000 | 1, 3 | Opus 5.5, mittel | ✅ erledigt |
-| 19 | LegendGear, Falling Meteors | ~19.000 | 1, 3 | Opus 5.5, mittel | offen |
+| 19 | LegendGear, Falling Meteors | ~19.000 | 1, 3 | Opus 5.5, mittel | ✅ erledigt |
 | 20 | Xeno's Reliquary, Secret Rooms | ~18.000 | 3 | Opus 5.5, mittel | offen |
 | 21 | Immibis Core, Immibis's Microblocks | ~26.000 | 3 | Fable 5.2, extra hoch | offen |
 | 22 | Client-Mods: Damage Indicators, MapWriter | ~12.000 | – | Sonnet 5.5, niedrig | offen |
@@ -1203,6 +1203,53 @@ Item-IDs aus den alten Nummern).
 - Falling Meteors: Meteoriten-Events und -Erze.
 - Infernal Mobs: die Meteors-Items der alten Beuteliste (IDs 6058–6081, siehe `mods/infernalmobs/TODO.md`) in
   `IMConfig.DEFAULT_ITEMS` eintragen.
+
+### Teil 19 – Stand
+
+**Status: erledigt.** Zwei Teilprojekte; `clean pack` grün, Testserver mit allen Mods bis `Done` ohne Fehler (Project
+Zulu wie in Teil 13–18 vorübergehend heraus). `tools/expect.sh 1234 find 260` + `verify_blocks.py`: 290.742 Blöcke,
+0 abweichend (mit den neuen Generatoren beider Mods und dem Ruins/Battle-Towers-Stand von `aa9704d`).
+
+**LegendGear** – Teilprojekt `mods/legendgear` (Mod-ID `legendgear`), Werte der Pack-`LegendGear.cfg` fest in
+`LGConfig`. Ressourcen schreibt `mods/legendgear/tools/gen.py`, Texturen und 33 Sounds kommen beim Bauen aus dem
+Original. Alte IDs: Blöcke 1176–1187, Items 5751–5779 (+256) in `OldGameIds`/`OldBlockStates`, Verzauberungen
+Fokus/Seelenband als Daten.
+
+- **Aufbau:** `LGItems` (alle Items, Damage-Varianten als eigene Items, Zähler `legendgear:ammo`), `LGBlocks`
+  (mystischer Strauch, Bombenblume, Krähenfüße, Ketten-/Schlossblock, Tonkrug, Zuckerwürfel, Schwertsockel mit
+  Reparatur über dem Himmelsstrahl, Himmelsstrahl, Sternenstein, Sternenstrahl-Fackel), `LGEntities` (Medaillon-Wurf
+  in vier Arten, Beben, Pfeilsturm, Feuersturm, Enderbombe, Bombe + Explosion, Bumerang, Enterhaken, Wirbelwind,
+  Sternenschiene, Sternschnuppe; `LGThrowable` bildet EntityThrowable nach), `LGEvents` (Köcher am Bogen und
+  Bombenpfeile, Herzen, Smaragdklänge, Medaillon-Aufladung, Geo-/Pyro-Amulett, Phönixfeder, Strauch-Jackpot,
+  Monsterbeute, Stirnband, Titanenband, Zauberpulver auf Mobs, Medaillon-Schwert mit Fokus und Ender-Rückruf,
+  Sternschnuppen, Wirbelwindstiefel, Seelenband), Spezialrezepte Köcher leeren und Medaillon-Schwert.
+- **Weltgenerierung:** `legendgear.gen.LGWorldGen` (ShrubGenerator, BombFlowerGenerator in dieser Reihenfolge) in
+  `tools/expect.sh` und `verify_blocks.py` (1176, 1182).
+- **Prüfung:** Rezepte über den Crafter (Medaillon mit Schaden 50, Köcher mit 1 Pfeil, Köcher leeren 150 → 64 + 86,
+  Medaillon-Schwert mit Lore und Custom Data, Kandis mit Eimer-Rest), Bombe (Pflasterstein weg, Zombie 20 → 15,1).
+
+**Offen (LegendGear):** `mods/legendgear/TODO.md` (fehlende Zusatzgrafik von Sockel, Himmelsstrahl, Sternenstein,
+Enderbombe, Hakenkette, PrismaticXP; bewusste Abweichungen). Client-Prüfung offen.
+
+**Falling Meteors** – Teilprojekt `mods/meteorsmod` (Mod-ID `meteors`), begonnen von einem Subagenten, der am
+Nutzungslimit abbrach (nicht fortgesetzt), in der Hauptsession fertiggestellt. Werte der Pack-`Meteors.cfg` in
+`MeteorsConfig` (STARTUP). Ressourcen schreibt `mods/meteorsmod/tools/gen.py` (Sprachdateien aus dem Original);
+die WAV-Sounds wandelt der Asset-Import jetzt mit ffmpeg in Ogg (`buildSrc`).
+
+- **Aufbau:** `MeteorData` (angekündigte Meteore, Schilde, Einschläge, als SavedData), `MeteorEvents` (Ankündigung
+  nachts, Kitty-Angriff, Magnetisierung, Kreknorit-Set, Frezarit unter Wasser, Erfolge), `Craters` (Krater je Typ),
+  Blöcke mit Hitze, Meteoritenschild mit Ausbaustufen, Schutz-Tester, Meteor-Timer, Werkzeuge, Rüstungen,
+  Detektoren, Beschwörer, Alien Creeper, Kometenkatze; `MeteorNetwork` (Sync für die Detektoren), Client mit
+  Meteor-Modell, Detektor-Nadel als Range-Eigenschaft `meteors:detector`, Partikel; Advancements statt Achievements.
+- **Weltgenerierung:** `meteors.gen.MeteorsWorldGen` (4 Adern Meteoritenerz y 6–21 je Chunk der Oberwelt) in
+  `tools/expect.sh` und `verify_blocks.py` (1210).
+- **Infernal Mobs:** die 16 Meteors-Items der alten Beuteliste in `IMConfig.DEFAULT_ITEMS`.
+- **Prüfung:** Rezepte über den Crafter (Schild, Kreknorit-Schwert, Eiscreme mit Eimer-Rest), Loot (Erz 1 Chip,
+  Alien Creeper 0–2 Edelstein/Chips), beschworener Meteorit Größe 2 schlägt ein (Krater mit Meteorit und seltenem
+  Meteorit ≈ 1/35). Korrigiert: der Meteorit beschleunigte nicht (fiel konstant 0,04 je Tick).
+
+**Offen (Falling Meteors):** `mods/meteorsmod/TODO.md` (Schildstrahl, Raumhelm, Timer-Modell; bewusste
+Abweichungen). Client-Prüfung offen.
 
 ## Teil 20 – Xeno's Reliquary, Secret Rooms
 

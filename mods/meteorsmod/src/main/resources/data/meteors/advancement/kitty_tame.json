@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "id": "minecraft:cod"
+    },
+    "title": {
+      "translate": "advancements.meteors.kitty_tame.title"
+    },
+    "description": {
+      "translate": "advancements.meteors.kitty_tame.description"
+    }
+  },
+  "criteria": {
+    "tame": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "meteors:comet_kitty"
+          }
+        }
+      }
+    }
+  },
+  "parent": "meteors:comet_kitty_event"
+}
