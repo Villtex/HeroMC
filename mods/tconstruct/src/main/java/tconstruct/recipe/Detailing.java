@@ -27,6 +27,11 @@ public final class Detailing {
         // sandStone 0 -> 2 (smooth = cut today) -> 1 (chiseled)
         add(() -> Blocks.SANDSTONE, () -> Blocks.CUT_SANDSTONE.defaultBlockState());
         add(() -> Blocks.CUT_SANDSTONE, () -> Blocks.CHISELED_SANDSTONE.defaultBlockState());
+        // the seared blocks (part 25c): stone -> paver -> chiseled -> bricks -> road -> fancy -> square
+        int[][] seared = {{1, 3}, {3, 8}, {8, 0}, {0, 5}, {5, 6}, {6, 7}};
+        for (int[] step : seared) {
+            add(() -> tconstruct.TSmeltery.SEARED.get(step[0]).get(), () -> tconstruct.TSmeltery.SEARED.get(step[1]).get().defaultBlockState());
+        }
     }
 
     private Detailing() {

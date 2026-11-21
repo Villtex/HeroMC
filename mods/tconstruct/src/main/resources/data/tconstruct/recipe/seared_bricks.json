@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "bb",
+    "bb"
+  ],
+  "key": {
+    "b": "tconstruct:seared_brick"
+  },
+  "result": {
+    "id": "tconstruct:seared_bricks"
+  }
+}

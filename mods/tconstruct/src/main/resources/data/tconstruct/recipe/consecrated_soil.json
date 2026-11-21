@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": "tconstruct:graveyard_soil",
+  "result": {
+    "id": "tconstruct:consecrated_soil"
+  },
+  "experience": 0.2,
+  "cookingtime": 200
+}

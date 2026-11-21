@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "bbb"
+  ],
+  "key": {
+    "b": "tconstruct:seared_paver"
+  },
+  "result": {
+    "id": "tconstruct:seared_paver_slab",
+    "count": 6
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "bbb",
+    "msm",
+    "m m"
+  ],
+  "key": {
+    "b": "tconstruct:seared_bricks",
+    "s": "tconstruct:tool_station",
+    "m": "minecraft:emerald_block"
+  },
+  "result": {
+    "id": "tconstruct:emerald_tool_forge"
+  }
+}

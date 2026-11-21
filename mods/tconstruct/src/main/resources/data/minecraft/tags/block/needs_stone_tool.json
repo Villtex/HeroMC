@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "tconstruct:copper_ore",
+    "tconstruct:tin_ore",
+    "tconstruct:aluminum_ore",
+    "tconstruct:iron_gravel_ore",
+    "tconstruct:copper_gravel_ore",
+    "tconstruct:tin_gravel_ore",
+    "tconstruct:aluminum_gravel_ore"
+  ]
+}

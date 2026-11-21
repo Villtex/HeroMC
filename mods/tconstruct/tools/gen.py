@@ -472,7 +472,7 @@ write('data/c/tags/item/ingots/ardite.json', {'values': [n('ardite_ingot')]})
 write('data/c/tags/item/ingots/manyullyn.json', {'values': [n('manyullyn_ingot')]})
 write('data/c/tags/item/ingots/copper.json', {'replace': False, 'values': [n('copper_ingot')]})
 write('data/c/tags/item/ingots/tin.json', {'values': [n('tin_ingot')]})
-write('data/c/tags/item/ingots/aluminum.json', {'values': [n('aluminum_ingot'), n('raw_aluminum')]})
+write('data/c/tags/item/ingots/aluminum.json', {'replace': False, 'values': [n('aluminum_ingot'), n('raw_aluminum')]})
 write('data/c/tags/item/ingots/bronze.json', {'values': [n('bronze_ingot')]})
 write('data/c/tags/item/ingots/steel.json', {'values': [n('steel_ingot')]})
 
@@ -579,6 +579,8 @@ for k, (e, g) in {'part_builder': ('Part Builder', 'Teilbauer'), 'tool_assembly'
                   'modifier_note': ('Needs free modifiers on the tool', 'Braucht freie Modifikatoren am Werkzeug'),
                   'leftover': ('Leftover', 'Rest')}.items():
     name(f'jei.{NS}.{k}', e, g)
+
+exec(open(os.path.join(ROOT, 'tools/gen_smeltery.py')).read())  # part 25c
 
 # ---------------------------------------------------------------- language files, original-assets.txt
 for lang, d in (('en_us', en), ('de_de', de)):

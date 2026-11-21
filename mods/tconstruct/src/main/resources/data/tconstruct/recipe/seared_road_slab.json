@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "bbb"
+  ],
+  "key": {
+    "b": "tconstruct:seared_road"
+  },
+  "result": {
+    "id": "tconstruct:seared_road_slab",
+    "count": 6
+  }
+}

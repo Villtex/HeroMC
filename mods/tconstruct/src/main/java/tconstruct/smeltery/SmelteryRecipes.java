@@ -38,7 +38,11 @@ import static tconstruct.smeltery.TFluids.*;
  */
 public final class SmelteryRecipes {
     /** Smeltery.addMelting: what an item turns into, at which temperature, and which block stands for it inside the smeltery. */
-    public record Melting(int temperature, FluidStack result, @Nullable Supplier<BlockState> render) {
+    public record Melting(int temperature, FluidStack result, @Nullable Supplier<BlockState> render, int renderSize) {
+        public Melting(int temperature, FluidStack result, @Nullable Supplier<BlockState> render) {
+            this(temperature, result, render, 1);
+        }
+
         /** The block drawn for {@code stack} inside the smeltery (Smeltery.getRenderIndex); ores and blocks show themselves. */
         public BlockState renderState(ItemStack stack) {
             if (this.render != null) {
@@ -234,7 +238,12 @@ public final class SmelteryRecipes {
     }
 
     private static void melt(Item item, int temperature, int liquid, int amount, Supplier<BlockState> render) {
-        Melting melting = new Melting(temperature, liquid(liquid, amount), render);
+        melt(item, temperature, liquid, amount, render, 1);
+    }
+
+    /** {@code size}: the stack size of 1.5.2's render index (an ingot fills a quarter of its block inside the smeltery). */
+    private static void melt(Item item, int temperature, int liquid, int amount, Supplier<BlockState> render, int size) {
+        Melting melting = new Melting(temperature, liquid(liquid, amount), render, size);
         MELTING.put(item, melting);
         MELTING_ENTRIES.add(new MeltingEntry(List.of(new ItemStack(item)), melting));
     }
@@ -252,7 +261,7 @@ public final class SmelteryRecipes {
 
     private static void meltTag(String tag, int temperature, int liquid, int amount, Supplier<BlockState> render) {
         TagKey<Item> key = TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("c", tag));
-        Melting melting = new Melting(temperature, liquid(liquid, amount), render);
+        Melting melting = new Melting(temperature, liquid(liquid, amount), render, render == null ? 1 : 2);
         TAG_MELTING.add(new TagMelting(key, melting));
         List<ItemStack> items = new ArrayList<>();
         BuiltInRegistries.ITEM.getTagOrEmpty(key).forEach(h -> items.add(new ItemStack(h)));
@@ -387,13 +396,13 @@ public final class SmelteryRecipes {
         meltBlock(Blocks.DEEPSLATE_GOLD_ORE, 400, GOLD, 288);
         meltBlock(TSmeltery.GRAVEL_ORES.get(0).get(), 600, IRON, 288);
         meltBlock(TSmeltery.GRAVEL_ORES.get(1).get(), 400, GOLD, 288);
-        melt(Items.IRON_INGOT, 500, IRON, 144, block(Blocks.IRON_BLOCK));
-        melt(Items.GOLD_INGOT, 300, GOLD, 144, block(Blocks.GOLD_BLOCK));
-        melt(Items.GOLD_NUGGET, 150, GOLD, 16, block(Blocks.GOLD_BLOCK));
+        melt(Items.IRON_INGOT, 500, IRON, 144, block(Blocks.IRON_BLOCK), 4);
+        melt(Items.GOLD_INGOT, 300, GOLD, 144, block(Blocks.GOLD_BLOCK), 4);
+        melt(Items.GOLD_NUGGET, 150, GOLD, 16, block(Blocks.GOLD_BLOCK), 4);
         melt(material("obsidian_ingot"), 750, OBSIDIAN, 144, block(Blocks.OBSIDIAN));
-        melt(TItems.BLANK_CAST.get(), 150, ALUBRASS, 144, metal(7));
-        melt(TItems.GOLD_BLANK_CAST.get(), 150, GOLD, 288, metal(7));
-        melt(Items.ENDER_PEARL, 500, ENDER, 250, metal(10));
+        melt(TItems.BLANK_CAST.get(), 150, ALUBRASS, 144, metal(7), 4);
+        melt(TItems.GOLD_BLANK_CAST.get(), 150, GOLD, 288, metal(7), 4);
+        melt(Items.ENDER_PEARL, 500, ENDER, 250, metal(10), 4);
         melt(TSmeltery.METAL_BLOCKS.get(10).get().asItem(), 500, ENDER, 1000, metal(10));
         meltBlock(Blocks.IRON_BLOCK, 600, IRON, 1296);
         meltBlock(Blocks.GOLD_BLOCK, 400, GOLD, 1296);
@@ -424,7 +433,7 @@ public final class SmelteryRecipes {
         for (Object[] a : iron) {
             melt((Item) a[0], 600, IRON, (Integer) a[1], block(Blocks.IRON_BLOCK));
         }
-        melt(Items.LIGHT_WEIGHTED_PRESSURE_PLATE, 600, GOLD, 288, block(Blocks.GOLD_BLOCK));
+        melt(Items.LIGHT_WEIGHTED_PRESSURE_PLATE, 600, GOLD, 288, block(Blocks.GOLD_BLOCK), 4);
         melt(Items.POWERED_RAIL, 350, GOLD, 144, block(Blocks.GOLD_BLOCK));
         melt(Items.ENCHANTING_TABLE, 750, OBSIDIAN, 576, block(Blocks.OBSIDIAN));
         for (Item anvil : new Item[]{Items.ANVIL, Items.CHIPPED_ANVIL, Items.DAMAGED_ANVIL}) {

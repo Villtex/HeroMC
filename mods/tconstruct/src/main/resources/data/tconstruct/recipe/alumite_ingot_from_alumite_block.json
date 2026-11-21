@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "m"
+  ],
+  "key": {
+    "m": "tconstruct:alumite_block"
+  },
+  "result": {
+    "id": "tconstruct:alumite_ingot",
+    "count": 9
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": "tconstruct:blue_slimy_mud",
+  "result": {
+    "id": "tconstruct:blue_slime_crystal"
+  },
+  "experience": 2.0,
+  "cookingtime": 200
+}

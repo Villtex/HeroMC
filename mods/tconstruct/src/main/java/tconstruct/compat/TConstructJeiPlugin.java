@@ -36,6 +36,11 @@ public class TConstructJeiPlugin implements IModPlugin {
     static final IRecipeType<TinkerCategory.Row> PART_BUILDER = IRecipeType.create(TConstruct.id("part_builder"), TinkerCategory.Row.class);
     static final IRecipeType<TinkerCategory.Row> TOOLS = IRecipeType.create(TConstruct.id("tool_assembly"), TinkerCategory.Row.class);
     static final IRecipeType<TinkerCategory.Row> MODIFIERS = IRecipeType.create(TConstruct.id("modifiers"), TinkerCategory.Row.class);
+    static final IRecipeType<LiquidCategory.Row> MELTING = IRecipeType.create(TConstruct.id("melting"), LiquidCategory.Row.class);
+    static final IRecipeType<LiquidCategory.Row> ALLOYING = IRecipeType.create(TConstruct.id("alloying"), LiquidCategory.Row.class);
+    static final IRecipeType<LiquidCategory.Row> TABLE = IRecipeType.create(TConstruct.id("casting_table"), LiquidCategory.Row.class);
+    static final IRecipeType<LiquidCategory.Row> BASIN = IRecipeType.create(TConstruct.id("casting_basin"), LiquidCategory.Row.class);
+    static final IRecipeType<LiquidCategory.Row> DRYING = IRecipeType.create(TConstruct.id("drying_rack"), LiquidCategory.Row.class);
 
     @Override
     public Identifier getPluginUid() {
@@ -48,12 +53,22 @@ public class TConstructJeiPlugin implements IModPlugin {
         registration.addRecipeCategories(
                 new TinkerCategory(gui, PART_BUILDER, Component.translatable("jei.tconstruct.part_builder"), TBlocks.PART_BUILDERS.get(0).get(), 2, 2),
                 new TinkerCategory(gui, TOOLS, Component.translatable("jei.tconstruct.tool_assembly"), TBlocks.TOOL_STATION.get(), 4, 1),
-                new TinkerCategory(gui, MODIFIERS, Component.translatable("jei.tconstruct.modifiers"), TBlocks.TOOL_STATION.get(), 3, 1));
+                new TinkerCategory(gui, MODIFIERS, Component.translatable("jei.tconstruct.modifiers"), TBlocks.TOOL_STATION.get(), 3, 1),
+                new LiquidCategory(gui, MELTING, Component.translatable("jei.tconstruct.melting"), tconstruct.TSmeltery.CONTROLLER.get(), 1),
+                new LiquidCategory(gui, ALLOYING, Component.translatable("jei.tconstruct.alloy"), tconstruct.TSmeltery.CONTROLLER.get(), 4),
+                new LiquidCategory(gui, TABLE, Component.translatable("jei.tconstruct.table"), tconstruct.TSmeltery.CASTING_TABLE.get(), 2),
+                new LiquidCategory(gui, BASIN, Component.translatable("jei.tconstruct.basin"), tconstruct.TSmeltery.CASTING_BASIN.get(), 2),
+                new LiquidCategory(gui, DRYING, Component.translatable("jei.tconstruct.drying"), tconstruct.TSmeltery.DRYING_RACK.get(), 1));
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         TBlocks.PART_BUILDERS.forEach(b -> registration.addCraftingStation(PART_BUILDER, b.get()));
+        registration.addCraftingStation(MELTING, tconstruct.TSmeltery.CONTROLLER.get());
+        registration.addCraftingStation(ALLOYING, tconstruct.TSmeltery.CONTROLLER.get());
+        registration.addCraftingStation(TABLE, tconstruct.TSmeltery.CASTING_TABLE.get());
+        registration.addCraftingStation(BASIN, tconstruct.TSmeltery.CASTING_BASIN.get());
+        registration.addCraftingStation(DRYING, tconstruct.TSmeltery.DRYING_RACK.get());
         registration.addCraftingStation(PART_BUILDER, TBlocks.SLABS.get(2).get());
         for (var type : List.of(TOOLS, MODIFIERS)) {
             registration.addCraftingStation(type, TBlocks.TOOL_STATION.get(), TBlocks.SLABS.get(1).get());
@@ -67,6 +82,7 @@ public class TConstructJeiPlugin implements IModPlugin {
         registration.addRecipes(PART_BUILDER, partRecipes());
         registration.addRecipes(TOOLS, toolRecipes());
         registration.addRecipes(MODIFIERS, modifierRecipes());
+        SmelteryJei.register(registration, MELTING, ALLOYING, TABLE, BASIN, DRYING);
     }
 
     /** Every wooden pattern with every material that makes a part (enough of it for one part). */

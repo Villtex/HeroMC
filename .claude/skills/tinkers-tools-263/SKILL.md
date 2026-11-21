@@ -3,7 +3,7 @@ name: tinkers-tools-263
 description: Beim Weiterbauen von Tinkers' Construct (mods/tconstruct, Teile 25b–25f) benutzen – wie Werkzeuge, Teile, Materialien, Muster und Modifikatoren im Port abgebildet sind (Komponente tconstruct:tool statt InfiTool-NBT, ein Item je Teil und Material, alte IDs), wo neue Fähigkeiten, Modifikator-Effekte, Gussformen und Werkzeug-Modelle eingehängt werden und wie man es ohne Spieler prüft.
 ---
 
-# Tinkers' Construct im Port (Stand Teil 25b)
+# Tinkers' Construct im Port (Stand Teil 25c)
 
 Code: `mods/tconstruct/src/main/java/tconstruct/`, Daten/Assets aus `mods/tconstruct/tools/gen.py`
 (`python3 mods/tconstruct/tools/gen.py` überschreibt `src/main/resources/assets|data` und `original-assets.txt`).
@@ -59,6 +59,20 @@ Alte IDs: `TItems.OLD_IDS` (Item-ID aus `TinkersWorkshop.txt` + 256, Damage) und
   extra/effect1..6/arrow; Wert = Material-/Effekt-ID, `_broken`, `_1.._3` beim gespannten Bogen,
   `client/ToolPartProperty`). Nur vorhandene Texturen werden Fälle (gen.py braucht `.reference/tconstruct`).
 - JEI: `compat/TConstructJeiPlugin` + `TinkerCategory` (Zeile aus Eingabe-Listen und Ausgaben, fokus-verknüpft).
+
+## Schmelzerei (25c)
+
+- Flüssigkeiten: `smeltery/TFluids` (Index = alte Metadaten, `TFluids.fluid(i)`, `TFluids.of(fluid)`), Aussehen in
+  `client/TSmelteryClient` (`RegisterFluidModelsEvent`, Texturen `block/liquid_<tex>` + `_flow` mit `.mcmeta` aus den `.txt`).
+- Neue Rezepte in `smeltery/SmelteryRecipes.build()` (Reihenfolge = Original): `melt/meltBlock/meltTag` (Tag `c:...` = Erz-Wörterbuch,
+  Render-Block + Größe für die Ansicht im Inneren), `alloy`, `table`/`basin` bzw. `new Casting(...)` mit Prädikat für die Gussform.
+  JEI liest die Tabellen direkt (`compat/SmelteryJei`).
+- Blöcke tauschen Flüssigkeit über `smeltery.LiquidContainer` (fill/drain mit Simulieren wie `ITankContainer`), keine NeoForge-Capability.
+- Wandblöcke: alles mit `ServantBlockEntity` (Unterklassen von `SearedBrickBlock`, `SearedTankBlock`); eigener Boden nur `SearedBrickBlock`
+  ohne Kern/Abfluss. Name-Kollision beachten: Flüssigkeit und Block teilen sich das Register (`liquid_seared_stone`).
+- Datenteil in `tools/gen_smeltery.py` (läuft in `gen.py`, liest Namen aus `en_US.xml`/`de_DE.xml` des Originals).
+- Testen per RCON: Struktur mit `setblock` bauen, Tank `data merge block … {Liquid:{id:"minecraft:lava",amount:4000}}`, Kern
+  `{Items:[…]}`, `tick sprint 3000`, `data get block … Liquids`; Hahn mit Redstone-Block an/aus (schaltet jedes Mal um).
 
 ## Prüfen ohne Spieler
 

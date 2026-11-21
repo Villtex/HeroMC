@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "bbb",
+    "msm",
+    "m m"
+  ],
+  "key": {
+    "b": "tconstruct:seared_bricks",
+    "s": "tconstruct:tool_station",
+    "m": "#c:storage_blocks/tin"
+  },
+  "result": {
+    "id": "tconstruct:tin_tool_forge"
+  }
+}

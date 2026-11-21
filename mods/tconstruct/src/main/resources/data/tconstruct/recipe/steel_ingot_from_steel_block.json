@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "m"
+  ],
+  "key": {
+    "m": "tconstruct:steel_block"
+  },
+  "result": {
+    "id": "tconstruct:steel_ingot",
+    "count": 9
+  }
+}

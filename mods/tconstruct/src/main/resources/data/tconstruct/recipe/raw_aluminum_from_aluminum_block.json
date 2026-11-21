@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "m"
+  ],
+  "key": {
+    "m": "tconstruct:aluminum_block"
+  },
+  "result": {
+    "id": "tconstruct:raw_aluminum",
+    "count": 9
+  }
+}

@@ -87,6 +87,10 @@ public class DryingRackBlockEntity extends TableBlockEntity {
         super.loadAdditional(input);
         this.currentTime = input.getIntOr("Time", 0);
         this.maxTime = input.getIntOr("MaxTime", 0);
+        if (this.maxTime == 0 && !this.items.get(0).isEmpty()) {
+            SmelteryRecipes.Drying recipe = SmelteryRecipes.drying(this.items.get(0));
+            this.maxTime = recipe == null ? 0 : recipe.time();
+        }
     }
 
     @Override

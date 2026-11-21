@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "meta=0": {
+      "model": "tconstruct:block/drying_rack_0"
+    },
+    "meta=1": {
+      "model": "tconstruct:block/drying_rack_1"
+    },
+    "meta=2": {
+      "model": "tconstruct:block/drying_rack_2"
+    },
+    "meta=3": {
+      "model": "tconstruct:block/drying_rack_3"
+    },
+    "meta=4": {
+      "model": "tconstruct:block/drying_rack_4"
+    },
+    "meta=5": {
+      "model": "tconstruct:block/drying_rack_5"
+    }
+  }
+}

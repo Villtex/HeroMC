@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "top": "tconstruct:block/smeltery_side",
+    "side": "tconstruct:block/smeltery_side",
+    "front": "tconstruct:block/smeltery_inactive",
+    "bottom": "tconstruct:block/smeltery_side"
+  }
+}

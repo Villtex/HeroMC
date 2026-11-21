@@ -69,7 +69,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 24f | Twilight Forest F: Bosse, Boss-Spawner, Trophäen, Ausrüstung, Zauberstäbe, Karten, Entwerkbank, Fortschritte | ~10.000 | 24c, 24d | Opus 5.5, hoch | offen |
 | 25a | Tinkers' Construct A: Werkzeug-Kern (Materialien, Teile, Muster, Tische, Zusammenbau, Modifikatoren anbringen) | ~10.000 | 3 | Opus 5.5, hoch | ✅ erledigt |
 | 25b | Tinkers' Construct B: Werkzeuge im Einsatz (Fähigkeiten, Modifikator-Effekte, Bogen, Wurfwaffen) und ihre Darstellung | ~9.000 | 25a | Fable 5.2, hoch | ✅ erledigt |
-| 25c | Tinkers' Construct C: Schmelzerei, flüssige Metalle, Gießen, Legierungen, Trockengestell | ~11.000 | 25a | Fable 5.2, hoch | offen |
+| 25c | Tinkers' Construct C: Schmelzerei, flüssige Metalle, Gießen, Legierungen, Trockengestell | ~11.000 | 25a | Fable 5.2, hoch | ✅ erledigt |
 | 25d | Tinkers' Construct D: Weltgenerierung, Schleiminseln, Dorf-Bauteile, Dorfbewohner | ~4.000 | 25c | Fable 5.2, extra hoch | offen |
 | 25e | Tinkers' Construct E: Spieler (Rucksack, Herzen, Handschuh, Ereignisse), Handbücher, Essen, Mobs | ~8.000 | 25a | Opus 5.5, mittel | offen |
 | 25f | Tinkers' Construct F: Deko-Blöcke, Fallen, Landmine, Redstone-Maschinen, Kristall/Essenz | ~9.000 | 25a | Opus 5.5, mittel | offen |
@@ -1655,6 +1655,35 @@ DryingRack,LiquidTexture}Logic`, `library/crafting/{Smeltery,AlloyMix,LiquidCast
 - Erze und Metallblöcke, die die Schmelzerei braucht (Kupfer, Zinn, Aluminium, Kobalt, Ardit, Seared-Ziegel/Grout),
   als Blöcke/Items schon hier; die Generierung erst in 25d.
 - JEI: Schmelzen, Legieren, Gießtisch, Gießbecken, Trockengestell. Renderer für Füllstände (Client-Prüfung).
+
+#### Teil 25c – Stand (✅ erledigt)
+
+Alles in `mods/tconstruct` (`TSmeltery`, Paket `tconstruct.smeltery`, Client in `client/SmelteryScreen`, `SmelteryRenderers`,
+`TSmelteryClient`; Daten aus `tools/gen_smeltery.py`, das `gen.py` ausführt). Offenes in `mods/tconstruct/TODO.md`.
+- 24 Flüssigkeiten (`TFluids`, Index = alte Metadaten: Eisen … Ender, auch Smaragd, Blut, Nickel–Elektrum) als NeoForge-Fluids mit
+  Quelle, Fließen (wie Wasser von 1.5.2: 7 Blöcke, alle 30 Ticks), Block (4 Schaden + 15 s Feuer, verlangsamt, zündet wie Lava) und
+  Eimer (alte ID 6033:0–23); Aussehen über `RegisterFluidModelsEvent` mit den animierten Original-Texturen.
+- Schmelzerei-Multiblock wie `SmelteryLogic`: Ausrichtung am Kern, 3×3-Hohlraum über 3×3-Boden, 12 Wandblöcke je Lage, Tank auf der
+  Kern-Lage, Lagen nach oben/unten, 9 Slots und 20000 mB je Lage, Lava 150 mB je Zug aus den Tanks, Erhitzen 1°/4 Ticks bis 800°,
+  Legieren sofort (Bronze 3 Barren), Dorfbewohner → flüssiger Smaragd, Endermen → flüssiges Ender, alle Mobs nehmen Schaden
+  (4 Todesnachrichten). Diener-Blöcke (versengte Ziegel und Deko, Abfluss, Tanks) merken sich ihren Kern.
+- Abfluss, Tank (4000 mB, Eimer rein/raus, Licht der Flüssigkeit, behält den Inhalt als Komponente `tconstruct:liquid`), Hahn
+  (Rechtsklick/Redstone schaltet, 144 mB je Guss), Gießtisch und -becken (Fassung nach Rezept bzw. Materialkosten der Gussform,
+  Abkühlzeit, Trichter), Gießkanal (verteilt 24 nach unten bzw. 48 zur Seite, zieht nach Rechtsklick), Trockengestell
+  (6 Lagen, Gammelfleisch → Leder in 6000 Ticks).
+- Rezepttabellen in Code wie das Original (`SmelteryRecipes`: Schmelzen inkl. Erz-Wörterbuch über `c:`-Tags, Legierungen, Gießtisch mit
+  allen Gussformen/Teilen/Barren/Eimern, Gießbecken, Trocknen); JEI: Schmelzen, Legieren, Gießtisch, Gießbecken, Trockengestell.
+- Blöcke: Kern, Abfluss, 9 versengte Blöcke + 8 Stufen, 3 Tanks, Gießtisch/Hahn/Becken, Kanal, Trockengestell, 11 Metallblöcke,
+  7 Erze (Kobalt/Ardit brauchen Stufe 4 = `needs_cobalt_tool`), 6 Kies-Erze (fallen), 6 Böden (Grout → versengter Ziegel; geweihte
+  Erde macht den Bann-Modifikator jetzt anbringbar). Alte IDs 1312–1323, 1332, 1338, 1344. Werkzeugschmieden-Rezepte jetzt da.
+  Meißel-Stufen der versengten Blöcke eingetragen.
+- GUI der Schmelzerei wie `SmelteryGui` (Seitenleiste mit Scrollen, Hitzebalken, Flüssigkeitssäule mit Tooltips, Lava-Anzeige).
+- Geprüft am Testserver (RCON): Struktur erkannt (1 Lage, Tank), Kupfer + Zinn → Bronze 144 + Zinn 96, Eisenerz 288, Lava-Verbrauch,
+  Hahn per Redstone → Gießtisch → Bronzebarren, Spitzhackenkopf-Gussform + Eisen → Eisen-Spitzhackenkopf (144 mB), Dorfbewohner →
+  flüssiger Smaragd, Kern-Rezept über Crafter, Start ohne Fehler.
+- Wie im Original: `CurrentLiquid` zählt beim Legieren den verbrauchten Anteil nicht ab (die Schmelzerei ist früher „voll“);
+  versengter Ziegel aus versengtem Stein kostet am Tisch 144 mB (Fassung der Barrengussform).
+- Offen: Client-Prüfung (Flüssigkeiten, GUI, alle Renderer, Modelle); klares Glas/Brownstone/Erzbeeren-Rezepte folgen mit 25d/25f.
 
 ### Teil 25d – Weltgenerierung, Schleiminseln, Dörfer
 Quellen: `worldgen/*`, `worldgen/village/*`, `blocks/{OreberryBush,OreberryBushEssence,MetalOre,GravelOre}`,

@@ -1,3 +1,7 @@
 {
-  "values": []
+  "values": [
+    "tconstruct:cobalt_ore",
+    "tconstruct:ardite_ore",
+    "tconstruct:cobalt_gravel_ore"
+  ]
 }

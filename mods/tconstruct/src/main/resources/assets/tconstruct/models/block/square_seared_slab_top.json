@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "tconstruct:block/searedbricksquare",
+    "top": "tconstruct:block/searedbricksquare",
+    "side": "tconstruct:block/searedbricksquare"
+  }
+}

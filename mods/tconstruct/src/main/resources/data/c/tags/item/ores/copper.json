@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "tconstruct:copper_ore",
+    "tconstruct:copper_gravel_ore"
+  ]
+}

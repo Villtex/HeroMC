@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "bbb",
+    "msm",
+    "m m"
+  ],
+  "key": {
+    "b": "tconstruct:seared_bricks",
+    "s": "tconstruct:tool_station",
+    "m": "#c:storage_blocks/bronze"
+  },
+  "result": {
+    "id": "tconstruct:bronze_tool_forge"
+  }
+}

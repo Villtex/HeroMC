@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": "tconstruct:iron_gravel_ore",
+  "result": {
+    "id": "minecraft:iron_ingot"
+  },
+  "experience": 0.2,
+  "cookingtime": 200
+}

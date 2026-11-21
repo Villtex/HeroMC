@@ -54,7 +54,7 @@ public final class TFluids {
             {"molten_aluminum", "aluminum", "aluminum"}, {"molten_cobalt", "cobalt", "cobalt"}, {"molten_ardite", "ardite", "ardite"},
             {"molten_bronze", "bronze", "bronze"}, {"molten_alubrass", "alubrass", "alubrass"}, {"molten_manyullyn", "manyullyn", "manyullyn"},
             {"molten_alumite", "alumite", "alumite"}, {"molten_obsidian", "obsidian", "obsidian"}, {"molten_steel", "steel", "steel"},
-            {"molten_glass", "glass", "glass"}, {"seared_stone", "stone", "stone"}, {"molten_emerald", "villager", "emerald"},
+            {"molten_glass", "glass", "glass"}, {"liquid_seared_stone", "stone", "stone"}, {"molten_emerald", "villager", "emerald"},
             {"blood", "cow", "blood"}, {"molten_nickel", "ferrous", "nickel"}, {"molten_lead", "lead", "lead"}, {"molten_silver", "silver", "silver"},
             {"molten_platinum", "shiny", "shiny"}, {"molten_invar", "invar", "invar"}, {"molten_electrum", "electrum", "electrum"},
             {"liquid_ender", "ender", "ender"}

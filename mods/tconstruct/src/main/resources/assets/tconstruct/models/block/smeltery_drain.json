@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "north": "tconstruct:block/drain_basin",
+    "south": "tconstruct:block/drain_out",
+    "east": "tconstruct:block/drain_side",
+    "west": "tconstruct:block/drain_side",
+    "up": "tconstruct:block/drain_side",
+    "down": "tconstruct:block/drain_side",
+    "particle": "tconstruct:block/drain_side"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "tconstruct:aluminum_ore",
+    "tconstruct:aluminum_gravel_ore"
+  ]
+}

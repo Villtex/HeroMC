@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "m"
+  ],
+  "key": {
+    "m": "tconstruct:manyullyn_block"
+  },
+  "result": {
+    "id": "tconstruct:manyullyn_ingot",
+    "count": 9
+  }
+}

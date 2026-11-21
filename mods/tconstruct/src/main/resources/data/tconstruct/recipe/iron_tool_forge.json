@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "bbb",
+    "msm",
+    "m m"
+  ],
+  "key": {
+    "b": "tconstruct:seared_bricks",
+    "s": "tconstruct:tool_station",
+    "m": "minecraft:iron_block"
+  },
+  "result": {
+    "id": "tconstruct:iron_tool_forge"
+  }
+}

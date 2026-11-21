@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "tconstruct:iron_gravel_ore",
+    "tconstruct:gold_gravel_ore",
+    "tconstruct:copper_gravel_ore",
+    "tconstruct:tin_gravel_ore",
+    "tconstruct:aluminum_gravel_ore",
+    "tconstruct:cobalt_gravel_ore",
+    "tconstruct:slimy_mud",
+    "tconstruct:grout",
+    "tconstruct:blue_slimy_mud",
+    "tconstruct:graveyard_soil",
+    "tconstruct:consecrated_soil",
+    "tconstruct:blue_slime_dirt"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "b b",
+    "b b",
+    "b b"
+  ],
+  "key": {
+    "b": "tconstruct:seared_brick"
+  },
+  "result": {
+    "id": "tconstruct:smeltery_drain"
+  }
+}

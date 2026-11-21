@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "bgb",
+    "ggg",
+    "bgb"
+  ],
+  "key": {
+    "b": "tconstruct:seared_brick",
+    "g": [
+      "minecraft:glass"
+    ]
+  },
+  "result": {
+    "id": "tconstruct:seared_glass"
+  }
+}

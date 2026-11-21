@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "bbb",
+    "msm",
+    "m m"
+  ],
+  "key": {
+    "b": "tconstruct:seared_bricks",
+    "s": "tconstruct:tool_station",
+    "m": "minecraft:gold_block"
+  },
+  "result": {
+    "id": "tconstruct:gold_tool_forge"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "minecraft:dirt",
+    "minecraft:rotten_flesh",
+    "minecraft:bone_meal"
+  ],
+  "result": {
+    "id": "tconstruct:graveyard_soil"
+  }
+}

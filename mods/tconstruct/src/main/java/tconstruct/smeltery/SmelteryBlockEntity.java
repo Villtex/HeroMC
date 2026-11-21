@@ -711,6 +711,9 @@ public class SmelteryBlockEntity extends BlockEntity implements Container, Maste
         this.currentLiquid = input.getIntOr("CurrentLiquid", 0);
         this.maxLiquid = input.getIntOr("MaxLiquid", 0);
         this.meltingTemps = fit(input.getIntArray("MeltingTemps").orElse(new int[0]), this.layers * 9);
+        for (int i = 0; i < this.inventory.size(); i++) {
+            this.meltingTemps[i] = SmelteryRecipes.temperature(this.inventory.get(i));
+        }
         this.activeTemps = fit(input.getIntArray("ActiveTemps").orElse(new int[0]), this.layers * 9);
         this.fuelGague = input.getIntOr("FuelGague", 0);
         this.fuelAmount = input.getIntOr("FuelAmount", 0);

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "bbb"
+  ],
+  "key": {
+    "b": "tconstruct:chiseled_seared_bricks"
+  },
+  "result": {
+    "id": "tconstruct:chiseled_seared_slab",
+    "count": 6
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "m"
+  ],
+  "key": {
+    "m": "tconstruct:cobalt_block"
+  },
+  "result": {
+    "id": "tconstruct:cobalt_ingot",
+    "count": 9
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "side": "tconstruct:block/searedcreeper",
+    "top": "tconstruct:block/searedpaver",
+    "bottom": "tconstruct:block/searedpaver"
+  }
+}

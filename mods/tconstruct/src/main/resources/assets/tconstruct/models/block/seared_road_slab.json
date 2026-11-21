@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "tconstruct:block/searedroad",
+    "top": "tconstruct:block/searedroad",
+    "side": "tconstruct:block/searedroad"
+  }
+}

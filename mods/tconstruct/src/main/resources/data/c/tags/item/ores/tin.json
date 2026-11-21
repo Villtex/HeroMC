@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "tconstruct:tin_ore",
+    "tconstruct:tin_gravel_ore"
+  ]
+}

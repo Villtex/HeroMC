@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values": [
+    "tconstruct:cobalt_block",
+    "tconstruct:ardite_block",
+    "tconstruct:manyullyn_block",
+    "tconstruct:copper_block",
+    "tconstruct:bronze_block",
+    "tconstruct:tin_block",
+    "tconstruct:aluminum_block",
+    "tconstruct:alubrass_block",
+    "tconstruct:alumite_block",
+    "tconstruct:steel_block",
+    "tconstruct:ender_block"
+  ]
+}
