@@ -183,3 +183,23 @@ Abschnitt „ENTITIES“ in `mods/natura/tools/gen.py`.
 - **Zusatzdaten an fremden Mobs** (Infernal Mobs, `mods/infernalmobs`): Zustand im Entity-NBT
   (`getPersistentData()`) plus synchronisiertes Data Attachment für den Client; Leben über das Maximum hinaus als
   `max_health`-Modifikator (Obergrenze 1024).
+
+## Aus Teil 24c (Twilight Forest, `mods/twilightforest/.../entity`, `client/entity`)
+
+- **`TemptGoal` braucht `Attributes.TEMPT_RANGE`**: in `createAnimalAttributes` enthalten, bei `PathfinderMob`/`Monster`
+  selbst hinzufügen (sonst „Can't find attribute minecraft:tempt_range“ beim ersten Tick, Server stürzt ab).
+- **Wolf-Unterklassen**: `Wolf.applyTamingSideEffects` setzt das Leben wild auf 8 – überschreiben (leer), sonst gilt
+  das eigene `MAX_HEALTH` nicht. Dauerhaft wütend: `setPersistentAngerEndTime(Long.MAX_VALUE)` jeden Tick.
+- **getAttackStrength von 1.5.2**: EntityMob = attackStrength 2 + Waffe (`getDamageVsEntity`); ein Mob, der
+  getAttackStrength überschreibt, verliert den Waffenbonus. Nachgebaut in `TFMonster.oldAttack` (statt Attribut).
+- **Kinder-Modelle** wie 1.5.2 (Kopf voll, Rest halb, verschoben): `new BabyModelTransform(false, field_78145_g,
+  field_78151_h, Set.of("head"))` auf die Erwachsenen-Layer (`TFEntityRenderers.baby`); Vögel 5/0,75.
+- **ModelBiped → HumanoidModel**: Teile head/hat/body/right_arm/…; **„hat“ muss Kind von „head“ sein**, fehlende
+  Teile leer anlegen (`OldBiped.fill`), Animation von 1.5.2 in `OldBiped.angles`. `modelbase_to_layer.py` ergänzt jetzt
+  die ModelBiped-Standardteile, `rotateAngleX = …`, verkettete `setTextureOffset(..).addBox` und Felder im Klassenrumpf.
+- **Vanilla-Unterklassen**: Spinnen-Effekte/Jockeys mit fremden Gruppendaten + `ejectPassengers` umgehen
+  (`TFSpider`); Spinnen/Wölfe/Schleime ohne eigenen Renderer im Original nutzten den Vanilla-Renderer (Superklasse).
+- **Wurfgeschosse** (EntityThrowable): `ThrowableItemProjectile` mit `getDefaultGravity`; Streuung 1.5.2 → heute
+  `inaccuracy × 0,0075 / 0,0172275` (`TFThrowable.shootOld`), Renderer `ThrownItemRenderer`.
+- **Spawnlisten je Position** (getPossibleCreatures): `ChunkGenerator.getMobsAt` überschreiben (`TFSpawns`). Eine
+  Zufalls-Freigabe (1 von 20) muss für den ganzen Spawn-Versuch gelten – der Spawner fragt die Liste mehrmals ab.

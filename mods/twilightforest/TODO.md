@@ -137,3 +137,8 @@ Sounds, Loot, Biom-Spawnlisten), Spawn-Logik `world/TFSpawns` (getPossibleCreatu
 - Alle Modelle (Geometrie per Werkzeug, Animationen von Hand), besonders Fragewidder-Bänder/-Linien, Mückenschwarm
   (halbe Größe über Teil-Skalierung), Todesbuch, Schleimkäfer-Würfel (durchscheinend), Nebelwolf (Transparenz),
   Geist (zweite Textur additiv statt mit Alpha 0,5), Glühwürmchen (Billboard, additiv), Jungtier-Köpfe.
+- Turm und Festung (Subagent, nur kompiliert): Turm-Ghast fest 4,5-fach (der Client kannte den attackCounter nie);
+  Kettenblock/-glieder mit dem Licht des Goblins, Kettenwinkel zwischen den Ticks geschätzt; Speerarm des oberen Ritters
+  mit dem 1.5.2-Fehler (Modell-Skalierung statt partialTick); Termite mit dem heutigen Silberfischchen-Modell.
+- `OldBiped`: der Hut ist in 26.3 ein Kind des Kopfes (HumanoidModel sucht ihn dort); alle Zweibeiner prüfen.
+

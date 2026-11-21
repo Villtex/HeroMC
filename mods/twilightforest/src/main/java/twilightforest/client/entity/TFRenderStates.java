@@ -1,5 +1,6 @@
 package twilightforest.client.entity;
 
+import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.client.renderer.entity.state.SheepRenderState;
 
@@ -34,5 +35,24 @@ public final class TFRenderStates {
         public boolean jumping;
         public boolean flag;
         public float value;
+    }
+
+    /** The goblin knights: armour, shield, the heavy spear timer (upper) and whether it carries a rider (lower). */
+    public static class GoblinKnight extends HumanoidRenderState {
+        public boolean hasArmor;
+        public boolean hasShield;
+        public int heavySpearTimer;
+        public boolean isVehicle;
+    }
+
+    /** The block goblin: its spiked ball and three chain links, relative to the goblin (EntityTFBlockGoblin.onUpdate). */
+    public static class BlockGoblin extends HumanoidRenderState {
+        public double blockX;
+        public double blockY;
+        public double blockZ;
+        public float blockYaw;
+        public final double[] chainX = new double[3];
+        public final double[] chainY = new double[3];
+        public final double[] chainZ = new double[3];
     }
 }

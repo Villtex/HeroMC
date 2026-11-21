@@ -62,6 +62,14 @@ public final class TFEntityRenderers {
     static final ModelLayerLocation FIRE_BEETLE = layer("fire_beetle");
     static final ModelLayerLocation SLIME_BEETLE = layer("slime_beetle");
     static final ModelLayerLocation PINCH_BEETLE = layer("pinch_beetle");
+    static final ModelLayerLocation TOWER_GHAST = layer("tower_ghast");
+    static final ModelLayerLocation TOWER_GOLEM = layer("tower_golem");
+    static final ModelLayerLocation BLOCK_GOBLIN = layer("block_goblin");
+    static final ModelLayerLocation SPIKE_BLOCK = layer("spike_block");
+    static final ModelLayerLocation GOBLIN_CHAIN = layer("goblin_chain");
+    static final ModelLayerLocation UPPER_GOBLIN_KNIGHT = layer("upper_goblin_knight");
+    static final ModelLayerLocation LOWER_GOBLIN_KNIGHT = layer("lower_goblin_knight");
+    static final ModelLayerLocation HELMET_CRAB = layer("helmet_crab");
 
     private TFEntityRenderers() {
     }
@@ -108,6 +116,14 @@ public final class TFEntityRenderers {
         event.registerLayerDefinition(FIRE_BEETLE, FireBeetleModel::createBodyLayer);
         event.registerLayerDefinition(SLIME_BEETLE, SlimeBeetleModel::createBodyLayer);
         event.registerLayerDefinition(PINCH_BEETLE, PinchBeetleModel::createBodyLayer);
+        event.registerLayerDefinition(TOWER_GHAST, TowerGhastModel::createBodyLayer);
+        event.registerLayerDefinition(TOWER_GOLEM, TowerGolemModel::createBodyLayer);
+        event.registerLayerDefinition(BLOCK_GOBLIN, BlockGoblinModel::createBodyLayer);
+        event.registerLayerDefinition(SPIKE_BLOCK, SpikeBlockModel::createBodyLayer);
+        event.registerLayerDefinition(GOBLIN_CHAIN, SpikeBlockModel::createChainLayer);
+        event.registerLayerDefinition(UPPER_GOBLIN_KNIGHT, GoblinKnightUpperModel::createBodyLayer);
+        event.registerLayerDefinition(LOWER_GOBLIN_KNIGHT, GoblinKnightLowerModel::createBodyLayer);
+        event.registerLayerDefinition(HELMET_CRAB, HelmetCrabModel::createBodyLayer);
     }
 
     private static void bird(TFBird bird, TFRenderStates.Bird state, float partialTick) {
@@ -178,6 +194,7 @@ public final class TFEntityRenderers {
         });
         event.registerEntityRenderer(TFEntities.FIREFLY.get(), c -> new FireflyRenderer(c, TINY_FIREFLY));
         monsters(event);
+        towerAndStronghold(event);
     }
 
     private static void monsters(EntityRenderersEvent.RegisterRenderers event) {
@@ -271,6 +288,62 @@ public final class TFEntityRenderers {
         event.registerEntityRenderer(TFEntities.NATURE_BOLT.get(), net.minecraft.client.renderer.entity.ThrownItemRenderer::new);
         event.registerEntityRenderer(TFEntities.TOME_BOLT.get(), net.minecraft.client.renderer.entity.ThrownItemRenderer::new);
         event.registerEntityRenderer(TFEntities.SLIME_BLOB.get(), net.minecraft.client.renderer.entity.ThrownItemRenderer::new);
+    }
+
+    private static final String[] GHAST_TEXTURES = {"towerghast", "towerghast_openeyes", "towerghast_fire"};
+
+    /** Dark tower and knight stronghold mobs. */
+    private static void towerAndStronghold(EntityRenderersEvent.RegisterRenderers event) {
+        // RenderTFTowerGhast: the swelling formula with the never synced attack counter gives (8 + 1) / 2 in all axes
+        event.registerEntityRenderer(TFEntities.TOWER_GHAST.get(), c -> new TFMobRenderer<twilightforest.entity.TowerGhast, TFRenderStates.Variant>(c,
+                new TowerGhastModel(c.bakeLayer(TOWER_GHAST)), null, 0.625F, TFRenderStates.Variant::new,
+                s -> TFMobRenderer.texture(GHAST_TEXTURES[Math.floorMod(s.type, 3)]), (e, s) -> s.type = e.aggroStatus()).scaled(4.5F));
+        event.registerEntityRenderer(TFEntities.MINI_GHAST.get(), c -> new TFMobRenderer<twilightforest.entity.MiniGhast, TFRenderStates.Variant>(c,
+                new TowerGhastModel(c.bakeLayer(TOWER_GHAST)), null, 0.625F, TFRenderStates.Variant::new,
+                s -> TFMobRenderer.texture(GHAST_TEXTURES[Math.floorMod(s.type, 3)]), (e, s) -> s.type = e.aggroStatus()));
+        // RenderTFTowerGolem: the body sways round Z while it walks (rotateCorpse)
+        event.registerEntityRenderer(TFEntities.TOWER_GOLEM.get(), c -> {
+            Identifier texture = TFMobRenderer.texture("carminitegolem");
+            return new TFMobRenderer<twilightforest.entity.TowerGolem, TFRenderStates.Flags>(c, new TowerGolemModel(c.bakeLayer(TOWER_GOLEM)), null,
+                    0.5F, TFRenderStates.Flags::new, s -> texture, (e, s) -> s.value = e.getAttackTimer()) {
+                @Override
+                protected void setupRotations(TFRenderStates.Flags state, PoseStack poseStack, float bodyRot, float scale) {
+                    super.setupRotations(state, poseStack, bodyRot, scale);
+                    if (state.walkAnimationSpeed >= 0.01F) {
+                        float sway = TowerGolemModel.triangle(state.walkAnimationPos + 6.0F, 13.0F);
+                        poseStack.rotateDegrees(com.mojang.math.Axis.ZP, 6.5F * sway);
+                    }
+                }
+            };
+        });
+        // RenderLiving(ModelSilverfish)
+        event.registerEntityRenderer(TFEntities.TOWER_TERMITE.get(), c -> {
+            Identifier texture = TFMobRenderer.texture("towertermite");
+            return new TFMobRenderer<twilightforest.entity.TowerTermite, LivingEntityRenderState>(c,
+                    new net.minecraft.client.model.monster.silverfish.SilverfishModel(c.bakeLayer(ModelLayers.SILVERFISH)), null, 0.3F,
+                    LivingEntityRenderState::new, s -> texture, (e, s) -> {
+            }) {
+                @Override
+                protected float getFlipDegrees() {
+                    return 180.0F;
+                }
+            };
+        });
+        event.registerEntityRenderer(TFEntities.TOWER_BROODLING.get(), c -> new TFSpiderRenderer<>(c, "towerbroodling", 0.5F));
+        event.registerEntityRenderer(TFEntities.BLOCK_GOBLIN.get(), BlockGoblinRenderer::new);
+        event.registerEntityRenderer(TFEntities.UPPER_GOBLIN_KNIGHT.get(), c -> new GoblinKnightRenderer<twilightforest.entity.GoblinKnightUpper>(c,
+                new GoblinKnightUpperModel(c.bakeLayer(UPPER_GOBLIN_KNIGHT)), (e, s) -> {
+            s.hasArmor = e.hasArmor();
+            s.hasShield = e.hasShield();
+            s.heavySpearTimer = e.heavySpearTimer;
+        }));
+        event.registerEntityRenderer(TFEntities.LOWER_GOBLIN_KNIGHT.get(), c -> new GoblinKnightRenderer<twilightforest.entity.GoblinKnightLower>(c,
+                new GoblinKnightLowerModel(c.bakeLayer(LOWER_GOBLIN_KNIGHT)), (e, s) -> {
+            s.hasArmor = e.hasArmor();
+            s.isVehicle = e.isVehicle();
+        }));
+        event.registerEntityRenderer(TFEntities.HELMET_CRAB.get(),
+                c -> TFMobRenderer.simple(c, new HelmetCrabModel(c.bakeLayer(HELMET_CRAB)), 0.625F, "helmetcrab"));
     }
 
     /** RenderSheep's fleece pass: the vanilla sheep_fur texture tinted with the fleece colour, unless shorn. */

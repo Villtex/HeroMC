@@ -17,14 +17,36 @@ public class OldBiped extends HumanoidModel<HumanoidRenderState> {
         super(root);
     }
 
-    /** Empty parts for the humanoid parts a model of 1.5.2 does not have (HumanoidModel needs all seven). */
+    /**
+     * Empty parts for the humanoid parts a model of 1.5.2 does not have (HumanoidModel needs all seven). HumanoidModel
+     * reads the hat as a child of the head: a headwear at the root is moved under the head (relative to its pivot), it
+     * then follows the head as bipedHeadwear did in 1.5.2 (rotation copied from the head).
+     */
     public static void fill(PartDefinition root) {
-        for (String name : new String[]{"head", "hat", "body", "right_arm", "left_arm", "right_leg", "left_leg"}) {
-            boolean present = root.getChildren().stream().anyMatch(e -> e.getKey().equals(name));
-            if (!present) {
+        for (String name : new String[]{"head", "body", "right_arm", "left_arm", "right_leg", "left_leg"}) {
+            if (!has(root, name)) {
                 root.addOrReplaceChild(name, CubeListBuilder.create(), PartPose.ZERO);
             }
         }
+        PartDefinition head = root.getChild("head");
+        if (has(head, "hat")) {
+            return;
+        }
+        if (!has(root, "hat")) {
+            head.addOrReplaceChild("hat", CubeListBuilder.create(), PartPose.ZERO);
+            return;
+        }
+        PartPose[] headPose = new PartPose[1];
+        head.transformed(p -> headPose[0] = p);
+        PartPose h = headPose[0];
+        PartDefinition hat = root.getChild("hat").transformed(p -> new PartPose(p.x() - h.x(), p.y() - h.y(), p.z() - h.z(), p.xRot(), p.yRot(),
+                p.zRot(), p.xScale(), p.yScale(), p.zScale()));
+        root.clearChild("hat");
+        head.addOrReplaceChild("hat", hat);
+    }
+
+    private static boolean has(PartDefinition part, String name) {
+        return part.getChildren().stream().anyMatch(e -> e.getKey().equals(name));
     }
 
     @Override
@@ -40,8 +62,6 @@ public class OldBiped extends HumanoidModel<HumanoidRenderState> {
         float f2 = s.ageInTicks;
         m.head.yRot = s.yRot * Mth.DEG_TO_RAD;
         m.head.xRot = s.xRot * Mth.DEG_TO_RAD;
-        m.hat.yRot = m.head.yRot;
-        m.hat.xRot = m.head.xRot;
         m.rightArm.xRot = Mth.cos(f * 0.6662F + Mth.PI) * 2.0F * f1 * 0.5F;
         m.leftArm.xRot = Mth.cos(f * 0.6662F) * 2.0F * f1 * 0.5F;
         m.rightArm.zRot = 0.0F;

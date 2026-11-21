@@ -233,7 +233,8 @@ if slime:
 
 # ---------------------------------------------------------------- biome spawn lists (TFBiomeBase and its subclasses)
 def spawn(t, weight, mn, mx):
-    return {'type': t, 'weight': weight, 'count': count(mn, mx)}
+    c = mn if mn == mx else {'type': 'minecraft:uniform', 'min_inclusive': mn, 'max_inclusive': mx}
+    return {'type': t, 'weight': weight, 'count': c}
 
 
 BASE_CREATURES = [spawn(n('bighorn_sheep'), 12, 4, 4), spawn(n('wild_boar'), 10, 4, 4), spawn('minecraft:chicken', 10, 4, 4),

@@ -63,7 +63,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 23 | Gesamttest und Modpack-Export | – | alle | Opus 5.5, mittel | offen |
 | 24a | Twilight Forest A: Dimension, Gelände, Biome, Portal, Struktur-Raster | ~8.000 | 2 | Fable 5.2, extra hoch | ✅ erledigt |
 | 24b | Twilight Forest B: Blöcke, Holz, Pflanzen, Kleintiere-Blöcke, Biom-Dekoration, magische Bäume | ~9.000 | 24a | Fable 5.2, hoch | ✅ erledigt |
-| 24c | Twilight Forest C: normale Mobs mit Modellen, Spawns je Biom, Spawn-Eier | ~11.000 | 24a | Opus 5.5, hoch | offen |
+| 24c | Twilight Forest C: normale Mobs mit Modellen, Spawns je Biom, Spawn-Eier | ~11.000 | 24a | Opus 5.5, hoch | ✅ erledigt |
 | 24d | Twilight Forest D: Strukturen A (Hügel, Hecken-Labyrinth, Naga-Hof, Hain, Lich-Turm, Labyrinth, Hohle Bäume), Beute | ~9.000 | 24b | Fable 5.2, extra hoch | offen |
 | 24e | Twilight Forest E: Strukturen B (Dunkler Turm mit Turm-Mechanik, Ritter-Festung, Hydra-Höhle) | ~6.000 | 24d | Fable 5.2, hoch | offen |
 | 24f | Twilight Forest F: Bosse, Boss-Spawner, Trophäen, Ausrüstung, Zauberstäbe, Karten, Entwerkbank, Fortschritte | ~10.000 | 24c, 24d | Opus 5.5, hoch | offen |
@@ -352,7 +352,7 @@ Drei davon sind reine Client-HUDs: ArmorBar, BuffBar und Back Tools. Back Tools 
 - Sprungkraft beim Truhentragen: Sprungkraft −2 gibt es als Effekt nicht mehr (Stufen < 0 werden 0). Ersatz: Attribut
   `jump_strength` −0,1, solange ein voller Transporter im Inventar liegt (gleiche Sprunghöhe, kein Effekt-Symbol).
 - Soul Shards: Witherskelett und Zombiedorfbewohner sind eigene Mobs statt „spezieller“ Skelette/Zombies (gleiches
-  Verhalten). Twilight-Forest-Mobs der Liste fehlen bis Teil 24c. Ein zweiter Splitter in einem Käfig ersetzt den ersten
+  Verhalten). Twilight-Forest-Mobs der Liste seit Teil 24c dabei (über ihre Ids). Ein zweiter Splitter in einem Käfig ersetzt den ersten
   (der erste geht verloren, wie im Original). Die Persistenz ab Stufe 3 endet nach 600 Ticks Lebenszeit (1.5.2: Alter
   ohne Spieler in der Nähe). Shadow Blade und Shadow Pickaxe hatten keine Textur und kein Rezept: hier mit den Texturen
   von Diamantschwert und -spitzhacke, nur im Kreativmodus.
@@ -1507,6 +1507,27 @@ Quellen: `entity/*` ohne Bosse und ihre Teile (Naga, Lich, Hydra, Minoshroom, Ur
   Redcap, Wölfe, Hecken-/Königsspinne, Mücken, Skelett-Druide, Wraith, Käfer, Minotaurus, Turm-Mobs, Goblin-Ritter)
   mit Drops, KI, Modellen.
 - Twilight-Mobs in den Listen anderer Mods nachtragen (Soul Shards, Teil 4; Infernal Mobs).
+
+#### Teil 24c – Stand (✅ erledigt)
+
+Offenes in `mods/twilightforest/TODO.md` (Abschnitt „Teil 24c – Mobs“).
+- 36 Mobs in `TFEntities` (alte Ids 177–223 als Spawner-Namen „TwilightForest.<Name>“ und Spawn-Ei 7309:<Id>): Tiere
+  (Wildschwein, Bighorn, Hirsch, Pinguin, kleiner Vogel, Eichhörnchen, Hase, Rabe, Fragewidder, Glühwürmchen), Gegner
+  von Wald, Hügeln und Labyrinth (Rotkappe + Pionier, Kobold, Schwarm-/Hecken-/Königsspinne, feindlicher Wolf,
+  Nebelwolf, Skelett-Druide, Gespenst, Mückenschwarm, Todesbuch, Minotaurus, Feuer-/Schleim-/Zangenkäfer,
+  Labyrinthschleim), Turm (Mini-/Turm-Ghast, Karminit-Golem, Termite, Brütling) und Festung (Kettengoblin,
+  Goblin-Ritter oben/unten, Helmkrabbe); Geschosse Natur-/Buchbolzen, Schleimklumpen. Werte, KI, 1.5.2-Nahkampf
+  (`TFMonster`), Drops als Loot-Tabellen, Sounds, Modelle und Renderer.
+- Spawns: Biom-Listen von TFBiomeBase und Unterklassen (Daten), `TFSpawns` = getPossibleCreatures (Untergrund unter
+  y 32, Sumpf/Dunkelwald 1 von 20, Bauwerkslisten bereit für 24d/24e), Tiere beim Erzeugen neuer Chunks; Pinguine und
+  Raben der Dekoration, echte Mobs in den Spawnern der Blätterverliese und Hexenhütten. Befallenes Turmholz lässt
+  Termiten frei. Soul Shards nimmt die Twilight-Mobs seiner Liste; Infernal Mobs brauchte nichts.
+- Geprüft: `clean pack` grün; Testserver bis `Done`, 0 Fehler im Log; jeder Mob per `/summon` mit dem Leben des
+  Originals und `loot spawn … kill` mit den erwarteten Drops; in 256 erzeugten Chunks der Dimension spawnen Wildschwein,
+  Bighorn, Hirsch, Vögel, Eichhörnchen, Hasen, Raben und Hühner. Blöcke der Dimension unverändert (Mobs ziehen keine
+  Zufallszahlen der Population).
+- Offen: Monster-Spawns am Spieler, Kämpfe und Spezialfähigkeiten nur im Code geprüft; Bauwerkslisten greifen mit
+  24d/24e; Bosse, Lich-Diener, treuer Zombie, Minoshroom mit 24f; Client-Prüfung aller Modelle.
 
 ### Teil 24d – Strukturen A
 Quellen: `structures/` ohne `darktower`, `stronghold`, `ComponentTFHydraLair`: `StructureTFComponent`,

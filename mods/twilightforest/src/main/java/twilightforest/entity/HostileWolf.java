@@ -69,6 +69,11 @@ public class HostileWolf extends Wolf implements Enemy {
         return TFMonster.oldAttack(this, level, target, this.attackStrength(target));
     }
 
+    /** Wolf.applyTamingSideEffects sets the health of a wild wolf to 8; the hostile wolves keep their own. */
+    @Override
+    protected void applyTamingSideEffects() {
+    }
+
     @Override
     public boolean isFood(ItemStack stack) {
         return false;
