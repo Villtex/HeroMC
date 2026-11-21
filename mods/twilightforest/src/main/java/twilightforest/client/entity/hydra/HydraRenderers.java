@@ -25,6 +25,25 @@ public final class HydraRenderers {
     }
 
     public static void register(IEventBus modBus) {
+        // TileEntityTFTrophyRenderer.renderHydraHead: a quarter size, the head turned by the rotation once more, mouth open on walls
+        twilightforest.client.TrophyRenderer.HYDRA_HEAD = context -> {
+            HydraModels.Head model = new HydraModels.Head(context.bakeLayer(HYDRA_HEAD));
+            HydraModels.PartState state = new HydraModels.PartState();
+            return (pose, collector, light, rotation, onGround) -> {
+                pose.scale(0.25F, 0.25F, 0.25F);
+                pose.scale(1.0F, -1.0F, -1.0F);
+                pose.rotateDegrees(com.mojang.math.Axis.YP, rotation);
+                pose.rotateDegrees(com.mojang.math.Axis.YP, 180.0F);
+                pose.translate(0.0F, onGround ? 1.0F : 0.0F, 1.5F);
+                state.visible = true;
+                state.yaw = rotation;
+                state.pitch = 0.0F;
+                state.mouthOpen = onGround ? 0.0F : 0.25F;
+                state.lightCoords = light;
+                collector.submitModel(model, state, pose, net.minecraft.client.renderer.rendertype.RenderTypes.entityCutout(HydraRenderer.TEXTURE), light,
+                        net.minecraft.client.renderer.texture.OverlayTexture.NO_OVERLAY, -1);
+            };
+        };
         modBus.addListener(EntityRenderersEvent.RegisterLayerDefinitions.class, event -> {
             event.registerLayerDefinition(HYDRA, HydraModels.Body::createBodyLayer);
             event.registerLayerDefinition(HYDRA_HEAD, HydraModels.Head::createBodyLayer);
