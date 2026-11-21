@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "tconstruct:block/slimegrass_green_top",
+    "bottom": "tconstruct:block/slimedirt_blue",
+    "side": "tconstruct:block/slimegrass_green_blue_side"
+  }
+}

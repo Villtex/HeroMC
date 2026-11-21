@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": "tconstruct:copper_oreberry",
+  "result": {
+    "id": "tconstruct:copper_nugget"
+  },
+  "experience": 0.2,
+  "cookingtime": 200
+}

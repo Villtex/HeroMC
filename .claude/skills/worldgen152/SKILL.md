@@ -119,6 +119,22 @@ neu erzeugt. Mod-Biome für Dörfer, Festungen und Spawn: `OldStructures.VILLAGE
 OldEntity...)`, neue Arten brauchen einen Fall in `OldChunkWriter.entity`. Strukturen laufen vor den Seen und
 ziehen aus derselben Zufallsfolge wie die Population.
 
+## Dorf-Bauteile, Dorfbewohner und Truhen eines Mods (Tinkers' Construct, Teil 25d)
+
+- Bauteil: Unterklasse von `ComponentVillage` in `<mod>/gen` (Vorbild `tconstruct.gen.ComponentToolWorkshop`) und ein
+  `OldStructures.VillageHandler` (Gewicht wie `getVillagePieceWeight`, zieht aus dem Dorf-Zufall), in Registrierungsreihenfolge
+  an `OldStructures.VILLAGE_HANDLERS` anhängen. Schon die Gewichte ändern den Grundriss aller Dörfer.
+- Zufall genau wie im Original: `getItems(random)`/`getCount(random)` werden als Argumente **vor** der Prüfung
+  `isVecInside` gezogen.
+- Eigene Truhenkategorie (`new ChestGenHooks(name, …, min, max)`): `OldLoot.newCategory(min, max)`, Einträge mit
+  `add(fmlId, …)`, Inhalt eines Mod-Behälters mit `OldLoot.generate(random, items, slots, count)` in ein eigenes
+  `OldTile.Mod`-Record; Spielseite `OldModData.registerTile(Klasse, (tile, be, registries) -> …)`, für `verify_blocks.py`
+  eine `C`-Zeile in `tools/java/Expect.java`.
+- Eigener Beruf (`VillagerRegistry.registerVillagerType(n, …)`): `getVillagerType` liefert `n`, Spielseite
+  `OldGameIds.registerProfession(n, key)`. 26.3: `VillagerProfession` (Record) mit `PoiType.NONE`, Handel als Daten
+  (`data/<ns>/villager_trade/<beruf>/1/*.json`, `trade_set/<beruf>/level_N.json`). Der Chunk-Writer setzt Stufe 2:
+  den Handel deshalb auch auf Stufe 2 legen, sonst haben Strukturdorfbewohner keine Angebote.
+
 ## Bäume im Spiel (Setzlinge)
 
 `OldLiveGen.generate(level, gen, random, x, y, z, radius, height)` lässt einen `OldGen` in der echten Welt laufen

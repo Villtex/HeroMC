@@ -184,6 +184,11 @@ public final class OldLoot {
     /** ChestGenHooks "dungeonChest": always 8 draws. */
     public static final Category DUNGEON_CHEST = new Category(8, 8);
 
+    /** A chest category of a mod ({@code new ChestGenHooks(name, items, countMin, countMax)}), empty at first. */
+    public static Category newCategory(int countMin, int countMax) {
+        return new Category(countMin, countMax);
+    }
+
     public static final Category MINESHAFT_CORRIDOR = category(3, 7, new int[][] {
             {265, 0, 1, 5, 10}, {266, 0, 1, 3, 5}, {331, 0, 4, 9, 5}, {351, 4, 4, 9, 5}, {264, 0, 1, 2, 3}, {263, 0, 3, 8, 10},
             {297, 0, 1, 3, 15}, {257, 0, 1, 1, 1}, {66, 0, 4, 8, 1}, {362, 0, 2, 4, 10}, {361, 0, 2, 4, 10}, {ENCHANTED_BOOK, 0, 1, 1, 1}});

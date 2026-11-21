@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "tconstruct:block/slimeleaves_blue_fancy"
+  },
+  "render_type": "minecraft:cutout_mipped"
+}

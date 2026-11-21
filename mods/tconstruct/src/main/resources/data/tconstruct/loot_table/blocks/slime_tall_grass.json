@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "name": "tconstruct:slime_tall_grass",
+              "condition": {
+                "type": "minecraft:match_tool",
+                "predicate": {
+                  "items": "minecraft:shears"
+                }
+              }
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:wheat_seeds",
+              "condition": {
+                "type": "minecraft:random_chance",
+                "chance": 0.125
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

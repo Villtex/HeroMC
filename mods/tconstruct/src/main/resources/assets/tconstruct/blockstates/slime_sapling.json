@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "stage=0": {
+      "model": "tconstruct:block/slime_sapling"
+    },
+    "stage=1": {
+      "model": "tconstruct:block/slime_sapling"
+    }
+  }
+}

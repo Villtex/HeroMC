@@ -1,0 +1,10 @@
+{
+  "wants": {
+    "id": "minecraft:piston",
+    "count": 23
+  },
+  "gives": {
+    "id": "tconstruct:iron_oreberry_bush"
+  },
+  "max_uses": 7
+}

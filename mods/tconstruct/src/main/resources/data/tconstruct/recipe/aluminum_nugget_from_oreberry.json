@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": "tconstruct:aluminum_oreberry",
+  "result": {
+    "id": "tconstruct:aluminum_nugget"
+  },
+  "experience": 0.2,
+  "cookingtime": 200
+}

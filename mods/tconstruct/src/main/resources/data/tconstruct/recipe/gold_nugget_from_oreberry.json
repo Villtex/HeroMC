@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": "tconstruct:gold_oreberry",
+  "result": {
+    "id": "minecraft:gold_nugget"
+  },
+  "experience": 0.2,
+  "cookingtime": 200
+}

@@ -403,6 +403,12 @@ public final class SmelteryRecipes {
         melt(TItems.BLANK_CAST.get(), 150, ALUBRASS, 144, metal(7), 4);
         melt(TItems.GOLD_BLANK_CAST.get(), 150, GOLD, 288, metal(7), 4);
         melt(Items.ENDER_PEARL, 500, ENDER, 250, metal(10), 4);
+        // ore berries (part 25d): 16 mB each at 100 degrees
+        melt(tconstruct.TWorld.ORE_BERRIES.get(0).get(), 100, IRON, 16, block(Blocks.IRON_BLOCK), 4);
+        melt(tconstruct.TWorld.ORE_BERRIES.get(1).get(), 100, GOLD, 16, block(Blocks.GOLD_BLOCK), 4);
+        melt(tconstruct.TWorld.ORE_BERRIES.get(2).get(), 100, COPPER, 16, metal(3), 4);
+        melt(tconstruct.TWorld.ORE_BERRIES.get(3).get(), 100, TIN, 16, metal(5), 4);
+        melt(tconstruct.TWorld.ORE_BERRIES.get(4).get(), 100, ALUMINUM, 16, metal(6), 4);
         melt(TSmeltery.METAL_BLOCKS.get(10).get().asItem(), 500, ENDER, 1000, metal(10));
         meltBlock(Blocks.IRON_BLOCK, 600, IRON, 1296);
         meltBlock(Blocks.GOLD_BLOCK, 400, GOLD, 1296);

@@ -1,0 +1,77 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "name": "tconstruct:slime_leaves",
+              "condition": {
+                "type": "minecraft:any_of",
+                "terms": [
+                  "minecraft:tool/can_shear",
+                  "minecraft:tool/can_silk_touch"
+                ]
+              }
+            },
+            {
+              "type": "minecraft:item",
+              "name": "tconstruct:slime_sapling",
+              "condition": {
+                "type": "minecraft:all_of",
+                "terms": [
+                  {
+                    "type": "minecraft:survives_explosion"
+                  },
+                  {
+                    "type": "minecraft:table_bonus",
+                    "enchantment": "minecraft:fortune",
+                    "chances": [
+                      0.02857142857142857,
+                      0.03225806451612903,
+                      0.037037037037037035,
+                      0.05263157894736842
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "condition": {
+        "type": "minecraft:inverted",
+        "term": {
+          "type": "minecraft:any_of",
+          "terms": [
+            "minecraft:tool/can_shear",
+            "minecraft:tool/can_silk_touch"
+          ]
+        }
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "tconstruct:gelatinous_slime",
+          "condition": {
+            "type": "minecraft:table_bonus",
+            "enchantment": "minecraft:fortune",
+            "chances": [
+              0.0125,
+              0.016666666666666666,
+              0.025,
+              0.05
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

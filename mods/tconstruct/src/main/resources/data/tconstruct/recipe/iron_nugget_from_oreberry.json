@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": "tconstruct:iron_oreberry",
+  "result": {
+    "id": "minecraft:iron_nugget"
+  },
+  "experience": 0.2,
+  "cookingtime": 200
+}

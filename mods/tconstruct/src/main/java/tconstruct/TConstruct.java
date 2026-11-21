@@ -22,12 +22,14 @@ public final class TConstruct {
         TItems.register(modBus);
         TBlocks.register(modBus);
         TSmeltery.register(modBus);
+        TWorld.register(modBus);
         TSounds.register(modBus);
         tconstruct.menu.TMenus.register(modBus);
         TNetwork.register(modBus);
         tconstruct.entity.TEntities.register(modBus);
         tconstruct.recipe.TRecipes.register(modBus);
         TEvents.register();
+        tconstruct.gen.TCWorldGen.register();
         registerOldIds();
         if (FMLEnvironment.getDist() == Dist.CLIENT) {
             tconstruct.client.TClient.register(modBus);
@@ -45,6 +47,7 @@ public final class TConstruct {
         }
         TBlocks.registerOldIds();
         TSmeltery.registerOldIds();
+        TWorld.registerOldIds();
     }
 
     /** Registry names without touching the registry (the items are not registered yet in the constructor). */

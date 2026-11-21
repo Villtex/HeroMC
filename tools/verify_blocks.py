@@ -238,8 +238,55 @@ def twilight(bid, meta):
     return None
 
 
+TC_ORES = ['nether_slag', 'cobalt_ore', 'ardite_ore', 'copper_ore', 'tin_ore', 'aluminum_ore', 'stone_slag']
+TC_SOILS = ['slimy_mud', 'grout', 'blue_slimy_mud', 'graveyard_soil', 'consecrated_soil', 'blue_slime_dirt']
+TC_SEARED = ['seared_bricks', 'seared_stone', 'seared_cobblestone', 'seared_paver', 'cracked_seared_bricks', 'seared_road',
+             'fancy_seared_bricks', 'square_seared_bricks', 'chiseled_seared_bricks']
+
+
+def tconstruct(bid, meta):
+    """Tinkers' Construct (Teil 25c/25d): ores, ore berry bushes, slime islands, the blocks of the village pieces."""
+    if bid in (1317, 1318):
+        kinds = ['iron', 'gold', 'copper', 'tin'] if bid == 1317 else ['aluminum', 'essence']
+        return f'tconstruct:{pick(kinds, meta & 3)}_oreberry_bush[age={meta >> 2 & 3}]'
+    if bid == 1319:
+        return f'tconstruct:{pick(["iron", "gold", "copper", "tin", "aluminum", "cobalt"], meta)}_gravel_ore'
+    if bid == 1320:
+        return 'tconstruct:' + pick(TC_ORES, meta)
+    if bid == 1323:
+        return 'tconstruct:' + pick(TC_SOILS, meta)
+    if bid == 1345:
+        return f'tconstruct:congealed_{pick(["blue", "green", "purple"], meta)}_slime'
+    if bid == 1350:
+        return f'tconstruct:liquid_blue_slime[level={meta}]'
+    if bid == 2384:
+        return 'tconstruct:slime_grass_dirt' if meta & 1 else 'tconstruct:slime_grass'
+    if bid == 2385:
+        return 'tconstruct:slime_leaves[persistent=false]'
+    if bid == 2386:
+        return 'tconstruct:slime_tall_grass'
+    if bid == 2387:
+        return f'tconstruct:slime_sapling[stage={1 if meta & 8 else 0}]'
+    if bid == 1326:
+        if meta == 0:
+            return 'tconstruct:tool_station'
+        if meta <= 4:
+            return f'tconstruct:{pick(["oak", "spruce", "birch", "jungle"], meta - 1)}_part_builder'
+        if meta <= 9:
+            return 'tconstruct:pattern_chest'
+        return f'tconstruct:{pick(["oak", "spruce", "birch", "jungle"], meta - 10)}_stencil_table'
+    if bid == 1322:
+        return 'tconstruct:' + ({0: 'smeltery_controller', 1: 'smeltery_drain'}.get(meta) or TC_SEARED[max(0, min(meta - 3, 8))])
+    if bid == 1321:
+        return 'tconstruct:' + {1: 'seared_faucet', 2: 'casting_basin'}.get(meta, 'casting_table')
+    return None
+
+
 def mod_meta(bid, meta):
     """Blocks of mods whose metadata matters."""
+    tc = tconstruct(bid, meta)
+    if tc:
+        return tc
     if bid == 1356:  # Twilight Forest hedge: metadata 1 is the darkwood leaves of the dark forest canopy
         return 'twilightforest:darkwood_leaves' if meta == 1 else 'twilightforest:hedge'
     if bid == 1366:  # Twilight Forest portal

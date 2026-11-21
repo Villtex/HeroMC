@@ -12,6 +12,8 @@
     "tconstruct:blue_slimy_mud",
     "tconstruct:graveyard_soil",
     "tconstruct:consecrated_soil",
-    "tconstruct:blue_slime_dirt"
+    "tconstruct:blue_slime_dirt",
+    "tconstruct:slime_grass",
+    "tconstruct:slime_grass_dirt"
   ]
 }

@@ -3,7 +3,7 @@ name: tinkers-tools-263
 description: Beim Weiterbauen von Tinkers' Construct (mods/tconstruct, Teile 25b–25f) benutzen – wie Werkzeuge, Teile, Materialien, Muster und Modifikatoren im Port abgebildet sind (Komponente tconstruct:tool statt InfiTool-NBT, ein Item je Teil und Material, alte IDs), wo neue Fähigkeiten, Modifikator-Effekte, Gussformen und Werkzeug-Modelle eingehängt werden und wie man es ohne Spieler prüft.
 ---
 
-# Tinkers' Construct im Port (Stand Teil 25c)
+# Tinkers' Construct im Port (Stand Teil 25d)
 
 Code: `mods/tconstruct/src/main/java/tconstruct/`, Daten/Assets aus `mods/tconstruct/tools/gen.py`
 (`python3 mods/tconstruct/tools/gen.py` überschreibt `src/main/resources/assets|data` und `original-assets.txt`).
@@ -73,6 +73,16 @@ Alte IDs: `TItems.OLD_IDS` (Item-ID aus `TinkersWorkshop.txt` + 256, Damage) und
 - Datenteil in `tools/gen_smeltery.py` (läuft in `gen.py`, liest Namen aus `en_US.xml`/`de_DE.xml` des Originals).
 - Testen per RCON: Struktur mit `setblock` bauen, Tank `data merge block … {Liquid:{id:"minecraft:lava",amount:4000}}`, Kern
   `{Items:[…]}`, `tick sprint 3000`, `data get block … Liquids`; Hahn mit Redstone-Block an/aus (schaltet jedes Mal um).
+
+## Welt (25d)
+
+- Kern ohne Spielklassen: `tconstruct/gen` (`TCWorldGen`: Erze, Büsche, Nether, Oberflächenerze am SAND-Event, Beute;
+  `SlimeIslandGen` inkl. `slimeTree` für Insel und Setzling; Dorf-Bauteile). In `tools/expect.sh`/`Expect.java` eingetragen.
+- Spielseite `TWorld` (Büsche je Erzsorte mit `age` 0–3, Beeren, Schleimblöcke, Flüssigkeit `liquid_blue_slime`, Beruf
+  `tconstruct:tinker`, alte IDs 1317/1318/1345/1350/2384–2387), Blöcke in `tconstruct.world`, Mob `entity/BlueSlime`
+  (Unterklasse von `Slime`, Größe/Leben/Split überschrieben), Daten aus `tools/gen_world.py`.
+- Prüfen: Chunks mit Inseln findet ein Raster (`expect.sh 1234 <48×48 Chunks>` und nach IDs 2385/1345/1319 filtern),
+  Dörfer mit Werkzeugschmiede `expect.sh 1234 structures 220`, Nether-Erze `expect.sh 1234 nether …`.
 
 ## Prüfen ohne Spieler
 

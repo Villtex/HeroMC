@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": "tconstruct:gelatinous_slime"
+  },
+  "result": {
+    "id": "tconstruct:congealed_blue_slime"
+  }
+}

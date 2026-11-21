@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "#"
+  ],
+  "key": {
+    "#": "tconstruct:congealed_green_slime"
+  },
+  "result": {
+    "id": "minecraft:slime_ball",
+    "count": 4
+  }
+}

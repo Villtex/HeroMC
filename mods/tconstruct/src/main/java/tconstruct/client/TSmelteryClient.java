@@ -22,6 +22,9 @@ public final class TSmelteryClient {
                         new Material(TConstruct.id("block/liquid_" + tex + "_flow")), null, (net.neoforged.neoforge.client.fluid.FluidTintSource) null),
                         liquid.source(), liquid.flowing());
             }
+            event.register(new net.minecraft.client.renderer.block.FluidModel.Unbaked(new Material(TConstruct.id("block/slime_blue")),
+                    new Material(TConstruct.id("block/slime_blue_flow")), null, (net.neoforged.neoforge.client.fluid.FluidTintSource) null),
+                    tconstruct.TWorld.SLIME_SOURCE, tconstruct.TWorld.SLIME_FLOWING);
         });
         modBus.addListener(RegisterMenuScreensEvent.class, event -> event.register(TSmeltery.SMELTERY_MENU.get(), SmelteryScreen::new));
         modBus.addListener(EntityRenderersEvent.RegisterRenderers.class, event -> {
@@ -31,6 +34,7 @@ public final class TSmelteryClient {
             event.registerBlockEntityRenderer(TSmeltery.CHANNEL_ENTITY.get(), SmelteryRenderers.Channel::new);
             event.registerBlockEntityRenderer(TSmeltery.DRYING_RACK_ENTITY.get(), SmelteryRenderers.DryingRack::new);
             event.registerBlockEntityRenderer(TSmeltery.SMELTERY_ENTITY.get(), SmelteryRenderers.Smeltery::new);
+            event.registerEntityRenderer(tconstruct.entity.TEntities.BLUE_SLIME.get(), BlueSlimeRenderer::new);
         });
     }
 }

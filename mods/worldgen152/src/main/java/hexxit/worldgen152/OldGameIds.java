@@ -373,8 +373,19 @@ public final class OldGameIds {
         return BuiltInRegistries.ENTITY_TYPE.getValue(id);
     }
 
+    private static final Map<Integer, ResourceKey<VillagerProfession>> MOD_PROFESSIONS = new java.util.concurrent.ConcurrentHashMap<>();
+
+    /** A villager type of a mod (VillagerRegistry.registerVillagerType) by its number. */
+    public static void registerProfession(int oldProfession, ResourceKey<VillagerProfession> profession) {
+        MOD_PROFESSIONS.put(oldProfession, profession);
+    }
+
     /** Villager professions of 1.5.2 by number; the smith, who sold tools, weapons and armour, is a weaponsmith now. */
     public static ResourceKey<VillagerProfession> profession(int oldProfession) {
+        ResourceKey<VillagerProfession> mod = MOD_PROFESSIONS.get(oldProfession);
+        if (mod != null) {
+            return mod;
+        }
         return switch (oldProfession) {
             case 1 -> VillagerProfession.LIBRARIAN;
             case 2 -> VillagerProfession.CLERIC;

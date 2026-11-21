@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "tconstruct:block/slimegrass_blue_tall"
+  },
+  "render_type": "minecraft:cutout"
+}

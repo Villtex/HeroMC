@@ -130,6 +130,7 @@ public final class TBlocks {
             .displayItems((params, output) -> {
                 BLOCK_ITEMS.forEach(item -> output.accept(item.get()));
                 TSmeltery.ITEMS.forEach(item -> output.accept(item.get()));
+                TWorld.ITEMS.forEach(item -> output.accept(item.get()));
             })
             .build());
 

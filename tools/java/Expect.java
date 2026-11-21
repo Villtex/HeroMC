@@ -48,6 +48,7 @@ public class Expect {
             chococraft.gen.ChocoWorldGen.register();
             legendgear.gen.LGWorldGen.register();
             meteors.gen.MeteorsWorldGen.register();
+            tconstruct.gen.TCWorldGen.register();
         }
         // "nether" (after "vanilla", if both are given): the Nether of the seed instead of the overworld
         boolean nether = a.length > 1 && a[1].equals("nether");
@@ -283,6 +284,7 @@ public class Expect {
                 String pos = (cx * 16 + (k >> 12)) + " " + (k & 255) + " " + (cz * 16 + (k >> 8 & 15));
                 if (e.getValue() instanceof OldTile.Skull sk && c.metadata(k >> 12, k & 255, k >> 8 & 15) == 1) out.append("K ").append(pos).append(' ').append(sk.type()).append(' ').append(sk.rotation() & 15).append('\n');
                 if (e.getValue() instanceof OldTile.Spawner s) out.append("S ").append(pos).append(' ').append(s.mob()).append('\n');
+                if (e.getValue() instanceof tconstruct.gen.ComponentToolWorkshop.PatternChest t) out.append("C ").append(pos).append(' ').append(Arrays.stream(t.slots()).filter(Objects::nonNull).count()).append('\n');
                 if (e.getValue() instanceof OldTile.Dispenser t) out.append("C ").append(pos).append(' ').append(Arrays.stream(t.slots()).filter(Objects::nonNull).count()).append('\n');
                 // chests: filled slots, and how many of them hold vanilla items (items of mods not ported yet stay out in the game)
                 if (e.getValue() instanceof OldTile.Chest t) out.append("C ").append(pos).append(' ').append(Arrays.stream(t.slots()).filter(Objects::nonNull).count())
