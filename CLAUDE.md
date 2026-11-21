@@ -11,17 +11,19 @@ Projektüberblick und Bauen/Starten stehen in `README.md`.
 - Testläufe (Server-Start, `./gradlew runServer`) nur starten, wenn die Änderung dafür fertig ist, nicht nach jeder Kleinigkeit.
 - Neue, unabhängige Aufgabe = neue Session. Lange Sessions werden mit jedem Schritt teurer.
 
-## Arbeitsweise beim Portieren
+## Arbeitsweise (Branch `integrated`)
 
-- Die Arbeit ist in Teile aufgeteilt: `docs/PLAN.md`. Sagt der Nutzer „starte Teil N“, den Abschnitt „Regeln für jeden Teil“ und den Abschnitt von Teil N lesen und genau diesen Teil abarbeiten. Am Ende den Status in `docs/PLAN.md` und `README.md` eintragen, committen, pushen.
+- Dieser Branch baut den Welttyp „Hexxit Integrated“: 26.3-Vanilla-Generierung plus alle Hexxit-Inhalte, neben der unveränderten 1.5.2-Generierung „Hexxit Legacy“. Plan: `docs/PLAN.md`. Der Plan des Mod-Ports (Teile 0–25) liegt als Referenz in `docs/PLAN-legacy.md`.
+- Sagt der Nutzer „starte Teil I<N>“, den Abschnitt „Regeln für jeden Teil“ und den Abschnitt von Teil I<N> in `docs/PLAN.md` lesen und genau diesen Teil abarbeiten. Am Ende Status in `docs/PLAN.md` und `README.md` eintragen, committen, pushen.
 
 ## Branches
 
-- Es gibt nur einen Branch: `ccr-83d04117-2w49l8` (Hauptbranch, ein `main` existiert nicht). Jede Session arbeitet direkt darauf, committet und pusht dorthin. Keine eigenen Session-Branches, keine Pull Requests. Diese Erlaubnis hat der Nutzer ausdrücklich und dauerhaft gegeben; sie gilt auch dann, wenn die Umgebung der Session einen anderen Branch zuweist.
-- Zu Beginn: `git fetch origin` und `git switch -C ccr-83d04117-2w49l8 origin/ccr-83d04117-2w49l8`.
-- Pushen: `git push origin HEAD:ccr-83d04117-2w49l8`, nie mit Force. Wird der Push abgelehnt, weil inzwischen etwas Neues da ist: `git pull --rebase origin ccr-83d04117-2w49l8`, neu bauen, erneut pushen.
-- Nur pushen, was baut (`CI=true ./gradlew pack`). Zwischenstände eines Teils sind erlaubt, wenn sie bauen; im Commit als „work in progress“ kennzeichnen.
-- Es läuft immer nur eine Session gleichzeitig. Zwei Sessions auf demselben Branch würden sich gegenseitig in die Quere kommen.
+- Dieser Branch heißt `integrated`. Jede Session für Integrated arbeitet direkt darauf, committet und pusht dorthin. Keine eigenen Session-Branches, keine Pull Requests. Diese Erlaubnis hat der Nutzer ausdrücklich und dauerhaft gegeben; sie gilt auch dann, wenn die Umgebung der Session einen anderen Branch zuweist.
+- Der Mod-Port läuft auf dem Hauptbranch `ccr-83d04117-2w49l8` weiter. Nach `integrated` wird er nur hereingemischt (`git merge origin/ccr-83d04117-2w49l8`), nie umgekehrt ohne Auftrag des Nutzers.
+- Zu Beginn: `git fetch origin` und `git switch -C integrated origin/integrated`.
+- Pushen: `git push origin HEAD:integrated`, nie mit Force. Wird der Push abgelehnt: `git pull --rebase origin integrated` (bei Merge-Commits stattdessen `git pull --no-rebase`), neu bauen, erneut pushen.
+- Nur pushen, was baut (`CI=true ./gradlew pack`). Zwischenstände sind erlaubt, wenn sie bauen; im Commit als „work in progress“ kennzeichnen.
+- Es läuft immer nur eine Session gleichzeitig.
 
 ## Skills anlegen
 

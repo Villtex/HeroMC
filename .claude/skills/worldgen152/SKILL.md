@@ -164,7 +164,7 @@ enthält vier volle Spalten je Chunk und jeden Block, den die Population geände
 Das prüft Kern gegen Spiel. Kern gegen Original prüft `python3 tools/compare_original.py
 .cache/original/hexxit/world 1234`: Es liest die Region-Dateien einer Welt des echten Hexxit-Servers und zählt
 die Abweichungen je Block-ID. Nach dem Port eines Mod-Generators müssen dessen IDs dort aus der Liste fallen.
-Welt erzeugen: `tools/original_server.sh hexxit 420` (Einrichtung in `docs/PLAN.md`, Teil 2).
+Welt erzeugen: `tools/original_server.sh hexxit 420` (Einrichtung in `docs/PLAN-legacy.md`, Teil 2).
 
 **Original-Abgleich und Reihenfolge:** Forge 1.5.2 hielt die Generatoren in einem `HashSet`, ihre Reihenfolge
 wechselte von Start zu Start. Gegen eine Original-Welt stimmen deshalb nur Generatoren ohne die gemeinsame
@@ -191,7 +191,7 @@ Tainted Soil ersetzt: `new OldOreGens.Minable(id, meta, n, 87, 253)`. Der Nether
 Himmelslicht; Generatoren mit `getHeightValue`/`canBlockSeeTheSky` dort einzeln gegen das Original prüfen.
 
 Prüfen: `tools/expect.sh 1234 nether -8 -8 -7 -8 ...` oder `nether structures 60`, dann `verify_blocks.py` (die Datei
-trägt die Dimension in der ersten Zeile). Die Population des Nethers war im Original nicht seed-fest (`docs/PLAN.md`,
+trägt die Dimension in der ersten Zeile). Die Population des Nethers war im Original nicht seed-fest (`docs/PLAN-legacy.md`,
 Teil 7b), ein Abgleich mit Original-Welten ist dort nicht möglich.
 
 ## Stolperfallen
@@ -276,7 +276,7 @@ erzeugt worldgen152 nicht: dafür einen Global Loot Modifier. Vorbild `harkenscy
 ## Häufigkeit von Strukturen gegen das Original messen
 
 Wenn der Nutzer meldet, im Original seien Bauten seltener/häufiger (gemessen für Ruins, Battle Towers, Better Dungeons):
-- Original-Welt: `tools/original_server.sh hexxit 420` (Einrichtung `docs/PLAN.md` Teil 2), Spawn 329, 60 bei Seed
+- Original-Welt: `tools/original_server.sh hexxit 420` (Einrichtung `docs/PLAN-legacy.md` Teil 2), Spawn 329, 60 bei Seed
   1234; zweite Stichprobe per `tools/original_spawn.py <welt> 2000 2000` (Weltordner ohne `region/`, `DIM*`, `data/`).
   Ruins schreibt jede Ruine ins Log mit `disableRuinSpawnCoordsLogging=false` in `mods/ruins.txt` (vor dem ersten Start;
   die Welt kopiert sich die Datei als `world/ruins.txt`).

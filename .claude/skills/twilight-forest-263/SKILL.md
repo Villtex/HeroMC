@@ -6,7 +6,7 @@ description: Beim Weiterbauen von Twilight Forest (mods/twilightforest, Teile 24
 # Twilight Forest weiterbauen
 
 Teilprojekt `mods/twilightforest` (Mod-ID `twilightforest`, braucht `worldgen152`). Offenes je Unterteil in
-`mods/twilightforest/TODO.md`, Stand in `docs/PLAN.md` (Teil 24a–24e).
+`mods/twilightforest/TODO.md`, Stand in `docs/PLAN-legacy.md` (Teil 24a–24e).
 
 ## Aufbau
 

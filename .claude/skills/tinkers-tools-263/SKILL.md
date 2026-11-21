@@ -107,7 +107,7 @@ Alte IDs: `TItems.OLD_IDS` (Item-ID aus `TinkersWorkshop.txt` + 256, Damage) und
 
 Temporärer Befehl (nie committen), Block-Entities direkt füllen: `PartBuilderBlockEntity.setItem/removeItem` (Logik
 wie `PartCrafterLogic`), `ToolStationBlockEntity.setItem(1..3)` → Ergebnis in Slot 0, `InfiTool.of(...)` ausgeben;
-Abbau mit `stack.getDestroySpeed(state)` / `isCorrectToolForDrops`. Vorlage siehe Teil 25a in `docs/PLAN.md`.
+Abbau mit `stack.getDestroySpeed(state)` / `isCorrectToolForDrops`. Vorlage siehe Teil 25a in `docs/PLAN-legacy.md`.
 - FakePlayer: `isSwinging()` bleibt true (er tickt nicht) → für Moos & Co. einen Mob als Träger nehmen. Mit
   `fp.gameMode.destroyBlock(pos)` laufen die Abbau-Fähigkeiten echt (Blickrichtung mit `fp.snapTo(..., yaw, pitch)`).
 - Neue Entities (Drops, Geschosse) findet `getEntitiesOfClass` im selben Befehl oft nicht: danach per RCON zählen

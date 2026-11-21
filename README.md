@@ -20,7 +20,7 @@ Jeder Mod wird deshalb gegen das dekompilierte Original als Referenz **neu gesch
 
 ## Arbeitsplan
 
-Der Port ist in Teile aufgeteilt, die je in eine Session passen: [`docs/PLAN.md`](docs/PLAN.md).
+Der Port ist in Teile aufgeteilt, die je in eine Session passen: [`docs/PLAN-legacy.md`](docs/PLAN-legacy.md); auf diesem Branch (`integrated`) gilt für den Welttyp „Hexxit Integrated“ [`docs/PLAN.md`](docs/PLAN.md).
 
 ## Aufbau
 
@@ -121,7 +121,7 @@ Kern überein. Strukturen dafür: `tools/expect.sh 1234 structures 220`.
 Gegen das echte Original (`tools/compare_original.py`, liest die Region-Dateien einer Welt des 1.5.2-Servers):
 Mit dem Vanilla-Server stimmen Spawnpunkt und 99,995 % von 67 Mio. Blöcken überein, darunter ein Dorf, eine
 Festung und Minenschächte. Mit dem Hexxit-Server stimmen Spawnpunkt und alle Biome; bei den Blöcken fehlen noch
-die Weltgeneratoren der nicht portierten Mods (Einzelheiten und erwartete Unterschiede: Teil 2 in `docs/PLAN.md`).
+die Weltgeneratoren der nicht portierten Mods (Einzelheiten und erwartete Unterschiede: Teil 2 in `docs/PLAN-legacy.md`).
 
 Enthalten sind auch die Strukturen von 1.5.2, die Spawnsuche und die Dekoration der ExtrabiomesXL-Biome. Mit
 ihr stimmen für Seed 1234 je ein Chunk aller 49 Biome (150.400 Blöcke) und Chunks an Quicksand und einer Legend
