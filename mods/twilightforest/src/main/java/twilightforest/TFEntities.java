@@ -20,7 +20,16 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.minecraft.world.entity.monster.Monster;
+import twilightforest.entity.BlockGoblin;
 import twilightforest.entity.DeathTome;
+import twilightforest.entity.GoblinKnightLower;
+import twilightforest.entity.GoblinKnightUpper;
+import twilightforest.entity.HelmetCrab;
+import twilightforest.entity.MiniGhast;
+import twilightforest.entity.TowerBroodling;
+import twilightforest.entity.TowerGhast;
+import twilightforest.entity.TowerGolem;
+import twilightforest.entity.TowerTermite;
 import twilightforest.entity.FireBeetle;
 import twilightforest.entity.HedgeSpider;
 import twilightforest.entity.HostileWolf;
@@ -131,6 +140,26 @@ public final class TFEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<KingSpider>> KING_SPIDER = mob("king_spider", 212, "King Spider",
             KingSpider::new, MobCategory.MONSTER, b -> b.sized(1.6F, 1.6F).eyeHeight(1.2F));
 
+    // ---------------------------------------------------------------- the dark tower and the knight stronghold
+    public static final DeferredHolder<EntityType<?>, EntityType<MiniGhast>> MINI_GHAST = mob("mini_ghast", 214, "Mini Ghast",
+            MiniGhast::new, MobCategory.MONSTER, b -> b.sized(1.1F, 1.5F).fireImmune().notInPeaceful());
+    public static final DeferredHolder<EntityType<?>, EntityType<TowerGhast>> TOWER_GHAST = mob("tower_ghast", 215, "Tower Ghast",
+            TowerGhast::new, MobCategory.MONSTER, b -> b.sized(4.0F, 6.0F).fireImmune().notInPeaceful());
+    public static final DeferredHolder<EntityType<?>, EntityType<TowerGolem>> TOWER_GOLEM = mob("tower_golem", 216, "Tower Golem",
+            TowerGolem::new, MobCategory.MONSTER, b -> b.sized(1.4F, 2.9F));
+    public static final DeferredHolder<EntityType<?>, EntityType<TowerTermite>> TOWER_TERMITE = mob("tower_termite", 218, "Tower Termite",
+            TowerTermite::new, MobCategory.MONSTER, b -> b.sized(0.3F, 0.7F));
+    public static final DeferredHolder<EntityType<?>, EntityType<TowerBroodling>> TOWER_BROODLING = mob("tower_broodling", 219, "Redscale Broodling",
+            TowerBroodling::new, MobCategory.MONSTER, b -> b.sized(0.8F, 0.4F).eyeHeight(0.26F));
+    public static final DeferredHolder<EntityType<?>, EntityType<BlockGoblin>> BLOCK_GOBLIN = mob("block_goblin", 220, "Block&Chain Goblin",
+            BlockGoblin::new, MobCategory.MONSTER, b -> b.sized(0.9F, 1.4F));
+    public static final DeferredHolder<EntityType<?>, EntityType<GoblinKnightUpper>> UPPER_GOBLIN_KNIGHT = mob("upper_goblin_knight", 221,
+            "Upper Goblin Knight", GoblinKnightUpper::new, MobCategory.MONSTER, b -> b.sized(1.1F, 1.3F));
+    public static final DeferredHolder<EntityType<?>, EntityType<GoblinKnightLower>> LOWER_GOBLIN_KNIGHT = mob("lower_goblin_knight", 222,
+            "Lower Goblin Knight", GoblinKnightLower::new, MobCategory.MONSTER, b -> b.sized(0.7F, 1.1F));
+    public static final DeferredHolder<EntityType<?>, EntityType<HelmetCrab>> HELMET_CRAB = mob("helmet_crab", 223, "Helmet Crab",
+            HelmetCrab::new, MobCategory.MONSTER, b -> b.sized(0.8F, 1.1F));
+
     // ---------------------------------------------------------------- projectiles of the mobs
     public static final DeferredHolder<EntityType<?>, EntityType<NatureBolt>> NATURE_BOLT = projectile("nature_bolt", NatureBolt::new, 5);
     public static final DeferredHolder<EntityType<?>, EntityType<TomeBolt>> TOME_BOLT = projectile("tome_bolt", TomeBolt::new, 5);
@@ -163,6 +192,14 @@ public final class TFEntities {
     public static final DeferredItem<Item> REDCAP_SAPPER_SPAWN_EGG = egg("redcap_sapper", 210, REDCAP_SAPPER);
     public static final DeferredItem<Item> MIST_WOLF_SPAWN_EGG = egg("mist_wolf", 211, MIST_WOLF);
     public static final DeferredItem<Item> KING_SPIDER_SPAWN_EGG = egg("king_spider", 212, KING_SPIDER);
+    public static final DeferredItem<Item> MINI_GHAST_SPAWN_EGG = egg("mini_ghast", 214, MINI_GHAST);
+    public static final DeferredItem<Item> TOWER_GHAST_SPAWN_EGG = egg("tower_ghast", 215, TOWER_GHAST);
+    public static final DeferredItem<Item> TOWER_GOLEM_SPAWN_EGG = egg("tower_golem", 216, TOWER_GOLEM);
+    public static final DeferredItem<Item> TOWER_TERMITE_SPAWN_EGG = egg("tower_termite", 218, TOWER_TERMITE);
+    public static final DeferredItem<Item> TOWER_BROODLING_SPAWN_EGG = egg("tower_broodling", 219, TOWER_BROODLING);
+    public static final DeferredItem<Item> BLOCK_GOBLIN_SPAWN_EGG = egg("block_goblin", 220, BLOCK_GOBLIN);
+    public static final DeferredItem<Item> LOWER_GOBLIN_KNIGHT_SPAWN_EGG = egg("lower_goblin_knight", 222, LOWER_GOBLIN_KNIGHT);
+    public static final DeferredItem<Item> HELMET_CRAB_SPAWN_EGG = egg("helmet_crab", 223, HELMET_CRAB);
 
     // ---------------------------------------------------------------- drops (TFItems; ids of the pack's TwilightForest.cfg + 256)
     public static final DeferredItem<Item> RAVEN_FEATHER = item("raven_feather", 7264, p -> p);
@@ -173,6 +210,8 @@ public final class TFEntities {
     /** Crafting parts of the magic map and the maze map (Teil 24f). */
     public static final DeferredItem<Item> MAGIC_MAP_FOCUS = item("magic_map_focus", 7290, p -> p);
     public static final DeferredItem<Item> MAZE_MAP_FOCUS = item("maze_map_focus", 7292, p -> p);
+    /** Crafting part of the ore meter and the transformation powder (Teil 24f). */
+    public static final DeferredItem<Item> BORER_ESSENCE = item("borer_essence", 7252, p -> p);
 
     // ---------------------------------------------------------------- sounds (TFSounds)
     public static final DeferredHolder<SoundEvent, SoundEvent> TINY_BIRD_CHIRP = sound("tiny_bird.chirp");
@@ -228,6 +267,15 @@ public final class TFEntities {
     }
 
     public static void register(IEventBus modBus) {
+        // breaking infested tower wood lets a termite out (BlockTFTowerWood.onBlockDestroyedByPlayer)
+        twilightforest.block.TowerWoodBlock.TERMITE = (level, pos) -> {
+            TowerTermite termite = TOWER_TERMITE.get().create(level, net.minecraft.world.entity.EntitySpawnReason.TRIGGERED);
+            if (termite != null) {
+                termite.snapTo(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, 0.0F, 0.0F);
+                level.addFreshEntity(termite);
+                termite.spawnAnim();
+            }
+        };
         ENTITIES.register(modBus);
         ITEMS.register(modBus);
         SOUNDS.register(modBus);
@@ -281,6 +329,15 @@ public final class TFEntities {
         event.put(SLIME_BEETLE.get(), SlimeBeetle.createAttributes().build());
         event.put(PINCH_BEETLE.get(), PinchBeetle.createAttributes().build());
         event.put(MAZE_SLIME.get(), net.minecraft.world.entity.monster.Monster.createMonsterAttributes().build());
+        event.put(MINI_GHAST.get(), MiniGhast.createAttributes().build());
+        event.put(TOWER_GHAST.get(), TowerGhast.createAttributes().build());
+        event.put(TOWER_GOLEM.get(), TowerGolem.createAttributes().build());
+        event.put(TOWER_TERMITE.get(), TowerTermite.createAttributes().build());
+        event.put(TOWER_BROODLING.get(), TowerBroodling.createAttributes().build());
+        event.put(BLOCK_GOBLIN.get(), BlockGoblin.createAttributes().build());
+        event.put(UPPER_GOBLIN_KNIGHT.get(), GoblinKnightUpper.createAttributes().build());
+        event.put(LOWER_GOBLIN_KNIGHT.get(), GoblinKnightLower.createAttributes().build());
+        event.put(HELMET_CRAB.get(), HelmetCrab.createAttributes().build());
     }
 
     /**
@@ -308,10 +365,10 @@ public final class TFEntities {
         event.register(FIREFLY.get(), SpawnPlacementTypes.NO_RESTRICTIONS, ground, MobileFirefly::checkSpawnRules, replace);
         // EntityMob: dark enough (isValidLightLevel); the spiders of the hedge maze in any light
         for (var type : List.of(REDCAP, REDCAP_SAPPER, SKELETON_DRUID, KOBOLD, DEATH_TOME, MINOTAUR, FIRE_BEETLE, SLIME_BEETLE,
-                PINCH_BEETLE, WRAITH)) {
+                PINCH_BEETLE, WRAITH, TOWER_GOLEM, TOWER_TERMITE, BLOCK_GOBLIN, UPPER_GOBLIN_KNIGHT, LOWER_GOBLIN_KNIGHT, HELMET_CRAB, MINI_GHAST)) {
             monster(event, type.get());
         }
-        for (var type : List.of(SWARM_SPIDER, HEDGE_SPIDER, KING_SPIDER)) {
+        for (var type : List.of(SWARM_SPIDER, HEDGE_SPIDER, KING_SPIDER, TOWER_BROODLING)) {
             event.register(type.get(), SpawnPlacementTypes.ON_GROUND, ground, (t, level, reason, pos, random) ->
                     Monster.checkAnyLightMonsterSpawnRules(t, level, reason, pos, random)
                             && (twilightforest.entity.TFMobUtil.nearestFeature(level, pos) == twilightforest.gen.TFFeature.HEDGE_MAZE
@@ -320,6 +377,8 @@ public final class TFEntities {
         event.register(HOSTILE_WOLF.get(), SpawnPlacementTypes.ON_GROUND, ground, HostileWolf::checkSpawnRules, replace);
         event.register(MIST_WOLF.get(), SpawnPlacementTypes.ON_GROUND, ground, HostileWolf::checkSpawnRules, replace);
         event.register(MAZE_SLIME.get(), SpawnPlacementTypes.ON_GROUND, ground, MazeSlime::checkSpawnRules, replace);
+        // EntityTFTowerGhast: any light, not on peaceful, nothing in the way
+        event.register(TOWER_GHAST.get(), SpawnPlacementTypes.NO_RESTRICTIONS, ground, Monster::checkAnyLightMonsterSpawnRules, replace);
         // EntityTFMosquitoSwarm: any light in the swamp
         event.register(MOSQUITO_SWARM.get(), SpawnPlacementTypes.ON_GROUND, ground, (t, level, reason, pos, random) ->
                 Monster.checkAnyLightMonsterSpawnRules(t, level, reason, pos, random)

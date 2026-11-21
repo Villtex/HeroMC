@@ -31,6 +31,15 @@ MOBS = [
     ('mist_wolf', 'Mist Wolf', 'Nebelwolf', (3806225, 14862474)),
     ('king_spider', 'King Spider', 'Spinnenkönig', (2890254, 16760855)),
     ('firefly', 'Firefly', 'Glühwürmchen', (10801942, 12250626)),
+    ('mini_ghast', 'Mini Ghast', 'Mini-Ghast', (12369084, 10961731)),
+    ('tower_ghast', 'Tower Ghast', 'Turm-Ghast', (12369084, 12023928)),
+    ('tower_golem', 'Carminite Golem', 'Karminit-Golem', (7028000, 14867930)),
+    ('tower_termite', 'Tower Termite', 'Turm-Termite', (6105889, 11313210)),
+    ('tower_broodling', 'Redscale Broodling', 'Rotschuppen-Brütling', (3423252, 12250626)),
+    ('block_goblin', 'Block&Chain Goblin', 'Kettengoblin', (3881580, 11214356)),
+    ('upper_goblin_knight', 'Upper Goblin Knight', 'Goblin-Ritter (oben)', None),
+    ('lower_goblin_knight', 'Goblin Knight', 'Goblin-Ritter', (3881580, 11214356)),
+    ('helmet_crab', 'Helmet Crab', 'Helmkrabbe', (16486475, 13887420)),
 ]
 PROJECTILES = [('nature_bolt', 'Nature Bolt', 'Naturbolzen'), ('tome_bolt', 'Tome Bolt', 'Buchbolzen'),
                ('slime_blob', 'Slime Blob', 'Schleimklumpen')]
@@ -53,7 +62,8 @@ for p, en, de in PROJECTILES:
 for src in ['wildboar', 'bighorn', 'wilddeer', 'redcap', 'redcapsapper', 'swarmspider', 'skeletondruid', 'hedgespider', 'kingspider',
             'penguin', 'tinybirdbrown', 'tinybirdblue', 'tinybirdred', 'tinybirdgold', 'squirrel2', 'bunnydutch', 'bunnywhite',
             'bunnybrown', 'raven', 'questram', 'questram_lines', 'kobold', 'mosquitoswarm', 'minotaur', 'firebeetle', 'slimebeetle',
-            'pinchbeetle', 'mazeslime', 'mistwolf', 'firefly-tiny', 'ghost-crown', 'ghost']:
+            'pinchbeetle', 'mazeslime', 'mistwolf', 'firefly-tiny', 'ghost-crown', 'ghost', 'towerghast', 'towerghast_openeyes',
+            'towerghast_fire', 'carminitegolem', 'towertermite', 'towerbroodling', 'blockgoblin', 'doublegoblin', 'helmetcrab']:
     dst = {'squirrel2': 'squirrel'}.get(src, src).replace('-', '_')
     ASSETS.append((f'mods/twilightforest/textures/model/{src}.png', f'assets/{NS}/textures/entity/{dst}.png'))
 
@@ -64,9 +74,10 @@ for i, tex_ref, en, de in [('raven_feather', None, 'Raven Feather', 'Rabenfeder'
                            ('raw_meef', 'minecraft:item/beef', 'Raw Meef', 'Rohes Meef'),
                            ('meef_steak', 'minecraft:item/cooked_beef', 'Meef Steak', 'Meef-Steak'),
                            ('magic_map_focus', None, 'Magic Map Focus', 'Magischer Kartenfokus'),
-                           ('maze_map_focus', None, 'Maze Map Focus', 'Labyrinth-Kartenfokus')]:
+                           ('maze_map_focus', None, 'Maze Map Focus', 'Labyrinth-Kartenfokus'),
+                           ('borer_essence', None, 'Borer Essence', 'Bohreressenz')]:
     if tex_ref is None:
-        src = {'raven_feather': 'tfFeather', 'magic_map_focus': 'magicMapFocus', 'maze_map_focus': 'mazeMapFocus'}[i]
+        src = {'raven_feather': 'tfFeather', 'magic_map_focus': 'magicMapFocus', 'maze_map_focus': 'mazeMapFocus', 'borer_essence': 'borerEssence'}[i]
         ASSETS.append((f'mods/twilightforest/textures/items/{src}.png', f'assets/{NS}/textures/item/{i}.png'))
         tex_ref = n(f'item/{i}')
     write(f'assets/{NS}/models/item/{i}.json', {'parent': 'minecraft:item/generated', 'textures': {'layer0': tex_ref}})
@@ -85,10 +96,10 @@ for raw, cooked in (('venison', 'cooked_venison'), ('raw_meef', 'meef_steak')):
 
 # undead and arthropods (smite, bane of arthropods)
 tag('entity_type', 'minecraft:undead', n('skeleton_druid'))
-tag('entity_type', 'minecraft:arthropod', n('swarm_spider'), n('hedge_spider'), n('king_spider'), n('fire_beetle'), n('slime_beetle'),
-    n('pinch_beetle'))
-tag('entity_type', 'minecraft:sensitive_to_bane_of_arthropods', n('swarm_spider'), n('hedge_spider'), n('king_spider'), n('fire_beetle'),
-    n('slime_beetle'), n('pinch_beetle'))
+ARTHROPODS = [n(x) for x in ('swarm_spider', 'hedge_spider', 'king_spider', 'fire_beetle', 'slime_beetle', 'pinch_beetle', 'tower_termite',
+                               'tower_broodling', 'helmet_crab')]
+tag('entity_type', 'minecraft:arthropod', *ARTHROPODS)
+tag('entity_type', 'minecraft:sensitive_to_bane_of_arthropods', *ARTHROPODS)
 tag('entity_type', 'minecraft:sensitive_to_smite', n('skeleton_druid'))
 
 # ---------------------------------------------------------------- sounds (TFSounds)
@@ -196,11 +207,22 @@ mob_loot('death_tome', [drop('minecraft:paper'), {'rolls': 1, 'entries': [{'type
     {'type': 'minecraft:item', 'name': 'minecraft:book'}]}]}, rare(n('magic_map_focus'))])
 mob_loot('fire_beetle', [drop('minecraft:gunpowder')])
 mob_loot('slime_beetle', [drop('minecraft:slime_ball')])
-for empty in ('squirrel', 'bunny', 'quest_ram', 'firefly', 'mosquito_swarm', 'pinch_beetle', 'hostile_wolf', 'mist_wolf'):
+# EntityGhast: 0..2 gunpowder, 0..1 ghast tears (+ looting)
+for g in ('tower_ghast', 'mini_ghast'):
+    mob_loot(g, [drop('minecraft:gunpowder'), drop('minecraft:ghast_tear', 0, 1)])
+mob_loot('tower_golem', [drop('minecraft:iron_ingot', looting=0), drop(n('tower_wood'), looting=0)])
+mob_loot('tower_termite', [drop(n('borer_essence'))])
+mob_loot('block_goblin', [drop('minecraft:coal')])
+mob_loot('helmet_crab', [drop('minecraft:wheat'), {'rolls': 1, 'condition': {'type': 'minecraft:random_chance', 'chance': 0.5}, 'entries': [
+    {'type': 'minecraft:item', 'name': 'minecraft:gold_nugget', 'modifier': [
+        {'type': 'minecraft:enchanted_count_increase', 'count': {'type': 'minecraft:uniform', 'min': 1.0, 'max': 1.0},
+         'enchantment': 'minecraft:looting'}]}]}])
+for empty in ('squirrel', 'bunny', 'quest_ram', 'firefly', 'mosquito_swarm', 'pinch_beetle', 'hostile_wolf', 'mist_wolf', 'upper_goblin_knight',
+              'lower_goblin_knight'):
     mob_loot(empty, [])
 spider = vanilla_loot('spider')
 if spider:
-    for s in ('swarm_spider', 'hedge_spider', 'king_spider'):
+    for s in ('swarm_spider', 'hedge_spider', 'king_spider', 'tower_broodling'):
         mob_loot(s, spider['pools'])
 sheep = vanilla_loot('sheep')
 if sheep:

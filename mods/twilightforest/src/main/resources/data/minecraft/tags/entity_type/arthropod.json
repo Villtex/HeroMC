@@ -2,9 +2,12 @@
   "values": [
     "twilightforest:fire_beetle",
     "twilightforest:hedge_spider",
+    "twilightforest:helmet_crab",
     "twilightforest:king_spider",
     "twilightforest:pinch_beetle",
     "twilightforest:slime_beetle",
-    "twilightforest:swarm_spider"
+    "twilightforest:swarm_spider",
+    "twilightforest:tower_broodling",
+    "twilightforest:tower_termite"
   ]
 }

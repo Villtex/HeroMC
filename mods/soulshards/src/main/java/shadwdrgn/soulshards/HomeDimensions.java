@@ -13,10 +13,18 @@ import java.util.Map;
 /**
  * ItemShard.homeDims: the mobs a shard can take, with the dimension a cage below tier 4 spawns them in.
  * 1.5.2 had wither skeletons and zombie villagers as "special" skeletons and zombies; today they are mobs of their
- * own. Twilight Forest mobs (and the ones of mods not in the pack) are left out until those mods are ported.
+ * own. The Twilight Forest mobs of the list count as overworld mobs; they are looked up by id, so Soul Shards does not
+ * need the Twilight Forest. "TwilightForest.Tower Broodling" of the original matched no mob (the broodling's name is
+ * "Redscale Broodling") and stays out; "entBrainyZombie" and "entFirebat" belong to mods not in the pack.
  */
 public final class HomeDimensions {
     private static final Map<EntityType<?>, ResourceKey<Level>> HOME = new LinkedHashMap<>();
+    /** homeDims entries "TwilightForest.<name>" (all dimension 0) as entity ids of the port. */
+    private static final java.util.Set<Identifier> TWILIGHT = java.util.Set.of(
+            "wild_boar", "bighorn_sheep", "wild_deer", "redcap", "swarm_spider", "skeleton_druid", "hostile_wolf", "wraith", "hedge_spider",
+            "penguin", "kobold", "minotaur", "fire_beetle", "slime_beetle", "pinch_beetle", "maze_slime", "redcap_sapper", "mini_ghast",
+            "tower_ghast", "tower_termite").stream().map(id -> Identifier.fromNamespaceAndPath("twilightforest", id))
+            .collect(java.util.stream.Collectors.toUnmodifiableSet());
 
     static {
         for (EntityType<?> type : new EntityType<?>[] {EntityTypes.BLAZE, EntityTypes.GHAST, EntityTypes.ZOMBIFIED_PIGLIN,
@@ -36,7 +44,15 @@ public final class HomeDimensions {
     }
 
     public static boolean accepts(EntityType<?> type) {
-        return HOME.containsKey(type);
+        return home(type) != null;
+    }
+
+    private static ResourceKey<Level> home(EntityType<?> type) {
+        ResourceKey<Level> home = HOME.get(type);
+        if (home == null && TWILIGHT.contains(BuiltInRegistries.ENTITY_TYPE.getKey(type))) {
+            return Level.OVERWORLD;
+        }
+        return home;
     }
 
     public static EntityType<?> type(String id) {
@@ -49,7 +65,7 @@ public final class HomeDimensions {
      * counted as overworld); wither skeletons only in the nether.
      */
     public static boolean canSpawnIn(EntityType<?> type, ResourceKey<Level> dimension) {
-        ResourceKey<Level> home = HOME.get(type);
+        ResourceKey<Level> home = home(type);
         if (home == null) {
             return false;
         }

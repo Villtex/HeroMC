@@ -97,3 +97,43 @@ Offen bzw. vereinfacht:
   Moos-Büschel von `RenderBlockTFPlants`; die Umrissform rechnet die Einzüge wie das Original.
 - Kritter-Modelle (Drehung je Seite, Gier, Mondwurm-Wellen), Glühwürmchen-Partikel (UV 20..30 × 0..10 der
   64 × 32-Textur), Farben aller getönten Blöcke, Animation der drei Laub-Texturen (16 Bilder à 2 Ticks).
+
+## Teil 24c – Mobs
+
+`TFEntities` (Typen, Attribute, Spawn-Regeln, Eier mit alter Id 7309:Mob-Id, Drop-Items, Sounds), Klassen in
+`entity/` (Tiere in `entity/passive`, Geschosse in `entity/projectile`, Ziele in `entity/ai`), Modelle und Renderer in
+`client/entity/` (Geometrie mit `tools/modelbase_to_layer.py`), Daten in `tools/gen_mobs.py` (Namen, Eier, Texturen,
+Sounds, Loot, Biom-Spawnlisten), Spawn-Logik `world/TFSpawns` (getPossibleCreatures).
+
+### Einhängepunkte für andere Teile
+
+- Bauwerks-Spawnlisten (Hügel, Labyrinth, Turm, Festung …) stehen in `TFSpawns`; sie greifen erst, wenn
+  `TFSpawns.spawnListIndexAt` (MapGenTFMajorFeature.getSpawnListIndexAt) mit 24d/24e die Bauteile kennt (bis dahin -1).
+- Boss-Spawner (24f): Mini-Ghast als Diener `MiniGhast.makeBossMinion()`, Ghast-Falle (24e) `TowerGhast.setInTrap()`.
+- Drops, die erst 24f als richtige Items bringt: Zerbröselhorn des Widders (`twilightforest:crumble_horn`, wird nur
+  fallen gelassen, wenn das Item existiert), Eisenholz-Spitzhacke/-Stiefel der Pioniere (bis dahin Eisen),
+  Kartenfokus-Items und Bohreressenz sind schon da (nur Items, Rezepte mit 24f).
+- Fortschritte „Jäger“, „Hügel“ usw. (onDeath → triggerAchievement) mit 24f.
+- Boggard (registriert, ohne Ei, nirgends gespawnt, „[NYI]“) und Turm-Schneemann nicht portiert; Lich-Diener, treuer
+  Zombie, Minoshroom und die Bosse mit 24f.
+
+### Abweichungen
+
+- KI auf heutigen Goals; Geschwindigkeiten als Faktor der 1.5.2-moveSpeed. Nahkampf rechnet 1.5.2 (`TFMonster`:
+  getAttackStrength = 2 + Waffe von 1.5.2, außer wo ein Mob ihn festlegt), Rüstung nach heutiger Formel.
+- Spinnen (Schwarm, Hecke, König, Brütling): Ziele statt der alten Aktions-KI (Sprung + Biss), jagen in jedem Licht.
+- Wölfe: heutige Wolf-Klasse, dauerhaft wütend (Zorn-Ende nie erreicht), nicht zähmbar; Nebelwolf blendet nur im
+  Dunkeln (Helligkeit < 0,1 nach 1.5.2-Tabelle).
+- Kettengoblin: Kettenblock und Glieder sind keine Entities, nur gezeichnet; der Treffer prüft die 0,75er-Box am Block.
+- Klemmkäfer: trägt die Beute als Passagier 0,9 vor sich (heutiges Reiten, Absteigen mit Schleichen möglich).
+- Sumpf/Dunkelwald geben ihre Monster 1 von 20 Mal frei; die Freigabe gilt für den Rest des Ticks im selben Chunk
+  (heute fragt der Spawner die Liste mehrmals ab).
+- Schaf-Fell des Bighorns: heutige Farben (`DyeColor`), Fell-Textur des heutigen Schafs.
+- Ruhm/Erfolge und Despawn-Zeiten der alten `entityAge`-Zähler: nachgebildet, wo einfach (Turm-Ghast altert außerhalb
+  des Turms schneller).
+
+### Client-Prüfung offen (nur Code gelesen, kein Client gestartet)
+
+- Alle Modelle (Geometrie per Werkzeug, Animationen von Hand), besonders Fragewidder-Bänder/-Linien, Mückenschwarm
+  (halbe Größe über Teil-Skalierung), Todesbuch, Schleimkäfer-Würfel (durchscheinend), Nebelwolf (Transparenz),
+  Geist (zweite Textur additiv statt mit Alpha 0,5), Glühwürmchen (Billboard, additiv), Jungtier-Köpfe.

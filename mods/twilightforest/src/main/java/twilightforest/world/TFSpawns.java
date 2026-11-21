@@ -74,13 +74,19 @@ public final class TFSpawns {
         m.put(TFFeature.LABYRINTH, List.of(List.of(e(TFEntities.MINOTAUR, 20, 2, 4), e(v(EntityTypes.CAVE_SPIDER), 10, 4, 4),
                 e(v(EntityTypes.CREEPER), 10, 4, 4), e(TFEntities.MAZE_SLIME, 10, 4, 4), e(v(EntityTypes.ENDERMAN), 1, 1, 4),
                 e(TFEntities.FIRE_BEETLE, 10, 4, 4), e(TFEntities.SLIME_BEETLE, 10, 4, 4), e(TFEntities.PINCH_BEETLE, 10, 2, 4))));
-        // the dark tower and the knight stronghold: towerAndStronghold
         towerAndStronghold(m);
         return m;
     }
 
     /** The lists of the dark tower (index 1: the tower ghasts of the top) and the knight stronghold. */
     private static void towerAndStronghold(Map<TFFeature, List<List<Entry>>> m) {
+        m.put(TFFeature.DARK_TOWER, List.of(List.of(e(TFEntities.TOWER_GOLEM, 10, 4, 4), e(v(EntityTypes.SKELETON), 10, 4, 4),
+                        e(v(EntityTypes.CREEPER), 10, 4, 4), e(v(EntityTypes.ENDERMAN), 2, 1, 4), e(TFEntities.MINI_GHAST, 10, 1, 4),
+                        e(TFEntities.TOWER_BROODLING, 10, 8, 8), e(TFEntities.PINCH_BEETLE, 10, 2, 4)),
+                List.of(e(TFEntities.TOWER_GHAST, 10, 1, 4))));
+        m.put(TFFeature.STRONGHOLD, List.of(List.of(e(TFEntities.BLOCK_GOBLIN, 10, 4, 4), e(TFEntities.LOWER_GOBLIN_KNIGHT, 10, 4, 4),
+                e(TFEntities.HELMET_CRAB, 10, 4, 4), e(TFEntities.SLIME_BEETLE, 10, 4, 4), e(TFEntities.REDCAP_SAPPER, 2, 1, 4),
+                e(TFEntities.KOBOLD, 10, 4, 8), e(v(EntityTypes.CREEPER), 10, 4, 4), e(v(EntityTypes.SLIME), 5, 4, 4))));
     }
 
     private static final List<Entry> UNDERGROUND = List.of(e(v(EntityTypes.SPIDER), 10, 4, 4), e(v(EntityTypes.ZOMBIE), 10, 4, 4),

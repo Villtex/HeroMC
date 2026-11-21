@@ -41,14 +41,14 @@ public final class RedcapGoals {
 
     /** EntityAIAvoidEntity with EntityTNTPrimed: runs from primed TNT within {@code distance} blocks (mutex 1). */
     public static final class AvoidTnt extends Goal {
-        private final Redcap me;
+        private final net.minecraft.world.entity.PathfinderMob me;
         private final float distance;
         private final double walkSpeed;
         private final double sprintSpeed;
         private @Nullable PrimedTnt tnt;
         private net.minecraft.world.level.pathfinder.@Nullable Path path;
 
-        public AvoidTnt(Redcap me, float distance, double walkSpeed, double sprintSpeed) {
+        public AvoidTnt(net.minecraft.world.entity.PathfinderMob me, float distance, double walkSpeed, double sprintSpeed) {
             this.me = me;
             this.distance = distance;
             this.walkSpeed = walkSpeed;
