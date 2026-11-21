@@ -3,7 +3,7 @@ name: tinkers-tools-263
 description: Beim Weiterbauen von Tinkers' Construct (mods/tconstruct, Teile 25b–25f) benutzen – wie Werkzeuge, Teile, Materialien, Muster und Modifikatoren im Port abgebildet sind (Komponente tconstruct:tool statt InfiTool-NBT, ein Item je Teil und Material, alte IDs), wo neue Fähigkeiten, Modifikator-Effekte, Gussformen und Werkzeug-Modelle eingehängt werden und wie man es ohne Spieler prüft.
 ---
 
-# Tinkers' Construct im Port (Stand Teil 25d)
+# Tinkers' Construct im Port (Stand Teil 25e)
 
 Code: `mods/tconstruct/src/main/java/tconstruct/`, Daten/Assets aus `mods/tconstruct/tools/gen.py`
 (`python3 mods/tconstruct/tools/gen.py` überschreibt `src/main/resources/assets|data` und `original-assets.txt`).
@@ -83,6 +83,15 @@ Alte IDs: `TItems.OLD_IDS` (Item-ID aus `TinkersWorkshop.txt` + 256, Damage) und
   (Unterklasse von `Slime`, Größe/Leben/Split überschrieben), Daten aus `tools/gen_world.py`.
 - Prüfen: Chunks mit Inseln findet ein Raster (`expect.sh 1234 <48×48 Chunks>` und nach IDs 2385/1345/1319 filtern),
   Dörfer mit Werkzeugschmiede `expect.sh 1234 structures 220`, Nether-Erze `expect.sh 1234 nether …`.
+
+## Spieler (25e)
+
+- `TPlayer` (Attachment `tconstruct:player` = `player/PlayerData`: `armor` 7, `knapsack` 27, Flags; immer über `TPlayer.data(player)`
+  holen, das hängt die Neuberechnung der Leben an), Ereignisse in `player/PlayerEvents` (Tod, Respawn, Drops, Spinnen-Reiter),
+  Items in `player/PlayerItems`, Daten aus `tools/gen_player.py`.
+- Handbuch: `client/manual` (`ManualScreen` liest `assets/tconstruct/manuals/*.xml`, Seitentypen in `ManualPages`, Bilder/Rezepte in
+  `ManualIcons` per Registry-Name – neue Blöcke von 25f bekommen dort automatisch ihr Bild, wenn der Name passt).
+- FakePlayer stirbt nicht (`die` löst keine Drops aus): im Testbefehl `LivingDropsEvent` selbst posten.
 
 ## Prüfen ohne Spieler
 

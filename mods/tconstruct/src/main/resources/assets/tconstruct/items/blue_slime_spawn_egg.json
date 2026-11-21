@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "tconstruct:item/blue_slime_spawn_egg",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -10044440
+      }
+    ]
+  }
+}

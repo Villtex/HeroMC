@@ -1,4 +1,4 @@
-# Tinkers' Construct – offen nach Teil 25d
+# Tinkers' Construct – offen nach Teil 25e
 
 Stand nach 25a (Werkzeug-Kern) und 25b (Werkzeuge im Einsatz, Darstellung). Was die nächsten Unterteile brauchen oder nachholen müssen.
 
@@ -15,7 +15,7 @@ Stand nach 25a (Werkzeug-Kern) und 25b (Werkzeuge im Einsatz, Darstellung). Was 
 - Kein JEI für die Meißel-Rezepte (Code-Rezept).
 - Trankwerfer: das Geräusch "launcher_clank" fehlt im Archiv, ersetzt durch das Armbrust-Laden.
 - Pfeile, die einen Mob treffen, landen wie im Original in einem leeren Ausrüstungs-Slot (sichtbar in der Hand).
-- Enthaupten (Köpfe) folgt mit 25e.
+- Erledigt mit 25e: Enthaupten (Köpfe).
 
 ## Nach 25c – Schmelzerei
 
@@ -36,16 +36,35 @@ Stand nach 25a (Werkzeug-Kern) und 25b (Werkzeuge im Einsatz, Darstellung). Was 
 - Blauer Schleim: keine natürlichen Spawns (das Original las „Activate Blue Slime Spawns“ nie und meldete keinen Spawn an);
   er kommt nur aus flüssigem blauem Schleim (Zufallsticks statt der Fluid-Ticks des Originals). Reiter aus `initCreature`
   (Skelett/Creeper, Königsschleim mit Gefolge) gibt es nur beim Spawn-Ei des Originals (`TitleIcon`, 25e).
-- Herzbehälter: nur das Kleine rote Herz (6027:1) als Item für die Beute; leerer Behälter und Herzbehälter mit Wirkung in 25e.
+- Erledigt mit 25e: leerer Kanister und Herzkanister mit Wirkung.
 - Tüftler (Beruf 78943): Handel 14 Kolben → Aluminium-Beerenbusch, 23 Kolben → Eisen-Beerenbusch (was `addToListWithCheck`
   vom Original übrig ließ), beide gleich auf Stufe 1/2 statt eines je Stufe. Ohne Arbeitsblock; Strukturdorfbewohner kommen
   mit Stufe 2.
 - Erzbeeren-Büsche: Tooltips der Items fehlen; Schleimblätter zerfallen ohne Holz oder erstarrten Schleim im Umkreis 4
   (vereinfacht wie bei Natura).
 - Musterkiste mit freien Mustern ("Add Patterns to Pattern Chests" = false im Pack) – nichts zu tun.
-- Handbuch-Rezepte (`manualBook`) in 25e.
+- Erledigt mit 25e: Handbuch-Rezepte.
+
+## Nach 25e – Spieler
+
+- Herz-Anzeige: Vanilla 26.3 zeichnet Leben über 20 in weiteren Reihen; die farbigen Herzen (`newhearts.png`) des Originals in
+  derselben Reihe sind nicht nachgebaut (die Vanilla-Ebene PLAYER_HEALTH enthält auch Rüstung/Hunger/Luft und lässt sich nicht
+  einzeln ersetzen). Die Textur ist schon im Jar.
+- TFoodStats: das Original setzte nach jedem Respawn eigene FoodStats ein (Heilung ab Hunger 12 + 2 × Schwierigkeit statt 18); hier
+  bleibt Vanilla-Hunger.
+- Goldener Kopf Damage 1 (leuchtend, Regeneration IV …) hatte kein Rezept und keinen Kreativ-Eintrag: weggelassen.
+- Rezepte Goldene Karotte bzw. Goldener Kopf aus Gold-Erzbeeren um einen Apfel haben dasselbe Raster wie der Goldene Apfel, der in 1.5.2
+  immer gewann: nur der Goldene Apfel ist eingetragen.
+- Knochenmehl am Schleimsetzling wirkte im Original nur im Kreativmodus (Metadaten-Prüfung); nicht nachgebaut.
+- Die Essenz-Extraktor-Quelle der Essenzkristalle folgt mit 25f (der Kristall selbst ist fertig).
+- Handbuch-Bilder von 25f-Blöcken (Klarglas, Brownstone, Punji, Barrikade, Zugbrücke, Feueranzünder) bleiben leer, bis es sie gibt
+  (`client/manual/ManualIcons` sucht sie über den Namen: `clear_glass`, `brownstone`, `punji_sticks`, `oak_barricade`, `drawbridge`,
+  `igniter` – in 25f diese Namen verwenden oder dort anpassen).
 
 ## Client-Prüfung offen
+
+- 25e: Tabs über Inventar/Rüstung/Rucksack, beide GUIs (Leerplatz-Bilder, Spielerfigur), Taste O, Handbuch (Layout, Schrift,
+  Bilder, Umblättern), Item-Modelle, Ei-Farbe, Essenzkristall-Animation.
 
 - 25d: Busch-Modelle je Stufe (reif, animierte Essenzbeere), Schleimgras/-blätter/-setzling/-gras, flüssiger Schleim
   (animiert), blauer Schleim und Königsschleim (Textur, Bossleiste), Tüftler-Textur, Handel im Menü.

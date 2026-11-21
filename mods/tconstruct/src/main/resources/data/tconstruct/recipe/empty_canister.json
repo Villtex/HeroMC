@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": "tconstruct:aluminum_ingot"
+  },
+  "result": {
+    "id": "tconstruct:empty_canister"
+  }
+}

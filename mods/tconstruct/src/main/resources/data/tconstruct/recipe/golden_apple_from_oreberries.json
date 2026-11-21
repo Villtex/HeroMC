@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "###",
+    "#m#",
+    "###"
+  ],
+  "key": {
+    "#": "tconstruct:gold_oreberry",
+    "m": "minecraft:apple"
+  },
+  "result": {
+    "id": "minecraft:golden_apple"
+  }
+}

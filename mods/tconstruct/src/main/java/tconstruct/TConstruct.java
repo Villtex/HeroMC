@@ -23,6 +23,7 @@ public final class TConstruct {
         TBlocks.register(modBus);
         TSmeltery.register(modBus);
         TWorld.register(modBus);
+        TPlayer.register(modBus);
         TSounds.register(modBus);
         tconstruct.menu.TMenus.register(modBus);
         TNetwork.register(modBus);
@@ -48,6 +49,7 @@ public final class TConstruct {
         TBlocks.registerOldIds();
         TSmeltery.registerOldIds();
         TWorld.registerOldIds();
+        TPlayer.registerOldIds();
     }
 
     /** Registry names without touching the registry (the items are not registered yet in the constructor). */

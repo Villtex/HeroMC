@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "###",
+    "#m#",
+    "###"
+  ],
+  "key": {
+    "#": "minecraft:gold_nugget",
+    "m": "minecraft:player_head"
+  },
+  "result": {
+    "id": "tconstruct:golden_head"
+  }
+}

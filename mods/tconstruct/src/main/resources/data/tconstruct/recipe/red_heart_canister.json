@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "tconstruct:jeweled_apple",
+    "tconstruct:necrotic_bone",
+    "tconstruct:empty_canister",
+    "tconstruct:miniature_red_heart"
+  ],
+  "result": {
+    "id": "tconstruct:red_heart_canister"
+  }
+}

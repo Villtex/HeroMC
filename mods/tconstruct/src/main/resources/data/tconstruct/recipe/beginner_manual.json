@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "wp"
+  ],
+  "key": {
+    "w": "tconstruct:blank_pattern",
+    "p": "minecraft:paper"
+  },
+  "result": {
+    "id": "tconstruct:beginner_manual"
+  }
+}

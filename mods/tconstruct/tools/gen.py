@@ -582,6 +582,7 @@ for k, (e, g) in {'part_builder': ('Part Builder', 'Teilbauer'), 'tool_assembly'
 
 exec(open(os.path.join(ROOT, 'tools/gen_smeltery.py')).read())  # part 25c
 exec(open(os.path.join(ROOT, 'tools/gen_world.py')).read())  # part 25d
+exec(open(os.path.join(ROOT, 'tools/gen_player.py')).read())  # part 25e
 
 # ---------------------------------------------------------------- language files, original-assets.txt
 for lang, d in (('en_us', en), ('de_de', de)):

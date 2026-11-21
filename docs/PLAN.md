@@ -71,7 +71,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 25b | Tinkers' Construct B: Werkzeuge im Einsatz (Fähigkeiten, Modifikator-Effekte, Bogen, Wurfwaffen) und ihre Darstellung | ~9.000 | 25a | Fable 5.2, hoch | ✅ erledigt |
 | 25c | Tinkers' Construct C: Schmelzerei, flüssige Metalle, Gießen, Legierungen, Trockengestell | ~11.000 | 25a | Fable 5.2, hoch | ✅ erledigt |
 | 25d | Tinkers' Construct D: Weltgenerierung, Schleiminseln, Dorf-Bauteile, Dorfbewohner | ~4.000 | 25c | Fable 5.2, extra hoch | ✅ erledigt |
-| 25e | Tinkers' Construct E: Spieler (Rucksack, Herzen, Handschuh, Ereignisse), Handbücher, Essen, Mobs | ~8.000 | 25a | Opus 5.5, mittel | offen |
+| 25e | Tinkers' Construct E: Spieler (Rucksack, Herzen, Handschuh, Ereignisse), Handbücher, Essen, Mobs | ~8.000 | 25a | Opus 5.5, mittel | ✅ erledigt |
 | 25f | Tinkers' Construct F: Deko-Blöcke, Fallen, Landmine, Redstone-Maschinen, Kristall/Essenz | ~9.000 | 25a | Opus 5.5, mittel | offen |
 
 Entfallen ganz: Not Enough Items, NEI Plugins, CodeChickenCore (durch JEI ersetzt), Lumy Skin Patch,
@@ -1762,6 +1762,33 @@ Gardeslime,FancyEntityItem}` + `entity/ai`, `client/entity`, `client/armor`, `sk
 - Essen: Diamantapfel, Goldener Kopf, Fleischblock, Dörrfleisch-Items (falls nicht schon in 25c), Schleim-Essen.
 - Mob-Drops (Köpfe, Nekrotischer Knochen von Wither-Skeletten, Mini-Gardy u. a.) und die Mobs mit Spawn-Eiern;
   Skill `mobs-263`.
+
+#### Teil 25e – Stand (✅ erledigt)
+
+Alles in `mods/tconstruct` (`TPlayer`, Paket `tconstruct.player`, Client in `client/player` und `client/manual`, Daten aus
+`tools/gen_player.py`). Offenes in `mods/tconstruct/TODO.md`.
+- Spielerdaten als Attachment `tconstruct:player` (TPlayerStats: 7 Zusatzplätze von ArmorExtended, 27 Rucksackplätze, Handbuch-Flags),
+  beim Tod kopiert. Menüs `armor_extended` (7 Plätze, in die wie im Original alles passt, 4 Rüstungsplätze, kein Shift-Klick) und
+  `knapsack` (nur mit Rucksack in Platz 2). Taste O, Tabs (Inventar/Rüstung/Rucksack) über dem Vanilla-Inventar und beiden GUIs.
+- Herzkanister: Rechtsklick legt ihn in Platz 6 (bis 10), +2 Leben je Stück (`MAX_HEALTH`-Modifikator). Leerer Kanister, Kleines
+  rotes Herz (25d), Rucksack, alte IDs 6027:0–2, 6074, 6034, 6075, 6039:0–2, 6040:0–1, 6094.
+- Spieler-Regeln (Pack): Level halb und Hunger mindestens 6 bleiben beim Tod, Einsteigerbuch beim ersten Betreten, Handbuch 2/3 beim
+  ersten Tisch bzw. Schmelzerei-Block/Tank (TCraftingHandler), Fallhöhe −1, beim Tod fallen Zusatzplätze 0–3 und der Rucksack (außer
+  keepInventory). Passive Heilung = Vanilla; Void-Fog und klares Wasser las das Original nie (nichts zu tun).
+- Handbücher: alle drei Bände mit allen Seitentypen (Text, Titel, Inhalt, Bild, Werkbank 2×2/3×3, Ofen, Material, Werkzeug,
+  Modifikator, Gießen, Seitenleiste) aus den XML-Dateien des Archivs; Schrift `minecraft:uniform` statt SmallFontRenderer.
+- Essen: Verzierter Apfel (Effekte wie im Original samt Dauer-Übertrag), Goldener Kopf, Rezepte (UHC aus); Essenzkristall (Erfahrung,
+  Level-Anzeige wie EssenceExtractorLogic, Kreativ-Varianten); Spawn-Eier blauer Schleim und Königsschleim mit den Reitern von
+  `initCreature`, auch per Werfer; Vanilla-Stapelgrößen (Türen/Boot/Kuchen 16, Schneebälle 64, Loren 3).
+- Drops: Kleines rotes Herz (1 in 500 Monster in der Oberwelt, Wither 1 in 5), mehr Leder/Federn, Köpfe durch Enthaupten
+  (Hackmesser +2; Skelett, Wither-Skelett, Zombie, Creeper, Spieler), Nekrotischer Knochen, zusätzliche Ghast-Träne; 1 in 100 Spinnen
+  mit Creeper-Reiter; Entermesser beim Blocken getroffen → Tempo II.
+- Geprüft am Testserver (temporärer Befehl, RCON): Kanister 3 → 26 Leben, 10 → 40, raus → 20; Tod (Plätze 0–3 + Rucksack fallen,
+  4–6 bleiben, Level 21 → 10); Hackmesser mit Enthaupten 10 → 3/3 Zombieköpfe; Königsschleim-Ei (7 Schleime, Skelett-Reiter);
+  Essenz-Level 17/255/825; alle Rezepte über Crafter. Start ohne Fehler.
+- Nicht portiert, weil im Original nicht erreichbar: SlimeClone, Automaton, Mini-Gardy (registriert, aber nie gespawnt, kein Ei),
+  Handschuh/schwere Rüstung (nie registriert), Skills (Liste immer leer), Tagebuch (`diary.xml`, kein Item), FancyEntityItem (nur Renderer).
+- Offen: Client-Prüfung (Tabs, beide GUIs, Taste O, Handbuch-Layout, Item-Modelle, Ei-Farbe).
 
 ### Teil 25f – Deko, Fallen, Redstone, Kristall
 Quellen: `blocks/decorative/*`, `blocks/traps/*`, `landmine/*`, `blocks/{RedstoneMachine,EquipBlock,MeatBlock,

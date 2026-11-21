@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "tconstruct:smeltery_manual",
+    "minecraft:book"
+  ],
+  "result": {
+    "id": "tconstruct:smeltery_manual",
+    "count": 2
+  }
+}

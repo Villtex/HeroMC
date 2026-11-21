@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "###",
+    "rmr",
+    "###"
+  ],
+  "key": {
+    "#": "minecraft:leather",
+    "r": "tconstruct:iron_tough_rod",
+    "m": "tconstruct:alubrass_ingot"
+  },
+  "result": {
+    "id": "tconstruct:knapsack"
+  }
+}

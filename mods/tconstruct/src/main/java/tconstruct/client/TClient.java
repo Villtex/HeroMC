@@ -15,6 +15,7 @@ public final class TClient {
 
     public static void register(IEventBus modBus) {
         TSmelteryClient.register(modBus);
+        tconstruct.client.player.TPlayerClient.register(modBus);
         modBus.addListener(RegisterMenuScreensEvent.class, event -> {
             event.register(TMenus.TOOL_STATION.get(), ToolStationScreen::new);
             event.register(TMenus.PART_BUILDER.get(), PartBuilderScreen::new);
