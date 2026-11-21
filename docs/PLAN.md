@@ -66,7 +66,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 24c | Twilight Forest C: normale Mobs mit Modellen, Spawns je Biom, Spawn-Eier | ~11.000 | 24a | Opus 5.5, hoch | ✅ erledigt |
 | 24d | Twilight Forest D: Strukturen A (Hügel, Hecken-Labyrinth, Naga-Hof, Hain, Lich-Turm, Labyrinth, Hohle Bäume), Beute | ~9.000 | 24b | Fable 5.2, extra hoch | ✅ erledigt |
 | 24e | Twilight Forest E: Strukturen B (Dunkler Turm mit Turm-Mechanik, Ritter-Festung, Hydra-Höhle) | ~6.000 | 24d | Fable 5.2, hoch | ✅ erledigt |
-| 24f | Twilight Forest F: Bosse, Boss-Spawner, Trophäen, Ausrüstung, Zauberstäbe, Karten, Entwerkbank, Fortschritte | ~10.000 | 24c, 24d | Opus 5.5, hoch | offen |
+| 24f | Twilight Forest F: Bosse, Boss-Spawner, Trophäen, Ausrüstung, Zauberstäbe, Karten, Entwerkbank, Fortschritte | ~10.000 | 24c, 24d | Opus 5.5, hoch | ✅ erledigt |
 | 25a | Tinkers' Construct A: Werkzeug-Kern (Materialien, Teile, Muster, Tische, Zusammenbau, Modifikatoren anbringen) | ~10.000 | 3 | Opus 5.5, hoch | ✅ erledigt |
 | 25b | Tinkers' Construct B: Werkzeuge im Einsatz (Fähigkeiten, Modifikator-Effekte, Bogen, Wurfwaffen) und ihre Darstellung | ~9.000 | 25a | Fable 5.2, hoch | ✅ erledigt |
 | 25c | Tinkers' Construct C: Schmelzerei, flüssige Metalle, Gießen, Legierungen, Trockengestell | ~11.000 | 25a | Fable 5.2, hoch | ✅ erledigt |
@@ -1593,6 +1593,27 @@ Essen), Karten (`TFMagicMapData`, `TFMazeMapData`, `TFMapCloningRecipe`), Entwer
 Skills `items-weapons-263`, `menu-gui-263`, `client-render-263`.
 - Bosse mit allen Phasen, Musik/Geräusche, Beute, Trophäen; Boss-Spawner in den Bauten aus 24d/24e scharf schalten.
 - Magische Karte und Labyrinth-Karte (Client-Prüfung), JEI für die Entwerkbank.
+
+#### Teil 24f – Stand (✅ erledigt)
+
+Offenes in `mods/twilightforest/TODO.md` (Abschnitt „Teil 24f – Bosse und Ausrüstung“ mit Hydra und Karten), Vorgehen im
+Skill `twilight-forest-263`.
+- Ausrüstung (`TFItems`): Eisenholz, Stahlblatt, Feuer (Auto-Schmelzen, Feurige Aura 206), Naga-Rüstung, Minotaurus-Axt
+  (Sprint-Bonus), Labyrinthbrecher (16-fach auf Labyrinthstein), Essen, Materialien, Amulette des Lebens/der Bewahrung
+  (`TFEventListener`), Zepter (Zwielicht, Lebensentzug, Zombie mit treuem Zombie), Pfauenfächer, Zerbröselhorn,
+  Erzmagnet, Erzmesser, Verwandlungspulver, Mondwurm-Königin; verzauberte Rezepte als Ergebnis-Komponenten, alte IDs.
+- Bosse (`TFBosses`, `TFHydra`): Naga mit Körpersegmenten, Lich mit Schild, Schattenklonen, Dienern, Bolzen und Bomben,
+  Minoshroom (im Labyrinth mit Heimat 7), Hydra mit Köpfen, Hälsen, Mörsern (Subagent), Ur-Ghast mit Fallen-Kurs,
+  Wutanfall und Boss-Truhe; Boss-Leisten, Beute, Sounds, Modelle und Renderer; Boss-Spawner 1351 scharf; Trophäen 1373
+  (stehend/Wand, Renderer mit den Boss-Köpfen).
+- Entwerkbank (`TFUncrafting`) mit Menü, Screen und JEI; Karten (`TFMaps`, Subagent): Zauberkarte mit Biomen und
+  Bauwerks-Symbolen, Labyrinth- und Erzkarte, leere Karten, Klonen; Fortschritte nach `TFAchievementPage`.
+- Geprüft: `clean pack` grün; Testserver bis `Done`, 0 Fehler; Rezepte per Crafter (verzauberte Rüstung/Werkzeuge,
+  Zepter-Nachladen mit Komponenten-Zutaten, Karten); alle Bosse per `/summon` mit Leben, Beute (`loot spawn`), Lich-Schild,
+  Naga-Segmente, Hydra-Kopftreffer (Schaden/8); Kern gegen Spiel `tools/expect.sh 1234 twilight structures 120`:
+  1.981.659 Blöcke gleich, 346 Spawner/Truhen/Entities gleich (jetzt mit dem Minoshroom), Reste wie 24e.
+- Offen: Kämpfe gegen Spieler, Boss-Spawner (brauchen einen Spieler), Amulette, Entwerkbank-GUI und alle Modelle nur im
+  Code geprüft (Client-Prüfung offen); alte Kartennummern aus 1.5.2-Welten werden nicht übernommen.
 
 ## Teil 25 – Tinkers' Construct (25a–25f)
 

@@ -19,6 +19,9 @@ Teilprojekt `mods/twilightforest` (Mod-ID `twilightforest`, braucht `worldgen152
 | Turm-Geräte 1370/1371, Turmschlüssel (24e) | `TFTower`, `block/TowerDeviceBlock`, `TowerTranslucentBlock`, `*BlockEntity` |
 | Blöcke/Items, alte IDs | `TFBlocks.registerOldBlocks`, Daten aus `tools/gen.py` |
 | Mobs, Spawner-Namen, Spawns | `TFEntities` (Namen `TwilightForest.<Name>`), `world/TFSpawns`, `tools/gen_mobs.py` |
+| Items, Ausrüstung, Sonder-Items (24f) | `TFItems`, `item/*`, `TFEventListener` (Amulette, `award(player, name)` für Fortschritte), `tools/gen_items.py` |
+| Bosse, Boss-Spawner, Trophäen (24f) | `TFBosses`, `entity/boss/*`, `TFHydra` + `entity/boss/hydra`, `block/BossSpawnerBlock`, `client/entity/BossRenderers`, `client/TrophyRenderer` |
+| Entwerkbank, Karten (24f) | `TFUncrafting` (`block/UncraftingMenu`, JEI in `compat/`), `TFMaps`, `client/TFMapsClient` |
 
 ## Bauteile aus dem Original übernehmen
 
@@ -74,6 +77,12 @@ Bekannte Reste: Biome an Grenzen (`if biome` geht über den Zufallsversatz von `
 Chunk-Grenzen mit verbundenen Seiten.
 
 ## Stolperfallen
+
+- Fortschritte/Tags dürfen nur auf Items, Rezepte und Entities zeigen, die es schon gibt: sonst startet der Server nicht
+  („Registry loading errors“). Kriterium `recipe_crafted` heißt in 26.3 `"recipes"`; Entity-Tags mit noch fehlenden
+  Einträgen `{"id": ..., "required": false}`. Nach jeder Datenänderung den Server bis `Done` starten.
+- Alte Bosse mit KI ohne Goals (updateEntityActionState): eigene `MoveControl` ohne Wirkung, `zza/xxa` in
+  `customServerAiStep` setzen, Springen über `getJumpControl().jump()` (Vorlagen `Naga`, `Lich`).
 
 - Bauteile erzeugen ihren Inhalt aus eigenen Zufallszahlen (`new Random(world.seed() + minX * minZ)` u. ä.), die
   Population-Folge ziehen sie nur über das übergebene `rand`. Ganzzahl-Überläufe (`minX * 321534781 * …`) genau so lassen.
