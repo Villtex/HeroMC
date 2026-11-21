@@ -249,6 +249,20 @@ public final class TFBlocks {
     public static final DeferredBlock<NagastoneBlock> NAGASTONE_HEAD = block("nagastone_head", p -> new NagastoneBlock(true, p), rock(1.5F, 6.0F, SoundType.STONE));
     public static final DeferredBlock<NagastoneBlock> NAGASTONE_BODY = block("nagastone_body", p -> new NagastoneBlock(false, p), rock(1.5F, 6.0F, SoundType.STONE));
 
+    // ---------------------------------------------------------------- boss spawners (1351)
+    public static final int ID_BOSS_SPAWNER = 1351;
+    /**
+     * BlockTFBossSpawner by metadata (0 naga, 1 lich, 2 hydra, 3 tower): hardness 20, resistance 10, drops nothing. Teil 24d
+     * places them in the buildings; they summon their boss with Teil 24f.
+     */
+    public static final List<DeferredBlock<Block>> BOSS_SPAWNERS = List.of(bossSpawner("naga_boss_spawner"),
+            bossSpawner("lich_boss_spawner"), bossSpawner("hydra_boss_spawner"), bossSpawner("tower_boss_spawner"));
+
+    private static DeferredBlock<Block> bossSpawner(String name) {
+        return block(name, Block::new, p -> p.mapColor(MapColor.STONE).strength(20.0F, 10.0F).sound(SoundType.METAL).noOcclusion().noLootTable()
+                .requiresCorrectToolForDrops());
+    }
+
     // ---------------------------------------------------------------- tower wood (1372)
     /** Material.wood, hardness 40, resistance 10; flammability 1 (data map), spreads no fire. */
     public static final DeferredBlock<Block> TOWER_WOOD = block("tower_wood", Block::new, wood(40.0F, 6.0F, true), WOOD_FUEL);
@@ -416,6 +430,10 @@ public final class TFBlocks {
             items(ID_NAGASTONE, meta, meta < 4 ? NAGASTONE_HEAD : NAGASTONE_BODY);
         }
 
+        OldBlockStates.registerMeta(ID_BOSS_SPAWNER, meta -> BOSS_SPAWNERS.get(meta < BOSS_SPAWNERS.size() ? meta : 0).get().defaultBlockState());
+        for (int meta = 0; meta < BOSS_SPAWNERS.size(); meta++) {
+            items(ID_BOSS_SPAWNER, meta, BOSS_SPAWNERS.get(meta));
+        }
         List<Supplier<? extends Block>> tower = List.of(TOWER_WOOD, ENCASED_TOWER_WOOD, TOWER_WOOD_CRACKED, TOWER_WOOD_MOSSY, TOWER_WOOD_INFESTED);
         OldBlockStates.registerMeta(ID_TOWER_WOOD, meta -> tower.get(meta < tower.size() ? meta : 0).get().defaultBlockState());
         for (int meta = 0; meta < tower.size(); meta++) {

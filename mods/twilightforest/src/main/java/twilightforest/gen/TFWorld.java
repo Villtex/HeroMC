@@ -22,6 +22,8 @@ public final class TFWorld {
     private final TFLayout layout;
     private final TFTerrain terrain;
     private final OldDecoration decoration;
+    /** The structures for questions of the game (mob spawns); the population keeps its own per world. */
+    private final twilightforest.gen.structure.MapGenTFMajorFeature features;
     private final Map<Long, OldChunk> cache = new LinkedHashMap<>(64, 0.75F, true) {
         @Override
         protected boolean removeEldestEntry(Map.Entry<Long, OldChunk> eldest) {
@@ -34,6 +36,7 @@ public final class TFWorld {
         this.seed = seed;
         this.layout = new TFLayout(seed);
         this.terrain = new TFTerrain(this.layout);
+        this.features = new twilightforest.gen.structure.MapGenTFMajorFeature(this.layout);
         this.decoration = OldDecoration.dimension(seed, this::terrain, TFPopulator.DIMENSION, new TFPopulator(this.layout));
     }
 
@@ -73,6 +76,8 @@ public final class TFWorld {
         OldBlockInfo.registerCube(TFGen.ROOT, OldBlockInfo.Material.WOOD);
         OldBlockInfo.register(TFGen.SAPLING, OldBlockInfo.Material.PLANTS, false, 0, false);
         OldBlockInfo.registerCube(TFGen.TOWER_WOOD, OldBlockInfo.Material.WOOD);
+        // Teil 24d: BlockTFBossSpawner (Material.iron, isOpaqueCube false, so light opacity 0)
+        OldBlockInfo.register(TFGen.BOSS_SPAWNER, OldBlockInfo.Material.IRON, false, 0, true);
     }
 
     public long seed() {
@@ -97,6 +102,11 @@ public final class TFWorld {
             this.cache.put(key, generated);
         }
         return generated;
+    }
+
+    /** MapGenTFMajorFeature.getSpawnListIndexAt. */
+    public int spawnListIndexAt(int x, int y, int z) {
+        return this.features.getSpawnListIndexAt(x, y, z);
     }
 
     public OldDecoration decoration() {

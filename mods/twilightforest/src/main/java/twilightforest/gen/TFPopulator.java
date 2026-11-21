@@ -7,6 +7,8 @@ import hexxit.worldgen152.core.populate.OldLakeGens;
 import hexxit.worldgen152.core.populate.OldTerrainGen;
 import hexxit.worldgen152.core.populate.OldWorld;
 
+import twilightforest.gen.structure.MapGenTFMajorFeature;
+
 import java.util.Random;
 
 /**
@@ -14,8 +16,8 @@ import java.util.Random;
  * mods (GameRegistry.generateWorld ran in every dimension; each generator checks the dimension itself).
  * The chunk provider fired no terrain events, so listeners of {@link OldTerrainGen} do not apply here.
  *
- * <p>Still missing: the buildings of the major features (they draw from the chunk's random numbers first, Teil
- * 24d/24e). Until then lakes, dungeons and decoration in feature chunks lie elsewhere than in the original.
+ * <p>The buildings of the major features come first and draw from the chunk's random numbers (Teil 24d; the hydra
+ * lair, dark tower and knight stronghold follow with Teil 24e).
  */
 public final class TFPopulator implements OldDecoration.ChunkPopulator {
     public static final int DIMENSION = 7;
@@ -41,7 +43,7 @@ public final class TFPopulator implements OldDecoration.ChunkPopulator {
         long l2 = rand.nextLong() / 2L * 2L + 1L;
         rand.setSeed(chunkX * l1 + chunkZ * l2 ^ seed);
         boolean disableFeatures = false;
-        // majorFeatureGenerator.generateStructuresInChunk (Teil 24d/24e)
+        disableFeatures |= MapGenTFMajorFeature.of(world, this.layout).generateStructuresInChunk(world, rand, chunkX, chunkZ);
         TFFeature nearFeature = TFFeature.getNearestFeature(chunkX, chunkZ, this.layout);
         world.chunkState(TFDecorator.NEAR_FEATURE, () -> nearFeature);
         disableFeatures |= !nearFeature.chunkDecorationsEnabled;

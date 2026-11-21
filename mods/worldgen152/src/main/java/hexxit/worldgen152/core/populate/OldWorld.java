@@ -223,6 +223,17 @@ public final class OldWorld {
         return (T) this.chunkState.computeIfAbsent(key, k -> create.get());
     }
 
+    private final java.util.Map<Object, Object> worldState = new java.util.concurrent.ConcurrentHashMap<>();
+
+    /**
+     * State a mod generator keeps for the whole world, created on first use and never reset (structures of a mod
+     * dimension whose pieces remember what they have built, like {@link #structures()}).
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T worldState(Object key, java.util.function.Supplier<T> create) {
+        return (T) this.worldState.computeIfAbsent(key, k -> create.get());
+    }
+
     // ---- blocks ----
 
     public int getBlockId(int x, int y, int z) {

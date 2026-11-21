@@ -122,10 +122,10 @@ public final class TFSpawns {
 
     /**
      * The index of the feature's spawn list at a position (MapGenTFMajorFeature.getSpawnListIndexAt): -1 outside the
-     * structure. The structures come with Teil 24d/24e; until then nothing is inside one.
+     * structure (Teil 24d; the buildings of Teil 24e have no pieces yet).
      */
     public static int spawnListIndexAt(TFWorld world, int x, int y, int z) {
-        return -1;
+        return world.spawnListIndexAt(x, y, z);
     }
 
     /** The gate of the swamp and dark forest stays open for the rest of the tick once it opened (see the class doc). */

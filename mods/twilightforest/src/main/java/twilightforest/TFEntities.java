@@ -288,6 +288,8 @@ public final class TFEntities {
         for (Object[] old : OLD) {
             OldGameIds.registerEntity(twilightforest.gen.TFTreasure.SPAWNER_PREFIX + old[1], (String) old[2]);
         }
+        // the ram of the quest grove (Teil 24d); it keeps its home at the grove itself (QuestRam.customServerAiStep)
+        OldGameIds.registerEntity(twilightforest.gen.structure.ComponentTFQuestGrove.QUEST_RAM, QUEST_RAM.getId().toString());
         for (Object[] old : OLD_EGGS) {
             @SuppressWarnings("unchecked")
             DeferredItem<Item> egg = (DeferredItem<Item>) old[1];

@@ -90,6 +90,26 @@ public class Expect {
             System.err.println(first.size() + " biomes, " + features.size() + " features found: " + sb);
             a = new String[]{a[0], "picked"};
         }
+        if (twilight && a[1].equals("structures")) {
+            // every chunk the nearest structure of each kind touches (bounding box of its start; Teil 24d/24e)
+            int r = Integer.parseInt(a[2]);
+            int limit = a.length > 3 ? Integer.parseInt(a[3]) : 1;
+            twilightforest.gen.structure.MapGenTFMajorFeature gen = new twilightforest.gen.structure.MapGenTFMajorFeature(tf.layout());
+            Map<String, Integer> taken = new TreeMap<>();
+            Set<Long> seen = new HashSet<>();
+            for (int d = 0; d <= r; d++) for (int cx = -d; cx <= d; cx++) for (int cz = -d; cz <= d; cz++) {
+                if (Math.max(Math.abs(cx), Math.abs(cz)) != d) continue;
+                var start = gen.start(cx, cz);
+                if (start == null || start.getComponents().isEmpty()) continue;
+                String name = ((twilightforest.gen.structure.StructureTFMajorFeatureStart) start).feature.name;
+                if (taken.merge(name, 1, Integer::sum) > limit) continue;
+                var box = start.getBoundingBox();
+                System.err.println(name + " at chunk " + cx + ", " + cz + ": " + start.getComponents().size() + " pieces, " + box);
+                for (int x = box.minX - 8 >> 4; x <= box.maxX - 8 >> 4; x++) for (int z = box.minZ - 8 >> 4; z <= box.maxZ - 8 >> 4; z++)
+                    if (seen.add((long) x << 32 | z & 0xFFFFFFFFL)) chunks.add(new int[]{x, z});
+            }
+            a = new String[]{a[0], "picked"};
+        }
         if (nether && a[1].equals("structures")) {
             // two by two chunks at the first piece of the two fortresses nearest to 0,0
             List<hexxit.worldgen152.core.structure.MapGenNetherBridge.Found> found = new hexxit.worldgen152.core.structure.MapGenNetherBridge(seed).find(Integer.parseInt(a[2]));
@@ -294,6 +314,8 @@ public class Expect {
             for (OldEntity e : c.entities()) {
                 String kind = e instanceof OldEntity.Mob m ? "Mob:" + m.name() : e.getClass().getSimpleName();
                 // Better Dungeons mobs: only the ones that are ported (the bosses of betterdungeons.mob)
+                // the minoshroom of the labyrinth comes with Teil 24f
+                if (kind.equals("Mob:" + twilightforest.gen.structure.ComponentTFMazeRoomBoss.MINOSHROOM)) continue;
                 if (kind.startsWith("Mob:BetterDungeons.") && !PORTED_BD_MOBS.contains(kind.substring("Mob:BetterDungeons.".length()))) continue;
                 out.append("E ").append(e.x()).append(' ').append(e.y()).append(' ').append(e.z()).append(' ').append(kind).append('\n');
             }

@@ -564,6 +564,15 @@ for b in ('nagastone_head', 'nagastone_body'):
     self_drop(b)
     btag('minecraft:mineable/pickaxe', b)
 
+# ---------------------------------------------------------------- boss spawners (BlockTFBossSpawner, Teil 24d: placeholders)
+# metadata 0 naga, 1 lich, 2 hydra, 3 tower (ur-ghast); looks like the mob spawner, drops nothing; the bosses come with 24f
+for b, en, de in (('naga_boss_spawner', 'Naga Spawner', 'Naga-Spawner'), ('lich_boss_spawner', 'Lich Spawner', 'Lich-Spawner'),
+                  ('hydra_boss_spawner', 'Hydra Spawner', 'Hydra-Spawner'), ('tower_boss_spawner', 'Tower Boss Spawner', 'Turmboss-Spawner')):
+    simple_state(b, 'minecraft:block/spawner')
+    item_def(b, 'minecraft:block/spawner')
+    block_name(b, en, de)
+    btag('minecraft:mineable/pickaxe', b)
+
 # ---------------------------------------------------------------- tower wood (BlockTFTowerWood)
 TOWER = [  # id, original texture, tinted (colorMultiplier), en, de
     ('tower_wood', 'towerwood_planks', True, 'Towerwood Planks', 'Turmholzbretter'),

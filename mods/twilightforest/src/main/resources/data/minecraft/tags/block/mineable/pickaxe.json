@@ -3,6 +3,8 @@
     "twilightforest:encased_fire_jet",
     "twilightforest:encased_smoker",
     "twilightforest:fire_jet",
+    "twilightforest:hydra_boss_spawner",
+    "twilightforest:lich_boss_spawner",
     "twilightforest:maze_stone",
     "twilightforest:maze_stone_border",
     "twilightforest:maze_stone_brick",
@@ -11,8 +13,10 @@
     "twilightforest:maze_stone_mosaic",
     "twilightforest:maze_stone_mossy",
     "twilightforest:maze_stone_pillar",
+    "twilightforest:naga_boss_spawner",
     "twilightforest:nagastone_body",
     "twilightforest:nagastone_head",
-    "twilightforest:smoker"
+    "twilightforest:smoker",
+    "twilightforest:tower_boss_spawner"
   ]
 }

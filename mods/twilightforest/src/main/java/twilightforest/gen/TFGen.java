@@ -13,6 +13,7 @@ import java.util.Random;
  */
 public abstract class TFGen extends OldGen {
     /** Block ids of the pack's TwilightForest.cfg. */
+    public static final int BOSS_SPAWNER = 1351;
     public static final int CICADA = 1352;
     public static final int FIREFLY = 1353;
     public static final int FIRE_JET = 1354;

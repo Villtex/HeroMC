@@ -142,3 +142,37 @@ Sounds, Loot, Biom-Spawnlisten), Spawn-Logik `world/TFSpawns` (getPossibleCreatu
   mit dem 1.5.2-Fehler (Modell-Skalierung statt partialTick); Termite mit dem heutigen Silberfischchen-Modell.
 - `OldBiped`: der Hut ist in 26.3 ein Kind des Kopfes (HumanoidModel sucht ihn dort); alle Zweibeiner prüfen.
 
+
+## Teil 24d – Strukturen A
+
+Kern in `gen/structure` (Klassen mit den Namen des Originals, per Skript aus den Quellen übersetzt, Block-Konstanten als
+alte IDs): `MapGenTFMajorFeature` (Starts je `OldWorld` über `worldState`, Reichweite 8 Chunks), `StructureTFMajorFeatureStart`,
+`StructureTFComponent`, Hohle Hügel, Heckenlabyrinth, Naga-Hof, Quest-Hain, Lich-Turm (`ComponentTFTower*`), Labyrinth
+(`ComponentTFMaze*`, `TFMaze`, `ComponentTFMinotaurMaze`). Truhen: alle 16 Tabellen in `gen/TFTreasure`, Zufallsverzauberung
+`gen/OldEnchanting`. Bilder: `worldgen152` `OldPainting` (Kopie der Rechnung aus `betterdungeons.gen.BDPainting`).
+Einhängepunkt: `TFPopulator.populate` ruft `generateStructuresInChunk` als Erstes; `TFWorld.spawnListIndexAt` für `TFSpawns`.
+
+### Einhängepunkte für andere Teile
+
+- 24e: `StructureTFMajorFeatureStart.makeFirstComponent` gibt für Hydra-Höhle, Dunklen Turm und Ritter-Festung noch `null`
+  zurück (Start ohne Teile, zieht keine Zufallszahlen); dort die ersten Bauteile einsetzen. Die Ritter-Festung braucht danach
+  den Zweig mit `ComponentStrongholdStairs2`/`offY = -33` aus dem Original, der Dunkle Turm `moveToAvgGroundLevel` und `y - 1`.
+- 24f: Boss-Spawner `twilightforest:{naga,lich,hydra,tower}_boss_spawner` (alte ID 1351:0..3) sind Platzhalter ohne
+  Funktion (Aussehen des Monster-Spawners). Der Minoshroom im Labyrinth heißt im Kern `TwilightForest.Minoshroom@7`
+  (setHomeArea Radius 7): mit `OldGameIds.registerEntity` anmelden, Heimat setzen, und den Ausschluss in
+  `tools/java/Expect.java` (Mob-Zeilen) entfernen. Beute-Items, die erst 24f bringt (Eisenholz, Stahlblatt, Naga-Schuppe,
+  Pfauenfächer, Labyrinth-Waffeln …), lässt der Chunk-Writer bis dahin mit einer Warnung weg.
+
+### Abweichungen
+
+- Hohle Bäume (`MapGenTFHollowTree`, `ComponentTFHollowTree*`, `ComponentTFLeafSphere`) nicht portiert: im Original toter
+  Code (`canSpawnStructureAtCoords` immer false, nirgends benutzt). Die hohlen Bäume der Dekoration sind seit 24b da.
+- Überlappende Starts werden nach Chunk x, dann z gebaut (im Original Reihenfolge einer HashMap).
+- Zufallsverzauberung nur mit den Vanilla-Verzauberungen von 1.5.2 (im Original standen auch die der anderen Mods des
+  Packs in der Liste, etwa Feurige Aura 206).
+- Pflanzkübel im Lich-Turm: `growTree`/`fertilizeMushroom` liefen mit `world.rand` (nicht seed-fest); hier ein Zufall aus
+  Seed und Position.
+- Bilder und Fackeln im Lich-Turm: `getRandomWallSpot` ohne Treffer warf im Original eine NullPointerException (beim
+  Hauptturm nie, er liegt in einem Population-Feld); hier wird der Platz übersprungen. Kollisionsboxen der Treppen ohne
+  Eckformen, Zäune immer volle 1,5 hoch (`OldPainting`).
+- `nullifySkyLight`/`updateAllLightTypes`: der Kern hat keine Lichtwerte (nur Licht und Mob-Spawns betroffen).

@@ -145,6 +145,46 @@ public final class TFRuins {
             this(blockId, sizeFactor, maxLength, minHeight, true);
         }
 
+        /** TFGenCaveStalactite.diamond ... glowstone: the ore spikes of the hollow hills. */
+        private static final Stalactite DIAMOND = new Stalactite(56, 0.5F, 4, 16);
+        private static final Stalactite LAPIS = new Stalactite(21, 0.8F, 8, 1);
+        private static final Stalactite EMERALD = new Stalactite(129, 0.5F, 3, 12);
+        private static final Stalactite GOLD = new Stalactite(14, 0.6F, 6, 1);
+        private static final Stalactite REDSTONE = new Stalactite(73, 0.8F, 8, 1);
+        private static final Stalactite IRON = new Stalactite(15, 0.7F, 8, 1);
+        private static final Stalactite COAL = new Stalactite(16, 0.8F, 12, 1);
+        private static final Stalactite GLOWSTONE = new Stalactite(89, 0.5F, 8, 1);
+
+        /** TFGenCaveStalactite.makeRandomOreStalactite. */
+        public static Stalactite makeRandomOreStalactite(Random rand, int hillSize) {
+            if (hillSize >= 3 || hillSize >= 2 && rand.nextInt(5) == 0) {
+                int s3 = rand.nextInt(13);
+                if (s3 == 0 || s3 == 1) {
+                    return DIAMOND;
+                }
+                if (s3 == 2 || s3 == 3) {
+                    return LAPIS;
+                }
+                if (s3 == 4) {
+                    return EMERALD;
+                }
+            }
+            if (hillSize >= 2 || hillSize >= 1 && rand.nextInt(5) == 0) {
+                int s2 = rand.nextInt(6);
+                if (s2 == 0) {
+                    return GOLD;
+                }
+                if (s2 == 1 || s2 == 2) {
+                    return REDSTONE;
+                }
+            }
+            int s1 = rand.nextInt(5);
+            if (s1 == 0 || s1 == 1) {
+                return IRON;
+            }
+            return s1 != 2 && s1 != 3 ? GLOWSTONE : COAL;
+        }
+
         private Stalactite(int blockId, float sizeFactor, int maxLength, int minHeight, boolean hang) {
             this.blockId = blockId;
             this.sizeFactor = sizeFactor;

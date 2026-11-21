@@ -89,6 +89,7 @@ ENTITIES = {'Villager': 'minecraft:villager', 'Witch': 'minecraft:witch', 'Minec
             'Mob:EnderCrystal': 'minecraft:end_crystal',
             **{f'Mob:BattleTowers.Battletower Golem#{t}': 'battletowers:golem' for t in range(7)},
             # Project Zulu: mimics in dead ends, haunted armour on cemeteries (ZuluStructureContent)
+            'Mob:TwilightForest.Questing Ram@13': 'twilightforest:quest_ram',
             'Mob:ProjectZulu|Core.Mimic#hovering': 'projectzulu:mimic', 'Mob:ProjectZulu|Core.Haunted Armor#hovering': 'projectzulu:haunted_armor'}
 WOOL = ['white', 'orange', 'magenta', 'light_blue', 'yellow', 'lime', 'pink', 'gray', 'light_gray', 'cyan', 'purple', 'blue',
         'brown', 'green', 'red', 'black']
@@ -231,6 +232,8 @@ def twilight(bid, meta):
         if 11 <= meta <= 13:
             return f'twilightforest:encased_fire_jet[state={["idle", "popping", "flame"][meta - 11]}]'
         return f'twilightforest:fire_jet[state={ {9: "popping", 10: "flame"}.get(meta, "idle") }]'
+    if bid == 1351:  # boss spawners (placeholders until Teil 24f)
+        return 'twilightforest:' + ['naga', 'lich', 'hydra', 'tower'][meta if meta < 4 else 0] + '_boss_spawner'
     if bid == 1368:
         names = ['twilight_oak', 'canopy', 'mangrove', 'darkwood', 'hollow_oak', 'time', 'transformation', 'mining', 'sorting',
                  'rainbow_oak']
