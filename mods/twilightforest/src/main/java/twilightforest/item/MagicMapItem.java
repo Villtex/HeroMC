@@ -79,6 +79,9 @@ public class MagicMapItem extends TFFilledMapItem {
         MapItemSavedData.HoldingPlayer info = data.getHoldingPlayer(player);
         info.step++;
         int[] biomeFrequencies = new int[256];
+        byte[] ids = null;
+        int idsX = 0;
+        int idsZ = 0;
         for (int xStep = xDraw - drawSize + 1; xStep < xDraw + drawSize; xStep++) {
             if ((xStep & 15) != (info.step & 15)) {
                 continue;
@@ -100,7 +103,18 @@ public class MagicMapItem extends TFFilledMapItem {
                     for (int zStep2 = 0; zStep2 < scaleFactor; zStep2++) {
                         int x = xDraw2 + xStep2;
                         int z = zDraw2 + zStep2;
-                        int biomeID = TFMaps.biomeIdAt(level, layout, x, z);
+                        int biomeID;
+                        if (layout != null) {
+                            // the layout's biome ids of the column's chunk, fetched once per chunk
+                            if (ids == null || x >> 4 != idsX || z >> 4 != idsZ) {
+                                idsX = x >> 4;
+                                idsZ = z >> 4;
+                                ids = layout.chunkIds(idsX, idsZ);
+                            }
+                            biomeID = ids[(x & 15) + (z & 15) * 16] & 0xFF;
+                        } else {
+                            biomeID = TFMaps.biomeIdAt(level, null, x, z);
+                        }
                         if (biomeID < 0) {
                             continue;
                         }
