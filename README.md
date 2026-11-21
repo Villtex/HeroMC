@@ -49,6 +49,7 @@ Der Port ist in Teile aufgeteilt, die je in eine Session passen: [`docs/PLAN.md`
 | `.claude/skills/items-weapons-263/` | Projekt-Skill: Waffen, Stäbe, Bögen, Geschosse und Spezial-Items (Schwert-Werte, Blocken, Geschoss-Entity je Typ, magische Pfeile/Köcher, Taschen, Damage-Varianten mit alten IDs, Kapseln, Einmal-Spawner), Vorlage Better Dungeons |
 | `.claude/skills/api-263-lookup/` | Projekt-Skill: 26.3-Signaturen und Vanilla-Daten lokal nachschlagen (javap, Vineflower, NeoForge-Quellen), Loot-/Advancement-Format, bekannte Umbenennungen, Ressourcenpfade nur klein, ICraftingHandler über ItemCraftedEvent, WAV→Ogg beim Asset-Import |
 | `.claude/skills/tinkers-tools-263/` | Projekt-Skill: Tinkers' Construct weiterbauen (Komponente `tconstruct:tool`, Teile/Materialien/Muster, alte IDs, Modifikatoren, Schmelzerei-Tabellen und Flüssigkeiten, Prüfen ohne Spieler) |
+| `.claude/skills/twilight-forest-263/` | Projekt-Skill: Twilight Forest weiterbauen (Kern `twilightforest.gen`, Bauwerke `gen.structure` mit Übersetzungsskript, Starts, Truhen, Spawnlisten, Prüfung mit `expect.sh … twilight structures`) |
 | `.claude/skills/headless-client/` | Projekt-Skill: Testclient im Cloud-Container ohne Bildschirm starten (Xvfb, `SDL_VIDEO_FORCE_EGL=1`, Screenshots, xdotool, Testserver beitreten) |
 
 ## Bauen und Starten
@@ -213,7 +214,7 @@ Prüfen: `tools/expect.sh 1234 nether structures 60 > expect.txt`, dann `verify_
 | Harken Scythe | `harkenscythe` 2.1.6 | Jade Knightblazer | 27.284 | ✅ Teil 9 (Seelen/Blut, Altäre, 26 Mobs; Client-Prüfung offen) |
 | Better Dungeons (Chocolate Quest) | `betterdungeons` 1.09b | Chocolatin | 36.118 | ✅ Teil 12 und 13 (Client-Prüfung offen) |
 | Project Zulu | `projectzulu` 1.0.3.8 | — | 42.845 | ✅ Teil 10 Kreaturen, Teil 11 Blöcke, Items, Tränke, Strukturen (Client-Prüfung offen) |
-| The Twilight Forest | `twilightforest` 1.18.1 | Benimatic | 50.329 | Teil 24a–24c erledigt (Dimension, Gelände, Portal, Blöcke, Bäume, Dekoration, Mobs), 24d–24f offen |
+| The Twilight Forest | `twilightforest` 1.18.1 | Benimatic | 50.329 | Teil 24a–24d erledigt (Dimension, Gelände, Portal, Blöcke, Bäume, Dekoration, Mobs, Strukturen A), 24e–24f offen |
 | Tinkers' Construct | `tconstruct` 1.4.3 | mDiyo | 59.808 | aufgeteilt in Teil 25a–25f; ✅ 25a (Werkzeug-Kern: Materialien, Teile, Muster, Tische, Zusammenbau, Modifikatoren anbringen; Client-Prüfung offen), ✅ 25b (Fähigkeiten, Modifikator-Effekte, Bogen/Pfeile, Dolch, Bratpfanne, Werkzeugmodelle in Schichten; Client-Prüfung offen), ✅ 25c (Schmelzerei, 24 Flüssigkeiten, Gießen, Legierungen, Trockengestell, Erze/Metallblöcke; Client-Prüfung offen), ✅ 25d (Erze, Erzbeeren, Schleiminseln, blauer Schleim, Werkzeugschmiede/Schmelzerei im Dorf, Tüftler; Client-Prüfung offen), ✅ 25e (Rüstungs-Inventar mit Tabs, Rucksack, Herzkanister, Handbücher, Essen, Essenzkristall, Schleim-Eier, Spieler-Regeln, Mob-Drops; Client-Prüfung offen), 25f offen |
 
 Weitere Archive des Packs, die kein eigener Mod sind:

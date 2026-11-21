@@ -64,7 +64,8 @@ WILDCAVES = {1554: PIECES, 1553: ['sandstone_' + p for p in PIECES], 1550: ['ici
 SKULLS = ['skeleton_skull', 'wither_skeleton_skull', 'zombie_head', 'player_head', 'creeper_head']
 WOOD = ['oak', 'spruce', 'birch', 'jungle']
 FACING = ['south', 'west', 'north', 'east']
-MOBS = {'TwilightForest.Swarm Spider': 'minecraft:cave_spider', 'TwilightForest.Skeleton Druid': 'minecraft:skeleton',  # until Teil 24c
+MOBS = {'TwilightForest.Wild Boar': 'twilightforest:wild_boar', 'TwilightForest.Bighorn Sheep': 'twilightforest:bighorn_sheep', 'TwilightForest.Wild Deer': 'twilightforest:wild_deer', 'TwilightForest.Penguin': 'twilightforest:penguin', 'TwilightForest.Tiny Bird': 'twilightforest:tiny_bird', 'TwilightForest.Forest Squirrel': 'twilightforest:squirrel', 'TwilightForest.Forest Bunny': 'twilightforest:bunny', 'TwilightForest.Forest Raven': 'twilightforest:raven', 'TwilightForest.Questing Ram': 'twilightforest:quest_ram', 'TwilightForest.Firefly': 'twilightforest:firefly', 'TwilightForest.Redcap': 'twilightforest:redcap', 'TwilightForest.Swarm Spider': 'twilightforest:swarm_spider', 'TwilightForest.Skeleton Druid': 'twilightforest:skeleton_druid', 'TwilightForest.Hostile Wolf': 'twilightforest:hostile_wolf', 'TwilightForest.Twilight Wraith': 'twilightforest:wraith', 'TwilightForest.Hedge Spider': 'twilightforest:hedge_spider', 'TwilightForest.Twilight Kobold': 'twilightforest:kobold', 'TwilightForest.Mosquito Swarm': 'twilightforest:mosquito_swarm', 'TwilightForest.Death Tome': 'twilightforest:death_tome', 'TwilightForest.Minotaur': 'twilightforest:minotaur', 'TwilightForest.Fire Beetle': 'twilightforest:fire_beetle', 'TwilightForest.Slime Beetle': 'twilightforest:slime_beetle', 'TwilightForest.Pinch Beetle': 'twilightforest:pinch_beetle', 'TwilightForest.Maze Slime': 'twilightforest:maze_slime', 'TwilightForest.Redcap Sapper': 'twilightforest:redcap_sapper', 'TwilightForest.Mist Wolf': 'twilightforest:mist_wolf', 'TwilightForest.King Spider': 'twilightforest:king_spider', 'TwilightForest.Mini Ghast': 'twilightforest:mini_ghast', 'TwilightForest.Tower Ghast': 'twilightforest:tower_ghast', 'TwilightForest.Tower Golem': 'twilightforest:tower_golem', 'TwilightForest.Tower Termite': 'twilightforest:tower_termite', 'TwilightForest.Redscale Broodling': 'twilightforest:tower_broodling', 'TwilightForest.Block&Chain Goblin': 'twilightforest:block_goblin', 'TwilightForest.Helmet Crab': 'twilightforest:helmet_crab',  # Twilight Forest (TFEntities)
+        
         'Skeleton': 'minecraft:skeleton', 'Zombie': 'minecraft:zombie', 'Spider': 'minecraft:spider',
         'CaveSpider': 'minecraft:cave_spider', 'Silverfish': 'minecraft:silverfish', 'Blaze': 'minecraft:blaze',
         'Creeper': 'minecraft:creeper',
@@ -90,6 +91,7 @@ ENTITIES = {'Villager': 'minecraft:villager', 'Witch': 'minecraft:witch', 'Minec
             **{f'Mob:BattleTowers.Battletower Golem#{t}': 'battletowers:golem' for t in range(7)},
             # Project Zulu: mimics in dead ends, haunted armour on cemeteries (ZuluStructureContent)
             'Mob:TwilightForest.Questing Ram@13': 'twilightforest:quest_ram',
+            **{f'Mob:TwilightForest.{n}': f'twilightforest:{i}' for i, n in [('wild_boar', 'Wild Boar'), ('bighorn_sheep', 'Bighorn Sheep'), ('wild_deer', 'Wild Deer'), ('penguin', 'Penguin'), ('tiny_bird', 'Tiny Bird'), ('squirrel', 'Forest Squirrel'), ('bunny', 'Forest Bunny'), ('raven', 'Forest Raven'), ('quest_ram', 'Questing Ram'), ('firefly', 'Firefly'), ('redcap', 'Redcap'), ('swarm_spider', 'Swarm Spider'), ('skeleton_druid', 'Skeleton Druid'), ('hostile_wolf', 'Hostile Wolf'), ('wraith', 'Twilight Wraith'), ('hedge_spider', 'Hedge Spider'), ('kobold', 'Twilight Kobold'), ('mosquito_swarm', 'Mosquito Swarm'), ('death_tome', 'Death Tome'), ('minotaur', 'Minotaur'), ('fire_beetle', 'Fire Beetle'), ('slime_beetle', 'Slime Beetle'), ('pinch_beetle', 'Pinch Beetle'), ('maze_slime', 'Maze Slime'), ('redcap_sapper', 'Redcap Sapper'), ('mist_wolf', 'Mist Wolf'), ('king_spider', 'King Spider'), ('mini_ghast', 'Mini Ghast'), ('tower_ghast', 'Tower Ghast'), ('tower_golem', 'Tower Golem'), ('tower_termite', 'Tower Termite'), ('tower_broodling', 'Redscale Broodling'), ('block_goblin', 'Block&Chain Goblin'), ('helmet_crab', 'Helmet Crab')]},
             'Mob:ProjectZulu|Core.Mimic#hovering': 'projectzulu:mimic', 'Mob:ProjectZulu|Core.Haunted Armor#hovering': 'projectzulu:haunted_armor'}
 WOOL = ['white', 'orange', 'magenta', 'light_blue', 'yellow', 'lime', 'pink', 'gray', 'light_gray', 'cyan', 'purple', 'blue',
         'brown', 'green', 'red', 'black']
@@ -232,6 +234,13 @@ def twilight(bid, meta):
         if 11 <= meta <= 13:
             return f'twilightforest:encased_fire_jet[state={["idle", "popping", "flame"][meta - 11]}]'
         return f'twilightforest:fire_jet[state={ {9: "popping", 10: "flame"}.get(meta, "idle") }]'
+    if bid == 1362:
+        return 'twilightforest:' + ['maze_stone', 'maze_stone_brick', 'maze_stone_pillar', 'maze_stone_decorative', 'maze_stone_cracked',
+                                    'maze_stone_mossy', 'maze_stone_mosaic', 'maze_stone_border'][meta & 7]
+    if bid == 1364:
+        return f'twilightforest:nagastone_{"head" if meta < 4 else "body"}[meta={meta}]'
+    if bid == 1372:
+        return 'twilightforest:' + ['tower_wood', 'encased_tower_wood', 'tower_wood_cracked', 'tower_wood_mossy', 'tower_wood_infested'][meta if meta < 5 else 0]
     if bid == 1351:  # boss spawners (placeholders until Teil 24f)
         return 'twilightforest:' + ['naga', 'lich', 'hydra', 'tower'][meta if meta < 4 else 0] + '_boss_spawner'
     if bid == 1368:
@@ -476,6 +485,8 @@ def block(bid, meta):
         if meta == 15:  # stem on all six sides (Twilight Forest's canopy mushrooms)
             return 'minecraft:mushroom_stem[up=true,down=true,north=true,south=true,east=true,west=true]'
         cap = 'brown' if bid == 99 else 'red'
+        if meta == 14:  # cap on all six sides (Twilight Forest's mushroom rooms)
+            return f'minecraft:{cap}_mushroom_block[up=true,down=true,north=true,south=true,west=true,east=true]'
         top = 1 <= meta <= 9
         return (f'minecraft:{cap}_mushroom_block[up={flag(top)},down=false,north={flag(1 <= meta <= 3)},'
                 f'south={flag(7 <= meta <= 9)},west={flag(meta in (1, 4, 7))},east={flag(meta in (3, 6, 9))}]')

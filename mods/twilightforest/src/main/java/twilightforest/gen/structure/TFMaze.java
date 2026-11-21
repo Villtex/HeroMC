@@ -87,7 +87,7 @@ public class TFMaze {
          return this.getRaw(sx * 2 + 1, sz * 2 + 0);
       }
 
-      System.out.println("Wall check out of bounds; s = " + sx + ", " + sz + "; d = " + dx + ", " + dz);
+      // System.out.println("Wall check out of bounds; s = " + sx + ", " + sz + "; d = " + dx + ", " + dz); (debug output of the original)
       return Integer.MIN_VALUE;
    }
 

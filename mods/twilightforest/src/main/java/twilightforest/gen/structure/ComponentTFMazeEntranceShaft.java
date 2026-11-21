@@ -32,11 +32,11 @@ public class ComponentTFMazeEntranceShaft extends StructureTFComponent {
 
       this.fillWithMetadataBlocks(world, sbb, 0, -10, 0, 5, 30, 5, 1362, 1, 0, 0, true);
       this.fillWithAir(world, sbb, 1, -10, 1, 4, 30, 4);
-      System.out.println("Drawing entrance");
+      // System.out.println("Drawing entrance"); (debug output of the original)
       int var8 = this.getXWithOffset(0, 0);
       int var9 = this.getYWithOffset(0);
       int var10 = this.getZWithOffset(0, 0);
-      System.out.println("Drawing entrance at " + var8 + ", " + var9 + ", " + var10);
+      // System.out.println("Drawing entrance at " + var8 + ", " + var9 + ", " + var10); (debug output of the original)
       return true;
    }
 

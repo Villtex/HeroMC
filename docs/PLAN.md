@@ -64,7 +64,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 24a | Twilight Forest A: Dimension, Gelände, Biome, Portal, Struktur-Raster | ~8.000 | 2 | Fable 5.2, extra hoch | ✅ erledigt |
 | 24b | Twilight Forest B: Blöcke, Holz, Pflanzen, Kleintiere-Blöcke, Biom-Dekoration, magische Bäume | ~9.000 | 24a | Fable 5.2, hoch | ✅ erledigt |
 | 24c | Twilight Forest C: normale Mobs mit Modellen, Spawns je Biom, Spawn-Eier | ~11.000 | 24a | Opus 5.5, hoch | ✅ erledigt |
-| 24d | Twilight Forest D: Strukturen A (Hügel, Hecken-Labyrinth, Naga-Hof, Hain, Lich-Turm, Labyrinth, Hohle Bäume), Beute | ~9.000 | 24b | Fable 5.2, extra hoch | offen |
+| 24d | Twilight Forest D: Strukturen A (Hügel, Hecken-Labyrinth, Naga-Hof, Hain, Lich-Turm, Labyrinth, Hohle Bäume), Beute | ~9.000 | 24b | Fable 5.2, extra hoch | ✅ erledigt |
 | 24e | Twilight Forest E: Strukturen B (Dunkler Turm mit Turm-Mechanik, Ritter-Festung, Hydra-Höhle) | ~6.000 | 24d | Fable 5.2, hoch | offen |
 | 24f | Twilight Forest F: Bosse, Boss-Spawner, Trophäen, Ausrüstung, Zauberstäbe, Karten, Entwerkbank, Fortschritte | ~10.000 | 24c, 24d | Opus 5.5, hoch | offen |
 | 25a | Tinkers' Construct A: Werkzeug-Kern (Materialien, Teile, Muster, Tische, Zusammenbau, Modifikatoren anbringen) | ~10.000 | 3 | Opus 5.5, hoch | ✅ erledigt |
@@ -1535,6 +1535,26 @@ Quellen: `structures/` ohne `darktower`, `stronghold`, `ComponentTFHydraLair`: `
 Lich-Turm (`ComponentTFTower*`), Minotaurus-Labyrinth (`*Maze*`, `TFMaze`), Hohle Bäume (`MapGenTFHollowTree`,
 `*HollowTree*`), `TFTreasure*`, `TFTreasureItem`. Skills `templates-152`, `worldgen152`.
 - Alle Bauten bitgenau samt Kisten-Beute und Spawnern; Boss-Spawner als Platzhalter-Block (Bosse in 24f).
+
+#### Teil 24d – Stand (✅ erledigt)
+
+Offenes in `mods/twilightforest/TODO.md` (Abschnitt „Teil 24d – Strukturen A“), Vorgehen im Skill `twilight-forest-263`.
+- Kern `twilightforest.gen.structure`: alle Bauteile von Hohlen Hügeln, Heckenlabyrinth, Naga-Hof, Quest-Hain, Lich-Turm
+  (Turm, Flügel, Anbauten, Brücken, Dächer, Bärte) und Minotaurus-Labyrinth (Ruinen, Eingänge, Ebenen, Räume, Sackgassen,
+  `TFMaze`) mit den Namen des Originals, per Skript aus den Quellen übersetzt; `StructureTFMajorFeatureStart`,
+  `MapGenTFMajorFeature` (Starts je Welt, `OldWorld.worldState`). `TFPopulator` baut sie als Erstes und zieht dabei aus
+  der Zufallsfolge des Chunks wie das Original. Truhen: alle 16 Tabellen (`TFTreasure`), Zufallsverzauberung von 1.5.2
+  (`OldEnchanting`); Spawner mit den Twilight-Mobs; Bilder im Lich-Turm (`worldgen152` `OldPainting`); Quest-Widder im
+  Hain; Spawnlisten der Bauwerke greifen (`TFSpawns.spawnListIndexAt`).
+- Spiel: Boss-Spawner 1351:0..3 als Platzhalter-Blöcke (`*_boss_spawner`, ohne Funktion bis 24f).
+- Hohle Bäume (`MapGenTFHollowTree`) sind im Original toter Code und fehlen deshalb.
+- Geprüft: `clean pack` grün; Testserver bis `Done`, 0 Fehler; Kern gegen Spiel `tools/expect.sh 1234 twilight structures
+  120` (je ein Bauwerk jeder Art, 261 Chunks): 1.016.339 Blöcke gleich, 182 Spawner/Truhen/Entities gleich; 2 Pilzblöcke
+  an einer Chunk-Grenze mit verbundenen Seitenflächen (26.3-Formupdate) und 2 Biome an Biomgrenzen (Zufallsversatz von
+  `BiomeManager` bei `if biome`).
+- Offen: Kern gegen Original (keine Original-Chunks der Dimension 7); Hydra-Höhle, Dunkler Turm, Ritter-Festung mit 24e;
+  Bosse, Minoshroom und die Beute-Items von 24f (bis dahin lässt der Chunk-Writer sie weg); Client-Prüfung (Bilder,
+  Platzhalter-Spawner).
 
 ### Teil 24e – Strukturen B
 Quellen: `structures/darktower/*`, `structures/stronghold/*`, `ComponentTFHydraLair`, `MapGenTFStronghold`,
