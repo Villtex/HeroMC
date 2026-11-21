@@ -209,3 +209,41 @@ Ritter-Festung (`ComponentTFStronghold*`, `StructureTFStronghold*`, `TFStronghol
 
 - Modelle und Durchsichtigkeit der Turmblöcke, Ghast-Fallen-Deckel, Funken (`sparkle`), Partikel der Falle und des
   Rückbauers; Bilderrahmen in der Turmschmiede; Karminit-Baumeister und Turmschlüssel mit einem Spieler.
+
+
+## Teil 24f – Bosse und Ausrüstung
+
+Items in `TFItems` (Werkzeuge, Rüstungen, Essen, Materialien, Sonder-Items in `item/`), Bosse in `TFBosses` (+ `TFHydra`),
+Entwerkbank in `TFUncrafting` (`block/UncraftingMenu`, `client/gui/UncraftingScreen`, `compat/TwilightForestJeiPlugin`),
+Amulette in `TFEventListener`, Feurige Aura in `TFEnchantment`, Daten in `tools/gen_items.py` (und `gen_hydra.py`).
+
+### Abweichungen
+
+- Verzauberte Rezepte (addEnchantedRecipe): Ergebnis mit Verzauberungs-Komponente; die Werkzeuge/Rüstungen im Kreativ-Tab
+  wie getSubItems verzaubert (Feuerschwert dort Feueraspekt I, aus dem Rezept II wie im Original).
+- Stahlblatt-Rüstung hat wie im Original die Werte von Eisenholz (ARMOR_STEELEAF ist toter Code).
+- Zepter brechen nicht (Schaden bleibt beim Maximum, nachladbar); Horn, Fächer, Magnet, Mondwurm-Königin zerbrechen bei
+  Schaden = Maximum (1.5.2: Maximum + 1).
+- Feuer-Spitzhacke: ersetzt die Drops des Blocks (BlockDropsEvent) statt sie zu unterdrücken und neu zu erzeugen.
+- Lebensentzug: Ziel wie im Original durch Wände (nur Entities, keine Blöcke im Weg geprüft).
+- Verwandlungspulver: wirkt vor der eigenen Interaktion des Ziels (sonst würde der Dorfbewohner handeln).
+- Amulett des Lebens: prüft den Schaden nach Rüstung/Resistenz (LivingDamageEvent.Pre) statt der 1.5.2-Nachrechnung;
+  Amulett der Bewahrung III behält auch die Nebenhand.
+- Lich: die Partikelspuren der KI (Teleport, Diener, Mob-Platzen) sieht man hier; in 1.5.2 liefen sie nur auf dem Server
+  (unsichtbar). Goldene Beute: 2..4 Würfe (der Plünderungs-Bonus des Originals fehlt), Verzauberung Stufe 10..39.
+- Naga: Körpersegmente sind Part-Entities (in 1.5.2 eigene, nicht gespeicherte Entities beider Seiten); ihre eigene
+  Bewegung (moveEntity vor dem Kopf) entfällt, sie stehen danach ohnehin an der vom Kopf gesetzten Stelle.
+- Ur-Ghast: Feuerbälle sind Vanilla-Feuerbälle mit eigenem Treffer (16 Schaden, Explosion 1 mit Feuer); Tränen als
+  fallende Item-Partikel statt EntityTFBossTearFX; Wetter über `setWeatherParameters` der Oberwelt wie im Original.
+- Trophäen: ein stehender und ein Wandblock je Boss (wie Köpfe heute); Drehung nach heutiger Schädel-Logik.
+- Entwerkbank: Rezeptsuche nur auf dem Server; Kosten und kaputte Teile als Container-Daten. Erstes passendes
+  geformtes Rezept in der Reihenfolge des Rezept-Managers (1.5.2: Reihenfolge der Rezeptliste). Kopiert nur Name und
+  Reparaturkosten (1.5.2 das ganze NBT). Beim Neu-Herstellen wird die Eingabe wie im Original 9 × verringert.
+- Fortschritte: „Portal“ auch bei der Ankunft (BlockTFPortal vergab beide), Karten über „Rezept hergestellt“ oder
+  „Karte im Inventar“, Jäger über ein Entity-Tag `#twilightforest:hunter_prey`.
+
+### Client-Prüfung offen
+
+- Rüstungstexturen, Item-Modelle (Magnet/Mondwurm-Königin wechseln beim Benutzen), Modelle und Renderer von Naga
+  (Kopf doppelt groß, Segmente), Lich (Kragen, Umhang, Schildgürtel, Klone grau-durchsichtig), Diener (grün),
+  Minoshroom (Kuh-Körper, Pilze), Ur-Ghast (12,5-fach), Trophäen, Amulett-Effekt, treuer Zombie (grün), Entwerkbank-GUI.
