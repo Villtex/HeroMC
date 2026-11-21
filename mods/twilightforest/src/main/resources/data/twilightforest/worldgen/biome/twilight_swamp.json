@@ -4,13 +4,106 @@
       "argument": {
         "spawn_costs": {},
         "spawns_by_category": {
-          "ambient": [],
           "axolotls": [],
-          "creature": [],
           "misc": [],
-          "monster": [],
           "underground_water_creature": [],
           "water_ambient": [],
+          "ambient": [
+            {
+              "type": "minecraft:bat",
+              "weight": 10,
+              "count": 8
+            },
+            {
+              "type": "twilightforest:firefly",
+              "weight": 10,
+              "count": 8
+            }
+          ],
+          "creature": [
+            {
+              "type": "twilightforest:bighorn_sheep",
+              "weight": 12,
+              "count": 4
+            },
+            {
+              "type": "twilightforest:wild_boar",
+              "weight": 10,
+              "count": 4
+            },
+            {
+              "type": "minecraft:chicken",
+              "weight": 10,
+              "count": 4
+            },
+            {
+              "type": "twilightforest:wild_deer",
+              "weight": 15,
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 4,
+                "max": 5
+              }
+            },
+            {
+              "type": "minecraft:wolf",
+              "weight": 5,
+              "count": 4
+            },
+            {
+              "type": "twilightforest:tiny_bird",
+              "weight": 15,
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 4,
+                "max": 8
+              }
+            },
+            {
+              "type": "twilightforest:squirrel",
+              "weight": 10,
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 2,
+                "max": 4
+              }
+            },
+            {
+              "type": "twilightforest:bunny",
+              "weight": 10,
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 4,
+                "max": 5
+              }
+            },
+            {
+              "type": "twilightforest:raven",
+              "weight": 10,
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 2
+              }
+            }
+          ],
+          "monster": [
+            {
+              "type": "twilightforest:mosquito_swarm",
+              "weight": 10,
+              "count": 1
+            },
+            {
+              "type": "minecraft:creeper",
+              "weight": 10,
+              "count": 4
+            },
+            {
+              "type": "minecraft:zombie",
+              "weight": 10,
+              "count": 4
+            }
+          ],
           "water_creature": []
         }
       },

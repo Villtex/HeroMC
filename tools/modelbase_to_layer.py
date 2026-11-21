@@ -17,6 +17,32 @@ parent_var = sys.argv[3] if len(sys.argv) > 3 else 'root'
 m = re.search(r'public Model\w*\([^)]*\)\s*\{(.*?)\n   \}', src, re.S)
 body = m.group(1)
 stmts = [s.strip() for s in body.split(';') if s.strip()]
+# ModelBiped of 1.5.2: the parts a subclass does not make itself keep their defaults (ModelBiped(0, 0, 64, 32))
+if re.search(r'extends ModelBiped\b', src):
+    defaults = {
+        'bipedHead': ['this.bipedHead = new ModelRenderer(this, 0, 0)', 'this.bipedHead.addBox(-4.0F, -8.0F, -4.0F, 8, 8, 8, 0.0F)',
+                      'this.bipedHead.setRotationPoint(0.0F, 0.0F, 0.0F)'],
+        'bipedHeadwear': ['this.bipedHeadwear = new ModelRenderer(this, 32, 0)', 'this.bipedHeadwear.addBox(-4.0F, -8.0F, -4.0F, 8, 8, 8, 0.5F)',
+                          'this.bipedHeadwear.setRotationPoint(0.0F, 0.0F, 0.0F)'],
+        'bipedBody': ['this.bipedBody = new ModelRenderer(this, 16, 16)', 'this.bipedBody.addBox(-4.0F, 0.0F, -2.0F, 8, 12, 4, 0.0F)',
+                      'this.bipedBody.setRotationPoint(0.0F, 0.0F, 0.0F)'],
+        'bipedRightArm': ['this.bipedRightArm = new ModelRenderer(this, 40, 16)', 'this.bipedRightArm.addBox(-3.0F, -2.0F, -2.0F, 4, 12, 4, 0.0F)',
+                          'this.bipedRightArm.setRotationPoint(-5.0F, 2.0F, 0.0F)'],
+        'bipedLeftArm': ['this.bipedLeftArm = new ModelRenderer(this, 40, 16)', 'this.bipedLeftArm.mirror = true',
+                         'this.bipedLeftArm.addBox(-1.0F, -2.0F, -2.0F, 4, 12, 4, 0.0F)', 'this.bipedLeftArm.setRotationPoint(5.0F, 2.0F, 0.0F)'],
+        'bipedRightLeg': ['this.bipedRightLeg = new ModelRenderer(this, 0, 16)', 'this.bipedRightLeg.addBox(-2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F)',
+                          'this.bipedRightLeg.setRotationPoint(-1.9F, 12.0F, 0.0F)'],
+        'bipedLeftLeg': ['this.bipedLeftLeg = new ModelRenderer(this, 0, 16)', 'this.bipedLeftLeg.mirror = true',
+                         'this.bipedLeftLeg.addBox(-2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F)', 'this.bipedLeftLeg.setRotationPoint(1.9F, 12.0F, 0.0F)'],
+    }
+    pre = []
+    for part, lines in defaults.items():
+        if not any(re.match(r'this\.%s = new ModelRenderer' % part, st) for st in stmts):
+            pre += lines
+    stmts = pre + stmts
+# ModelRenderer fields initialised in the class body
+stmts = ['this.%s = new ModelRenderer(this%s)' % (f.group(1), ', ' + f.group(2) if f.group(2) else '')
+         for f in re.finditer(r'ModelRenderer (\w+) = new ModelRenderer\(this(?:, ([^)]*))?\);', src)] + stmts
 
 
 def args(s):
@@ -76,7 +102,8 @@ for s in stmts:
         continue
     mm = re.fullmatch(r'this\.(\w+)\.mirror = (true|false)', s)
     if mm:
-        R[mm.group(1)]['mirror'] = mm.group(2) == 'true'
+        if mm.group(1) in R:  # mirror on the inherited part before it is replaced: no effect
+            R[mm.group(1)]['mirror'] = mm.group(2) == 'true'
         continue
     mm = re.fullmatch(r'this\.(\w+)\.setTextureSize\((\d+), (\d+)\)', s)
     if mm:
@@ -101,7 +128,21 @@ for s in stmts:
             uv = r['uv']
         r['boxes'].append((uv, r['mirror'], [num(x) for x in a]))
         continue
-    raise SystemExit('unparsed: ' + s)
+    mm = re.fullmatch(r'this\.(\w+)\.rotateAngle([XYZ]) = (.*)', s)
+    if mm:
+        rot = list(R[mm.group(1)]['rot'])
+        rot['XYZ'.index(mm.group(2))] = num(mm.group(3))
+        R[mm.group(1)]['rot'] = tuple(rot)
+        continue
+    mm = re.fullmatch(r'this\.(\w+)\.setTextureOffset\((\d+), (\d+)\)\.addBox\((.*)\)', s)
+    if mm:
+        r = R[mm.group(1)]
+        r['uv'] = (mm.group(2), mm.group(3))
+        r['boxes'].append((r['uv'], r['mirror'], [num(x) for x in args(mm.group(4))]))
+        continue
+    if re.fullmatch(r'(this\.)?(field_\w+|textureWidth|textureHeight|isJumping)\b.*|float \w+ = .*', s):
+        continue
+    print('warning: skipped ' + s, file=sys.stderr)
 
 reach = set()
 

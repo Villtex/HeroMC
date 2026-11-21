@@ -100,3 +100,77 @@ mods/twilightforest/textures/items/liveRoot.png -> assets/twilightforest/texture
 mods/twilightforest/textures/items/torchberries.png -> assets/twilightforest/textures/item/torchberries.png
 mods/twilightforest/textures/items/charmOfLife1.png -> assets/twilightforest/textures/item/charm_of_life_1.png
 mods/twilightforest/textures/items/charmOfKeeping1.png -> assets/twilightforest/textures/item/charm_of_keeping_1.png
+mods/twilightforest/textures/model/wildboar.png -> assets/twilightforest/textures/entity/wildboar.png
+mods/twilightforest/textures/model/bighorn.png -> assets/twilightforest/textures/entity/bighorn.png
+mods/twilightforest/textures/model/wilddeer.png -> assets/twilightforest/textures/entity/wilddeer.png
+mods/twilightforest/textures/model/redcap.png -> assets/twilightforest/textures/entity/redcap.png
+mods/twilightforest/textures/model/redcapsapper.png -> assets/twilightforest/textures/entity/redcapsapper.png
+mods/twilightforest/textures/model/swarmspider.png -> assets/twilightforest/textures/entity/swarmspider.png
+mods/twilightforest/textures/model/skeletondruid.png -> assets/twilightforest/textures/entity/skeletondruid.png
+mods/twilightforest/textures/model/hedgespider.png -> assets/twilightforest/textures/entity/hedgespider.png
+mods/twilightforest/textures/model/kingspider.png -> assets/twilightforest/textures/entity/kingspider.png
+mods/twilightforest/textures/model/penguin.png -> assets/twilightforest/textures/entity/penguin.png
+mods/twilightforest/textures/model/tinybirdbrown.png -> assets/twilightforest/textures/entity/tinybirdbrown.png
+mods/twilightforest/textures/model/tinybirdblue.png -> assets/twilightforest/textures/entity/tinybirdblue.png
+mods/twilightforest/textures/model/tinybirdred.png -> assets/twilightforest/textures/entity/tinybirdred.png
+mods/twilightforest/textures/model/tinybirdgold.png -> assets/twilightforest/textures/entity/tinybirdgold.png
+mods/twilightforest/textures/model/squirrel2.png -> assets/twilightforest/textures/entity/squirrel.png
+mods/twilightforest/textures/model/bunnydutch.png -> assets/twilightforest/textures/entity/bunnydutch.png
+mods/twilightforest/textures/model/bunnywhite.png -> assets/twilightforest/textures/entity/bunnywhite.png
+mods/twilightforest/textures/model/bunnybrown.png -> assets/twilightforest/textures/entity/bunnybrown.png
+mods/twilightforest/textures/model/raven.png -> assets/twilightforest/textures/entity/raven.png
+mods/twilightforest/textures/model/questram.png -> assets/twilightforest/textures/entity/questram.png
+mods/twilightforest/textures/model/questram_lines.png -> assets/twilightforest/textures/entity/questram_lines.png
+mods/twilightforest/textures/model/kobold.png -> assets/twilightforest/textures/entity/kobold.png
+mods/twilightforest/textures/model/mosquitoswarm.png -> assets/twilightforest/textures/entity/mosquitoswarm.png
+mods/twilightforest/textures/model/minotaur.png -> assets/twilightforest/textures/entity/minotaur.png
+mods/twilightforest/textures/model/firebeetle.png -> assets/twilightforest/textures/entity/firebeetle.png
+mods/twilightforest/textures/model/slimebeetle.png -> assets/twilightforest/textures/entity/slimebeetle.png
+mods/twilightforest/textures/model/pinchbeetle.png -> assets/twilightforest/textures/entity/pinchbeetle.png
+mods/twilightforest/textures/model/mazeslime.png -> assets/twilightforest/textures/entity/mazeslime.png
+mods/twilightforest/textures/model/mistwolf.png -> assets/twilightforest/textures/entity/mistwolf.png
+mods/twilightforest/textures/model/firefly-tiny.png -> assets/twilightforest/textures/entity/firefly_tiny.png
+mods/twilightforest/textures/model/ghost-crown.png -> assets/twilightforest/textures/entity/ghost_crown.png
+mods/twilightforest/textures/model/ghost.png -> assets/twilightforest/textures/entity/ghost.png
+mods/twilightforest/textures/items/tfFeather.png -> assets/twilightforest/textures/item/raven_feather.png
+mods/twilightforest/textures/items/magicMapFocus.png -> assets/twilightforest/textures/item/magic_map_focus.png
+mods/twilightforest/textures/items/mazeMapFocus.png -> assets/twilightforest/textures/item/maze_map_focus.png
+mods/twilightforest/sounds/tinybird/tinybirdchirp0.ogg -> assets/twilightforest/sounds/tiny_bird/chirp0.ogg
+mods/twilightforest/sounds/tinybird/tinybirdchirp1.ogg -> assets/twilightforest/sounds/tiny_bird/chirp1.ogg
+mods/twilightforest/sounds/tinybird/tinybirdchirp2.ogg -> assets/twilightforest/sounds/tiny_bird/chirp2.ogg
+mods/twilightforest/sounds/tinybird/tinybirdhurt0.ogg -> assets/twilightforest/sounds/tiny_bird/hurt0.ogg
+mods/twilightforest/sounds/tinybird/tinybirdhurt1.ogg -> assets/twilightforest/sounds/tiny_bird/hurt1.ogg
+mods/twilightforest/sounds/raven/ravencaw0.ogg -> assets/twilightforest/sounds/raven/caw0.ogg
+mods/twilightforest/sounds/raven/ravencaw1.ogg -> assets/twilightforest/sounds/raven/caw1.ogg
+mods/twilightforest/sounds/raven/ravensquawk0.ogg -> assets/twilightforest/sounds/raven/squawk0.ogg
+mods/twilightforest/sounds/raven/ravensquawk1.ogg -> assets/twilightforest/sounds/raven/squawk1.ogg
+mods/twilightforest/sounds/redcap/redcap0.ogg -> assets/twilightforest/sounds/redcap/redcap0.ogg
+mods/twilightforest/sounds/redcap/redcap1.ogg -> assets/twilightforest/sounds/redcap/redcap1.ogg
+mods/twilightforest/sounds/redcap/redcap2.ogg -> assets/twilightforest/sounds/redcap/redcap2.ogg
+mods/twilightforest/sounds/redcap/redcap3.ogg -> assets/twilightforest/sounds/redcap/redcap3.ogg
+mods/twilightforest/sounds/redcap/redcap4.ogg -> assets/twilightforest/sounds/redcap/redcap4.ogg
+mods/twilightforest/sounds/redcap/redcap5.ogg -> assets/twilightforest/sounds/redcap/redcap5.ogg
+mods/twilightforest/sounds/redcap/redcaphurt0.ogg -> assets/twilightforest/sounds/redcap/hurt0.ogg
+mods/twilightforest/sounds/redcap/redcaphurt1.ogg -> assets/twilightforest/sounds/redcap/hurt1.ogg
+mods/twilightforest/sounds/redcap/redcaphurt2.ogg -> assets/twilightforest/sounds/redcap/hurt2.ogg
+mods/twilightforest/sounds/redcap/redcaphurt3.ogg -> assets/twilightforest/sounds/redcap/hurt3.ogg
+mods/twilightforest/sounds/redcap/redcapdie0.ogg -> assets/twilightforest/sounds/redcap/die0.ogg
+mods/twilightforest/sounds/redcap/redcapdie1.ogg -> assets/twilightforest/sounds/redcap/die1.ogg
+mods/twilightforest/sounds/redcap/redcapdie2.ogg -> assets/twilightforest/sounds/redcap/die2.ogg
+mods/twilightforest/sounds/kobold/kobold growl 1.ogg -> assets/twilightforest/sounds/kobold/kobold0.ogg
+mods/twilightforest/sounds/kobold/kobold growl 2.ogg -> assets/twilightforest/sounds/kobold/kobold1.ogg
+mods/twilightforest/sounds/kobold/kobold growl 3.ogg -> assets/twilightforest/sounds/kobold/kobold2.ogg
+mods/twilightforest/sounds/kobold/kobold sniff 1.ogg -> assets/twilightforest/sounds/kobold/kobold3.ogg
+mods/twilightforest/sounds/kobold/kobold snort 1.ogg -> assets/twilightforest/sounds/kobold/kobold4.ogg
+mods/twilightforest/sounds/kobold/kobold snort 2.ogg -> assets/twilightforest/sounds/kobold/kobold5.ogg
+mods/twilightforest/sounds/kobold/kobold hurt 1.ogg -> assets/twilightforest/sounds/kobold/hurt0.ogg
+mods/twilightforest/sounds/kobold/kobold hurt 2.ogg -> assets/twilightforest/sounds/kobold/hurt1.ogg
+mods/twilightforest/sounds/kobold/kobold hurt 3.ogg -> assets/twilightforest/sounds/kobold/hurt2.ogg
+mods/twilightforest/sounds/kobold/kobold die 1.ogg -> assets/twilightforest/sounds/kobold/die0.ogg
+mods/twilightforest/sounds/kobold/kobold die 2.ogg -> assets/twilightforest/sounds/kobold/die1.ogg
+mods/twilightforest/sounds/kobold/kobold die 3.ogg -> assets/twilightforest/sounds/kobold/die2.ogg
+mods/twilightforest/sounds/wraith/wraith0.ogg -> assets/twilightforest/sounds/wraith/wraith0.ogg
+mods/twilightforest/sounds/wraith/wraith1.ogg -> assets/twilightforest/sounds/wraith/wraith1.ogg
+mods/twilightforest/sounds/wraith/wraith2.ogg -> assets/twilightforest/sounds/wraith/wraith2.ogg
+mods/twilightforest/sounds/wraith/wraith3.ogg -> assets/twilightforest/sounds/wraith/wraith3.ogg
+mods/twilightforest/sounds/mosquito/animals132.wav -> assets/twilightforest/sounds/mosquito/mosquito0.ogg

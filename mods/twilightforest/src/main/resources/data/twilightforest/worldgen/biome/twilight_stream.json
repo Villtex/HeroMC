@@ -4,13 +4,24 @@
       "argument": {
         "spawn_costs": {},
         "spawns_by_category": {
-          "ambient": [],
           "axolotls": [],
-          "creature": [],
           "misc": [],
-          "monster": [],
           "underground_water_creature": [],
           "water_ambient": [],
+          "ambient": [
+            {
+              "type": "minecraft:bat",
+              "weight": 10,
+              "count": 8
+            },
+            {
+              "type": "twilightforest:firefly",
+              "weight": 10,
+              "count": 8
+            }
+          ],
+          "creature": [],
+          "monster": [],
           "water_creature": []
         }
       },

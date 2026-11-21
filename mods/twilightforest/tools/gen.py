@@ -450,7 +450,7 @@ ASSETS.append(('mods/twilightforest/textures/model/moonworm.png', f'assets/{NS}/
 write(f'assets/{NS}/particles/firefly.json', {'textures': [n('firefly')]})
 for f in ('cicada2', 'cicada3'):
     ASSETS.append((f'mods/twilightforest/sounds/{f}.ogg', f'assets/{NS}/sounds/{f}.ogg'))
-write(f'assets/{NS}/sounds.json', {'cicada': {'sounds': [n('cicada2'), n('cicada3')], 'subtitle': f'subtitles.{NS}.cicada'}})
+# sounds.json: tools/gen_mobs.py
 names(f'subtitles.{NS}.cicada', 'Cicada sings', 'Zikade zirpt')
 
 # firefly jar (RenderBlockTFFireflyJar): the jar 3..13 x 0..14, the cork 4..12 x 12..16
@@ -663,6 +663,9 @@ for key, (logs, leaves, extra) in TREES.items():
     d = {'logs': [n(x) for x in logs], 'leaves': [n(x) for x in leaves]}
     d.update(extra)
     write(f'data/{NS}/treecapitator/tree/{key}.json', d)
+
+# ---------------------------------------------------------------- Teil 24c: mobs (tools/gen_mobs.py)
+exec(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'gen_mobs.py')).read())
 
 # ---------------------------------------------------------------- write tags, data map, recipes
 for (reg, t), values in TAGS.items():

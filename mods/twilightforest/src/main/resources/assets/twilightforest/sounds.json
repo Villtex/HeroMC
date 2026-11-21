@@ -5,5 +5,104 @@
       "twilightforest:cicada3"
     ],
     "subtitle": "subtitles.twilightforest.cicada"
+  },
+  "tiny_bird.chirp": {
+    "sounds": [
+      "twilightforest:tiny_bird/chirp0",
+      "twilightforest:tiny_bird/chirp1",
+      "twilightforest:tiny_bird/chirp2"
+    ],
+    "subtitle": "subtitles.twilightforest.tiny_bird.chirp"
+  },
+  "tiny_bird.hurt": {
+    "sounds": [
+      "twilightforest:tiny_bird/hurt0",
+      "twilightforest:tiny_bird/hurt1"
+    ],
+    "subtitle": "subtitles.twilightforest.tiny_bird.hurt"
+  },
+  "raven.caw": {
+    "sounds": [
+      "twilightforest:raven/caw0",
+      "twilightforest:raven/caw1"
+    ],
+    "subtitle": "subtitles.twilightforest.raven.caw"
+  },
+  "raven.squawk": {
+    "sounds": [
+      "twilightforest:raven/squawk0",
+      "twilightforest:raven/squawk1"
+    ],
+    "subtitle": "subtitles.twilightforest.raven.squawk"
+  },
+  "redcap.ambient": {
+    "sounds": [
+      "twilightforest:redcap/redcap0",
+      "twilightforest:redcap/redcap1",
+      "twilightforest:redcap/redcap2",
+      "twilightforest:redcap/redcap3",
+      "twilightforest:redcap/redcap4",
+      "twilightforest:redcap/redcap5"
+    ],
+    "subtitle": "subtitles.twilightforest.redcap.ambient"
+  },
+  "redcap.hurt": {
+    "sounds": [
+      "twilightforest:redcap/hurt0",
+      "twilightforest:redcap/hurt1",
+      "twilightforest:redcap/hurt2",
+      "twilightforest:redcap/hurt3"
+    ],
+    "subtitle": "subtitles.twilightforest.redcap.hurt"
+  },
+  "redcap.die": {
+    "sounds": [
+      "twilightforest:redcap/die0",
+      "twilightforest:redcap/die1",
+      "twilightforest:redcap/die2"
+    ],
+    "subtitle": "subtitles.twilightforest.redcap.die"
+  },
+  "kobold.ambient": {
+    "sounds": [
+      "twilightforest:kobold/kobold0",
+      "twilightforest:kobold/kobold1",
+      "twilightforest:kobold/kobold2",
+      "twilightforest:kobold/kobold3",
+      "twilightforest:kobold/kobold4",
+      "twilightforest:kobold/kobold5"
+    ],
+    "subtitle": "subtitles.twilightforest.kobold.ambient"
+  },
+  "kobold.hurt": {
+    "sounds": [
+      "twilightforest:kobold/hurt0",
+      "twilightforest:kobold/hurt1",
+      "twilightforest:kobold/hurt2"
+    ],
+    "subtitle": "subtitles.twilightforest.kobold.hurt"
+  },
+  "kobold.die": {
+    "sounds": [
+      "twilightforest:kobold/die0",
+      "twilightforest:kobold/die1",
+      "twilightforest:kobold/die2"
+    ],
+    "subtitle": "subtitles.twilightforest.kobold.die"
+  },
+  "wraith": {
+    "sounds": [
+      "twilightforest:wraith/wraith0",
+      "twilightforest:wraith/wraith1",
+      "twilightforest:wraith/wraith2",
+      "twilightforest:wraith/wraith3"
+    ],
+    "subtitle": "subtitles.twilightforest.wraith"
+  },
+  "mosquito": {
+    "sounds": [
+      "twilightforest:mosquito/mosquito0"
+    ],
+    "subtitle": "subtitles.twilightforest.mosquito"
   }
 }

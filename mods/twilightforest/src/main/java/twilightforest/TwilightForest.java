@@ -94,6 +94,7 @@ public final class TwilightForest {
                 output.accept(HEDGE_ITEM.get());
                 output.accept(DARKWOOD_LEAVES_ITEM.get());
                 TFBlocks.TAB_ITEMS.forEach(item -> output.accept(item.get()));
+                output.acceptAll(TFEntities.tabStacks());
             }).build());
 
     public TwilightForest(IEventBus modBus) {
@@ -103,12 +104,14 @@ public final class TwilightForest {
         TABS.register(modBus);
         POI_TYPES.register(modBus);
         TFBlocks.register(modBus);
+        TFEntities.register(modBus);
         GENERATORS.register("twilight_forest", () -> TFChunkGenerator.CODEC);
         BIOME_SOURCES.register("twilight_forest", () -> TFBiomeSource.CODEC);
         GENERATORS.register(modBus);
         BIOME_SOURCES.register(modBus);
         registerOldBlocks();
         TFBlocks.registerOldBlocks();
+        TFEntities.registerOld();
         TFBlocks.GROWER = TFSaplings::grow;
         if (FMLEnvironment.getDist() == Dist.CLIENT) {
             twilightforest.client.TFClient.register(modBus);
@@ -123,9 +126,6 @@ public final class TwilightForest {
 
     /** The block ids of the pack's TwilightForest.cfg, for worldgen152. */
     private static void registerOldBlocks() {
-        // spawners of the decoration (leaf dungeons, witch huts); the Twilight mobs come with Teil 24c
-        hexxit.worldgen152.OldGameIds.registerEntity(twilightforest.gen.TFTreasure.SPAWNER_PREFIX + "Swarm Spider", "minecraft:cave_spider");
-        hexxit.worldgen152.OldGameIds.registerEntity(twilightforest.gen.TFTreasure.SPAWNER_PREFIX + "Skeleton Druid", "minecraft:skeleton");
         OldBlockStates.registerMeta(TFTerrain.HEDGE, meta -> (meta == 1 ? DARKWOOD_LEAVES.get() : HEDGE.get()).defaultBlockState());
         OldBlockStates.register(TFWorld.PORTAL, () -> PORTAL.get().defaultBlockState());
     }

@@ -114,6 +114,7 @@ public final class TFClient {
     }
 
     public static void register(IEventBus modBus) {
+        twilightforest.client.entity.TFEntityRenderers.register(modBus);
         modBus.addListener(TFClient::colors);
         modBus.addListener(EntityRenderersEvent.RegisterLayerDefinitions.class, e -> {
             e.registerLayerDefinition(CritterRenderer.FIREFLY, CritterRenderer::firefly);

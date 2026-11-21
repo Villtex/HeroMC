@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "ingredient": "twilightforest:venison",
+  "result": {
+    "id": "twilightforest:cooked_venison"
+  },
+  "experience": 0.35,
+  "cookingtime": 200
+}

@@ -152,9 +152,28 @@ public final class TFChunkGenerator extends ChunkGenerator {
         return new NoiseColumn(level.getMinY(), column);
     }
 
-    /** Animals of a new chunk come with Teil 24c (SpawnerAnimals.performWorldGenSpawning with the biome lists). */
+    /** SpawnerAnimals.performWorldGenSpawning: the animals of the biome's creature list in a new chunk. */
     @Override
     public void spawnOriginalMobs(WorldGenRegion region) {
+        ChunkPos center = region.getCenter();
+        net.minecraft.world.level.levelgen.WorldgenRandom random = new net.minecraft.world.level.levelgen.WorldgenRandom(
+                new net.minecraft.world.level.levelgen.LegacyRandomSource(net.minecraft.world.level.levelgen.RandomSupport.generateUniqueSeed()));
+        random.setDecorationSeed(region.getSeed(), center.getMinBlockX(), center.getMinBlockZ());
+        net.minecraft.world.level.NaturalSpawner.spawnMobsForChunkGeneration(region, center.getWorldPosition().atY(region.getMaxY()), center, random);
+    }
+
+    /** ChunkProviderTwilightForest.getPossibleCreatures ({@link TFSpawns}). */
+    @Override
+    public net.minecraft.util.random.WeightedList<net.minecraft.world.level.biome.MobSpawnSettings.SpawnerData> getMobsAt(Level level,
+            StructureManager structureManager, net.minecraft.world.entity.MobCategory category, BlockPos pos) {
+        TFWorld current = this.world;
+        if (current != null) {
+            var list = TFSpawns.mobsAt(current, level, category, pos, level.getBiome(pos));
+            if (list != null) {
+                return list;
+            }
+        }
+        return super.getMobsAt(level, structureManager, category, pos);
     }
 
     @Override
