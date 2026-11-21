@@ -1,0 +1,38 @@
+{
+  "display": {
+    "icon": {
+      "id": "twilightforest:zombie_scepter"
+    },
+    "title": {
+      "translate": "advancements.twilightforest.lich_scepters.title"
+    },
+    "description": {
+      "translate": "advancements.twilightforest.lich_scepters.description"
+    },
+    "frame": "challenge"
+  },
+  "criteria": {
+    "has": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "twilightforest:twilight_scepter"
+          },
+          {
+            "items": "twilightforest:lifedrain_scepter"
+          },
+          {
+            "items": "twilightforest:zombie_scepter"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has"
+    ]
+  ],
+  "parent": "twilightforest:lich"
+}

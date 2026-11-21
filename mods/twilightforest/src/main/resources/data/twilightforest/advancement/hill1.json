@@ -1,0 +1,25 @@
+{
+  "display": {
+    "icon": {
+      "id": "minecraft:iron_ore"
+    },
+    "title": {
+      "translate": "advancements.twilightforest.hill1.title"
+    },
+    "description": {
+      "translate": "advancements.twilightforest.hill1.description"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "done": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "done"
+    ]
+  ],
+  "parent": "twilightforest:arrival"
+}

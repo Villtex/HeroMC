@@ -1,0 +1,39 @@
+{
+  "display": {
+    "icon": {
+      "id": "twilightforest:maze_map"
+    },
+    "title": {
+      "translate": "advancements.twilightforest.maze_map.title"
+    },
+    "description": {
+      "translate": "advancements.twilightforest.maze_map.description"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "twilightforest:empty_maze_map"
+      }
+    },
+    "used": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "twilightforest:maze_map"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "crafted",
+      "used"
+    ]
+  ],
+  "parent": "twilightforest:hill1"
+}

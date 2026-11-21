@@ -90,7 +90,35 @@ public final class TFEventListener {
                 1.5F, 1.0F);
     }
 
+    /** Awards one of the advancements of TFAchievementPage that only code can tell. */
+    public static void award(ServerPlayer player, String name) {
+        net.minecraft.advancements.AdvancementHolder holder = player.level().getServer().getAdvancements().get(TwilightForest.id(name));
+        if (holder != null) {
+            player.getAdvancements().award(holder, "done");
+        }
+    }
+
+    /**
+     * EntityTFRedcap / EntityTFWraith / EntityTFHedgeSpider / EntityTFSwarmSpider.onDeath: killed by a player in the
+     * small hollow hill, the large hollow hill or the hedge maze (the nearest feature of the chunk).
+     */
+    static void onMobDeath(LivingDeathEvent event) {
+        if (!(event.getSource().getDirectEntity() instanceof ServerPlayer player)) {
+            return;
+        }
+        var type = event.getEntity().getType();
+        twilightforest.gen.TFFeature feature = twilightforest.entity.TFMobUtil.nearestFeature(event.getEntity());
+        if (type == TFEntities.REDCAP.get() && feature == twilightforest.gen.TFFeature.HILL1) {
+            award(player, "hill1");
+        } else if (type == TFEntities.WRAITH.get() && feature == twilightforest.gen.TFFeature.HILL3) {
+            award(player, "hill3");
+        } else if ((type == TFEntities.HEDGE_SPIDER.get() || type == TFEntities.SWARM_SPIDER.get()) && feature == twilightforest.gen.TFFeature.HEDGE_MAZE) {
+            award(player, "hedge");
+        }
+    }
+
     static void onDeath(LivingDeathEvent event) {
+        onMobDeath(event);
         if (!(event.getEntity() instanceof ServerPlayer player) || player.level().getGameRules().get(GameRules.KEEP_INVENTORY)) {
             return;
         }

@@ -1,0 +1,25 @@
+{
+  "display": {
+    "icon": {
+      "id": "twilightforest:hedge"
+    },
+    "title": {
+      "translate": "advancements.twilightforest.hedge.title"
+    },
+    "description": {
+      "translate": "advancements.twilightforest.hedge.description"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "done": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "done"
+    ]
+  ],
+  "parent": "twilightforest:arrival"
+}

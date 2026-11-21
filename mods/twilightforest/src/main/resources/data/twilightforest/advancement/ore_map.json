@@ -1,0 +1,46 @@
+{
+  "display": {
+    "icon": {
+      "id": "twilightforest:ore_map"
+    },
+    "title": {
+      "translate": "advancements.twilightforest.ore_map.title"
+    },
+    "description": {
+      "translate": "advancements.twilightforest.ore_map.description"
+    },
+    "frame": "challenge"
+  },
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "twilightforest:empty_ore_map"
+      }
+    },
+    "crafted2": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "twilightforest:empty_ore_map_from_maze_map"
+      }
+    },
+    "used": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "twilightforest:ore_map"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "crafted",
+      "crafted2",
+      "used"
+    ]
+  ],
+  "parent": "twilightforest:maze_map"
+}

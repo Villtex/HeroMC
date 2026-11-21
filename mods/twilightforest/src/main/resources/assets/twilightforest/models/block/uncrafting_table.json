@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "twilightforest:block/uncrafting_top",
+    "bottom": "twilightforest:block/uncrafting_side",
+    "side": "twilightforest:block/uncrafting_side"
+  }
+}

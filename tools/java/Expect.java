@@ -314,8 +314,6 @@ public class Expect {
             for (OldEntity e : c.entities()) {
                 String kind = e instanceof OldEntity.Mob m ? "Mob:" + m.name() : e.getClass().getSimpleName();
                 // Better Dungeons mobs: only the ones that are ported (the bosses of betterdungeons.mob)
-                // the minoshroom of the labyrinth comes with Teil 24f
-                if (kind.equals("Mob:" + twilightforest.gen.structure.ComponentTFMazeRoomBoss.MINOSHROOM)) continue;
                 if (kind.startsWith("Mob:BetterDungeons.") && !PORTED_BD_MOBS.contains(kind.substring("Mob:BetterDungeons.".length()))) continue;
                 out.append("E ").append(e.x()).append(' ').append(e.y()).append(' ').append(e.z()).append(' ').append(kind).append('\n');
             }

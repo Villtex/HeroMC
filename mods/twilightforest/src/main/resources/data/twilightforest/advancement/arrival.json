@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "id": "twilightforest:mining_log"
+    },
+    "title": {
+      "translate": "advancements.twilightforest.arrival.title"
+    },
+    "description": {
+      "translate": "advancements.twilightforest.arrival.description"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "arrived": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "twilightforest:twilight_forest"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "arrived"
+    ]
+  ],
+  "parent": "twilightforest:portal"
+}

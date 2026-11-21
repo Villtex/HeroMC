@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "id": "twilightforest:magic_map_focus"
+    },
+    "title": {
+      "translate": "advancements.twilightforest.magic_map_focus.title"
+    },
+    "description": {
+      "translate": "advancements.twilightforest.magic_map_focus.description"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "twilightforest:magic_map_focus"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "crafted"
+    ]
+  ],
+  "parent": "twilightforest:hunter"
+}

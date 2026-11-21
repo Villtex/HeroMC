@@ -1,0 +1,35 @@
+{
+  "display": {
+    "icon": {
+      "id": "twilightforest:naga_chestplate"
+    },
+    "title": {
+      "translate": "advancements.twilightforest.naga_armors.title"
+    },
+    "description": {
+      "translate": "advancements.twilightforest.naga_armors.description"
+    },
+    "frame": "challenge"
+  },
+  "criteria": {
+    "has": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "twilightforest:naga_chestplate"
+          },
+          {
+            "items": "twilightforest:naga_leggings"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has"
+    ]
+  ],
+  "parent": "twilightforest:naga"
+}

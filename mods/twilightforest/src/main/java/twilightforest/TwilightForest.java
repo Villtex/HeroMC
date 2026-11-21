@@ -98,6 +98,7 @@ public final class TwilightForest {
                 TFTower.TAB_ITEMS.forEach(item -> output.accept(item.get()));
                 TFItems.TAB_ITEMS.forEach(item -> output.accept(item.apply(params.holders())));
                 output.acceptAll(TFEntities.tabStacks());
+                output.accept(TFUncrafting.UNCRAFTING_TABLE_ITEM.get());
                 output.acceptAll(TFBosses.tabStacks());
             }).build());
 
@@ -113,6 +114,7 @@ public final class TwilightForest {
         TFItems.register(modBus);
         TFHydra.register(modBus);
         TFBosses.register(modBus);
+        TFUncrafting.register(modBus);
         GENERATORS.register("twilight_forest", () -> TFChunkGenerator.CODEC);
         BIOME_SOURCES.register("twilight_forest", () -> TFBiomeSource.CODEC);
         GENERATORS.register(modBus);
@@ -123,6 +125,7 @@ public final class TwilightForest {
         TFEntities.registerOld();
         TFItems.registerOld();
         TFBosses.registerOld();
+        TFUncrafting.registerOld();
         OldGameIds.registerEnchantment(TFEnchantment.OLD_ID, TFEnchantment.FIERY_AURA);
         twilightforest.block.MazestoneBlock.SPARED = stack -> stack.is(TFItems.MAZEBREAKER_PICKAXE.get());
         TFBlocks.GROWER = TFSaplings::grow;
@@ -178,7 +181,9 @@ public final class TwilightForest {
                     level.sendParticles(SpellParticleOption.create(ParticleTypes.EFFECT, -1, 1.0F), item.getX(), item.getY() + 0.2, item.getZ(),
                             0, 0.0, d, 0.0, 1.0);
                 }
-                PORTAL.get().tryToCreatePortal(level, Mth.floor(item.getX()), Mth.floor(item.getY()), Mth.floor(item.getZ()));
+                if (PORTAL.get().tryToCreatePortal(level, Mth.floor(item.getX()), Mth.floor(item.getY()), Mth.floor(item.getZ()))) {
+                    TFEventListener.award(player, "portal");
+                }
             }
         }
     }

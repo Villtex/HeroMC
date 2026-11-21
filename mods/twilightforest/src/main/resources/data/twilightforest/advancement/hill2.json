@@ -1,0 +1,25 @@
+{
+  "display": {
+    "icon": {
+      "id": "minecraft:gold_ore"
+    },
+    "title": {
+      "translate": "advancements.twilightforest.hill2.title"
+    },
+    "description": {
+      "translate": "advancements.twilightforest.hill2.description"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "done": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "done"
+    ]
+  ],
+  "parent": "twilightforest:arrival"
+}

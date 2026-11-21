@@ -278,3 +278,99 @@ for kind, src, en, de in (('hydra', 'hydraTrophy', 'Hydra Trophy', 'Hydra-Troph�
         write(f'assets/{NS}/blockstates/{b}.json', {'variants': {'': {'model': n(f'block/{b}')}}})
         write(f'data/{NS}/loot_table/blocks/{b}.json', {'type': 'minecraft:block', 'pools': [{'rolls': 1, 'entries': [
             {'type': 'minecraft:item', 'name': n(t)}], 'condition': {'type': 'minecraft:survives_explosion'}}], 'random_sequence': f'{NS}:blocks/{b}'})
+
+# ================================================================= TFAchievementPage -> advancements
+HUNTER_PREY = ['fire_beetle', 'slime_beetle', 'pinch_beetle', 'death_tome', 'hostile_wolf', 'wraith', 'kobold', 'minotaur', 'hedge_spider', 'lich',
+               'swarm_spider', 'block_goblin', 'helmet_crab', 'lich_minion', 'tiny_bird', 'penguin', 'wild_deer', 'bunny', 'bighorn_sheep',
+               'squirrel', 'wild_boar', 'redcap', 'naga', 'mosquito_swarm', 'hydra', 'skeleton_druid']
+tag('entity_type', f'{NS}:hunter_prey', *[n(m) for m in HUNTER_PREY])
+
+
+def killed(mob):
+    return {'trigger': 'minecraft:player_killed_entity', 'conditions': {'entity': {'type': 'minecraft:entity_properties', 'entity': 'this',
+                                                                                     'predicate': {'minecraft:entity_type': mob}}}}
+
+
+def has(*items):
+    return {'trigger': 'minecraft:inventory_changed', 'conditions': {'items': [{'items': n(i)} for i in items]}}
+
+
+def crafted(recipe):
+    return {'trigger': 'minecraft:recipe_crafted', 'conditions': {'recipe_id': n(recipe)}}
+
+
+IMPOSSIBLE = {'trigger': 'minecraft:impossible'}
+ARRIVED = {'trigger': 'minecraft:changed_dimension', 'conditions': {'to': n('twilight_forest')}}
+# (advancement, old key, icon, parent, frame, criteria, en title, en description, de title, de description)
+ADV = [
+    ('portal', 'twilightPortal', 'minecraft:diamond', None, 'challenge', {'done': IMPOSSIBLE, 'arrived': ARRIVED},
+     'Twilight Portal', 'Build a portal to the Twilight Forest', 'Zwielichtportal', 'Baue ein Portal in den Zwielichtwald'),
+    ('arrival', 'twilightArrival', 'mining_log', 'portal', 'task', {'arrived': ARRIVED},
+     'Twilight Arrival', 'Arrive in the Twilight Forest', 'Ankunft im Zwielicht', 'Komm im Zwielichtwald an'),
+    ('hunter', 'twilightHunter', 'raven_feather', 'arrival', 'task', {'killed': killed(f'#{NS}:hunter_prey')},
+     'Twilight Hunter', 'Hunt some of the local wildlife', 'Zwielichtjäger', 'Jage etwas von der heimischen Tierwelt'),
+    ('magic_map_focus', 'twilightMagicMapFocus', 'magic_map_focus', 'hunter', 'task', {'crafted': crafted('magic_map_focus')},
+     'With Fire It Writes', "Craft the magic map focus with a raven's feather, glowstone dust, and torchberries",
+     'Mit Feuer geschrieben', 'Stelle den magischen Kartenfokus aus Rabenfeder, Glowstonestaub und Fackelbeeren her'),
+    ('naga', 'twilightNaga', 'naga_scale', 'hunter', 'task', {'killed': killed(n('naga'))},
+     'Naga Hunter', 'Slay the naga', 'Nagajäger', 'Erschlage die Naga'),
+    ('naga_armors', 'twilightNagaArmors', 'naga_chestplate', 'naga', 'challenge', {'has': has('naga_chestplate', 'naga_leggings')},
+     'Naga Armorer', 'Craft naga scale chest and leg armor', 'Naga-Rüstmeister', 'Stelle Wams und Beinlinge aus Nagaschuppen her'),
+    ('lich', 'twilightLich', 'twilight_scepter', 'hunter', 'task', {'killed': killed(n('lich'))},
+     'Lich Hunter', 'Slay the lich', 'Lichjäger', 'Erschlage den Lich'),
+    ('lich_scepters', 'twilightLichScepters', 'zombie_scepter', 'lich', 'challenge',
+     {'has': has('twilight_scepter', 'lifedrain_scepter', 'zombie_scepter')},
+     'Scepter Mastery', 'Acquire all three scepters of power', 'Meister der Zepter', 'Besitze alle drei Zepter der Macht'),
+    ('hill1', 'twilightHill1', 'minecraft:iron_ore', 'arrival', 'task', {'done': IMPOSSIBLE},
+     'The Boots Are Mine!', 'Defeat a redcap goblin in a small hollow hill', 'Die Stiefel gehören mir!',
+     'Besiege einen Rotkappen-Kobold in einem kleinen hohlen Hügel'),
+    ('hill2', 'twilightHill2', 'minecraft:gold_ore', 'arrival', 'task', {'done': IMPOSSIBLE},
+     'Medium Hill [NYI]', 'Defeat a (no unique monster) in a medium hollow hill', 'Mittlerer Hügel [NYI]',
+     'Besiege ein (kein besonderes Monster) in einem mittleren hohlen Hügel'),
+    ('hill3', 'twilightHill3', 'minecraft:diamond_ore', 'arrival', 'task', {'done': IMPOSSIBLE},
+     'I See Right Through You', 'Defeat a twilight wraith in a large hollow hill', 'Ich durchschaue dich',
+     'Besiege ein Zwielicht-Gespenst in einem großen hohlen Hügel'),
+    ('hedge', 'twilightHedge', 'hedge', 'arrival', 'task', {'done': IMPOSSIBLE},
+     'Bug Stomper', 'Defeat a spider in a hedge maze', 'Käferzertreter', 'Besiege eine Spinne in einem Heckenlabyrinth'),
+    ('magic_map', 'twilightMagicMap', 'magic_map', 'magic_map_focus', 'task', {'crafted': crafted('empty_magic_map'), 'used': has('magic_map')},
+     'I Can See For Miles', 'Craft the magic map', 'Ich sehe meilenweit', 'Stelle die magische Karte her'),
+    ('maze_map', 'twilightMazeMap', 'maze_map', 'hill1', 'task', {'crafted': crafted('empty_maze_map'), 'used': has('maze_map')},
+     'And Now, to Find the Exit', 'Craft the maze map after obtaining the focus from a goblin', 'Und jetzt den Ausgang finden',
+     'Stelle die Labyrinthkarte her, nachdem du den Fokus von einem Kobold bekommen hast'),
+    ('ore_map', 'twilightOreMap', 'ore_map', 'maze_map', 'challenge', {'crafted': crafted('empty_ore_map'), 'crafted2': crafted('empty_ore_map_from_maze_map'),
+                                                                     'used': has('ore_map')},
+     'How Can That Be Worth It?', 'Craft the maze/ore map', 'Wie kann sich das lohnen?', 'Stelle die Labyrinth-/Erzkarte her'),
+]
+for adv, old, icon, parent, frame, criteria, en_t, en_d, de_t, de_d in ADV:
+    obj = {'display': {'icon': {'id': icon if ':' in icon else n(icon)}, 'title': {'translate': f'advancements.{NS}.{adv}.title'},
+                       'description': {'translate': f'advancements.{NS}.{adv}.description'}, 'frame': frame},
+           'criteria': criteria, 'requirements': [list(criteria.keys())]}
+    if parent:
+        obj['parent'] = n(parent)
+    else:
+        obj['display']['background'] = 'minecraft:block/obsidian'
+    write(f'data/{NS}/advancement/{adv}.json', obj)
+    names(f'advancements.{NS}.{adv}.title', en_t, de_t)
+    names(f'advancements.{NS}.{adv}.description', en_d, de_d)
+
+# ================================================================= the uncrafting table (BlockTFUncraftingTable, ContainerTFUncrafting)
+tex('uncrafting_top', 'uncrafting_top')
+tex('uncrafting_side', 'uncrafting_side')
+ASSETS.append(('mods/twilightforest/textures/gui/guigoblintinkering.png', f'assets/{NS}/textures/gui/uncrafting.png'))
+model('uncrafting_table', {'parent': 'minecraft:block/cube_bottom_top', 'textures': {'top': n('block/uncrafting_top'), 'bottom': n('block/uncrafting_side'),
+                                                                                     'side': n('block/uncrafting_side')}})
+simple_state('uncrafting_table')
+item_def('uncrafting_table', n('block/uncrafting_table'))
+block_name('uncrafting_table', 'Uncrafting Table', 'Entwerkbank')
+names(f'container.{NS}.uncrafting_table', 'Uncrafting Table', 'Entwerkbank')
+self_drop('uncrafting_table')
+btag('minecraft:mineable/axe', 'uncrafting_table')
+shaped_c('uncrafting_table', ['###', '#X#', '###'], {'#': I + 'crafting_table', 'X': n('maze_map_focus')}, n('uncrafting_table'), None, 1, 'misc')
+names(f'jei.{NS}.uncrafting_table',
+      'Put a crafted item in the left slot: it comes apart into the ingredients of its shaped recipe. Taking them costs one level per part '
+      '(not sticks); damaged items lose some parts. While the parts are shown, items put into the grid replace them: a tool or armour '
+      'piece of the same kind keeps its name and fitting enchantments, for the level cost on the right. Without an input it is a crafting table.',
+      'Lege einen hergestellten Gegenstand links hinein: Er zerfällt in die Zutaten seines geformten Rezepts. Sie zu nehmen kostet eine '
+      'Stufe je Teil (keine Stöcke); beschädigte Gegenstände verlieren Teile. Solange die Teile angezeigt werden, ersetzen Gegenstände im '
+      'Raster sie: Ein Werkzeug oder Rüstungsteil derselben Art behält Namen und passende Verzauberungen, für die Stufenkosten rechts. '
+      'Ohne Eingabe ist sie eine Werkbank.')

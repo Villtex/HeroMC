@@ -1,0 +1,32 @@
+{
+  "display": {
+    "icon": {
+      "id": "minecraft:diamond"
+    },
+    "title": {
+      "translate": "advancements.twilightforest.portal.title"
+    },
+    "description": {
+      "translate": "advancements.twilightforest.portal.description"
+    },
+    "frame": "challenge",
+    "background": "minecraft:block/obsidian"
+  },
+  "criteria": {
+    "done": {
+      "trigger": "minecraft:impossible"
+    },
+    "arrived": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "twilightforest:twilight_forest"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "done",
+      "arrived"
+    ]
+  ]
+}

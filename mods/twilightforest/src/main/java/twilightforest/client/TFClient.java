@@ -118,6 +118,8 @@ public final class TFClient {
         twilightforest.client.entity.hydra.HydraRenderers.register(modBus);
         twilightforest.client.entity.BossRenderers.register(modBus);
         modBus.addListener(TFClient::colors);
+        modBus.addListener((net.neoforged.neoforge.client.event.RegisterMenuScreensEvent e) -> e.register(twilightforest.TFUncrafting.MENU.get(),
+                twilightforest.client.gui.UncraftingScreen::new));
         modBus.addListener(EntityRenderersEvent.RegisterLayerDefinitions.class, e -> {
             e.registerLayerDefinition(CritterRenderer.FIREFLY, CritterRenderer::firefly);
             e.registerLayerDefinition(CritterRenderer.CICADA, CritterRenderer::cicada);

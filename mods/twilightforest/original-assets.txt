@@ -292,3 +292,6 @@ mods/twilightforest/textures/items/hydraTrophy.png -> assets/twilightforest/text
 mods/twilightforest/textures/items/nagaTrophy.png -> assets/twilightforest/textures/item/naga_trophy.png
 mods/twilightforest/textures/items/lichTrophy.png -> assets/twilightforest/textures/item/lich_trophy.png
 mods/twilightforest/textures/items/urGhastTrophy.png -> assets/twilightforest/textures/item/ur_ghast_trophy.png
+mods/twilightforest/textures/blocks/uncrafting_top.png -> assets/twilightforest/textures/block/uncrafting_top.png
+mods/twilightforest/textures/blocks/uncrafting_side.png -> assets/twilightforest/textures/block/uncrafting_side.png
+mods/twilightforest/textures/gui/guigoblintinkering.png -> assets/twilightforest/textures/gui/uncrafting.png
