@@ -70,7 +70,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 25a | Tinkers' Construct A: Werkzeug-Kern (Materialien, Teile, Muster, Tische, Zusammenbau, Modifikatoren anbringen) | ~10.000 | 3 | Opus 5.5, hoch | ✅ erledigt |
 | 25b | Tinkers' Construct B: Werkzeuge im Einsatz (Fähigkeiten, Modifikator-Effekte, Bogen, Wurfwaffen) und ihre Darstellung | ~9.000 | 25a | Fable 5.2, hoch | ✅ erledigt |
 | 25c | Tinkers' Construct C: Schmelzerei, flüssige Metalle, Gießen, Legierungen, Trockengestell | ~11.000 | 25a | Fable 5.2, hoch | ✅ erledigt |
-| 25d | Tinkers' Construct D: Weltgenerierung, Schleiminseln, Dorf-Bauteile, Dorfbewohner | ~4.000 | 25c | Fable 5.2, extra hoch | offen |
+| 25d | Tinkers' Construct D: Weltgenerierung, Schleiminseln, Dorf-Bauteile, Dorfbewohner | ~4.000 | 25c | Fable 5.2, extra hoch | ✅ erledigt |
 | 25e | Tinkers' Construct E: Spieler (Rucksack, Herzen, Handschuh, Ereignisse), Handbücher, Essen, Mobs | ~8.000 | 25a | Opus 5.5, mittel | offen |
 | 25f | Tinkers' Construct F: Deko-Blöcke, Fallen, Landmine, Redstone-Maschinen, Kristall/Essenz | ~9.000 | 25a | Opus 5.5, mittel | offen |
 
@@ -175,7 +175,7 @@ So ist es gebaut (`hexxit.worldgen152.core.populate`, reines Java):
 |---|---|---|
 | Vanilla-Server 1.5.2: Spawngebiet, ein Dorf, eine Festung, Minenschächte | 1.023 Chunks, 67,0 Mio. Blöcke | 0,0046 % weichen ab (3.086 Blöcke), 932 Chunks ohne jede Abweichung; Spawnpunkt 293/58 gleich |
 | Hexxit-Server 1.0.10: Spawngebiet | 331 Chunks, 84.736 Biom-Spalten | Biome 100 % gleich, Spawnpunkt 329/60 gleich; Blöcke siehe „Erwartete Unterschiede“ |
-| Hexxit-Server 1.0.10: Gebiet des vorhergesagten Dorfs (Chunk -20/-28) | 49 Chunks | Dorf steht an der vorhergesagten Stelle, einzelne Häuser decken sich; der Grundriss weicht ab, siehe unten |
+| Hexxit-Server 1.0.10: Gebiet des vorhergesagten Dorfs (Chunk -20/-28) | 49 Chunks | Dorf steht an der vorhergesagten Stelle; seit Teil 25d (Tinkers-Bauteile) auch der Grundriss: 1.253 Strukturblöcke gleich, Werkzeugschmiede an derselben Stelle |
 
 Im Vanilla-Abgleich stimmen Dorf, Festung und Minenschacht Block für Block, die Dungeon-Truhen Slot für Slot
 (Gegenstand, Anzahl, Verzauberung). Was abweicht:
@@ -198,8 +198,8 @@ Blöcke), CoFHWorld ersetzt die Vanilla-Erze, und jeder Mod-Generator verbraucht
 Erde-, Kies- und Erzadern der Vanilla-Dekoration woanders liegen. Das löst sich erst mit den Teilen 3, 5, 7, 8,
 11–14, 18 und 19 auf; `compare_original.py` gegen `.cache/original/hexxit/world` ist dafür der Maßstab.
 
-**Dörfer in der Hexxit-Welt haben einen anderen Grundriss als im Port,** solange die Dorf-Bauteile der Mods
-fehlen: Tinkers' Construct (Werkzeugschmiede, Schmelzerei; zurückgestellt als Teil 25) hängt eigene Bauteile in
+**Dörfer:** (erledigt mit Teil 25d, Grundriss jetzt wie im Original) Früher hatten sie einen anderen Grundriss, weil die Dorf-Bauteile der Mods
+fehlten: Tinkers' Construct (Werkzeugschmiede, Schmelzerei; zurückgestellt als Teil 25) hängt eigene Bauteile in
 die Auswahl (Better Dungeons nicht: sein `VillageHandler` ist nur ein Handels-Handler, Teil 13). Schon deren Gewichte verbrauchen Zufallszahlen des Dorfs,
 danach wählt das Dorf andere Häuser. Die Schnittstelle dafür ist da (`OldStructures.VILLAGE_HANDLERS`). Wer die
 Dörfer vor Teil 25 originalgetreu haben will, muss die zwei Tinkers-Bauteile vorziehen. Forge hielt diese
@@ -1719,6 +1719,36 @@ Quellen: `worldgen/*`, `worldgen/village/*`, `blocks/{OreberryBush,OreberryBushE
   Tinkers-Dorfbewohner mit Handel, Kistenbeute `tinkerHouseChest`/`tinkerHousePatterns`.
 - Danach `tools/expect.sh` + `tools/verify_blocks.py` mit 0 Abweichungen; `compare_original.py` gegen die
   Hexxit-Welt, Dorf-Grundrisse jetzt originalgetreu.
+
+#### Teil 25d – Stand (✅ erledigt)
+
+Kern ohne Spielklassen in `mods/tconstruct/src/main/java/tconstruct/gen` (in `tools/expect.sh`/`Expect.java` eingetragen),
+Spielseite `TWorld` + `tconstruct.world`, Mob `entity/BlueSlime`, Daten aus `tools/gen_world.py`. Offenes in `mods/tconstruct/TODO.md`.
+- `TBaseWorldGenerator` (FML-ID `TConstruct`): Kupfer/Zinn/Aluminium im Stein (doppelt in den Extreme Hills), sechs
+  Erzbeeren-Generatoren nur in der Oberwelt (Eisen, Gold, Kupfer, Zinn, Aluminium, Essenz; der „Silber“-Busch des Originals
+  ist der Essenzbusch, ersetzt nur nicht-opake Blöcke: leere Zielliste), Kobalt/Ardit im Nether (auch in Naturas Tainted Soil),
+  danach `SlimeIslandGen` (Oberwelt und Dimensionen ab 2, also auch Twilight Forest); Oberflächenerze aus Kies am SAND-Event
+  der Dekoration (Kobalt-Oberfläche ist im Original nie an). Werte aus `TinkersWorkshop.txt`.
+- Schleiminseln: Ellipse aus blauer Schleimerde, Erosion, Schleimgras, Becken mit flüssigem blauem Schleim und erstarrtem
+  Schleim am Rand, hohes Schleimgras, drei Schleimbäume. Das Original zog Form und Bäume aus `new Random()` ohne Seed; hier
+  eine Zufallsfolge je Chunk aus dem Seed (unter „Offen“).
+- Blöcke/Items: 6 Erzbeeren-Büsche (Alter 0–3, wachsen im Dunkeln, Essenz immer; Ernte links/rechts, stechen), 6 Erzbeeren
+  (Essenz gibt Erfahrung; Ofen → Klumpen, Schmelzerei 16 mB), 3 erstarrte Schleime (federn), Schleimgras (2, breitet sich aus),
+  hohes Schleimgras, Schleimblätter, Schleimsetzling (wächst zum Schleimbaum, ohne Knochenmehl wie im Original), flüssiger
+  blauer Schleim, Gallertartiger Schleim, Kleines rotes Herz. Alte IDs 1317/1318/1345/1350/2384–2387, 6027:1, 6037, 6038.
+- Blauer Schleim (`EdibleSlime`): Größe 2/4 oder 1 in 299 Königsschleim (100 Leben, Bossleiste, Werkzeug aus Blauschleim +
+  1 in 5 ein Kleines rotes Herz), schrumpft im Sonnenlicht, halber Pfeilschaden, kein Fallschaden, Loot je Größe. Spawn nur
+  aus flüssigem Schleim: „Activate Blue Slime Spawns“ las das Original wirklich nicht, eine Spawnliste gab es nicht.
+- Dorf: Werkzeugschmiede (Gewicht 30) und Schmelzerei (9, 1 in 10 Dörfern) über `OldStructures.VILLAGE_HANDLERS`, Musterkiste
+  und Truhe mit `TinkerPatterns`/`TinkerHouse`, Tüftler (Beruf 78943 → `tconstruct:tinker`, Handel 14/23 Kolben gegen
+  Aluminium-/Eisen-Beerenbusch). Herz in Dungeon- und Tempeltruhen (`addLoot`).
+- Geprüft: `verify_blocks.py` (Seed 1234) 79 Chunks mit Inseln, Oberflächenerzen und Büschen 438.681 Blöcke gleich (1 Wasser
+  nachgeflossen), 36 Struktur-Chunks inkl. zwei Werkzeugschmieden 0 Abweichungen (Musterkisten-Inhalt, Tüftler), Nether
+  0, Twilight Forest 0. `compare_original.py`: Tinkers-IDs nur noch symmetrisch (Reihenfolge der Generatoren), Dorf an
+  Chunk −20/−28 mit Grundriss wie im Original. Am Testserver: Königsschleim-Drops, Schleim aus dem Becken, Busch- und
+  Setzlingswachstum, Rezepte über Crafter.
+- Offen: Client-Prüfung (Modelle, Flüssigkeit, Schleim-Renderer, Tüftler-Textur, Handel im Menü); Inseln nicht seed-fest wie
+  im Original.
 
 ### Teil 25e – Spieler, Ausrüstung, Bücher, Essen, Mobs
 Quellen: `util/player/*`, `items/armor/*`, `client/gui/{ArmorExtendedGui,KnapsackGui,InventoryTab,NewContainerGui,
