@@ -149,5 +149,41 @@
       "twilightforest:naga/nagahurt2"
     ],
     "subtitle": "subtitles.twilightforest.naga.hurt"
+  },
+  "hydra.growl": {
+    "sounds": [
+      "twilightforest:hydra/growl1",
+      "twilightforest:hydra/growl2",
+      "twilightforest:hydra/growl3"
+    ],
+    "subtitle": "subtitles.twilightforest.hydra.growl"
+  },
+  "hydra.hurt": {
+    "sounds": [
+      "twilightforest:hydra/hurt5",
+      "twilightforest:hydra/hurt2",
+      "twilightforest:hydra/hurt6",
+      "twilightforest:hydra/hurt4"
+    ],
+    "subtitle": "subtitles.twilightforest.hydra.hurt"
+  },
+  "hydra.death": {
+    "sounds": [
+      "twilightforest:hydra/death"
+    ],
+    "subtitle": "subtitles.twilightforest.hydra.death"
+  },
+  "hydra.roar": {
+    "sounds": [
+      "twilightforest:hydra/roar3",
+      "twilightforest:hydra/roar4"
+    ],
+    "subtitle": "subtitles.twilightforest.hydra.roar"
+  },
+  "hydra.warn": {
+    "sounds": [
+      "twilightforest:hydra/warn1"
+    ],
+    "subtitle": "subtitles.twilightforest.hydra.warn"
   }
 }

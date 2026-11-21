@@ -333,5 +333,14 @@
   "advancements.twilightforest.ore_map.description": "Craft the maze/ore map",
   "block.twilightforest.uncrafting_table": "Uncrafting Table",
   "container.twilightforest.uncrafting_table": "Uncrafting Table",
-  "jei.twilightforest.uncrafting_table": "Put a crafted item in the left slot: it comes apart into the ingredients of its shaped recipe. Taking them costs one level per part (not sticks); damaged items lose some parts. While the parts are shown, items put into the grid replace them: a tool or armour piece of the same kind keeps its name and fitting enchantments, for the level cost on the right. Without an input it is a crafting table."
+  "jei.twilightforest.uncrafting_table": "Put a crafted item in the left slot: it comes apart into the ingredients of its shaped recipe. Taking them costs one level per part (not sticks); damaged items lose some parts. While the parts are shown, items put into the grid replace them: a tool or armour piece of the same kind keeps its name and fitting enchantments, for the level cost on the right. Without an input it is a crafting table.",
+  "entity.twilightforest.hydra": "Hydra",
+  "entity.twilightforest.hydra_head": "Hydra Head",
+  "entity.twilightforest.hydra_mortar": "Hydra Mortar",
+  "item.twilightforest.hydra_spawn_egg": "Hydra Spawn Egg",
+  "subtitles.twilightforest.hydra.growl": "Hydra growls",
+  "subtitles.twilightforest.hydra.hurt": "Hydra hurts",
+  "subtitles.twilightforest.hydra.death": "Hydra dies",
+  "subtitles.twilightforest.hydra.roar": "Hydra roars",
+  "subtitles.twilightforest.hydra.warn": "Hydra hisses"
 }

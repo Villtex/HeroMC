@@ -266,8 +266,9 @@ public class Hydra extends Mob implements Enemy {
             }
         }
         this.secondaryAttacks(level);
-        if (this.isInWater() || this.isInLava()) {
-            this.setJumping(this.random.nextFloat() < 0.8F);
+        // isJumping = rand < 0.8 in water or lava (the jump control sets the flag after this method)
+        if ((this.isInWater() || this.isInLava()) && this.random.nextFloat() < 0.8F) {
+            this.getJumpControl().jump();
         }
     }
 
@@ -598,6 +599,11 @@ public class Hydra extends Mob implements Enemy {
     @Override
     public boolean isPushable() {
         return false;
+    }
+
+    /** Its onLivingUpdate never called collideWithNearbyEntities: only the body and the tail push. */
+    @Override
+    protected void pushEntities() {
     }
 
     @Override

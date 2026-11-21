@@ -333,5 +333,14 @@
   "advancements.twilightforest.ore_map.description": "Stelle die Labyrinth-/Erzkarte her",
   "block.twilightforest.uncrafting_table": "Entwerkbank",
   "container.twilightforest.uncrafting_table": "Entwerkbank",
-  "jei.twilightforest.uncrafting_table": "Lege einen hergestellten Gegenstand links hinein: Er zerf\u00e4llt in die Zutaten seines geformten Rezepts. Sie zu nehmen kostet eine Stufe je Teil (keine St\u00f6cke); besch\u00e4digte Gegenst\u00e4nde verlieren Teile. Solange die Teile angezeigt werden, ersetzen Gegenst\u00e4nde im Raster sie: Ein Werkzeug oder R\u00fcstungsteil derselben Art beh\u00e4lt Namen und passende Verzauberungen, f\u00fcr die Stufenkosten rechts. Ohne Eingabe ist sie eine Werkbank."
+  "jei.twilightforest.uncrafting_table": "Lege einen hergestellten Gegenstand links hinein: Er zerf\u00e4llt in die Zutaten seines geformten Rezepts. Sie zu nehmen kostet eine Stufe je Teil (keine St\u00f6cke); besch\u00e4digte Gegenst\u00e4nde verlieren Teile. Solange die Teile angezeigt werden, ersetzen Gegenst\u00e4nde im Raster sie: Ein Werkzeug oder R\u00fcstungsteil derselben Art beh\u00e4lt Namen und passende Verzauberungen, f\u00fcr die Stufenkosten rechts. Ohne Eingabe ist sie eine Werkbank.",
+  "entity.twilightforest.hydra": "Hydra",
+  "entity.twilightforest.hydra_head": "Hydrakopf",
+  "entity.twilightforest.hydra_mortar": "Hydra-M\u00f6rser",
+  "item.twilightforest.hydra_spawn_egg": "Spawn-Ei (Hydra)",
+  "subtitles.twilightforest.hydra.growl": "Hydra knurrt",
+  "subtitles.twilightforest.hydra.hurt": "Hydra verletzt",
+  "subtitles.twilightforest.hydra.death": "Hydra stirbt",
+  "subtitles.twilightforest.hydra.roar": "Hydra br\u00fcllt",
+  "subtitles.twilightforest.hydra.warn": "Hydra zischt"
 }

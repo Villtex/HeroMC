@@ -295,3 +295,16 @@ mods/twilightforest/textures/items/urGhastTrophy.png -> assets/twilightforest/te
 mods/twilightforest/textures/blocks/uncrafting_top.png -> assets/twilightforest/textures/block/uncrafting_top.png
 mods/twilightforest/textures/blocks/uncrafting_side.png -> assets/twilightforest/textures/block/uncrafting_side.png
 mods/twilightforest/textures/gui/guigoblintinkering.png -> assets/twilightforest/textures/gui/uncrafting.png
+mods/twilightforest/textures/model/hydra4.png -> assets/twilightforest/textures/entity/hydra.png
+mods/twilightforest/textures/model/hydramortar.png -> assets/twilightforest/textures/entity/hydra_mortar.png
+mods/twilightforest/sounds/hydra/growl1.ogg -> assets/twilightforest/sounds/hydra/growl1.ogg
+mods/twilightforest/sounds/hydra/growl2.ogg -> assets/twilightforest/sounds/hydra/growl2.ogg
+mods/twilightforest/sounds/hydra/growl3.ogg -> assets/twilightforest/sounds/hydra/growl3.ogg
+mods/twilightforest/sounds/hydra/hurt5.ogg -> assets/twilightforest/sounds/hydra/hurt5.ogg
+mods/twilightforest/sounds/hydra/hurt2.ogg -> assets/twilightforest/sounds/hydra/hurt2.ogg
+mods/twilightforest/sounds/hydra/hurt6.ogg -> assets/twilightforest/sounds/hydra/hurt6.ogg
+mods/twilightforest/sounds/hydra/hurt4.ogg -> assets/twilightforest/sounds/hydra/hurt4.ogg
+mods/twilightforest/sounds/hydra/death.ogg -> assets/twilightforest/sounds/hydra/death.ogg
+mods/twilightforest/sounds/hydra/roar3.ogg -> assets/twilightforest/sounds/hydra/roar3.ogg
+mods/twilightforest/sounds/hydra/roar4.ogg -> assets/twilightforest/sounds/hydra/roar4.ogg
+mods/twilightforest/sounds/hydra/warn1.ogg -> assets/twilightforest/sounds/hydra/warn1.ogg
