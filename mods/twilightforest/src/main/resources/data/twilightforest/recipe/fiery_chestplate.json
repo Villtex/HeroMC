@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "twilightforest:fiery_ingot"
+  },
+  "pattern": [
+    "# #",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "twilightforest:fiery_chestplate",
+    "components": {
+      "minecraft:enchantments": {
+        "twilightforest:fiery_aura": 2
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "e": "twilightforest:encased_tower_wood",
+    "w": "twilightforest:tower_wood",
+    "c": "twilightforest:carminite"
+  },
+  "pattern": [
+    "ewe",
+    "wcw",
+    "ewe"
+  ],
+  "result": {
+    "count": 8,
+    "id": "twilightforest:vanishing_block"
+  }
+}

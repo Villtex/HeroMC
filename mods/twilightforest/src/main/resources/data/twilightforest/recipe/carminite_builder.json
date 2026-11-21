@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "e": "twilightforest:encased_tower_wood",
+    "d": "minecraft:dispenser",
+    "c": "twilightforest:carminite"
+  },
+  "pattern": [
+    "ece",
+    "cdc",
+    "ece"
+  ],
+  "result": {
+    "count": 1,
+    "id": "twilightforest:carminite_builder"
+  }
+}

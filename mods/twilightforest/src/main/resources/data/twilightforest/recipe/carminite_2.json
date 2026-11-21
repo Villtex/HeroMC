@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "b": "twilightforest:borer_essence",
+    "r": "minecraft:redstone",
+    "g": "minecraft:ghast_tear"
+  },
+  "pattern": [
+    "rbr",
+    "bgb",
+    "rbr"
+  ],
+  "result": {
+    "count": 1,
+    "id": "twilightforest:carminite"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "twilightforest:naga_scale"
+  },
+  "pattern": [
+    "# #",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "twilightforest:naga_chestplate",
+    "components": {
+      "minecraft:enchantments": {
+        "minecraft:fire_protection": 3
+      }
+    }
+  }
+}

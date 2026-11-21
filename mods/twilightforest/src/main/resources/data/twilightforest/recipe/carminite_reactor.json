@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "e": "twilightforest:encased_tower_wood",
+    "o": "minecraft:redstone_ore",
+    "c": "twilightforest:carminite"
+  },
+  "pattern": [
+    "ece",
+    "coc",
+    "ece"
+  ],
+  "result": {
+    "count": 1,
+    "id": "twilightforest:carminite_reactor"
+  }
+}

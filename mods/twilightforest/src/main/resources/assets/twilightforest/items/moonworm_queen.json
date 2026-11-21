@@ -1,0 +1,1379 @@
+{
+  "model": {
+    "type": "minecraft:condition",
+    "property": "minecraft:using_item",
+    "on_false": {
+      "type": "minecraft:model",
+      "model": "twilightforest:item/moonworm_queen"
+    },
+    "on_true": {
+      "type": "minecraft:range_dispatch",
+      "property": "minecraft:use_duration",
+      "scale": 1.0,
+      "fallback": {
+        "type": "minecraft:model",
+        "model": "twilightforest:item/moonworm_queen"
+      },
+      "entries": [
+        {
+          "threshold": 12,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 14,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 16,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 18,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 20,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 22,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 24,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 26,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 28,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 30,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 32,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 34,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 36,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 38,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 40,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 42,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 44,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 46,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 48,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 50,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 52,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 54,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 56,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 58,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 60,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 62,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 64,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 66,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 68,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 70,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 72,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 74,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 76,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 78,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 80,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 82,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 84,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 86,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 88,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 90,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 92,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 94,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 96,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 98,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 100,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 102,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 104,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 106,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 108,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 110,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 112,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 114,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 116,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 118,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 120,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 122,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 124,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 126,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 128,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 130,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 132,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 134,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 136,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 138,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 140,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 142,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 144,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 146,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 148,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 150,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 152,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 154,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 156,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 158,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 160,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 162,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 164,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 166,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 168,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 170,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 172,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 174,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 176,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 178,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 180,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 182,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 184,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 186,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 188,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 190,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 192,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 194,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 196,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 198,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 200,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 202,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 204,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 206,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 208,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 210,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 212,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 214,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 216,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 218,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 220,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 222,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 224,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 226,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 228,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 230,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 232,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 234,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 236,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 238,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 240,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 242,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 244,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 246,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 248,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 250,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 252,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 254,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 256,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 258,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 260,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 262,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 264,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 266,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 268,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 270,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 272,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 274,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 276,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 278,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 280,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 282,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 284,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 286,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 288,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 290,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 292,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 294,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 296,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 298,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 300,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 302,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 304,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 306,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 308,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 310,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 312,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 314,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 316,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 318,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 320,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 322,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 324,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 326,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 328,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 330,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 332,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 334,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 336,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 338,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 340,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 342,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 344,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 346,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 348,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 350,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 352,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 354,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 356,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 358,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 360,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 362,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 364,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 366,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 368,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 370,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 372,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 374,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 376,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 378,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 380,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 382,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 384,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 386,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 388,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 390,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 392,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 394,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        },
+        {
+          "threshold": 396,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen"
+          }
+        },
+        {
+          "threshold": 398,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/moonworm_queen_1"
+          }
+        }
+      ]
+    }
+  }
+}

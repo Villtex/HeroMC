@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": "twilightforest:armor_shards",
+  "result": {
+    "id": "twilightforest:knight_metal",
+    "count": 1
+  },
+  "experience": 1.0,
+  "cookingtime": 200
+}

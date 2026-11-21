@@ -118,7 +118,7 @@ public final class TFBlocks {
     }
 
     private static DeferredItem<Item> item(String name) {
-        DeferredItem<Item> item = ITEMS.registerSimpleItem(name);
+        DeferredItem<Item> item = ITEMS.registerSimpleItem(name, p -> p.rarity(net.minecraft.world.item.Rarity.UNCOMMON));
         TAB_ITEMS.add(() -> new ItemStack(item.get()));
         return item;
     }

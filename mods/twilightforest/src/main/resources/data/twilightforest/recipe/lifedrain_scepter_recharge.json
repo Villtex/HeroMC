@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "neoforge:ingredient_type": "neoforge:components",
+      "items": "twilightforest:lifedrain_scepter",
+      "components": {
+        "minecraft:damage": 99
+      }
+    },
+    "minecraft:fermented_spider_eye"
+  ],
+  "result": {
+    "count": 1,
+    "id": "twilightforest:lifedrain_scepter"
+  }
+}

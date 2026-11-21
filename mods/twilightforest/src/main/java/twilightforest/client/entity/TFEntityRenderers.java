@@ -288,6 +288,25 @@ public final class TFEntityRenderers {
         event.registerEntityRenderer(TFEntities.NATURE_BOLT.get(), net.minecraft.client.renderer.entity.ThrownItemRenderer::new);
         event.registerEntityRenderer(TFEntities.TOME_BOLT.get(), net.minecraft.client.renderer.entity.ThrownItemRenderer::new);
         event.registerEntityRenderer(TFEntities.SLIME_BLOB.get(), net.minecraft.client.renderer.entity.ThrownItemRenderer::new);
+        // Teil 24f: the scepter bolt (an ender pearl), the moonworm shot (full bright), the charm effect; the loyal zombie in green
+        event.registerEntityRenderer(TFEntities.TWILIGHT_WAND_BOLT.get(), net.minecraft.client.renderer.entity.ThrownItemRenderer::new);
+        event.registerEntityRenderer(TFEntities.MOONWORM_SHOT.get(), c -> new net.minecraft.client.renderer.entity.ThrownItemRenderer<>(c, 1.0F, true));
+        event.registerEntityRenderer(TFEntities.CHARM_EFFECT.get(), net.minecraft.client.renderer.entity.ThrownItemRenderer::new);
+        event.registerEntityRenderer(TFEntities.LOYAL_ZOMBIE.get(), c -> new TFBipedRenderer<twilightforest.entity.LoyalZombie>(c,
+                new net.minecraft.client.model.HumanoidModel<>(c.bakeLayer(net.minecraft.client.model.geom.ModelLayers.ZOMBIE)), 0.5F, "zombie") {
+            private final Identifier vanilla = Identifier.withDefaultNamespace("textures/entity/zombie/zombie.png");
+
+            @Override
+            public Identifier getTextureLocation(net.minecraft.client.renderer.entity.state.HumanoidRenderState state) {
+                return this.vanilla;
+            }
+
+            /** ModelTFLoyalZombie: glColor3f(0.25, 2.0, 0.25). */
+            @Override
+            protected int getModelTint(net.minecraft.client.renderer.entity.state.HumanoidRenderState state) {
+                return 0xFF40FF40;
+            }
+        });
     }
 
     private static final String[] GHAST_TEXTURES = {"towerghast", "towerghast_openeyes", "towerghast_fire"};

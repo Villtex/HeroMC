@@ -3,6 +3,7 @@ package twilightforest;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import hexxit.worldgen152.OldBlockStates;
+import hexxit.worldgen152.OldGameIds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SpellParticleOption;
@@ -95,6 +96,7 @@ public final class TwilightForest {
                 output.accept(DARKWOOD_LEAVES_ITEM.get());
                 TFBlocks.TAB_ITEMS.forEach(item -> output.accept(item.get()));
                 TFTower.TAB_ITEMS.forEach(item -> output.accept(item.get()));
+                TFItems.TAB_ITEMS.forEach(item -> output.accept(item.apply(params.holders())));
                 output.acceptAll(TFEntities.tabStacks());
             }).build());
 
@@ -107,6 +109,8 @@ public final class TwilightForest {
         TFBlocks.register(modBus);
         TFEntities.register(modBus);
         TFTower.register(modBus);
+        TFItems.register(modBus);
+        TFHydra.register(modBus);
         GENERATORS.register("twilight_forest", () -> TFChunkGenerator.CODEC);
         BIOME_SOURCES.register("twilight_forest", () -> TFBiomeSource.CODEC);
         GENERATORS.register(modBus);
@@ -115,12 +119,22 @@ public final class TwilightForest {
         TFBlocks.registerOldBlocks();
         TFTower.registerOldBlocks();
         TFEntities.registerOld();
+        TFItems.registerOld();
+        OldGameIds.registerEnchantment(TFEnchantment.OLD_ID, TFEnchantment.FIERY_AURA);
+        twilightforest.block.MazestoneBlock.SPARED = stack -> stack.is(TFItems.MAZEBREAKER_PICKAXE.get());
         TFBlocks.GROWER = TFSaplings::grow;
         if (FMLEnvironment.getDist() == Dist.CLIENT) {
             twilightforest.client.TFClient.register(modBus);
         }
         NeoForge.EVENT_BUS.addListener(TwilightForest::onLevelLoad);
         NeoForge.EVENT_BUS.addListener(TwilightForest::onPlayerTick);
+        NeoForge.EVENT_BUS.addListener(TFEnchantment::onHurt);
+        NeoForge.EVENT_BUS.addListener(TFEventListener::onDamage);
+        NeoForge.EVENT_BUS.addListener(TFEventListener::onDeath);
+        NeoForge.EVENT_BUS.addListener(TFEventListener::onRespawn);
+        NeoForge.EVENT_BUS.addListener(TFEventListener::onLogout);
+        NeoForge.EVENT_BUS.addListener(twilightforest.item.TransformPowderItem::onEntityInteract);
+        NeoForge.EVENT_BUS.addListener(twilightforest.item.FieryPickItem::onBlockDrops);
     }
 
     public static Identifier id(String path) {

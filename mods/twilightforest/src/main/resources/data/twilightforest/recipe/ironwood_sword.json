@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "twilightforest:ironwood_ingot",
+    "X": "minecraft:stick"
+  },
+  "pattern": [
+    "#",
+    "#",
+    "X"
+  ],
+  "result": {
+    "count": 1,
+    "id": "twilightforest:ironwood_sword",
+    "components": {
+      "minecraft:enchantments": {
+        "minecraft:knockback": 1
+      }
+    }
+  }
+}

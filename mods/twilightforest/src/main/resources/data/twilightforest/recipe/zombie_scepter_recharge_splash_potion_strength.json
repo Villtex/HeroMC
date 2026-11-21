@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "neoforge:ingredient_type": "neoforge:components",
+      "items": "twilightforest:zombie_scepter",
+      "components": {
+        "minecraft:damage": 9
+      }
+    },
+    "minecraft:rotten_flesh",
+    {
+      "neoforge:ingredient_type": "neoforge:components",
+      "items": "minecraft:splash_potion",
+      "components": {
+        "minecraft:potion_contents": {
+          "potion": "minecraft:strength"
+        }
+      }
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "twilightforest:zombie_scepter"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "twilightforest:fiery_ingot",
+    "X": "minecraft:blaze_rod"
+  },
+  "pattern": [
+    "#",
+    "#",
+    "X"
+  ],
+  "result": {
+    "count": 1,
+    "id": "twilightforest:fiery_sword",
+    "components": {
+      "minecraft:enchantments": {
+        "minecraft:fire_aspect": 2
+      }
+    }
+  }
+}

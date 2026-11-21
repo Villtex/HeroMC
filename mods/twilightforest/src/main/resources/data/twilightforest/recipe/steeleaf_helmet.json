@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "twilightforest:steeleaf_ingot"
+  },
+  "pattern": [
+    "###",
+    "# #"
+  ],
+  "result": {
+    "count": 1,
+    "id": "twilightforest:steeleaf_helmet",
+    "components": {
+      "minecraft:enchantments": {
+        "minecraft:projectile_protection": 2
+      }
+    }
+  }
+}

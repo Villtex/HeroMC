@@ -744,6 +744,9 @@ for event, files, en, de in (('ghast_trap.warmup', ['trapwarmup'], 'Ghast trap w
 
 # ---------------------------------------------------------------- Teil 24c: mobs (tools/gen_mobs.py)
 exec(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'gen_mobs.py')).read())
+# ---------------------------------------------------------------- Teil 24f: items, armour, tools, bosses (tools/gen_items.py)
+exec(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'gen_items.py')).read())
+exec(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'gen_hydra.py')).read())
 
 # ---------------------------------------------------------------- write tags, data map, recipes
 for (reg, t), values in TAGS.items():

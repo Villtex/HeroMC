@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "neoforge:ingredient_type": "neoforge:components",
+      "items": "twilightforest:twilight_scepter",
+      "components": {
+        "minecraft:damage": 99
+      }
+    },
+    "minecraft:ender_pearl"
+  ],
+  "result": {
+    "count": 1,
+    "id": "twilightforest:twilight_scepter"
+  }
+}

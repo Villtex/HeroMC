@@ -1,0 +1,693 @@
+{
+  "model": {
+    "type": "minecraft:condition",
+    "property": "minecraft:using_item",
+    "on_false": {
+      "type": "minecraft:model",
+      "model": "twilightforest:item/ore_magnet"
+    },
+    "on_true": {
+      "type": "minecraft:range_dispatch",
+      "property": "minecraft:use_duration",
+      "scale": 1.0,
+      "fallback": {
+        "type": "minecraft:model",
+        "model": "twilightforest:item/ore_magnet"
+      },
+      "entries": [
+        {
+          "threshold": 11,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 20,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 24,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 28,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 32,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 36,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 40,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 44,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 48,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 52,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 56,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 60,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 64,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 68,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 72,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 76,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 80,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 84,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 88,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 92,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 96,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 100,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 104,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 108,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 112,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 116,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 120,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 124,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 128,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 132,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 136,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 140,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 144,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 148,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 152,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 156,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 160,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 164,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 168,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 172,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 176,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 180,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 184,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 188,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 192,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 196,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 200,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 204,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 208,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 212,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 216,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 220,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 224,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 228,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 232,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 236,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 240,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 244,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 248,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 252,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 256,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 260,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 264,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 268,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 272,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 276,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 280,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 284,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 288,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 292,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 296,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 300,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 304,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 308,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 312,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 316,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 320,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 324,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 328,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 332,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 336,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 340,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 344,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 348,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 352,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 356,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 360,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 364,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 368,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 372,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 376,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 380,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 384,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 388,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        },
+        {
+          "threshold": 392,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_2"
+          }
+        },
+        {
+          "threshold": 396,
+          "model": {
+            "type": "minecraft:model",
+            "model": "twilightforest:item/ore_magnet_1"
+          }
+        }
+      ]
+    }
+  }
+}

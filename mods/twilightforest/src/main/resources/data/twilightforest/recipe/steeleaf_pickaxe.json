@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "twilightforest:steeleaf_ingot",
+    "X": "minecraft:stick"
+  },
+  "pattern": [
+    "###",
+    " X ",
+    " X "
+  ],
+  "result": {
+    "count": 1,
+    "id": "twilightforest:steeleaf_pickaxe",
+    "components": {
+      "minecraft:enchantments": {
+        "minecraft:fortune": 2
+      }
+    }
+  }
+}

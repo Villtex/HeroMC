@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "twilightforest:steeleaf_ingot"
+  },
+  "pattern": [
+    "###",
+    "# #",
+    "# #"
+  ],
+  "result": {
+    "count": 1,
+    "id": "twilightforest:steeleaf_leggings",
+    "components": {
+      "minecraft:enchantments": {
+        "minecraft:fire_protection": 2
+      }
+    }
+  }
+}

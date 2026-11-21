@@ -164,6 +164,16 @@ public final class TFEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<NatureBolt>> NATURE_BOLT = projectile("nature_bolt", NatureBolt::new, 5);
     public static final DeferredHolder<EntityType<?>, EntityType<TomeBolt>> TOME_BOLT = projectile("tome_bolt", TomeBolt::new, 5);
     public static final DeferredHolder<EntityType<?>, EntityType<SlimeBlob>> SLIME_BLOB = projectile("slime_blob", SlimeBlob::new, 3);
+    // Teil 24f: the scepters and the moonworm queen (registerModEntity 150, 2 / 150, 3), the charm effect (80, 3)
+    public static final DeferredHolder<EntityType<?>, EntityType<twilightforest.entity.projectile.TwilightWandBolt>> TWILIGHT_WAND_BOLT =
+            projectile("twilight_wand_bolt", twilightforest.entity.projectile.TwilightWandBolt::new, 5);
+    public static final DeferredHolder<EntityType<?>, EntityType<twilightforest.entity.projectile.MoonwormShot>> MOONWORM_SHOT =
+            projectile("moonworm_shot", twilightforest.entity.projectile.MoonwormShot::new, 5);
+    public static final DeferredHolder<EntityType<?>, EntityType<twilightforest.entity.CharmEffect>> CHARM_EFFECT = ENTITIES.registerEntityType(
+            "charm_effect", twilightforest.entity.CharmEffect::new, MobCategory.MISC,
+            b -> b.sized(0.25F, 0.25F).clientTrackingRange(5).updateInterval(3).noSave().noSummon());
+    public static final DeferredHolder<EntityType<?>, EntityType<twilightforest.entity.LoyalZombie>> LOYAL_ZOMBIE = ENTITIES.registerEntityType(
+            "loyal_zombie", twilightforest.entity.LoyalZombie::new, MobCategory.CREATURE, b -> b.sized(0.6F, 1.8F).clientTrackingRange(5).updateInterval(3));
 
     // ---------------------------------------------------------------- spawn eggs (TwilightForestMod.registerCreatures colours)
     public static final DeferredItem<Item> WILD_BOAR_SPAWN_EGG = egg("wild_boar", 177, WILD_BOAR);
@@ -202,16 +212,16 @@ public final class TFEntities {
     public static final DeferredItem<Item> HELMET_CRAB_SPAWN_EGG = egg("helmet_crab", 223, HELMET_CRAB);
 
     // ---------------------------------------------------------------- drops (TFItems; ids of the pack's TwilightForest.cfg + 256)
-    public static final DeferredItem<Item> RAVEN_FEATHER = item("raven_feather", 7264, p -> p);
+    public static final DeferredItem<Item> RAVEN_FEATHER = item("raven_feather", 7264, p -> p.rarity(net.minecraft.world.item.Rarity.UNCOMMON));
     public static final DeferredItem<Item> VENISON = item("venison", 7324, p -> p.food(food(3, 0.3F)));
     public static final DeferredItem<Item> COOKED_VENISON = item("cooked_venison", 7323, p -> p.food(food(8, 0.8F)));
     public static final DeferredItem<Item> RAW_MEEF = item("raw_meef", 7295, p -> p.food(food(2, 0.3F)));
     public static final DeferredItem<Item> MEEF_STEAK = item("meef_steak", 7296, p -> p.food(food(6, 0.6F)));
     /** Crafting parts of the magic map and the maze map (Teil 24f). */
-    public static final DeferredItem<Item> MAGIC_MAP_FOCUS = item("magic_map_focus", 7290, p -> p);
-    public static final DeferredItem<Item> MAZE_MAP_FOCUS = item("maze_map_focus", 7292, p -> p);
+    public static final DeferredItem<Item> MAGIC_MAP_FOCUS = item("magic_map_focus", 7290, p -> p.rarity(net.minecraft.world.item.Rarity.UNCOMMON));
+    public static final DeferredItem<Item> MAZE_MAP_FOCUS = item("maze_map_focus", 7292, p -> p.rarity(net.minecraft.world.item.Rarity.UNCOMMON));
     /** Crafting part of the ore meter and the transformation powder (Teil 24f). */
-    public static final DeferredItem<Item> BORER_ESSENCE = item("borer_essence", 7252, p -> p);
+    public static final DeferredItem<Item> BORER_ESSENCE = item("borer_essence", 7252, p -> p.rarity(net.minecraft.world.item.Rarity.UNCOMMON));
 
     // ---------------------------------------------------------------- sounds (TFSounds)
     public static final DeferredHolder<SoundEvent, SoundEvent> TINY_BIRD_CHIRP = sound("tiny_bird.chirp");
@@ -340,6 +350,7 @@ public final class TFEntities {
         event.put(UPPER_GOBLIN_KNIGHT.get(), GoblinKnightUpper.createAttributes().build());
         event.put(LOWER_GOBLIN_KNIGHT.get(), GoblinKnightLower.createAttributes().build());
         event.put(HELMET_CRAB.get(), HelmetCrab.createAttributes().build());
+        event.put(LOYAL_ZOMBIE.get(), twilightforest.entity.LoyalZombie.createAttributes().build());
     }
 
     /**

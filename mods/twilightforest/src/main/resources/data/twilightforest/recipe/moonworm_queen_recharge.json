@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "twilightforest:moonworm_queen",
+    "twilightforest:torchberries",
+    "twilightforest:torchberries",
+    "twilightforest:torchberries"
+  ],
+  "result": {
+    "count": 1,
+    "id": "twilightforest:moonworm_queen"
+  }
+}
