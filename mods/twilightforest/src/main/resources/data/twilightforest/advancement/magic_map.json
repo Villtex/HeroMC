@@ -1,0 +1,43 @@
+{
+  "display": {
+    "icon": {
+      "id": "twilightforest:magic_map"
+    },
+    "title": {
+      "translate": "advancements.twilightforest.magic_map.title"
+    },
+    "description": {
+      "translate": "advancements.twilightforest.magic_map.description"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "twilightforest:empty_magic_map"
+      }
+    },
+    "has": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "twilightforest:magic_map"
+          }
+        ]
+      }
+    },
+    "done": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "crafted",
+      "has",
+      "done"
+    ]
+  ],
+  "parent": "twilightforest:magic_map_focus"
+}

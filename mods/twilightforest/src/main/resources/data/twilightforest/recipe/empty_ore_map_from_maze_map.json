@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "twilightforest:maze_map",
+    "minecraft:gold_block",
+    "minecraft:diamond_block",
+    "minecraft:iron_block"
+  ],
+  "result": {
+    "count": 1,
+    "id": "twilightforest:empty_ore_map"
+  }
+}

@@ -117,6 +117,7 @@ public final class TFClient {
         twilightforest.client.entity.TFEntityRenderers.register(modBus);
         twilightforest.client.entity.hydra.HydraRenderers.register(modBus);
         twilightforest.client.entity.BossRenderers.register(modBus);
+        TFMapsClient.register(modBus);
         modBus.addListener(TFClient::colors);
         modBus.addListener((net.neoforged.neoforge.client.event.RegisterMenuScreensEvent e) -> e.register(twilightforest.TFUncrafting.MENU.get(),
                 twilightforest.client.gui.UncraftingScreen::new));

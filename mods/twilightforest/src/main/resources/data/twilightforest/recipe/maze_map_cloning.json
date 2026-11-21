@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_transmute",
+  "category": "misc",
+  "group": "twilightforest:maze_map_cloning",
+  "input": "twilightforest:maze_map",
+  "material": "twilightforest:empty_maze_map",
+  "material_count": {
+    "min": 1,
+    "max": 8
+  },
+  "add_material_count_to_result": true,
+  "result": {}
+}

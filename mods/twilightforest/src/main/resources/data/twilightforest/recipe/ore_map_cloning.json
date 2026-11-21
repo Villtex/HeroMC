@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_transmute",
+  "category": "misc",
+  "group": "twilightforest:ore_map_cloning",
+  "input": "twilightforest:ore_map",
+  "material": "twilightforest:empty_ore_map",
+  "material_count": {
+    "min": 1,
+    "max": 8
+  },
+  "add_material_count_to_result": true,
+  "result": {}
+}

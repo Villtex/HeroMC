@@ -279,6 +279,28 @@ for kind, src, en, de in (('hydra', 'hydraTrophy', 'Hydra Trophy', 'Hydra-Troph�
         write(f'data/{NS}/loot_table/blocks/{b}.json', {'type': 'minecraft:block', 'pools': [{'rolls': 1, 'entries': [
             {'type': 'minecraft:item', 'name': n(t)}], 'condition': {'type': 'minecraft:survives_explosion'}}], 'random_sequence': f'{NS}:blocks/{b}'})
 
+# ================================================================= the maps (TFMaps: ItemTFMagicMap, ItemTFMazeMap, blank maps)
+for i, src, en, de in [
+    ('magic_map', 'magicMap', 'Magic Map', 'Magische Karte'),
+    ('maze_map', 'mazeMap', 'Maze Map', 'Labyrinthkarte'),
+    ('ore_map', 'oreMap', 'Maze/Ore Map', 'Labyrinth-/Erzkarte'),
+    ('empty_magic_map', 'emptyMagicMap', 'Blank Magic Map', 'Leere magische Karte'),
+    ('empty_maze_map', 'emptyMazeMap', 'Blank Maze Map', 'Leere Labyrinthkarte'),
+    ('empty_ore_map', 'emptyOreMap', 'Blank Maze/Ore Map', 'Leere Labyrinth-/Erzkarte'),
+]:
+    simple_item(i, src, en, de)
+# the feature icons of the magic map (8 x 8 icons, index = TFFeature.featureID), drawn by TFMapsClient
+ASSETS.append(('mods/twilightforest/textures/gui/mapicons.png', f'assets/{NS}/textures/gui/mapicons.png'))
+shaped_c('empty_magic_map', ['###', '#X#', '###'], {'#': I + 'paper', 'X': n('magic_map_focus')}, n('empty_magic_map'), None, 1, 'misc')
+shaped_c('empty_maze_map', ['###', '#X#', '###'], {'#': I + 'paper', 'X': n('maze_map_focus')}, n('empty_maze_map'), None, 1, 'misc')
+shapeless_c('empty_ore_map', [n('empty_maze_map'), I + 'gold_block', I + 'diamond_block', I + 'iron_block'], n('empty_ore_map'))
+shapeless_c('empty_ore_map_from_maze_map', [n('maze_map'), I + 'gold_block', I + 'diamond_block', I + 'iron_block'], n('empty_ore_map'))
+# TFMapCloningRecipe: a filled map and 1 to 8 blank maps of its kind give as many copies plus the map (name and all)
+for full, blank in (('magic_map', 'empty_magic_map'), ('maze_map', 'empty_maze_map'), ('ore_map', 'empty_ore_map')):
+    RECIPES[f'{full}_cloning'] = {'type': 'minecraft:crafting_transmute', 'category': 'misc', 'group': f'{NS}:{full}_cloning',
+                                  'input': n(full), 'material': n(blank), 'material_count': {'min': 1, 'max': 8},
+                                  'add_material_count_to_result': True, 'result': {}}
+
 # ================================================================= TFAchievementPage -> advancements
 HUNTER_PREY = ['fire_beetle', 'slime_beetle', 'pinch_beetle', 'death_tome', 'hostile_wolf', 'wraith', 'kobold', 'minotaur', 'hedge_spider', 'lich',
                'swarm_spider', 'block_goblin', 'helmet_crab', 'lich_minion', 'tiny_bird', 'penguin', 'wild_deer', 'bunny', 'bighorn_sheep',
@@ -334,16 +356,19 @@ ADV = [
      'Besiege ein Zwielicht-Gespenst in einem großen hohlen Hügel'),
     ('hedge', 'twilightHedge', 'hedge', 'arrival', 'task', {'done': IMPOSSIBLE},
      'Bug Stomper', 'Defeat a spider in a hedge maze', 'Käferzertreter', 'Besiege eine Spinne in einem Heckenlabyrinth'),
-    ('magic_map', 'twilightMagicMap', 'magic_map', 'magic_map_focus', 'task', {'crafted': crafted('empty_magic_map')},
+    ('magic_map', 'twilightMagicMap', 'magic_map', 'magic_map_focus', 'task',
+     {'crafted': crafted('empty_magic_map'), 'has': has('magic_map'), 'done': IMPOSSIBLE},
      'I Can See For Miles', 'Craft the magic map', 'Ich sehe meilenweit', 'Stelle die magische Karte her'),
-    ('maze_map', 'twilightMazeMap', 'maze_map', 'hill1', 'task', {'crafted': crafted('empty_maze_map')},
+    ('maze_map', 'twilightMazeMap', 'maze_map', 'hill1', 'task',
+     {'crafted': crafted('empty_maze_map'), 'has': has('maze_map'), 'done': IMPOSSIBLE},
      'And Now, to Find the Exit', 'Craft the maze map after obtaining the focus from a goblin', 'Und jetzt den Ausgang finden',
      'Stelle die Labyrinthkarte her, nachdem du den Fokus von einem Kobold bekommen hast'),
-    ('ore_map', 'twilightOreMap', 'ore_map', 'maze_map', 'challenge', {'crafted': crafted('empty_ore_map'), 'crafted2': crafted('empty_ore_map_from_maze_map')},
+    ('ore_map', 'twilightOreMap', 'ore_map', 'maze_map', 'challenge',
+     {'crafted': crafted('empty_ore_map'), 'crafted2': crafted('empty_ore_map_from_maze_map'), 'has': has('ore_map'), 'done': IMPOSSIBLE},
      'How Can That Be Worth It?', 'Craft the maze/ore map', 'Wie kann sich das lohnen?', 'Stelle die Labyrinth-/Erzkarte her'),
 ]
-# the three map advancements need the map items and their recipes (MAPS = True once they exist)
-MAPS = False
+# the three map advancements need the map items and their recipes (TFMaps); 'done' is awarded when a blank map is used
+MAPS = True
 for adv, old, icon, parent, frame, criteria, en_t, en_d, de_t, de_d in ADV:
     if not MAPS and adv in ('magic_map', 'maze_map', 'ore_map'):
         continue
