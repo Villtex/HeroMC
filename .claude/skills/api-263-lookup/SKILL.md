@@ -71,3 +71,12 @@ nur auf dem Server geben. Der Crafter-Block löst es nicht aus. Ergebnis mit Dat
 
 26.3 spielt nur Ogg. `buildSrc` (`ImportOriginalAssets`) wandelt beim Import jede `*.wav`, deren Ziel auf `.ogg` endet, mit
 `ffmpeg -c:a libvorbis` um: in `original-assets.txt` einfach `meteor/sound/x.wav -> assets/<ns>/sounds/x.ogg` schreiben.
+
+## Eigene Flüssigkeiten (FluidType): Entities frieren ein
+
+NeoForge 26.3 bewegt ein Lebewesen in einer eigenen Flüssigkeit **gar nicht** (weder Schwerkraft noch Laufen), solange
+`FluidType.move` `false` liefert und die Flüssigkeit nicht `isWaterLike(true)` ist (`LivingEntity.travelInFluid`).
+- 1.5.2 `Material.water` → `FluidType.Properties...isWaterLike(true)` (Schwimmen wie in Wasser).
+- Eigene `MaterialLiquid` (weder Wasser noch Lava) → `FluidType` ableiten und `move` wie Luft überschreiben
+  (Vorlage `tconstruct.smeltery.TFluids.MoltenType`).
+- Prüfen am Testserver: Mob über einem Becken beschwören, `data get entity … Pos` mehrmals, Y muss sinken.

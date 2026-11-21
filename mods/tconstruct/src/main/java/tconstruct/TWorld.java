@@ -131,10 +131,11 @@ public final class TWorld {
                     .pushReaction(PushReaction.POPPED));
 
     // ------------------------------------------------------------------ liquid blue slime (1350, Material.water)
+    // water-like: entities swim in it as in water (without it NeoForge does not move them at all)
 
     public static final DeferredHolder<FluidType, FluidType> SLIME_TYPE = FLUID_TYPES.register("liquid_blue_slime",
             () -> new FluidType(FluidType.Properties.create().descriptionId("block.tconstruct.liquid_blue_slime").canExtinguish(true)
-                    .canConvertToSource(false).supportsBoating(true).canHydrate(true).motionScale(0.014).canSwim(true).canDrown(true)
+                    .canConvertToSource(false).isWaterLike(true).supportsBoating(true).canHydrate(true).motionScale(0.014).canSwim(true).canDrown(true)
                     .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL).sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)));
 
     private static final class FluidHolder {

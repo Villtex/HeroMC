@@ -26,6 +26,9 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.SoundActions;
 import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 import net.neoforged.neoforge.fluids.FluidType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MoverType;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -72,7 +75,7 @@ public final class TFluids {
     static {
         for (int i = 0; i < NAMES.length; i++) {
             String name = NAMES[i][0];
-            DeferredHolder<FluidType, FluidType> type = TYPES.register(name, () -> new FluidType(FluidType.Properties.create()
+            DeferredHolder<FluidType, FluidType> type = TYPES.register(name, () -> new MoltenType(FluidType.Properties.create()
                     .descriptionId("fluid." + TConstruct.MOD_ID + "." + name).lightLevel(9).density(3000).viscosity(6000).temperature(1300)
                     .canSwim(false).canDrown(false).canExtinguish(false).canConvertToSource(false).canHydrate(false).motionScale(0.0023333333)
                     .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL_LAVA).sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY_LAVA)));
@@ -182,6 +185,28 @@ public final class TFluids {
 
         private static boolean flammable(Level level, BlockPos pos) {
             return level.isLoaded(pos) && level.getBlockState(pos).ignitedByLava();
+        }
+    }
+
+    /**
+     * Molten metal had its own MaterialLiquid in 1.5.2, neither water nor lava: entities moved through it as through air
+     * (slowed by {@link MoltenBlock}). NeoForge does not move an entity at all in a fluid that is not water-like and
+     * has no movement of its own, so this is the movement of the air (LivingEntity.travelInAir without its extras).
+     */
+    static final class MoltenType extends FluidType {
+        MoltenType(Properties properties) {
+            super(properties);
+        }
+
+        @Override
+        public boolean move(LivingEntity entity, Vec3 input, double gravity) {
+            float friction = entity.onGround() ? 0.6F * 0.91F : 0.91F;
+            float speed = entity.onGround() ? entity.getSpeed() * (0.21600002F / (friction * friction * friction)) : 0.02F;
+            entity.moveRelative(speed, input);
+            entity.move(MoverType.SELF, entity.getDeltaMovement());
+            Vec3 movement = entity.getDeltaMovement();
+            entity.setDeltaMovement(movement.x * friction, (movement.y - gravity) * 0.98, movement.z * friction);
+            return true;
         }
     }
 
