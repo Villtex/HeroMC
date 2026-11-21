@@ -1,0 +1,53 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "down": "twilightforest:block/reappearing_trace_active",
+    "up": "twilightforest:block/reappearing_trace_active",
+    "north": "twilightforest:block/reappearing_trace_active",
+    "south": "twilightforest:block/reappearing_trace_active",
+    "west": "twilightforest:block/reappearing_trace_active",
+    "east": "twilightforest:block/reappearing_trace_active",
+    "particle": "twilightforest:block/reappearing_trace_active"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "down": {
+          "texture": "#down",
+          "cullface": "down"
+        },
+        "up": {
+          "texture": "#up",
+          "cullface": "up"
+        },
+        "north": {
+          "texture": "#north",
+          "cullface": "north"
+        },
+        "south": {
+          "texture": "#south",
+          "cullface": "south"
+        },
+        "west": {
+          "texture": "#west",
+          "cullface": "west"
+        },
+        "east": {
+          "texture": "#east",
+          "cullface": "east"
+        }
+      }
+    }
+  ],
+  "render_type": "minecraft:translucent"
+}

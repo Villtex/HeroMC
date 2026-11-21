@@ -65,7 +65,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 24b | Twilight Forest B: Blöcke, Holz, Pflanzen, Kleintiere-Blöcke, Biom-Dekoration, magische Bäume | ~9.000 | 24a | Fable 5.2, hoch | ✅ erledigt |
 | 24c | Twilight Forest C: normale Mobs mit Modellen, Spawns je Biom, Spawn-Eier | ~11.000 | 24a | Opus 5.5, hoch | ✅ erledigt |
 | 24d | Twilight Forest D: Strukturen A (Hügel, Hecken-Labyrinth, Naga-Hof, Hain, Lich-Turm, Labyrinth, Hohle Bäume), Beute | ~9.000 | 24b | Fable 5.2, extra hoch | ✅ erledigt |
-| 24e | Twilight Forest E: Strukturen B (Dunkler Turm mit Turm-Mechanik, Ritter-Festung, Hydra-Höhle) | ~6.000 | 24d | Fable 5.2, hoch | offen |
+| 24e | Twilight Forest E: Strukturen B (Dunkler Turm mit Turm-Mechanik, Ritter-Festung, Hydra-Höhle) | ~6.000 | 24d | Fable 5.2, hoch | ✅ erledigt |
 | 24f | Twilight Forest F: Bosse, Boss-Spawner, Trophäen, Ausrüstung, Zauberstäbe, Karten, Entwerkbank, Fortschritte | ~10.000 | 24c, 24d | Opus 5.5, hoch | offen |
 | 25a | Tinkers' Construct A: Werkzeug-Kern (Materialien, Teile, Muster, Tische, Zusammenbau, Modifikatoren anbringen) | ~10.000 | 3 | Opus 5.5, hoch | ✅ erledigt |
 | 25b | Tinkers' Construct B: Werkzeuge im Einsatz (Fähigkeiten, Modifikator-Effekte, Bogen, Wurfwaffen) und ihre Darstellung | ~9.000 | 25a | Fable 5.2, hoch | ✅ erledigt |
@@ -1562,6 +1562,26 @@ Quellen: `structures/darktower/*`, `structures/stronghold/*`, `ComponentTFHydraL
 TowerBossSpawner}`, `item/ItemTFTowerKey`.
 - Dunkler Turm mit Bau-Geräten (Turmbauer, Umkehrer, Ghast-Falle, Kristall-Reaktor, Türen, Schlüssel), Ritter-Festung,
   Hydra-Höhle, bitgenau.
+
+#### Teil 24e – Stand (✅ erledigt)
+
+Offenes in `mods/twilightforest/TODO.md` (Abschnitt „Teil 24e – Strukturen B“), Vorgehen im Skill `twilight-forest-263`.
+- Kern `twilightforest.gen.structure`: alle Bauteile des Dunklen Turms (`ComponentTFDarkTower*`, Hauptturm mit Räumen,
+  Schmiede, Aquarium, Lampen, Bauplattformen, Mini-Ghast-Spawnern, Bilderrahmen), der Ritter-Festung
+  (`ComponentTFStronghold*`, `TFStrongholdPieces`, Schild aus Glas) und die Hydra-Höhle, per Skript übersetzt und in
+  `StructureTFMajorFeatureStart` eingehängt; Schlüssel in vier kleinen Türmen. `MapGenTFMajorFeature.REACH` 10 Chunks.
+- `worldgen152`: `OldTile.Spawner` trägt SpawnRange/MaxNearbyEntities/SpawnCount (Chunk-Writer schreibt sie);
+  Item-Rahmen ohne Nachbar-Updates beim Erzeugen (sonst Verklemmung im Chunk-Thread).
+- Spiel (`TFTower`, `block/Tower*`): Turm-Geräte 1370 und durchscheinende Turmblöcke 1371 als je ein Block pro Metadaten
+  (wiederkehrende/verschwindende/verschlossene Blöcke, Karminit-Baumeister, Rückbauer, Ghast-Falle, Karminit-Reaktor mit
+  Block-Entities), Turmschlüssel, Karminit, Sounds der Ghast-Falle.
+- Geprüft: `clean pack` grün; Testserver bis `Done`, 0 Fehler; Kern gegen Spiel `tools/expect.sh 1234 twilight structures
+  120` (je ein Bauwerk jeder Art, 529 Chunks): 1.981.659 Blöcke gleich, 345 Spawner/Truhen/Entities gleich; Reste wie 24d
+  (2 Pilzblöcke an einer Chunk-Grenze, 2 Biome an Biomgrenzen). Per RCON: Ketten verschwindender Blöcke, Rückkehr der
+  wiederkehrenden, Schloss in der Nähe, Reaktor (Start mit 6 Redstone-Blöcken, Explosion, Mini-Ghasts), Ghast-Falle
+  (Aufladen, Start, Abschalten nach 120 Ticks).
+- Offen: Kern gegen Original (keine Original-Chunks der Dimension 7); Turm-Boss (Ur-Ghast) und Boss-Spawner mit 24f;
+  Baumeister und Schlüssel nur im Code geprüft (brauchen einen Spieler); Client-Prüfung (Modelle, Durchsichtigkeit, Partikel).
 
 ### Teil 24f – Bosse und Ausrüstung
 Quellen: Boss-Entities (Naga, Lich + Bolzen/Bombe/Diener, Hydra + Köpfe/Hals/Mörser, Minoshroom, Ur-Ghast + Feuerball,

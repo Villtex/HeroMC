@@ -94,6 +94,7 @@ public final class TwilightForest {
                 output.accept(HEDGE_ITEM.get());
                 output.accept(DARKWOOD_LEAVES_ITEM.get());
                 TFBlocks.TAB_ITEMS.forEach(item -> output.accept(item.get()));
+                TFTower.TAB_ITEMS.forEach(item -> output.accept(item.get()));
                 output.acceptAll(TFEntities.tabStacks());
             }).build());
 
@@ -105,12 +106,14 @@ public final class TwilightForest {
         POI_TYPES.register(modBus);
         TFBlocks.register(modBus);
         TFEntities.register(modBus);
+        TFTower.register(modBus);
         GENERATORS.register("twilight_forest", () -> TFChunkGenerator.CODEC);
         BIOME_SOURCES.register("twilight_forest", () -> TFBiomeSource.CODEC);
         GENERATORS.register(modBus);
         BIOME_SOURCES.register(modBus);
         registerOldBlocks();
         TFBlocks.registerOldBlocks();
+        TFTower.registerOldBlocks();
         TFEntities.registerOld();
         TFBlocks.GROWER = TFSaplings::grow;
         if (FMLEnvironment.getDist() == Dist.CLIENT) {

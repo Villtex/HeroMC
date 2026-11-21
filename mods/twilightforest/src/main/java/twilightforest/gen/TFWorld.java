@@ -76,6 +76,9 @@ public final class TFWorld {
         OldBlockInfo.registerCube(TFGen.ROOT, OldBlockInfo.Material.WOOD);
         OldBlockInfo.register(TFGen.SAPLING, OldBlockInfo.Material.PLANTS, false, 0, false);
         OldBlockInfo.registerCube(TFGen.TOWER_WOOD, OldBlockInfo.Material.WOOD);
+        // Teil 24e: BlockTFTowerDevice (Material.wood, a full block), BlockTFTowerTranslucent (Material.glass, not opaque)
+        OldBlockInfo.registerCube(1370, OldBlockInfo.Material.WOOD);
+        OldBlockInfo.register(1371, OldBlockInfo.Material.GLASS, false, 0, true);
         // Teil 24d: BlockTFBossSpawner (Material.iron, isOpaqueCube false, so light opacity 0)
         OldBlockInfo.register(TFGen.BOSS_SPAWNER, OldBlockInfo.Material.IRON, false, 0, true);
     }

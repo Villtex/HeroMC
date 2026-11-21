@@ -1,16 +1,27 @@
 {
   "values": [
+    "twilightforest:antibuilder",
     "twilightforest:canopy_log",
     "twilightforest:canopy_wood",
+    "twilightforest:carminite_builder",
+    "twilightforest:carminite_builder_active",
+    "twilightforest:carminite_builder_timeout",
+    "twilightforest:carminite_reactor",
+    "twilightforest:carminite_reactor_active",
     "twilightforest:darkwood_log",
     "twilightforest:darkwood_wood",
     "twilightforest:encased_tower_wood",
+    "twilightforest:ghast_trap",
+    "twilightforest:ghast_trap_active",
     "twilightforest:liveroot_block",
+    "twilightforest:locked_vanishing_block",
     "twilightforest:mangrove_log",
     "twilightforest:mangrove_wood",
     "twilightforest:mining_core",
     "twilightforest:mining_log",
     "twilightforest:mining_wood",
+    "twilightforest:reappearing_block",
+    "twilightforest:reappearing_block_active",
     "twilightforest:root",
     "twilightforest:sorting_engine",
     "twilightforest:sorting_log",
@@ -26,6 +37,9 @@
     "twilightforest:transformation_log",
     "twilightforest:transformation_wood",
     "twilightforest:twilight_oak_log",
-    "twilightforest:twilight_oak_wood"
+    "twilightforest:twilight_oak_wood",
+    "twilightforest:unlocked_vanishing_block",
+    "twilightforest:vanishing_block",
+    "twilightforest:vanishing_block_active"
   ]
 }

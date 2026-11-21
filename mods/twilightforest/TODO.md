@@ -176,3 +176,36 @@ Einhängepunkt: `TFPopulator.populate` ruft `generateStructuresInChunk` als Erst
   Hauptturm nie, er liegt in einem Population-Feld); hier wird der Platz übersprungen. Kollisionsboxen der Treppen ohne
   Eckformen, Zäune immer volle 1,5 hoch (`OldPainting`).
 - `nullifySkyLight`/`updateAllLightTypes`: der Kern hat keine Lichtwerte (nur Licht und Mob-Spawns betroffen).
+
+
+## Teil 24e – Strukturen B
+
+Kern in `gen/structure`: Dunkler Turm (`ComponentTFDarkTower*`, `StructureDecoratorDarkTower`, `EnumDarkTowerDoor`),
+Ritter-Festung (`ComponentTFStronghold*`, `StructureTFStronghold*`, `TFStrongholdPieces`, `TFStrongholdPieceWeight`,
+`StructureTFDecoratorStronghold`), `ComponentTFHydraLair`. Spielseite in `TFTower` und `block/Tower*`, `block/*BlockEntity`
+(Baumeister, Rückbauer, Ghast-Falle, Reaktor). Daten in `tools/gen.py` (Abschnitt Teil 24e).
+
+### Einhängepunkte für andere Teile
+
+- 24f: Ur-Ghast in der Ghast-Falle: `GhastTrapBlockEntity.IS_UR_GHAST` und `UR_GHAST_IN_TRAP` (stopTantrum) setzen. Der
+  Turm-Boss-Spawner (1351:3) im Dunklen Turm und der Hydra-Spawner (1351:2) in der Höhle sind die Platzhalter aus 24d.
+- 24f: Karminit-Rezept (Bohreressenz, Redstone, Ghast-Träne; die Bilderrahmen der Turmschmiede zeigen es), Fortschritte.
+
+### Abweichungen
+
+- `TFStrongholdPieces`: Gewichte und `lastPieceMade` waren statisch (das erste Teil einer Festung hing von der zuvor
+  gebauten ab, und Threads teilten sie); hier gehören sie zu einer Festung.
+- `MaxNearbyEntities` der Mini-Ghast-Spawner = Schwierigkeit beim Erzeugen; hier fest 1 (leicht, Vorgabe von 1.5.2).
+- Bäume in Festung und Turm und der Platz des Schlüssels in der Truhe: `world.rand` → Zufall aus Seed und Position.
+- `MapGenTFMajorFeature.REACH` 10 statt 8 (die unteren Festungsteile reichen bis 112 Blöcke vom Eingang).
+- Spiel: ein Block je Metadaten (BE kommt und geht mit dem Block). Partikel „ghasttrap“ → `portal` (lila statt rot),
+  „hugesmoke“ → `LARGE_SMOKE`; die Fallen-Sounds starten nur bei Tick 1/30/80 (1.5.2 rief sie jeden Tick auf).
+  Reaktortrümmer: feste Kombination aus Grundgestein/Netherrack/Obsidian/Portal statt Zufall je Fläche und Bild,
+  volle Hitbox statt Zufallsgrenzen. Bau-, Rückbau- und Fallenzustand wird nicht gespeichert (wie 1.5.2).
+- Rückbauer vergleicht wie 1.5.2 nur den Block (nicht die Zustände); die Bedingung „replaceBlockID == 4“ des Originals
+  (Bruchstein statt Metadaten 4) ist beibehalten.
+
+### Client-Prüfung offen
+
+- Modelle und Durchsichtigkeit der Turmblöcke, Ghast-Fallen-Deckel, Funken (`sparkle`), Partikel der Falle und des
+  Rückbauers; Bilderrahmen in der Turmschmiede; Karminit-Baumeister und Turmschlüssel mit einem Spieler.

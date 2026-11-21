@@ -673,6 +673,75 @@ for key, (logs, leaves, extra) in TREES.items():
     d.update(extra)
     write(f'data/{NS}/treecapitator/tree/{key}.json', d)
 
+# ---------------------------------------------------------------- Teil 24e: tower devices (BlockTFTowerDevice, BlockTFTowerTranslucent)
+DEVICES = [  # id (by metadata), texture, item (damageDropped; None: no drop), en, de
+    ('reappearing_block', 'reappearing_off', 'reappearing_block', 'Reappearing Block', 'Wiederkehrender Block'),
+    ('reappearing_block_active', 'reappearing_on', 'reappearing_block', 'Active Reappearing Block', 'Aktiver wiederkehrender Block'),
+    ('vanishing_block', 'vanish_off', 'vanishing_block', 'Vanishing Block', 'Verschwindender Block'),
+    ('vanishing_block_active', 'vanish_on', 'vanishing_block', 'Active Vanishing Block', 'Aktiver verschwindender Block'),
+    ('locked_vanishing_block', 'lock_on', 'locked_vanishing_block', 'Locked Vanishing Block', 'Verschlossener verschwindender Block'),
+    ('unlocked_vanishing_block', 'lock_off', 'unlocked_vanishing_block', 'Unlocked Vanishing Block', 'Aufgeschlossener verschwindender Block'),
+    ('carminite_builder', 'builder_off', 'carminite_builder', 'Carminite Builder', 'Karminit-Baumeister'),
+    ('carminite_builder_active', 'builder_on', 'carminite_builder', 'Active Carminite Builder', 'Aktiver Karminit-Baumeister'),
+    ('carminite_builder_timeout', 'builder_timeout', 'carminite_builder', 'Timed-out Carminite Builder', 'Ruhender Karminit-Baumeister'),
+    ('antibuilder', 'antibuilder', None, 'Antibuilder', 'Rückbauer'),
+    ('ghast_trap', 'ghasttrap_off', 'ghast_trap', 'Ghast Trap', 'Ghastfalle'),
+    ('ghast_trap_active', 'ghasttrap_on', 'ghast_trap', 'Active Ghast Trap', 'Aktive Ghastfalle'),
+    ('carminite_reactor', 'reactor_off', 'carminite_reactor', 'Carminite Reactor', 'Karminit-Reaktor'),
+    ('carminite_reactor_active', 'reactor_on', 'carminite_reactor', 'Active Carminite Reactor', 'Aktiver Karminit-Reaktor'),
+]
+DEVICE_ITEMS = {0, 2, 4, 5, 6, 9, 10, 12}
+for meta, (b, t, drop, en, de) in enumerate(DEVICES):
+    tex(f'towerdev_{t}', b)
+    if b.startswith('ghast_trap'):
+        lid = 'on' if b.endswith('active') else 'off'
+        model(b, cube([n('block/encased_tower_wood'), n(f'block/tower_device_lid_{lid}')] + [n(f'block/{b}')] * 4))
+    else:
+        model(b, cube([n(f'block/{b}')] * 6))
+    simple_state(b)
+    if meta in DEVICE_ITEMS:
+        item_def(b, n(f'block/{b}'))
+    block_name(b, en, de)
+    btag('minecraft:mineable/axe', b)
+    if drop:
+        self_drop(b, n(drop))
+    else:
+        loot(b, [])
+TRANSLUCENTS = [  # id (by metadata), textures (down, up, north, south, west, east), en, de
+    ('reappearing_trace', [n('block/reappearing_trace')] * 6, 'Reappearing Block (vanished)', 'Wiederkehrender Block (verschwunden)'),
+    ('reappearing_trace_active', [n('block/reappearing_trace_active')] * 6, 'Reappearing Block (returning)', 'Wiederkehrender Block (kehrt zurück)'),
+    ('built_block', [n('block/built_block')] * 6, 'Built Block', 'Gebauter Block'),
+    ('built_block_active', [n('block/built_block_active')] * 6, 'Active Built Block', 'Aktiver gebauter Block'),
+    ('antibuilt_block', [n('block/antibuilt_block')] * 6, 'Antibuilt Block', 'Rückgebauter Block'),
+    # getIcon picked portal, netherrack, bedrock or obsidian at random for every face and frame
+    ('reactor_debris', ['minecraft:block/bedrock', 'minecraft:block/netherrack', 'minecraft:block/obsidian', 'minecraft:block/nether_portal',
+                        'minecraft:block/netherrack', 'minecraft:block/obsidian'], 'Reactor Debris', 'Reaktortrümmer'),
+    ('fake_gold', ['minecraft:block/gold_block'] * 6, 'Fake Gold', 'Falsches Gold'),
+    ('fake_diamond', ['minecraft:block/diamond_block'] * 6, 'Fake Diamond', 'Falscher Diamant'),
+]
+for src, dst in (('reappearing_trace_off', 'reappearing_trace'), ('reappearing_trace_on', 'reappearing_trace_active'),
+                 ('built_off', 'built_block'), ('built_on', 'built_block_active'), ('antibuilt', 'antibuilt_block')):
+    tex(f'towerdev_{src}', dst)
+for b, textures, en, de in TRANSLUCENTS:
+    m = cube(textures)
+    m['render_type'] = 'minecraft:translucent'
+    model(b, m)
+    simple_state(b)
+    block_name(b, en, de)
+for i, src, en, de in (('tower_key', 'towerKey', 'Tower Key', 'Turmschlüssel'), ('carminite', 'carminite', 'Carminite', 'Karminit')):
+    tex(src, i, 'item')
+    generated_item(i, n(f'item/{i}'))
+    item_name(i, en, de)
+# mob.tf.urghast.trapwarmup / trapon (trapon0..4) / trapspindown
+EXTRA_SOUNDS = {}
+for event, files, en, de in (('ghast_trap.warmup', ['trapwarmup'], 'Ghast trap warms up', 'Ghastfalle läuft an'),
+                             ('ghast_trap.on', ['trapon%d' % i for i in range(5)], 'Ghast trap hums', 'Ghastfalle summt'),
+                             ('ghast_trap.spindown', ['trapspindown'], 'Ghast trap spins down', 'Ghastfalle läuft aus')):
+    EXTRA_SOUNDS[event] = {'sounds': [n(f'urghast/{f}') for f in files], 'subtitle': f'subtitles.{NS}.{event}'}
+    for f in files:
+        ASSETS.append((f'mods/twilightforest/sounds/urghast/{f}.ogg', f'assets/{NS}/sounds/urghast/{f}.ogg'))
+    names(f'subtitles.{NS}.{event}', en, de)
+
 # ---------------------------------------------------------------- Teil 24c: mobs (tools/gen_mobs.py)
 exec(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'gen_mobs.py')).read())
 

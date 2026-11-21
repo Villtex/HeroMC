@@ -104,5 +104,27 @@
       "twilightforest:mosquito/mosquito0"
     ],
     "subtitle": "subtitles.twilightforest.mosquito"
+  },
+  "ghast_trap.warmup": {
+    "sounds": [
+      "twilightforest:urghast/trapwarmup"
+    ],
+    "subtitle": "subtitles.twilightforest.ghast_trap.warmup"
+  },
+  "ghast_trap.on": {
+    "sounds": [
+      "twilightforest:urghast/trapon0",
+      "twilightforest:urghast/trapon1",
+      "twilightforest:urghast/trapon2",
+      "twilightforest:urghast/trapon3",
+      "twilightforest:urghast/trapon4"
+    ],
+    "subtitle": "subtitles.twilightforest.ghast_trap.on"
+  },
+  "ghast_trap.spindown": {
+    "sounds": [
+      "twilightforest:urghast/trapspindown"
+    ],
+    "subtitle": "subtitles.twilightforest.ghast_trap.spindown"
   }
 }

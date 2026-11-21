@@ -1,0 +1,52 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "down": "twilightforest:block/carminite_builder",
+    "up": "twilightforest:block/carminite_builder",
+    "north": "twilightforest:block/carminite_builder",
+    "south": "twilightforest:block/carminite_builder",
+    "west": "twilightforest:block/carminite_builder",
+    "east": "twilightforest:block/carminite_builder",
+    "particle": "twilightforest:block/carminite_builder"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "down": {
+          "texture": "#down",
+          "cullface": "down"
+        },
+        "up": {
+          "texture": "#up",
+          "cullface": "up"
+        },
+        "north": {
+          "texture": "#north",
+          "cullface": "north"
+        },
+        "south": {
+          "texture": "#south",
+          "cullface": "south"
+        },
+        "west": {
+          "texture": "#west",
+          "cullface": "west"
+        },
+        "east": {
+          "texture": "#east",
+          "cullface": "east"
+        }
+      }
+    }
+  ]
+}

@@ -13,7 +13,9 @@ BLOCKS = dict(fence=85, stoneBrick=98, stoneSingleSlab=44, planks=5, mushroomCap
   deadBush=32, cobblestoneMossy=48, cactus=81, blockLapis=22, blockIron=42, bedrock=7, stairsWoodJungle=136, stairsCobblestone=67,
   wood=17, leaves=18, brick=45, stairsBrick=108, obsidian=49, torchRedstoneActive=76, redstoneWire=55, ice=79, snow=78,
   blockSnow=80, tallGrass=31, plantRed=38, plantYellow=37, pumpkin=86, lever=69, fenceGate=107, doorWood=64, trapdoor=96,
-  sandStone=24, stairsSandStone=128, blockGold=41, blockDiamond=57, blockEmerald=133, oreDiamond=56, waterlily=111)
+  sandStone=24, stairsSandStone=128, blockGold=41, blockDiamond=57, blockEmerald=133, oreDiamond=56, waterlily=111,
+  anvil=145, blockRedstone=152, brewingStand=117, cauldron=118, cobblestoneWall=139, fire=51, furnaceIdle=61, netherStalk=115,
+  pistonBase=33, pistonStickyBase=29, redstoneLampIdle=123, redstoneRepeaterIdle=93, workbench=58)
 TF = dict(bossSpawner=1351, firefly=1353, hedge=1356, mazestone=1362, nagastone=1364, plant=1365, towerWood=1372, cicada=1352,
   moonworm=1363, log=1358, leaves=1357, sapling=1368, root=1367, fireJet=1354, towerDevice=1370, towerTranslucent=1371,
   towerAntenna=1369, trophy=1373, uncraftingTable=1374, fireflyJar=1355)

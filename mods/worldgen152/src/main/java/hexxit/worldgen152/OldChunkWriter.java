@@ -165,6 +165,14 @@ public final class OldChunkWriter {
             fill(dispenser, contents.slots(), registries);
         } else if (tile instanceof OldTile.Spawner spawner && blockEntity instanceof SpawnerBlockEntity spawnerEntity) {
             spawnerEntity.setEntityId(OldGameIds.entity(spawner.mob()), RandomSource.create(pos.asLong()));
+            if (spawner.spawnRange() != 4 || spawner.maxNearbyEntities() != 6 || spawner.spawnCount() != 4) {
+                // MobSpawnerBaseLogic.readFromNBT after writeToNBT, as the 1.5.2 mods changed the settings
+                CompoundTag tag = spawnerEntity.saveCustomOnly(registries);
+                tag.putShort("SpawnRange", (short) spawner.spawnRange());
+                tag.putShort("MaxNearbyEntities", (short) spawner.maxNearbyEntities());
+                tag.putShort("SpawnCount", (short) spawner.spawnCount());
+                spawnerEntity.loadCustomOnly(TagValueInput.create(ProblemReporter.DISCARDING, registries, tag));
+            }
         } else if (tile instanceof OldTile.Furnace contents && blockEntity instanceof AbstractFurnaceBlockEntity furnace) {
             fill(furnace, contents.slots(), registries);
         } else if (tile instanceof OldTile.BrewingStand contents && blockEntity instanceof BrewingStandBlockEntity stand) {
@@ -273,8 +281,18 @@ public final class OldChunkWriter {
             if (frame.item() != null) {
                 entity.setItem(item(frame.item(), registries), false);
             }
-            // 1.5.2 turned the item in quarter turns, today in eighths
-            entity.setRotation(frame.rotation() * 2 & 7);
+            // 1.5.2 turned the item in quarter turns, today in eighths; setRotation(int) updates the neighbours
+            // (comparator output), which a chunk being generated must not do: the private variant without updates
+            int rotation = frame.rotation() * 2 & 7;
+            if (rotation != 0) {
+                try {
+                    var set = ItemFrame.class.getDeclaredMethod("setRotation", int.class, boolean.class);
+                    set.setAccessible(true);
+                    set.invoke(entity, rotation, false);
+                } catch (ReflectiveOperationException e) {
+                    throw new IllegalStateException("ItemFrame.setRotation(int, boolean) not found", e);
+                }
+            }
             return entity;
         }
         if (old instanceof OldEntity.Item dropped) {

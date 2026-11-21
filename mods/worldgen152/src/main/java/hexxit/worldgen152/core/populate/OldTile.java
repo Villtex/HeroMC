@@ -20,8 +20,19 @@ public sealed interface OldTile {
     record Skull(int type, int rotation) implements OldTile {
     }
 
-    /** Mob spawner with the entity name of 1.5.2 ("Zombie", "Skeleton", ...). */
-    record Spawner(String mob) implements OldTile {
+    /**
+     * Mob spawner with the entity name of 1.5.2 ("Zombie", "Skeleton", ...) and the settings of
+     * MobSpawnerBaseLogic (SpawnRange, MaxNearbyEntities, SpawnCount; 1.5.2 defaults 4, 6, 4).
+     */
+    record Spawner(String mob, int spawnRange, int maxNearbyEntities, int spawnCount) implements OldTile {
+        public Spawner(String mob) {
+            this(mob, 4, 6, 4);
+        }
+
+        /** The same spawner with other settings (written with readFromNBT after it was placed). */
+        public Spawner with(int spawnRange, int maxNearbyEntities, int spawnCount) {
+            return new Spawner(this.mob, spawnRange, maxNearbyEntities, spawnCount);
+        }
     }
 
     /** TileEntityFurnace: slots 0 input, 1 fuel, 2 output; burn and cook time in ticks. */

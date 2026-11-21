@@ -243,6 +243,15 @@ def twilight(bid, meta):
         return 'twilightforest:' + ['tower_wood', 'encased_tower_wood', 'tower_wood_cracked', 'tower_wood_mossy', 'tower_wood_infested'][meta if meta < 5 else 0]
     if bid == 1351:  # boss spawners (placeholders until Teil 24f)
         return 'twilightforest:' + ['naga', 'lich', 'hydra', 'tower'][meta if meta < 4 else 0] + '_boss_spawner'
+    if bid == 1370:  # tower devices (Teil 24e), one block per metadata
+        names = ['reappearing_block', 'reappearing_block_active', 'vanishing_block', 'vanishing_block_active', 'locked_vanishing_block',
+                 'unlocked_vanishing_block', 'carminite_builder', 'carminite_builder_active', 'carminite_builder_timeout', 'antibuilder',
+                 'ghast_trap', 'ghast_trap_active', 'carminite_reactor', 'carminite_reactor_active']
+        return 'twilightforest:' + pick(names, meta)
+    if bid == 1371:
+        names = ['reappearing_trace', 'reappearing_trace_active', 'built_block', 'built_block_active', 'antibuilt_block', 'reactor_debris',
+                 'fake_gold', 'fake_diamond']
+        return 'twilightforest:' + pick(names, meta)
     if bid == 1368:
         names = ['twilight_oak', 'canopy', 'mangrove', 'darkwood', 'hollow_oak', 'time', 'transformation', 'mining', 'sorting',
                  'rainbow_oak']

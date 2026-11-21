@@ -1,0 +1,52 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "down": "twilightforest:block/locked_vanishing_block",
+    "up": "twilightforest:block/locked_vanishing_block",
+    "north": "twilightforest:block/locked_vanishing_block",
+    "south": "twilightforest:block/locked_vanishing_block",
+    "west": "twilightforest:block/locked_vanishing_block",
+    "east": "twilightforest:block/locked_vanishing_block",
+    "particle": "twilightforest:block/locked_vanishing_block"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "down": {
+          "texture": "#down",
+          "cullface": "down"
+        },
+        "up": {
+          "texture": "#up",
+          "cullface": "up"
+        },
+        "north": {
+          "texture": "#north",
+          "cullface": "north"
+        },
+        "south": {
+          "texture": "#south",
+          "cullface": "south"
+        },
+        "west": {
+          "texture": "#west",
+          "cullface": "west"
+        },
+        "east": {
+          "texture": "#east",
+          "cullface": "east"
+        }
+      }
+    }
+  ]
+}

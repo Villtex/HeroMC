@@ -14,8 +14,9 @@ import java.util.Random;
  * StructureTFMajorFeatureStart: the first piece of the feature of a feature chunk, and everything it builds on. The
  * pieces do not look at the world while they are laid out, so a start needs only the biome layout.
  *
- * <p>Teil 24d: hollow hills, hedge maze, naga courtyard, quest grove, lich tower, labyrinth. The hydra lair, the dark
- * tower and the knight stronghold (Teil 24e) have no first piece yet: their starts stay empty.
+ * <p>Teil 24d: hollow hills, hedge maze, naga courtyard, quest grove, lich tower, labyrinth; Teil 24e: hydra lair, dark
+ * tower, knight stronghold. The branch of the original for a vanilla stronghold as first piece (ComponentStrongholdStairs2,
+ * 33 down) is dead: the knight stronghold starts with ComponentTFStrongholdEntrance.
  */
 public class StructureTFMajorFeatureStart extends StructureStart {
     public final TFFeature feature;
@@ -35,7 +36,7 @@ public class StructureTFMajorFeatureStart extends StructureStart {
         this.updateBoundingBox();
         // ComponentStrongholdStairs2 (the vanilla stronghold as first piece) is never made by makeFirstComponent
 
-        if (firstComponent instanceof ComponentTFTowerMain) {
+        if (firstComponent instanceof ComponentTFTowerMain || firstComponent instanceof ComponentTFDarkTowerMain) {
             this.moveToAvgGroundLevel(layout, x, z);
         }
     }
@@ -55,11 +56,15 @@ public class StructureTFMajorFeatureStart extends StructureStart {
             return new ComponentTFTowerMain(null, rand, 0, x, y, z);
         } else if (feature == TFFeature.QUEST_GROVE) {
             return new ComponentTFQuestGrove(null, rand, 0, x, y, z);
+        } else if (feature == TFFeature.HYDRA_LAIR) {
+            return new ComponentTFHydraLair(null, rand, 0, x, y, z);
         } else if (feature == TFFeature.LABYRINTH) {
             return new ComponentTFMazeRuins(null, rand, 0, x, y, z);
+        } else if (feature == TFFeature.DARK_TOWER) {
+            return new ComponentTFDarkTowerMain(null, rand, 0, x, y - 1, z);
+        } else {
+            return feature == TFFeature.STRONGHOLD ? new ComponentTFStrongholdEntrance(null, rand, 0, x, y, z) : null;
         }
-        // hydraLair, darkTower, tfStronghold: Teil 24e
-        return null;
     }
 
     @Override

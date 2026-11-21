@@ -23,8 +23,11 @@ import java.util.Random;
  * beginning, and overlapping starts are built ordered by chunk x, then z.
  */
 public final class MapGenTFMajorFeature {
-    /** How far (chunks) from its start chunk a structure may reach (MapGenBase.range). */
-    public static final int REACH = 8;
+    /**
+     * How far (chunks) from its start chunk a structure may reach (MapGenBase.range is 8; the lower pieces of the knight
+     * stronghold go up to 112 blocks from the entrance, plus their own size).
+     */
+    public static final int REACH = 10;
 
     private final TFLayout layout;
     private final long rand1;

@@ -452,11 +452,16 @@ public final class TFTrees {
 
     /** TFGenSmallTwilightOak (leaves of metadata 0), and with leaves 3 the small rainbow oak. */
     public static final class SmallOak extends TFGen {
-        private final int minTreeHeight = 4;
+        private final int minTreeHeight;
         private final int leafMeta;
 
         public SmallOak(int leafMeta) {
+            this(leafMeta, 4);
+        }
+
+        public SmallOak(int leafMeta, int minTreeHeight) {
             this.leafMeta = leafMeta;
+            this.minTreeHeight = minTreeHeight;
         }
 
         @Override

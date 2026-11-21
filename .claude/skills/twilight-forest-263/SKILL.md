@@ -6,7 +6,7 @@ description: Beim Weiterbauen von Twilight Forest (mods/twilightforest, Teile 24
 # Twilight Forest weiterbauen
 
 Teilprojekt `mods/twilightforest` (Mod-ID `twilightforest`, braucht `worldgen152`). Offenes je Unterteil in
-`mods/twilightforest/TODO.md`, Stand in `docs/PLAN.md` (Teil 24a–24d).
+`mods/twilightforest/TODO.md`, Stand in `docs/PLAN.md` (Teil 24a–24e).
 
 ## Aufbau
 
@@ -15,7 +15,8 @@ Teilprojekt `mods/twilightforest` (Mod-ID `twilightforest`, braucht `worldgen152
 | Kern ohne Spielklassen: Layout, Gelände, Höhlen, Population | `twilightforest.gen` (`TFWorld`, `TFLayout`, `TFTerrain`, `TFPopulator`) |
 | Bauwerks-Raster (welche Art in welchem Chunk) | `gen/TFFeature` |
 | Dekoration, Bäume, kleine Bauten, Truhen | `gen/TFDecorator`, `TFTrees`, `TFRuins`, `TFPlants`, `TFTreasure` (16 Tabellen), `OldEnchanting` |
-| Große Bauwerke (Teil 24d) | `gen/structure` (Klassennamen des Originals) |
+| Große Bauwerke (Teile 24d, 24e) | `gen/structure` (Klassennamen des Originals) |
+| Turm-Geräte 1370/1371, Turmschlüssel (24e) | `TFTower`, `block/TowerDeviceBlock`, `TowerTranslucentBlock`, `*BlockEntity` |
 | Blöcke/Items, alte IDs | `TFBlocks.registerOldBlocks`, Daten aus `tools/gen.py` |
 | Mobs, Spawner-Namen, Spawns | `TFEntities` (Namen `TwilightForest.<Name>`), `world/TFSpawns`, `tools/gen_mobs.py` |
 
@@ -48,8 +49,13 @@ Teilprojekt `mods/twilightforest` (Mod-ID `twilightforest`, braucht `worldgen152
    - Licht (`nullifySkyLight`, `updateAllLightTypes`) entfällt; `getAverageGroundLevel` des Providers = 33.
    - `System.out.println` des Originals auskommentieren: stdout ist die Vorhersage von `expect.sh`!
    - Raw-Listen der Bauteile (`List list`) so lassen; nur eigene Felder generisch machen.
-5. Einhängen: erstes Bauteil in `StructureTFMajorFeatureStart.makeFirstComponent` (24e: Hydra-Höhle, Dunkler Turm mit
-   `y - 1` und `moveToAvgGroundLevel`, Ritter-Festung mit dem `ComponentStrongholdStairs2`-Zweig und `offY = -33`).
+   - Spawner mit eigenen Einstellungen (writeToNBT/readFromNBT): `world.setTile(..., spawner.with(range, max, count))`.
+   - Item-Rahmen: `OldEntity.ItemFrame` (tileX/Y/Z = Wandblock wie EntityHanging), Ofen-Inhalt `OldTile.Furnace`,
+     Truhen nachträglich füllen über `world.getTile(...) instanceof OldTile.Chest` (Vorlage `ComponentTFDarkTowerWing`).
+   - Statische Felder des Originals (z. B. `TFStrongholdPieces.lastPieceMade`) pro Bauwerk machen: Kern und Spiel
+     erzeugen Starts in anderer Reihenfolge und in mehreren Threads.
+5. Einhängen: erstes Bauteil in `StructureTFMajorFeatureStart.makeFirstComponent` (alle Arten sind seit 24e da; der
+   `ComponentStrongholdStairs2`-Zweig des Originals ist toter Code).
    `MapGenTFMajorFeature` baut alles, was das Population-Feld des Chunks schneidet; `TFPopulator` ruft es als Erstes.
    Reicht ein Bauwerk weiter als 8 Chunks vom Start, `MapGenTFMajorFeature.REACH` erhöhen.
 6. Neue Blöcke: im Kern `OldBlockInfo.register…` in `TFWorld.register`, im Spiel `OldBlockStates.registerMeta` in
@@ -74,3 +80,7 @@ Chunk-Grenzen mit verbundenen Seiten.
 - `getRandomWallSpot` kann `null` liefern; im Original war das eine NullPointerException (Hauptturm liegt in einem Feld).
 - Items, die es im Spiel noch nicht gibt, lässt der Chunk-Writer mit einer Warnung weg; `verify_blocks.py` zählt bei
   Truhen nur Vanilla-Items streng.
+- Server hängt beim Erzeugen („tick took 60 seconds“, Chunk-Thread in `OldChunkWriter.entity`): eine Entity macht beim
+  Anlegen Nachbar-Updates (war `ItemFrame.setRotation(int)`); nur Varianten ohne Level-Zugriff benutzen.
+- Blöcke mit mehreren Metadaten und Tile-Entity nur für einige davon: ein Block je Metadaten (`TFTower.DEVICES`), dann
+  kommt und geht die Block-Entity mit dem Block wie in 1.5.2 (bei Zustands-Properties bliebe die alte Block-Entity).

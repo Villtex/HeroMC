@@ -134,6 +134,7 @@ for event, files in SOUND_FILES.items():
                                             'redcap.hurt': 'Rotkappe verletzt', 'redcap.die': 'Rotkappe stirbt', 'kobold.ambient': 'Kobold knurrt',
                                             'kobold.hurt': 'Kobold verletzt', 'kobold.die': 'Kobold stirbt', 'wraith': 'Gespenst stöhnt',
                                             'mosquito': 'Mücken summen'}[event]
+SOUNDS_JSON.update(EXTRA_SOUNDS)  # Teil 24e (tools/gen.py)
 write(f'assets/{NS}/sounds.json', SOUNDS_JSON)
 
 # ---------------------------------------------------------------- loot tables (dropFewItems / dropRareDrop of 1.5.2)
