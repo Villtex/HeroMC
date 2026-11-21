@@ -342,7 +342,11 @@ ADV = [
     ('ore_map', 'twilightOreMap', 'ore_map', 'maze_map', 'challenge', {'crafted': crafted('empty_ore_map'), 'crafted2': crafted('empty_ore_map_from_maze_map')},
      'How Can That Be Worth It?', 'Craft the maze/ore map', 'Wie kann sich das lohnen?', 'Stelle die Labyrinth-/Erzkarte her'),
 ]
+# the three map advancements need the map items and their recipes (MAPS = True once they exist)
+MAPS = False
 for adv, old, icon, parent, frame, criteria, en_t, en_d, de_t, de_d in ADV:
+    if not MAPS and adv in ('magic_map', 'maze_map', 'ore_map'):
+        continue
     obj = {'display': {'icon': {'id': icon if ':' in icon else n(icon)}, 'title': {'translate': f'advancements.{NS}.{adv}.title'},
                        'description': {'translate': f'advancements.{NS}.{adv}.description'}, 'frame': frame},
            'criteria': criteria, 'requirements': [list(criteria.keys())]}
