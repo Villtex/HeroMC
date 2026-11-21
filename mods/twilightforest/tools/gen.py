@@ -751,7 +751,7 @@ exec(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'gen_hydra.py
 # ---------------------------------------------------------------- write tags, data map, recipes
 for (reg, t), values in TAGS.items():
     ns, path = t.split(':')
-    write(f'data/{ns}/tags/{reg}/{path}.json', {'values': sorted(set(values))})
+    write(f'data/{ns}/tags/{reg}/{path}.json', {'values': sorted(set(v for v in values if isinstance(v, str))) + [v for v in values if not isinstance(v, str)]})
 write('data/neoforge/data_maps/block/flammable.json', {'values': FLAMMABLE})
 for name, r in RECIPES.items():
     write(f'data/{NS}/recipe/{name}.json', r)

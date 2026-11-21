@@ -15,7 +15,7 @@
     "crafted": {
       "trigger": "minecraft:recipe_crafted",
       "conditions": {
-        "recipe_id": "twilightforest:magic_map_focus"
+        "recipes": "twilightforest:magic_map_focus"
       }
     }
   },

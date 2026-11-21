@@ -8,7 +8,6 @@
     "twilightforest:hedge_spider",
     "twilightforest:helmet_crab",
     "twilightforest:hostile_wolf",
-    "twilightforest:hydra",
     "twilightforest:kobold",
     "twilightforest:lich",
     "twilightforest:lich_minion",
@@ -25,6 +24,10 @@
     "twilightforest:tiny_bird",
     "twilightforest:wild_boar",
     "twilightforest:wild_deer",
-    "twilightforest:wraith"
+    "twilightforest:wraith",
+    {
+      "id": "twilightforest:hydra",
+      "required": false
+    }
   ]
 }

@@ -15,24 +15,13 @@
     "crafted": {
       "trigger": "minecraft:recipe_crafted",
       "conditions": {
-        "recipe_id": "twilightforest:empty_magic_map"
-      }
-    },
-    "used": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": "twilightforest:magic_map"
-          }
-        ]
+        "recipes": "twilightforest:empty_magic_map"
       }
     }
   },
   "requirements": [
     [
-      "crafted",
-      "used"
+      "crafted"
     ]
   ],
   "parent": "twilightforest:magic_map_focus"

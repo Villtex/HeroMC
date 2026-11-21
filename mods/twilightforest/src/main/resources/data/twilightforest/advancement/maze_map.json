@@ -15,24 +15,13 @@
     "crafted": {
       "trigger": "minecraft:recipe_crafted",
       "conditions": {
-        "recipe_id": "twilightforest:empty_maze_map"
-      }
-    },
-    "used": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": "twilightforest:maze_map"
-          }
-        ]
+        "recipes": "twilightforest:empty_maze_map"
       }
     }
   },
   "requirements": [
     [
-      "crafted",
-      "used"
+      "crafted"
     ]
   ],
   "parent": "twilightforest:hill1"

@@ -283,7 +283,9 @@ for kind, src, en, de in (('hydra', 'hydraTrophy', 'Hydra Trophy', 'Hydra-Troph�
 HUNTER_PREY = ['fire_beetle', 'slime_beetle', 'pinch_beetle', 'death_tome', 'hostile_wolf', 'wraith', 'kobold', 'minotaur', 'hedge_spider', 'lich',
                'swarm_spider', 'block_goblin', 'helmet_crab', 'lich_minion', 'tiny_bird', 'penguin', 'wild_deer', 'bunny', 'bighorn_sheep',
                'squirrel', 'wild_boar', 'redcap', 'naga', 'mosquito_swarm', 'hydra', 'skeleton_druid']
-tag('entity_type', f'{NS}:hunter_prey', *[n(m) for m in HUNTER_PREY])
+tag('entity_type', f'{NS}:hunter_prey', *[n(m) for m in HUNTER_PREY if m != 'hydra'])
+# the hydra is registered by TFHydra; optional so that the tag loads without it
+TAGS[('entity_type', f'{NS}:hunter_prey')].append({'id': n('hydra'), 'required': False})
 
 
 def killed(mob):
@@ -296,7 +298,7 @@ def has(*items):
 
 
 def crafted(recipe):
-    return {'trigger': 'minecraft:recipe_crafted', 'conditions': {'recipe_id': n(recipe)}}
+    return {'trigger': 'minecraft:recipe_crafted', 'conditions': {'recipes': n(recipe)}}
 
 
 IMPOSSIBLE = {'trigger': 'minecraft:impossible'}
@@ -332,13 +334,12 @@ ADV = [
      'Besiege ein Zwielicht-Gespenst in einem großen hohlen Hügel'),
     ('hedge', 'twilightHedge', 'hedge', 'arrival', 'task', {'done': IMPOSSIBLE},
      'Bug Stomper', 'Defeat a spider in a hedge maze', 'Käferzertreter', 'Besiege eine Spinne in einem Heckenlabyrinth'),
-    ('magic_map', 'twilightMagicMap', 'magic_map', 'magic_map_focus', 'task', {'crafted': crafted('empty_magic_map'), 'used': has('magic_map')},
+    ('magic_map', 'twilightMagicMap', 'magic_map', 'magic_map_focus', 'task', {'crafted': crafted('empty_magic_map')},
      'I Can See For Miles', 'Craft the magic map', 'Ich sehe meilenweit', 'Stelle die magische Karte her'),
-    ('maze_map', 'twilightMazeMap', 'maze_map', 'hill1', 'task', {'crafted': crafted('empty_maze_map'), 'used': has('maze_map')},
+    ('maze_map', 'twilightMazeMap', 'maze_map', 'hill1', 'task', {'crafted': crafted('empty_maze_map')},
      'And Now, to Find the Exit', 'Craft the maze map after obtaining the focus from a goblin', 'Und jetzt den Ausgang finden',
      'Stelle die Labyrinthkarte her, nachdem du den Fokus von einem Kobold bekommen hast'),
-    ('ore_map', 'twilightOreMap', 'ore_map', 'maze_map', 'challenge', {'crafted': crafted('empty_ore_map'), 'crafted2': crafted('empty_ore_map_from_maze_map'),
-                                                                     'used': has('ore_map')},
+    ('ore_map', 'twilightOreMap', 'ore_map', 'maze_map', 'challenge', {'crafted': crafted('empty_ore_map'), 'crafted2': crafted('empty_ore_map_from_maze_map')},
      'How Can That Be Worth It?', 'Craft the maze/ore map', 'Wie kann sich das lohnen?', 'Stelle die Labyrinth-/Erzkarte her'),
 ]
 for adv, old, icon, parent, frame, criteria, en_t, en_d, de_t, de_d in ADV:
