@@ -98,6 +98,7 @@ public final class TwilightForest {
                 TFTower.TAB_ITEMS.forEach(item -> output.accept(item.get()));
                 TFItems.TAB_ITEMS.forEach(item -> output.accept(item.apply(params.holders())));
                 output.acceptAll(TFEntities.tabStacks());
+                output.acceptAll(TFBosses.tabStacks());
             }).build());
 
     public TwilightForest(IEventBus modBus) {
@@ -111,6 +112,7 @@ public final class TwilightForest {
         TFTower.register(modBus);
         TFItems.register(modBus);
         TFHydra.register(modBus);
+        TFBosses.register(modBus);
         GENERATORS.register("twilight_forest", () -> TFChunkGenerator.CODEC);
         BIOME_SOURCES.register("twilight_forest", () -> TFBiomeSource.CODEC);
         GENERATORS.register(modBus);
@@ -120,6 +122,7 @@ public final class TwilightForest {
         TFTower.registerOldBlocks();
         TFEntities.registerOld();
         TFItems.registerOld();
+        TFBosses.registerOld();
         OldGameIds.registerEnchantment(TFEnchantment.OLD_ID, TFEnchantment.FIERY_AURA);
         twilightforest.block.MazestoneBlock.SPARED = stack -> stack.is(TFItems.MAZEBREAKER_PICKAXE.get());
         TFBlocks.GROWER = TFSaplings::grow;

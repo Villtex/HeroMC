@@ -62,6 +62,10 @@ public class TowerGhast extends TFFlyingMonster {
         return this.entityData.get(DATA_AGGRO);
     }
 
+    protected void setAggroStatus(byte status) {
+        this.entityData.set(DATA_AGGRO, status);
+    }
+
     @Override
     protected float getSoundVolume() {
         return 0.5F;

@@ -73,6 +73,23 @@ public final class TFTreasure {
         return flag;
     }
 
+    /**
+     * The contents generate would put into a new chest at (x, y, z) of a world with this seed (the ur-ghast's chest,
+     * made in the running game).
+     */
+    public OldTile.Chest contents(long seed, int x, int y, int z) {
+        Random rand = new Random(seed * x + y ^ z);
+        OldTile.Chest chest = new OldTile.Chest();
+        for (int i = 0; i < 4; i++) {
+            addItemToChest(chest, rand, this.getCommonItem(rand));
+        }
+        for (int i = 0; i < 2; i++) {
+            addItemToChest(chest, rand, this.uncommon.getRandomItem(rand));
+        }
+        addItemToChest(chest, rand, this.getRareItem(rand));
+        return chest;
+    }
+
     private OldStack getCommonItem(Random rand) {
         return !this.useless.isEmpty() && rand.nextInt(4) == 0 ? this.useless.getRandomItem(rand) : this.common.getRandomItem(rand);
     }

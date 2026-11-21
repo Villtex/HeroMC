@@ -255,11 +255,14 @@ public final class TFBlocks {
      * BlockTFBossSpawner by metadata (0 naga, 1 lich, 2 hydra, 3 tower): hardness 20, resistance 10, drops nothing. Teil 24d
      * places them in the buildings; they summon their boss with Teil 24f.
      */
-    public static final List<DeferredBlock<Block>> BOSS_SPAWNERS = List.of(bossSpawner("naga_boss_spawner"),
-            bossSpawner("lich_boss_spawner"), bossSpawner("hydra_boss_spawner"), bossSpawner("tower_boss_spawner"));
+    public static final List<DeferredBlock<twilightforest.block.BossSpawnerBlock>> BOSS_SPAWNERS = List.of(
+            bossSpawner("naga_boss_spawner", twilightforest.block.BossSpawnerBlock.Kind.NAGA),
+            bossSpawner("lich_boss_spawner", twilightforest.block.BossSpawnerBlock.Kind.LICH),
+            bossSpawner("hydra_boss_spawner", twilightforest.block.BossSpawnerBlock.Kind.HYDRA),
+            bossSpawner("tower_boss_spawner", twilightforest.block.BossSpawnerBlock.Kind.TOWER));
 
-    private static DeferredBlock<Block> bossSpawner(String name) {
-        return block(name, Block::new, p -> p.mapColor(MapColor.STONE).strength(20.0F, 10.0F).sound(SoundType.METAL).noOcclusion().noLootTable()
+    private static DeferredBlock<twilightforest.block.BossSpawnerBlock> bossSpawner(String name, twilightforest.block.BossSpawnerBlock.Kind kind) {
+        return block(name, p -> new twilightforest.block.BossSpawnerBlock(kind, p), p -> p.mapColor(MapColor.STONE).strength(20.0F, 10.0F).sound(SoundType.METAL).noOcclusion().noLootTable()
                 .requiresCorrectToolForDrops());
     }
 

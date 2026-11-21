@@ -219,3 +219,62 @@ names(f'entity.{NS}.twilight_wand_bolt', 'Twilight Wand Bolt', 'Zwielichtzepter-
 names(f'entity.{NS}.moonworm_shot', 'Moonworm Shot', 'Mondwurm-Schuss')
 names(f'entity.{NS}.charm_effect', 'Charm Effect', 'Amulett-Effekt')
 names(f'entity.{NS}.loyal_zombie', 'Loyal Zombie', 'Treuer Zombie')
+
+# ================================================================= the bosses (TFBosses)
+for mob, en, de, egg in [('naga', 'Naga', 'Naga', (10801942, 1783819)), ('lich', 'Twilight Lich', 'Zwielicht-Lich', (11314313, 3540082)),
+                         ('lich_minion', 'Lich Minion', 'Lich-Diener', None), ('minoshroom', 'Minoshroom', 'Minoshroom', (11014162, 11173222)),
+                         ('ur_ghast', 'Ur-Ghast', 'Ur-Ghast', (12369084, 12023928))]:
+    names(f'entity.{NS}.{mob}', en, de)
+    if egg:
+        name = f'{mob}_spawn_egg'
+        write(f'assets/{NS}/models/item/{name}.json', {'parent': 'minecraft:item/generated', 'textures': {'layer0': 'minecraft:item/egg'}})
+        write(f'assets/{NS}/items/{name}.json', {'model': {'type': 'minecraft:model', 'model': n(f'item/{name}'),
+                                                           'tints': [{'type': 'minecraft:constant', 'value': (0xFF000000 | egg[0]) - (1 << 32)}]}})
+        names(f'item.{NS}.{name}', f'{en} Spawn Egg', f'Spawn-Ei ({de})')
+names(f'entity.{NS}.lich_bolt', 'Lich Bolt', 'Lich-Bolzen')
+names(f'entity.{NS}.lich_bomb', 'Lich Bomb', 'Lich-Bombe')
+for src in ['nagahead', 'nagasegment', 'twilightlich64', 'minoshroomtaur', 'towerboss', 'towerboss_openeyes', 'towerboss_fire']:
+    ASSETS.append((f'mods/twilightforest/textures/model/{src}.png', f'assets/{NS}/textures/entity/{src}.png'))
+tag('entity_type', 'minecraft:undead', n('lich'), n('lich_minion'))
+tag('entity_type', 'minecraft:sensitive_to_smite', n('lich'), n('lich_minion'), n('loyal_zombie'))
+# the naga's sounds (TFSounds: mob.tf.naga.hiss / rattle / hurt)
+for event, files, en, de in (('naga.hiss', ['nagahiss%d' % i for i in range(3)], 'Naga hisses', 'Naga zischt'),
+                             ('naga.rattle', ['nagarattle%d' % i for i in range(2)], 'Naga rattles', 'Naga rasselt'),
+                             ('naga.hurt', ['nagahurt%d' % i for i in range(3)], 'Naga hurts', 'Naga verletzt')):
+    SOUNDS_JSON[event] = {'sounds': [n(f'naga/{f}') for f in files], 'subtitle': f'subtitles.{NS}.{event}'}
+    for f in files:
+        ASSETS.append((f'mods/twilightforest/sounds/naga/{f}.ogg', f'assets/{NS}/sounds/naga/{f}.ogg'))
+    names(f'subtitles.{NS}.{event}', en, de)
+write(f'assets/{NS}/sounds.json', SOUNDS_JSON)
+
+# loot (dropFewItems)
+mob_loot('naga', [drop(n('naga_scale'), 6, 11, 0), drop(n('naga_trophy'), 1, 1, 0)])
+GOLD = [I + x for x in ('golden_sword', 'golden_helmet', 'golden_chestplate', 'golden_leggings', 'golden_boots')]
+mob_loot('lich', [
+    {'rolls': 1, 'entries': [{'type': 'minecraft:item', 'name': n(s)} for s in ('zombie_scepter', 'lifedrain_scepter', 'twilight_scepter')]},
+    # dropGoldThing: rand(3 + looting) + 2 golden things, each with addRandomEnchantment(10 + rand(30))
+    {'rolls': {'type': 'minecraft:uniform', 'min': 2, 'max': 4}, 'entries': [{'type': 'minecraft:item', 'name': g, 'modifier': [
+        {'type': 'minecraft:enchant_with_levels', 'levels': {'type': 'minecraft:uniform', 'min': 10, 'max': 39}}]} for g in GOLD]},
+    drop(I + 'ender_pearl', 1, 4), drop(I + 'bone', 5, 9), drop(n('lich_trophy'), 1, 1, 0)])
+mob_loot('minoshroom', [drop(n('meef_stroganoff'), 2, 5)])
+_zombie = vanilla_loot('zombie')
+if _zombie is not None:
+    mob_loot('lich_minion', _zombie['pools'])
+import copy
+with open(os.path.join(ROOT, f'data/{NS}/loot_table/entities/tower_ghast.json')) as f:
+    mob_loot('ur_ghast', copy.deepcopy(json.load(f)['pools']))
+
+# trophies: the item icons; the blocks are drawn by their renderer (soul sand for the break particles)
+for kind, src, en, de in (('hydra', 'hydraTrophy', 'Hydra Trophy', 'Hydra-Trophäe'), ('naga', 'nagaTrophy', 'Naga Trophy', 'Naga-Trophäe'),
+                          ('lich', 'lichTrophy', 'Lich Trophy', 'Lich-Trophäe'), ('ur_ghast', 'urGhastTrophy', 'Ur-Ghast Trophy', 'Ur-Ghast-Trophäe')):
+    t = f'{kind}_trophy'
+    item_tex(src, t)
+    write(f'assets/{NS}/models/item/{t}.json', {'parent': 'minecraft:item/generated', 'textures': {'layer0': n(f'item/{t}')}})
+    write(f'assets/{NS}/items/{t}.json', {'model': {'type': 'minecraft:model', 'model': n(f'item/{t}')}})
+    names(f'block.{NS}.{t}', en, de)
+    names(f'block.{NS}.wall_{t}', en, de)
+    for b in (t, f'wall_{t}'):
+        write(f'assets/{NS}/models/block/{b}.json', {'textures': {'particle': 'minecraft:block/soul_sand'}})
+        write(f'assets/{NS}/blockstates/{b}.json', {'variants': {'': {'model': n(f'block/{b}')}}})
+        write(f'data/{NS}/loot_table/blocks/{b}.json', {'type': 'minecraft:block', 'pools': [{'rolls': 1, 'entries': [
+            {'type': 'minecraft:item', 'name': n(t)}], 'condition': {'type': 'minecraft:survives_explosion'}}], 'random_sequence': f'{NS}:blocks/{b}'})

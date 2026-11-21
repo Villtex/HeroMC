@@ -116,6 +116,7 @@ public final class TFClient {
     public static void register(IEventBus modBus) {
         twilightforest.client.entity.TFEntityRenderers.register(modBus);
         twilightforest.client.entity.hydra.HydraRenderers.register(modBus);
+        twilightforest.client.entity.BossRenderers.register(modBus);
         modBus.addListener(TFClient::colors);
         modBus.addListener(EntityRenderersEvent.RegisterLayerDefinitions.class, e -> {
             e.registerLayerDefinition(CritterRenderer.FIREFLY, CritterRenderer::firefly);
@@ -123,7 +124,10 @@ public final class TFClient {
             e.registerLayerDefinition(CritterRenderer.MOONWORM, CritterRenderer::moonworm);
         });
         modBus.addListener(EntityRenderersEvent.RegisterRenderers.class,
-                e -> e.registerBlockEntityRenderer(TFBlocks.CRITTER_ENTITY.get(), CritterRenderer::new));
+                e -> {
+                    e.registerBlockEntityRenderer(TFBlocks.CRITTER_ENTITY.get(), CritterRenderer::new);
+                    e.registerBlockEntityRenderer(twilightforest.TFBosses.TROPHY_ENTITY.get(), TrophyRenderer::new);
+                });
         modBus.addListener(RegisterParticleProvidersEvent.class, e -> e.registerSpriteSet(TFBlocks.FIREFLY_PARTICLE.get(), FireflyParticle.Provider::new));
     }
 }

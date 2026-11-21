@@ -126,5 +126,28 @@
       "twilightforest:urghast/trapspindown"
     ],
     "subtitle": "subtitles.twilightforest.ghast_trap.spindown"
+  },
+  "naga.hiss": {
+    "sounds": [
+      "twilightforest:naga/nagahiss0",
+      "twilightforest:naga/nagahiss1",
+      "twilightforest:naga/nagahiss2"
+    ],
+    "subtitle": "subtitles.twilightforest.naga.hiss"
+  },
+  "naga.rattle": {
+    "sounds": [
+      "twilightforest:naga/nagarattle0",
+      "twilightforest:naga/nagarattle1"
+    ],
+    "subtitle": "subtitles.twilightforest.naga.rattle"
+  },
+  "naga.hurt": {
+    "sounds": [
+      "twilightforest:naga/nagahurt0",
+      "twilightforest:naga/nagahurt1",
+      "twilightforest:naga/nagahurt2"
+    ],
+    "subtitle": "subtitles.twilightforest.naga.hurt"
   }
 }
