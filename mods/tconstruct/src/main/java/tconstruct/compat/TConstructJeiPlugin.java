@@ -41,6 +41,7 @@ public class TConstructJeiPlugin implements IModPlugin {
     static final IRecipeType<LiquidCategory.Row> TABLE = IRecipeType.create(TConstruct.id("casting_table"), LiquidCategory.Row.class);
     static final IRecipeType<LiquidCategory.Row> BASIN = IRecipeType.create(TConstruct.id("casting_basin"), LiquidCategory.Row.class);
     static final IRecipeType<LiquidCategory.Row> DRYING = IRecipeType.create(TConstruct.id("drying_rack"), LiquidCategory.Row.class);
+    static final IRecipeType<TinkerCategory.Row> CHISEL = IRecipeType.create(TConstruct.id("chisel"), TinkerCategory.Row.class);
 
     @Override
     public Identifier getPluginUid() {
@@ -58,7 +59,8 @@ public class TConstructJeiPlugin implements IModPlugin {
                 new LiquidCategory(gui, ALLOYING, Component.translatable("jei.tconstruct.alloy"), tconstruct.TSmeltery.CONTROLLER.get(), 4),
                 new LiquidCategory(gui, TABLE, Component.translatable("jei.tconstruct.table"), tconstruct.TSmeltery.CASTING_TABLE.get(), 2),
                 new LiquidCategory(gui, BASIN, Component.translatable("jei.tconstruct.basin"), tconstruct.TSmeltery.CASTING_BASIN.get(), 2),
-                new LiquidCategory(gui, DRYING, Component.translatable("jei.tconstruct.drying"), tconstruct.TSmeltery.DRYING_RACK.get(), 1));
+                new LiquidCategory(gui, DRYING, Component.translatable("jei.tconstruct.drying"), tconstruct.TSmeltery.DRYING_RACK.get(), 1),
+                new TinkerCategory(gui, CHISEL, Component.translatable("jei.tconstruct.chisel"), TItems.tool(ToolType.CHISEL), 2, 1));
     }
 
     @Override
@@ -83,6 +85,25 @@ public class TConstructJeiPlugin implements IModPlugin {
         registration.addRecipes(TOOLS, toolRecipes());
         registration.addRecipes(MODIFIERS, modifierRecipes());
         SmelteryJei.register(registration, MELTING, ALLOYING, TABLE, BASIN, DRYING);
+        registration.addRecipes(CHISEL, chiselRecipes());
+    }
+
+    /** Detailing: the chisel and a block (or an ingot, a gem, ...) in the crafting grid, or the chisel used on the block. */
+    static List<TinkerCategory.Row> chiselRecipes() {
+        ItemStack chisel = ToolBuilder.creativeTool(ToolType.CHISEL, TMaterial.IRON, TMaterial.IRON, TMaterial.IRON);
+        List<TinkerCategory.Row> rows = new ArrayList<>();
+        for (tconstruct.recipe.Detailing.Detail detail : tconstruct.recipe.Detailing.all()) {
+            ItemStack in = new ItemStack(detail.input().get());
+            ItemStack out = new ItemStack(detail.output().get().getBlock());
+            if (!in.isEmpty() && !out.isEmpty()) {
+                rows.add(new TinkerCategory.Row(List.of(List.of(chisel), List.of(in)), List.of(List.of(out)), null));
+            }
+        }
+        for (tconstruct.recipe.Detailing.ItemDetail detail : tconstruct.recipe.Detailing.allItems()) {
+            rows.add(new TinkerCategory.Row(List.of(List.of(chisel), List.of(new ItemStack(detail.input().get()))),
+                    List.of(List.of(new ItemStack(detail.output().get().getBlock()))), Component.translatable("jei.tconstruct.chisel.grid")));
+        }
+        return rows;
     }
 
     /** Every wooden pattern with every material that makes a part (enough of it for one part). */

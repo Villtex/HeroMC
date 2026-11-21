@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "sticks=1": {
+      "model": "tconstruct:block/punji_sticks_1"
+    },
+    "sticks=2": {
+      "model": "tconstruct:block/punji_sticks_2"
+    },
+    "sticks=3": {
+      "model": "tconstruct:block/punji_sticks_3"
+    },
+    "sticks=4": {
+      "model": "tconstruct:block/punji_sticks_4"
+    },
+    "sticks=5": {
+      "model": "tconstruct:block/punji_sticks_5"
+    }
+  }
+}

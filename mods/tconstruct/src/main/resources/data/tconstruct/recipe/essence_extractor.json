@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " b ",
+    "eme",
+    "mmm"
+  ],
+  "key": {
+    "b": "minecraft:book",
+    "e": "minecraft:emerald",
+    "m": "minecraft:end_stone"
+  },
+  "result": {
+    "id": "tconstruct:essence_extractor"
+  }
+}

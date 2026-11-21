@@ -131,6 +131,7 @@ public final class TBlocks {
                 BLOCK_ITEMS.forEach(item -> output.accept(item.get()));
                 TSmeltery.ITEMS.forEach(item -> output.accept(item.get()));
                 TWorld.ITEMS.forEach(item -> output.accept(item.get()));
+                TDeco.ITEMS.forEach(item -> output.accept(item.get()));
             })
             .build());
 

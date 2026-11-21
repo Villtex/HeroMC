@@ -1,0 +1,52 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "down": "tconstruct:block/machines/drawbridge_bottom",
+    "up": "tconstruct:block/machines/drawbridge_top_face",
+    "north": "tconstruct:block/machines/drawbridge_side",
+    "south": "tconstruct:block/machines/drawbridge_side",
+    "west": "tconstruct:block/machines/drawbridge_side",
+    "east": "tconstruct:block/machines/drawbridge_side",
+    "particle": "tconstruct:block/machines/drawbridge_side"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "down": {
+          "texture": "#down",
+          "cullface": "down"
+        },
+        "up": {
+          "texture": "#up",
+          "cullface": "up"
+        },
+        "north": {
+          "texture": "#north",
+          "cullface": "north"
+        },
+        "south": {
+          "texture": "#south",
+          "cullface": "south"
+        },
+        "west": {
+          "texture": "#west",
+          "cullface": "west"
+        },
+        "east": {
+          "texture": "#east",
+          "cullface": "east"
+        }
+      }
+    }
+  ]
+}

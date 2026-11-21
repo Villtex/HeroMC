@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "#c:dyes/lime",
+    "tconstruct:clear_glass"
+  ],
+  "result": {
+    "id": "tconstruct:lime_clear_stained_glass"
+  }
+}

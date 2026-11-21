@@ -1,0 +1,36 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "glass": {
+      "force_translucent": true,
+      "sprite": "tconstruct:block/glass/stained/yellow/glass_4"
+    },
+    "particle": "tconstruct:block/glass/stained/yellow/glass"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "down": {
+          "texture": "#glass",
+          "cullface": "down",
+          "uv": [
+            0,
+            16,
+            16,
+            0
+          ]
+        }
+      }
+    }
+  ]
+}

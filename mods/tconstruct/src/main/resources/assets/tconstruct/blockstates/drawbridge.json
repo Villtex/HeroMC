@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "tconstruct:block/drawbridge_down"
+    },
+    "facing=up": {
+      "model": "tconstruct:block/drawbridge_up"
+    },
+    "facing=north": {
+      "model": "tconstruct:block/drawbridge_north"
+    },
+    "facing=south": {
+      "model": "tconstruct:block/drawbridge_south"
+    },
+    "facing=west": {
+      "model": "tconstruct:block/drawbridge_west"
+    },
+    "facing=east": {
+      "model": "tconstruct:block/drawbridge_east"
+    }
+  }
+}

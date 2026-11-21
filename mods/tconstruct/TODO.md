@@ -1,4 +1,4 @@
-# Tinkers' Construct – offen nach Teil 25e
+# Tinkers' Construct – offen nach Teil 25f (Port abgeschlossen)
 
 Stand nach 25a (Werkzeug-Kern) und 25b (Werkzeuge im Einsatz, Darstellung). Was die nächsten Unterteile brauchen oder nachholen müssen.
 
@@ -15,14 +15,13 @@ Stand nach 25a (Werkzeug-Kern) und 25b (Werkzeuge im Einsatz, Darstellung). Was 
 - Kein JEI für die Meißel-Rezepte (Code-Rezept).
 - Trankwerfer: das Geräusch "launcher_clank" fehlt im Archiv, ersetzt durch das Armbrust-Laden.
 - Pfeile, die einen Mob treffen, landen wie im Original in einem leeren Ausrüstungs-Slot (sichtbar in der Hand).
-- Erledigt mit 25e: Enthaupten (Köpfe).
+- Erledigt mit 25e: Enthaupten (Köpfe). Erledigt mit 25f: Meißel-Stufen für Ziegel/Brownstone (auch aus Items), JEI-Kategorie Meißel.
 
 ## Nach 25c – Schmelzerei
 
 - Erledigt: Gussformen, Metallteile durch Gießen, Werkzeugschmieden-Rezepte, leere Gussformen, Metallblöcke, Erze, Grout.
-- Klares Glas (25f): Gießbecken/-tisch geben heute Vanilla-Glas und -Glasscheibe aus; mit 25f auf `glass`/`glassPane` umstellen,
-  Schmelzen von klarem Glas, Scheiben und gefärbtem klarem Glas (500/350°, 1000/250 mB) und die Tank-Rezepte mit klarem Glas ergänzen.
-- Brownstone (25f): Gießbecken Kies + 16 mB Zinn → `speedBlock` 0 fehlt.
+- Erledigt mit 25f: klares Glas gießen/schmelzen, Tanks mit klarem Glas, Brownstone aus Kies + Zinn. Beute der Doppelstufen
+  und Tanks auf das 26.3-Format (`modifier`/`condition`) korrigiert.
 - Erledigt mit 25d: Erzbeeren schmelzen (16 mB bei 100°) und im Ofen (Klumpen), Rezept für blauen Schleimschlamm.
 - Die Flüssigkeiten haben keine Fluid-Capability (Transfer-API von NeoForge); die Blöcke sprechen untereinander über
   `smeltery.LiquidContainer`. Bei Bedarf (Rohre anderer Mods) nachrüsten.
@@ -56,12 +55,30 @@ Stand nach 25a (Werkzeug-Kern) und 25b (Werkzeuge im Einsatz, Darstellung). Was 
 - Rezepte Goldene Karotte bzw. Goldener Kopf aus Gold-Erzbeeren um einen Apfel haben dasselbe Raster wie der Goldene Apfel, der in 1.5.2
   immer gewann: nur der Goldene Apfel ist eingetragen.
 - Knochenmehl am Schleimsetzling wirkte im Original nur im Kreativmodus (Metadaten-Prüfung); nicht nachgebaut.
-- Die Essenz-Extraktor-Quelle der Essenzkristalle folgt mit 25f (der Kristall selbst ist fertig).
-- Handbuch-Bilder von 25f-Blöcken (Klarglas, Brownstone, Punji, Barrikade, Zugbrücke, Feueranzünder) bleiben leer, bis es sie gibt
+- Erledigt mit 25f: Essenz-Extraktor.
+- Erledigt mit 25f (Namen passen, Brownstone = `rough_brownstone`): Handbuch-Bilder von 25f-Blöcken (Klarglas, Brownstone, Punji, Barrikade, Zugbrücke, Feueranzünder) bleiben leer, bis es sie gibt
   (`client/manual/ManualIcons` sucht sie über den Namen: `clear_glass`, `brownstone`, `punji_sticks`, `oak_barricade`, `drawbridge`,
   `igniter` – in 25f diese Namen verwenden oder dort anpassen).
 
+## Nach 25f – Deko, Fallen, Redstone
+
+- Nicht portiert, weil im Original ohne Rezept und unfertig (Debug-Ausgaben, halbes Kristall-System `Crystallinity`):
+  Lichtaggregator (1327), Lichtkristall (1335) mit Entity `Crystal`, Antilicht (1342). `dimension/*` war nie registriert.
+- Rezept Kürbislaterne aus Kürbis + Steinfackel: im Original kaputt (Schlüssel `s` statt `w`, ergab Laterne aus einem Kürbis) –
+  weggelassen.
+- „logWood“ für die Eichenbarrikade: hier die übrigen Vanilla-Stämme (Tag `tconstruct:other_logs`), keine Stämme anderer Mods.
+- Landmine: die Auslöseart stand im Tile Entity; alte Welten (1334) werden immer die Holz-Landmine (alles).
+  Vier eigene Blöcke statt eines Items mit Damage. Die Raketen-/Feuerball-Kombination: ohne lebenden Auslöser fliegt
+  der Feuerball ohne Besitzer.
+- Zugbrücke: `drawbridgeState`-Tabelle vereinfacht: zurückgenommen wird, was als Item gleich dem im Slot ist, außer
+  den „nie“-Blöcken (Grundgestein, Kolbenkopf, Spawner, Pflanzen, Portale, Kuchen); Wasser/Lava gibt es nicht als Item.
+- Verbundenes Glas: Mehrteil-Modell aus der Original-Tabelle (`gen_deco.py` liest `GlassBlockConnected.java`); Ausrichtung
+  der Randtexturen (v. a. Unterseite) nur im Client prüfbar.
+
 ## Client-Prüfung offen
+
+- 25f: verbundene Glastexturen (alle 6 Seiten), Scheiben, Tarnung von Zugbrücke und Landmine (Modell, Tönung, Licht),
+  Landmine- und Zugbrücken-GUI (Knöpfe), Buch auf dem Essenz-Extraktor, Barrikaden-/Punji-Modelle, Steinfackel, Tooltips.
 
 - 25e: Tabs über Inventar/Rüstung/Rucksack, beide GUIs (Leerplatz-Bilder, Spielerfigur), Taste O, Handbuch (Layout, Schrift,
   Bilder, Umblättern), Item-Modelle, Ei-Farbe, Essenzkristall-Animation.

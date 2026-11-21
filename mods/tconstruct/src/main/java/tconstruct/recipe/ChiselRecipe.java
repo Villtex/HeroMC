@@ -44,11 +44,11 @@ public class ChiselRecipe extends CustomRecipe {
                 return ItemStack.EMPTY;
             }
         }
-        if (chisel.isEmpty() || !(block.getItem() instanceof BlockItem item)) {
+        if (chisel.isEmpty() || block.isEmpty()) {
             return ItemStack.EMPTY;
         }
-        Detailing.Detail detail = Detailing.get(item.getBlock());
-        return detail == null ? ItemStack.EMPTY : new ItemStack(detail.output().get().getBlock());
+        net.minecraft.world.level.block.state.BlockState out = Detailing.output(block);
+        return out == null ? ItemStack.EMPTY : new ItemStack(out.getBlock());
     }
 
     @Override

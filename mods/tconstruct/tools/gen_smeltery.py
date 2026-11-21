@@ -150,9 +150,8 @@ for reg, full, key in SLABS:
     block_item(reg)
     old_name(f'block.searedstone.slab.{key}.name', f'block.{NS}.{reg}', reg, reg)
     write(f'data/{NS}/loot_table/blocks/{reg}.json', {'type': 'minecraft:block', 'pools': [{'rolls': 1, 'entries': [{
-        'type': 'minecraft:item', 'name': n(reg), 'functions': [{'function': 'minecraft:set_count', 'count': 2, 'add': False, 'conditions': [
-            {'condition': 'minecraft:block_state_property', 'block': n(reg), 'properties': {'type': 'double'}}]},
-                                                       {'function': 'minecraft:explosion_decay'}]}]}]})
+        'type': 'minecraft:item', 'name': n(reg), 'modifier': [{'type': 'minecraft:set_count', 'count': 2, 'condition': {
+            'type': 'minecraft:match_block', 'blocks': n(reg), 'state': {'type': 'double'}}}, {'type': 'minecraft:explosion_decay'}]}]}]})
     smelt_blocks.append((reg, 'pickaxe-noloot'))
 write('data/minecraft/tags/block/slabs.json', {'replace': False, 'values': [n(r) for r, _, _ in SLABS]})
 write('data/minecraft/tags/item/slabs.json', {'replace': False, 'values': [n(r) for r, _, _ in SLABS]})
@@ -166,8 +165,8 @@ for reg, top, sd, bottom, key in (('seared_tank', 'lavatank_top', 'lavatank_side
     block_item(reg)
     old_name(f'{key}.name', f'block.{NS}.{reg}', reg, reg)
     write(f'data/{NS}/loot_table/blocks/{reg}.json', {'type': 'minecraft:block', 'pools': [{'rolls': 1, 'entries': [{
-        'type': 'minecraft:item', 'name': n(reg), 'functions': [{'function': 'minecraft:copy_components', 'source': 'block_entity',
-                                                                  'include': [n('liquid')]}]}], 'condition': {'type': 'minecraft:survives_explosion'}}]})
+        'type': 'minecraft:item', 'name': n(reg), 'modifier': {'type': 'minecraft:copy_components', 'source': 'block_entity',
+                                                                 'include': [n('liquid')]}}], 'condition': {'type': 'minecraft:survives_explosion'}}]})
     smelt_blocks.append((reg, 'pickaxe-noloot'))
 name(f'tooltip.{NS}.contains', 'Contains %s', 'Enthält %s')
 name(f'tooltip.{NS}.mb', '%s mB', '%s mB')
@@ -284,7 +283,7 @@ write('data/c/tags/item/ingots/obsidian.json', {'values': [n('obsidian_ingot')]}
 
 # ---------------------------------------------------------------- recipes
 SB = n('seared_brick')
-G = [M + 'glass']  # clear glass of part 25f joins later
+G = [M + 'glass', n('clear_glass')]  # vanilla or clear glass (part 25f)
 shaped('smeltery_controller', ['bbb', 'b b', 'bbb'], {'b': SB}, 'smeltery_controller', category='building')
 shaped('smeltery_drain', ['b b', 'b b', 'b b'], {'b': SB}, 'smeltery_drain', category='building')
 shaped('seared_bricks', ['bb', 'bb'], {'b': SB}, 'seared_bricks', category='building')

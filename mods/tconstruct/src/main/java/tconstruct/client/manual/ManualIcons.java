@@ -281,7 +281,7 @@ public final class ManualIcons {
         modifier("electricmod", ironPick, dirt, dirt);
         modifier("tier1free", ironPick, s(Items.DIAMOND), s(Items.GOLD_BLOCK));
         modifier("tier2free", ironPick, s(Items.NETHER_STAR), e);
-        smeltery("brownstone", s("brownstone"), s("molten_tin_bucket"), gravel);
+        smeltery("brownstone", s("rough_brownstone"), s("molten_tin_bucket"), gravel);
         smeltery("clearglass", s("clear_glass"), s("molten_glass_bucket"), e);
         smeltery("searedstone", s("seared_stone"), s("liquid_seared_stone_bucket"), e);
         smeltery("endstone", s(Items.END_STONE), s("liquid_ender_bucket"), s(Items.OBSIDIAN));

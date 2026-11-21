@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "tconstruct:block/purple_wool_slab"
+    },
+    "type=top": {
+      "model": "tconstruct:block/purple_wool_slab_top"
+    },
+    "type=double": {
+      "model": "minecraft:block/purple_wool"
+    }
+  }
+}

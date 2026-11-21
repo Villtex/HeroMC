@@ -7,23 +7,20 @@
         {
           "type": "minecraft:item",
           "name": "tconstruct:seared_cobblestone_slab",
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_count",
+              "type": "minecraft:set_count",
               "count": 2,
-              "add": false,
-              "conditions": [
-                {
-                  "condition": "minecraft:block_state_property",
-                  "block": "tconstruct:seared_cobblestone_slab",
-                  "properties": {
-                    "type": "double"
-                  }
+              "condition": {
+                "type": "minecraft:match_block",
+                "blocks": "tconstruct:seared_cobblestone_slab",
+                "state": {
+                  "type": "double"
                 }
-              ]
+              }
             },
             {
-              "function": "minecraft:explosion_decay"
+              "type": "minecraft:explosion_decay"
             }
           ]
         }

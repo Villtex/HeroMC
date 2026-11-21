@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    "mcm",
+    "rpr"
+  ],
+  "key": {
+    "m": "minecraft:repeater",
+    "c": "tconstruct:blank_cast",
+    "r": "minecraft:redstone",
+    "p": "minecraft:stone_pressure_plate"
+  },
+  "result": {
+    "id": "tconstruct:redstone_landmine"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "###",
+    "#m#",
+    "###"
+  ],
+  "key": {
+    "m": "#c:dyes/pink",
+    "#": "#minecraft:wool"
+  },
+  "result": {
+    "id": "minecraft:pink_wool",
+    "count": 8
+  }
+}

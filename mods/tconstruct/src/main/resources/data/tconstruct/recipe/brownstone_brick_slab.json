@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "bbb"
+  ],
+  "key": {
+    "b": "tconstruct:brownstone_brick"
+  },
+  "result": {
+    "id": "tconstruct:brownstone_brick_slab",
+    "count": 6
+  }
+}

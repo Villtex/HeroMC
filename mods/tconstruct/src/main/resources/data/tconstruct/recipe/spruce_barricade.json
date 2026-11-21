@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "b",
+    "b"
+  ],
+  "key": {
+    "b": "minecraft:spruce_log"
+  },
+  "result": {
+    "id": "tconstruct:spruce_barricade"
+  }
+}

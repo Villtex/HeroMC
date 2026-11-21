@@ -325,8 +325,7 @@ public final class SmelteryRecipes {
             Item bucket = get(i).bucket().get();
             table(stack(bucket), i, 1000, Items.BUCKET, true, 10);
         }
-        // clear glass pane of part 25f; the vanilla pane stands in
-        table(stack(Items.GLASS_PANE), GLASS, 250, null, false, 80);
+        table(() -> new ItemStack(tconstruct.TDeco.GLASS_PANES.get(0).get()), GLASS, 250, null, false, 80);
         int[] liquids = {IRON, COPPER, COBALT, ARDITE, MANYULLYN, BRONZE, ALUMITE, OBSIDIAN, STEEL};
         TMaterial[] liquidMaterials = {TMaterial.IRON, TMaterial.COPPER, TMaterial.COBALT, TMaterial.ARDITE, TMaterial.MANYULLYN, TMaterial.BRONZE,
                 TMaterial.ALUMITE, TMaterial.OBSIDIAN, TMaterial.STEEL};
@@ -380,10 +379,10 @@ public final class SmelteryRecipes {
         }
         basin(stack(Blocks.OBSIDIAN), OBSIDIAN, 288, null);
         basin(() -> new ItemStack(TSmeltery.METAL_BLOCKS.get(9).get()), STEEL, 1296, null);
-        // clear glass of part 25f; the vanilla block stands in
-        basin(stack(Blocks.GLASS), GLASS, 1000, null);
+        basin(() -> new ItemStack(tconstruct.TDeco.CLEAR_GLASS.get()), GLASS, 1000, null);
         basin(() -> new ItemStack(TSmeltery.SEARED_STONE.get()), STONE, 144, null);
-        // brownstone (speedBlock, tin on gravel) follows with part 25f
+        // brownstone: 16 mB of tin on gravel
+        basin(() -> new ItemStack(tconstruct.TDeco.SPEED_BLOCKS.get(0).get()), TIN, 16, Items.GRAVEL);
         basin(stack(Blocks.END_STONE), ENDER, 25, Items.OBSIDIAN);
         basin(() -> new ItemStack(TSmeltery.METAL_BLOCKS.get(10).get()), ENDER, 1000, null);
         BASIN.add(new Casting(stack(Items.ENCHANTED_GOLDEN_APPLE), fluid(GOLD), 10368, s -> s.is(Items.APPLE), () -> List.of(new ItemStack(Items.APPLE)),
@@ -418,7 +417,12 @@ public final class SmelteryRecipes {
         meltBlock(Blocks.GLASS, 625, GLASS, 1000);
         meltBlock(Blocks.STONE, 800, STONE, 8);
         meltBlock(Blocks.COBBLESTONE, 800, STONE, 8);
-        // clear glass, its pane and the stained clear glass come with part 25f
+        meltBlock(tconstruct.TDeco.CLEAR_GLASS.get(), 500, GLASS, 1000);
+        meltBlock(tconstruct.TDeco.GLASS_PANES.get(0).get(), 350, GLASS, 250);
+        for (int i = 0; i < 16; i++) {
+            meltBlock(tconstruct.TDeco.STAINED_GLASS.get(i).get(), 500, GLASS, 1000);
+            meltBlock(tconstruct.TDeco.STAINED_PANES.get(i).get(), 350, GLASS, 250);
+        }
         Object[][] armor = {{Items.IRON_HELMET, 720}, {Items.IRON_CHESTPLATE, 1152}, {Items.IRON_LEGGINGS, 1008}, {Items.IRON_BOOTS, 576},
                 {Items.IRON_HOE, 288}, {Items.IRON_SWORD, 288}, {Items.IRON_SHOVEL, 144}, {Items.IRON_PICKAXE, 432}, {Items.IRON_AXE, 432}};
         for (Object[] a : armor) {

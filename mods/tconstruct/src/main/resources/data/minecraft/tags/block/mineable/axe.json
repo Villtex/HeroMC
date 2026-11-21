@@ -17,6 +17,11 @@
     "tconstruct:part_builder_slab",
     "tconstruct:stencil_table_slab",
     "tconstruct:pattern_chest_slab",
-    "tconstruct:tool_forge_slab"
+    "tconstruct:tool_forge_slab",
+    "tconstruct:hambone",
+    "tconstruct:oak_barricade",
+    "tconstruct:spruce_barricade",
+    "tconstruct:birch_barricade",
+    "tconstruct:jungle_barricade"
   ]
 }

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "tconstruct:block/hambone"
+    },
+    "axis=z": {
+      "model": "tconstruct:block/hambone_horizontal",
+      "x": 90
+    },
+    "axis=x": {
+      "model": "tconstruct:block/hambone_horizontal",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

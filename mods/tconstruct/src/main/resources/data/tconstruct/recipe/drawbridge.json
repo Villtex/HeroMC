@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    "aca",
+    "#d#",
+    "#r#"
+  ],
+  "key": {
+    "a": "#c:ingots/aluminum_brass",
+    "c": "tconstruct:blank_cast",
+    "#": "#c:ingots/bronze",
+    "r": "minecraft:redstone",
+    "d": "minecraft:dispenser"
+  },
+  "result": {
+    "id": "tconstruct:drawbridge"
+  }
+}

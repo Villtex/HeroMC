@@ -58,6 +58,11 @@ public final class PatternBuilder {
         }
         full(stack -> stack.is(TItems.BLUE_SLIME_CRYSTAL.get()), () -> List.of(new ItemStack(TItems.BLUE_SLIME_CRYSTAL.get())), TMaterial.BLUE_SLIME,
                 () -> shard(TMaterial.BLUE_SLIME), () -> rod(TMaterial.BLUE_SLIME));
+        // Natura (NContent.modIntegration): the saguaro is cactus, worth 2
+        net.minecraft.resources.Identifier saguaro = net.minecraft.resources.Identifier.fromNamespaceAndPath("natura", "saguaro");
+        MATERIALS.add(new ItemKey(stack -> saguaro.equals(net.minecraft.core.registries.BuiltInRegistries.ITEM.getKey(stack.getItem())),
+                () -> net.minecraft.core.registries.BuiltInRegistries.ITEM.getOptional(saguaro).map(i -> List.of(new ItemStack(i))).orElse(List.of()), 2,
+                TMaterial.CACTUS));
     }
 
     private PatternBuilder() {

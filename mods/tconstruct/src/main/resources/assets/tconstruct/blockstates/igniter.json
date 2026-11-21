@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "tconstruct:block/igniter_down"
+    },
+    "facing=up": {
+      "model": "tconstruct:block/igniter_up"
+    },
+    "facing=north": {
+      "model": "tconstruct:block/igniter_north"
+    },
+    "facing=south": {
+      "model": "tconstruct:block/igniter_south"
+    },
+    "facing=west": {
+      "model": "tconstruct:block/igniter_west"
+    },
+    "facing=east": {
+      "model": "tconstruct:block/igniter_east"
+    }
+  }
+}

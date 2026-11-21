@@ -1,0 +1,30 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "glass": {
+      "force_translucent": true,
+      "sprite": "tconstruct:block/glass/stained/gray/glass_1_r"
+    },
+    "particle": "tconstruct:block/glass/stained/gray/glass"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "south": {
+          "texture": "#glass",
+          "cullface": "south"
+        }
+      }
+    }
+  ]
+}

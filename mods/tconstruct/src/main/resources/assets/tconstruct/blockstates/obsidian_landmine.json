@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "tconstruct:block/landmine_down"
+    },
+    "facing=up": {
+      "model": "tconstruct:block/landmine_up"
+    },
+    "facing=north": {
+      "model": "tconstruct:block/landmine_north"
+    },
+    "facing=south": {
+      "model": "tconstruct:block/landmine_south"
+    },
+    "facing=west": {
+      "model": "tconstruct:block/landmine_west"
+    },
+    "facing=east": {
+      "model": "tconstruct:block/landmine_east"
+    }
+  }
+}

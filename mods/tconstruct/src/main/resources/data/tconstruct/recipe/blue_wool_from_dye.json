@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "###",
+    "#m#",
+    "###"
+  ],
+  "key": {
+    "m": "#c:dyes/blue",
+    "#": "#minecraft:wool"
+  },
+  "result": {
+    "id": "minecraft:blue_wool",
+    "count": 8
+  }
+}

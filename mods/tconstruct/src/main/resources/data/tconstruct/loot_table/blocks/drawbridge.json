@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "tconstruct:drawbridge",
+          "modifier": {
+            "type": "minecraft:copy_components",
+            "source": "block_entity",
+            "include": [
+              "minecraft:container",
+              "tconstruct:placement"
+            ]
+          }
+        }
+      ],
+      "condition": {
+        "type": "minecraft:survives_explosion"
+      }
+    }
+  ]
+}

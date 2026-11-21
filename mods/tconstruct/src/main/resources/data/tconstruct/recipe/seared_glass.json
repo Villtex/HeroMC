@@ -9,7 +9,8 @@
   "key": {
     "b": "tconstruct:seared_brick",
     "g": [
-      "minecraft:glass"
+      "minecraft:glass",
+      "tconstruct:clear_glass"
     ]
   },
   "result": {

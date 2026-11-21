@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "#c:dyes/blue",
+    "tconstruct:clear_glass_pane"
+  ],
+  "result": {
+    "id": "tconstruct:blue_clear_stained_glass_pane"
+  }
+}

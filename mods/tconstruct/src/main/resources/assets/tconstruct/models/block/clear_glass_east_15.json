@@ -1,0 +1,27 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "glass": "tconstruct:block/glass/clear/glass_4",
+    "particle": "tconstruct:block/glass/clear/glass"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "east": {
+          "texture": "#glass",
+          "cullface": "east"
+        }
+      }
+    }
+  ]
+}

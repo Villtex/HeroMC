@@ -72,7 +72,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 25c | Tinkers' Construct C: Schmelzerei, flüssige Metalle, Gießen, Legierungen, Trockengestell | ~11.000 | 25a | Fable 5.2, hoch | ✅ erledigt |
 | 25d | Tinkers' Construct D: Weltgenerierung, Schleiminseln, Dorf-Bauteile, Dorfbewohner | ~4.000 | 25c | Fable 5.2, extra hoch | ✅ erledigt |
 | 25e | Tinkers' Construct E: Spieler (Rucksack, Herzen, Handschuh, Ereignisse), Handbücher, Essen, Mobs | ~8.000 | 25a | Opus 5.5, mittel | ✅ erledigt |
-| 25f | Tinkers' Construct F: Deko-Blöcke, Fallen, Landmine, Redstone-Maschinen, Kristall/Essenz | ~9.000 | 25a | Opus 5.5, mittel | offen |
+| 25f | Tinkers' Construct F: Deko-Blöcke, Fallen, Landmine, Redstone-Maschinen, Kristall/Essenz | ~9.000 | 25a | Opus 5.5, mittel | ✅ erledigt |
 
 Entfallen ganz: Not Enough Items, NEI Plugins, CodeChickenCore (durch JEI ersetzt), Lumy Skin Patch,
 `basemods` (Forge 1.5.2 selbst).
@@ -1822,3 +1822,30 @@ Aqueduct}Logic`, `crystal/*`, zugehörige `client/block`-Renderer und GUIs.
   Essenz-Extraktor nur so weit, wie sie in 1.4.3 überhaupt funktionieren (prüfen, ob craftbar; Unfertiges notieren
   statt erfinden). `dimension/*` ist im Original nicht registriert und entfällt.
 - Kompat zum Schluss nachholen: Natura-Integration aus Teil 7 („Tinkers weggelassen“), JEI-Infos, TreeCapitator.
+
+#### Teil 25f – Stand (✅ erledigt)
+
+Alles in `mods/tconstruct` (`TDeco`, Pakete `tconstruct.deco`, `tconstruct.landmine`, `tconstruct.machine`, Client in `client/deco`,
+Daten aus `tools/gen_deco.py`). Offenes in `mods/tconstruct/TODO.md`.
+- Glas: klares Glas und 16 klare gefärbte Gläser mit verbundenen Texturen (Mehrteil-Modell, Tabelle aus `GlassBlockConnected` gelesen),
+  klare Scheibe, Seelen- und klare Seelenscheibe (nur Kreativ wie im Original), 16 gefärbte Scheiben; Rezepte (8 um Farbstoff, 1 + Farbstoff),
+  Glasflaschen und Leuchtfeuer aus klarem Glas; Gießbecken/-tisch geben jetzt klares Glas/klare Scheibe, Schmelzen 500/350°, Tanks auch mit klarem Glas.
+- Ziegel (14) und verzierte Ziegel (16) mit Härte/Sprengfestigkeit des Ausgangsblocks, Schleimziegel federn (×−1,2, 10 Pixel hoch),
+  Redstone-Ziegel geben Signal 4; alle Meißel-Stufen (auch aus Barren/Edelsteinen im Raster, `Detailing.addItem`), JEI-Kategorie Meißel.
+- Brownstone (7 Blöcke + 7 Stufen, Tempo ×2,2 bzw. ×2,7 auf Straßen), Gießbecken Kies + 16 mB Zinn, Ofen rau → glatt; Wollstufen (16,
+  ohne Härte wie im Original), Steinfackel (Stand/Wand, 4 aus Kohle + Steingriff), Schinkenknochen (Kreativ).
+- Fallen: Punji-Stöcke (1–5, Kaktusschaden meta/2+1 plus Fallhöhe·1,5+2, Langsamkeit II), Barrikaden der 4 Hölzer (bis 4 Stämme, Abbau
+  nimmt einen, Explosion nach Stärke/Abstand); Landmine in 4 Auslösearten mit GUI, Tarnblock und allen Verhalten (Schießpulver/TNT,
+  Feuerwerk, Blöcke werfen, Tränke, Feuerkugel, Spawn-Ei, Pfeil/Schneeball/Enderperle, Schere, Raketen-Feuerball, Redstone-Modus).
+- Zugbrücke (GUI mit 5 Richtungsknöpfen, Tarnblock mit Licht/Tönung, legt bis 15 Blöcke wie ein Spieler mit der gewählten Blickrichtung,
+  Item behält Inhalt), Feueranzünder (Feuer an/aus, Oberseite brennt ewig), Essenz-Extraktor (alle gesammelte Erfahrung rein,
+  Linksklick → Essenzkristall, Buch wie am Zaubertisch).
+- Kompat: Natura-Saguaro zählt als Kaktus im Teilbauer; TreeCapitator (Beil, Holzfälleraxt, Breithacke) war schon seit 25b da.
+- Korrigiert aus 25c: Beute der versengten Doppelstufen und der Tanks (Flüssigkeit) im 26.3-Format.
+- Nicht portiert (im Original ohne Rezept, unfertig): Lichtaggregator, Lichtkristall, Antilicht, Kristall-Entity.
+- Geprüft am Testserver (RCON, temporärer Befehl): Zugbrücke 10 Treppen → 9 ausgefahren (nach Norden gedreht), zurück auf 10;
+  Feueranzünder an/aus; Landmine mit Schießpulver (Explosion, Zombie 20 → 9,2, Block weg), Redstone-Modus behält Mine und Redstone;
+  Punji (Schwein 10 → tot, Langsamkeit II); Barrikade 3 → 2 Stämme; Punji nachlegen; Extraktor 500 Essenz → Kristall 500; Meißel
+  (Eisenbarren → Eisenziegel, Steinziegel → Steinstraße → verzierter Steinziegel, Gallertschleim → blauer Schleimziegel); Rezepte
+  gefärbtes Glas (8) und Landmine über Crafter. Start ohne Fehler.
+- Offen: Client-Prüfung (Glas-Ränder, Tarnmodelle, beide GUIs, Extraktor-Buch, Modelle von Barrikade/Punji/Landmine).

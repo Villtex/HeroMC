@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "###",
+    "#m#",
+    "###"
+  ],
+  "key": {
+    "m": "#c:dyes/brown",
+    "#": "tconstruct:clear_glass"
+  },
+  "result": {
+    "id": "tconstruct:brown_clear_stained_glass",
+    "count": 8
+  }
+}

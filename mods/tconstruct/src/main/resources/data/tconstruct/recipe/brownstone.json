@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": "tconstruct:rough_brownstone",
+  "result": {
+    "id": "tconstruct:brownstone"
+  },
+  "experience": 0.2,
+  "cookingtime": 200
+}

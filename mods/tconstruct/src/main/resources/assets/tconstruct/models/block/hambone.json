@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "tconstruct:block/ham_bone",
+    "side": "tconstruct:block/ham_skin"
+  }
+}

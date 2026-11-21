@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "b",
+    "b"
+  ],
+  "key": {
+    "b": "#tconstruct:other_logs"
+  },
+  "result": {
+    "id": "tconstruct:oak_barricade"
+  }
+}

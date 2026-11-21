@@ -3,7 +3,7 @@ name: tinkers-tools-263
 description: Beim Weiterbauen von Tinkers' Construct (mods/tconstruct, Teile 25b–25f) benutzen – wie Werkzeuge, Teile, Materialien, Muster und Modifikatoren im Port abgebildet sind (Komponente tconstruct:tool statt InfiTool-NBT, ein Item je Teil und Material, alte IDs), wo neue Fähigkeiten, Modifikator-Effekte, Gussformen und Werkzeug-Modelle eingehängt werden und wie man es ohne Spieler prüft.
 ---
 
-# Tinkers' Construct im Port (Stand Teil 25e)
+# Tinkers' Construct im Port (Stand Teil 25f, Port vollständig)
 
 Code: `mods/tconstruct/src/main/java/tconstruct/`, Daten/Assets aus `mods/tconstruct/tools/gen.py`
 (`python3 mods/tconstruct/tools/gen.py` überschreibt `src/main/resources/assets|data` und `original-assets.txt`).
@@ -92,6 +92,16 @@ Alte IDs: `TItems.OLD_IDS` (Item-ID aus `TinkersWorkshop.txt` + 256, Damage) und
 - Handbuch: `client/manual` (`ManualScreen` liest `assets/tconstruct/manuals/*.xml`, Seitentypen in `ManualPages`, Bilder/Rezepte in
   `ManualIcons` per Registry-Name – neue Blöcke von 25f bekommen dort automatisch ihr Bild, wenn der Name passt).
 - FakePlayer stirbt nicht (`die` löst keine Drops aus): im Testbefehl `LivingDropsEvent` selbst posten.
+
+## Deko, Fallen, Maschinen (25f)
+
+- Registrierung `TDeco` (Blöcke, BE-Typen, Menüs, alte IDs, Meißel-Stufen), Daten `tools/gen_deco.py`. Tag-Dateien dort nur über
+  `tag_add(...)` ergänzen: ein `write` überschreibt die Tags der früheren gen-Skripte (mineable, slabs).
+- Beute-JSON im 26.3-Format: `modifier`/`type` und `condition` (nicht `functions`/`conditions`), sonst wird es still ignoriert.
+- Tarnblock (Zugbrücke, Landmine): BE erbt `machine/CamoBlockEntity` (Slot `camoSlot()`, Licht über Zustand `TDeco.LIGHT`,
+  ModelData `TDeco.CAMO`), Modell `client/deco/CamoModel` (FULL oder BOX = auf die Form zugeschnitten), Tönung `CamoTint`.
+- Meißel aus Items (Barren, Edelsteine): `Detailing.addItem(() -> item, () -> zustand)`, nur im Raster; JEI zeigt beides.
+- Verbundenes Glas: `ConnectedGlassBlock` (6 Nachbar-Properties) + Mehrteil-Blockstate aus `gen_deco.connected_glass`.
 
 ## Prüfen ohne Spieler
 

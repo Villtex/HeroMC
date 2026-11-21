@@ -1,0 +1,41 @@
+{
+  "textures": {
+    "all": "tconstruct:block/landmine",
+    "particle": "tconstruct:block/landmine"
+  },
+  "elements": [
+    {
+      "from": [
+        1,
+        15,
+        1
+      ],
+      "to": [
+        15,
+        16,
+        15
+      ],
+      "faces": {
+        "down": {
+          "texture": "#all"
+        },
+        "up": {
+          "texture": "#all"
+        },
+        "north": {
+          "texture": "#all"
+        },
+        "south": {
+          "texture": "#all"
+        },
+        "west": {
+          "texture": "#all"
+        },
+        "east": {
+          "texture": "#all"
+        }
+      }
+    }
+  ],
+  "parent": "minecraft:block/block"
+}

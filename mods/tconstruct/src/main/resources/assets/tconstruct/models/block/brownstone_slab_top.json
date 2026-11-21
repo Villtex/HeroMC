@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "tconstruct:block/brownstone_smooth",
+    "top": "tconstruct:block/brownstone_smooth",
+    "side": "tconstruct:block/brownstone_smooth"
+  }
+}

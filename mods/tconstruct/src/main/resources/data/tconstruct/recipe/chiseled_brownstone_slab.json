@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "bbb"
+  ],
+  "key": {
+    "b": "tconstruct:chiseled_brownstone"
+  },
+  "result": {
+    "id": "tconstruct:chiseled_brownstone_slab",
+    "count": 6
+  }
+}

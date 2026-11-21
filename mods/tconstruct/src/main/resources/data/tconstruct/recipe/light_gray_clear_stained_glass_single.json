@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "#c:dyes/light_gray",
+    "tconstruct:clear_glass"
+  ],
+  "result": {
+    "id": "tconstruct:light_gray_clear_stained_glass"
+  }
+}

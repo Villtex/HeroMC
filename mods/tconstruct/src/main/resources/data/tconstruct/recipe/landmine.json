@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    "mcm",
+    "rpr"
+  ],
+  "key": {
+    "m": "#minecraft:planks",
+    "c": "tconstruct:blank_cast",
+    "r": "minecraft:redstone",
+    "p": "minecraft:stone_pressure_plate"
+  },
+  "result": {
+    "id": "tconstruct:landmine"
+  }
+}

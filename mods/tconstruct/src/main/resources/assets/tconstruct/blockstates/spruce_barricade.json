@@ -1,0 +1,68 @@
+{
+  "variants": {
+    "facing=south,logs=1": {
+      "model": "tconstruct:block/spruce_barricade_1",
+      "y": 0
+    },
+    "facing=south,logs=2": {
+      "model": "tconstruct:block/spruce_barricade_2",
+      "y": 0
+    },
+    "facing=south,logs=3": {
+      "model": "tconstruct:block/spruce_barricade_3",
+      "y": 0
+    },
+    "facing=south,logs=4": {
+      "model": "tconstruct:block/spruce_barricade_4",
+      "y": 0
+    },
+    "facing=west,logs=1": {
+      "model": "tconstruct:block/spruce_barricade_1",
+      "y": 90
+    },
+    "facing=west,logs=2": {
+      "model": "tconstruct:block/spruce_barricade_2",
+      "y": 90
+    },
+    "facing=west,logs=3": {
+      "model": "tconstruct:block/spruce_barricade_3",
+      "y": 90
+    },
+    "facing=west,logs=4": {
+      "model": "tconstruct:block/spruce_barricade_4",
+      "y": 90
+    },
+    "facing=north,logs=1": {
+      "model": "tconstruct:block/spruce_barricade_1",
+      "y": 180
+    },
+    "facing=north,logs=2": {
+      "model": "tconstruct:block/spruce_barricade_2",
+      "y": 180
+    },
+    "facing=north,logs=3": {
+      "model": "tconstruct:block/spruce_barricade_3",
+      "y": 180
+    },
+    "facing=north,logs=4": {
+      "model": "tconstruct:block/spruce_barricade_4",
+      "y": 180
+    },
+    "facing=east,logs=1": {
+      "model": "tconstruct:block/spruce_barricade_1",
+      "y": 270
+    },
+    "facing=east,logs=2": {
+      "model": "tconstruct:block/spruce_barricade_2",
+      "y": 270
+    },
+    "facing=east,logs=3": {
+      "model": "tconstruct:block/spruce_barricade_3",
+      "y": 270
+    },
+    "facing=east,logs=4": {
+      "model": "tconstruct:block/spruce_barricade_4",
+      "y": 270
+    }
+  }
+}

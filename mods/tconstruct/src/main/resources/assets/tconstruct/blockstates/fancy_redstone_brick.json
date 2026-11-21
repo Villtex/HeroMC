@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "tconstruct:block/fancy_redstone_brick"
+    }
+  }
+}

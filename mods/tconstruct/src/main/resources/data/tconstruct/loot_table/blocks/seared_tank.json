@@ -7,15 +7,13 @@
         {
           "type": "minecraft:item",
           "name": "tconstruct:seared_tank",
-          "functions": [
-            {
-              "function": "minecraft:copy_components",
-              "source": "block_entity",
-              "include": [
-                "tconstruct:liquid"
-              ]
-            }
-          ]
+          "modifier": {
+            "type": "minecraft:copy_components",
+            "source": "block_entity",
+            "include": [
+              "tconstruct:liquid"
+            ]
+          }
         }
       ],
       "condition": {

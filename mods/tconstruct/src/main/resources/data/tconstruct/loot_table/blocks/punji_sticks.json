@@ -1,0 +1,63 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "tconstruct:punji_sticks",
+          "modifier": [
+            {
+              "type": "minecraft:set_count",
+              "count": 2,
+              "condition": {
+                "type": "minecraft:match_block",
+                "blocks": "tconstruct:punji_sticks",
+                "state": {
+                  "sticks": "2"
+                }
+              }
+            },
+            {
+              "type": "minecraft:set_count",
+              "count": 3,
+              "condition": {
+                "type": "minecraft:match_block",
+                "blocks": "tconstruct:punji_sticks",
+                "state": {
+                  "sticks": "3"
+                }
+              }
+            },
+            {
+              "type": "minecraft:set_count",
+              "count": 4,
+              "condition": {
+                "type": "minecraft:match_block",
+                "blocks": "tconstruct:punji_sticks",
+                "state": {
+                  "sticks": "4"
+                }
+              }
+            },
+            {
+              "type": "minecraft:set_count",
+              "count": 5,
+              "condition": {
+                "type": "minecraft:match_block",
+                "blocks": "tconstruct:punji_sticks",
+                "state": {
+                  "sticks": "5"
+                }
+              }
+            },
+            {
+              "type": "minecraft:explosion_decay"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

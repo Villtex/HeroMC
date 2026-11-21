@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "bbb"
+  ],
+  "key": {
+    "b": "tconstruct:rough_brownstone_road"
+  },
+  "result": {
+    "id": "tconstruct:rough_brownstone_road_slab",
+    "count": 6
+  }
+}

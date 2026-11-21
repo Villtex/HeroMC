@@ -1,5 +1,8 @@
 package tconstruct.recipe;
 
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -20,7 +23,12 @@ public final class Detailing {
     public record Detail(Supplier<Block> input, Supplier<BlockState> output) {
     }
 
+    /** A step from an item (ingot, gem, ...): only in the crafting grid. */
+    public record ItemDetail(Supplier<Item> input, Supplier<BlockState> output) {
+    }
+
     private static final List<Detail> DETAILS = new ArrayList<>();
+    private static final List<ItemDetail> ITEM_DETAILS = new ArrayList<>();
 
     static {
         add(() -> Blocks.STONE, () -> Blocks.STONE_BRICKS.defaultBlockState());
@@ -39,6 +47,28 @@ public final class Detailing {
 
     public static void add(Supplier<Block> input, Supplier<BlockState> output) {
         DETAILS.add(new Detail(input, output));
+    }
+
+    public static void addItem(Supplier<Item> input, Supplier<BlockState> output) {
+        ITEM_DETAILS.add(new ItemDetail(input, output));
+    }
+
+    /** The step for a stack in the crafting grid: an item step, else the block of a block item. */
+    public static @Nullable BlockState output(ItemStack stack) {
+        for (ItemDetail detail : ITEM_DETAILS) {
+            if (stack.is(detail.input().get())) {
+                return detail.output().get();
+            }
+        }
+        if (stack.getItem() instanceof BlockItem item) {
+            Detail detail = get(item.getBlock());
+            return detail == null ? null : detail.output().get();
+        }
+        return null;
+    }
+
+    public static List<ItemDetail> allItems() {
+        return Collections.unmodifiableList(ITEM_DETAILS);
     }
 
     /** getDetailing: the first step for this block, or null. */

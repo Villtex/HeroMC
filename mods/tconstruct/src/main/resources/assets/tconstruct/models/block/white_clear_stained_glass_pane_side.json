@@ -1,0 +1,13 @@
+{
+  "parent": "minecraft:block/template_glass_pane_side",
+  "textures": {
+    "pane": {
+      "force_translucent": true,
+      "sprite": "tconstruct:block/glass/stainedglass_white"
+    },
+    "edge": {
+      "force_translucent": true,
+      "sprite": "tconstruct:block/glass/stainedglass_white_side"
+    }
+  }
+}

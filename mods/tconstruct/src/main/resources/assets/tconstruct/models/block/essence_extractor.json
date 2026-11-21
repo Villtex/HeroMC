@@ -1,0 +1,72 @@
+{
+  "textures": {
+    "top": "tconstruct:block/extractor_top",
+    "side": "tconstruct:block/extractor_side",
+    "bottom": "tconstruct:block/extractor_bottom",
+    "particle": "tconstruct:block/extractor_side"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        12,
+        16
+      ],
+      "faces": {
+        "down": {
+          "texture": "#bottom",
+          "cullface": "down"
+        },
+        "up": {
+          "texture": "#top"
+        },
+        "north": {
+          "texture": "#side",
+          "uv": [
+            0,
+            4,
+            16,
+            16
+          ],
+          "cullface": "north"
+        },
+        "south": {
+          "texture": "#side",
+          "uv": [
+            0,
+            4,
+            16,
+            16
+          ],
+          "cullface": "south"
+        },
+        "west": {
+          "texture": "#side",
+          "uv": [
+            0,
+            4,
+            16,
+            16
+          ],
+          "cullface": "west"
+        },
+        "east": {
+          "texture": "#side",
+          "uv": [
+            0,
+            4,
+            16,
+            16
+          ],
+          "cullface": "east"
+        }
+      }
+    }
+  ],
+  "parent": "minecraft:block/block"
+}
