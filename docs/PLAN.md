@@ -73,6 +73,12 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 25d | Tinkers' Construct D: Weltgenerierung, Schleiminseln, Dorf-Bauteile, Dorfbewohner | ~4.000 | 25c | Fable 5.2, extra hoch | ✅ erledigt |
 | 25e | Tinkers' Construct E: Spieler (Rucksack, Herzen, Handschuh, Ereignisse), Handbücher, Essen, Mobs | ~8.000 | 25a | Opus 5.5, mittel | ✅ erledigt |
 | 25f | Tinkers' Construct F: Deko-Blöcke, Fallen, Landmine, Redstone-Maschinen, Kristall/Essenz | ~9.000 | 25a | Opus 5.5, mittel | ✅ erledigt |
+| 26a | Integrated A: Welttypen Legacy/Integrated, Chunk-Brücke, Mod-Generatoren als einzelne registrierte Features | ~3.000 | 2 | Fable 5.2, hoch | offen |
+| 26b | Integrated B: Erze, Pflanzen, Bäume, Nether-Generatoren per Biom-Modifier und Biom-Tags | ~2.000 | 26a | Opus 5.5, hoch | offen |
+| 26c | Integrated C: Bauwerke und Dungeons als echte 26.3-Strukturen (`/locate`, Abstand zu fremden Strukturen) | ~4.000 | 26a | Fable 5.2, hoch | offen |
+| 26d | Integrated D: EBXL-Biome neben Vanilla- und fremden Biomen, Mob-Spawns per Biom-Modifier | ~3.000 | 26b | Fable 5.2, hoch | offen |
+| 26e | Integrated E: Schnittstellen für fremde Mods (Capabilities, `c:`-Tags, Werkzeug-Fähigkeiten, Rezepte über Tags) | ~4.000 | – | Opus 5.5, mittel | offen |
+| 26f | Integrated F: Test mit fremden 26.3-Mods, Gesamtprüfung | – | 26a–26e | Opus 5.5, mittel | offen |
 
 Entfallen ganz: Not Enough Items, NEI Plugins, CodeChickenCore (durch JEI ersetzt), Lumy Skin Patch,
 `basemods` (Forge 1.5.2 selbst).
@@ -1890,3 +1896,121 @@ Daten aus `tools/gen_deco.py`). Offenes in `mods/tconstruct/TODO.md`.
   (Eisenbarren → Eisenziegel, Steinziegel → Steinstraße → verzierter Steinziegel, Gallertschleim → blauer Schleimziegel); Rezepte
   gefärbtes Glas (8) und Landmine über Crafter. Start ohne Fehler.
 - Offen: Client-Prüfung (Glas-Ränder, Tarnmodelle, beide GUIs, Extraktor-Buch, Modelle von Barrikade/Punji/Landmine).
+
+## Teil 26 – Welttyp „Integrated“ mit Platz für fremde Mods (26a–26f)
+
+Ziel: Bei der Welterstellung gibt es unter „Welttyp“ zwei Hexxit-Varianten.
+- **Hexxit Legacy:** die heutige, bitgenaue 1.5.2-Generierung (`worldgen152`). Sie bleibt unverändert; `expect.sh`
+  muss dort grün bleiben.
+- **Hexxit Integrated:** die Generierung von 26.3 (Gelände, Höhlen, Biome, Bauwerke in Oberwelt, Nether und End) plus
+  alle Hexxit-Inhalte. Dazu kommt: **Fremde 26.3-Mods sollen in dieser Welt so funktionieren wie in einer normalen
+  Vanilla-Welt.** Ihre Biome, Erze, Bäume, Bauwerke und Mobs erscheinen. Ihre Maschinen, Rohre und Werkzeuge können
+  mit Hexxit-Blöcken arbeiten (Kisten befüllen, Tanks leeren, Erze verarbeiten), und Hexxit-Rezepte nehmen ihre
+  Metalle an.
+
+Daraus folgen drei Leitlinien:
+1. **Nur Standard-Wege von 26.3/NeoForge, keine Sonderwege.** Hexxit-Inhalte werden als registrierte Features,
+   Strukturen, Biome und Biom-Modifier eingehängt. Ein fremder Mod oder ein Datapack kann sie dann sehen, entfernen
+   oder ändern. Vanilla-Registrierungen werden nicht überschrieben, nur ergänzt.
+2. **Biome über Tags statt über feste Listen.** Wo ein 1.5.2-Generator ein Biom abfragt („Wald“, „Wüste“,
+   „Sumpf“), antwortet eine Tabelle über `c:`- und `minecraft:`-Biom-Tags (`c:is_forest`, `c:is_desert`, …). Fremde
+   Biome mit diesen Tags bekommen damit automatisch die passenden Hexxit-Inhalte. Feste Einträge nur für Vanilla-Biome
+   ohne Tag.
+3. **Die Mod-Generatoren nicht doppelt schreiben.** Sie laufen weiter auf `OldWorld`/`OldGen`. Eine Brücke (Ausbau
+   von `OldLiveGen`) übersetzt zwischen dem echten 26.3-Chunk und den alten IDs. Keine Bitgenauigkeit, Ziel ist eine
+   stimmige 26.3-Welt. Höhen über eine Abbildung je Generator anpassen (alte 0–128 auf 26.3-Höhen, Meeresspiegel 63
+   bleibt), Erze bis y=-64 strecken, wo es passt.
+
+Mods mit eigener Generierung: artifice, battletowers, betterdungeons, chococraft, cofhcore, dimensional-doors (Risse,
+Eingänge), ebxl (Biome), hexxitgear, legendgear, meteorsmod, natura (auch Nether), offlawn, projectzulu, qcraft,
+ruins, tconstruct (auch Nether), twilightforest (Portal-Hinweise), wildcaves3. Die eigenen Dimensionen (Twilight
+Forest, Limbo/Taschendimensionen von Dimensional Doors) behalten ihre Generatoren in beiden Welttypen.
+
+### Teil 26a – Welttypen, Chunk-Brücke, einzelne Features
+- `data/minecraft/worldgen/world_preset/normal.json` aus `worldgen152` entfernen. `minecraft:normal` ist dann wieder
+  reines Vanilla, so wie fremde Mods es erwarten. Dazu zwei eigene Presets: `hexxit:legacy` (heutiger Inhalt von
+  `normal.json`) und `hexxit:integrated` (Vanilla-Noise, Vanilla-Multi-Noise-Biomquelle mit dem Preset
+  `minecraft:overworld`, Vanilla-Nether und -End). Den Standard bei der Welterstellung legt der Nutzer fest (fragen).
+  Für den Server `level-type` in `server.properties` dokumentieren und in `run/` setzen.
+- Biom-Modifier und fremde Features greifen nur in Integrated. Legacy bleibt bitgenau; das prüft `expect.sh`.
+- Jeder 1.5.2-Generator wird ein **eigenes** registriertes `ConfiguredFeature`/`PlacedFeature`
+  (`natura:clouds`, `tconstruct:oreberry_bushes`, …) im passenden Generierungsschritt, nicht ein Sammel-Feature. Nur
+  so können fremde Mods und Datapacks einzelne Teile abschalten oder verschieben. Jedes Feature lässt über die Brücke
+  einen Ausschnitt (3×3 Chunks, Höhenfenster je Generator) in einem `OldWorld` generieren und schreibt geänderte Blöcke,
+  Block-Entities und Entities zurück.
+- Die Brücke ersetzt nur alte Blöcke, die sie selbst kennt. Fremde Blöcke im Ausschnitt bleiben stehen, und ein
+  Generator darf sie nicht überschreiben, außer wo das Original Luft/Stein/Erde ersetzt hätte (Tag
+  `minecraft:base_stone_overworld`, `c:stones`, `minecraft:dirt`).
+- Prüfung: Integrated-Welt startet, Vanilla-Bauwerke da, ein einfacher Generator (Natura-Bäume) sichtbar,
+  Legacy-`expect.sh` unverändert grün.
+
+### Teil 26b – Erze, Pflanzen, Bäume, Nether
+- natura (Oberwelt und Nether), tconstruct (Erze, Erzbeeren, Schleiminseln, Kobalt/Ardit), cofhcore, artifice,
+  offlawn, wildcaves3 (nur Höhlen-Deko; die Vanilla-Höhlen sind tiefer), meteorsmod.
+- Eingehängt per `neoforge:add_features` mit Biom-Tags (Leitlinie 2), in eigenen Dateien je Generator.
+- Erze, die es auch in Vanilla oder bei fremden Mods gibt (Kupfer, Zinn, Silber, Aluminium …): Mengen so wählen,
+  dass sie nicht doppelt so häufig werden. Eine Konfig-Option je Erz (`generate = true`), wie im Original, damit
+  ein fremder Erz-Mod übernehmen kann.
+
+### Teil 26c – Bauwerke und Dungeons als 26.3-Strukturen
+- betterdungeons, ruins, battletowers, projectzulu (Pyramide, Labyrinth, Friedhof), legendgear, hexxitgear,
+  chococraft, qcraft, dimensional-doors, twilightforest-Eingänge, Tinkers-Dorf-Bauteile.
+- Größere Bauten als echte `Structure` mit `StructureSet` (Abstand/Trennung wie die alte Seltenheit): `/locate`,
+  Entdecker-Karten und die Abstands-Regeln fremder Struktur-Mods funktionieren dann. Das Stück baut beim
+  `postProcess` über die Brücke. Kleine Dinge (Ruinen-Vorlagen, Meteore) dürfen Features bleiben.
+- Bauplatz auf der echten Oberfläche (Heightmap), keine Überschneidung mit Vanilla- und fremden Strukturen
+  (`exclusion_zone` bzw. Prüfung gegen vorhandene Struktur-Starts).
+- Struktur- und Biom-Tags (`c:`/`minecraft:`) an die Hexxit-Strukturen hängen, damit andere Mods sie finden.
+- Tinkers-Dorf-Bauteile in Integrated als Vorlagen-Pool (`template_pool`) an die 26.3-Dörfer anhängen, statt an
+  `OldStructures.VILLAGE_HANDLERS`.
+
+### Teil 26d – EBXL-Biome neben Vanilla- und fremden Biomen
+- Die EBXL-Biome als echte 26.3-Biome mit Klima-Parametern. Wichtig: Die Biomquelle **nicht** durch eine feste Liste
+  ersetzen, sonst fallen die Biome fremder Mods heraus. Zuerst prüfen, ob TerraBlender (oder ein Nachfolger) für
+  NeoForge 26.3 verfügbar ist. Wenn ja, EBXL als Region dort anmelden; das ist der Weg, den fremde Biom-Mods auch
+  gehen. Wenn nein, eine eigene kleine Region-Einspeisung in den Multi-Noise-Preset, die fremde Einspeisungen nicht
+  verdrängt. Entscheidung mit dem Nutzer abstimmen.
+- Oberflächenregeln für EBXL-Böden über eine ergänzende Regel (nicht die Vanilla-Regeln ersetzen), ihre Dekoration
+  als Features, Mob-Spawns, Biom-Tags (`c:is_forest`, `c:is_savanna`, …), damit fremde Mods dort ebenfalls
+  generieren.
+- Mob-Spawns aller Hexxit-Mods (Project Zulu, ChocoCraft, Infernal Mobs, Twilight-Forest-Oberwelt-Mobs …) als
+  `neoforge:add_spawns` über Biom-Tags. Infernal Mobs soll auch fremde Mobs aufwerten (wie im Original jeder
+  `EntityMob`); seine Ausnahmeliste als Entity-Tag.
+
+### Teil 26e – Schnittstellen für fremde Mods
+Unabhängig vom Welttyp, gilt für alle 44 Teilprojekte. Heute meldet kein Mod Capabilities an, und Rezepte nennen oft
+feste Items. Im Original lief der Austausch über das Forge-OreDictionary; die `c:`-Tags sind dessen Nachfolger.
+- **Capabilities** (`RegisterCapabilitiesEvent`): `Capabilities.Item.BLOCK` für alle Kisten, Maschinen und Ablagen
+  (BetterStorage, Backpacks, BiblioCraft, Tinkers-Tische/Musterkiste/Trockengestell, Artifice, Enchanting Plus nur
+  wo sinnvoll, Better-Dungeons-Kisten, Chest Transporter respektiert fremde Kisten). `Capabilities.Fluid.BLOCK` für
+  Tinkers (Tank, Schmelzerei-Abfluss, Gießtisch/-becken) und alle Tanks; Fluid-Item-Capability für die Eimer der
+  Mod-Flüssigkeiten. Je Mod die Seiten- und Slot-Regeln aus dem Original (`ISidedInventory`) übernehmen.
+- **Tags:** Erze `c:ores/<metall>` + `c:ores_in_ground/*`, Rohstoffe `c:raw_materials/*`, Barren `c:ingots/*`,
+  Nuggets `c:nuggets/*`, Blöcke `c:storage_blocks/*`, Edelsteine `c:gems/*`, Staub `c:dusts/*`, Kisten `c:chests`,
+  Fässer, Glas `c:glass_blocks`, Holz (`minecraft:logs`, `planks`, `leaves`, `saplings`, Skill `wood-sets-263`),
+  Flüssigkeiten `c:molten_<metall>` (Fluid-Tags), Mob-Tags (`c:bosses` für die Twilight-Bosse). Abbaustufen über
+  `minecraft:needs_*_tool` und `incorrect_for_*_tool`, damit fremde Werkzeuge Hexxit-Erze abbauen und umgekehrt.
+- **Rezepte über Tags:** Wo das Original ein OreDictionary-Wort nahm (`ingotCopper`, `oreTin`, `plankWood` …),
+  nimmt der Port das passende `c:`-Tag. Dann schmilzt die Tinkers-Schmelzerei auch fremde Erze und Barren, und
+  BetterStorage-Kisten nehmen fremdes Kupfer. Die Schmelz-/Gießrezepte der Schmelzerei als Tag-Rezepte (Tag in, Flüssigkeit
+  raus), damit ein Datapack oder ein fremder Mod Metalle hinzufügen kann.
+- **Werkzeuge und Waffen:** Hexxit-Werkzeuge bekommen die Item-Tags (`minecraft:pickaxes`, `axes`, `swords`,
+  `c:tools/*`) und die passenden `ItemAbility`-Antworten (Axt entrindet, Schaufel macht Pfade, Schere schert), damit
+  fremde Mods sie erkennen. Fremde Werkzeuge in Hexxit-Logik: TreeCapitator über `minecraft:axes`, Enchanting Plus
+  über die Verzauberbarkeit des Items, Back Tools über die Tags.
+- **Globale Eingriffe prüfen:** `combat152` ändert den Nahkampf aller Mods, auch fremder (keine Abklingzeit,
+  Schaden alter Formeln). Mit dem Nutzer klären: so lassen oder über eine Konfig-Option abschaltbar machen bzw. im
+  Welttyp Integrated aus. Ebenso andere pack-weite Eingriffe (Rezepte entfernt, Vanilla-Daten geleert wie
+  `data/minecraft/enchantment`, Tinkers' Void-Fog/klares Wasser) auflisten und je eine Option anbieten.
+- **Keine festen Annahmen über Registrierungen:** Code, der über alle Blöcke/Items/Biome läuft (alte ID-Tabellen,
+  Infernal Mobs, Ruinen-Vorlagen), muss fremde Einträge überspringen statt abzustürzen.
+
+### Teil 26f – Test mit fremden Mods, Gesamtprüfung
+- Kleine Testauswahl verbreiteter NeoForge-26.3-Mods in `run/mods-extra/` (nicht ins Repo; Download-Liste mit
+  Versionen in `tools/`), je eine für: Biome (TerraBlender-Mod), Strukturen, Erze/Maschinen mit Rohren (Item- und
+  Fluid-Transport), Werkzeuge, Anzeige (Jade). Welche Mods es für 26.3 gibt, beim Start dieses Teils nachsehen.
+- Prüfen am Server per RCON: Integrated-Welt mit Seed 1234 startet ohne Fehler, `/locate` findet Hexxit- und fremde
+  Bauwerke und Biome, ein fremdes Rohr zieht Items aus einer BetterStorage-Kiste und Flüssigkeit aus dem
+  Tinkers-Tank, die Schmelzerei schmilzt ein fremdes Kupfererz, ein fremdes Werkzeug baut Hexxit-Erz ab, Hexxit-Erze
+  und fremde Erze erscheinen beide. Legacy-`expect.sh` grün.
+- Ergebnis und Grenzen (was nicht geht) in `README.md` unter „Vorgaben“ und in dieser Datei eintragen.
