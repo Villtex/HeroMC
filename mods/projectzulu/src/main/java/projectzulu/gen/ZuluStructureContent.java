@@ -21,6 +21,8 @@ public final class ZuluStructureContent {
     /** Spawner mobs of the labyrinth (BlueprintLabyrinthHiddenWall), EntityList names of 1.5.2. */
     public static final String SPAWNER_MINOTAUR = "ProjectZulu|Core.Minotaur";
     public static final String SPAWNER_HAUNTED_ARMOR = "ProjectZulu|Core.Haunted Armor";
+    /** Pyramid spawners (the original wrote the wrong name "Entity Mummy"; corrected). */
+    public static final String SPAWNER_MUMMY = "ProjectZulu|Core.Mummy";
 
     private ZuluStructureContent() {
     }

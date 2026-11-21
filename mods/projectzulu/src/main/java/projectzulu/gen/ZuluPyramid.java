@@ -226,9 +226,11 @@ final class ZuluPyramid {
                         for (int j = 0; j < floorHeight; j++) {
                             if (j == 0 && m == 0) {
                                 // setMobID("ProjectZulu|Core.Entity Mummy"): no entity has that name (the mummy is
-                                // "ProjectZulu|Core.Mummy"), so these spawners never spawned anything; an empty
-                                // spawner (no tile data) does the same today
+                                // "ProjectZulu|Core.Mummy"), so in 1.5.2 these spawners stayed empty. Fixed here on
+                                // purpose: they spawn mummies, as intended.
                                 this.set(p[0], p[1] + j, p[2], 52, 0);
+                                this.world.setTile(p[0], p[1] + j, p[2],
+                                        new OldTile.Spawner(ZuluStructureContent.SPAWNER_MUMMY));
                             } else {
                                 this.set(p[0], p[1] + j, p[2], 0, 0);
                             }

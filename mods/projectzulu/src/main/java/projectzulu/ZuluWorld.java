@@ -56,6 +56,7 @@ public final class ZuluWorld {
         // spawners of the labyrinth (EntityList names of 1.5.2: mod id + "." + mob name)
         OldGameIds.registerEntity(ZuluStructureContent.SPAWNER_MINOTAUR, ns + "minotaur");
         OldGameIds.registerEntity(ZuluStructureContent.SPAWNER_HAUNTED_ARMOR, ns + "haunted_armor");
+        OldGameIds.registerEntity(ZuluStructureContent.SPAWNER_MUMMY, ns + "mummy");
         // the mobs the structures put into the world, with what their constructor and the builder did
         OldGameIds.registerEntity(ZuluStructureContent.MIMIC, ns + "mimic", entity -> {
             if (entity instanceof MimicEntity mimic) {
