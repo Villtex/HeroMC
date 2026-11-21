@@ -1869,3 +1869,42 @@ Daten aus `tools/gen_deco.py`). Offenes in `mods/tconstruct/TODO.md`.
   (Eisenbarren → Eisenziegel, Steinziegel → Steinstraße → verzierter Steinziegel, Gallertschleim → blauer Schleimziegel); Rezepte
   gefärbtes Glas (8) und Landmine über Crafter. Start ohne Fehler.
 - Offen: Client-Prüfung (Glas-Ränder, Tarnmodelle, beide GUIs, Extraktor-Buch, Modelle von Barrikade/Punji/Landmine).
+
+## Teil 26 – Welttyp „Integrated“ (26a–26e)
+
+Ziel: Bei der Welterstellung unter „Welttyp“ zwei Hexxit-Varianten. **Hexxit Legacy** ist die heutige bitgenaue 1.5.2-Generierung (`worldgen152`), sie bleibt unverändert. **Hexxit Integrated** ist die komplette Vanilla-Generierung von 26.3 (Gelände, Höhlen, Biome, Bauwerke) plus alle Hexxit-Inhalte: Erze, Bäume, Pflanzen, Bauwerke, Dungeons, Biome und Mob-Spawns der Mods. Die Spielmechaniken (Items, Blöcke, Mobs, GUIs) hängen nicht an der Generierung und bleiben, wie sie sind.
+
+Leitlinien:
+- Keine Bitgenauigkeit, Ziel ist eine stimmige 26.3-Welt. `expect.sh` gilt nur für Legacy und muss dort grün bleiben.
+- Die Mod-Generatoren nicht doppelt schreiben: Sie laufen weiter auf `OldWorld`/`OldGen`, eine Brücke (Ausbau von `OldLiveGen`) übersetzt zwischen dem echten 26.3-Chunk und den alten IDs.
+- Höhen über eine Abbildung je Generator anpassen (alte 0–128 auf 26.3-Höhen, Meeresspiegel 63 bleibt), Erze in die Tiefe bis y=-64 strecken, wo es passt.
+- Alte Biome der Generator-Abfragen über eine Tabelle 26.3-Biom → 1.5.2-Biom (z. B. `badlands` → Desert, `cherry_grove` → Forest) beantworten.
+
+Mods mit eigener Overworld-Generierung (Stand Teil 25): artifice, battletowers, betterdungeons, chococraft, cofhcore, dimensional-doors (Rifts/Eingänge), ebxl (Biome!), hexxitgear, legendgear, meteorsmod, natura, offlawn, projectzulu, qcraft, ruins, tconstruct, twilightforest (Portal-Hinweise/Eingänge), wildcaves3.
+
+### Teil 26a – Welttypen und Chunk-Brücke
+
+- Zwei `world_preset`-Einträge (`hexxit:legacy` = heutiges `normal.json`, `hexxit:integrated` = Vanilla-Noise mit eigener Biomquelle), `normal` wieder Vanilla oder auf Legacy umgelenkt; Standard bei der Welterstellung festlegen (Nutzer fragen). Server: `level-type` in `server.properties` dokumentieren.
+- Eigenes Feature `hexxit:old_populate` im Schritt `top_layer_modification` (oder je Generator passend), das für einen Chunk die registrierten 1.5.2-Populatoren über die Brücke laufen lässt.
+- Brücke: 3×3-Chunk-Ausschnitt in ein `OldWorld` kopieren (Höhenfenster je Generator), Generator laufen lassen, geänderte Blöcke, Tile-Daten, Entities zurückschreiben.
+- Prüfung: Integrated-Welt startet, Vanilla-Bauwerke da, ein einfacher Generator (Natura-Bäume) sichtbar; Legacy-`expect.sh` unverändert grün.
+
+### Teil 26b – Erze, Pflanzen, Bäume
+
+- natura, tconstruct (Erze, Schleiminseln), cofhcore, artifice, offlawn, wildcaves3 (nur Höhlendeko, Vanilla-Höhlen sind tiefer), meteorsmod.
+- Höhen-Abbildung und Biom-Tabelle je Generator festlegen, Mengen grob an 26.3-Weltgröße anpassen.
+
+### Teil 26c – Bauwerke und Dungeons
+
+- betterdungeons, ruins, battletowers, projectzulu (Pyramide, Labyrinth, Friedhof), legendgear, hexxitgear, chococraft, qcraft, dimensional-doors, twilightforest-Eingänge.
+- Bauplatz auf echter Oberfläche (Heightmap) statt fester Höhen; keine Überschneidung mit Vanilla-Strukturen, wo es stört.
+
+### Teil 26d – Biome von ExtrabiomesXL
+
+- EBXL-Biome als echte 26.3-Biome mit Klima-Parametern in die Multi-Noise-Liste von `hexxit:integrated` einfügen (Vanilla-Liste als Datei erzeugen, EBXL-Einträge ergänzen; kein TerraBlender). Oberflächenregeln für ihre Böden, Features ihrer Dekoration, Mob-Spawns.
+- Biom-Tabelle aus 26a um die EBXL-Biome erweitern, damit andere Mods dort wie in 1.5.2 generieren.
+
+### Teil 26e – Mob-Spawns und Gesamtprüfung
+
+- Spawn-Einträge der Mods (Project Zulu, ChocoCraft, Infernal Mobs, …) auf die 26.3-Biome verteilen (Biom-Modifier).
+- Testwelt Integrated, Seed 1234: Stichproben je Mod per RCON (`/locate`, Blöcke zählen), Legacy-Prüfung grün. Status in `README.md`.
