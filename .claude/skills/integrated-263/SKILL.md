@@ -46,7 +46,11 @@ Teile eines Sammel-Generators oder Varianten mit anderen Höhen: im Kern `OldTer
 `CoFHWorldGen.generateCustom`). Den Sammel-Generator dann ohne Feature-Datei lassen, sonst doppelt.
 Untergrund: Feature mit `"y_offset": -64` (echt = alt − 64) und Höhen über `OldTerrainGen.deepY(y)` (1.5.2 0–63 →
 echt −64…63, darüber gleich). Erze, die ein fremder Mod auch bringt: Schalter in `IntegratedConfig` (worldgen152)
-eintragen; jeder Name lässt sich außerdem über `disabledFeatures` abschalten.
+eintragen; jeder Name lässt sich außerdem über `disabledFeatures` abschalten. Vanilla-Features abhängig von der
+Konfiguration herausnehmen: Biom-Modifier-Typ `worldgen152:replace_vanilla_ores` als Vorbild
+(`ReplaceVanillaOresModifier`, Phase REMOVE). Vanilla-Erze, die der Generator setzt, werden in Deepslate/Tuff
+automatisch zur Deepslate-Variante. Teile, die in Legacy zum Gelände gehörten (Natura-Nether-Boden), als
+Nachbearbeitung im Schritt `raw_generation` (`natura/gen/NetherSoilGen`).
 
 ## Die Brücke (`mods/worldgen152/.../OldGeneratorFeature.java`)
 

@@ -83,6 +83,10 @@ public final class CoFHWorldGen {
         // Hexxit Integrated: vanilla generates its own ores and bedrock there; only the custom templates
         // (WorldCustomGen.txt: qCraft's quantum ore) are added, with the deeper heights of today
         OldTerrainGen.registerFeature("cofhcore:custom_ores", CoFHWorldGen::generateCustom);
+        // ReplaceVanillaGeneration in Hexxit Integrated: the eight ores with the pack's values up to y 128 (diamonds in
+        // the stone below the surface too); the vanilla ore features are taken out by the biome modifier
+        // cofhcore:replace_vanilla_ores. Heights through deepY, so the lower half reaches down to -64.
+        OldTerrainGen.registerFeature("cofhcore:ores", CoFHWorldGen::generateVanilla);
     }
 
     /** A {@code UNIFORM} feature: {@code count} veins of {@code size} blocks between {@code minY} and {@code maxY}. */
@@ -122,6 +126,17 @@ public final class CoFHWorldGen {
             for (Feature feature : features) {
                 feature.generate(world, random, chunkX, chunkZ);
             }
+        }
+    }
+
+    /** The eight vanilla ores of the pack's World.cfg, for Hexxit Integrated. */
+    static void generateVanilla(Random random, int chunkX, int chunkZ, OldWorld world) {
+        if (world.dimension() != 0) {
+            return;
+        }
+        List<Feature> all = features;
+        for (int i = 0; i < VANILLA_FEATURES && i < all.size(); i++) {
+            all.get(i).generate(world, random, chunkX, chunkZ, true);
         }
     }
 

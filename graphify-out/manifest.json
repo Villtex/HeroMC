@@ -378,9 +378,9 @@
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/WorldGen152.java": {
-    "mtime": 1795357089.655269,
-    "seen": 1795359110.496005,
-    "ast_hash": "72efd3baa35e579199b5b53b71f91449",
+    "mtime": 1795360811.6123524,
+    "seen": 1795361957.2300591,
+    "ast_hash": "42e78d715a080dc182973e6455db7293",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/BiomeLayout.java": {
@@ -684,9 +684,9 @@
     "semantic_hash": ""
   },
   "docs/PLAN.md": {
-    "mtime": 1795359033.8128376,
-    "seen": 1795359110.4976032,
-    "ast_hash": "a265c803f285f234875584c078e0c634",
+    "mtime": 1795361887.2463984,
+    "seen": 1795361957.2309985,
+    "ast_hash": "398322ee0d2a850771a9c8330e2c7f7a",
     "semantic_hash": ""
   },
   ".mcp.json": {
@@ -3120,9 +3120,9 @@
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/OldLiveGen.java": {
-    "mtime": 1795350467.8275583,
-    "seen": 1795351344.8523154,
-    "ast_hash": "1883ec629f63c8b5bca04c350c489703",
+    "mtime": 1795360903.3062239,
+    "seen": 1795361957.2300487,
+    "ast_hash": "8ec70e34015b028747a76353b8723e13",
     "semantic_hash": ""
   },
   "docs/JEI.md": {
@@ -6900,9 +6900,9 @@
     "semantic_hash": ""
   },
   "mods/natura/src/main/java/natura/gen/NaturaWorldGen.java": {
-    "mtime": 1795350467.8202484,
-    "seen": 1795351344.8348792,
-    "ast_hash": "2b9fac7840026d16a6c67d604341b2f9",
+    "mtime": 1795360903.3058624,
+    "seen": 1795361957.2085311,
+    "ast_hash": "9382caa37aea45fc9cc06eaa245dcf39",
     "semantic_hash": ""
   },
   "mods/natura/src/main/java/natura/gen/NetherBerryBushGen.java": {
@@ -20448,9 +20448,9 @@
     "semantic_hash": ""
   },
   "mods/cofhcore/src/main/java/cofh/gen/CoFHWorldGen.java": {
-    "mtime": 1795357171.2495296,
-    "seen": 1795359110.4549396,
-    "ast_hash": "15f6b263a55a894b16c9eb6afea438de",
+    "mtime": 1795360793.811457,
+    "seen": 1795361957.2053478,
+    "ast_hash": "4d5f02e04a3c7618157895d721ccb773",
     "semantic_hash": ""
   },
   "mods/artifice/original-assets.txt": {
@@ -93210,9 +93210,9 @@
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/OldGeneratorFeature.java": {
-    "mtime": 1795357073.5020683,
-    "seen": 1795359110.4959881,
-    "ast_hash": "a340fb9616fd619cb388226bea0d95f9",
+    "mtime": 1795360861.8301883,
+    "seen": 1795361957.2300465,
+    "ast_hash": "a79fa6a113cd05d27e13bf03d4b9e8d9",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/resources/assets/worldgen152/lang/de_de.json": {
@@ -93234,9 +93234,9 @@
     "semantic_hash": ""
   },
   ".claude/skills/integrated-263/SKILL.md": {
-    "mtime": 1795359044.5419452,
-    "seen": 1795359110.4975529,
-    "ast_hash": "9e3da7f066757c35a58a298cc16894c2",
+    "mtime": 1795361887.2471309,
+    "seen": 1795361957.2309663,
+    "ast_hash": "ca154383603d991a25cc58fc2bc99968",
     "semantic_hash": ""
   },
   "mods/artifice/src/main/resources/data/artifice/neoforge/biome_modifier/basalt.json": {
@@ -93510,15 +93510,69 @@
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/IntegratedConfig.java": {
-    "mtime": 1795357087.5207794,
-    "seen": 1795359110.495954,
-    "ast_hash": "0f03cfd3ed00a9f917836f30d2b8986c",
+    "mtime": 1795360811.611945,
+    "seen": 1795361957.2300298,
+    "ast_hash": "8bbd40e15ee6a4c119cac5aee84acc60",
     "semantic_hash": ""
   },
   "tools/count_blocks.py": {
     "mtime": 1795358206.440846,
     "seen": 1795359110.497507,
     "ast_hash": "ae084fbfbb49fafa71a0357e7bf3d912",
+    "semantic_hash": ""
+  },
+  "mods/cofhcore/src/main/resources/data/cofhcore/neoforge/biome_modifier/ores.json": {
+    "mtime": 1795360872.5978916,
+    "seen": 1795361957.2053545,
+    "ast_hash": "fdd5eb147859250b924a77f2f1b8a8cb",
+    "semantic_hash": ""
+  },
+  "mods/cofhcore/src/main/resources/data/cofhcore/neoforge/biome_modifier/replace_vanilla_ores.json": {
+    "mtime": 1795360872.5979488,
+    "seen": 1795361957.2053814,
+    "ast_hash": "a060d883bc6a202b47999bf5dcb213e5",
+    "semantic_hash": ""
+  },
+  "mods/cofhcore/src/main/resources/data/cofhcore/worldgen/feature/ores.json": {
+    "mtime": 1795360872.5976732,
+    "seen": 1795361957.2053854,
+    "ast_hash": "4ecb34a23d910e797ce1a3ad70bf7c9b",
+    "semantic_hash": ""
+  },
+  "mods/cofhcore/src/main/resources/data/cofhcore/worldgen/placed_feature/ores.json": {
+    "mtime": 1795360872.5978312,
+    "seen": 1795361957.2053885,
+    "ast_hash": "6df56bc31cdfa39943440c3c68dd05bd",
+    "semantic_hash": ""
+  },
+  "mods/natura/src/main/java/natura/gen/NetherSoilGen.java": {
+    "mtime": 1795361439.895021,
+    "seen": 1795361957.2085342,
+    "ast_hash": "8a45b3bd2abcfea24700d9da33444d2b",
+    "semantic_hash": ""
+  },
+  "mods/natura/src/main/resources/data/natura/neoforge/biome_modifier/nether_soil.json": {
+    "mtime": 1795360903.3126607,
+    "seen": 1795361957.2106805,
+    "ast_hash": "1e5d07072a4cc9a785adb6467c1c73fa",
+    "semantic_hash": ""
+  },
+  "mods/natura/src/main/resources/data/natura/worldgen/feature/nether_soil.json": {
+    "mtime": 1795360903.3125372,
+    "seen": 1795361957.211095,
+    "ast_hash": "458990a2335994b3685a722ba4b75d01",
+    "semantic_hash": ""
+  },
+  "mods/natura/src/main/resources/data/natura/worldgen/placed_feature/nether_soil.json": {
+    "mtime": 1795360903.3125937,
+    "seen": 1795361957.2111232,
+    "ast_hash": "a2051d1d5076195ce0cdf8f6fbd42a72",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/ReplaceVanillaOresModifier.java": {
+    "mtime": 1795360849.019025,
+    "seen": 1795361957.230057,
+    "ast_hash": "f76b562b4623a03ee50265377dd8a6e3",
     "semantic_hash": ""
   }
 }

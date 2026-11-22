@@ -2009,7 +2009,7 @@ Forest, Limbo/Taschendimensionen von Dimensional Doors) behalten ihre Generatore
   tconstruct `copper_ore`, `tin_ore`, `aluminum_ore` (−64, `deepY`, in den Extreme Hills doppelt; Kupfer je Ader nur
   zu 50 %, weil Vanilla-Kupfer da ist), `surface_ores`, `oreberry_bushes`, `slime_islands`, `cobalt_ore`,
   `ardite_ore` (Nether); cofhcore `custom_ores` (nur die WorldCustomGen-Vorlagen = qCraft-Quantenerz, −64, `deepY`;
-  die Vanilla-Erze und das flache Grundgestein von CoFH World entfallen, das macht 26.3 selbst); artifice `flora`,
+  die Vanilla-Erze siehe Nachtrag unten; das flache Grundgestein von CoFH World entfällt); artifice `flora`,
   `basalt` (Schicht über dem Grundgestein, −64), `marble` (−64); offlawn `sunflowers`; wildcaves3
   `cave_decoration` (−64, sucht Höhlendecken bis echt y 80, doppelt so oft) und `fossils` (−64); meteors `meteors`
   (Untergrund-Meteorerz, −64). Schritte: Erze `underground_ores`, Höhlen-Deko/Erzbeeren `underground_decoration`,
@@ -2026,9 +2026,22 @@ Forest, Limbo/Taschendimensionen von Dimensional Doors) behalten ihre Generatore
   Ardit 339, Blutholz/Geisterholz/Dunkelholz, Dornenranken. Zeit: 625 Chunks in 246 s, mit allen Hexxit-Features
   aus 306 s – die Brücke kostet auf dieser Maschine nichts Messbares. Legacy: `expect.sh 1234 find 260` bytegleich zu
   26a, `verify_blocks.py` wie vorher (296.610 gleich, die 2 bekannten Ranken).
+- **Nachtrag (Wunsch des Nutzers):** CoFH World ersetzt wie im Pack auch in Integrated die Vanilla-Erze
+  (`replaceVanillaOres = true` in `config/worldgen152-startup.toml`): Feature `cofhcore:ores` (die acht Erze mit den
+  Pack-Mengen bis y 128, `deepY`, −64) und Biom-Modifier-Typ `worldgen152:replace_vanilla_ores`
+  (`cofhcore/neoforge/biome_modifier/replace_vanilla_ores.json`), der nur bei eingeschaltetem Schalter
+  `minecraft:ore_dirt|gravel|coal_*|iron_*|gold|gold_lower|redstone*|diamond*|lapis*` aus den Oberwelt-Biomen nimmt
+  (Kupfer, Smaragd, Badlands-Gold, Gesteine, Erzadern bleiben). Diamanten liegen damit auch im Stein unter der
+  Oberfläche. Die Brücke setzt Vanilla-Erze in Deepslate/Tuff als Deepslate-Variante. Geprüft (64 Chunks):
+  Diamant 525 + 539 Deepslate, Eisen 3157 + 3191, Kohle, Gold, Redstone, Lapis; bei 1000/1000 über y 50 1004 Diamanterze.
+  Natura-Nether-Boden in Integrated: `natura:nether_soil` (`NetherSoilGen`, Schritt `raw_generation`, `#minecraft:is_nether`)
+  nach `NetherTerrain.replaceBlocksForBiome`: 2–4 Blöcke Tainted Soil unter jedem Netherrack-Boden, Heat Sand unter
+  Seelensand/Seelenerde, Tainted Soil in Netherrack ab 24 Blöcken Abstand zu Boden und Decke. Verhältnis Tainted
+  Soil/Netherrack 15,6 % (Legacy 12 %), 64 Chunks: 181.893 Tainted Soil, 15.841 Heat Sand. Seelenerde gilt für die
+  Generatoren jetzt als Seelensand (88). Legacy-Vorhersage weiter bytegleich.
 - **Offen:** Sonnenblumen (offLawn) nicht gesehen – im Original selten (y = `nextInt(128)` muss die Oberfläche
   treffen), nicht gezielt gesucht. Natura-Nether-Gelände (Heat Sand, Tainted Soil) kam in Legacy aus dem
-  Nether-Chunk-Generator, nicht aus einem Generator; in Integrated fehlt es (Kandidat für 26d als Oberflächenregel).
+  Nether-Chunk-Generator, nicht aus einem Generator; erledigt im Nachtrag oben.
   Hängende Entities (Bilder, Rahmen) übernehmen `y_offset` noch nicht (kein Generator aus 26b erzeugt welche).
 
 ### Teil 26c – Bauwerke und Dungeons als 26.3-Strukturen

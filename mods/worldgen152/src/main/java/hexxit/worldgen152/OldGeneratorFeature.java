@@ -125,6 +125,22 @@ public record OldGeneratorFeature(String generator, int minY, int maxY, int yOff
         return cell;
     }
 
+    private static final Map<Block, BlockState> DEEPSLATE = new ConcurrentHashMap<>();
+
+    /** A vanilla ore put into deepslate or tuff: its deepslate variant (minecraft:diamond_ore → deepslate_diamond_ore). */
+    static BlockState deepslate(BlockState state) {
+        BlockState variant = DEEPSLATE.computeIfAbsent(state.getBlock(), block -> {
+            net.minecraft.resources.Identifier key = net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(block);
+            if (!key.getNamespace().equals("minecraft") || !key.getPath().endsWith("_ore")) {
+                return Blocks.AIR.defaultBlockState();
+            }
+            return net.minecraft.core.registries.BuiltInRegistries.BLOCK
+                    .getOptional(net.minecraft.resources.Identifier.withDefaultNamespace("deepslate_" + key.getPath()))
+                    .map(Block::defaultBlockState).orElse(Blocks.AIR.defaultBlockState());
+        });
+        return variant.isAir() ? state : variant;
+    }
+
     /** Whether the bridge may put a block where {@code state} is (see the class comment). */
     static boolean replaceable(BlockState state) {
         if (state.isAir() || state.canBeReplaced()) {
@@ -296,11 +312,15 @@ public record OldGeneratorFeature(String generator, int minY, int maxY, int yOff
             for (int i = 0; i < changed.size(); i++) {
                 BlockPos at = changed.get(i);
                 int[] c = cells.get(i);
-                if (!replaceable(this.level.getBlockState(at))) {
+                BlockState real = this.level.getBlockState(at);
+                if (!replaceable(real)) {
                     continue;
                 }
                 int id = c[3] >> 4;
                 BlockState state = id == 0 ? air : OldBlockStates.get(id, c[3] & 15);
+                if (real.is(BlockTags.DEEPSLATE_ORE_REPLACEABLES)) {
+                    state = deepslate(state);
+                }
                 state = this.shape(world, state, c[0], c[1], c[2]);
                 this.level.setBlock(at, state, Block.UPDATE_CLIENTS);
                 any = true;

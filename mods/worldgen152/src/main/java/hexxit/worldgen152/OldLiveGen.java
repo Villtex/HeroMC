@@ -69,7 +69,7 @@ public final class OldLiveGen {
         if (state.is(Blocks.NETHERRACK)) {
             return 87;
         }
-        if (state.is(Blocks.SOUL_SAND)) {
+        if (state.is(Blocks.SOUL_SAND) || state.is(Blocks.SOUL_SOIL)) {
             return 88;
         }
         if (state.is(Blocks.BEDROCK)) {

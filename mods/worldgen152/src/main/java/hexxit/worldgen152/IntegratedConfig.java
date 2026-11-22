@@ -17,11 +17,16 @@ public final class IntegratedConfig {
     /** Feature name → switch. */
     private static final Map<String, ModConfigSpec.BooleanValue> ORES = new LinkedHashMap<>();
     private static final ModConfigSpec.ConfigValue<List<? extends String>> DISABLED;
+    private static final ModConfigSpec.BooleanValue REPLACE_VANILLA_ORES;
 
     static {
         ModConfigSpec.Builder b = new ModConfigSpec.Builder();
         b.comment("World type Hexxit Integrated: ores of the Hexxit mods. false = not generated (another mod or data pack takes over).")
                 .push("ores");
+        REPLACE_VANILLA_ORES = b.comment("CoFH World's ReplaceVanillaGeneration as in the pack: coal, iron, gold, redstone, diamond, lapis, dirt and",
+                        "gravel with the pack's amounts up to y 128 (diamonds in the stone below the surface too) instead of vanilla's ore features.",
+                        "false = vanilla ores of today, no CoFH ores.")
+                .define("replaceVanillaOres", true);
         ore(b, "tconstruct:copper_ore", "generateCopper", "Tinkers' Construct copper ore (vanilla copper exists too: half the original amount)");
         ore(b, "tconstruct:tin_ore", "generateTin", "Tinkers' Construct tin ore");
         ore(b, "tconstruct:aluminum_ore", "generateAluminum", "Tinkers' Construct aluminum ore");
@@ -43,10 +48,18 @@ public final class IntegratedConfig {
         ORES.put(feature, b.comment(comment).define(key, true));
     }
 
+    /** CoFH World replaces the vanilla ores (feature cofhcore:ores, biome modifier cofhcore:replace_vanilla_ores). */
+    public static boolean replaceVanillaOres() {
+        return !SPEC.isLoaded() || REPLACE_VANILLA_ORES.get();
+    }
+
     /** Whether the generator {@code name} runs as a feature. */
     public static boolean enabled(String name) {
         if (!SPEC.isLoaded()) {
             return true;
+        }
+        if (name.equals("cofhcore:ores") && !replaceVanillaOres()) {
+            return false;
         }
         ModConfigSpec.BooleanValue ore = ORES.get(name);
         if (ore != null && !ore.get()) {

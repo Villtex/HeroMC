@@ -35,6 +35,8 @@ public final class WorldGen152 {
             DeferredRegister.create(Registries.CHUNK_GENERATOR, MOD_ID);
     private static final DeferredRegister<MapCodec<? extends net.minecraft.world.level.levelgen.feature.Feature>> FEATURE_TYPES =
             DeferredRegister.create(Registries.FEATURE_TYPE, MOD_ID);
+    private static final DeferredRegister<MapCodec<? extends net.neoforged.neoforge.common.world.BiomeModifier>> BIOME_MODIFIERS =
+            DeferredRegister.create(net.neoforged.neoforge.registries.NeoForgeRegistries.Keys.BIOME_MODIFIER_SERIALIZERS, MOD_ID);
     private static final DeferredRegister<MapCodec<? extends BiomeSource>> BIOME_SOURCES =
             DeferredRegister.create(Registries.BIOME_SOURCE, MOD_ID);
 
@@ -46,6 +48,8 @@ public final class WorldGen152 {
         // a 1.5.2 world generator as a feature of today (world type Hexxit Integrated), see OldGeneratorFeature
         FEATURE_TYPES.register("old_generator", () -> OldGeneratorFeature.CODEC);
         FEATURE_TYPES.register(modBus);
+        BIOME_MODIFIERS.register("replace_vanilla_ores", () -> ReplaceVanillaOresModifier.CODEC);
+        BIOME_MODIFIERS.register(modBus);
         CHUNK_GENERATORS.register(modBus);
         BIOME_SOURCES.register(modBus);
         NeoForge.EVENT_BUS.addListener(WorldGen152::onServerAboutToStart);

@@ -59,5 +59,7 @@ public final class NaturaWorldGen {
         OldTerrainGen.registerWorldGenerator(FML_ID, "natura:crops", BaseCropWorldgen::generate);
         OldTerrainGen.registerWorldGenerator(FML_ID, "natura:clouds", BaseCloudWorldgen::generate);
         OldTerrainGen.registerWorldGenerator(FML_ID, "natura:trees", BaseTreeWorldgen::generate);
+        // Hexxit Integrated: the ground of Natura's Nether chunk provider (Legacy has it in the terrain)
+        OldTerrainGen.registerFeature("natura:nether_soil", NetherSoilGen::generate);
     }
 }
