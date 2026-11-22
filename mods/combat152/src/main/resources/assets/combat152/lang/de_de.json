@@ -1,0 +1,5 @@
+{
+  "options.combat152.combat": "1.5.2-Kampf",
+  "options.combat152.combat.tooltip": "Nahkampf von Minecraft 1.5.2 (keine Abklingzeit, alter Schaden, Blocken mit dem Schwert). Aus: heutiger Nahkampf für alle Mods. Gilt sofort und für jede Welt, die nicht Hexxit Legacy ist (Option integratedCombat152 in config/combat152-startup.toml).",
+  "options.combat152.combat.legacy": "Hexxit Legacy nutzt immer den Nahkampf von Minecraft 1.5.2."
+}

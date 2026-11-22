@@ -2217,6 +2217,9 @@ feste Items. Im Original lief der Austausch über das Forge-OreDictionary; die `
   Gießtisch nimmt 144 mB Aluminiummessing (Rohling), kein Eisen. Schmelzen: Rohes Eisen 288, Kupfernugget 16,
   Tiefenschiefer-Golderz 288. Integrated: Vanilla-Trank da, PZ-Ersatz weg; Legacy umgekehrt und Kampf „1.5.2 (Hexxit
   Legacy)“ trotz Option aus; Integrated mit Option aus: Zombie mit Schärfe V macht 1+3 Schaden (Vanilla).
+- **Nachtrag (Nutzer):** Schalter „1.5.2-Kampf“ oben links in den **Weltoptionen** des Pausenmenüs (Einzelspieler):
+  setzt `integratedCombat152`, gilt sofort für Server und Clients; in Legacy ausgegraut (immer an). Im Client geprüft
+  (Umschalten → Log „Melee combat: 26.3 (switched in World Options)“, Konfig gespeichert).
 - **Offen:** Seelenkäfig und PZ-Blumentopf (im Original IInventory) ohne Capability; Tinkers-Werkzeuge ohne
   `BLOCK_TRANSFORMER` (Rechtsklick setzt wie in 1.5.2 Blöcke aus der Leiste); Test mit echten fremden Mods in 26f.
 

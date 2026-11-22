@@ -137,6 +137,7 @@ public final class Combat152 {
 
     /** Rules of the running server, and of the server this client is connected to. */
     private static volatile boolean serverActive = true;
+    private static volatile boolean serverLegacy;
     private static volatile boolean clientActive = true;
 
     /** Server to client: whether the 1.5.2 rules apply. */
@@ -171,8 +172,25 @@ public final class Combat152 {
         return generator.getClass().getName().equals("hexxit.worldgen152.OldChunkGenerator");
     }
 
+    /**
+     * The switch in "World Options" (single player): saves {@code integratedCombat152} and, outside Hexxit Legacy,
+     * applies it at once on the running server and its clients.
+     */
+    static void setIntegrated(MinecraftServer server, boolean on) {
+        INTEGRATED.set(on);
+        INTEGRATED.save();
+        server.execute(() -> {
+            if (!serverLegacy) {
+                serverActive = on;
+                PacketDistributor.sendToAllPlayers(new ModePayload(on));
+                org.slf4j.LoggerFactory.getLogger(MOD_ID).info("Melee combat: {} (switched in World Options)", on ? "1.5.2" : "26.3");
+            }
+        });
+    }
+
     private static void onServerStarted(ServerStartedEvent event) {
         boolean legacy = isLegacy(event.getServer());
+        serverLegacy = legacy;
         serverActive = legacy || INTEGRATED.get();
         org.slf4j.LoggerFactory.getLogger(MOD_ID).info("Melee combat: {} ({})", serverActive ? "1.5.2" : "26.3",
                 legacy ? "Hexxit Legacy" : "integratedCombat152 = " + INTEGRATED.get());
@@ -185,7 +203,10 @@ public final class Combat152 {
         modBus.addListener(RegisterPayloadHandlersEvent.class, event -> event.registrar("1").optional()
                 .playToClient(ModePayload.TYPE, ModePayload.CODEC, (payload, context) -> clientActive = payload.active()));
         NeoForge.EVENT_BUS.addListener(ServerStartedEvent.class, Combat152::onServerStarted);
-        NeoForge.EVENT_BUS.addListener(ServerStoppedEvent.class, e -> serverActive = true);
+        NeoForge.EVENT_BUS.addListener(ServerStoppedEvent.class, e -> {
+            serverActive = true;
+            serverLegacy = false;
+        });
         NeoForge.EVENT_BUS.addListener(PlayerEvent.PlayerLoggedInEvent.class, e -> {
             if (e.getEntity() instanceof ServerPlayer player) {
                 PacketDistributor.sendToPlayer(player, new ModePayload(serverActive));
@@ -505,7 +526,30 @@ public final class Combat152 {
     }
 
     private static final class Client {
+        /**
+         * "World Options" of the pause menu (single player): a switch for the 1.5.2 melee combat, top left (Custom LAN
+         * has the top right corner). In Hexxit Legacy it is shown switched on and cannot be changed.
+         */
+        static void onScreenInit(net.neoforged.neoforge.client.event.ScreenEvent.Init.Post event) {
+            if (!(event.getScreen() instanceof net.minecraft.client.gui.screens.WorldOptionsScreen screen)) {
+                return;
+            }
+            var server = Minecraft.getInstance().getSingleplayerServer();
+            if (server == null) {
+                return;
+            }
+            boolean legacy = serverLegacy;
+            var button = net.minecraft.client.gui.components.CycleButton.onOffBuilder(legacy || INTEGRATED.get())
+                    .create(5, 5, 150, 20, net.minecraft.network.chat.Component.translatable("options.combat152.combat"),
+                            (b, value) -> setIntegrated(server, value));
+            button.setTooltip(net.minecraft.client.gui.components.Tooltip.create(net.minecraft.network.chat.Component.translatable(
+                    legacy ? "options.combat152.combat.legacy" : "options.combat152.combat.tooltip")));
+            button.active = !legacy;
+            event.addListener(button);
+        }
+
         static void init() {
+            NeoForge.EVENT_BUS.addListener(net.neoforged.neoforge.client.event.ScreenEvent.Init.Post.class, Client::onScreenInit);
             NeoForge.EVENT_BUS.addListener(net.neoforged.neoforge.client.event.ClientPlayerNetworkEvent.LoggingOut.class,
                     e -> clientActive = true);
             NeoForge.EVENT_BUS.addListener(ClientTickEvent.Post.class, e -> {

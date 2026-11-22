@@ -1,0 +1,5 @@
+{
+  "options.combat152.combat": "1.5.2 Combat",
+  "options.combat152.combat.tooltip": "Melee combat of Minecraft 1.5.2 (no cooldown, old damage, sword blocking). Off: melee combat of today for all mods. Applies at once and to every world that is not Hexxit Legacy (option integratedCombat152 in config/combat152-startup.toml).",
+  "options.combat152.combat.legacy": "Hexxit Legacy always uses the melee combat of Minecraft 1.5.2."
+}

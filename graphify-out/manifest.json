@@ -6,8 +6,8 @@
     "semantic_hash": ""
   },
   "build.gradle": {
-    "mtime": 1795373135.7751753,
-    "seen": 1795376313.4559712,
+    "mtime": 1795377295.2252433,
+    "seen": 1795377442.6303878,
     "ast_hash": "af8afe8a86358ea363905d4c876f60bd",
     "semantic_hash": ""
   },
@@ -648,9 +648,9 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1795376251.0185552,
-    "seen": 1795376313.495965,
-    "ast_hash": "4fe4463c066493ab241abf7a19ce6ddc",
+    "mtime": 1795377295.3217137,
+    "seen": 1795377442.6647859,
+    "ast_hash": "33ac1709b27a16d75fd18b7d14dd94c1",
     "semantic_hash": ""
   },
   "mods/ebxl/original-assets.txt": {
@@ -684,9 +684,9 @@
     "semantic_hash": ""
   },
   "docs/PLAN.md": {
-    "mtime": 1795376221.0993085,
-    "seen": 1795376313.495971,
-    "ast_hash": "e454342182c3daccfa153e1a0d4453cc",
+    "mtime": 1795377295.3172433,
+    "seen": 1795377442.6647906,
+    "ast_hash": "ad8fe458b4a633bfcd877640170efd9f",
     "semantic_hash": ""
   },
   ".mcp.json": {
@@ -20460,9 +20460,9 @@
     "semantic_hash": ""
   },
   ".claude/skills/headless-client/SKILL.md": {
-    "mtime": 1795373135.7391753,
-    "seen": 1795376313.4959207,
-    "ast_hash": "be2d7a613162b14f6ddd0cfa6065e0cc",
+    "mtime": 1795377295.3221488,
+    "seen": 1795377442.6647456,
+    "ast_hash": "7558e5ab2998642bb14f87eee57b1666",
     "semantic_hash": ""
   },
   "mods/asgardshield-addons/src/main/java/asaddons/ASAddons.java": {
@@ -31890,9 +31890,9 @@
     "semantic_hash": ""
   },
   "mods/combat152/src/main/java/hexxit/combat152/Combat152.java": {
-    "mtime": 1795374876.1327634,
-    "seen": 1795376313.4632142,
-    "ast_hash": "020e0aa1caef93d32b23e16c1de8ea6a",
+    "mtime": 1795376537.8056185,
+    "seen": 1795377442.637718,
+    "ast_hash": "4f644b42f7340e4a8573d7dc2d42af1e",
     "semantic_hash": ""
   },
   "mods/combat152/src/main/resources/data/minecraft/enchantment/bane_of_arthropods.json": {
@@ -95277,6 +95277,18 @@
     "mtime": 1795376250.8051813,
     "seen": 1795376313.4959178,
     "ast_hash": "eb232505ac670077cd9d5b720d42aba7",
+    "semantic_hash": ""
+  },
+  "mods/combat152/src/main/resources/assets/combat152/lang/de_de.json": {
+    "mtime": 1795376537.813113,
+    "seen": 1795377442.637721,
+    "ast_hash": "59793371b862f0fd5da1beea761805b3",
+    "semantic_hash": ""
+  },
+  "mods/combat152/src/main/resources/assets/combat152/lang/en_us.json": {
+    "mtime": 1795376537.8115544,
+    "seen": 1795377442.6377227,
+    "ast_hash": "2062b37b675ea1be2782677094efb019",
     "semantic_hash": ""
   }
 }

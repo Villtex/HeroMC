@@ -60,3 +60,10 @@ Add to this skill once that is done.
   und `time set noon` setzen, dann bleibt die Szene stabil und hell genug für Screenshots.
 - Ausschnitt vergrößern: `import` kennt `-scale` nicht, deshalb `import -window root shot.png` und danach
   `convert shot.png -crop BxH+X+Y -scale 250% zoom.png`.
+
+## Einzelspielerwelt direkt laden (Teil 26e)
+
+- Welt des Testservers kopieren: `cp -r run/server/world run/client/saves/t`, im Root-`build.gradle` beim `client`-Run
+  vorübergehend `programArguments.addAll('--quickPlaySingleplayer', 't', '--username', 'Dev')`, danach `git checkout build.gradle`.
+- Fenster bei 1280×720: Spielbild 854×480 bei +213+120. „Continue“ 638,567; im Spiel `key Escape` → Pausenmenü,
+  „World Options…“ etwa 800,425. Laden dauert mit llvmpipe einige Minuten (Ladebalken abwarten).

@@ -31,7 +31,8 @@ Jeder Mod wird deshalb gegen das dekompilierte Original als Referenz **neu gesch
 - **Fremde Mods (Teil 26e):** Kisten, Regale und Tinkers-Tische bieten Item-Capabilities, Tinkers-Tanks/Abfluss/Gießblöcke
   Fluid-Capabilities; Erze, Metalle, Kisten, Werkzeuge und Bosse tragen die `c:`- und `minecraft:`-Tags, Hexxit-Rezepte und
   die Schmelzerei nehmen fremde Metalle über diese Tags. Der 1.5.2-Nahkampf (`combat152`) gilt in Legacy immer, in anderen
-  Welttypen nach `integratedCombat152` in `config/combat152-startup.toml` (Standard an). Project-Zulu-Brauen ändert den
+  Welttypen nach `integratedCombat152` in `config/combat152-startup.toml` (Standard an; im Einzelspieler auch per Schalter
+  „1.5.2-Kampf“ in den Weltoptionen des Pausenmenüs). Project-Zulu-Brauen ändert den
   Vanilla-Sprungtrank nur in Legacy.
 
 ## Arbeitsplan
