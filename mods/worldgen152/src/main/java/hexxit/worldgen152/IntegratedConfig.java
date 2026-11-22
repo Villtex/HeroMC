@@ -27,7 +27,6 @@ public final class IntegratedConfig {
                         "gravel with the pack's amounts up to y 128 (diamonds in the stone below the surface too) instead of vanilla's ore features.",
                         "false = vanilla ores of today, no CoFH ores.")
                 .define("replaceVanillaOres", true);
-        ore(b, "tconstruct:copper_ore", "generateCopper", "Tinkers' Construct copper ore (vanilla copper exists too: half the original amount)");
         ore(b, "tconstruct:tin_ore", "generateTin", "Tinkers' Construct tin ore");
         ore(b, "tconstruct:aluminum_ore", "generateAluminum", "Tinkers' Construct aluminum ore");
         ore(b, "tconstruct:cobalt_ore", "generateCobalt", "Tinkers' Construct cobalt ore (Nether)");

@@ -2006,20 +2006,19 @@ Forest, Limbo/Taschendimensionen von Dimensional Doors) behalten ihre Generatore
 - **Eingehängt** (je eine Datei unter `data/<ns>/neoforge/biome_modifier/`, Biome `#minecraft:is_overworld` bzw.
   `#minecraft:is_nether`; der Generator prüft das Biom selbst wie im Original über `OldBiomeTags`):
   natura `crops`, `clouds`, `trees` (je Oberwelt + Nether; Wolken sind in der Pack-Konfiguration aus);
-  tconstruct `copper_ore`, `tin_ore`, `aluminum_ore` (−64, `deepY`, in den Extreme Hills doppelt; Kupfer je Ader nur
-  zu 50 %, weil Vanilla-Kupfer da ist), `surface_ores`, `oreberry_bushes`, `slime_islands`, `cobalt_ore`,
+  tconstruct `tin_ore`, `aluminum_ore` (−64, `deepY`, in den Extreme Hills doppelt; Tinkers-Kupfererz gibt es in
+  Integrated auf Wunsch des Nutzers nicht, Vanilla hat Kupfer; Kupfer-Erzbeeren und -Erzkies bleiben), `surface_ores`, `oreberry_bushes`, `slime_islands`, `cobalt_ore`,
   `ardite_ore` (Nether); cofhcore `custom_ores` (nur die WorldCustomGen-Vorlagen = qCraft-Quantenerz, −64, `deepY`;
   die Vanilla-Erze siehe Nachtrag unten; das flache Grundgestein von CoFH World entfällt); artifice `flora`,
   `basalt` (Schicht über dem Grundgestein, −64), `marble` (−64); offlawn `sunflowers`; wildcaves3
   `cave_decoration` (−64, sucht Höhlendecken bis echt y 80, doppelt so oft) und `fossils` (−64); meteors `meteors`
   (Untergrund-Meteorerz, −64). Schritte: Erze `underground_ores`, Höhlen-Deko/Erzbeeren `underground_decoration`,
   Pflanzen/Bäume `vegetal_decoration`, Schleiminseln `surface_structures`.
-- **Konfiguration** `config/worldgen152-startup.toml` (`IntegratedConfig`): je Erz ein Schalter (`generateCopper`,
-  `generateTin`, `generateAluminum`, `generateCobalt`, `generateArdite`, `generateSurfaceOres`,
+- **Konfiguration** `config/worldgen152-startup.toml` (`IntegratedConfig`): je Erz ein Schalter (`generateTin`, `generateAluminum`, `generateCobalt`, `generateArdite`, `generateSurfaceOres`,
   `generateQuantumOre`, `generateMeteorOre`) und `disabledFeatures` (Liste beliebiger Feature-Namen). Gilt nur für
   Integrated. Datapacks können zusätzlich `neoforge:remove_features` nehmen.
 - **Werkzeug:** `tools/count_blocks.py` zählt Blöcke per RCON (zerstörend, nur in Test-Welten).
-- **Geprüft:** `clean pack` grün. Integrated, Seed 1234, ohne Fehler im Log. 64 Chunks Wald bei −560/32: TC-Kupfer 559,
+- **Geprüft:** `clean pack` grün. Integrated, Seed 1234, ohne Fehler im Log. 64 Chunks Wald bei −560/32: TC-Kupfer 559 (seit dem Nachtrag 0),
   Zinn 1031, Aluminium 1025 (Vanilla-Kupfer 5718), Erzbeeren 10, Basalt 64.142, Marmor 80.184, Meteorerz 983,
   Quantenerz 785, Höhlen-Deko (Stalaktiten 213, Glowcaps, Spinnweben), Natura-Gerste. 256 Chunks bei 0/400:
   Artifice-Blumen 56, Lotus 30, eine Schleiminsel (526 Schleimgras), Oberflächenerz. Nether 64 Chunks: Kobalt 299,

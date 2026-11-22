@@ -684,9 +684,9 @@
     "semantic_hash": ""
   },
   "docs/PLAN.md": {
-    "mtime": 1795361887.2463984,
-    "seen": 1795361957.2309985,
-    "ast_hash": "398322ee0d2a850771a9c8330e2c7f7a",
+    "mtime": 1795362415.9098465,
+    "seen": 1795362474.8035667,
+    "ast_hash": "38514d8f76a59233d455ab99981436cc",
     "semantic_hash": ""
   },
   ".mcp.json": {
@@ -74538,9 +74538,9 @@
     "semantic_hash": ""
   },
   "mods/tconstruct/src/main/java/tconstruct/gen/TCWorldGen.java": {
-    "mtime": 1795357157.9442606,
-    "seen": 1795359110.4702969,
-    "ast_hash": "f6ca2e066a0e6de97e105d3e036d2184",
+    "mtime": 1795361995.3102179,
+    "seen": 1795362474.7868714,
+    "ast_hash": "b796923ce4cd56530a761da8cabdfbe7",
     "semantic_hash": ""
   },
   "mods/tconstruct/src/main/java/tconstruct/world/OreberryBushBlock.java": {
@@ -93371,12 +93371,6 @@
     "ast_hash": "efbefd388f13cf4146443170edd277ec",
     "semantic_hash": ""
   },
-  "mods/tconstruct/src/main/resources/data/tconstruct/neoforge/biome_modifier/copper_ore.json": {
-    "mtime": 1795357308.5774496,
-    "seen": 1795359110.4912832,
-    "ast_hash": "555899e68daa8418b441462ecc1e4f44",
-    "semantic_hash": ""
-  },
   "mods/tconstruct/src/main/resources/data/tconstruct/neoforge/biome_modifier/oreberry_bushes.json": {
     "mtime": 1795357308.578084,
     "seen": 1795359110.491286,
@@ -93419,12 +93413,6 @@
     "ast_hash": "ceda08f1b2e68d9950f5f41eef28a20c",
     "semantic_hash": ""
   },
-  "mods/tconstruct/src/main/resources/data/tconstruct/worldgen/feature/copper_ore.json": {
-    "mtime": 1795357308.574647,
-    "seen": 1795359110.4919705,
-    "ast_hash": "213fb06c6503e043e396d9bfb72586bd",
-    "semantic_hash": ""
-  },
   "mods/tconstruct/src/main/resources/data/tconstruct/worldgen/feature/oreberry_bushes.json": {
     "mtime": 1795357308.5779638,
     "seen": 1795359110.4919722,
@@ -93459,12 +93447,6 @@
     "mtime": 1795357308.5782378,
     "seen": 1795359110.4919965,
     "ast_hash": "595ae1984189d07f9f0bb45d15caf0d7",
-    "semantic_hash": ""
-  },
-  "mods/tconstruct/src/main/resources/data/tconstruct/worldgen/placed_feature/copper_ore.json": {
-    "mtime": 1795357308.5749114,
-    "seen": 1795359110.4919987,
-    "ast_hash": "a1d34b3752996065374b629b43c8ed7e",
     "semantic_hash": ""
   },
   "mods/tconstruct/src/main/resources/data/tconstruct/worldgen/placed_feature/oreberry_bushes.json": {
@@ -93510,9 +93492,9 @@
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/IntegratedConfig.java": {
-    "mtime": 1795360811.611945,
-    "seen": 1795361957.2300298,
-    "ast_hash": "8bbd40e15ee6a4c119cac5aee84acc60",
+    "mtime": 1795361995.310792,
+    "seen": 1795362474.802631,
+    "ast_hash": "1c08836ddad625a9fc4bbee869ab1593",
     "semantic_hash": ""
   },
   "tools/count_blocks.py": {
