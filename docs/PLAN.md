@@ -78,7 +78,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 26c | Integrated C: Bauwerke und Dungeons als echte 26.3-Strukturen (`/locate`, Abstand zu fremden Strukturen) | ~4.000 | 26a | Fable 5.2, hoch | ✅ erledigt |
 | 26d | Integrated D: EBXL-Biome neben Vanilla- und fremden Biomen, Mob-Spawns per Biom-Modifier | ~3.000 | 26b | Fable 5.2, hoch | ✅ erledigt |
 | 26e | Integrated E: Schnittstellen für fremde Mods (Capabilities, `c:`-Tags, Werkzeug-Fähigkeiten, Rezepte über Tags) | ~4.000 | – | Opus 5.5, mittel | ✅ erledigt |
-| 26f | Integrated F: Test mit fremden 26.3-Mods, Gesamtprüfung | – | 26a–26e | Opus 5.5, mittel | offen |
+| 26f | Integrated F: Test mit fremden 26.3-Mods, Gesamtprüfung | – | 26a–26e | Opus 5.5, mittel | ✅ erledigt |
 
 Entfallen ganz: Not Enough Items, NEI Plugins, CodeChickenCore (durch JEI ersetzt), Lumy Skin Patch,
 `basemods` (Forge 1.5.2 selbst).
@@ -2232,3 +2232,30 @@ feste Items. Im Original lief der Austausch über das Forge-OreDictionary; die `
   Tinkers-Tank, die Schmelzerei schmilzt ein fremdes Kupfererz, ein fremdes Werkzeug baut Hexxit-Erz ab, Hexxit-Erze
   und fremde Erze erscheinen beide. Legacy-`expect.sh` grün.
 - Ergebnis und Grenzen (was nicht geht) in `README.md` unter „Vorgaben“ und in dieser Datei eintragen.
+
+#### Teil 26f – Stand (✅ erledigt)
+- **Testauswahl** (`tools/extra_mods.py`, feste Versionen von Modrinth mit SHA-1-Prüfung, nach `run/mods-extra/`):
+  Biomes O' Plenty 26.3.0.0.17 + GlitchCore (Biome über TerraBlender), Towns and Towers 1.13.13 + Cristel Lib
+  (Strukturen), Assorted Ores 2.0.0 + Assorted Lib (Erze/Metalle mit `c:`-Tags), Pipez 1.2.33 (Item- und Fluid-Rohre),
+  Immersive Ores 0.4 (Werkzeuge), Jade 26.3.5. Für 26.3 gibt es keinen Mod mit eigenem Kupfererz (Assorted Ores trägt nur
+  Vanilla-Kupfer in `c:ores/copper` ein); geprüft wurde daher mit fremdem Zinn-, Silber- und Aluminiumerz.
+  Mekanism, Create, Thermal und Immersive Engineering gibt es für 26.3 (noch) nicht.
+- **Prüfbefehl:** `/hexxitcompat mine <pos> "<werkzeug>"` (richtiges Werkzeug, Tempo, Drops).
+- **Geprüft (Integrated, Seed 1234, alle Hexxit-Mods + die sechs fremden):** Start ohne Fehler (einziger ERROR:
+  `NeoForgeDevDistCleaner` lädt `LevelRenderer` beim Mixin-Laden eines fremden Mods, nur in der Dev-Umgebung).
+  `locate`: Turm −2016/−960, Dungeon −720/−128, Friedhof −784/−160 (wie in 26c), `#towns_and_towers:town` (Ozean-Dorf
+  −208/−768), `village_plains` −960/176, BOP Maple Woods und Lavender Field, EBXL Autumn Woods, Redwood Forest, Mountain
+  Ridge. Pipez: Item-Rohr zieht 32 Bruchstein + 3 Diamanten aus der Verstärkten Eisenkiste und füllt eine Verstärkte
+  Goldkiste aus einer Vanilla-Kiste; Fluid-Rohr bringt 3.856 mB Zinn von Seared Tank zu Seared Tank. Schmelzerei:
+  Assorted-Zinnerz/Tiefenschiefer-Zinnerz/Rohzinn 288 mB, Zinnbarren 144 mB, Silber- und Aluminiumerz 288 mB.
+  Crafter: Verstärkte Zinnkiste (BetterStorage) nur aus Assorted-Zinn. Abbau: Immersive-Ores-Spitzhacke/-Paxel bauen
+  Tinkers-Kupfer- und -Kobalterz ab, Meteors-Frezarit- und Natura-Dunkelholz-Spitzhacke fremdes Zinnerz; Holz bei beiden
+  nicht. Erze in 3×3 Chunks (y −64…120): Tinkers-Zinn 112, -Aluminium 120 neben Assorted Zinn 6, Silber 374, Blei 663
+  und Vanilla-Kupfer/-Eisen.
+- **Legacy:** `expect.sh 1234 find 260` + `verify_blocks.py` ohne fremde Mods wie vorher (296.610 gleich, die 2 bekannten
+  Ranken; Biome, Truhen, Spawner, Entities 0 Abweichungen). Mit den fremden Mods 116 Blöcke mehr anders: Assorted-Zinnerz
+  im Stein. Das ist so gewollt (`OldChunkGenerator.legacySettings` lässt nur die `minecraft:`-Features weg, fremde bleiben
+  wie unter Forge 1.5.2).
+- **Grenzen:** In Legacy erscheinen fremde Erze und Features, aber keine fremden Biome und Bauwerke, weil die Biome aus
+  der 1.5.2-Schicht kommen. Tinkers-Kupfererz gibt es in Integrated mit Absicht nicht (Vanilla-Kupfer).
+- **Offen:** Client-Prüfung offen (Jade-Anzeige an Hexxit-Blöcken, BOP-Farben und Übergänge zu EBXL).

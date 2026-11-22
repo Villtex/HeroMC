@@ -60,5 +60,18 @@ description: Beim Anbinden eines portierten Hexxit-Mods an fremde 26.3-Mods benu
 ## Prüfen am Server
 
 `/hexxitcompat item <x y z> "<item>"` (+5, −2, abgebrochenes −1), `fluid <x y z> "<fluid>"`, `melt "<item>"`,
-`tag "<item>" "<tag>"`, `recipe "<id>"` per `tools/rcon.py` (Ids in Anführungszeichen). Ausgabe auch im Log
+`tag "<item>" "<tag>"`, `recipe "<id>"`, `mine <x y z> "<werkzeug>"` (richtiges Werkzeug, Tempo, Drops) per `tools/rcon.py` (Ids in Anführungszeichen). Ausgabe auch im Log
 (`hexxitcompat`). Kampf-Modus steht beim Start im Log: `Melee combat: 1.5.2 (Hexxit Legacy)`.
+
+## Mit echten fremden Mods testen (Teil 26f)
+
+- `python3 tools/extra_mods.py --install` lädt die Testauswahl (BOP, Towns and Towers, Assorted Ores, Pipez, Immersive
+  Ores, Jade; feste Versionen) nach `run/mods-extra/` und kopiert sie nach `run/server/mods`; `--uninstall` nimmt sie
+  wieder heraus. Neue Mods/Versionen: Modrinth-API `project/<slug>/version?loaders=["neoforge"]&game_versions=["26.3"]`.
+- Pipez-Rohr ohne Schraubenschlüssel auf „Herausziehen“ stellen:
+  `setblock x y z pipez:item_pipe[west=true,east=true,has_data=true]`, dann
+  `data merge block x y z {ExtractingSides:[0b,0b,0b,0b,1b,0b]}` (Reihenfolge Unten, Oben, Nord, Süd, West, Ost).
+  `fluid_pipe` genauso. Ohne `has_data=true` gibt es keine Block-Entity.
+- Legacy-Prüfung (`verify_blocks.py`) **ohne** fremde Mods: Deren Erz-Features laufen in Legacy weiter
+  (`OldChunkGenerator.legacySettings` filtert nur `minecraft:`) und zählen als Abweichungen.
+- Der ERROR `NeoForgeDevDistCleaner … LevelRenderer` beim Laden fremder Mixins gibt es nur in der Dev-Umgebung.
