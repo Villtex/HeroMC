@@ -67,3 +67,15 @@ Add to this skill once that is done.
   vorübergehend `programArguments.addAll('--quickPlaySingleplayer', 't', '--username', 'Dev')`, danach `git checkout build.gradle`.
 - Fenster bei 1280×720: Spielbild 854×480 bei +213+120. „Continue“ 638,567; im Spiel `key Escape` → Pausenmenü,
   „World Options…“ etwa 800,425. Laden dauert mit llvmpipe einige Minuten (Ladebalken abwarten).
+
+## Sodium und Iris im Testclient
+
+- `runClient` lädt Sodium (eigenes Source-Set `clientRun` im Root-`build.gradle`, nur der Client-Run; der Server bleibt
+  ohne). Vanilla-Renderer zum Vergleich: `./gradlew runClient -Psodium_iris=false`. Versionen in `gradle.properties`.
+- Darstellungsfehler erst gegen Vanilla gegenprüfen: dieselbe Szene, dieselbe `tp`-Position, Ausschnitte mit
+  `convert a.png b.png -append cmp.png` vergleichen. Animierte Dinge (Glühwürmchen pulsiert, Wasser) mit einer
+  Bildserie (`import -window root -crop WxH+X+Y` in einer Schleife) statt einem Einzelbild.
+- Iris mit Shaderpack: Pack nach `run/client/shaderpacks/`, in `run/client/config/iris.properties`
+  `shaderPack=<datei>.zip`. Stand 26.3.0.102: Iris 1.11.7 stürzt in `FrontendRenderPass.validateDraw` ab, auch ohne
+  Hexxit-Mods. Gegenprobe ohne eigene Mods: vorübergehender Run mit `loadedMods = []` und eigenem `gameDirectory`.
+- Bei `tutorialStep:none` in `run/client/options.txt` verdeckt kein Tutorial-Hinweis die rechte Bildhälfte.

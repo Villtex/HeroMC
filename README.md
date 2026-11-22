@@ -14,6 +14,14 @@ Jeder Mod wird deshalb gegen das dekompilierte Original als Referenz **neu gesch
 - **Terrain:** Die Oberfläche (Geländeform, Biom-Verteilung, Deckschichten) soll exakt der des alten Packs
   entsprechen. Dafür gibt es einen eigenen Chunk-Generator, der die Generierung von 1.5.2 nachbildet
   (`mods/worldgen152`) und gegen Welten des Original-Servers geprüft wird.
+- **Sodium und Iris:** Der Client läuft mit **Sodium** (`build/pack/client-mods`, im Testclient standardmäßig an,
+  `./gradlew runClient -Psodium_iris=false` für den Vanilla-Renderer). Geprüft mit Sodium 0.9.3: Tarnblöcke (Secret Rooms,
+  Tinkers-Zugbrücke/Landmine, qCraft) über NeoForge-ModelData, Flüssigkeiten, Glas, Blattfärbung, Block-Entity-Renderer,
+  leuchtende Mobs und die Mapwriter-Karte sehen aus wie mit dem Vanilla-Renderer. Eigene Mods brauchen dafür keine
+  Mixins in den Renderer; neue Client-Darstellung bleibt bei Vanilla-Render-Typen und `DynamicBlockStateModel` mit
+  ModelData. **Iris** ist vorbereitet (`iris_version` in `gradle.properties`), aber aus: Das neueste Iris für 26.3
+  (1.11.7) stürzt auf NeoForge 26.3.0.102 mit jedem Shaderpack ab, auch ganz ohne Hexxit-Mods, und Sodium 0.9.3 lässt
+  erst Iris ≥ 1.12.1 zu. Sobald das erscheint: Version eintragen, mit Shaderpack testen.
 - **Rezeptanzeige:** Not Enough Items wird nicht portiert. Stattdessen sind alle portierten Mods mit
   **JEI** kompatibel; eigene Rezepttypen bekommen ein JEI-Plugin.
 - **Twilight Forest** ist in die Teile 24a–24f aufgeteilt, **Tinkers' Construct** in die Teile 25a–25f.
@@ -69,7 +77,7 @@ Der Port ist in Teile aufgeteilt, die je in eine Session passen: [`docs/PLAN.md`
 | `.claude/skills/api-263-lookup/` | Projekt-Skill: 26.3-Signaturen und Vanilla-Daten lokal nachschlagen (javap, Vineflower, NeoForge-Quellen), Loot-/Advancement-Format, bekannte Umbenennungen, Ressourcenpfade nur klein, ICraftingHandler über ItemCraftedEvent, WAV→Ogg beim Asset-Import |
 | `.claude/skills/tinkers-tools-263/` | Projekt-Skill: Tinkers' Construct weiterbauen (Komponente `tconstruct:tool`, Teile/Materialien/Muster, alte IDs, Modifikatoren, Schmelzerei-Tabellen und Flüssigkeiten, Prüfen ohne Spieler) |
 | `.claude/skills/twilight-forest-263/` | Projekt-Skill: Twilight Forest weiterbauen (Kern `twilightforest.gen`, Bauwerke `gen.structure` mit Übersetzungsskript, Starts, Truhen, Spawnlisten, Prüfung mit `expect.sh … twilight structures`) |
-| `.claude/skills/headless-client/` | Projekt-Skill: Testclient im Cloud-Container ohne Bildschirm starten (Xvfb, `SDL_VIDEO_FORCE_EGL=1`, Screenshots, xdotool, Testserver beitreten) |
+| `.claude/skills/headless-client/` | Projekt-Skill: Testclient im Cloud-Container ohne Bildschirm starten (Xvfb, `SDL_VIDEO_FORCE_EGL=1`, Screenshots, xdotool, Testserver beitreten), Sodium/Iris gegen den Vanilla-Renderer vergleichen |
 | `.claude/skills/integrated-263/` | Projekt-Skill: Welttyp Hexxit Integrated (Teil 26) – 1.5.2-Generator als 26.3-Feature mit Biom-Modifier einhängen, Chunk-Brücke `OldGeneratorFeature` (Verschiebung, Höhenfenster, Biome über Tags, was ersetzt wird), Bauwerke als 26.3-Strukturen (`worldgen152:old_structure`), 1.5.2-Dorfteile in 26.3-Dörfern, Legacy/Integrated am Server umschalten und prüfen |
 | `.claude/skills/compat-263/` | Projekt-Skill: Schnittstellen für fremde Mods (Teil 26e) – Item-/Fluid-Capabilities mit der Transfer-API, `c:`-Tags über `tools/compat_tags.py`, Rezepte über Tags, Daten nur in Legacy (`worldgen152:world_type`), Prüfbefehl `/hexxitcompat` |
 
@@ -78,9 +86,9 @@ Der Port ist in Teile aufgeteilt, die je in eine Session passen: [`docs/PLAN.md`
 Voraussetzung ist nur ein JDK; das passende JDK 25 lädt Gradle bei Bedarf selbst.
 
 ```
-./gradlew pack         # baut alle Mods nach build/pack/mods
+./gradlew pack         # baut alle Mods nach build/pack/mods, Client-Extras (Sodium) nach build/pack/client-mods
 ./gradlew runServer    # Testserver mit allen portierten Mods (run/server)
-./gradlew runClient    # Testclient mit allen portierten Mods (run/client)
+./gradlew runClient    # Testclient mit allen portierten Mods und Sodium (run/client); -Psodium_iris=false ohne
 ```
 
 ## Referenzquellen des Originals

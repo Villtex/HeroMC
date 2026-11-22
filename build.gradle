@@ -32,6 +32,13 @@ allprojects {
                 includeGroup 'net.mezzdev.config'
             }
         }
+        // Sodium and Iris (client renderer and shader loader the pack is kept compatible with)
+        maven {
+            url = 'https://api.modrinth.com/maven'
+            content {
+                includeGroup 'maven.modrinth'
+            }
+        }
         // TerraBlender: region API for overworld biomes (ExtrabiomesXL in Hexxit Integrated)
         maven {
             url = 'https://maven.minecraftforge.net'
@@ -127,10 +134,30 @@ configurations {
     packLibraries {
         transitive = false
     }
+    // client-only library mods: Sodium (renderer) and, once usable, Iris (shaders); the pack stays compatible with them
+    packClientLibraries {
+        transitive = false
+    }
 }
 dependencies {
     packLibraries "com.github.glitchfiend:TerraBlender-neoforge:${terrablender_version}"
     runtimeOnly "com.github.glitchfiend:TerraBlender-neoforge:${terrablender_version}"
+    packClientLibraries "maven.modrinth:sodium:${sodium_version}"
+    // Iris only when a version is set (see gradle.properties: no Iris release for 26.3 works with shaders yet)
+    if (findProperty('iris_version')) {
+        packClientLibraries "maven.modrinth:iris:${iris_version}"
+    }
+}
+
+// Sodium (+ Iris) only in the client run: it runs on an empty source set whose runtime classpath is the pack's plus
+// both jars (26.3 has no per-run extra classpath). -Psodium_iris=false runs the client with the vanilla renderer.
+sourceSets {
+    clientRun {
+        runtimeClasspath = sourceSets.main.runtimeClasspath
+        if ((findProperty('sodium_iris') ?: 'true').toBoolean()) {
+            runtimeClasspath += configurations.packClientLibraries
+        }
+    }
 }
 
 neoForge {
@@ -144,6 +171,7 @@ neoForge {
     runs {
         client {
             client()
+            sourceSet = sourceSets.clientRun
             gameDirectory = file('run/client')
         }
         server {
@@ -162,3 +190,12 @@ tasks.register('pack', Copy) {
     from(configurations.packLibraries)
     into layout.buildDirectory.dir('pack/mods')
 }
+
+// Client-only extras next to it: build/pack/client-mods (Sodium, Iris); copy them into the client's mods folder
+tasks.register('packClient', Sync) {
+    group = 'build'
+    description = 'Collects the client-only library mods (Sodium, Iris) in build/pack/client-mods.'
+    from(configurations.packClientLibraries)
+    into layout.buildDirectory.dir('pack/client-mods')
+}
+tasks.named('pack') { finalizedBy 'packClient' }

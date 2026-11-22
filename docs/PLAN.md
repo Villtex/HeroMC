@@ -1417,7 +1417,7 @@ simulate movement` ab; Schwerkraft und `move` laufen jetzt nur auf dem Server.
 - Alle Konfigurationen aus `z-hexxit-configs` übernommen? Liste abhaken.
 - Testserver mit allen Mods, Welt mit Seed 1234, Terrain-Prüfung, RCON-Stichproben.
 - Modpack bauen:
-  - Jar-Ordner und Server-Paket
+  - Jar-Ordner und Server-Paket; `build/pack/client-mods` (Sodium, später Iris) gehört nur ins Client-Paket
   - Import für den CurseForge- oder Prism-Launcher
   - Hinweis: Die Jars enthalten Original-Assets, nur für den eigenen Gebrauch.
 - Client-Prüfliste für den Nutzer.
