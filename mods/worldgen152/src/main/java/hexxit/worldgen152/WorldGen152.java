@@ -33,6 +33,8 @@ public final class WorldGen152 {
 
     private static final DeferredRegister<MapCodec<? extends ChunkGenerator>> CHUNK_GENERATORS =
             DeferredRegister.create(Registries.CHUNK_GENERATOR, MOD_ID);
+    private static final DeferredRegister<MapCodec<? extends net.minecraft.world.level.levelgen.feature.Feature>> FEATURE_TYPES =
+            DeferredRegister.create(Registries.FEATURE_TYPE, MOD_ID);
     private static final DeferredRegister<MapCodec<? extends BiomeSource>> BIOME_SOURCES =
             DeferredRegister.create(Registries.BIOME_SOURCE, MOD_ID);
 
@@ -40,6 +42,9 @@ public final class WorldGen152 {
         CHUNK_GENERATORS.register("overworld", () -> OldChunkGenerator.CODEC);
         CHUNK_GENERATORS.register("nether", () -> OldNetherChunkGenerator.CODEC);
         BIOME_SOURCES.register("overworld", () -> OldBiomeSource.CODEC);
+        // a 1.5.2 world generator as a feature of today (world type Hexxit Integrated), see OldGeneratorFeature
+        FEATURE_TYPES.register("old_generator", () -> OldGeneratorFeature.CODEC);
+        FEATURE_TYPES.register(modBus);
         CHUNK_GENERATORS.register(modBus);
         BIOME_SOURCES.register(modBus);
         NeoForge.EVENT_BUS.addListener(WorldGen152::onServerAboutToStart);

@@ -35,7 +35,7 @@ public final class MeteorsWorldGen {
 
     public static void register() {
         OldBlockInfo.registerCube(METEOR_ORE, OldBlockInfo.Material.IRON);
-        OldTerrainGen.registerWorldGenerator(FML_ID, MeteorsWorldGen::generate);
+        OldTerrainGen.registerWorldGenerator(FML_ID, "meteors:meteors", MeteorsWorldGen::generate);
     }
 
     static void generate(Random random, int chunkX, int chunkZ, OldWorld world) {

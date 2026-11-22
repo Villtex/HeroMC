@@ -17,8 +17,11 @@ Jeder Mod wird deshalb gegen das dekompilierte Original als Referenz **neu gesch
 - **Rezeptanzeige:** Not Enough Items wird nicht portiert. Stattdessen sind alle portierten Mods mit
   **JEI** kompatibel; eigene Rezepttypen bekommen ein JEI-Plugin.
 - **Twilight Forest** ist in die Teile 24a–24f aufgeteilt, **Tinkers' Construct** in die Teile 25a–25f.
-- **Welttypen (geplant, Teil 26):** „Hexxit Legacy“ (bitgenau 1.5.2) und „Hexxit Integrated“ (26.3-Generierung plus
-  Hexxit-Inhalte, offen für fremde 26.3-Mods: deren Biome, Bauwerke, Rohre und Werkzeuge arbeiten mit der Welt).
+- **Welttypen (Teil 26, 26a erledigt):** „Hexxit Integrated“ ist der Standard (`minecraft:normal`: 26.3-Generierung
+  plus Hexxit-Inhalte, offen für fremde 26.3-Mods: deren Biome, Bauwerke, Rohre und Werkzeuge arbeiten mit der Welt).
+  „Hexxit Legacy (1.5.2)“ (`hexxit:legacy`) ist die bitgenaue 1.5.2-Welt. Am Server: `level-type=hexxit\:legacy` in
+  `server.properties` für Legacy, ohne Eintrag Integrated. Bisher hängt in Integrated nur `natura:trees` an den Biomen
+  (Teil 26b folgt).
 
 ## Arbeitsplan
 
@@ -53,6 +56,7 @@ Der Port ist in Teile aufgeteilt, die je in eine Session passen: [`docs/PLAN.md`
 | `.claude/skills/tinkers-tools-263/` | Projekt-Skill: Tinkers' Construct weiterbauen (Komponente `tconstruct:tool`, Teile/Materialien/Muster, alte IDs, Modifikatoren, Schmelzerei-Tabellen und Flüssigkeiten, Prüfen ohne Spieler) |
 | `.claude/skills/twilight-forest-263/` | Projekt-Skill: Twilight Forest weiterbauen (Kern `twilightforest.gen`, Bauwerke `gen.structure` mit Übersetzungsskript, Starts, Truhen, Spawnlisten, Prüfung mit `expect.sh … twilight structures`) |
 | `.claude/skills/headless-client/` | Projekt-Skill: Testclient im Cloud-Container ohne Bildschirm starten (Xvfb, `SDL_VIDEO_FORCE_EGL=1`, Screenshots, xdotool, Testserver beitreten) |
+| `.claude/skills/integrated-263/` | Projekt-Skill: Welttyp Hexxit Integrated (Teil 26) – 1.5.2-Generator als 26.3-Feature mit Biom-Modifier einhängen, Chunk-Brücke `OldGeneratorFeature` (Verschiebung, Höhenfenster, Biome über Tags, was ersetzt wird), Legacy/Integrated am Server umschalten und prüfen |
 
 ## Bauen und Starten
 
@@ -87,8 +91,9 @@ Deckschichten, Grundgestein, Höhlen und Schluchten, und die Population der Chun
 und Ton, Bäume, Gras, Blumen, Pilze, Zuckerrohr, Kürbisse, Kakteen, Seerosen, Ranken, Quellen, Schnee und Eis.
 Der Kern (`hexxit.worldgen152.core`) ist reines Java ohne Spielklassen und verbraucht seine Zufallszahlen in
 der Reihenfolge des Originals, damit derselbe Seed dieselbe Welt ergibt. Die Welt ist wie damals 256 Blöcke
-hoch (y 0–255), das Gelände reicht bis y 127, der Meeresspiegel liegt bei 63. Der Generator ersetzt die
-Standard-Welt (`minecraft:normal`).
+hoch (y 0–255), das Gelände reicht bis y 127, der Meeresspiegel liegt bei 63. Der Generator ist der Welttyp
+„Hexxit Legacy (1.5.2)“ (`hexxit:legacy`); die Standard-Welt `minecraft:normal` ist Vanilla-Generierung, in die die
+1.5.2-Generatoren einzeln als Features eingehängt werden (`OldGeneratorFeature`, Teil 26).
 
 In 1.5.2 hing die Population davon ab, in welcher Reihenfolge Chunks geladen wurden. Hier ist die Reihenfolge
 fest (wie beim Erzeugen des Startgebiets auf dem Original-Server), sodass das Ergebnis nur vom Seed abhängt.
@@ -112,7 +117,7 @@ Prüfung ohne Client:
 
 ```
 tools/expect.sh 1234 find 260 > expect.txt     # Vorhersage aus dem Kern, ein Chunk je Biom
-./gradlew runServer                            # mit level-seed=1234, RCON und pause-when-empty-seconds=-1 in run/server/server.properties
+./gradlew runServer                            # mit level-seed=1234, level-type=hexxit\:legacy, RCON und pause-when-empty-seconds=-1 in run/server/server.properties
 python3 tools/verify_blocks.py expect.txt      # muss 0 Abweichungen melden
 ```
 

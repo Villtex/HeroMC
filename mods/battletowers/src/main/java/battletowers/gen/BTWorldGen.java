@@ -35,7 +35,7 @@ public final class BTWorldGen {
     }
 
     public static void register() {
-        OldTerrainGen.registerWorldGenerator(FML_ID, BTWorldGen::generate);
+        OldTerrainGen.registerWorldGenerator(FML_ID, "battletowers:towers", BTWorldGen::generate);
     }
 
     /** The entity name of the golem of a tower type (AS_EntityGolem.towerID, the ordinal of its tower type). */

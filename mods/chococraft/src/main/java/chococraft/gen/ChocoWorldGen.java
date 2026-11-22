@@ -32,7 +32,7 @@ public final class ChocoWorldGen {
         OldBlockInfo.register(GYSAHL_GREEN, OldBlockInfo.Material.PLANTS, false, 0, false);
         OldBlockInfo.register(GYSAHL_STEM, OldBlockInfo.Material.PLANTS, false, 0, false);
         OldBlockInfo.register(STRAW, OldBlockInfo.Material.CIRCUITS, false, 0, false);
-        OldTerrainGen.registerWorldGenerator(FML_ID, ChocoWorldGen::gysahls);
+        OldTerrainGen.registerWorldGenerator(FML_ID, "chococraft:gysahls", ChocoWorldGen::gysahls);
         // chocopediaInDungeons (true): weight 2, one Chocopedia
         OldLoot.Category[] categories = {OldLoot.DUNGEON_CHEST, OldLoot.MINESHAFT_CORRIDOR, OldLoot.PYRAMID_DESERT_CHEST,
                 OldLoot.PYRAMID_JUNGLE_CHEST, OldLoot.STRONGHOLD_CORRIDOR, OldLoot.STRONGHOLD_CROSSING, OldLoot.STRONGHOLD_LIBRARY};

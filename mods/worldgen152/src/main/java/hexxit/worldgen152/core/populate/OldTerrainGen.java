@@ -107,6 +107,7 @@ public final class OldTerrainGen {
     private static volatile List<WorldGenerator> GENERATORS = List.of();
     private static volatile List<Listener> LISTENERS = List.of();
     private static volatile List<ReachEntry> REACHES = List.of();
+    private static final java.util.Map<String, WorldGenerator> NAMED = new java.util.concurrent.ConcurrentHashMap<>();
 
     private OldTerrainGen() {
     }
@@ -125,9 +126,26 @@ public final class OldTerrainGen {
         return entries.stream().map(Entry::value).toList();
     }
 
-    /** {@code GameRegistry.registerWorldGenerator} of the original mod {@code originalModId} (its FML mod id). */
-    public static synchronized void registerWorldGenerator(String originalModId, WorldGenerator generator) {
+    /**
+     * {@code GameRegistry.registerWorldGenerator} of the original mod {@code originalModId} (its FML mod id).
+     * {@code name} ({@code "natura:trees"}) names the generator on its own: in the world type Hexxit Integrated it
+     * runs as the feature of that name, which data packs and other mods can move or remove.
+     */
+    public static synchronized void registerWorldGenerator(String originalModId, String name, WorldGenerator generator) {
+        if (NAMED.putIfAbsent(name, generator) != null) {
+            throw new IllegalArgumentException("World generator " + name + " is registered twice");
+        }
         GENERATORS = insert(GENERATOR_ENTRIES, originalModId, generator);
+    }
+
+    /** The generator registered under {@code name}, or {@code null}. */
+    public static WorldGenerator generator(String name) {
+        return NAMED.get(name);
+    }
+
+    /** The names of all registered generators. */
+    public static java.util.Set<String> names() {
+        return java.util.Collections.unmodifiableSet(NAMED.keySet());
     }
 
     /** A terrain-event handler of the original mod {@code originalModId} (its FML mod id). */

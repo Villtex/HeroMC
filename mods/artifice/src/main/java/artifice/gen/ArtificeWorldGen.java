@@ -50,7 +50,7 @@ public final class ArtificeWorldGen {
         OldBlockInfo.registerCube(ArtificeIds.MARBLE, Material.ROCK);
         OldBlockInfo.register(ArtificeIds.FLORA, Material.PLANTS, false, 0, false);
         OldBlockInfo.register(ArtificeIds.LOTUS, Material.PLANTS, false, 0, false);
-        OldTerrainGen.registerWorldGenerator(FML_ID, ArtificeWorldGen::generate);
+        OldTerrainGen.registerWorldGenerator(FML_ID, "artifice:world", ArtificeWorldGen::generate);
     }
 
     /** ArtificeWorldGen.generateWorld with newGen = true. */

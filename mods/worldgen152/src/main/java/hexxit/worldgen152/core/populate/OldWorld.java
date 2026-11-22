@@ -29,6 +29,14 @@ public final class OldWorld {
     /** Supplies the bare terrain of a chunk. */
     public interface TerrainSource {
         OldChunk chunk(int chunkX, int chunkZ);
+
+        /**
+         * Blocks above the 128 of {@link OldChunk}, y 128 to 255 ({@code id << 4 | meta}, index (x * 16 + z) * 128 + y - 128),
+         * or {@code null} for none (bare 1.5.2 terrain ends at 128). Used when a generator runs on terrain of today.
+         */
+        default char[] upper(int chunkX, int chunkZ) {
+            return null;
+        }
     }
 
     static final class Column {
@@ -192,6 +200,15 @@ public final class OldWorld {
         Column column = this.columns.get(key);
         if (column == null) {
             column = new Column(this.terrain.chunk(chunkX, chunkZ));
+            char[] upper = this.terrain.upper(chunkX, chunkZ);
+            if (upper != null) {
+                for (int i = 0; i < upper.length; i++) {
+                    if (upper[i] != 0) {
+                        int y = 128 + (i & 127);
+                        column.section(y >> 4)[(i >> 7) * 16 + (y & 15)] = upper[i];
+                    }
+                }
+            }
             this.columns.put(key, column);
         }
         this.last = column;

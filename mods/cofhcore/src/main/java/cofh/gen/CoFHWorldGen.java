@@ -72,7 +72,7 @@ public final class CoFHWorldGen {
                 return false;
             }
         });
-        OldTerrainGen.registerWorldGenerator(FML_ID, CoFHWorldGen::generate);
+        OldTerrainGen.registerWorldGenerator(FML_ID, "cofhcore:world", CoFHWorldGen::generate);
     }
 
     /** A {@code UNIFORM} feature: {@code count} veins of {@code size} blocks between {@code minY} and {@code maxY}. */

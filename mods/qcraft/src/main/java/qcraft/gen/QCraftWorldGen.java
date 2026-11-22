@@ -49,7 +49,7 @@ public final class QCraftWorldGen {
         // CoFH World's vanilla features come first; register() is a no-op when CoFH Core already did it
         CoFHWorldGen.register();
         CoFHWorldGen.addCustomFeature("QOre", QUANTUM_ORE, 0, 5, 4, 1, 24, false);
-        OldTerrainGen.registerWorldGenerator(FML_ID, QCraftWorldGen::generate);
+        OldTerrainGen.registerWorldGenerator(FML_ID, "quantumcraft:world", QCraftWorldGen::generate);
     }
 
     /** QuantumOreGenerator.generate: not in the Nether (a flat world never reaches the 1.5.2 generator). */

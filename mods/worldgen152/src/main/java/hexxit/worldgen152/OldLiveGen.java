@@ -266,7 +266,7 @@ public final class OldLiveGen {
     }
 
     /** A door half with what 1.5.2 kept in the other half (facing and "open" below, the hinge above). */
-    private static BlockState door(OldWorld world, BlockState state, int x, int y, int z) {
+    static BlockState door(OldWorld world, BlockState state, int x, int y, int z) {
         boolean upper = state.getValue(BlockStateProperties.DOUBLE_BLOCK_HALF) == DoubleBlockHalf.UPPER;
         int otherY = upper ? y - 1 : y + 1;
         if (world.getBlockId(x, otherY, z) != world.getBlockId(x, y, z)) {

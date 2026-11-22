@@ -91,7 +91,7 @@ public final class TCWorldGen {
         }
         registered = true;
         registerBlocks();
-        OldTerrainGen.registerWorldGenerator(FML_ID, TCWorldGen::baseGenerate);
+        OldTerrainGen.registerWorldGenerator(FML_ID, "tconstruct:world", TCWorldGen::baseGenerate);
         OldTerrainGen.addListener(FML_ID, new OldTerrainGen.Listener() {
             @Override
             public boolean decorate(OldWorld world, Random random, int x, int z, OldTerrainGen.Decorate type) {
@@ -101,7 +101,7 @@ public final class TCWorldGen {
                 return true;
             }
         });
-        OldTerrainGen.registerWorldGenerator(FML_ID, SlimeIslandGen::generate);
+        OldTerrainGen.registerWorldGenerator(FML_ID, "tconstruct:slime_islands", SlimeIslandGen::generate);
         // TConstruct.preInit: registerVillageCreationHandler (tool workshop, then smeltery)
         OldStructures.VILLAGE_HANDLERS.add(new ComponentToolWorkshop.Handler());
         OldStructures.VILLAGE_HANDLERS.add(new ComponentSmeltery.Handler());

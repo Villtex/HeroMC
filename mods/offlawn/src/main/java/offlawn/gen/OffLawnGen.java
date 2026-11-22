@@ -38,7 +38,7 @@ public final class OffLawnGen {
     public static void register() {
         // Material.plants, not opaque, renderType 1; metadata 0 = lower half, 1 = upper half
         OldBlockInfo.register(SUNFLOWER, OldBlockInfo.Material.PLANTS, false, 0, false);
-        OldTerrainGen.registerWorldGenerator(FML_ID, OffLawnGen::sunflowers);
+        OldTerrainGen.registerWorldGenerator(FML_ID, "offlawn:sunflowers", OffLawnGen::sunflowers);
     }
 
     /** SunflowerWorldGen.generate. */

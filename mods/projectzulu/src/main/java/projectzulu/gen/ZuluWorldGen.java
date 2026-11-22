@@ -37,7 +37,7 @@ public final class ZuluWorldGen {
     public static void register() {
         ZuluLoot.register();
         registerBlocks();
-        OldTerrainGen.registerWorldGenerator(FML_ID, ZuluWorldGen::generate);
+        OldTerrainGen.registerWorldGenerator(FML_ID, "projectzulu:world", ZuluWorldGen::generate);
     }
 
     /**

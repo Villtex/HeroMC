@@ -39,7 +39,7 @@ Neuer Mod mit Weltgenerierung heißt deshalb auch: seine Kern-Klasse in `tools/e
 
 ```java
 // IWorldGenerator: läuft nach der Vanilla-Population des Chunks. Erstes Argument: FML-ID des Originals (@Mod modid)
-OldTerrainGen.registerWorldGenerator("WildCaves3", (random, chunkX, chunkZ, world) -> {
+OldTerrainGen.registerWorldGenerator("WildCaves3", "wildcaves3:caves", (random, chunkX, chunkZ, world) -> {
     int x = chunkX * 16 + random.nextInt(16);   // Koordinaten und Zufallsaufrufe 1:1 aus dem Original
     new OldOreGens.Minable(BLOCK_ID, META, 8, 1).generate(world, random, x, y, z);
 });
@@ -50,6 +50,8 @@ OldTerrainGen.addListener("ExtrabiomesXL", new OldTerrainGen.Listener() {
 });
 ```
 
+- Der zweite Parameter ist der Feature-Name für den Welttyp Integrated (Skill `integrated-263`); jeder neue
+  Generator braucht dazu `worldgen/feature/` + `worldgen/placed_feature/` im Mod.
 - **Reihenfolge = Ladereihenfolge der Mods im Original.** Alle Generatoren eines Chunks teilen sich *eine*
   Zufallsfolge (`fmlRandom`, einmal pro Chunk gesetzt). Ein Generator mehr oder in anderer Reihenfolge verschiebt
   alle folgenden. `OldTerrainGen` sortiert nach der FML-ID (`OldTerrainGen.LOAD_ORDER`, aus dem FML-Log), weil
@@ -154,7 +156,7 @@ Weide nur unter y 128, Blutholz-Decke unter 120, Hopseed sucht Boden ab y 128 ab
 tools/expect.sh 1234 find 260 > expect.txt        # ein Chunk je Biom
 tools/expect.sh 1234 structures 220 > expect.txt  # Chunks an den nächsten Strukturen jeder Art
 tools/expect.sh 1234 -36 -24 12 -8 > expect.txt   # bestimmte Chunks
-python3 tools/verify_blocks.py expect.txt         # Server läuft mit level-seed=1234, muss 0 Abweichungen melden
+python3 tools/verify_blocks.py expect.txt         # Server mit level-seed=1234 und level-type=hexxit\:legacy, muss 0 Abweichungen melden
 ```
 
 `expect.sh` gibt auf stderr aus, wie viele Blöcke je ID die Population gesetzt hat. Taucht die ID des neuen

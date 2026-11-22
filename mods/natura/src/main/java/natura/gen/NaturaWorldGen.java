@@ -56,8 +56,8 @@ public final class NaturaWorldGen {
         OldBlockInfo.registerCube(NaturaIds.TAINTED_SOIL, Material.GROUND);
 
         // ---- GameRegistry.registerWorldGenerator, in the order of Natura.init ----
-        OldTerrainGen.registerWorldGenerator(FML_ID, BaseCropWorldgen::generate);
-        OldTerrainGen.registerWorldGenerator(FML_ID, BaseCloudWorldgen::generate);
-        OldTerrainGen.registerWorldGenerator(FML_ID, BaseTreeWorldgen::generate);
+        OldTerrainGen.registerWorldGenerator(FML_ID, "natura:crops", BaseCropWorldgen::generate);
+        OldTerrainGen.registerWorldGenerator(FML_ID, "natura:clouds", BaseCloudWorldgen::generate);
+        OldTerrainGen.registerWorldGenerator(FML_ID, "natura:trees", BaseTreeWorldgen::generate);
     }
 }

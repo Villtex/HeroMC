@@ -32,7 +32,7 @@ public final class BDWorldGen {
         // the mod's spawner block: BlockContainer of Material.rock, not an opaque cube
         OldBlockInfo.register(BuilderHelper.SPAWNER_BLOCK, OldBlockInfo.Material.ROCK, false, 0, true);
         BDLoot.load();
-        OldTerrainGen.registerWorldGenerator(FML_ID, (random, chunkX, chunkZ, world) -> generate(world, chunkX, chunkZ));
+        OldTerrainGen.registerWorldGenerator(FML_ID, "betterdungeons:dungeons", (random, chunkX, chunkZ, world) -> generate(world, chunkX, chunkZ));
         OldTerrainGen.registerReach(FML_ID, 8, BDWorldGen::reach);
     }
 

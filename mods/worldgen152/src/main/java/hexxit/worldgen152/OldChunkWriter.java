@@ -247,6 +247,11 @@ public final class OldChunkWriter {
     }
 
     private static Entity entity(OldEntity old, ServerLevel level, RegistryAccess registries) {
+        return entity(old, level, registries, 0, 0);
+    }
+
+    /** The entity of today for {@code old}, moved by dx/dz blocks (hanging entities and items; mobs are placed by the caller). */
+    static Entity entity(OldEntity old, ServerLevel level, RegistryAccess registries, int dx, int dz) {
         if (old instanceof OldEntity.Villager villager) {
             Villager entity = EntityTypes.VILLAGER.create(level, EntitySpawnReason.STRUCTURE);
             if (entity != null) {
@@ -270,14 +275,14 @@ public final class OldChunkWriter {
             // 1.5.2 kept the wall block, today's paintings keep the block in front of it; both centre the
             // picture the same way, so the motive lands where it was
             Direction facing = HANGING[painting.direction() & 3];
-            BlockPos at = new BlockPos(painting.tileX(), painting.tileY(), painting.tileZ()).relative(facing);
+            BlockPos at = new BlockPos(painting.tileX() + dx, painting.tileY(), painting.tileZ() + dz).relative(facing);
             Identifier variant = Identifier.withDefaultNamespace(paintingName(painting.motive()));
             var holder = registries.lookupOrThrow(Registries.PAINTING_VARIANT).get(ResourceKey.create(Registries.PAINTING_VARIANT, variant));
             return holder.isEmpty() ? null : new Painting(level, at, facing, holder.get());
         }
         if (old instanceof OldEntity.ItemFrame frame) {
             Direction facing = HANGING[frame.direction() & 3];
-            ItemFrame entity = new ItemFrame(level, new BlockPos(frame.tileX(), frame.tileY(), frame.tileZ()).relative(facing), facing);
+            ItemFrame entity = new ItemFrame(level, new BlockPos(frame.tileX() + dx, frame.tileY(), frame.tileZ() + dz).relative(facing), facing);
             if (frame.item() != null) {
                 entity.setItem(item(frame.item(), registries), false);
             }
@@ -297,7 +302,7 @@ public final class OldChunkWriter {
         }
         if (old instanceof OldEntity.Item dropped) {
             ItemStack stack = item(dropped.stack(), registries);
-            return stack.isEmpty() ? null : new ItemEntity(level, dropped.x(), dropped.y(), dropped.z(), stack, 0.0, 0.0, 0.0);
+            return stack.isEmpty() ? null : new ItemEntity(level, dropped.x() + dx, dropped.y(), dropped.z() + dz, stack, 0.0, 0.0, 0.0);
         }
         if (old instanceof OldEntity.Mob mob) {
             EntityType<?> type = type(mob.name());
@@ -331,7 +336,7 @@ public final class OldChunkWriter {
     }
 
     /** Fences, panes, bars, stairs, redstone wire and tripwire show their connections as block states today. */
-    private static boolean connects(BlockState state) {
+    static boolean connects(BlockState state) {
         Block block = state.getBlock();
         return block instanceof CrossCollisionBlock || block instanceof StairBlock || block instanceof RedstoneWireBlock
                 || block instanceof TripWireBlock || block instanceof WallBlock || OldBlockStates.connecting(block);
@@ -355,7 +360,7 @@ public final class OldChunkWriter {
                 .setValue(BlockStateProperties.DOOR_HINGE, top.getValue(BlockStateProperties.DOOR_HINGE));
     }
 
-    private static boolean isSnow(int oldId) {
+    static boolean isSnow(int oldId) {
         return oldId == 78 || oldId == 80;
     }
 }

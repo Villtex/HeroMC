@@ -73,7 +73,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 25d | Tinkers' Construct D: Weltgenerierung, Schleiminseln, Dorf-Bauteile, Dorfbewohner | ~4.000 | 25c | Fable 5.2, extra hoch | ✅ erledigt |
 | 25e | Tinkers' Construct E: Spieler (Rucksack, Herzen, Handschuh, Ereignisse), Handbücher, Essen, Mobs | ~8.000 | 25a | Opus 5.5, mittel | ✅ erledigt |
 | 25f | Tinkers' Construct F: Deko-Blöcke, Fallen, Landmine, Redstone-Maschinen, Kristall/Essenz | ~9.000 | 25a | Opus 5.5, mittel | ✅ erledigt |
-| 26a | Integrated A: Welttypen Legacy/Integrated, Chunk-Brücke, Mod-Generatoren als einzelne registrierte Features | ~3.000 | 2 | Fable 5.2, hoch | offen |
+| 26a | Integrated A: Welttypen Legacy/Integrated, Chunk-Brücke, Mod-Generatoren als einzelne registrierte Features | ~3.000 | 2 | Fable 5.2, hoch | ✅ erledigt |
 | 26b | Integrated B: Erze, Pflanzen, Bäume, Nether-Generatoren per Biom-Modifier und Biom-Tags | ~2.000 | 26a | Opus 5.5, hoch | offen |
 | 26c | Integrated C: Bauwerke und Dungeons als echte 26.3-Strukturen (`/locate`, Abstand zu fremden Strukturen) | ~4.000 | 26a | Fable 5.2, hoch | offen |
 | 26d | Integrated D: EBXL-Biome neben Vanilla- und fremden Biomen, Mob-Spawns per Biom-Modifier | ~3.000 | 26b | Fable 5.2, hoch | offen |
@@ -1943,6 +1943,49 @@ Forest, Limbo/Taschendimensionen von Dimensional Doors) behalten ihre Generatore
   `minecraft:base_stone_overworld`, `c:stones`, `minecraft:dirt`).
 - Prüfung: Integrated-Welt startet, Vanilla-Bauwerke da, ein einfacher Generator (Natura-Bäume) sichtbar,
   Legacy-`expect.sh` unverändert grün.
+
+#### Teil 26a – Stand (✅ erledigt)
+- **Welttypen:** `minecraft:normal` ist wieder Vanilla und damit „Hexxit Integrated“ (auf Wunsch des Nutzers der
+  Standard: alle Vanilla-Inhalte und -Generierung, Hexxit obendrauf). Ein eigenes `hexxit:integrated` gibt es nicht:
+  Biom-Modifier hängen ohnehin an den Vanilla-Biomen, ein zweites Preset wäre identisch, und NeoForge 26.3 hat
+  keine Einstellung für den Standard-Welttyp (die Welterstellung nimmt fest `minecraft:normal`). Der Sprachschlüssel
+  `generator.minecraft.normal` heißt „Hexxit Integrated“. `hexxit:legacy` (`worldgen152`,
+  `data/hexxit/worldgen/world_preset/legacy.json`, im Tag `minecraft:normal` der Liste angehängt) ist der alte
+  Inhalt von `normal.json`. Server: `level-type=hexxit\:legacy` für Legacy; `run/server/server.properties` ist nicht
+  im Repo, für `expect.sh`/`verify_blocks.py` die Zeile setzen.
+- **Namen der Generatoren:** `OldTerrainGen.registerWorldGenerator(fmlId, "mod:name", gen)`, 30 Generatoren
+  (`natura:crops|clouds|trees`, `extrabiomesxl:cattails|flowers|leaf_piles|marsh|mountain_desert|mountain_ridge|
+  vanilla_flora|legend_oak|quicksand`, `tconstruct:world|slime_islands`, `wildcaves3:caves|fossils`,
+  `legendgear:shrubs|bomb_flowers`, `cofhcore:world`, `artifice:world`, `offlawn:sunflowers`, `meteors:meteors`,
+  `chococraft:gysahls`, `hexxitgear:plants`, `quantumcraft:world`, `projectzulu:world`, `betterdungeons:dungeons`,
+  `as_ruins:ruins`, `battletowers:towers`, `dimdoors:rifts`). Reihenfolge und Zufallsfolge in Legacy unverändert.
+- **Features:** Feature-Typ `worldgen152:old_generator` (`{"generator": "natura:trees", "min_y": 0, "max_y": 255}`).
+  26.3 hat keine `configured_feature` mehr, die Datei heißt `worldgen/feature/<name>.json`. Für jeden der 30
+  Generatoren liegt `worldgen/feature/` + `worldgen/placed_feature/` (ohne Platzierung, einmal je Chunk) im Mod.
+  Eingehängt per Biom-Modifier ist bisher nur `natura:trees` (`natura/neoforge/biome_modifier/trees.json`,
+  `#minecraft:is_overworld`, `vegetal_decoration`); die übrigen hängt 26b/26c ein.
+- **Brücke** (`OldGeneratorFeature.Run`): Die alte Welt ist um 8 Blöcke verschoben (alt = echt + 8), damit der
+  1.5.2-Populationsbereich genau der Chunk ist und der Generator 16 Blöcke nach jeder Seite reicht. Gelesen wird
+  nur der 3×3-Ausschnitt (direkt aus den Sections, Zustände über `OldLiveGen.oldCell`, zwischengespeichert), außerhalb
+  Stein bis y 61. Höhen 1:1, die alte Welt ist 256 hoch (Teile über 128 über `TerrainSource.upper`). Biome über
+  `OldBiomeTags` (Tags `c:`/`minecraft:` → 1.5.2-Biom, alte Biome behalten ihre ID; ungezoomtes Noise-Biom, weil die
+  gezoomte Abfrage am Rand Chunks außerhalb des Ausschnitts lesen will). Zufall: die `modRandom`-Formel von 1.5.2 mit
+  Seed ^ Hash des Namens, je Generator eigene Folge. Geschrieben werden nur geänderte Blöcke; ersetzt wird nur Luft,
+  Ersetzbares, Stein-/Erd-/Sand-/Kies-Tags, Gras, Myzel, Podsol, Stämme, Laub, Hexxit-Blöcke (nie Grundgestein,
+  Block-Entities, fremde Blöcke). Laub-Distanz per Breitensuche, Türen/Ranken/Schnee wie der Chunk-Writer,
+  Flüssigkeiten und Verbindungen per Post-Processing, Truhen-/Spawner-Inhalt über `fillTile`, Entities verschoben.
+  In Legacy (alte Chunk-Generatoren) tut das Feature nichts. Nether: `OldWorld.nether`, alle Spalten Hell.
+- **Geprüft:** `clean pack` grün. Integrated, Seed 1234: Start ohne Fehler, ~500 Chunks forceloaded ohne Fehler,
+  Natura-Sakura-/Ahorn-/Tiger-/Silberglocken-/Eukalyptusbäume mit Stamm und Laub (Distanz < 7) im Wald bei −560/32,
+  Dorf (`locate structure minecraft:village_plains`) und Netherfestung gefunden. Legacy: `expect.sh 1234 find 260`
+  → 296.610 Blöcke gleich, 2 Ranken bei 2054/35–36/−818 abweichend; genauso mit dem Stand vor 26a (vorhanden, nicht
+  durch 26a), Biome/Truhen/Spawner/Entities 0 Abweichungen.
+- **Offen:** Höhen-Abbildung je Generator (26.3-Berge über y 128 sieht ein Generator mit `max_y` 255 zwar, Erze
+  reichen aber nicht unter y 0) → 26b. Generatoren, die `world.layout()`/`structures()` brauchen (Battle Towers,
+  Ruins, Better Dungeons …), liefern in Integrated noch nichts bzw. fangen den Fehler ab → 26c. Kosten: je Generator
+  und Chunk werden die berührten alten Chunks (meist 4, je 65.536 Zellen) gelesen; bei 30 Generatoren in 26b ggf.
+  einen gemeinsamen Lese-Cache je Chunk bauen. Zum Zählen per RCON: `fill … X replace X` zählt nur Blöcke, deren
+  Zustand sich ändert (senkrechte Stämme zählen nicht).
 
 ### Teil 26b – Erze, Pflanzen, Bäume, Nether
 - natura (Oberwelt und Nether), tconstruct (Erze, Erzbeeren, Schleiminseln, Kobalt/Ardit), cofhcore, artifice,

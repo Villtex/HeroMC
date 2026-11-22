@@ -65,13 +65,13 @@ public final class WildCavesGen {
         OldBlockInfo.register(SANDSTONE_STALACTITE, OldBlockInfo.Material.ROCK, false, 0, false);
         OldBlockInfo.register(STALACTITE, OldBlockInfo.Material.ROCK, false, 0, false);
         // WildCaves.load: the cave generator, the skull loot, then the fossil generator
-        OldTerrainGen.registerWorldGenerator(FML_ID, WildCavesGen::caves);
+        OldTerrainGen.registerWorldGenerator(FML_ID, "wildcaves3:caves", WildCavesGen::caves);
         for (OldLoot.Category category : new OldLoot.Category[] {OldLoot.DUNGEON_CHEST, OldLoot.MINESHAFT_CORRIDOR, OldLoot.STRONGHOLD_CORRIDOR}) {
             for (int kind : new int[] {0, 2, 3, 4}) {
                 category.add(FML_ID, new OldStack(397, kind, 1), 1, 2, 50);
             }
         }
-        OldTerrainGen.registerWorldGenerator(FML_ID, WildCavesGen::fossils);
+        OldTerrainGen.registerWorldGenerator(FML_ID, "wildcaves3:fossils", WildCavesGen::fossils);
     }
 
     /** Stands in for the unseeded {@code new Random()} of the original, one per chunk. */

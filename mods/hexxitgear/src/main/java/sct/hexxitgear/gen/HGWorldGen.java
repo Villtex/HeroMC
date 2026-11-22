@@ -24,7 +24,7 @@ public final class HGWorldGen {
     public static void register() {
         // BlockFlower: Material.plants, not opaque, no light dimming, not a normal cube
         OldBlockInfo.register(HEXBISCUS, OldBlockInfo.Material.PLANTS, false, 0, false);
-        OldTerrainGen.registerWorldGenerator("hexxitgear", HGWorldGen::generate);
+        OldTerrainGen.registerWorldGenerator("hexxitgear", "hexxitgear:plants", HGWorldGen::generate);
     }
 
     /**

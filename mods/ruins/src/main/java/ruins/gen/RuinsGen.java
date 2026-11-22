@@ -51,7 +51,7 @@ public final class RuinsGen {
     }
 
     public static void register() {
-        OldTerrainGen.registerWorldGenerator(FML_ID, RuinsGen::generate);
+        OldTerrainGen.registerWorldGenerator(FML_ID, "as_ruins:ruins", RuinsGen::generate);
     }
 
     private static void generate(Random random, int chunkX, int chunkZ, OldWorld world) {

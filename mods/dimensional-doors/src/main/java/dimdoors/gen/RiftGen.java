@@ -61,7 +61,7 @@ public final class RiftGen {
         OldBlockInfo.registerCube(FABRIC, OldBlockInfo.Material.GROUND);
         OldBlockInfo.registerCube(UNRAVELED_FABRIC, OldBlockInfo.Material.GROUND);
         OldBlockInfo.registerCube(ETERNAL_FABRIC, OldBlockInfo.Material.GROUND);
-        OldTerrainGen.registerWorldGenerator(FML_ID, RiftGen::generate);
+        OldTerrainGen.registerWorldGenerator(FML_ID, "dimdoors:rifts", RiftGen::generate);
         DDLoot.register();
     }
 

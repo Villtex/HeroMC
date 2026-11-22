@@ -29,8 +29,8 @@ public final class LGWorldGen {
         // MysticShrub(Material.plants) and BlockBombFlower(Material.plants): not opaque, crossed squares
         OldBlockInfo.register(MYSTIC_SHRUB, OldBlockInfo.Material.PLANTS, false, 0, false);
         OldBlockInfo.register(BOMB_FLOWER, OldBlockInfo.Material.PLANTS, false, 0, false);
-        OldTerrainGen.registerWorldGenerator(FML_ID, LGWorldGen::shrubs);
-        OldTerrainGen.registerWorldGenerator(FML_ID, LGWorldGen::bombFlowers);
+        OldTerrainGen.registerWorldGenerator(FML_ID, "legendgear:shrubs", LGWorldGen::shrubs);
+        OldTerrainGen.registerWorldGenerator(FML_ID, "legendgear:bomb_flowers", LGWorldGen::bombFlowers);
     }
 
     // ---------------------------------------------------------------- mystic shrubs

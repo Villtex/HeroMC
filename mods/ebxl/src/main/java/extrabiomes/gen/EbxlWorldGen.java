@@ -460,15 +460,15 @@ public final class EbxlWorldGen {
         grassChoices();
         // BlockHandler.createBlocks (cattail, flower, leaf pile), BiomeHandler.registerWorldGenerators, then
         // the cautia module. Forge kept them in a HashSet, so their order changed from start to start.
-        OldTerrainGen.registerWorldGenerator(FML_ID, EbxlWorldGen::catTails);
-        OldTerrainGen.registerWorldGenerator(FML_ID, EbxlWorldGen::flowers);
-        OldTerrainGen.registerWorldGenerator(FML_ID, EbxlWorldGen::leafPiles);
-        OldTerrainGen.registerWorldGenerator(FML_ID, EbxlWorldGen::marsh);
-        OldTerrainGen.registerWorldGenerator(FML_ID, EbxlWorldGen::mountainDesert);
-        OldTerrainGen.registerWorldGenerator(FML_ID, EbxlWorldGen::mountainRidge);
-        OldTerrainGen.registerWorldGenerator(FML_ID, EbxlWorldGen::vanillaFlora);
-        OldTerrainGen.registerWorldGenerator(FML_ID, EbxlWorldGen::legendOak);
-        OldTerrainGen.registerWorldGenerator(FML_ID, EbxlWorldGen::quicksand);
+        OldTerrainGen.registerWorldGenerator(FML_ID, "extrabiomesxl:cattails", EbxlWorldGen::catTails);
+        OldTerrainGen.registerWorldGenerator(FML_ID, "extrabiomesxl:flowers", EbxlWorldGen::flowers);
+        OldTerrainGen.registerWorldGenerator(FML_ID, "extrabiomesxl:leaf_piles", EbxlWorldGen::leafPiles);
+        OldTerrainGen.registerWorldGenerator(FML_ID, "extrabiomesxl:marsh", EbxlWorldGen::marsh);
+        OldTerrainGen.registerWorldGenerator(FML_ID, "extrabiomesxl:mountain_desert", EbxlWorldGen::mountainDesert);
+        OldTerrainGen.registerWorldGenerator(FML_ID, "extrabiomesxl:mountain_ridge", EbxlWorldGen::mountainRidge);
+        OldTerrainGen.registerWorldGenerator(FML_ID, "extrabiomesxl:vanilla_flora", EbxlWorldGen::vanillaFlora);
+        OldTerrainGen.registerWorldGenerator(FML_ID, "extrabiomesxl:legend_oak", EbxlWorldGen::legendOak);
+        OldTerrainGen.registerWorldGenerator(FML_ID, "extrabiomesxl:quicksand", EbxlWorldGen::quicksand);
     }
 
     // ---- saplings ----
