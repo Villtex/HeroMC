@@ -5,7 +5,7 @@
     "m"
   ],
   "key": {
-    "m": "tconstruct:tin_ingot"
+    "m": "#c:ingots/tin"
   },
   "result": {
     "id": "tconstruct:tin_nugget",

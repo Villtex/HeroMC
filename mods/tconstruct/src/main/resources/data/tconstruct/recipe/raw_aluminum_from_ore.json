@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smelting",
   "category": "misc",
-  "ingredient": "tconstruct:aluminum_ore",
+  "ingredient": "#c:ores/aluminum",
   "result": {
     "id": "tconstruct:raw_aluminum"
   },

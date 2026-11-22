@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "legendgear:stardust",
+    "#c:dusts/stardust",
     "minecraft:brown_mushroom"
   ],
   "result": {

@@ -493,6 +493,28 @@ public final class SmelteryRecipes {
         meltBlockTag("storage_blocks/platinum", 400, PLATINUM, 1296);
         meltBlockTag("storage_blocks/invar", 400, INVAR, 1296);
         meltBlockTag("storage_blocks/electrum", 400, ELECTRUM, 1296);
+        // Teil 26e: metals of other mods through their c: tags (items of Hexxit's own list above come first). Iron and gold
+        // ores of other mods melt like vanilla's; raw ore chunks of today melt like the ore (ore doubling of 1.5.2),
+        // nuggets into 16 mB, dusts into an ingot. A data pack adds an item to these tags to make it melt.
+        meltBlockTag("ores/iron", 600, IRON, 288);
+        meltBlockTag("ores/gold", 400, GOLD, 288);
+        Object[][] common = {{"iron", IRON, 600, block(Blocks.IRON_BLOCK)}, {"gold", GOLD, 400, block(Blocks.GOLD_BLOCK)},
+                {"copper", COPPER, 550, metal(3)}, {"tin", TIN, 275, metal(5)}, {"aluminum", ALUMINUM, 350, metal(6)},
+                {"cobalt", COBALT, 750, metal(0)}, {"ardite", ARDITE, 750, metal(1)}, {"bronze", BRONZE, 500, metal(4)},
+                {"aluminum_brass", ALUBRASS, 350, metal(7)}, {"manyullyn", MANYULLYN, 750, metal(2)}, {"alumite", ALUMITE, 500, metal(8)},
+                {"obsidian", OBSIDIAN, 750, block(Blocks.OBSIDIAN)}, {"steel", STEEL, 500, metal(9)}, {"nickel", NICKEL, 400, metal(0)},
+                {"lead", LEAD, 400, metal(0)}, {"silver", SILVER, 400, metal(0)}, {"platinum", PLATINUM, 400, metal(0)},
+                {"invar", INVAR, 400, metal(0)}, {"electrum", ELECTRUM, 400, metal(0)}};
+        for (Object[] m : common) {
+            String name = (String) m[0];
+            int liquid = (Integer) m[1];
+            int temperature = (Integer) m[2];
+            @SuppressWarnings("unchecked")
+            Supplier<BlockState> render = (Supplier<BlockState>) m[3];
+            meltTag("raw_materials/" + name, temperature, liquid, 288, render);
+            meltTag("nuggets/" + name, temperature / 2, liquid, 16, render);
+            meltTag("dusts/" + name, temperature, liquid, 144, render);
+        }
         // oreberries (part 25d) melt at 100 into 16 mB
 
         // ---- alloys (harder bronze off: 3 ingots)

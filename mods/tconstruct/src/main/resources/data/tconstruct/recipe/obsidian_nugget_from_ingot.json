@@ -5,7 +5,7 @@
     "m"
   ],
   "key": {
-    "m": "tconstruct:obsidian_ingot"
+    "m": "#c:ingots/obsidian"
   },
   "result": {
     "id": "tconstruct:obsidian_nugget",

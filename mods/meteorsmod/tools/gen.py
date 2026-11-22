@@ -349,8 +349,11 @@ write(f'data/{NS}/loot_table/entities/comet_kitty.json', {'type': 'minecraft:ent
                                                                             looting]}])]})
 write('data/minecraft/tags/block/mineable/pickaxe.json', {'replace': False, 'values': [n(b) for b in (
     'fallen_meteor', 'rare_fallen_meteor', 'frezarite', 'kreknorite', 'meteor_ore', 'red_meteor_gem_block', 'meteor_shield')]})
+# harvest levels of MeteorsMod.load: frezarite 1 (stone), meteor ore and meteors 2 (iron), kreknorite 3 (diamond)
 write('data/minecraft/tags/block/needs_iron_tool.json', {'replace': False, 'values': [n(b) for b in (
-    'fallen_meteor', 'rare_fallen_meteor', 'frezarite', 'kreknorite', 'meteor_ore')]})
+    'fallen_meteor', 'rare_fallen_meteor', 'meteor_ore')]})
+write('data/minecraft/tags/block/needs_stone_tool.json', {'replace': False, 'values': [n('frezarite')]})
+write('data/minecraft/tags/block/needs_diamond_tool.json', {'replace': False, 'values': [n('kreknorite')]})
 write('data/minecraft/tags/item/axes.json', {'replace': False, 'values': [n('meteorite_axe'), n('frezarite_axe')]})
 
 

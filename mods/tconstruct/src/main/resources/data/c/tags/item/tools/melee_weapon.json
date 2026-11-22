@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "tconstruct:battleaxe",
+    "tconstruct:battlesign",
+    "tconstruct:broadsword",
+    "tconstruct:cutlass",
+    "tconstruct:dagger",
+    "tconstruct:frypan",
+    "tconstruct:longsword",
+    "tconstruct:rapier",
+    "tconstruct:scythe"
+  ]
+}

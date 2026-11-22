@@ -74,6 +74,7 @@ public final class HarkenScythe {
     public static final TagKey<EntityType<?>> SOULLESS = entityTag("soulless");
 
     public HarkenScythe(IEventBus modBus) {
+        modBus.addListener(net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent.class, ItemCapabilities::register);
         HSBlocks.BLOCKS.register(modBus);
         HSBlocks.BLOCK_ENTITIES.register(modBus);
         HSItems.ITEMS.register(modBus);

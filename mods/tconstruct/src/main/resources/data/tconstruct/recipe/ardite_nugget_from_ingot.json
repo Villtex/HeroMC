@@ -5,7 +5,7 @@
     "m"
   ],
   "key": {
-    "m": "tconstruct:ardite_ingot"
+    "m": "#c:ingots/ardite"
   },
   "result": {
     "id": "tconstruct:ardite_nugget",

@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "#c:tools/melee_weapon",
+    "#c:tools/mining_tool",
+    "#c:tools/bow",
+    "#c:tools/ranged_weapon",
+    "#c:tools/shield"
+  ]
+}

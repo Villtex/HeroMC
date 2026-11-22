@@ -19,6 +19,8 @@ public final class TConstruct {
     public static final String MOD_ID = "tconstruct";
 
     public TConstruct(IEventBus modBus) {
+        modBus.addListener(net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent.class, ItemCapabilities::register);
+        CompatCommand.init();
         TItems.register(modBus);
         TBlocks.register(modBus);
         TSmeltery.register(modBus);

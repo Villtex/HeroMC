@@ -24,6 +24,7 @@ public final class BetterStorage {
     public static final String MOD_ID = "betterstorage";
 
     public BetterStorage(IEventBus modBus, ModContainer container) {
+        modBus.addListener(net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent.class, ItemCapabilities::register);
         container.registerConfig(ModConfig.Type.SYNCED, BSConfig.SPEC, "BetterStorage.toml");
         BS.register(modBus);
         BSNetwork.register(modBus);

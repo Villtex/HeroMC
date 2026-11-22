@@ -5,7 +5,7 @@
     "m"
   ],
   "key": {
-    "m": "tconstruct:cobalt_ingot"
+    "m": "#c:ingots/cobalt"
   },
   "result": {
     "id": "tconstruct:cobalt_nugget",

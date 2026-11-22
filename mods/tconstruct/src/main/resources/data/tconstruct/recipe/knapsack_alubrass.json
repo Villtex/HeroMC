@@ -9,7 +9,7 @@
   "key": {
     "#": "minecraft:leather",
     "r": "tconstruct:iron_tough_rod",
-    "m": "tconstruct:alubrass_ingot"
+    "m": "#c:ingots/aluminum_brass"
   },
   "result": {
     "id": "tconstruct:knapsack"

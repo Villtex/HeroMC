@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "betterstorage:locker",
+    "betterstorage:reinforced_copper_chest",
+    "betterstorage:reinforced_diamond_chest",
+    "betterstorage:reinforced_emerald_chest",
+    "betterstorage:reinforced_gold_chest",
+    "betterstorage:reinforced_iron_chest",
+    "betterstorage:reinforced_silver_chest",
+    "betterstorage:reinforced_tin_chest",
+    "betterstorage:reinforced_zinc_chest"
+  ]
+}

@@ -62,13 +62,16 @@ public final class BackToolsClient {
                 return new int[] {orientation < 0 || orientation > 3 ? 0 : orientation, parts.length > 3 ? parse(parts[3]) : 0};
             }
         }
-        if (stack.is(ItemTags.SWORDS) || stack.getItem() instanceof ShearsItem) {
+        // tags of today (Teil 26e): tools and weapons of other mods hang on the back as well
+        if (stack.is(ItemTags.SWORDS) || stack.getItem() instanceof ShearsItem || stack.is(net.neoforged.neoforge.common.Tags.Items.TOOLS_SHEAR)
+                || stack.is(net.neoforged.neoforge.common.Tags.Items.MELEE_WEAPON_TOOLS)) {
             return new int[] {2, 0};
         }
-        if (stack.getItem() instanceof BowItem) {
+        if (stack.getItem() instanceof BowItem || stack.is(net.neoforged.neoforge.common.Tags.Items.TOOLS_BOW)) {
             return new int[] {1, 0};
         }
-        if (stack.is(ItemTags.HOES) || stack.is(ItemTags.PICKAXES) || stack.is(ItemTags.AXES) || stack.is(ItemTags.SHOVELS)) {
+        if (stack.is(ItemTags.HOES) || stack.is(ItemTags.PICKAXES) || stack.is(ItemTags.AXES) || stack.is(ItemTags.SHOVELS)
+                || stack.is(net.neoforged.neoforge.common.Tags.Items.MINING_TOOL_TOOLS)) {
             return new int[] {0, 0};
         }
         return null;

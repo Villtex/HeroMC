@@ -5,7 +5,7 @@
     "m"
   ],
   "key": {
-    "m": "tconstruct:alumite_block"
+    "m": "#c:storage_blocks/alumite"
   },
   "result": {
     "id": "tconstruct:alumite_ingot",

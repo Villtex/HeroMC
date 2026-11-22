@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values": [
+    "#c:ingots/steel",
+    "#c:ingots/aluminum_brass",
+    "#c:ingots/aluminum",
+    "#c:ingots/alumite",
+    "#c:ingots/ardite",
+    "#c:ingots/bronze",
+    "#c:ingots/cobalt",
+    "#c:ingots/copper",
+    "#c:ingots/manyullyn",
+    "#c:ingots/obsidian",
+    "#c:ingots/tin"
+  ]
+}

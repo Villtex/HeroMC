@@ -58,6 +58,7 @@ public final class BiblioCraft {
             .build());
 
     public BiblioCraft(IEventBus modBus, ModContainer container) {
+        modBus.addListener(net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent.class, ItemCapabilities::register);
         container.registerConfig(ModConfig.Type.SYNCED, BCConfig.SPEC, "BiblioCraft.toml");
         // the order of the original BlockLoader.initBlocks / ItemLoader.initItems
         Printing.initDesk(modBus);

@@ -5,7 +5,7 @@
     "m"
   ],
   "key": {
-    "m": "tconstruct:aluminum_block"
+    "m": "#c:storage_blocks/aluminum"
   },
   "result": {
     "id": "tconstruct:raw_aluminum",

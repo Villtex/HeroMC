@@ -16,7 +16,6 @@ import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
@@ -43,13 +42,30 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.ItemAttributeModifierEvent;
 import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
 import net.neoforged.neoforge.event.PlayLevelSoundEvent;
-import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingKnockBackEvent;
 import net.neoforged.neoforge.event.entity.player.AttackEntityEvent;
 import net.neoforged.neoforge.event.entity.player.CriticalHitEvent;
 import net.neoforged.neoforge.event.entity.player.SweepAttackEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
+
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.level.chunk.ChunkGenerator;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.neoforge.common.ModConfigSpec;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.event.server.ServerStartedEvent;
+import net.neoforged.neoforge.event.server.ServerStoppedEvent;
+import net.neoforged.neoforge.network.PacketDistributor;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
+import net.neoforged.neoforge.server.ServerLifecycleHooks;
+import io.netty.buffer.ByteBuf;
 
 import java.util.List;
 import java.util.Optional;
@@ -83,6 +99,11 @@ import java.util.Optional;
  *       blocker, no axe disabling, no sounds, no item damage, as in 1.5.2.</li>
  * </ul>
  * Entity reach 3, the 10 ticks miss delay and the hurt invulnerability already work as in 1.5.2.
+ *
+ * <p><b>World types:</b> in Hexxit Legacy these rules always apply. In Hexxit Integrated (and any other world type)
+ * the option {@code integratedCombat152} in {@code config/combat152-startup.toml} switches them; off = the melee
+ * combat of 26.3 (cooldown, sweep, vanilla critical hits, Sharpness/Smite/Bane of Arthropods with their vanilla
+ * values, no sword blocking). The server tells each client which rules apply ({@link ModePayload}).
  */
 @Mod(Combat152.MOD_ID)
 public final class Combat152 {
@@ -97,23 +118,97 @@ public final class Combat152 {
             new BlocksAttacks.ItemDamageFunction(1.0E9F, 0.0F, 0.0F), Optional.empty(), Optional.empty(), Optional.empty());
 
     /** The attack running on this thread (server or client): target and 1.5.2 knockback {@code j}. */
-    private record PendingAttack(Player player, Entity target, int knockback) {
+    private record PendingAttack(Player player, Entity target, int knockback, float strength) {
+    }
+
+    // ---- which rules apply ---------------------------------------------------------------------------------------
+
+    private static final ModConfigSpec CONFIG_SPEC;
+    private static final ModConfigSpec.BooleanValue INTEGRATED;
+
+    static {
+        ModConfigSpec.Builder b = new ModConfigSpec.Builder();
+        INTEGRATED = b.comment("Melee combat of Minecraft 1.5.2 in worlds that are not Hexxit Legacy (Hexxit Integrated, other world types).",
+                        "true = as in the pack (no cooldown, 1.5.2 damage, sword blocking), false = melee combat of 26.3 for all mods.",
+                        "Hexxit Legacy always uses the 1.5.2 rules.")
+                .define("integratedCombat152", true);
+        CONFIG_SPEC = b.build();
+    }
+
+    /** Rules of the running server, and of the server this client is connected to. */
+    private static volatile boolean serverActive = true;
+    private static volatile boolean clientActive = true;
+
+    /** Server to client: whether the 1.5.2 rules apply. */
+    public record ModePayload(boolean active) implements CustomPacketPayload {
+        public static final Type<ModePayload> TYPE = new Type<>(Identifier.fromNamespaceAndPath(MOD_ID, "mode"));
+        public static final StreamCodec<ByteBuf, ModePayload> CODEC = StreamCodec.composite(
+                ByteBufCodecs.BOOL, ModePayload::active, ModePayload::new);
+
+        @Override
+        public Type<ModePayload> type() {
+            return TYPE;
+        }
+    }
+
+    /** Whether the 1.5.2 rules apply on this side (server thread or dedicated server: the server's, else the client's). */
+    public static boolean active() {
+        MinecraftServer server = ServerLifecycleHooks.getCurrentServer();
+        if (server != null && (FMLEnvironment.getDist() == Dist.DEDICATED_SERVER || server.isSameThread())) {
+            return serverActive;
+        }
+        return clientActive;
+    }
+
+    private static boolean active(Entity entity) {
+        return entity.level().isClientSide() ? clientActive : serverActive;
+    }
+
+    /** Hexxit Legacy: the overworld runs the 1.5.2 generator of worldgen152. */
+    private static boolean isLegacy(MinecraftServer server) {
+        ChunkGenerator generator = server.overworld().getChunkSource().getGenerator();
+        // OldChunkGenerator of worldgen152 (no compile dependency: combat152 also runs without it).
+        return generator.getClass().getName().equals("hexxit.worldgen152.OldChunkGenerator");
+    }
+
+    private static void onServerStarted(ServerStartedEvent event) {
+        boolean legacy = isLegacy(event.getServer());
+        serverActive = legacy || INTEGRATED.get();
+        org.slf4j.LoggerFactory.getLogger(MOD_ID).info("Melee combat: {} ({})", serverActive ? "1.5.2" : "26.3",
+                legacy ? "Hexxit Legacy" : "integratedCombat152 = " + INTEGRATED.get());
     }
 
     private static final ThreadLocal<PendingAttack> ATTACK = new ThreadLocal<>();
 
-    public Combat152(IEventBus modBus) {
-        modBus.addListener(EntityAttributeModificationEvent.class, Combat152::onAttributes);
+    public Combat152(IEventBus modBus, ModContainer container) {
+        container.registerConfig(ModConfig.Type.STARTUP, CONFIG_SPEC);
+        modBus.addListener(RegisterPayloadHandlersEvent.class, event -> event.registrar("1").optional()
+                .playToClient(ModePayload.TYPE, ModePayload.CODEC, (payload, context) -> clientActive = payload.active()));
+        NeoForge.EVENT_BUS.addListener(ServerStartedEvent.class, Combat152::onServerStarted);
+        NeoForge.EVENT_BUS.addListener(ServerStoppedEvent.class, e -> serverActive = true);
+        NeoForge.EVENT_BUS.addListener(PlayerEvent.PlayerLoggedInEvent.class, e -> {
+            if (e.getEntity() instanceof ServerPlayer player) {
+                PacketDistributor.sendToPlayer(player, new ModePayload(serverActive));
+            }
+        });
+        NeoForge.EVENT_BUS.addListener(PlayerInteractEvent.RightClickItem.class, Combat152::onRightClickItem);
         modBus.addListener(EventPriority.LOWEST, ModifyDefaultComponentsEvent.class, Combat152::onDefaultComponents);
         NeoForge.EVENT_BUS.addListener(ItemAttributeModifierEvent.class, Combat152::onItemAttributes);
         NeoForge.EVENT_BUS.addListener(AttackEntityEvent.class, Combat152::onAttack);
         NeoForge.EVENT_BUS.addListener(CriticalHitEvent.class, Combat152::onCriticalHit);
-        NeoForge.EVENT_BUS.addListener(SweepAttackEvent.class, e -> e.setSweeping(false));
+        NeoForge.EVENT_BUS.addListener(SweepAttackEvent.class, e -> {
+            if (active(e.getEntity())) {
+                e.setSweeping(false);
+            }
+        });
         NeoForge.EVENT_BUS.addListener(LivingKnockBackEvent.class, Combat152::onKnockback);
         NeoForge.EVENT_BUS.addListener(LivingIncomingDamageEvent.class, Combat152::onIncomingDamage);
         NeoForge.EVENT_BUS.addListener(EntityTickEvent.Pre.class, e -> {
             if (e.getEntity() instanceof LivingEntity living) {
                 fixEffects(living);
+                if (living instanceof Player player) {
+                    fixAttackSpeed(player);
+                }
             }
         });
         NeoForge.EVENT_BUS.addListener(PlayLevelSoundEvent.class, Combat152::onSound);
@@ -122,8 +217,30 @@ public final class Combat152 {
         }
     }
 
-    private static void onAttributes(EntityAttributeModificationEvent event) {
-        event.add(EntityTypes.PLAYER, Attributes.ATTACK_SPEED, 1024.0);
+    private static final Identifier NO_COOLDOWN = Identifier.fromNamespaceAndPath(MOD_ID, "no_cooldown");
+
+    /** No cooldown: attack speed raised to the attribute maximum (1024) while the 1.5.2 rules apply. */
+    private static void fixAttackSpeed(Player player) {
+        AttributeInstance speed = player.getAttribute(Attributes.ATTACK_SPEED);
+        if (speed == null) {
+            return;
+        }
+        boolean on = active(player);
+        if (on != speed.hasModifier(NO_COOLDOWN)) {
+            if (on) {
+                speed.addTransientModifier(new AttributeModifier(NO_COOLDOWN, 1024.0, AttributeModifier.Operation.ADD_VALUE));
+            } else {
+                speed.removeModifier(NO_COOLDOWN);
+            }
+        }
+    }
+
+    /** Sword blocking only with the 1.5.2 rules. */
+    private static void onRightClickItem(PlayerInteractEvent.RightClickItem event) {
+        if (!active(event.getEntity()) && event.getItemStack().get(DataComponents.BLOCKS_ATTACKS) == BLOCKING) {
+            event.setCanceled(true);
+            event.setCancellationResult(net.minecraft.world.InteractionResult.PASS);
+        }
     }
 
     // ---- swords block --------------------------------------------------------------------------------------------
@@ -165,6 +282,9 @@ public final class Combat152 {
     // ---- item attributes -----------------------------------------------------------------------------------------
 
     private static void onItemAttributes(ItemAttributeModifierEvent event) {
+        if (!active()) {
+            return;
+        }
         event.removeModifier(Attributes.ATTACK_SPEED, Item.BASE_ATTACK_SPEED_ID);
         Identifier id = BuiltInRegistries.ITEM.getKey(event.getItemStack().getItem());
         if (!Identifier.DEFAULT_NAMESPACE.equals(id.getNamespace())) {
@@ -205,6 +325,12 @@ public final class Combat152 {
             return;
         }
         double fix = 0;
+        if (!active(living)) {
+            if (damage.getModifier(EFFECT_FIX) != null) {
+                damage.removeModifier(EFFECT_FIX);
+            }
+            return;
+        }
         MobEffectInstance strength = living.getEffect(MobEffects.STRENGTH);
         if (strength != null) {
             int amp = strength.getAmplifier();
@@ -230,11 +356,14 @@ public final class Combat152 {
     private static void onAttack(AttackEntityEvent event) {
         Player player = event.getEntity();
         int j = level(player, Enchantments.KNOCKBACK, player.getMainHandItem()) + (player.isSprinting() ? 1 : 0);
-        ATTACK.set(new PendingAttack(player, event.getTarget(), j));
+        ATTACK.set(new PendingAttack(player, event.getTarget(), j, player.getAttackStrengthScale(0.5F)));
     }
 
     private static void onCriticalHit(CriticalHitEvent event) {
         Player player = event.getEntity();
+        if (!active(player)) {
+            return;
+        }
         fixEffects(player);
         int damage = (int) player.getAttributeValue(Attributes.ATTACK_DAMAGE);
         boolean crit = player.fallDistance > 0.0
@@ -258,7 +387,7 @@ public final class Combat152 {
      */
     private static void onKnockback(LivingKnockBackEvent event) {
         PendingAttack attack = ATTACK.get();
-        if (attack == null || attack.target() != event.getEntity() || event.getOriginalStrength() == 0.4F) {
+        if (attack == null || !active(attack.player()) || attack.target() != event.getEntity() || event.getOriginalStrength() == 0.4F) {
             return;
         }
         float yaw = attack.player().getYRot() * Mth.DEG_TO_RAD;
@@ -283,8 +412,10 @@ public final class Combat152 {
         // Damage enchantments of a melee hit (player or mob), part of the hit before armor.
         if ((source.is(DamageTypes.PLAYER_ATTACK) || source.is(DamageTypes.MOB_ATTACK) || source.is(DamageTypes.MOB_ATTACK_NO_AGGRO))
                 && source.getEntity() instanceof LivingEntity attacker && source.getDirectEntity() == attacker) {
-            int bonus = enchantmentBonus(attacker, target);
-            if (bonus > 0) {
+            int bonus = active(attacker) ? enchantmentBonus(attacker, target) : 0;
+            if (!active(attacker)) {
+                vanillaEnchantments(event, attacker, target);
+            } else if (bonus > 0) {
                 event.setAmount(event.getAmount() + bonus);
                 if (attacker instanceof Player player) {
                     player.magicCrit(target);
@@ -292,13 +423,52 @@ public final class Combat152 {
             }
         }
         // Blocking (EnumAction.block): (1 + damage) >> 1.
-        if (target instanceof Player player && event.getAmount() > 0 && !source.is(DamageTypeTags.BYPASSES_ARMOR)) {
+        if (active(target) && target instanceof Player player && event.getAmount() > 0 && !source.is(DamageTypeTags.BYPASSES_ARMOR)) {
             ItemStack blocking = player.getItemBlockingWith();
             if (blocking != null && blocking.get(DataComponents.BLOCKS_ATTACKS) instanceof BlocksAttacks blocks
                     && blocks.damageReductions().isEmpty()) {
                 float amount = event.getAmount();
                 event.setAmount(Math.min(amount, (float) Math.floor((1.0F + amount) / 2.0F)));
             }
+        }
+    }
+
+    /**
+     * The damage enchantments of 26.3 (their effects are emptied in {@code data/minecraft/enchantment} for the 1.5.2
+     * rules): Sharpness {@code 1 + 0.5 * (level - 1)}, Smite and Bane of Arthropods {@code 2.5 * level} against their
+     * targets, scaled by the attack strength of a player; Bane slows the target (Slowness IV, 1.5 to
+     * {@code 1.5 + 0.5 * (level - 1)} seconds).
+     */
+    private static void vanillaEnchantments(LivingIncomingDamageEvent event, LivingEntity attacker, LivingEntity target) {
+        ItemStack weapon = attacker.getMainHandItem();
+        if (weapon.isEmpty()) {
+            return;
+        }
+        float bonus = 0;
+        int sharpness = level(attacker, Enchantments.SHARPNESS, weapon);
+        if (sharpness > 0) {
+            bonus += 1.0F + 0.5F * (sharpness - 1);
+        }
+        if (target.is(EntityTypeTags.SENSITIVE_TO_SMITE)) {
+            bonus += 2.5F * level(attacker, Enchantments.SMITE, weapon);
+        }
+        int bane = target.is(EntityTypeTags.SENSITIVE_TO_BANE_OF_ARTHROPODS) ? level(attacker, Enchantments.BANE_OF_ARTHROPODS, weapon) : 0;
+        bonus += 2.5F * bane;
+        if (bonus <= 0) {
+            return;
+        }
+        if (attacker instanceof Player player) {
+            PendingAttack attack = ATTACK.get();
+            float strength = attack != null && attack.player() == player ? attack.strength() : 1.0F;
+            bonus *= strength;
+            if (bonus > 0) {
+                player.magicCrit(target);
+            }
+        }
+        event.setAmount(event.getAmount() + bonus);
+        if (bane > 0) {
+            int ticks = 30 + attacker.getRandom().nextInt(10 * (bane - 1) + 1);
+            target.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, ticks, 3));
         }
     }
 
@@ -328,7 +498,7 @@ public final class Combat152 {
     }
 
     private static void onSound(PlayLevelSoundEvent event) {
-        if (event.getSound() != null
+        if (event.getSound() != null && active()
                 && event.getSound().value().location().getPath().startsWith("entity.player.attack.")) {
             event.setCanceled(true);
         }
@@ -336,9 +506,11 @@ public final class Combat152 {
 
     private static final class Client {
         static void init() {
+            NeoForge.EVENT_BUS.addListener(net.neoforged.neoforge.client.event.ClientPlayerNetworkEvent.LoggingOut.class,
+                    e -> clientActive = true);
             NeoForge.EVENT_BUS.addListener(ClientTickEvent.Post.class, e -> {
                 var option = Minecraft.getInstance().options.attackIndicator();
-                if (option.get() != AttackIndicatorStatus.OFF) {
+                if (clientActive && option.get() != AttackIndicatorStatus.OFF) {
                     option.set(AttackIndicatorStatus.OFF);
                 }
             });

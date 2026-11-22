@@ -1,5 +1,10 @@
 {
+  "replace": false,
   "values": [
-    "twilightforest:hydra"
+    "twilightforest:hydra",
+    "twilightforest:naga",
+    "twilightforest:lich",
+    "twilightforest:minoshroom",
+    "twilightforest:ur_ghast"
   ]
 }

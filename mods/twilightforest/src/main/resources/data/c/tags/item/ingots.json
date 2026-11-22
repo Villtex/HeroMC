@@ -1,7 +1,12 @@
 {
+  "replace": false,
   "values": [
     "twilightforest:fiery_ingot",
     "twilightforest:ironwood_ingot",
-    "twilightforest:knight_metal"
+    "twilightforest:knight_metal",
+    "#c:ingots/fiery",
+    "#c:ingots/ironwood",
+    "#c:ingots/steeleaf",
+    "#c:ingots/knightmetal"
   ]
 }

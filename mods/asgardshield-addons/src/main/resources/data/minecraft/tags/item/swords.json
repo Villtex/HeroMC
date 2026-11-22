@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "asaddons:biomass_giant_sword",
+    "asaddons:ender_giant_sword",
+    "asaddons:livingmetal_giant_sword",
+    "asaddons:nether_quartz_giant_sword",
+    "asaddons:patchwork_giant_sword",
+    "asaddons:skull_giant_sword"
+  ]
+}

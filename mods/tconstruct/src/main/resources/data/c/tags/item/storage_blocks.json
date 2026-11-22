@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "#c:storage_blocks/steel",
+    "#c:storage_blocks/aluminum_brass",
+    "#c:storage_blocks/aluminum",
+    "#c:storage_blocks/alumite",
+    "#c:storage_blocks/ardite",
+    "#c:storage_blocks/bronze",
+    "#c:storage_blocks/cobalt",
+    "#c:storage_blocks/copper",
+    "#c:storage_blocks/manyullyn",
+    "#c:storage_blocks/tin"
+  ]
+}

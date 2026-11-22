@@ -5,7 +5,7 @@
     "m"
   ],
   "key": {
-    "m": "tconstruct:alubrass_ingot"
+    "m": "#c:ingots/aluminum_brass"
   },
   "result": {
     "id": "tconstruct:alubrass_nugget",

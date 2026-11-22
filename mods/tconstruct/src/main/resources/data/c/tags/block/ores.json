@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "#c:ores/copper",
+    "#c:ores/tin",
+    "#c:ores/aluminum",
+    "#c:ores/cobalt",
+    "#c:ores/ardite",
+    "#c:ores/iron",
+    "#c:ores/gold"
+  ]
+}

@@ -1,5 +1,7 @@
 {
+  "replace": false,
   "values": [
-    "harkenscythe_core:livingmetal_ingot"
+    "harkenscythe_core:livingmetal_ingot",
+    "#c:ingots/livingmetal"
   ]
 }

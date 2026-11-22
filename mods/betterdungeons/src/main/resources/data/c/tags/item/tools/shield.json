@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "betterdungeons:colorful_shield",
+    "betterdungeons:dwarf_shield",
+    "betterdungeons:end_shield",
+    "betterdungeons:ensaimada_shield",
+    "betterdungeons:green_shield",
+    "betterdungeons:minotaur_shield",
+    "betterdungeons:nether_shield",
+    "betterdungeons:pirate_shield",
+    "betterdungeons:round_wood_shield",
+    "betterdungeons:shadows_shield",
+    "betterdungeons:squid_shield",
+    "betterdungeons:wooden_shield",
+    "betterdungeons:zombie_shield"
+  ]
+}

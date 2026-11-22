@@ -8,7 +8,7 @@
   ],
   "key": {
     "X": "minecraft:iron_ingot",
-    "Y": "quantumcraft:quantum_dust",
+    "Y": "#c:dusts/quantum",
     "Z": "minecraft:glass_pane"
   },
   "result": {

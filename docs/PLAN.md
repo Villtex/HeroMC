@@ -77,7 +77,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 26b | Integrated B: Erze, Pflanzen, Bäume, Nether-Generatoren per Biom-Modifier und Biom-Tags | ~2.000 | 26a | Opus 5.5, hoch | ✅ erledigt |
 | 26c | Integrated C: Bauwerke und Dungeons als echte 26.3-Strukturen (`/locate`, Abstand zu fremden Strukturen) | ~4.000 | 26a | Fable 5.2, hoch | ✅ erledigt |
 | 26d | Integrated D: EBXL-Biome neben Vanilla- und fremden Biomen, Mob-Spawns per Biom-Modifier | ~3.000 | 26b | Fable 5.2, hoch | ✅ erledigt |
-| 26e | Integrated E: Schnittstellen für fremde Mods (Capabilities, `c:`-Tags, Werkzeug-Fähigkeiten, Rezepte über Tags) | ~4.000 | – | Opus 5.5, mittel | offen |
+| 26e | Integrated E: Schnittstellen für fremde Mods (Capabilities, `c:`-Tags, Werkzeug-Fähigkeiten, Rezepte über Tags) | ~4.000 | – | Opus 5.5, mittel | ✅ erledigt |
 | 26f | Integrated F: Test mit fremden 26.3-Mods, Gesamtprüfung | – | 26a–26e | Opus 5.5, mittel | offen |
 
 Entfallen ganz: Not Enough Items, NEI Plugins, CodeChickenCore (durch JEI ersetzt), Lumy Skin Patch,
@@ -2179,6 +2179,46 @@ feste Items. Im Original lief der Austausch über das Forge-OreDictionary; die `
   `data/minecraft/enchantment`, Tinkers' Void-Fog/klares Wasser) auflisten und je eine Option anbieten.
 - **Keine festen Annahmen über Registrierungen:** Code, der über alle Blöcke/Items/Biome läuft (alte ID-Tabellen,
   Infernal Mobs, Ruinen-Vorlagen), muss fremde Einträge überspringen statt abzustürzen.
+
+#### Teil 26e – Stand (✅ erledigt)
+- **Entscheidungen (Nutzer):** combat152 in Hexxit Legacy immer an; in jedem anderen Welttyp schaltet
+  `integratedCombat152` in `config/combat152-startup.toml` (Standard `true` = wie im Pack). Aus = Nahkampf von 26.3 für alle
+  Mods: Abklingzeit, Schwungangriff, Vanilla-Kritische, Schärfe/Bann/Nemesis mit Vanilla-Werten (im Code, weil
+  `data/minecraft/enchantment` die Effekte für die 1.5.2-Formel leert), kein Schwert-Blocken, Anzeige frei. Erkennung am
+  Overworld-Generator (`hexxit.worldgen152.OldChunkGenerator`, ohne Compile-Abhängigkeit), der Server schickt den Modus
+  an jeden Client (`combat152:mode`). Abklingzeit jetzt als transienter Modifier statt Basiswert. Project-Zulu-Brauen
+  (Sprung + fermentiertes Spinnenauge → Sanfter Fall) nur in Legacy, sonst Vanilla (Langsamkeit); das 1.5.2-Rezept des
+  verzauberten Goldapfels bleibt in beiden Welttypen. Natura nimmt seine Planken weiter aus den Vanilla-Rezepten heraus.
+- **Ladebedingung** `{"type":"worldgen152:world_type","legacy":true}` (`WorldTypeCondition`): liest den Overworld-Generator
+  aus den Dimensionen der Daten-Ladung. Ein Client, der eine Welt anlegt, lädt die Daten vor der Wahl des Welttyps;
+  passt es nicht, lädt `ServerStartedEvent` einmal neu.
+- **Capabilities** (`ItemCapabilities` je Mod): jede Block-Entity von Tinkers, BiblioCraft, BetterStorage, Secret Rooms und
+  Harken Scythe, die ein `Container` ist, bietet `Capabilities.Item.BLOCK` (`VanillaContainerWrapper`, Sided über
+  `WorldlyContainerWrapper`, Schlösser und gültige Items bleiben). Tinkers-Tank, Schmelzerei-Abfluss, Gießtisch/-becken
+  und Rinne `Capabilities.Fluid.BLOCK` über `LiquidHandler` (Transaktionen: vorgemerkte Mengen, beim äußersten Commit
+  ausgeführt). Mod-Eimer sind `BucketItem` (NeoForge registriert sie selbst). Kisten-Stapel ohne Inventar
+  (`enableCrateInventoryInterface=false` im Pack), Chest Transporter nimmt wie im Original nur die Vanilla-Kiste.
+- **Tags** (`tools/compat_tags.py`, nach jedem `gen.py` eines Mods erneut laufen lassen): `c:ingots|nuggets|storage_blocks|
+  raw_materials|ores|ores_in_ground|ore_rates|gems|dusts/*`, `c:chests`, `minecraft:swords|axes|pickaxes|shovels|hoes`,
+  `c:tools/*`, Flüssigkeiten `c:molten_<metall>`, `c:blood`, `c:bosses` (Naga, Lich, Hydra, Minoshroom, Ur-Ghast).
+  Abbaustufen: Meteors korrigiert (Frezarit Stein, Kreknorit Diamant). Entrinden/Pfade/Umgraben: 26.3 hat dafür keine
+  ItemAbilities mehr, sondern die Komponente `BLOCK_TRANSFORMER` aus `Properties.axe/shovel/hoe`, die alle Mod-Werkzeuge
+  haben; Kamas sind `ShearsItem`. Back Tools erkennt zusätzlich `c:tools/*`, TreeCapitator nimmt `#minecraft:axes`.
+- **Rezepte über Tags:** Eingaben mit Hexxit-Metallen ohne Vanilla-Gegenstück (Zinn, Aluminium, Kobalt, Ardit, Bronze,
+  Aluminiummessing, Alumit, Manyullyn, Stahl, Obsidian) nehmen `c:`-Tags (Blöcke ↔ Barren ↔ Nuggets, Erz schmelzen);
+  Eisen/Gold/Kupfer bleiben Items (sonst Konflikte mit Vanilla-Rezepten). Schmelzerei zusätzlich über Tags: fremde
+  Eisen-/Golderze, `c:raw_materials/*` (wie Erz, 288 mB), `c:nuggets/*` (16 mB), `c:dusts/*` (144 mB).
+- **Feste Annahmen:** Schleifen über Registries sind JEI/Kreativ-Tabs; die Chunk-Brücke und `OldBiomeTags` haben
+  Rückfälle für fremde Blöcke/Biome, Infernal Mobs nimmt jeden `Enemy`.
+- **Prüfbefehl** `/hexxitcompat` (Tinkers, OP): `item|fluid <pos> "<id>"` (Einfügen/Entnehmen/Abbruch über Capabilities),
+  `melt`, `tag`, `recipe`.
+- **Geprüft:** `clean pack` grün, Server Integrated/Legacy Seed 1234 ohne Fehler. Capabilities: Verstärkte Kiste,
+  Regal, Geheimkiste je +5/−2, Abbruch verworfen; Bücherregal nimmt nur Bücher; Tinkers-Tank 4.000 mB, Abbruch verworfen;
+  Gießtisch nimmt 144 mB Aluminiummessing (Rohling), kein Eisen. Schmelzen: Rohes Eisen 288, Kupfernugget 16,
+  Tiefenschiefer-Golderz 288. Integrated: Vanilla-Trank da, PZ-Ersatz weg; Legacy umgekehrt und Kampf „1.5.2 (Hexxit
+  Legacy)“ trotz Option aus; Integrated mit Option aus: Zombie mit Schärfe V macht 1+3 Schaden (Vanilla).
+- **Offen:** Seelenkäfig und PZ-Blumentopf (im Original IInventory) ohne Capability; Tinkers-Werkzeuge ohne
+  `BLOCK_TRANSFORMER` (Rechtsklick setzt wie in 1.5.2 Blöcke aus der Leiste); Test mit echten fremden Mods in 26f.
 
 ### Teil 26f – Test mit fremden Mods, Gesamtprüfung
 - Kleine Testauswahl verbreiteter NeoForge-26.3-Mods in `run/mods-extra/` (nicht ins Repo; Download-Liste mit

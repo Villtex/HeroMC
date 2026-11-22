@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "asaddons:biomass_shield",
+    "asaddons:ender_shield",
+    "asaddons:gilded_biomass_shield",
+    "asaddons:gilded_ender_shield",
+    "asaddons:gilded_livingmetal_shield",
+    "asaddons:gilded_nether_quartz_shield",
+    "asaddons:gilded_patchwork_shield",
+    "asaddons:gilded_skull_shield",
+    "asaddons:livingmetal_shield",
+    "asaddons:nether_quartz_shield",
+    "asaddons:patchwork_shield",
+    "asaddons:skull_shield"
+  ]
+}

@@ -5,7 +5,7 @@
     "m"
   ],
   "key": {
-    "m": "tconstruct:raw_aluminum"
+    "m": "#c:raw_materials/aluminum"
   },
   "result": {
     "id": "tconstruct:aluminum_nugget",

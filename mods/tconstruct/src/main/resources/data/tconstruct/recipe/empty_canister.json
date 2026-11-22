@@ -6,7 +6,7 @@
     "##"
   ],
   "key": {
-    "#": "tconstruct:aluminum_ingot"
+    "#": "#c:ingots/aluminum"
   },
   "result": {
     "id": "tconstruct:empty_canister"

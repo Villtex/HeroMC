@@ -48,6 +48,9 @@ public final class WorldGen152 {
     private static final DeferredRegister<net.minecraft.world.level.levelgen.structure.pools.StructurePoolElementType<?>> POOL_ELEMENTS =
             DeferredRegister.create(Registries.STRUCTURE_POOL_ELEMENT, MOD_ID);
 
+    private static final DeferredRegister<MapCodec<? extends net.neoforged.neoforge.common.conditions.ICondition>> CONDITIONS =
+            DeferredRegister.create(net.neoforged.neoforge.registries.NeoForgeRegistries.Keys.CONDITION_CODECS, MOD_ID);
+
     public WorldGen152(IEventBus modBus, net.neoforged.fml.ModContainer container) {
         container.registerConfig(net.neoforged.fml.config.ModConfig.Type.STARTUP, IntegratedConfig.SPEC);
         CHUNK_GENERATORS.register("overworld", () -> OldChunkGenerator.CODEC);
@@ -75,6 +78,11 @@ public final class WorldGen152 {
         CHUNK_GENERATORS.register(modBus);
         BIOME_SOURCES.register(modBus);
         NeoForge.EVENT_BUS.addListener(WorldGen152::onServerAboutToStart);
+        // load condition worldgen152:world_type (data that differs between Hexxit Legacy and other world types)
+        CONDITIONS.register("world_type", () -> WorldTypeCondition.CODEC);
+        CONDITIONS.register(modBus);
+        NeoForge.EVENT_BUS.addListener(net.neoforged.neoforge.event.server.ServerStartedEvent.class,
+                event -> WorldTypeCondition.checkLoaded(event.getServer()));
         NeoForge.EVENT_BUS.addListener(WorldGen152::onCreateSpawnPosition);
     }
 

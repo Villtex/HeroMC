@@ -5,7 +5,7 @@
     "m"
   ],
   "key": {
-    "m": "tconstruct:tin_block"
+    "m": "#c:storage_blocks/tin"
   },
   "result": {
     "id": "tconstruct:tin_ingot",

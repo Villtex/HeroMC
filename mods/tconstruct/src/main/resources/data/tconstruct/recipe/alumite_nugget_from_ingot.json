@@ -5,7 +5,7 @@
     "m"
   ],
   "key": {
-    "m": "tconstruct:alumite_ingot"
+    "m": "#c:ingots/alumite"
   },
   "result": {
     "id": "tconstruct:alumite_nugget",

@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smelting",
   "category": "misc",
-  "ingredient": "tconstruct:tin_ore",
+  "ingredient": "#c:ores/tin",
   "result": {
     "id": "tconstruct:tin_ingot"
   },

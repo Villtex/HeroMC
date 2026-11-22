@@ -17,7 +17,7 @@ Jeder Mod wird deshalb gegen das dekompilierte Original als Referenz **neu gesch
 - **Rezeptanzeige:** Not Enough Items wird nicht portiert. Stattdessen sind alle portierten Mods mit
   **JEI** kompatibel; eigene Rezepttypen bekommen ein JEI-Plugin.
 - **Twilight Forest** ist in die Teile 24a–24f aufgeteilt, **Tinkers' Construct** in die Teile 25a–25f.
-- **Welttypen (Teil 26, 26a–26d erledigt):** „Hexxit Integrated“ ist der Standard (`minecraft:normal`: 26.3-Generierung
+- **Welttypen (Teil 26, 26a–26e erledigt):** „Hexxit Integrated“ ist der Standard (`minecraft:normal`: 26.3-Generierung
   plus Hexxit-Inhalte, offen für fremde 26.3-Mods: deren Biome, Bauwerke, Rohre und Werkzeuge arbeiten mit der Welt).
   „Hexxit Legacy (1.5.2)“ (`hexxit:legacy`) ist die bitgenaue 1.5.2-Welt. Am Server: `level-type=hexxit\:legacy` in
   `server.properties` für Legacy, ohne Eintrag Integrated. Erze, Pflanzen, Bäume und Nether-Generatoren sind in Integrated
@@ -28,6 +28,11 @@ Jeder Mod wird deshalb gegen das dekompilierte Original als Referenz **neu gesch
   Oberflächen, Biom-Tags (`c:`, `minecraft:has_structure/*`) und ihrer 1.5.2-Dekoration; die Mob-Spawns aller Mods
   gelten über Biom-Tags auch für Vanilla- und fremde Biome (Teil 26d). Erze, einzelne Generatoren und das Gewicht
   der EBXL-Region lassen sich in `config/worldgen152-startup.toml` einstellen.
+- **Fremde Mods (Teil 26e):** Kisten, Regale und Tinkers-Tische bieten Item-Capabilities, Tinkers-Tanks/Abfluss/Gießblöcke
+  Fluid-Capabilities; Erze, Metalle, Kisten, Werkzeuge und Bosse tragen die `c:`- und `minecraft:`-Tags, Hexxit-Rezepte und
+  die Schmelzerei nehmen fremde Metalle über diese Tags. Der 1.5.2-Nahkampf (`combat152`) gilt in Legacy immer, in anderen
+  Welttypen nach `integratedCombat152` in `config/combat152-startup.toml` (Standard an). Project-Zulu-Brauen ändert den
+  Vanilla-Sprungtrank nur in Legacy.
 
 ## Arbeitsplan
 
@@ -46,6 +51,7 @@ Der Port ist in Teile aufgeteilt, die je in eine Session passen: [`docs/PLAN.md`
 | `tools/biomes.py` | erzeugt die Biom-Daten (Klima, Farben aus den 1.5.2-Farbkarten, Mob-Spawns) |
 | `tools/original_server.sh`, `tools/original_spawn.py`, `tools/compare_original.py` | Original-Server 1.5.2 (Vanilla oder Hexxit) einmal laufen lassen und seine Welt mit dem Kern vergleichen |
 | `tools/integrated_tags.py` | Biom-Tags der EBXL-Biome und Mob-Spawns über Biom-Tags für Hexxit Integrated (Teil 26d) |
+| `tools/compat_tags.py` | `c:`-/`minecraft:`-Tags aller Mods und Rezepte über Tags (Teil 26e); nach jedem `gen.py` erneut laufen lassen |
 | `tools/rcon.py` | kleiner RCON-Client für Verhaltenstests am laufenden Testserver |
 | `tools/modelbase_to_layer.py` | überträgt die Geometrie eines 1.5.2-`ModelBase` (Boxen, Hierarchie, Texturversätze) in 26.3-`createBodyLayer`-Zeilen |
 | `gradle/neoforge.mods.toml` | gemeinsame Vorlage für die Mod-Metadaten |
@@ -64,6 +70,7 @@ Der Port ist in Teile aufgeteilt, die je in eine Session passen: [`docs/PLAN.md`
 | `.claude/skills/twilight-forest-263/` | Projekt-Skill: Twilight Forest weiterbauen (Kern `twilightforest.gen`, Bauwerke `gen.structure` mit Übersetzungsskript, Starts, Truhen, Spawnlisten, Prüfung mit `expect.sh … twilight structures`) |
 | `.claude/skills/headless-client/` | Projekt-Skill: Testclient im Cloud-Container ohne Bildschirm starten (Xvfb, `SDL_VIDEO_FORCE_EGL=1`, Screenshots, xdotool, Testserver beitreten) |
 | `.claude/skills/integrated-263/` | Projekt-Skill: Welttyp Hexxit Integrated (Teil 26) – 1.5.2-Generator als 26.3-Feature mit Biom-Modifier einhängen, Chunk-Brücke `OldGeneratorFeature` (Verschiebung, Höhenfenster, Biome über Tags, was ersetzt wird), Bauwerke als 26.3-Strukturen (`worldgen152:old_structure`), 1.5.2-Dorfteile in 26.3-Dörfern, Legacy/Integrated am Server umschalten und prüfen |
+| `.claude/skills/compat-263/` | Projekt-Skill: Schnittstellen für fremde Mods (Teil 26e) – Item-/Fluid-Capabilities mit der Transfer-API, `c:`-Tags über `tools/compat_tags.py`, Rezepte über Tags, Daten nur in Legacy (`worldgen152:world_type`), Prüfbefehl `/hexxitcompat` |
 
 ## Bauen und Starten
 

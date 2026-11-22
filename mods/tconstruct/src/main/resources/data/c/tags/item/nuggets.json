@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values": [
+    "#c:nuggets/copper",
+    "#c:nuggets/aluminum_brass",
+    "#c:nuggets/aluminum",
+    "#c:nuggets/alumite",
+    "#c:nuggets/ardite",
+    "#c:nuggets/bronze",
+    "#c:nuggets/cobalt",
+    "#c:nuggets/manyullyn",
+    "#c:nuggets/obsidian",
+    "#c:nuggets/steel",
+    "#c:nuggets/tin"
+  ]
+}

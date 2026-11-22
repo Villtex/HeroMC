@@ -5,7 +5,7 @@
     "m"
   ],
   "key": {
-    "m": "tconstruct:manyullyn_ingot"
+    "m": "#c:ingots/manyullyn"
   },
   "result": {
     "id": "tconstruct:manyullyn_nugget",

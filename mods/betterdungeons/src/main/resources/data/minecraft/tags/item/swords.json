@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values": [
+    "betterdungeons:defense_sword",
+    "betterdungeons:diamond_bigsword",
+    "betterdungeons:diamond_dagger",
+    "betterdungeons:earth_sword",
+    "betterdungeons:iron_bigsword",
+    "betterdungeons:iron_dagger",
+    "betterdungeons:monking_sword",
+    "betterdungeons:moon_sword",
+    "betterdungeons:ninja_dagger",
+    "betterdungeons:trickster_dagger",
+    "betterdungeons:walker_sword"
+  ]
+}

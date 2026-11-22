@@ -6,7 +6,7 @@
   ],
   "key": {
     "X": "minecraft:glass_pane",
-    "Y": "quantumcraft:quantum_dust"
+    "Y": "#c:dusts/quantum"
   },
   "result": {
     "id": "quantumcraft:quantum_goggles"

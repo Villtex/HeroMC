@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "natura:bloodwood_sword",
+    "natura:darkwood_sword",
+    "natura:fusewood_sword",
+    "natura:ghostwood_sword",
+    "natura:quartz_sword"
+  ]
+}

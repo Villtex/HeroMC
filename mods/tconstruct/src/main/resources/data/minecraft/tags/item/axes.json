@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "tconstruct:battleaxe",
+    "tconstruct:hatchet",
+    "tconstruct:lumberaxe",
+    "tconstruct:mattock"
+  ]
+}

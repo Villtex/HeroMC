@@ -31,6 +31,7 @@ public final class SecretRooms {
     private static final Set<UUID> AWAY = new HashSet<>();
 
     public SecretRooms(IEventBus modBus) {
+        modBus.addListener(net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent.class, ItemCapabilities::register);
         SRBlocks.register(modBus);
         SRItems.register(modBus);
         modBus.addListener(SRNetwork::register);

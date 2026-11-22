@@ -5,7 +5,7 @@
     "m"
   ],
   "key": {
-    "m": "tconstruct:steel_block"
+    "m": "#c:storage_blocks/steel"
   },
   "result": {
     "id": "tconstruct:steel_ingot",

@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "natura:bloodwood_pickaxe",
+    "natura:darkwood_pickaxe",
+    "natura:fusewood_pickaxe",
+    "natura:ghostwood_pickaxe",
+    "natura:quartz_pickaxe"
+  ]
+}

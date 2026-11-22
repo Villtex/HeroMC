@@ -5,7 +5,7 @@
     "m"
   ],
   "key": {
-    "m": "tconstruct:bronze_block"
+    "m": "#c:storage_blocks/bronze"
   },
   "result": {
     "id": "tconstruct:bronze_ingot",
