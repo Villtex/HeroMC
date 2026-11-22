@@ -26,7 +26,8 @@ import org.slf4j.LoggerFactory;
  * (Skill server-tests-263): {@code item <pos> "<item>"} inserts 5, extracts 2 and aborts an extract of 1 through
  * {@code Capabilities.Item.BLOCK}; {@code fluid <pos> "<fluid>"} does the same with buckets through
  * {@code Capabilities.Fluid.BLOCK}; {@code melt "<item>"} shows the smeltery result; {@code tag "<item>" "<tag>"} and
- * {@code recipe "<id>"} show whether an item is in a tag and a recipe is loaded. Ids in quotes.
+ * {@code recipe "<id>"} show whether an item is in a tag and a recipe is loaded; {@code mine <pos> "<tool>"} (Teil 26f)
+ * shows whether a tool harvests the block there, its speed and the drops. Ids in quotes.
  */
 final class CompatCommand {
     static void init() {
@@ -105,7 +106,19 @@ final class CompatCommand {
                     var r = c.getSource().getServer().getRecipeManager().byKey(key);
                     log(c.getSource(), "recipe " + key.identifier() + ": " + r.map(h -> h.value().toString()).orElse("absent"));
                     return 1;
-                })))));
+                })))
+                .then(Commands.literal("mine").then(Commands.argument("pos", BlockPosArgument.blockPos()).then(Commands.argument("tool", StringArgumentType.string()).executes(c -> {
+                    ServerLevel level = c.getSource().getLevel();
+                    BlockPos pos = BlockPosArgument.getBlockPos(c, "pos");
+                    var state = level.getBlockState(pos);
+                    var tool = new ItemStack(BuiltInRegistries.ITEM.getValue(Identifier.parse(StringArgumentType.getString(c, "tool"))));
+                    var drops = net.minecraft.world.level.block.Block.getDrops(state, level, pos, level.getBlockEntity(pos), null, tool);
+                    boolean harvest = !state.requiresCorrectToolForDrops() || tool.isCorrectToolForDrops(state);
+                    log(c.getSource(), "mine " + BuiltInRegistries.BLOCK.getKey(state.getBlock()) + " with " + BuiltInRegistries.ITEM.getKey(tool.getItem())
+                            + ": correct tool " + harvest + " speed " + tool.getDestroySpeed(state)
+                            + " drops " + (harvest ? drops.stream().map(s -> s.getCount() + " " + BuiltInRegistries.ITEM.getKey(s.getItem())).toList() : "[]"));
+                    return 1;
+                }))))));
     }
 
     private static void log(net.minecraft.commands.CommandSourceStack src, String msg) {
