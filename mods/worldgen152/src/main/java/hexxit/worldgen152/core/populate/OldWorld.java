@@ -251,6 +251,52 @@ public final class OldWorld {
         return (T) this.worldState.computeIfAbsent(key, k -> create.get());
     }
 
+    private int realDx;
+    private int realDy;
+    private int realDz;
+    private int[] writable;
+
+    /**
+     * Where this world lies in the world of today (world type Hexxit Integrated): real x = x + dx and so on. Zero for
+     * the 1.5.2 chunk generators. For generators that tell the game about places (rifts, towers).
+     */
+    public void setRealOffset(int dx, int dy, int dz) {
+        this.realDx = dx;
+        this.realDy = dy;
+        this.realDz = dz;
+    }
+
+    public int realX(int x) {
+        return x + this.realDx;
+    }
+
+    public int realY(int y) {
+        return y + this.realDy;
+    }
+
+    public int realZ(int z) {
+        return z + this.realDz;
+    }
+
+    /**
+     * The area writes reach the world in, {@code {minX, minZ, maxX, maxZ}} in the coordinates of this world, or
+     * {@code null} for everywhere (the 1.5.2 population). A feature of the world type Hexxit Integrated sees only the
+     * 3x3 chunks around its chunk; a generator that builds a whole site at once can skip sites that would be cut.
+     */
+    public int[] writableArea() {
+        return this.writable;
+    }
+
+    public void setWritableArea(int minX, int minZ, int maxX, int maxZ) {
+        this.writable = new int[] {minX, minZ, maxX, maxZ};
+    }
+
+    /** Whether the box lies inside {@link #writableArea()}. */
+    public boolean writable(int minX, int minZ, int maxX, int maxZ) {
+        int[] w = this.writable;
+        return w == null || minX >= w[0] && minZ >= w[1] && maxX <= w[2] && maxZ <= w[3];
+    }
+
     // ---- blocks ----
 
     public int getBlockId(int x, int y, int z) {

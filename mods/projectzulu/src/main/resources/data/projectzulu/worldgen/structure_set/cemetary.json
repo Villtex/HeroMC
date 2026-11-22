@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 49172303,
+    "separation": 4,
+    "spacing": 13
+  },
+  "structures": [
+    {
+      "structure": "projectzulu:cemetary",
+      "weight": 1
+    }
+  ]
+}

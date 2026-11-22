@@ -106,6 +106,12 @@ public final class TCWorldGen {
         // TConstruct.preInit: registerVillageCreationHandler (tool workshop, then smeltery)
         OldStructures.VILLAGE_HANDLERS.add(new ComponentToolWorkshop.Handler());
         OldStructures.VILLAGE_HANDLERS.add(new ComponentSmeltery.Handler());
+        // Hexxit Integrated: the same pieces in the villages of today (worldgen152 OldVillagePiece); weight ~ how
+        // often 1.5.2 villages had them (workshop up to 3 per village, smeltery in about one village of ten)
+        OldStructures.VILLAGE_PIECES.put("tconstruct:tool_workshop", new OldStructures.VillagePiece(7, 6, 7, 0, 10,
+                (start, box, mode) -> new ComponentToolWorkshop(start, 0, new java.util.Random(0L), box, mode).grounded()));
+        OldStructures.VILLAGE_PIECES.put("tconstruct:smeltery", new OldStructures.VillagePiece(9, 3, 7, 1, 1,
+                (start, box, mode) -> new ComponentSmeltery(start, 0, new java.util.Random(0L), box, mode).grounded()));
         addLoot();
     }
 

@@ -148,6 +148,35 @@ public final class OldTerrainGen {
         }
     }
 
+    /** A cheap test whether a structure can start in a chunk at all, before any terrain is computed. */
+    public interface StructureFilter {
+        boolean mayStart(long seed, int chunkX, int chunkZ);
+    }
+
+    private static final java.util.Map<String, StructureFilter> FILTERS = new java.util.concurrent.ConcurrentHashMap<>();
+
+    /**
+     * The builder of a 1.5.2 structure for the world type Hexxit Integrated (a structure of type
+     * {@code worldgen152:old_structure} names it): it builds the structure for chunk {@code chunkX}/{@code chunkZ}
+     * whenever its own checks of terrain and biome pass, without the rarity the original rolled (the structure set of
+     * today places the starts). It never runs in the 1.5.2 population.
+     */
+    public static void registerStructure(String name, WorldGenerator builder) {
+        registerFeature(name, builder);
+    }
+
+    /** {@link #registerStructure} with a filter for structures that can only start in few chunks known from the coordinates. */
+    public static void registerStructure(String name, WorldGenerator builder, StructureFilter filter) {
+        registerFeature(name, builder);
+        FILTERS.put(name, filter);
+    }
+
+    /** Whether the structure builder {@code name} may start in that chunk ({@code true} without a filter). */
+    public static boolean mayStart(String name, long seed, int chunkX, int chunkZ) {
+        StructureFilter filter = FILTERS.get(name);
+        return filter == null || filter.mayStart(seed, chunkX, chunkZ);
+    }
+
     /**
      * For features with {@code "y_offset": -64} (old y = real y + 64): where a 1.5.2 height {@code y} goes. The
      * underground of 1.5.2 (y 0-63) is stretched over today's -64 to 63, above it heights stay (real y = y).

@@ -28,6 +28,12 @@ public class ComponentSmeltery extends ComponentVillage {
                 : null;
     }
 
+    /** For a village of today (Hexxit Integrated): the box already stands on the street, no ground level search. */
+    public ComponentSmeltery grounded() {
+        this.averageGroundLevel = 0;
+        return this;
+    }
+
     @Override
     public boolean addComponentParts(OldWorld world, Random random, StructureBoundingBox sbb) {
         if (this.averageGroundLevel < 0) {

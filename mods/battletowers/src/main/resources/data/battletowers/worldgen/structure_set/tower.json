@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 20541341,
+    "separation": 54,
+    "spacing": 64
+  },
+  "structures": [
+    {
+      "structure": "battletowers:tower",
+      "weight": 1
+    }
+  ]
+}

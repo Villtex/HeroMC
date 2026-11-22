@@ -1,0 +1,8 @@
+{
+  "type": "worldgen152:old_structure",
+  "generator": "betterdungeons:dungeon",
+  "biomes": "#betterdungeons:has_structure/dungeon",
+  "spawn_overrides": {},
+  "step": "surface_structures",
+  "avoid_radius": 3
+}

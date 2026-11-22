@@ -1,6 +1,6 @@
 ---
 name: integrated-263
-description: "Beim Arbeiten am Welttyp Hexxit Integrated (Teile 26b–26f) benutzen: einen 1.5.2-Generator aus OldTerrainGen als 26.3-Feature an Biome hängen (Biom-Modifier mit Tags), die Chunk-Brücke OldGeneratorFeature verstehen und erweitern (Höhenfenster, Biom-Zuordnung über Tags, welche Blöcke ersetzt werden), Legacy vs. Integrated am Testserver umschalten und prüfen."
+description: "Beim Arbeiten am Welttyp Hexxit Integrated (Teile 26b–26f) benutzen: einen 1.5.2-Generator aus OldTerrainGen als 26.3-Feature an Biome hängen (Biom-Modifier mit Tags), ein 1.5.2-Bauwerk als echte 26.3-Struktur (worldgen152:old_structure, Struktur-Set, /locate) oder eine 1.5.2-Dorfkomponente als Haus der 26.3-Dörfer, die Chunk-Brücke OldGeneratorFeature verstehen und erweitern (Höhenfenster, Biom-Zuordnung über Tags, welche Blöcke ersetzt werden), Legacy vs. Integrated am Testserver umschalten und prüfen."
 ---
 
 # Welttyp Hexxit Integrated (26.3-Gelände + Hexxit-Generatoren)
@@ -68,6 +68,37 @@ Nachbearbeitung im Schritt `raw_generation` (`natura/gen/NetherSoilGen`).
 - Zufall: `modRandom`-Formel von 1.5.2 mit `seed ^ hash(name)`, je Generator eigene Folge.
 - `world.layout()` und `world.structures()` sind in Integrated `null`; Generatoren, die sie brauchen, erst in 26c.
   Fehler werden einmal je Generator geloggt („1.5.2 world generator … failed“) und der Chunk bleibt ohne ihn.
+
+## Ein Bauwerk als 26.3-Struktur (Teil 26c)
+
+1. Builder im Mod: `OldTerrainGen.registerStructure("ns:name", (random, chunkX, chunkZ, world) -> …)` baut
+   **ohne** die alte Seltenheit (die macht das Struktur-Set), mit den Gelände-/Biom-Prüfungen des Originals. Selten
+   mögliche Chunks: dritter Parameter `(seed, cx, cz) -> boolean` (billig, vor jedem Gelände). Vorbilder:
+   `BTWorldGen`, `BDWorldGen`, `ZuluWorldGen.Structure.build`. Den Sammel-Generator für Legacy lassen, seine
+   Feature-Datei löschen, Rest (Pflanzen …) als `registerFeature` abtrennen.
+2. Daten: `worldgen/structure/<name>.json` (`"type": "worldgen152:old_structure", "generator": "ns:name",
+   "biomes": "#ns:has_structure/<name>", "spawn_overrides": {}, "step": "surface_structures", "avoid_radius": 3`),
+   `worldgen/structure_set/<name>.json` (`minecraft:random_spread`, spacing/separation ≈ Kandidaten-Anteil × Chance
+   des Originals, eigenes `salt`), Biom-Tag `tags/worldgen/biome/has_structure/<name>.json`; in
+   `worldgen152/…/data/hexxit/tags/worldgen/structure/structures.json` eintragen.
+3. So läuft es (`OldStructure`, `OldStructureBuild`): Gelände des Start-Chunks und aller berührten Chunks wird mit dem
+   echten Chunk-Generator in Hilfs-`ProtoChunk`s vorberechnet (vor Features, ohne Beardifier), der Builder läuft einmal
+   (alt = echt, y 0–255), die Box ist genau das Gebaute; jeder Chunk schreibt beim Dekorieren seinen Teil. Reichweite
+   höchstens 8 Chunks vom Start. Kein Bau → kein Start. `disabledFeatures` gilt auch für Builder-Namen.
+4. Prüfen: `locate structure ns:name` (bei langer Suche `tools/rcon.py` mit größerem Socket-Timeout),
+   in Stücken von ≤ 64 Chunks forceloaden, `tools/count_blocks.py` auf typische Blöcke (Spawner, Truhen).
+
+Kleine Bauten (Ruinen-Vorlagen, Risse) bleiben Features: `world.writable(minX, minZ, maxX, maxZ)` sagt, ob ein Platz
+ganz in den 3×3 Chunks liegt (Legacy: immer ja). Meldet ein Generator Orte an das Spiel (Risse, Pocket-Links), über
+`world.realX/realY/realZ` umrechnen (Feature: alt = echt + 8).
+
+## 1.5.2-Dorfkomponente als Haus der 26.3-Dörfer
+
+`OldStructures.VILLAGE_PIECES.put("ns:name", new VillagePiece(breite, höhe, tiefe, floor, gewichtProzent,
+(start, box, mode) -> new MyComponent(start, 0, new Random(0L), box, mode).grounded()))` – Größe in Ausrichtung 0
+(Tür bei z = 0, in der Mitte von x, Breite ungerade), `floor` = Blöcke von Straßenhöhe bis zu alt y 0 (Komponente, die
+`maxY + 4` versetzt: 0; `maxY + 2`: 1), `grounded()` setzt `averageGroundLevel` ≥ 0. `OldVillagePiece` trägt es beim
+Serverstart in `minecraft:village/<typ>/houses` ein. Vorbild: `tconstruct/gen/TCWorldGen` (Werkstatt, Schmelze).
 
 ## Prüfen am Server
 

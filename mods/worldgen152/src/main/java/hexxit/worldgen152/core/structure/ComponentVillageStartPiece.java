@@ -34,6 +34,17 @@ public class ComponentVillageStartPiece extends ComponentVillageWell {
         this.startPiece = this;
     }
 
+    /** A start piece that only tells its components the biome (pieces placed by a village of today). */
+    public ComponentVillageStartPiece(OldBiome biome) {
+        super((ComponentVillageStartPiece) null, 0, new Random(0L), 0, 0);
+        this.worldChunkMngr = null;
+        this.structureVillageWeightedPieceList = new ArrayList<>();
+        this.terrainType = 0;
+        this.inDesert = biome == OldBiomes.DESERT || biome == OldBiomes.DESERT_HILLS;
+        this.biome = biome;
+        this.startPiece = this;
+    }
+
     public OldStructures getWorldChunkManager() {
         return this.worldChunkMngr;
     }

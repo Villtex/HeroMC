@@ -1,0 +1,8 @@
+{
+  "type": "worldgen152:old_structure",
+  "generator": "projectzulu:pyramid",
+  "biomes": "#projectzulu:has_structure/pyramid",
+  "spawn_overrides": {},
+  "step": "surface_structures",
+  "avoid_radius": 3
+}

@@ -36,6 +36,12 @@ public final class BTWorldGen {
 
     public static void register() {
         OldTerrainGen.registerWorldGenerator(FML_ID, "battletowers:towers", BTWorldGen::generate);
+        // Hexxit Integrated: the structure battletowers:tower (structure set with the cells of isCandidate)
+        OldTerrainGen.registerStructure("battletowers:tower", (random, chunkX, chunkZ, world) -> {
+            if (biomeAllowed(world.getBiome(chunkX * 16 + 8, chunkZ * 16 + 8))) {
+                build(random, chunkX, chunkZ, world);
+            }
+        });
     }
 
     /** The entity name of the golem of a tower type (AS_EntityGolem.towerID, the ordinal of its tower type). */
@@ -69,6 +75,11 @@ public final class BTWorldGen {
         if (!isCandidate(world.seed(), chunkX, chunkZ) || !biomeAllowed(world.getBiome(chunkX, chunkZ))) {
             return;
         }
+        build(random, chunkX, chunkZ, world);
+    }
+
+    /** The tower of a chunk, with the checks of the original. */
+    private static void build(Random random, int chunkX, int chunkZ, OldWorld world) {
         int x = chunkX * 16;
         int z = chunkZ * 16;
         int h = 50;

@@ -34,6 +34,17 @@ public final class BDWorldGen {
         BDLoot.load();
         OldTerrainGen.registerWorldGenerator(FML_ID, "betterdungeons:dungeons", (random, chunkX, chunkZ, world) -> generate(world, chunkX, chunkZ));
         OldTerrainGen.registerReach(FML_ID, 8, BDWorldGen::reach);
+        // Hexxit Integrated: the dungeons and the great wall as structures, the chunk caves as a feature
+        OldTerrainGen.registerStructure("betterdungeons:dungeon", (random, chunkX, chunkZ, world) ->
+                generateBigDungeon(world, new Random(), chunkX * 16, chunkZ * 16, true));
+        OldTerrainGen.registerStructure("betterdungeons:great_wall", (random, chunkX, chunkZ, world) -> {
+            Random rnd = new Random(world.seed() + chunkX * 34904 + chunkZ * 34184);
+            BuilderWall.generate(rnd, world, chunkX * 16, chunkZ * 16);
+        }, (seed, chunkX, chunkZ) -> chunkZ == BuilderWall.WALL_CHUNK_Z);
+        OldTerrainGen.registerFeature("betterdungeons:chunk_caves", (random, chunkX, chunkZ, world) -> {
+            Random rnd = new Random(world.seed() + chunkX * 34904 + chunkZ * 34184);
+            chunkCaves(world, rnd, chunkX * 16, chunkZ * 16);
+        });
     }
 
     /**
@@ -68,14 +79,7 @@ public final class BDWorldGen {
 
     private static void generateSurface(OldWorld world, Random random, int i, int k) {
         if (world.dimension() == 0) {
-            // underworld caves off (BuilderChunkCaveBottom)
-            OldBiome biome = world.getBiome(i, k);
-            if (biome == OldBiomes.JUNGLE) {
-                new BuilderChunkJungle().generate(random, world, i, 40, k);
-            }
-            if (biome == OldBiomes.SWAMPLAND) {
-                new BuilderChunkSwamp().generate(random, world, i, 40, k);
-            }
+            chunkCaves(world, random, i, k);
             // BuilderChunkMineshafts runs, but does nothing: mineshafts = 0 became Integer.MAX_VALUE, doubled to -2,
             // and it starts only for a chance above 0
             if (k / 16 == BuilderWall.WALL_CHUNK_Z) {
@@ -84,6 +88,17 @@ public final class BDWorldGen {
         }
         if (i / 16 % DUNGEON_SEPARATION == 0 && k / 16 % DUNGEON_SEPARATION == 0) {
             generateBigDungeon(world, random, i, k, true);
+        }
+    }
+
+    /** The jungle or swamp cave of a chunk (biome at its corner); underworld caves are off (BuilderChunkCaveBottom). */
+    private static void chunkCaves(OldWorld world, Random random, int i, int k) {
+        OldBiome biome = world.getBiome(i, k);
+        if (biome == OldBiomes.JUNGLE) {
+            new BuilderChunkJungle().generate(random, world, i, 40, k);
+        }
+        if (biome == OldBiomes.SWAMPLAND) {
+            new BuilderChunkSwamp().generate(random, world, i, 40, k);
         }
     }
 

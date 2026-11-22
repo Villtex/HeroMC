@@ -67,6 +67,23 @@ public final class OldStructures {
      */
     public static final CopyOnWriteArrayList<VillageHandler> VILLAGE_HANDLERS = new CopyOnWriteArrayList<>();
 
+    /** Builds a village component for a place chosen by the village of today (world type Hexxit Integrated). */
+    public interface VillagePieceFactory {
+        /** The component in {@code box} (world coordinates, its ground level already set), facing {@code coordBaseMode}. */
+        ComponentVillage create(ComponentVillageStartPiece start, StructureBoundingBox box, int coordBaseMode);
+    }
+
+    /**
+     * A village component as a piece of the villages of today: its size in the 1.5.2 orientation 0 (door side at
+     * z = 0, door in the middle of x), {@code floor} = how many blocks below its y 0 the street lies, and how much of a
+     * house pool's weight it gets (percent).
+     */
+    public record VillagePiece(int width, int height, int depth, int floor, int weightPercent, VillagePieceFactory factory) {
+    }
+
+    /** Village pieces for the villages of today, by name ({@code "tconstruct:tool_workshop"}). */
+    public static final java.util.Map<String, VillagePiece> VILLAGE_PIECES = new java.util.concurrent.ConcurrentHashMap<>();
+
     @SuppressWarnings({"rawtypes", "unchecked"})
     static void addExtraVillageComponents(ArrayList pieces, Random random, int size) {
         for (VillageHandler handler : VILLAGE_HANDLERS) {

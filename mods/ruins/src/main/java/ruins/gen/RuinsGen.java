@@ -426,8 +426,10 @@ public final class RuinsGen {
 
         /** Whether the site stays inside what the population of a tile covers around this chunk. */
         private boolean inReach(int[] extent) {
+            // Hexxit Integrated: a site that the feature cannot write as a whole is not built
             return extent[0] >= this.originX - 48 && extent[1] >= this.originZ - 48
-                    && extent[2] < this.originX + 80 && extent[3] < this.originZ + 80;
+                    && extent[2] < this.originX + 80 && extent[3] < this.originZ + 80
+                    && this.world.writable(extent[0], extent[1], extent[2], extent[3]);
         }
 
         static int getRandomAdjustment(Random random, int minDistance) {

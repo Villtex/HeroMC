@@ -17,11 +17,14 @@ Jeder Mod wird deshalb gegen das dekompilierte Original als Referenz **neu gesch
 - **Rezeptanzeige:** Not Enough Items wird nicht portiert. Stattdessen sind alle portierten Mods mit
   **JEI** kompatibel; eigene Rezepttypen bekommen ein JEI-Plugin.
 - **Twilight Forest** ist in die Teile 24a–24f aufgeteilt, **Tinkers' Construct** in die Teile 25a–25f.
-- **Welttypen (Teil 26, 26a und 26b erledigt):** „Hexxit Integrated“ ist der Standard (`minecraft:normal`: 26.3-Generierung
+- **Welttypen (Teil 26, 26a–26c erledigt):** „Hexxit Integrated“ ist der Standard (`minecraft:normal`: 26.3-Generierung
   plus Hexxit-Inhalte, offen für fremde 26.3-Mods: deren Biome, Bauwerke, Rohre und Werkzeuge arbeiten mit der Welt).
   „Hexxit Legacy (1.5.2)“ (`hexxit:legacy`) ist die bitgenaue 1.5.2-Welt. Am Server: `level-type=hexxit\:legacy` in
   `server.properties` für Legacy, ohne Eintrag Integrated. Erze, Pflanzen, Bäume und Nether-Generatoren sind in Integrated
-  eingehängt (Teil 26b); Bauwerke folgen in 26c. Erze lassen sich in `config/worldgen152-startup.toml` abschalten.
+  eingehängt (Teil 26b). Bauwerke (Battle Towers, Better Dungeons, Project-Zulu-Pyramide/Labyrinth/Friedhof/Oase)
+  sind echte 26.3-Strukturen mit Struktur-Sets (`/locate structure battletowers:tower`, Tag `#hexxit:structures`), kleine
+  Bauten (Ruinen, Risse) Features, die Tinkers-Werkstatt und -Schmelze Häuser der 26.3-Dörfer (Teil 26c). Erze und
+  einzelne Generatoren lassen sich in `config/worldgen152-startup.toml` abschalten.
 
 ## Arbeitsplan
 
@@ -56,7 +59,7 @@ Der Port ist in Teile aufgeteilt, die je in eine Session passen: [`docs/PLAN.md`
 | `.claude/skills/tinkers-tools-263/` | Projekt-Skill: Tinkers' Construct weiterbauen (Komponente `tconstruct:tool`, Teile/Materialien/Muster, alte IDs, Modifikatoren, Schmelzerei-Tabellen und Flüssigkeiten, Prüfen ohne Spieler) |
 | `.claude/skills/twilight-forest-263/` | Projekt-Skill: Twilight Forest weiterbauen (Kern `twilightforest.gen`, Bauwerke `gen.structure` mit Übersetzungsskript, Starts, Truhen, Spawnlisten, Prüfung mit `expect.sh … twilight structures`) |
 | `.claude/skills/headless-client/` | Projekt-Skill: Testclient im Cloud-Container ohne Bildschirm starten (Xvfb, `SDL_VIDEO_FORCE_EGL=1`, Screenshots, xdotool, Testserver beitreten) |
-| `.claude/skills/integrated-263/` | Projekt-Skill: Welttyp Hexxit Integrated (Teil 26) – 1.5.2-Generator als 26.3-Feature mit Biom-Modifier einhängen, Chunk-Brücke `OldGeneratorFeature` (Verschiebung, Höhenfenster, Biome über Tags, was ersetzt wird), Legacy/Integrated am Server umschalten und prüfen |
+| `.claude/skills/integrated-263/` | Projekt-Skill: Welttyp Hexxit Integrated (Teil 26) – 1.5.2-Generator als 26.3-Feature mit Biom-Modifier einhängen, Chunk-Brücke `OldGeneratorFeature` (Verschiebung, Höhenfenster, Biome über Tags, was ersetzt wird), Bauwerke als 26.3-Strukturen (`worldgen152:old_structure`), 1.5.2-Dorfteile in 26.3-Dörfern, Legacy/Integrated am Server umschalten und prüfen |
 
 ## Bauen und Starten
 

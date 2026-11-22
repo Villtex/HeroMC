@@ -1,0 +1,32 @@
+{
+  "values": [
+    {
+      "id": "battletowers:tower",
+      "required": false
+    },
+    {
+      "id": "betterdungeons:dungeon",
+      "required": false
+    },
+    {
+      "id": "betterdungeons:great_wall",
+      "required": false
+    },
+    {
+      "id": "projectzulu:pyramid",
+      "required": false
+    },
+    {
+      "id": "projectzulu:labyrinth",
+      "required": false
+    },
+    {
+      "id": "projectzulu:cemetary",
+      "required": false
+    },
+    {
+      "id": "projectzulu:oasis",
+      "required": false
+    }
+  ]
+}

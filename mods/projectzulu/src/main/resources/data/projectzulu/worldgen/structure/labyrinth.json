@@ -1,0 +1,8 @@
+{
+  "type": "worldgen152:old_structure",
+  "generator": "projectzulu:labyrinth",
+  "biomes": "#projectzulu:has_structure/labyrinth",
+  "spawn_overrides": {},
+  "step": "surface_structures",
+  "avoid_radius": 3
+}

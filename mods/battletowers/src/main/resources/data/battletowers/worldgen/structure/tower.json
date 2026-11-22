@@ -1,0 +1,8 @@
+{
+  "type": "worldgen152:old_structure",
+  "generator": "battletowers:tower",
+  "biomes": "#battletowers:has_structure/tower",
+  "spawn_overrides": {},
+  "step": "surface_structures",
+  "avoid_radius": 3
+}

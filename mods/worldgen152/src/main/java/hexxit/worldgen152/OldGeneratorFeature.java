@@ -107,7 +107,7 @@ public record OldGeneratorFeature(String generator, int minY, int maxY, int yOff
         int chunkX = SectionPos.blockToSectionCoord(origin.getX());
         int chunkZ = SectionPos.blockToSectionCoord(origin.getZ());
         try {
-            return new Run(level, chunkX, chunkZ, nether).run(gen);
+            return new Run(level, chunkX, chunkZ, nether, SHIFT).run(gen);
         } catch (RuntimeException e) {
             if (REPORTED.add(this.generator + "!")) {
                 LOGGER.error("1.5.2 world generator {} failed in chunk {} {}", this.generator, chunkX, chunkZ, e);
@@ -116,7 +116,16 @@ public record OldGeneratorFeature(String generator, int minY, int maxY, int yOff
         }
     }
 
-    private static int cell(BlockState state) {
+    /**
+     * Runs {@code gen} on the 3x3 chunks around chunkX/chunkZ of the overworld with old and real coordinates the same
+     * (pieces of today that a 1.5.2 component builds, like the village pieces of Tinkers' Construct); writes back as
+     * the feature does. {@code name} seeds the random.
+     */
+    static boolean runLive(WorldGenLevel level, int chunkX, int chunkZ, String name, OldTerrainGen.WorldGenerator gen) {
+        return new OldGeneratorFeature(name, 0, 255, 0).new Run(level, chunkX, chunkZ, false, 0).run(gen);
+    }
+
+    static int cell(BlockState state) {
         Integer cell = CELLS.get(state);
         if (cell == null) {
             cell = OldLiveGen.oldCell(state);
@@ -164,6 +173,8 @@ public record OldGeneratorFeature(String generator, int minY, int maxY, int yOff
         private final int chunkX;
         private final int chunkZ;
         private final boolean nether;
+        /** Old x/z = real x/z + shift. */
+        private final int shift;
         /** Real block area the generator may read and write: the 3x3 chunks around the chunk. */
         private final int minX;
         private final int minZ;
@@ -176,7 +187,8 @@ public record OldGeneratorFeature(String generator, int minY, int maxY, int yOff
         /** Old chunks handed to the old world, with their cells before the generator ran (0..255 high). */
         private final Map<Long, char[]> before = new HashMap<>();
 
-        Run(WorldGenLevel level, int chunkX, int chunkZ, boolean nether) {
+        Run(WorldGenLevel level, int chunkX, int chunkZ, boolean nether, int shift) {
+            this.shift = shift;
             this.level = level;
             this.chunkX = chunkX;
             this.chunkZ = chunkZ;
@@ -203,8 +215,8 @@ public record OldGeneratorFeature(String generator, int minY, int maxY, int yOff
                 return cells;
             }
             cells = new char[256 * 256];
-            int baseX = ocx * 16 - SHIFT;
-            int baseZ = ocz * 16 - SHIFT;
+            int baseX = ocx * 16 - this.shift;
+            int baseZ = ocz * 16 - this.shift;
             for (int lx = 0; lx < 16; lx++) {
                 for (int lz = 0; lz < 16; lz++) {
                     int x = baseX + lx;
@@ -237,8 +249,8 @@ public record OldGeneratorFeature(String generator, int minY, int maxY, int yOff
             byte[] biomes = new byte[256];
             for (int lx = 0; lx < 16; lx++) {
                 for (int lz = 0; lz < 16; lz++) {
-                    int x = Math.clamp(ocx * 16 - SHIFT + lx, this.minX, this.maxX);
-                    int z = Math.clamp(ocz * 16 - SHIFT + lz, this.minZ, this.maxZ);
+                    int x = Math.clamp(ocx * 16 - this.shift + lx, this.minX, this.maxX);
+                    int z = Math.clamp(ocz * 16 - this.shift + lz, this.minZ, this.maxZ);
                     int y = this.nether ? 64 : this.level.getHeight(Heightmap.Types.WORLD_SURFACE_WG, x, z);
                     biomes[lx + lz * 16] = (byte) OldBiomeTags.oldId(this.level.getNoiseBiome(x >> 2, Math.clamp(y, this.level.getMinY(), this.level.getMaxY()) >> 2, z >> 2), this.nether);
                 }
@@ -271,6 +283,8 @@ public record OldGeneratorFeature(String generator, int minY, int maxY, int yOff
             long seed = this.level.getSeed();
             OldWorld world = this.nether ? OldWorld.nether(seed, terrain) : new OldWorld(seed, terrain);
             world.beginChunk();
+            world.setRealOffset(-this.shift, this.off, -this.shift);
+            world.setWritableArea(this.minX + this.shift, this.minZ + this.shift, this.maxX + this.shift, this.maxZ + this.shift);
             // the random sequence of GameRegistry.generateWorld, separate for each generator
             long genSeed = seed ^ (long) OldGeneratorFeature.this.generator.hashCode() * 0x9E3779B97F4A7C15L;
             Random random = new Random(genSeed);
@@ -292,7 +306,7 @@ public record OldGeneratorFeature(String generator, int minY, int maxY, int yOff
                     for (int lz = 0; lz < 16; lz++) {
                         int ox = ocx * 16 + lx;
                         int oz = ocz * 16 + lz;
-                        if (!this.inArea(ox - SHIFT, oz - SHIFT)) {
+                        if (!this.inArea(ox - this.shift, oz - this.shift)) {
                             continue;
                         }
                         int column = (lx * 16 + lz) * 256;
@@ -300,7 +314,7 @@ public record OldGeneratorFeature(String generator, int minY, int maxY, int yOff
                             int id = world.getBlockId(ox, y, oz);
                             int cell = id << 4 | world.getBlockMetadata(ox, y, oz);
                             if (cell != old[column + y]) {
-                                changed.add(new BlockPos(ox - SHIFT, y + this.off, oz - SHIFT));
+                                changed.add(new BlockPos(ox - this.shift, y + this.off, oz - this.shift));
                                 cells.add(new int[] {ox, y, oz, cell});
                             }
                         }
@@ -321,7 +335,7 @@ public record OldGeneratorFeature(String generator, int minY, int maxY, int yOff
                 if (real.is(BlockTags.DEEPSLATE_ORE_REPLACEABLES)) {
                     state = deepslate(state);
                 }
-                state = this.shape(world, state, c[0], c[1], c[2]);
+                state = shape(world, state, c[0], c[1], c[2]);
                 this.level.setBlock(at, state, Block.UPDATE_CLIENTS);
                 any = true;
                 ChunkAccess chunk = this.level.getChunk(at);
@@ -339,15 +353,15 @@ public record OldGeneratorFeature(String generator, int minY, int maxY, int yOff
             }
             for (long key : this.before.keySet()) {
                 for (OldEntity old : world.entities((int) (key >> 32), (int) key)) {
-                    int x = (int) Math.floor(old.x()) - SHIFT;
-                    int z = (int) Math.floor(old.z()) - SHIFT;
+                    int x = (int) Math.floor(old.x()) - this.shift;
+                    int z = (int) Math.floor(old.z()) - this.shift;
                     if (!this.inArea(x, z)) {
                         continue;
                     }
-                    Entity entity = OldChunkWriter.entity(old, this.level.getLevel(), this.level.registryAccess(), -SHIFT, -SHIFT);
+                    Entity entity = OldChunkWriter.entity(old, this.level.getLevel(), this.level.registryAccess(), -this.shift, -this.shift);
                     if (entity != null) {
                         if (!(entity instanceof HangingEntity)) {
-                            entity.snapTo(old.x() - SHIFT, old.y() + this.off, old.z() - SHIFT,
+                            entity.snapTo(old.x() - this.shift, old.y() + this.off, old.z() - this.shift,
                                     old instanceof OldEntity.Mob mob ? mob.yaw() : 0.0F, 0.0F);
                         }
                         this.level.addFreshEntity(entity);
@@ -358,22 +372,23 @@ public record OldGeneratorFeature(String generator, int minY, int maxY, int yOff
             return any;
         }
 
-        /** The states that depend on neighbours, as the chunk writer sets them. */
-        private BlockState shape(OldWorld world, BlockState state, int ox, int y, int oz) {
-            if (state.getBlock() instanceof LeavesBlock) {
-                return state.setValue(LeavesBlock.DISTANCE, leafDistance(world, ox, y, oz));
-            }
-            if (state.getBlock() instanceof VineBlock) {
-                state = state.setValue(BlockStateProperties.UP, y + 1 < 256 && OldBlockInfo.holdsVines(world.getBlockId(ox, y + 1, oz)));
-            }
-            if (state.getBlock() instanceof DoorBlock) {
-                state = OldLiveGen.door(world, state, ox, y, oz);
-            }
-            if (state.hasProperty(BlockStateProperties.SNOWY)) {
-                state = state.setValue(BlockStateProperties.SNOWY, y + 1 < 256 && OldChunkWriter.isSnow(world.getBlockId(ox, y + 1, oz)));
-            }
-            return state;
+    }
+
+    /** The states that depend on neighbours, as the chunk writer sets them. */
+    static BlockState shape(OldWorld world, BlockState state, int ox, int y, int oz) {
+        if (state.getBlock() instanceof LeavesBlock) {
+            return state.setValue(LeavesBlock.DISTANCE, leafDistance(world, ox, y, oz));
         }
+        if (state.getBlock() instanceof VineBlock) {
+            state = state.setValue(BlockStateProperties.UP, y + 1 < 256 && OldBlockInfo.holdsVines(world.getBlockId(ox, y + 1, oz)));
+        }
+        if (state.getBlock() instanceof DoorBlock) {
+            state = OldLiveGen.door(world, state, ox, y, oz);
+        }
+        if (state.hasProperty(BlockStateProperties.SNOWY)) {
+            state = state.setValue(BlockStateProperties.SNOWY, y + 1 < 256 && OldChunkWriter.isSnow(world.getBlockId(ox, y + 1, oz)));
+        }
+        return state;
     }
 
     /** Steps through leaves to the nearest log, 7 when none is within 6 (LeavesBlock.DISTANCE). */

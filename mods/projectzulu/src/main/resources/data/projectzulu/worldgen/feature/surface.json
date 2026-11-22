@@ -1,0 +1,6 @@
+{
+  "type": "worldgen152:old_generator",
+  "generator": "projectzulu:surface",
+  "min_y": 0,
+  "max_y": 255
+}

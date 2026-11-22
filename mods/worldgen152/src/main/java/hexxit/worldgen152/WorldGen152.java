@@ -40,6 +40,14 @@ public final class WorldGen152 {
     private static final DeferredRegister<MapCodec<? extends BiomeSource>> BIOME_SOURCES =
             DeferredRegister.create(Registries.BIOME_SOURCE, MOD_ID);
 
+    private static final DeferredRegister<net.minecraft.world.level.levelgen.structure.StructureType<?>> STRUCTURE_TYPES =
+            DeferredRegister.create(Registries.STRUCTURE_TYPE, MOD_ID);
+    private static final DeferredRegister<net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType> STRUCTURE_PIECES =
+            DeferredRegister.create(Registries.STRUCTURE_PIECE, MOD_ID);
+
+    private static final DeferredRegister<net.minecraft.world.level.levelgen.structure.pools.StructurePoolElementType<?>> POOL_ELEMENTS =
+            DeferredRegister.create(Registries.STRUCTURE_POOL_ELEMENT, MOD_ID);
+
     public WorldGen152(IEventBus modBus, net.neoforged.fml.ModContainer container) {
         container.registerConfig(net.neoforged.fml.config.ModConfig.Type.STARTUP, IntegratedConfig.SPEC);
         CHUNK_GENERATORS.register("overworld", () -> OldChunkGenerator.CODEC);
@@ -48,6 +56,20 @@ public final class WorldGen152 {
         // a 1.5.2 world generator as a feature of today (world type Hexxit Integrated), see OldGeneratorFeature
         FEATURE_TYPES.register("old_generator", () -> OldGeneratorFeature.CODEC);
         FEATURE_TYPES.register(modBus);
+        // a 1.5.2 structure as a structure of today (world type Hexxit Integrated), see OldStructure
+        OldStructure.TYPE = STRUCTURE_TYPES.register("old_structure", () -> () -> OldStructure.CODEC);
+        OldStructure.PIECE = STRUCTURE_PIECES.register("old_piece",
+                () -> (net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType.ContextlessType) OldStructure.Piece::new);
+        OldVillagePiece.TYPE = POOL_ELEMENTS.register("old_village_piece", () -> () -> OldVillagePiece.CODEC);
+        POOL_ELEMENTS.register(modBus);
+        STRUCTURE_TYPES.register(modBus);
+        STRUCTURE_PIECES.register(modBus);
+        NeoForge.EVENT_BUS.addListener(LevelEvent.Load.class, event -> {
+            if (event.getLevel() instanceof ServerLevel level) {
+                OldStructure.levelLoaded(level);
+            }
+        });
+        NeoForge.EVENT_BUS.addListener(net.neoforged.neoforge.event.server.ServerStoppedEvent.class, event -> OldStructure.serverStopped());
         BIOME_MODIFIERS.register("replace_vanilla_ores", () -> ReplaceVanillaOresModifier.CODEC);
         BIOME_MODIFIERS.register(modBus);
         CHUNK_GENERATORS.register(modBus);
@@ -72,6 +94,7 @@ public final class WorldGen152 {
     /** Biome sources are created without knowing the world seed; hand it over before any chunk is generated. */
     private static void onServerAboutToStart(ServerAboutToStartEvent event) {
         MinecraftServer server = event.getServer();
+        OldVillagePiece.addToVillages(server);
         long seed = server.getWorldGenSettings().options().seed();
         for (LevelStem stem : server.getWorldGenSettings().dimensions().dimensions().values()) {
             if (stem.generator() instanceof OldNetherChunkGenerator nether) {

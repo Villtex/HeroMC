@@ -81,7 +81,7 @@ public final class RiftGen {
                     }
                     // createLink: the rift replaces whatever was there (the spot is air)
                     world.setBlock(x, y + 1, z, RIFT);
-                    rifts.add(new int[] {x, y + 1, z});
+                    rifts.add(new int[] {world.realX(x), world.realY(y + 1), world.realZ(z)});
                 }
             } while (random.nextInt(100) < 80);
             if (!rifts.isEmpty()) {
@@ -123,7 +123,7 @@ public final class RiftGen {
                 world.setBlock(x, y, z + 1, block, 0);
                 Links target = links;
                 if (target != null) {
-                    target.gateway(dimension, x, y + 1, z, orientation);
+                    target.gateway(dimension, world.realX(x), world.realY(y + 1), world.realZ(z), orientation);
                 }
                 java.util.function.Consumer<String> report = built;
                 if (report != null) {

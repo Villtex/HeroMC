@@ -38,6 +38,16 @@ public final class ZuluWorldGen {
         ZuluLoot.register();
         registerBlocks();
         OldTerrainGen.registerWorldGenerator(FML_ID, "projectzulu:world", ZuluWorldGen::generate);
+        // Hexxit Integrated: the four structures as structures of today, the rest of the surface as a feature
+        for (Structure structure : Structure.values()) {
+            OldTerrainGen.registerStructure("projectzulu:" + structure.name().toLowerCase(java.util.Locale.ROOT),
+                    (random, chunkX, chunkZ, world) -> structure.build(world, random, chunkX * 16, chunkZ * 16));
+        }
+        OldTerrainGen.registerFeature("projectzulu:surface", (random, chunkX, chunkZ, world) -> {
+            if (world.dimension() == 0 || world.dimension() == -1) {
+                surface(world, random, chunkX * 16, chunkZ * 16);
+            }
+        });
     }
 
     /**
@@ -106,6 +116,11 @@ public final class ZuluWorldGen {
         if (Structure.tryToGenerateStructure(world, blockX, blockZ, x, y, z, random)) {
             return;
         }
+        surface(world, random, blockX, blockZ);
+    }
+
+    /** What ProjectZuluGenerator does on the surface besides the structures: sand over desert water, the plants. */
+    private static void surface(OldWorld world, Random random, int blockX, int blockZ) {
         random.nextInt(60); // Ycoord of WorldGenReplaceTop, which it does not use
         ZuluSurface.replaceTop(world, 12, WATER, DESERTS, blockX, blockZ);
         // ProjectZulu|Blocks is loaded, all four plants exist
@@ -201,6 +216,19 @@ public final class ZuluWorldGen {
         abstract boolean checkToGenerate(OldWorld world, int x, int y, int z, Random random);
 
         abstract boolean generate(OldWorld world, int x, int y, int z, Random random);
+
+        /**
+         * The structure in the chunk at blockX/blockZ, without the rarity (Hexxit Integrated: the structure set of
+         * today places it): spot and checks as in tryToGenerateStructure.
+         */
+        void build(OldWorld world, Random random, int blockX, int blockZ) {
+            int x = blockX + random.nextInt(16);
+            int z = blockZ + random.nextInt(16);
+            int y = world.getTopSolidOrLiquidBlock(x, z);
+            if (this.biomes.contains(world.getBiome(x, z).name) && this.checkToGenerate(world, x, y, z, random)) {
+                this.generate(world, x, y, z, random);
+            }
+        }
 
         /**
          * StructureManager.tryToGenerateStructure ({@code blockX}/{@code blockZ} are the chunk's block coordinates, as

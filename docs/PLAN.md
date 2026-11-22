@@ -75,7 +75,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 25f | Tinkers' Construct F: Deko-Blöcke, Fallen, Landmine, Redstone-Maschinen, Kristall/Essenz | ~9.000 | 25a | Opus 5.5, mittel | ✅ erledigt |
 | 26a | Integrated A: Welttypen Legacy/Integrated, Chunk-Brücke, Mod-Generatoren als einzelne registrierte Features | ~3.000 | 2 | Fable 5.2, hoch | ✅ erledigt |
 | 26b | Integrated B: Erze, Pflanzen, Bäume, Nether-Generatoren per Biom-Modifier und Biom-Tags | ~2.000 | 26a | Opus 5.5, hoch | ✅ erledigt |
-| 26c | Integrated C: Bauwerke und Dungeons als echte 26.3-Strukturen (`/locate`, Abstand zu fremden Strukturen) | ~4.000 | 26a | Fable 5.2, hoch | offen |
+| 26c | Integrated C: Bauwerke und Dungeons als echte 26.3-Strukturen (`/locate`, Abstand zu fremden Strukturen) | ~4.000 | 26a | Fable 5.2, hoch | ✅ erledigt |
 | 26d | Integrated D: EBXL-Biome neben Vanilla- und fremden Biomen, Mob-Spawns per Biom-Modifier | ~3.000 | 26b | Fable 5.2, hoch | offen |
 | 26e | Integrated E: Schnittstellen für fremde Mods (Capabilities, `c:`-Tags, Werkzeug-Fähigkeiten, Rezepte über Tags) | ~4.000 | – | Opus 5.5, mittel | offen |
 | 26f | Integrated F: Test mit fremden 26.3-Mods, Gesamtprüfung | – | 26a–26e | Opus 5.5, mittel | offen |
@@ -2054,6 +2054,46 @@ Forest, Limbo/Taschendimensionen von Dimensional Doors) behalten ihre Generatore
 - Struktur- und Biom-Tags (`c:`/`minecraft:`) an die Hexxit-Strukturen hängen, damit andere Mods sie finden.
 - Tinkers-Dorf-Bauteile in Integrated als Vorlagen-Pool (`template_pool`) an die 26.3-Dörfer anhängen, statt an
   `OldStructures.VILLAGE_HANDLERS`.
+
+#### Teil 26c – Stand (✅ erledigt)
+- **Struktur-Brücke** (`worldgen152`): Strukturtyp `worldgen152:old_structure` (`OldStructure`, Feld `generator`, optional
+  `avoid_radius` in Chunks, Standard 3), Stück `worldgen152:old_piece`. Wo eine Struktur starten darf, sagt ihr
+  `structure_set` (`random_spread`), damit gehen `/locate`, Karten und Abstandsregeln fremder Mods. Für den Start-Chunk
+  baut `OldStructureBuild` das Gelände von 26.3 vor allen Features nach (`createBiomes` + `buildTerrain` des echten
+  Chunk-Generators in einen Hilfs-`ProtoChunk`, ohne Beardifier fremder Strukturen), lässt den 1.5.2-Builder einmal
+  darauf laufen (alte = echte Koordinaten, Höhe 0–255) und merkt sich je Chunk die geänderten Blöcke, Truhen-/Spawner-
+  Daten und Entities (Zwischenspeicher: 48 Ergebnisse, 160 Gelände-Chunks; nach Neustart gleich neu berechnet). Die
+  Box des Starts ist genau, was gebaut wurde; jeder Chunk schreibt beim Dekorieren seinen Teil (Regeln wie die
+  Feature-Brücke, `replaceable`). Vor dem Bau: Biom-Prüfung (Spalte, dann Oberfläche in Chunk-Mitte gegen die
+  `biomes` der Struktur) und Abstand zu möglichen Starts fremder/Vanilla-Oberflächenstrukturen (Platzierung +
+  passendes Biom, Hexxit-Strukturen untereinander nicht). In Legacy tut die Struktur nichts.
+- **Builder:** `OldTerrainGen.registerStructure(name, builder[, filter])` – baut ohne die alte Seltenheit, mit den
+  Gelände- und Biom-Prüfungen des Originals; der Filter ist ein billiger Vorab-Test (Große Mauer: nur Chunk-Reihe
+  z = −500). Strukturen: `battletowers:tower` (64/54 wie die Zellen von `isCandidate`), `betterdungeons:dungeon` (5/1
+  wie das 5×5-Raster, Typ je Biom wie im Original), `betterdungeons:great_wall` (1/0 + Filter, `avoid_radius` 0),
+  `projectzulu:pyramid` (22/7, `#c:is_desert`), `labyrinth` (22/7), `cemetary` (13/4), `oasis` (27/9, `#c:is_desert`);
+  Abstände aus Kandidaten-Anteil × Chance des Originals. Biom-Tags `<ns>:has_structure/<name>`, Struktur-Tag
+  `#hexxit:structures`.
+- **Features (Biom-Modifier):** `as_ruins:ruins` (Oberwelt + Nether; baut nur Plätze, die ganz in den 3×3 Chunks
+  liegen: `OldWorld.writableArea()`), `dimdoors:rifts` (Oberwelt + Nether; Risse/Tore melden echte Koordinaten über
+  `OldWorld.realX/Y/Z`), `betterdungeons:chunk_caves`, `projectzulu:surface` (Sand über Wüstenwasser, Pflanzen),
+  `legendgear:shrubs|bomb_flowers`, `hexxitgear:plants`, `chococraft:gysahls`. Die alten Sammel-Feature-Dateien
+  `betterdungeons:dungeons`, `projectzulu:world`, `battletowers:towers` sind entfernt.
+- **Tinkers-Dorfteile:** Pool-Element `worldgen152:old_village_piece` (`OldVillagePiece`): eine 1.5.2-Dorfkomponente
+  (`OldStructures.VILLAGE_PIECES`, Größe in Ausrichtung 0, Tür in der Mitte von z = 0) mit einem Eingang
+  `minecraft:building_entrance`, gebaut je Chunk über die Live-Brücke (`OldGeneratorFeature.runLive`, ohne
+  Verschiebung). Beim Serverstart in die Haus-Pools der fünf Vanilla-Dörfer eingetragen (Werkstatt 10 %, Schmelze 1 %
+  des Pool-Gewichts; per Reflection auf `rawTemplates`/`templates`, NeoForge 26.3 hat keinen Daten-Weg dafür).
+- **Weggelassen:** Twilight Forest hat in 1.5.2 keine Oberwelt-Generierung (keine Eingänge zu portieren); qCraft-
+  Quantenerz kommt über CoFH (`quantumcraft:world` ist im Pack aus).
+- **Geprüft:** `clean pack` grün. Integrated, Seed 1234, ohne Fehler im Log: `locate` findet Turm (−2016/−960), Dungeon
+  (−624/160, 135 Blöcke), Friedhof, Labyrinth, Pyramide (−6320/5296, Wüsten sind bei diesem Seed weit), Oase. Gebaut:
+  Turm 18 Spawner, 20 Truhen, 3.413 Moosbruchstein; Dungeon 53 Spawner, 34 Truhen, 6.664 Steinziegel; Friedhof 13
+  Grabsteine; Dorf bei −960/176: 5 Werkzeugstationen. Legacy: `expect.sh 1234 find 260` + `verify_blocks.py` wie
+  vorher (296.610 gleich, die 2 bekannten Ranken; Biome, Truhen, Spawner, Entities 0 Abweichungen).
+- **Offen:** Client-Prüfung offen (Ausrichtung der Tinkers-Häuser zur Straße, Übergänge Bau/Gelände). Die Große Mauer
+  (z = −8000) liegt außerhalb der `/locate`-Suchweite. `forceload` großer Flächen (> ~100 Chunks auf einmal) löst den
+  Watchdog aus (Chunks werden synchron erzeugt, nicht durch 26c).
 
 ### Teil 26d – EBXL-Biome neben Vanilla- und fremden Biomen
 - Die EBXL-Biome als echte 26.3-Biome mit Klima-Parametern. Wichtig: Die Biomquelle **nicht** durch eine feste Liste

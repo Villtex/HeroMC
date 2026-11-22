@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 49172304,
+    "separation": 9,
+    "spacing": 27
+  },
+  "structures": [
+    {
+      "structure": "projectzulu:oasis",
+      "weight": 1
+    }
+  ]
+}
