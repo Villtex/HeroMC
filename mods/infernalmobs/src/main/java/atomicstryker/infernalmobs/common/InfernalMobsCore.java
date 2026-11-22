@@ -12,6 +12,8 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
@@ -162,8 +164,11 @@ public final class InfernalMobsCore {
         return BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString();
     }
 
+    /** Entity types that never become rare, besides forbiddenEntities of the config; other mods can add theirs. */
+    public static final TagKey<EntityType<?>> FORBIDDEN = TagKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(MOD_ID, "forbidden"));
+
     private static boolean checkEntityClassAllowed(LivingEntity entity) {
-        return !IMConfig.forbiddenEntities().contains(typeId(entity));
+        return !entity.getType().builtInRegistryHolder().is(FORBIDDEN) && !IMConfig.forbiddenEntities().contains(typeId(entity));
     }
 
     private static boolean checkEntityClassForced(LivingEntity entity) {

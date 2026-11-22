@@ -1,9 +1,24 @@
 {
   "type": "neoforge:add_spawns",
-  "biomes": [
-    "worldgen152:desert",
-    "worldgen152:desert_hills"
-  ],
+  "biomes": {
+    "type": "neoforge:or",
+    "values": [
+      [
+        "worldgen152:desert",
+        "worldgen152:desert_hills"
+      ],
+      {
+        "type": "neoforge:and",
+        "values": [
+          "#c:is_desert",
+          {
+            "type": "neoforge:not",
+            "value": "#worldgen152:old_biomes"
+          }
+        ]
+      }
+    ]
+  },
   "spawners": [
     {
       "type": "projectzulu:mummy",

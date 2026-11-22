@@ -1,19 +1,41 @@
 {
   "type": "neoforge:add_spawns",
-  "biomes": [
-    "extrabiomesxl:autumn_woods",
-    "extrabiomesxl:birch_forest",
-    "extrabiomesxl:forested_hills",
-    "extrabiomesxl:forested_island",
-    "extrabiomesxl:green_hills",
-    "extrabiomesxl:redwood_forest",
-    "extrabiomesxl:redwood_lush",
-    "extrabiomesxl:temperate_rainforest",
-    "extrabiomesxl:woodlands",
-    "worldgen152:forest",
-    "worldgen152:forest_hills",
-    "worldgen152:plains"
-  ],
+  "biomes": {
+    "type": "neoforge:or",
+    "values": [
+      [
+        "extrabiomesxl:autumn_woods",
+        "extrabiomesxl:birch_forest",
+        "extrabiomesxl:forested_hills",
+        "extrabiomesxl:forested_island",
+        "extrabiomesxl:green_hills",
+        "extrabiomesxl:redwood_forest",
+        "extrabiomesxl:redwood_lush",
+        "extrabiomesxl:temperate_rainforest",
+        "extrabiomesxl:woodlands",
+        "worldgen152:forest",
+        "worldgen152:forest_hills",
+        "worldgen152:plains"
+      ],
+      {
+        "type": "neoforge:and",
+        "values": [
+          {
+            "type": "neoforge:or",
+            "values": [
+              "#minecraft:is_forest",
+              "#c:is_plains",
+              "#minecraft:is_taiga"
+            ]
+          },
+          {
+            "type": "neoforge:not",
+            "value": "#worldgen152:old_biomes"
+          }
+        ]
+      }
+    ]
+  },
   "spawners": [
     {
       "type": "projectzulu:horse_dark_black",

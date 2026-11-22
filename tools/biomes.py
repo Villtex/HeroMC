@@ -169,6 +169,46 @@ MODS = {
 }
 
 
+# Hexxit Integrated: the ExtrabiomesXL biomes generate with the caves and underground features of today
+# (Hexxit Legacy leaves every minecraft: feature out, see OldChunkGenerator.legacySettings). Above ground the
+# 1.5.2 biome decorator runs as extrabiomesxl:decoration. Sub-lists of the vanilla lists, in their order.
+CARVERS = ["minecraft:cave", "minecraft:cave_extra_underground", "minecraft:canyon"]
+EBXL_MOUNTAINS = {"alpine", "glacier", "extreme_jungle", "mountain_ridge"}
+EBXL_FROZEN = {"alpine", "glacier"}
+EBXL_FOSSILS = {"mountain_desert", "wasteland", "green_swamp", "marsh"}
+EBXL_GOLD = {"mountain_ridge"}
+ORES = ["ore_dirt", "ore_gravel", "ore_granite_upper", "ore_granite_lower", "ore_diorite_upper", "ore_diorite_lower",
+        "ore_andesite_upper", "ore_andesite_lower", "ore_tuff", "ore_coal_upper", "ore_coal_lower", "ore_iron_upper",
+        "ore_iron_middle", "ore_iron_small", "ore_gold", "ore_gold_lower", "ore_redstone", "ore_redstone_lower",
+        "ore_diamond", "ore_diamond_medium", "ore_diamond_large", "ore_diamond_buried", "ore_lapis", "ore_lapis_buried",
+        "ore_copper", "underwater_magma"]
+
+
+def integrated_generation(mod, name):
+    """(carvers, features) of a biome; empty for the worldgen152 biomes, which exist only in Hexxit Legacy."""
+    if mod != "extrabiomesxl":
+        return [], []
+    ores = ORES + (["ore_gold_extra"] if name in EBXL_GOLD else []) + ["disk_sand", "disk_clay", "disk_gravel"]
+    if name in EBXL_MOUNTAINS:
+        ores.append("ore_emerald")
+    steps = [
+        [],
+        ["lake_lava_underground", "lake_lava_surface"],
+        ["amethyst_geode"],
+        (["fossil_upper", "fossil_lower"] if name in EBXL_FOSSILS else []) + ["monster_room", "monster_room_deep"],
+        [],
+        [],
+        ores,
+        ["ore_infested"] if name in EBXL_MOUNTAINS else [],
+        ["spring_water", "spring_lava"] + (["spring_lava_frozen"] if name in EBXL_FROZEN else []),
+        ["glow_lichen"],
+        ["freeze_top_layer"],
+    ]
+    features = [["minecraft:" + f for f in step] for step in steps]
+    features[9].append("extrabiomesxl:decoration")
+    return CARVERS, features
+
+
 def to_json(spec, maps):
     t, r = spec["temperature"], spec["rainfall"]
     grass, foliage = maps.grass_color(t, r), maps.foliage_color(t, r)
@@ -188,14 +228,14 @@ def to_json(spec, maps):
             },
             "minecraft:visual/sky_color": hexcolor(sky_color(t)),
         },
-        "carvers": [],
+        "carvers": spec.get("carvers", []),
         "downfall": r,
         "effects": {
             "foliage_color": hexcolor(foliage),
             "grass_color": hexcolor(grass),
             "water_color": hexcolor(multiply(DEFAULT_WATER, spec["water_multiplier"])),
         },
-        "features": [],
+        "features": spec.get("features", []),
         "has_precipitation": spec["rain"],
         "temperature": t,
     }
@@ -204,7 +244,20 @@ def to_json(spec, maps):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--cache", default=os.path.join(ROOT, ".cache"))
+    ap.add_argument("--generation-only", action="store_true",
+                    help="only rewrite carvers and features of the existing files (no 1.5.2 jar needed)")
     args = ap.parse_args()
+    if args.generation_only:
+        for mod, (directory, table) in MODS.items():
+            for name in table:
+                path = os.path.join(ROOT, directory, name + ".json")
+                with open(path) as f:
+                    data = json.load(f)
+                data["carvers"], data["features"] = integrated_generation(mod, name)
+                with open(path, "w") as f:
+                    json.dump(data, f, indent=2, sort_keys=True)
+                    f.write("\n")
+        return
     jar = os.path.join(args.cache, "tools", "minecraft-1.5.2-client.jar")
     if not os.path.exists(jar):
         raise SystemExit(f"{jar} is missing: run tools/reference.py first")
@@ -214,7 +267,8 @@ def main():
         os.makedirs(out, exist_ok=True)
         for name, spec in table.items():
             with open(os.path.join(out, name + ".json"), "w") as f:
-                json.dump(to_json(spec, maps), f, indent=2, sort_keys=True)
+                carvers, features = integrated_generation(mod, name)
+                json.dump(to_json(dict(spec, carvers=carvers, features=features), maps), f, indent=2, sort_keys=True)
                 f.write("\n")
         print(f"{mod}: {len(table)} biomes -> {directory}")
 

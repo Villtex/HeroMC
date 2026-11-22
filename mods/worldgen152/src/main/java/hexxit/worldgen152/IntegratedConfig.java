@@ -18,6 +18,7 @@ public final class IntegratedConfig {
     private static final Map<String, ModConfigSpec.BooleanValue> ORES = new LinkedHashMap<>();
     private static final ModConfigSpec.ConfigValue<List<? extends String>> DISABLED;
     private static final ModConfigSpec.BooleanValue REPLACE_VANILLA_ORES;
+    private static final ModConfigSpec.IntValue EBXL_REGION_WEIGHT;
 
     static {
         ModConfigSpec.Builder b = new ModConfigSpec.Builder();
@@ -35,6 +36,11 @@ public final class IntegratedConfig {
         ore(b, "cofhcore:custom_ores", "generateQuantumOre", "qCraft quantum ore (CoFH World custom generation)");
         ore(b, "meteors:meteors", "generateMeteorOre", "Falling Meteors underground meteor ore");
         b.pop();
+        b.comment("World type Hexxit Integrated: biomes.").push("biomes");
+        EBXL_REGION_WEIGHT = b.comment("Weight of the ExtrabiomesXL region of TerraBlender. The vanilla region has 10 (terrablender.toml);",
+                        "regions of other biome mods come on top. 0 = no ExtrabiomesXL biomes in new worlds.")
+                .defineInRange("extrabiomesRegionWeight", 10, 0, 1000);
+        b.pop();
         DISABLED = b.comment("Further Hexxit generators (feature names like \"natura:clouds\") that do not run in Hexxit Integrated.")
                 .defineListAllowEmpty("disabledFeatures", List.of(), () -> "", o -> o instanceof String);
         SPEC = b.build();
@@ -45,6 +51,11 @@ public final class IntegratedConfig {
 
     private static void ore(ModConfigSpec.Builder b, String feature, String key, String comment) {
         ORES.put(feature, b.comment(comment).define(key, true));
+    }
+
+    /** Weight of the ExtrabiomesXL region (TerraBlender). */
+    public static int extrabiomesRegionWeight() {
+        return SPEC.isLoaded() ? EBXL_REGION_WEIGHT.get() : 10;
     }
 
     /** CoFH World replaces the vanilla ores (feature cofhcore:ores, biome modifier cofhcore:replace_vanilla_ores). */

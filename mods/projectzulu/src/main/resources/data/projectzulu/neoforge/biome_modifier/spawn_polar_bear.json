@@ -1,12 +1,34 @@
 {
   "type": "neoforge:add_spawns",
-  "biomes": [
-    "extrabiomesxl:glacier",
-    "extrabiomesxl:ice_wasteland",
-    "worldgen152:forest",
-    "worldgen152:forest_hills",
-    "worldgen152:ice_plains"
-  ],
+  "biomes": {
+    "type": "neoforge:or",
+    "values": [
+      [
+        "extrabiomesxl:glacier",
+        "extrabiomesxl:ice_wasteland",
+        "worldgen152:forest",
+        "worldgen152:forest_hills",
+        "worldgen152:ice_plains"
+      ],
+      {
+        "type": "neoforge:and",
+        "values": [
+          {
+            "type": "neoforge:or",
+            "values": [
+              "#c:is_icy",
+              "#minecraft:is_forest",
+              "#c:is_snowy_plains"
+            ]
+          },
+          {
+            "type": "neoforge:not",
+            "value": "#worldgen152:old_biomes"
+          }
+        ]
+      }
+    ]
+  },
   "spawners": [
     {
       "type": "projectzulu:polar_bear",

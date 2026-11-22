@@ -32,6 +32,13 @@ allprojects {
                 includeGroup 'net.mezzdev.config'
             }
         }
+        // TerraBlender: region API for overworld biomes (ExtrabiomesXL in Hexxit Integrated)
+        maven {
+            url = 'https://maven.minecraftforge.net'
+            content {
+                includeGroup 'com.github.glitchfiend'
+            }
+        }
     }
 }
 
@@ -53,6 +60,13 @@ subprojects {
         // every mod may bring a JEI plugin; JEI itself is only on the runtime classpath of the pack runs
         compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
     }
+    // "mod_uses_terrablender=true": the mod registers biome regions with TerraBlender (a library mod of the pack)
+    def usesTerraBlender = (findProperty('mod_uses_terrablender') ?: 'false').toBoolean()
+    if (usesTerraBlender) {
+        dependencies {
+            implementation "com.github.glitchfiend:TerraBlender-neoforge:${terrablender_version}"
+        }
+    }
     def requiredToml = required.collect { name ->
         """
 [[dependencies.${mod_id}]]
@@ -62,7 +76,14 @@ versionRange="[${project(":${name}").mod_version},)"
 ordering="AFTER"
 side="BOTH"
 """
-    }.join('')
+    }.join('') + (usesTerraBlender ? """
+[[dependencies.${mod_id}]]
+modId="terrablender"
+type="required"
+versionRange="[${terrablender_version.tokenize('-').last()},)"
+ordering="AFTER"
+side="BOTH"
+""" : '')
 
     // Textures and sounds of the 1.5.2 original are pulled in at build time, see original-assets.txt.
     if (file('original-assets.txt').exists()) {
@@ -101,6 +122,17 @@ dependencies {
     runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 }
 
+// library mods the pack ships next to the ported ones (TerraBlender)
+configurations {
+    packLibraries {
+        transitive = false
+    }
+}
+dependencies {
+    packLibraries "com.github.glitchfiend:TerraBlender-neoforge:${terrablender_version}"
+    runtimeOnly "com.github.glitchfiend:TerraBlender-neoforge:${terrablender_version}"
+}
+
 neoForge {
     mods {
         subprojects.each { mod ->
@@ -127,5 +159,6 @@ tasks.register('pack', Copy) {
     group = 'build'
     description = 'Builds every ported mod and collects the jars in build/pack/mods.'
     from(subprojects.collect { it.tasks.named('jar') })
+    from(configurations.packLibraries)
     into layout.buildDirectory.dir('pack/mods')
 }

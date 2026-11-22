@@ -1,12 +1,34 @@
 {
   "type": "neoforge:add_spawns",
-  "biomes": [
-    "extrabiomesxl:glacier",
-    "extrabiomesxl:ice_wasteland",
-    "extrabiomesxl:tundra",
-    "worldgen152:ice_plains",
-    "worldgen152:taiga_hills"
-  ],
+  "biomes": {
+    "type": "neoforge:or",
+    "values": [
+      [
+        "extrabiomesxl:glacier",
+        "extrabiomesxl:ice_wasteland",
+        "extrabiomesxl:tundra",
+        "worldgen152:ice_plains",
+        "worldgen152:taiga_hills"
+      ],
+      {
+        "type": "neoforge:and",
+        "values": [
+          {
+            "type": "neoforge:or",
+            "values": [
+              "#c:is_icy",
+              "#c:is_snowy_plains",
+              "#minecraft:is_taiga"
+            ]
+          },
+          {
+            "type": "neoforge:not",
+            "value": "#worldgen152:old_biomes"
+          }
+        ]
+      }
+    ]
+  },
   "spawners": [
     {
       "type": "projectzulu:mammoth",

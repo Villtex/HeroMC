@@ -30,6 +30,8 @@ public final class Extrabiomes {
         EbxlBlocks.register(modBus);
         EbxlBiomes.register();
         registerOldBlocks();
+        modBus.addListener((net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent event) ->
+                event.enqueueWork(extrabiomes.integrated.EbxlRegion::register));
         if (FMLEnvironment.getDist() == Dist.CLIENT) {
             extrabiomes.client.EbxlClient.register(modBus);
         }

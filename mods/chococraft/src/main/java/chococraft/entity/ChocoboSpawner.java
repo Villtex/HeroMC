@@ -3,6 +3,10 @@ package chococraft.entity;
 import chococraft.ChocoConfig;
 import chococraft.ChocoCraft;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
@@ -120,9 +124,18 @@ public final class ChocoboSpawner {
         return y;
     }
 
+    /** Biomes of 1.5.2 (worldgen152, ExtrabiomesXL): they spawn wild chocobos only as configured. */
+    private static final TagKey<Biome> OLD_BIOMES = TagKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath("worldgen152", "old_biomes"));
+    /** Biomes of today and of other mods (Hexxit Integrated): the tags that stand for the configured old biomes. */
+    private static final TagKey<Biome> WILD_SPAWNS = TagKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(ChocoCraft.MOD_ID, "wild_chocobo_spawns"));
+
     private static boolean inSpawnBiome(ServerLevel level, double x, double z) {
         BlockPos pos = BlockPos.containing(x, 64, z);
-        Identifier biome = level.getBiome(pos).unwrapKey().map(k -> k.identifier()).orElse(null);
+        Holder<Biome> holder = level.getBiome(pos);
+        if (!holder.is(OLD_BIOMES)) {
+            return holder.is(WILD_SPAWNS);
+        }
+        Identifier biome = holder.unwrapKey().map(k -> k.identifier()).orElse(null);
         return biome != null && ChocoConfig.SPAWN_BIOMES.get().contains(biome.toString());
     }
 

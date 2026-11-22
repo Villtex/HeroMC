@@ -1,9 +1,30 @@
 {
   "type": "neoforge:add_spawns",
-  "biomes": [
-    "extrabiomesxl:savanna",
-    "worldgen152:plains"
-  ],
+  "biomes": {
+    "type": "neoforge:or",
+    "values": [
+      [
+        "extrabiomesxl:savanna",
+        "worldgen152:plains"
+      ],
+      {
+        "type": "neoforge:and",
+        "values": [
+          {
+            "type": "neoforge:or",
+            "values": [
+              "#c:is_savanna",
+              "#c:is_plains"
+            ]
+          },
+          {
+            "type": "neoforge:not",
+            "value": "#worldgen152:old_biomes"
+          }
+        ]
+      }
+    ]
+  },
   "spawners": [
     {
       "type": "projectzulu:elephant",

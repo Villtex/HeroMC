@@ -1,0 +1,8 @@
+{
+  "values": [
+    {"id": "harkenscythe_core:soul_lost", "required": false},
+    {"id": "harkenscythe_core:harbinger", "required": false},
+    {"id": "projectzulu:sandworm", "required": false},
+    {"id": "dimdoors:monolith", "required": false}
+  ]
+}

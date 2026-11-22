@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#extrabiomesxl:biomes",
+  "features": "extrabiomesxl:quicksand",
+  "step": "vegetal_decoration"
+}

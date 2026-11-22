@@ -76,7 +76,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 26a | Integrated A: Welttypen Legacy/Integrated, Chunk-Brücke, Mod-Generatoren als einzelne registrierte Features | ~3.000 | 2 | Fable 5.2, hoch | ✅ erledigt |
 | 26b | Integrated B: Erze, Pflanzen, Bäume, Nether-Generatoren per Biom-Modifier und Biom-Tags | ~2.000 | 26a | Opus 5.5, hoch | ✅ erledigt |
 | 26c | Integrated C: Bauwerke und Dungeons als echte 26.3-Strukturen (`/locate`, Abstand zu fremden Strukturen) | ~4.000 | 26a | Fable 5.2, hoch | ✅ erledigt |
-| 26d | Integrated D: EBXL-Biome neben Vanilla- und fremden Biomen, Mob-Spawns per Biom-Modifier | ~3.000 | 26b | Fable 5.2, hoch | offen |
+| 26d | Integrated D: EBXL-Biome neben Vanilla- und fremden Biomen, Mob-Spawns per Biom-Modifier | ~3.000 | 26b | Fable 5.2, hoch | ✅ erledigt |
 | 26e | Integrated E: Schnittstellen für fremde Mods (Capabilities, `c:`-Tags, Werkzeug-Fähigkeiten, Rezepte über Tags) | ~4.000 | – | Opus 5.5, mittel | offen |
 | 26f | Integrated F: Test mit fremden 26.3-Mods, Gesamtprüfung | – | 26a–26e | Opus 5.5, mittel | offen |
 
@@ -2107,6 +2107,50 @@ Forest, Limbo/Taschendimensionen von Dimensional Doors) behalten ihre Generatore
 - Mob-Spawns aller Hexxit-Mods (Project Zulu, ChocoCraft, Infernal Mobs, Twilight-Forest-Oberwelt-Mobs …) als
   `neoforge:add_spawns` über Biom-Tags. Infernal Mobs soll auch fremde Mobs aufwerten (wie im Original jeder
   `EntityMob`); seine Ausnahmeliste als Entity-Tag.
+
+#### Teil 26d – Stand (✅ erledigt)
+- **Entscheidung (Nutzer):** TerraBlender (`com.github.glitchfiend:TerraBlender-neoforge:26.3-26.3.0.0.9`, Maven
+  `maven.minecraftforge.net`). `mod_uses_terrablender=true` in `mods/ebxl/gradle.properties` hängt die Abhängigkeit
+  und den `required`-Eintrag in `neoforge.mods.toml` an; das Jar liegt mit `./gradlew pack` in `build/pack/mods`
+  (Konfiguration `packLibraries`) und ist in den Runs. TerraBlender greift nur bei Multi-Noise-Biomquellen, Legacy
+  bleibt unberührt.
+- **Region** `extrabiomesxl:overworld` (`extrabiomes/integrated/EbxlRegion`): Vanilla-Klimakarte
+  (`ModifiedVanillaOverworldBuilder`), Landbiome ersetzt durch das EBXL-Biom ähnlichen Klimas (Wald → Autumn
+  Woods/Woodlands/Forested Hills, Taiga → Pine Forest/Mountain Taiga, Old-Growth-Taigas → Redwoods, Dark Forest →
+  Temperate Rainforest, Snowy Taiga → Snow Forest/Snowy Rainforest, Snowy Plains → Tundra/Ice Wasteland, Frozen/Jagged
+  Peaks → Glacier/Alpine, Sumpf → Green Swamplands/Marsh, Dschungel → Mini/Extreme Jungle, Sparse Jungle → Rainforest,
+  Savanne, Wüste → Wasteland/Mountainous Desert, Badlands/Savanna Plateau → Mountain Ridge, Pilzinsel → Forested
+  Island, Ebene → Meadow/Shrubland/Green Hills, Blumenwald → Green Hills). Mehrere Kandidaten: die Temperatur-/
+  Feuchte-Zelle wählt, damit zusammenhängende Flächen entstehen. Gewicht `extrabiomesRegionWeight` (Standard 10 wie die
+  Vanilla-Region) in `config/worldgen152-startup.toml`, 0 = keine EBXL-Biome.
+- **Oberflächen:** Material-Regel `data/extrabiomesxl/worldgen/material_rule/overworld_surface.json` über
+  `MaterialRuleManager.addRules` (26.3 heißt Surface Rules „material rules“, Registry `worldgen/material_rule`;
+  TerraBlender wendet sie nur auf `extrabiomesxl:*` an und fällt sonst auf die Vanilla-Regeln zurück): Glacier
+  Schnee/Eis, Ice Wasteland Schnee, Alpine Stein, Mountainous Desert Sand, Mountain Ridge Red Rock, Wasteland Cracked Sand.
+- **Generierung der Biome** (`tools/biomes.py`, neu `--generation-only`): Carver und die Untergrund-Features von heute
+  (Lavaseen, Geoden, Monsterräume, Erze/Gesteine, Quellen, Glow Lichen, Freeze; Smaragd/Infested in Bergen, Fossilien
+  in Wüste/Sumpf), darüber `extrabiomesxl:decoration` = der 1.5.2-Decorator des Bioms ohne Erze und Quellen
+  (`OldDecorator.decoratePlants`, aus `decorate` herausgelöst, Legacy bytegleich). Die neun EBXL-Generatoren als
+  Biom-Modifier (`#extrabiomesxl:biomes`; `vanilla_flora`, `legend_oak` auf `#minecraft:is_overworld`).
+- **Legacy-Schutz** (`OldChunkGenerator`): Generierungs-Einstellungen ohne `minecraft:`-Features und Carver
+  (`legacySettings`), Struktur-Sets ohne `minecraft:` (`createState`). Fremde und Hexxit-Features/-Strukturen bleiben.
+- **Biom-Tags** (`tools/integrated_tags.py`): je EBXL-Biom `c:`-Tags (Wald, Taiga, Klima, Vegetation, Baumart …),
+  `minecraft:is_overworld/is_forest/is_taiga/is_jungle/…`, `minecraft:has_structure/*` (Dörfer je Typ,
+  Außenposten, Minen, Ruinenportale, Tempel, Hexenhütte, Iglu, Waldanwesen, Pfadruinen), `extrabiomesxl:biomes`;
+  `worldgen152:old_biomes` = alle 1.5.2-Biome (worldgen152 + EBXL).
+- **Spawns:** Alle 38 `neoforge:add_spawns`-Dateien (Project Zulu, Harken Scythe) als
+  `or(alte Liste, and(Tags, not #worldgen152:old_biomes))`: 1.5.2-Biome behalten genau die Originalliste, andere
+  Biome bekommen den Spawn über die Tags der gelisteten Biome (Tabelle `OLD_TAGS`). Nether-Spawns (Natura) waren schon
+  Tags. ChocoCraft: alte Biome wie konfiguriert, sonst Tag `chococraft:wild_chocobo_spawns`. Infernal Mobs wertete
+  schon jeden `Enemy` auf (auch fremde); Ausnahmen zusätzlich als Entity-Tag `infernalmobs:forbidden`.
+- **Geprüft:** `clean pack` grün. Integrated, Seed 1234, ohne Fehler: `locate biome` findet Autumn Woods (71 Blöcke),
+  Redwood Forest, Savanna, Mountain Ridge, Glacier, Green Swamplands, Forested Island, Wasteland (7.651). Autumn Woods
+  (3×3 Chunks): 447 Herbstlaub, Eichen, Gras, Kupfer/Eisen im Untergrund. Mountain Ridge 1.699 Red Rock, Smaragderz;
+  Glacier Schneeblock + Eis, kein Gras. Legacy: `expect.sh 1234 find 260` bytegleich zu vorher, `verify_blocks.py`
+  296.610 gleich, die 2 bekannten Ranken, Biome/Truhen/Spawner/Entities 0 Abweichungen.
+- **Offen:** Spawns nur als Daten geprüft (Server lädt sie; natürliches Spawnen braucht Spieler). Client-Prüfung
+  offen (Farben, Übergänge). Forested Island ersetzt Pilzinseln (selten). Für Tests `max-tick-time=-1` setzen: große
+  `forceload` lösen sonst den Watchdog aus.
 
 ### Teil 26e – Schnittstellen für fremde Mods
 Unabhängig vom Welttyp, gilt für alle 44 Teilprojekte. Heute meldet kein Mod Capabilities an, und Rezepte nennen oft

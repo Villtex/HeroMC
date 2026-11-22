@@ -1,0 +1,15 @@
+{
+  "values": [
+    "#c:is_windswept",
+    "#minecraft:is_forest",
+    "#minecraft:is_jungle",
+    "#c:is_plains",
+    "#c:is_swamp",
+    "#minecraft:is_taiga",
+    "#c:is_icy",
+    "#c:is_snowy_plains",
+    "#c:is_mountain/peak",
+    "#c:is_badlands",
+    "#c:is_savanna"
+  ]
+}

@@ -449,6 +449,19 @@ public final class EbxlWorldGen {
         }
     }
 
+    /**
+     * Hexxit Integrated: the biome decorator of an ExtrabiomesXL biome (trees, grass, flowers, sand, clay) for the
+     * chunk, looked up where ChunkProviderGenerate.populate looked it up. Ores and springs come from today's features.
+     */
+    private static void decoration(Random rand, int chunkX, int chunkZ, OldWorld world) {
+        int x = chunkX << 4;
+        int z = chunkZ << 4;
+        OldBiome biome = world.getBiome(x + 16, z + 16);
+        if (biome.id >= 32 && biome.id <= 59) {
+            biome.decorator.decoratePlants(world, rand, biome, x, z);
+        }
+    }
+
     /** FML mod id of the original, for the generator order ({@code OldTerrainGen.LOAD_ORDER}). */
     public static final String FML_ID = "ExtrabiomesXL";
 
@@ -469,6 +482,7 @@ public final class EbxlWorldGen {
         OldTerrainGen.registerWorldGenerator(FML_ID, "extrabiomesxl:vanilla_flora", EbxlWorldGen::vanillaFlora);
         OldTerrainGen.registerWorldGenerator(FML_ID, "extrabiomesxl:legend_oak", EbxlWorldGen::legendOak);
         OldTerrainGen.registerWorldGenerator(FML_ID, "extrabiomesxl:quicksand", EbxlWorldGen::quicksand);
+        OldTerrainGen.registerFeature("extrabiomesxl:decoration", EbxlWorldGen::decoration);
     }
 
     // ---- saplings ----

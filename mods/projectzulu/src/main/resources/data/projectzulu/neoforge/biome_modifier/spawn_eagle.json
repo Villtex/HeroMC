@@ -1,9 +1,24 @@
 {
   "type": "neoforge:add_spawns",
-  "biomes": [
-    "worldgen152:extreme_hills",
-    "worldgen152:extreme_hills_edge"
-  ],
+  "biomes": {
+    "type": "neoforge:or",
+    "values": [
+      [
+        "worldgen152:extreme_hills",
+        "worldgen152:extreme_hills_edge"
+      ],
+      {
+        "type": "neoforge:and",
+        "values": [
+          "#c:is_windswept",
+          {
+            "type": "neoforge:not",
+            "value": "#worldgen152:old_biomes"
+          }
+        ]
+      }
+    ]
+  },
   "spawners": [
     {
       "type": "projectzulu:eagle",

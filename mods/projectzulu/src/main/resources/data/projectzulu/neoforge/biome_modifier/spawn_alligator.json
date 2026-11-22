@@ -1,11 +1,32 @@
 {
   "type": "neoforge:add_spawns",
-  "biomes": [
-    "extrabiomesxl:green_swamp",
-    "extrabiomesxl:marsh",
-    "worldgen152:river",
-    "worldgen152:swampland"
-  ],
+  "biomes": {
+    "type": "neoforge:or",
+    "values": [
+      [
+        "extrabiomesxl:green_swamp",
+        "extrabiomesxl:marsh",
+        "worldgen152:river",
+        "worldgen152:swampland"
+      ],
+      {
+        "type": "neoforge:and",
+        "values": [
+          {
+            "type": "neoforge:or",
+            "values": [
+              "#c:is_swamp",
+              "#minecraft:is_river"
+            ]
+          },
+          {
+            "type": "neoforge:not",
+            "value": "#worldgen152:old_biomes"
+          }
+        ]
+      }
+    ]
+  },
   "spawners": [
     {
       "type": "projectzulu:alligator",

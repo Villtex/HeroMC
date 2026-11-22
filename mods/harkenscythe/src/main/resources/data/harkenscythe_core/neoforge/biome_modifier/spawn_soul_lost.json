@@ -1,20 +1,48 @@
 {
   "type": "neoforge:add_spawns",
-  "biomes": [
-    "worldgen152:beach",
-    "worldgen152:extreme_hills",
-    "worldgen152:extreme_hills_edge",
-    "worldgen152:forest",
-    "worldgen152:forest_hills",
-    "worldgen152:jungle",
-    "worldgen152:jungle_hills",
-    "worldgen152:mushroom_island",
-    "worldgen152:mushroom_island_shore",
-    "worldgen152:ocean",
-    "worldgen152:plains",
-    "worldgen152:river",
-    "worldgen152:swampland"
-  ],
+  "biomes": {
+    "type": "neoforge:or",
+    "values": [
+      [
+        "worldgen152:beach",
+        "worldgen152:extreme_hills",
+        "worldgen152:extreme_hills_edge",
+        "worldgen152:forest",
+        "worldgen152:forest_hills",
+        "worldgen152:jungle",
+        "worldgen152:jungle_hills",
+        "worldgen152:mushroom_island",
+        "worldgen152:mushroom_island_shore",
+        "worldgen152:ocean",
+        "worldgen152:plains",
+        "worldgen152:river",
+        "worldgen152:swampland"
+      ],
+      {
+        "type": "neoforge:and",
+        "values": [
+          {
+            "type": "neoforge:or",
+            "values": [
+              "#minecraft:is_beach",
+              "#c:is_windswept",
+              "#minecraft:is_forest",
+              "#minecraft:is_jungle",
+              "#c:is_mushroom",
+              "#minecraft:is_ocean",
+              "#c:is_plains",
+              "#minecraft:is_river",
+              "#c:is_swamp"
+            ]
+          },
+          {
+            "type": "neoforge:not",
+            "value": "#worldgen152:old_biomes"
+          }
+        ]
+      }
+    ]
+  },
   "spawners": [
     {
       "type": "harkenscythe_core:soul_lost",

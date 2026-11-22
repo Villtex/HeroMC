@@ -1,10 +1,25 @@
 {
   "type": "neoforge:add_spawns",
-  "biomes": [
-    "extrabiomesxl:green_swamp",
-    "extrabiomesxl:marsh",
-    "worldgen152:swampland"
-  ],
+  "biomes": {
+    "type": "neoforge:or",
+    "values": [
+      [
+        "extrabiomesxl:green_swamp",
+        "extrabiomesxl:marsh",
+        "worldgen152:swampland"
+      ],
+      {
+        "type": "neoforge:and",
+        "values": [
+          "#c:is_swamp",
+          {
+            "type": "neoforge:not",
+            "value": "#worldgen152:old_biomes"
+          }
+        ]
+      }
+    ]
+  },
   "spawners": [
     {
       "type": "projectzulu:frog",

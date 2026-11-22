@@ -52,6 +52,34 @@ public class OldDecorator {
         }
         this.generateOres(world, random, x, z);
 
+        this.decoratePlants(world, random, biome, x, z);
+
+        boolean doGen = OldTerrainGen.decorate(world, random, x, z, Decorate.LAKE);
+        if (doGen && this.generateLakes) {
+            for (int i = 0; i < 50; i++) {
+                int bx = x + random.nextInt(16) + 8;
+                int by = random.nextInt(random.nextInt(120) + 8);
+                int bz = z + random.nextInt(16) + 8;
+                new OldLakeGens.Spring(8).generate(world, random, bx, by, bz);
+            }
+            for (int i = 0; i < 20; i++) {
+                int bx = x + random.nextInt(16) + 8;
+                int by = random.nextInt(random.nextInt(random.nextInt(112) + 8) + 8);
+                int bz = z + random.nextInt(16) + 8;
+                new OldLakeGens.Spring(10).generate(world, random, bx, by, bz);
+            }
+        }
+
+        for (OldTerrainGen.Listener listener : OldTerrainGen.listeners()) {
+            listener.decoratePost(world, random, x, z);
+        }
+    }
+
+    /**
+     * The part of {@link #decorate} between the ores and the springs: sand, clay, trees, plants. Hexxit Integrated
+     * runs only this part for the ExtrabiomesXL biomes, the ores and springs of today stay.
+     */
+    public void decoratePlants(OldWorld world, Random random, OldBiome biome, int x, int z) {
         boolean doGen = OldTerrainGen.decorate(world, random, x, z, Decorate.SAND);
         for (int i = 0; doGen && i < this.sandPerChunk2; i++) {
             int bx = x + random.nextInt(16) + 8;
@@ -190,26 +218,6 @@ public class OldDecorator {
             int by = random.nextInt(128);
             int bz = z + random.nextInt(16) + 8;
             this.cactusGen.generate(world, random, bx, by, bz);
-        }
-
-        doGen = OldTerrainGen.decorate(world, random, x, z, Decorate.LAKE);
-        if (doGen && this.generateLakes) {
-            for (int i = 0; i < 50; i++) {
-                int bx = x + random.nextInt(16) + 8;
-                int by = random.nextInt(random.nextInt(120) + 8);
-                int bz = z + random.nextInt(16) + 8;
-                new OldLakeGens.Spring(8).generate(world, random, bx, by, bz);
-            }
-            for (int i = 0; i < 20; i++) {
-                int bx = x + random.nextInt(16) + 8;
-                int by = random.nextInt(random.nextInt(random.nextInt(112) + 8) + 8);
-                int bz = z + random.nextInt(16) + 8;
-                new OldLakeGens.Spring(10).generate(world, random, bx, by, bz);
-            }
-        }
-
-        for (OldTerrainGen.Listener listener : OldTerrainGen.listeners()) {
-            listener.decoratePost(world, random, x, z);
         }
     }
 

@@ -1,12 +1,34 @@
 {
   "type": "neoforge:add_spawns",
-  "biomes": [
-    "extrabiomesxl:mountain_desert",
-    "extrabiomesxl:mountain_ridge",
-    "extrabiomesxl:wasteland",
-    "worldgen152:desert",
-    "worldgen152:desert_hills"
-  ],
+  "biomes": {
+    "type": "neoforge:or",
+    "values": [
+      [
+        "extrabiomesxl:mountain_desert",
+        "extrabiomesxl:mountain_ridge",
+        "extrabiomesxl:wasteland",
+        "worldgen152:desert",
+        "worldgen152:desert_hills"
+      ],
+      {
+        "type": "neoforge:and",
+        "values": [
+          {
+            "type": "neoforge:or",
+            "values": [
+              "#c:is_desert",
+              "#c:is_badlands",
+              "#c:is_wasteland"
+            ]
+          },
+          {
+            "type": "neoforge:not",
+            "value": "#worldgen152:old_biomes"
+          }
+        ]
+      }
+    ]
+  },
   "spawners": [
     {
       "type": "projectzulu:vulture",

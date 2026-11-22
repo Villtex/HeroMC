@@ -1,20 +1,41 @@
 {
   "type": "neoforge:add_spawns",
-  "biomes": [
-    "extrabiomesxl:autumn_woods",
-    "extrabiomesxl:birch_forest",
-    "extrabiomesxl:forested_hills",
-    "extrabiomesxl:forested_island",
-    "extrabiomesxl:mountain_taiga",
-    "extrabiomesxl:redwood_forest",
-    "extrabiomesxl:redwood_lush",
-    "extrabiomesxl:temperate_rainforest",
-    "extrabiomesxl:woodlands",
-    "worldgen152:forest",
-    "worldgen152:forest_hills",
-    "worldgen152:taiga",
-    "worldgen152:taiga_hills"
-  ],
+  "biomes": {
+    "type": "neoforge:or",
+    "values": [
+      [
+        "extrabiomesxl:autumn_woods",
+        "extrabiomesxl:birch_forest",
+        "extrabiomesxl:forested_hills",
+        "extrabiomesxl:forested_island",
+        "extrabiomesxl:mountain_taiga",
+        "extrabiomesxl:redwood_forest",
+        "extrabiomesxl:redwood_lush",
+        "extrabiomesxl:temperate_rainforest",
+        "extrabiomesxl:woodlands",
+        "worldgen152:forest",
+        "worldgen152:forest_hills",
+        "worldgen152:taiga",
+        "worldgen152:taiga_hills"
+      ],
+      {
+        "type": "neoforge:and",
+        "values": [
+          {
+            "type": "neoforge:or",
+            "values": [
+              "#minecraft:is_forest",
+              "#minecraft:is_taiga"
+            ]
+          },
+          {
+            "type": "neoforge:not",
+            "value": "#worldgen152:old_biomes"
+          }
+        ]
+      }
+    ]
+  },
   "spawners": [
     {
       "type": "projectzulu:black_bear",

@@ -1,0 +1,26 @@
+{
+  "values": [
+    "worldgen152:beach",
+    "worldgen152:desert",
+    "worldgen152:desert_hills",
+    "worldgen152:extreme_hills",
+    "worldgen152:extreme_hills_edge",
+    "worldgen152:forest",
+    "worldgen152:forest_hills",
+    "worldgen152:frozen_ocean",
+    "worldgen152:frozen_river",
+    "worldgen152:hell",
+    "worldgen152:ice_mountains",
+    "worldgen152:ice_plains",
+    "worldgen152:jungle",
+    "worldgen152:jungle_hills",
+    "worldgen152:mushroom_island",
+    "worldgen152:mushroom_island_shore",
+    "worldgen152:ocean",
+    "worldgen152:plains",
+    "worldgen152:river",
+    "worldgen152:swampland",
+    "worldgen152:taiga",
+    "worldgen152:taiga_hills"
+  ]
+}

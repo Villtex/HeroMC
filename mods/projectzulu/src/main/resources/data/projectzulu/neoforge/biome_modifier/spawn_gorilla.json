@@ -1,11 +1,26 @@
 {
   "type": "neoforge:add_spawns",
-  "biomes": [
-    "extrabiomesxl:extreme_jungle",
-    "extrabiomesxl:mini_jungle",
-    "worldgen152:jungle",
-    "worldgen152:jungle_hills"
-  ],
+  "biomes": {
+    "type": "neoforge:or",
+    "values": [
+      [
+        "extrabiomesxl:extreme_jungle",
+        "extrabiomesxl:mini_jungle",
+        "worldgen152:jungle",
+        "worldgen152:jungle_hills"
+      ],
+      {
+        "type": "neoforge:and",
+        "values": [
+          "#minecraft:is_jungle",
+          {
+            "type": "neoforge:not",
+            "value": "#worldgen152:old_biomes"
+          }
+        ]
+      }
+    ]
+  },
   "spawners": [
     {
       "type": "projectzulu:gorilla",

@@ -1,9 +1,30 @@
 {
   "type": "neoforge:add_spawns",
-  "biomes": [
-    "worldgen152:beach",
-    "worldgen152:river"
-  ],
+  "biomes": {
+    "type": "neoforge:or",
+    "values": [
+      [
+        "worldgen152:beach",
+        "worldgen152:river"
+      ],
+      {
+        "type": "neoforge:and",
+        "values": [
+          {
+            "type": "neoforge:or",
+            "values": [
+              "#minecraft:is_beach",
+              "#minecraft:is_river"
+            ]
+          },
+          {
+            "type": "neoforge:not",
+            "value": "#worldgen152:old_biomes"
+          }
+        ]
+      }
+    ]
+  },
   "spawners": [
     {
       "type": "projectzulu:pelican",

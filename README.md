@@ -17,14 +17,17 @@ Jeder Mod wird deshalb gegen das dekompilierte Original als Referenz **neu gesch
 - **Rezeptanzeige:** Not Enough Items wird nicht portiert. Stattdessen sind alle portierten Mods mit
   **JEI** kompatibel; eigene Rezepttypen bekommen ein JEI-Plugin.
 - **Twilight Forest** ist in die Teile 24a–24f aufgeteilt, **Tinkers' Construct** in die Teile 25a–25f.
-- **Welttypen (Teil 26, 26a–26c erledigt):** „Hexxit Integrated“ ist der Standard (`minecraft:normal`: 26.3-Generierung
+- **Welttypen (Teil 26, 26a–26d erledigt):** „Hexxit Integrated“ ist der Standard (`minecraft:normal`: 26.3-Generierung
   plus Hexxit-Inhalte, offen für fremde 26.3-Mods: deren Biome, Bauwerke, Rohre und Werkzeuge arbeiten mit der Welt).
   „Hexxit Legacy (1.5.2)“ (`hexxit:legacy`) ist die bitgenaue 1.5.2-Welt. Am Server: `level-type=hexxit\:legacy` in
   `server.properties` für Legacy, ohne Eintrag Integrated. Erze, Pflanzen, Bäume und Nether-Generatoren sind in Integrated
   eingehängt (Teil 26b). Bauwerke (Battle Towers, Better Dungeons, Project-Zulu-Pyramide/Labyrinth/Friedhof/Oase)
   sind echte 26.3-Strukturen mit Struktur-Sets (`/locate structure battletowers:tower`, Tag `#hexxit:structures`), kleine
-  Bauten (Ruinen, Risse) Features, die Tinkers-Werkstatt und -Schmelze Häuser der 26.3-Dörfer (Teil 26c). Erze und
-  einzelne Generatoren lassen sich in `config/worldgen152-startup.toml` abschalten.
+  Bauten (Ruinen, Risse) Features, die Tinkers-Werkstatt und -Schmelze Häuser der 26.3-Dörfer (Teil 26c). Die
+  ExtrabiomesXL-Biome kommen über eine **TerraBlender**-Region dazu (Bibliothek, liegt mit im Pack), mit eigenen
+  Oberflächen, Biom-Tags (`c:`, `minecraft:has_structure/*`) und ihrer 1.5.2-Dekoration; die Mob-Spawns aller Mods
+  gelten über Biom-Tags auch für Vanilla- und fremde Biome (Teil 26d). Erze, einzelne Generatoren und das Gewicht
+  der EBXL-Region lassen sich in `config/worldgen152-startup.toml` einstellen.
 
 ## Arbeitsplan
 
@@ -42,6 +45,7 @@ Der Port ist in Teile aufgeteilt, die je in eine Session passen: [`docs/PLAN.md`
 | `tools/reference.py` | lädt das Original und erzeugt lesbare Referenzquellen (lokal, wird nicht eingecheckt) |
 | `tools/biomes.py` | erzeugt die Biom-Daten (Klima, Farben aus den 1.5.2-Farbkarten, Mob-Spawns) |
 | `tools/original_server.sh`, `tools/original_spawn.py`, `tools/compare_original.py` | Original-Server 1.5.2 (Vanilla oder Hexxit) einmal laufen lassen und seine Welt mit dem Kern vergleichen |
+| `tools/integrated_tags.py` | Biom-Tags der EBXL-Biome und Mob-Spawns über Biom-Tags für Hexxit Integrated (Teil 26d) |
 | `tools/rcon.py` | kleiner RCON-Client für Verhaltenstests am laufenden Testserver |
 | `tools/modelbase_to_layer.py` | überträgt die Geometrie eines 1.5.2-`ModelBase` (Boxen, Hierarchie, Texturversätze) in 26.3-`createBodyLayer`-Zeilen |
 | `gradle/neoforge.mods.toml` | gemeinsame Vorlage für die Mod-Metadaten |
@@ -208,7 +212,7 @@ Prüfen: `tools/expect.sh 1234 nether structures 60 > expect.txt`, dann `verify_
 | BetterStorage | `betterstorage` 0.6.2.23.h2 | copygirl, copyboy | 9.015 | ✅ Teil 17 (Kisten-Stapel, verstärkte Truhen mit Schloss/Schlüssel, Spind, Rüstungsständer, Rucksäcke, Frienderman; Client-Prüfung offen) |
 | ChocoCraft | `chococraft` 2.8.8 | Torojima | 9.331 | ✅ Teil 18 (Chocobos in neun Farben, Zucht, Reiten, Taschen, Chocopedia, Gysahl-Pflanzen in der Welt; Client-Prüfung offen) |
 | Dimensional Doors | `dimensional-doors` 1.4.1.194 | StevenRS11, SenseiKiwi | 10.746 | ✅ Teil 15 (Taschen, Dungeons, Limbo, Rifts; Client-Prüfung offen) |
-| ExtrabiomesXL | `ebxl` 3.13.4 | ScottKillen u. a. | 10.762 | ✅ portiert, am Server verifiziert (Client-Prüfung offen) |
+| ExtrabiomesXL | `ebxl` 3.13.4 | ScottKillen u. a. | 10.762 | ✅ portiert, am Server verifiziert, in Integrated über TerraBlender (Teil 26d; Client-Prüfung offen) |
 | (Vanilla 1.5.2) Weltgenerierung | `worldgen152` | Mojang | – | Gelände, Dekoration, Strukturen und Spawnpunkt ✅ gegen Spiel und gegen Original-Welten verifiziert; Nether ✅ (Teil 7b) |
 | LegendGear | `legendgear` 1.5.2 | NMcCoy | 11.590 | ✅ Teil 19 (Medaillons, Amulette, Bumerang, Enterhaken, Bomben, Köcher, Zauberspiegel, Sternschnuppen, Sockel, Sternenstrahl-Fackeln, mystische Sträucher und Bombenblumen in der Welt; Client-Prüfung offen) |
 | NEI Plugins | `nei-plugins` 1.0.9.3 | mistaqur | 11.790 | entfällt, stattdessen JEI |

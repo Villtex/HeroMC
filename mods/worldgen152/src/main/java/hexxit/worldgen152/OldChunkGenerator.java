@@ -38,7 +38,15 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
 import net.minecraft.world.level.levelgen.structure.Structure;
 
+import net.minecraft.core.HolderLookup;
+import net.minecraft.world.level.biome.BiomeGenerationSettings;
+import net.minecraft.world.level.chunk.ChunkGeneratorStructureState;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.minecraft.world.level.levelgen.structure.StructureSet;
+
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.WeakHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -69,12 +77,46 @@ public final class OldChunkGenerator extends ChunkGenerator {
         }
     };
 
+    /** Generation settings of a biome as Hexxit Legacy uses them, see {@link #legacySettings}. */
+    private static final Map<Holder<Biome>, BiomeGenerationSettings> LEGACY_SETTINGS = java.util.Collections.synchronizedMap(new WeakHashMap<>());
+
     public OldChunkGenerator(BiomeSource biomeSource) {
-        super(biomeSource);
+        super(biomeSource, OldChunkGenerator::legacySettings);
         if (!(biomeSource instanceof OldBiomeSource source)) {
             throw new IllegalArgumentException("worldgen152:overworld needs the worldgen152:overworld biome source");
         }
         this.oldBiomes = source;
+    }
+
+    /**
+     * The 1.5.2 population brings all the decoration of Hexxit Legacy. The ExtrabiomesXL biomes also list the
+     * underground features of today (ores, geodes, springs) for Hexxit Integrated; here they are left out, like
+     * every other {@code minecraft:} feature. Features of other mods and the Hexxit features (which do nothing in
+     * Legacy) stay.
+     */
+    private static BiomeGenerationSettings legacySettings(Holder<Biome> biome) {
+        return LEGACY_SETTINGS.computeIfAbsent(biome, b -> {
+            BiomeGenerationSettings settings = b.value().getGenerationSettings();
+            List<HolderSet<PlacedFeature>> steps = new ArrayList<>();
+            for (HolderSet<PlacedFeature> step : settings.features()) {
+                steps.add(HolderSet.direct(step.stream()
+                        .filter(feature -> feature.unwrapKey().map(key -> !key.identifier().getNamespace().equals("minecraft")).orElse(true))
+                        .toList()));
+            }
+            return new BiomeGenerationSettings(HolderSet.empty(), steps);
+        });
+    }
+
+    /**
+     * No structures of today: the ExtrabiomesXL biomes carry the {@code minecraft:has_structure/*} tags for Hexxit
+     * Integrated, and the 1.5.2 population already builds villages, strongholds and mineshafts. Structures of
+     * other mods stay.
+     */
+    @Override
+    public ChunkGeneratorStructureState createState(HolderLookup<StructureSet> structureSets, RandomState randomState, long legacyLevelSeed) {
+        return ChunkGeneratorStructureState.createForFlat(randomState, legacyLevelSeed, this.getOrigin(randomState), this.biomeSource,
+                structureSets.listElements().filter(set -> !set.key().identifier().getNamespace().equals("minecraft"))
+                        .map(set -> (Holder<StructureSet>) set));
     }
 
     @Override

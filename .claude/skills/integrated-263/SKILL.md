@@ -1,6 +1,6 @@
 ---
 name: integrated-263
-description: "Beim Arbeiten am Welttyp Hexxit Integrated (Teile 26b–26f) benutzen: einen 1.5.2-Generator aus OldTerrainGen als 26.3-Feature an Biome hängen (Biom-Modifier mit Tags), ein 1.5.2-Bauwerk als echte 26.3-Struktur (worldgen152:old_structure, Struktur-Set, /locate) oder eine 1.5.2-Dorfkomponente als Haus der 26.3-Dörfer, die Chunk-Brücke OldGeneratorFeature verstehen und erweitern (Höhenfenster, Biom-Zuordnung über Tags, welche Blöcke ersetzt werden), Legacy vs. Integrated am Testserver umschalten und prüfen."
+description: "Beim Arbeiten am Welttyp Hexxit Integrated (Teile 26b–26f) benutzen: EBXL- oder eigene Biome über TerraBlender mit Oberflächenregeln, Mob-Spawns über Biom-Tags, einen 1.5.2-Generator aus OldTerrainGen als 26.3-Feature an Biome hängen (Biom-Modifier mit Tags), ein 1.5.2-Bauwerk als echte 26.3-Struktur (worldgen152:old_structure, Struktur-Set, /locate) oder eine 1.5.2-Dorfkomponente als Haus der 26.3-Dörfer, die Chunk-Brücke OldGeneratorFeature verstehen und erweitern (Höhenfenster, Biom-Zuordnung über Tags, welche Blöcke ersetzt werden), Legacy vs. Integrated am Testserver umschalten und prüfen."
 ---
 
 # Welttyp Hexxit Integrated (26.3-Gelände + Hexxit-Generatoren)
@@ -100,6 +100,23 @@ ganz in den 3×3 Chunks liegt (Legacy: immer ja). Meldet ein Generator Orte an d
 `maxY + 4` versetzt: 0; `maxY + 2`: 1), `grounded()` setzt `averageGroundLevel` ≥ 0. `OldVillagePiece` trägt es beim
 Serverstart in `minecraft:village/<typ>/houses` ein. Vorbild: `tconstruct/gen/TCWorldGen` (Werkstatt, Schmelze).
 
+## Biome, Oberflächen, Spawns (Teil 26d)
+
+- Biome kommen über **TerraBlender** (Region, wie fremde Biom-Mods): Vorbild `mods/ebxl/.../integrated/EbxlRegion`
+  (`ModifiedVanillaOverworldBuilder().build()`, Vanilla-Biom je Klimapunkt ersetzen, Registrierung in
+  `FMLCommonSetupEvent.enqueueWork`). Abhängigkeit: `mod_uses_terrablender=true` in `gradle.properties` des Mods.
+- Oberflächen = 26.3-„material rules“ (`data/<ns>/worldgen/material_rule/*.json`, Bedingungen wie Vanilla unter
+  `material_rule/overworld/*`), anmelden mit `MaterialRuleManager.addRules(OVERWORLD, modid, key)`; gilt nur für
+  Biome des Namensraums, sonst Vanilla. Nur in `above_preliminary_surface` + `on_floor`/`under_floor` greifen.
+- Biom-JSON: Carver + Vanilla-Untergrund-Features stehen drin (`tools/biomes.py --generation-only`); Legacy lässt alle
+  `minecraft:`-Features und -Struktur-Sets weg (`OldChunkGenerator.legacySettings`/`createState`). Vanilla-Feature-
+  Listen nur als Teilfolge der Vanilla-Reihenfolge, sonst „Feature order cycle“.
+- Biom-Tags und Spawns: `tools/integrated_tags.py` (Tabellen `EBXL`, `STRUCTURES`, `OLD_TAGS`). Spawn-Biome als
+  `{"type":"neoforge:or","values":[[alte Liste],{"type":"neoforge:and","values":[<tag|or>,{"type":"neoforge:not","value":"#worldgen152:old_biomes"}]}]}`
+  – eine Holder-Set-Liste darf **keine** `#tags` enthalten, mehrere Tags in ein `neoforge:or`. Neue Spawn-Datei mit
+  alter Liste anlegen, Skript erneut laufen lassen. Eigene Biom-Prüfungen im Code: `holder.is(#worldgen152:old_biomes)`
+  → Original-Liste, sonst Tag (Vorbild `chococraft/entity/ChocoboSpawner.inSpawnBiome`).
+
 ## Prüfen am Server
 
 ```
@@ -108,6 +125,7 @@ python3 tools/rcon.py 'forceload add <x1> <z1> <x2> <z2>'          # dann ~40 s 
 python3 tools/rcon.py 'execute if block X Y Z natura:sakura_log'  # einzelne Blöcke
 grep -E "ERROR|Exception" run/server/logs/latest.log
 ```
+Für große `forceload`: `max-tick-time=-1` in `server.properties`, sonst beendet der Watchdog den Server.
 Zählen: `python3 tools/count_blocks.py [--dim minecraft:the_nether] X1 Z1 X2 Z2 YMIN YMAX block…` (ersetzt durch
 Luft, nur Test-Welt; Bereich vorher forceloaden und ~1–2 min warten). `fill … X replace X` taugt nicht zum Zählen
 (meldet nur geänderte Zustände). Zeitvergleich: dieselbe Fläche mit allen Namen in `disabledFeatures`.

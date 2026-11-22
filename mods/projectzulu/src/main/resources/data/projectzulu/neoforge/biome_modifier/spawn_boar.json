@@ -1,12 +1,33 @@
 {
   "type": "neoforge:add_spawns",
-  "biomes": [
-    "extrabiomesxl:alpine",
-    "extrabiomesxl:mountain_taiga",
-    "extrabiomesxl:snowy_rainforest",
-    "worldgen152:taiga",
-    "worldgen152:taiga_hills"
-  ],
+  "biomes": {
+    "type": "neoforge:or",
+    "values": [
+      [
+        "extrabiomesxl:alpine",
+        "extrabiomesxl:mountain_taiga",
+        "extrabiomesxl:snowy_rainforest",
+        "worldgen152:taiga",
+        "worldgen152:taiga_hills"
+      ],
+      {
+        "type": "neoforge:and",
+        "values": [
+          {
+            "type": "neoforge:or",
+            "values": [
+              "#c:is_mountain/peak",
+              "#minecraft:is_taiga"
+            ]
+          },
+          {
+            "type": "neoforge:not",
+            "value": "#worldgen152:old_biomes"
+          }
+        ]
+      }
+    ]
+  },
   "spawners": [
     {
       "type": "projectzulu:boar",
