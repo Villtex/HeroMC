@@ -32,6 +32,11 @@ public final class CoFHWorldGen {
     /** One {@code IFeatureGenerator} of {@code WorldHandler.features}, in registration order. */
     private record Feature(String name, OldOreGens.Minable gen, int count, int a, int b, boolean normal) {
         void generate(OldWorld world, Random random, int chunkX, int chunkZ) {
+            this.generate(world, random, chunkX, chunkZ, false);
+        }
+
+        /** {@code deep}: heights through {@link OldTerrainGen#deepY} (world type Hexxit Integrated, y_offset -64). */
+        void generate(OldWorld world, Random random, int chunkX, int chunkZ, boolean deep) {
             int blockX = chunkX * 16;
             int blockZ = chunkZ * 16;
             for (int i = 0; i < this.count; i++) {
@@ -40,12 +45,14 @@ public final class CoFHWorldGen {
                 int y = this.normal ? random.nextInt(this.b) + random.nextInt(this.b) + this.a - this.b
                         : this.a + random.nextInt(this.b - this.a);
                 int z = blockZ + random.nextInt(16);
-                this.gen.generate(world, random, x, y, z);
+                this.gen.generate(world, random, x, deep ? OldTerrainGen.deepY(y) : y, z);
             }
         }
     }
 
     private static final List<Feature> FEATURES = new ArrayList<>();
+    /** dirt, gravel, coal, iron, gold, redstone, diamond, lapis: registered first. */
+    private static final int VANILLA_FEATURES = 8;
     private static volatile List<Feature> features = List.of();
 
     private CoFHWorldGen() {
@@ -73,6 +80,9 @@ public final class CoFHWorldGen {
             }
         });
         OldTerrainGen.registerWorldGenerator(FML_ID, "cofhcore:world", CoFHWorldGen::generate);
+        // Hexxit Integrated: vanilla generates its own ores and bedrock there; only the custom templates
+        // (WorldCustomGen.txt: qCraft's quantum ore) are added, with the deeper heights of today
+        OldTerrainGen.registerFeature("cofhcore:custom_ores", CoFHWorldGen::generateCustom);
     }
 
     /** A {@code UNIFORM} feature: {@code count} veins of {@code size} blocks between {@code minY} and {@code maxY}. */
@@ -112,6 +122,17 @@ public final class CoFHWorldGen {
             for (Feature feature : features) {
                 feature.generate(world, random, chunkX, chunkZ);
             }
+        }
+    }
+
+    /** The features after the eight vanilla ores (the templates of WorldCustomGen.txt), for Hexxit Integrated. */
+    static void generateCustom(Random random, int chunkX, int chunkZ, OldWorld world) {
+        if (world.dimension() != 0) {
+            return;
+        }
+        List<Feature> all = features;
+        for (int i = VANILLA_FEATURES; i < all.size(); i++) {
+            all.get(i).generate(world, random, chunkX, chunkZ, true);
         }
     }
 

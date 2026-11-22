@@ -1,4 +1,5 @@
 {
   "type": "worldgen152:old_generator",
-  "generator": "meteors:meteors"
+  "generator": "meteors:meteors",
+  "y_offset": -64
 }

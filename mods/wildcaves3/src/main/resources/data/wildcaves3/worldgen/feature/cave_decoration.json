@@ -1,0 +1,5 @@
+{
+  "type": "worldgen152:old_generator",
+  "generator": "wildcaves3:cave_decoration",
+  "y_offset": -64
+}

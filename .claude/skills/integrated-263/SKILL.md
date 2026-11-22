@@ -41,13 +41,20 @@ description: "Beim Arbeiten am Welttyp Hexxit Integrated (Teile 26b–26f) benut
    Der Generator prüft das Biom selbst (wie 1.5.2), deshalb reicht meist der weite Tag; enger nur, um Arbeit zu sparen.
 4. Bauen (`CI=true ./gradlew pack`), Integrated-Welt neu, prüfen (unten).
 
+Teile eines Sammel-Generators oder Varianten mit anderen Höhen: im Kern `OldTerrainGen.registerFeature("ns:teil", gen)`
+(läuft nur als Feature, nie in Legacy; Vorbilder `TCWorldGen.registerIntegrated`, `ArtificeWorldGen.register`,
+`CoFHWorldGen.generateCustom`). Den Sammel-Generator dann ohne Feature-Datei lassen, sonst doppelt.
+Untergrund: Feature mit `"y_offset": -64` (echt = alt − 64) und Höhen über `OldTerrainGen.deepY(y)` (1.5.2 0–63 →
+echt −64…63, darüber gleich). Erze, die ein fremder Mod auch bringt: Schalter in `IntegratedConfig` (worldgen152)
+eintragen; jeder Name lässt sich außerdem über `disabledFeatures` abschalten.
+
 ## Die Brücke (`mods/worldgen152/.../OldGeneratorFeature.java`)
 
 - Alte Koordinaten = echte + 8 (`SHIFT`): Der 1.5.2-Populationsbereich ist genau der Chunk, Reichweite 16 nach jeder
   Seite. Gelesen/geschrieben wird nur der 3×3-Ausschnitt der `WorldGenRegion`; außerhalb sieht der Generator Stein
   bis y 61, Schreibversuche dorthin fallen weg (große Bauten → 26c als echte `Structure`).
-- Höhen 1:1 (Meer 63), alte Welt 256 hoch; `min_y`/`max_y` begrenzen Lesen und Schreiben. Unter y 0 sieht kein
-  Generator etwas → für Erze eine Abbildung ergänzen (Teil 26b).
+- Höhen: echt = alt + `y_offset` (Standard 0, Meer 63); alte Welt 256 hoch; `min_y`/`max_y` (alte Höhen) begrenzen
+  Lesen und Schreiben. Hängende Entities übernehmen den Offset noch nicht.
 - Biome: `OldBiomeTags.oldId` – alte Biome (worldgen152/EBXL) behalten ihre ID, sonst erste passende Regel über
   `c:`/`minecraft:`-Tags, kalt (`c:is_snowy`/`c:is_icy`) wählt die Frost-Variante. Neue Regeln dort, nicht im Generator.
   Immer `getNoiseBiome` (ungezoomt) – `getBiome` liest am Rand Chunks außerhalb → „Requested chunk unavailable“.
@@ -66,6 +73,6 @@ python3 tools/rcon.py 'forceload add <x1> <z1> <x2> <z2>'          # dann ~40 s 
 python3 tools/rcon.py 'execute if block X Y Z natura:sakura_log'  # einzelne Blöcke
 grep -E "ERROR|Exception" run/server/logs/latest.log
 ```
-Zählen mit `fill … X replace X` meldet nur Blöcke, deren Zustand sich ändert (Laub mit Distanz ja, senkrechte
-Stämme nicht) – keine Mengenprüfung damit. Für Mengen einen Block mit anderem Zustand einsetzen oder
-`execute if block` in einer Schleife.
+Zählen: `python3 tools/count_blocks.py [--dim minecraft:the_nether] X1 Z1 X2 Z2 YMIN YMAX block…` (ersetzt durch
+Luft, nur Test-Welt; Bereich vorher forceloaden und ~1–2 min warten). `fill … X replace X` taugt nicht zum Zählen
+(meldet nur geänderte Zustände). Zeitvergleich: dieselbe Fläche mit allen Namen in `disabledFeatures`.

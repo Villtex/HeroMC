@@ -38,7 +38,8 @@ public final class WorldGen152 {
     private static final DeferredRegister<MapCodec<? extends BiomeSource>> BIOME_SOURCES =
             DeferredRegister.create(Registries.BIOME_SOURCE, MOD_ID);
 
-    public WorldGen152(IEventBus modBus) {
+    public WorldGen152(IEventBus modBus, net.neoforged.fml.ModContainer container) {
+        container.registerConfig(net.neoforged.fml.config.ModConfig.Type.STARTUP, IntegratedConfig.SPEC);
         CHUNK_GENERATORS.register("overworld", () -> OldChunkGenerator.CODEC);
         CHUNK_GENERATORS.register("nether", () -> OldNetherChunkGenerator.CODEC);
         BIOME_SOURCES.register("overworld", () -> OldBiomeSource.CODEC);

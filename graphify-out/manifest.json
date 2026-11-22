@@ -378,9 +378,9 @@
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/WorldGen152.java": {
-    "mtime": 1795350467.8275583,
-    "seen": 1795351344.852323,
-    "ast_hash": "94a34d9e7a0a93b11316258edd297020",
+    "mtime": 1795357089.655269,
+    "seen": 1795359110.496005,
+    "ast_hash": "72efd3baa35e579199b5b53b71f91449",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/BiomeLayout.java": {
@@ -648,9 +648,9 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1795351281.371133,
-    "seen": 1795351344.8532217,
-    "ast_hash": "c7e80cd448daf0fff44f0673da6f7a4c",
+    "mtime": 1795359044.5223672,
+    "seen": 1795359110.4975967,
+    "ast_hash": "0bf319864d06e07d891be58f5bb648a0",
     "semantic_hash": ""
   },
   "mods/ebxl/original-assets.txt": {
@@ -684,9 +684,9 @@
     "semantic_hash": ""
   },
   "docs/PLAN.md": {
-    "mtime": 1795351242.201969,
-    "seen": 1795351344.8532264,
-    "ast_hash": "dcbba5e2a489b5b5767f0c541a6cbfb3",
+    "mtime": 1795359033.8128376,
+    "seen": 1795359110.4976032,
+    "ast_hash": "a265c803f285f234875584c078e0c634",
     "semantic_hash": ""
   },
   ".mcp.json": {
@@ -780,9 +780,9 @@
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldTerrainGen.java": {
-    "mtime": 1795350467.8275583,
-    "seen": 1795351344.8523839,
-    "ast_hash": "d30b53ec8e2c9d64ce4c88fbe0c49add",
+    "mtime": 1795357055.9661694,
+    "seen": 1795359110.4961154,
+    "ast_hash": "9e37c9a11a00fa1ba43bda454e05ae35",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/populate/OldTile.java": {
@@ -4902,9 +4902,9 @@
     "semantic_hash": ""
   },
   "mods/wildcaves3/src/main/java/wildcaves/gen/WildCavesGen.java": {
-    "mtime": 1795350467.8202484,
-    "seen": 1795351344.851968,
-    "ast_hash": "eecbeed5947dc5937925e665c23cd8cd",
+    "mtime": 1795357186.0557806,
+    "seen": 1795359110.4954531,
+    "ast_hash": "6dc9cebfee16a915360af53ecc2d6388",
     "semantic_hash": ""
   },
   "mods/wildcaves3/src/main/resources/assets/wildcaves3/blockstates/bone_pile.json": {
@@ -17844,9 +17844,9 @@
     "semantic_hash": ""
   },
   "mods/artifice/src/main/java/artifice/gen/ArtificeWorldGen.java": {
-    "mtime": 1795350467.8162484,
-    "seen": 1795351344.8266962,
-    "ast_hash": "b65d2f079135d5cf9185b58b8f7b8c65",
+    "mtime": 1795357186.055322,
+    "seen": 1795359110.4450843,
+    "ast_hash": "c2ecb4154cf98ecbdab5ed3e628d2ae9",
     "semantic_hash": ""
   },
   "mods/artifice/src/main/java/artifice/item/BoxItem.java": {
@@ -20448,9 +20448,9 @@
     "semantic_hash": ""
   },
   "mods/cofhcore/src/main/java/cofh/gen/CoFHWorldGen.java": {
-    "mtime": 1795350467.8162484,
-    "seen": 1795351344.832192,
-    "ast_hash": "f296d8915149d3ffa6d0deceeed26065",
+    "mtime": 1795357171.2495296,
+    "seen": 1795359110.4549396,
+    "ast_hash": "15f6b263a55a894b16c9eb6afea438de",
     "semantic_hash": ""
   },
   "mods/artifice/original-assets.txt": {
@@ -74538,9 +74538,9 @@
     "semantic_hash": ""
   },
   "mods/tconstruct/src/main/java/tconstruct/gen/TCWorldGen.java": {
-    "mtime": 1795350467.8202484,
-    "seen": 1795351344.8389711,
-    "ast_hash": "b8d69a689351374102516f22c61a4887",
+    "mtime": 1795357157.9442606,
+    "seen": 1795359110.4702969,
+    "ast_hash": "f6ca2e066a0e6de97e105d3e036d2184",
     "semantic_hash": ""
   },
   "mods/tconstruct/src/main/java/tconstruct/world/OreberryBushBlock.java": {
@@ -92885,18 +92885,6 @@
     "ast_hash": "8b40291d0cc9d6a3a71c8eff365870aa",
     "semantic_hash": ""
   },
-  "mods/artifice/src/main/resources/data/artifice/worldgen/feature/world.json": {
-    "mtime": 1795350467.86476,
-    "seen": 1795351344.8271253,
-    "ast_hash": "f530055db105f4912e26e5091f8f30b7",
-    "semantic_hash": ""
-  },
-  "mods/artifice/src/main/resources/data/artifice/worldgen/placed_feature/world.json": {
-    "mtime": 1795350467.865127,
-    "seen": 1795351344.827127,
-    "ast_hash": "4a332b62ec214422e7fb5a562c881712",
-    "semantic_hash": ""
-  },
   "mods/battletowers/src/main/resources/data/battletowers/worldgen/feature/towers.json": {
     "mtime": 1795350467.8653579,
     "seen": 1795351344.8275337,
@@ -92931,18 +92919,6 @@
     "mtime": 1795350467.866024,
     "seen": 1795351344.8321743,
     "ast_hash": "242bca39ea480c3fd1ebab2f2b895ee6",
-    "semantic_hash": ""
-  },
-  "mods/cofhcore/src/main/resources/data/cofhcore/worldgen/feature/world.json": {
-    "mtime": 1795350467.8664513,
-    "seen": 1795351344.8321943,
-    "ast_hash": "bd3c9f6c3721beebd1a22a2e5b4c2548",
-    "semantic_hash": ""
-  },
-  "mods/cofhcore/src/main/resources/data/cofhcore/worldgen/placed_feature/world.json": {
-    "mtime": 1795350467.8664513,
-    "seen": 1795351344.832196,
-    "ast_hash": "83a7724d967913c15c6ca348729860a8",
     "semantic_hash": ""
   },
   "mods/dimensional-doors/src/main/resources/data/dimdoors/worldgen/feature/rifts.json": {
@@ -93102,68 +93078,68 @@
     "semantic_hash": ""
   },
   "mods/meteorsmod/src/main/resources/data/meteors/worldgen/feature/meteors.json": {
-    "mtime": 1795350467.8712113,
-    "seen": 1795351344.834739,
-    "ast_hash": "279418bd2c9758803374df00a00f6c2e",
+    "mtime": 1795357308.5998209,
+    "seen": 1795359110.4605443,
+    "ast_hash": "886c7b1375222580eba4d5aae66f8cc5",
     "semantic_hash": ""
   },
   "mods/meteorsmod/src/main/resources/data/meteors/worldgen/placed_feature/meteors.json": {
-    "mtime": 1795350467.8712113,
-    "seen": 1795351344.8347404,
+    "mtime": 1795357308.6002192,
+    "seen": 1795359110.4605513,
     "ast_hash": "4bb3849afc9a643de208e1bb30713924",
     "semantic_hash": ""
   },
   "mods/natura/src/main/resources/data/natura/neoforge/biome_modifier/trees.json": {
-    "mtime": 1795350467.8712113,
-    "seen": 1795351344.8369484,
+    "mtime": 1795357308.5719838,
+    "seen": 1795359110.4648564,
     "ast_hash": "c1f1537ac751bf7e0fc5353a36cf5682",
     "semantic_hash": ""
   },
   "mods/natura/src/main/resources/data/natura/worldgen/feature/clouds.json": {
-    "mtime": 1795350467.8718288,
-    "seen": 1795351344.8372924,
+    "mtime": 1795357308.5707808,
+    "seen": 1795359110.4656415,
     "ast_hash": "55337bcb2cd43184318c800362fbe401",
     "semantic_hash": ""
   },
   "mods/natura/src/main/resources/data/natura/worldgen/feature/crops.json": {
-    "mtime": 1795350467.8720317,
-    "seen": 1795351344.837294,
+    "mtime": 1795357308.5697877,
+    "seen": 1795359110.4656441,
     "ast_hash": "1b29ca45d5fae952f3821edac718e15e",
     "semantic_hash": ""
   },
   "mods/natura/src/main/resources/data/natura/worldgen/feature/trees.json": {
-    "mtime": 1795350467.8720317,
-    "seen": 1795351344.8372948,
+    "mtime": 1795357308.571514,
+    "seen": 1795359110.4656465,
     "ast_hash": "8aecaf5602750b89170258b310d56323",
     "semantic_hash": ""
   },
   "mods/natura/src/main/resources/data/natura/worldgen/placed_feature/clouds.json": {
-    "mtime": 1795350467.8720317,
-    "seen": 1795351344.8372972,
+    "mtime": 1795357308.5710316,
+    "seen": 1795359110.46565,
     "ast_hash": "0680d5d497e4c29925efbf54c49ef718",
     "semantic_hash": ""
   },
   "mods/natura/src/main/resources/data/natura/worldgen/placed_feature/crops.json": {
-    "mtime": 1795350467.8724413,
-    "seen": 1795351344.8372986,
+    "mtime": 1795357308.5701745,
+    "seen": 1795359110.465653,
     "ast_hash": "98294955f5e64d17997cb42ba7b4752c",
     "semantic_hash": ""
   },
   "mods/natura/src/main/resources/data/natura/worldgen/placed_feature/trees.json": {
-    "mtime": 1795350467.8724413,
-    "seen": 1795351344.8372993,
+    "mtime": 1795357308.5717888,
+    "seen": 1795359110.4656553,
     "ast_hash": "a70109ec9a5c4e14eb081cc37977138a",
     "semantic_hash": ""
   },
   "mods/offlawn/src/main/resources/data/offlawn/worldgen/feature/sunflowers.json": {
-    "mtime": 1795350467.872773,
-    "seen": 1795351344.8374214,
+    "mtime": 1795357308.594481,
+    "seen": 1795359110.4659564,
     "ast_hash": "049117883bcb47d21f39e6e142ff9a11",
     "semantic_hash": ""
   },
   "mods/offlawn/src/main/resources/data/offlawn/worldgen/placed_feature/sunflowers.json": {
-    "mtime": 1795350467.872773,
-    "seen": 1795351344.837423,
+    "mtime": 1795357308.5949988,
+    "seen": 1795359110.46596,
     "ast_hash": "c27abd4e9fd32d157215a8f61f290fef",
     "semantic_hash": ""
   },
@@ -93204,50 +93180,26 @@
     "semantic_hash": ""
   },
   "mods/tconstruct/src/main/resources/data/tconstruct/worldgen/feature/slime_islands.json": {
-    "mtime": 1795350467.8758183,
-    "seen": 1795351344.8495152,
+    "mtime": 1795357308.5859864,
+    "seen": 1795359110.4919748,
     "ast_hash": "210e7dc7a9cb77184244cb3c1c7614c4",
     "semantic_hash": ""
   },
-  "mods/tconstruct/src/main/resources/data/tconstruct/worldgen/feature/world.json": {
-    "mtime": 1795350467.8761685,
-    "seen": 1795351344.8495173,
-    "ast_hash": "6091cb9cd2ed064a5c2349e5f35df626",
-    "semantic_hash": ""
-  },
   "mods/tconstruct/src/main/resources/data/tconstruct/worldgen/placed_feature/slime_islands.json": {
-    "mtime": 1795350467.8761685,
-    "seen": 1795351344.8495183,
+    "mtime": 1795357308.586545,
+    "seen": 1795359110.492002,
     "ast_hash": "c7ef3102433d87752ebe6c8afc07950c",
     "semantic_hash": ""
   },
-  "mods/tconstruct/src/main/resources/data/tconstruct/worldgen/placed_feature/world.json": {
-    "mtime": 1795350467.8767283,
-    "seen": 1795351344.84952,
-    "ast_hash": "ff1b7cd6490447c21ecdd1860b2c0b97",
-    "semantic_hash": ""
-  },
-  "mods/wildcaves3/src/main/resources/data/wildcaves3/worldgen/feature/caves.json": {
-    "mtime": 1795350467.877041,
-    "seen": 1795351344.852292,
-    "ast_hash": "e4b52d883dd5826e832de5719903aea3",
-    "semantic_hash": ""
-  },
   "mods/wildcaves3/src/main/resources/data/wildcaves3/worldgen/feature/fossils.json": {
-    "mtime": 1795350467.877396,
-    "seen": 1795351344.852293,
-    "ast_hash": "7088eb36f5acf19a8b97027800145237",
-    "semantic_hash": ""
-  },
-  "mods/wildcaves3/src/main/resources/data/wildcaves3/worldgen/placed_feature/caves.json": {
-    "mtime": 1795350467.877396,
-    "seen": 1795351344.852295,
-    "ast_hash": "bd7dbf1d040e7b904dfa357b3821da77",
+    "mtime": 1795357308.598783,
+    "seen": 1795359110.4959466,
+    "ast_hash": "21857b749fe66522f05b57afdb1acd31",
     "semantic_hash": ""
   },
   "mods/wildcaves3/src/main/resources/data/wildcaves3/worldgen/placed_feature/fossils.json": {
-    "mtime": 1795350467.8778806,
-    "seen": 1795351344.852297,
+    "mtime": 1795357308.59928,
+    "seen": 1795359110.495952,
     "ast_hash": "458731a4866630efc4ee0604df3ea891",
     "semantic_hash": ""
   },
@@ -93258,9 +93210,9 @@
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/OldGeneratorFeature.java": {
-    "mtime": 1795350972.3495765,
-    "seen": 1795351344.8523126,
-    "ast_hash": "43410e01f02bf81ef1bebe3e6c7af076",
+    "mtime": 1795357073.5020683,
+    "seen": 1795359110.4959881,
+    "ast_hash": "a340fb9616fd619cb388226bea0d95f9",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/resources/assets/worldgen152/lang/de_de.json": {
@@ -93282,9 +93234,291 @@
     "semantic_hash": ""
   },
   ".claude/skills/integrated-263/SKILL.md": {
-    "mtime": 1795351277.3042965,
-    "seen": 1795351344.8531759,
-    "ast_hash": "a846d885138526ac4e95ee13ec2b0391",
+    "mtime": 1795359044.5419452,
+    "seen": 1795359110.4975529,
+    "ast_hash": "9e3da7f066757c35a58a298cc16894c2",
+    "semantic_hash": ""
+  },
+  "mods/artifice/src/main/resources/data/artifice/neoforge/biome_modifier/basalt.json": {
+    "mtime": 1795357308.5939035,
+    "seen": 1795359110.4461875,
+    "ast_hash": "958d11d3cd32ca812c10ff25e20e337d",
+    "semantic_hash": ""
+  },
+  "mods/artifice/src/main/resources/data/artifice/neoforge/biome_modifier/flora.json": {
+    "mtime": 1795357308.5936825,
+    "seen": 1795359110.4461915,
+    "ast_hash": "86445517dc3ff8a97ad0e406ff45fe03",
+    "semantic_hash": ""
+  },
+  "mods/artifice/src/main/resources/data/artifice/neoforge/biome_modifier/marble.json": {
+    "mtime": 1795357308.5940752,
+    "seen": 1795359110.4461951,
+    "ast_hash": "a31b39a48dbfda229cdbb3f807515bdf",
+    "semantic_hash": ""
+  },
+  "mods/artifice/src/main/resources/data/artifice/worldgen/feature/basalt.json": {
+    "mtime": 1795357308.593799,
+    "seen": 1795359110.4465728,
+    "ast_hash": "7c6f1fc46a4aef0820e9263c829eb5b2",
+    "semantic_hash": ""
+  },
+  "mods/artifice/src/main/resources/data/artifice/worldgen/feature/flora.json": {
+    "mtime": 1795357308.5889354,
+    "seen": 1795359110.4465764,
+    "ast_hash": "d6465c3cbe911f34bd252a9a594efd93",
+    "semantic_hash": ""
+  },
+  "mods/artifice/src/main/resources/data/artifice/worldgen/feature/marble.json": {
+    "mtime": 1795357308.593956,
+    "seen": 1795359110.4465797,
+    "ast_hash": "7cda92edb7efb8bc6ff370fe9f63b7f5",
+    "semantic_hash": ""
+  },
+  "mods/artifice/src/main/resources/data/artifice/worldgen/placed_feature/basalt.json": {
+    "mtime": 1795357308.5938628,
+    "seen": 1795359110.4465826,
+    "ast_hash": "a8fde899aba362ca5395f3c088fc79f7",
+    "semantic_hash": ""
+  },
+  "mods/artifice/src/main/resources/data/artifice/worldgen/placed_feature/flora.json": {
+    "mtime": 1795357308.5891688,
+    "seen": 1795359110.4465876,
+    "ast_hash": "770dd13d98df227539254e53424bffe6",
+    "semantic_hash": ""
+  },
+  "mods/artifice/src/main/resources/data/artifice/worldgen/placed_feature/marble.json": {
+    "mtime": 1795357308.5940375,
+    "seen": 1795359110.446593,
+    "ast_hash": "26c4d55a728f0f31674127815c59166f",
+    "semantic_hash": ""
+  },
+  "mods/cofhcore/src/main/resources/data/cofhcore/neoforge/biome_modifier/custom_ores.json": {
+    "mtime": 1795357308.5886145,
+    "seen": 1795359110.4549437,
+    "ast_hash": "88413c4b32c2c8b8921234ad865becfe",
+    "semantic_hash": ""
+  },
+  "mods/cofhcore/src/main/resources/data/cofhcore/worldgen/feature/custom_ores.json": {
+    "mtime": 1795357308.5870478,
+    "seen": 1795359110.4549465,
+    "ast_hash": "4f77f6134bf8f6caf669b8616c1cda1e",
+    "semantic_hash": ""
+  },
+  "mods/cofhcore/src/main/resources/data/cofhcore/worldgen/placed_feature/custom_ores.json": {
+    "mtime": 1795357308.5875115,
+    "seen": 1795359110.4549484,
+    "ast_hash": "f5f77e3d221501320d8956788b1fc7f2",
+    "semantic_hash": ""
+  },
+  "mods/meteorsmod/src/main/resources/data/meteors/neoforge/biome_modifier/meteors.json": {
+    "mtime": 1795357308.6020036,
+    "seen": 1795359110.4604352,
+    "ast_hash": "d7df2d3c60cecbc0882194bde0d1028c",
+    "semantic_hash": ""
+  },
+  "mods/natura/src/main/resources/data/natura/neoforge/biome_modifier/clouds.json": {
+    "mtime": 1795357308.5712101,
+    "seen": 1795359110.4648337,
+    "ast_hash": "14a7b48db28b1000cd6e1ba8db3c09cf",
+    "semantic_hash": ""
+  },
+  "mods/natura/src/main/resources/data/natura/neoforge/biome_modifier/clouds_nether.json": {
+    "mtime": 1795357308.5712662,
+    "seen": 1795359110.4648366,
+    "ast_hash": "cc29338b4a4cb0c352c0298c7cd9d712",
+    "semantic_hash": ""
+  },
+  "mods/natura/src/main/resources/data/natura/neoforge/biome_modifier/crops.json": {
+    "mtime": 1795357308.570522,
+    "seen": 1795359110.4648385,
+    "ast_hash": "393cce6ae8cd0998791af059fadaa4c6",
+    "semantic_hash": ""
+  },
+  "mods/natura/src/main/resources/data/natura/neoforge/biome_modifier/crops_nether.json": {
+    "mtime": 1795357308.570595,
+    "seen": 1795359110.46484,
+    "ast_hash": "f942946c1b357f428cd35af18f6101eb",
+    "semantic_hash": ""
+  },
+  "mods/natura/src/main/resources/data/natura/neoforge/biome_modifier/trees_nether.json": {
+    "mtime": 1795357308.572072,
+    "seen": 1795359110.4648597,
+    "ast_hash": "59ac6c3572ef8a8880c581ae62e37ee0",
+    "semantic_hash": ""
+  },
+  "mods/offlawn/src/main/resources/data/offlawn/neoforge/biome_modifier/sunflowers.json": {
+    "mtime": 1795357308.595606,
+    "seen": 1795359110.4659402,
+    "ast_hash": "0be642f9575d9e2e668f664653c69a35",
+    "semantic_hash": ""
+  },
+  "mods/tconstruct/src/main/resources/data/tconstruct/neoforge/biome_modifier/aluminum_ore.json": {
+    "mtime": 1795357308.5777888,
+    "seen": 1795359110.4912739,
+    "ast_hash": "0a3e6fb25ed8d36bae99e048feee936a",
+    "semantic_hash": ""
+  },
+  "mods/tconstruct/src/main/resources/data/tconstruct/neoforge/biome_modifier/ardite_ore.json": {
+    "mtime": 1795357308.5784843,
+    "seen": 1795359110.4912784,
+    "ast_hash": "9f2589e5b2187b843db3fc0e3340438d",
+    "semantic_hash": ""
+  },
+  "mods/tconstruct/src/main/resources/data/tconstruct/neoforge/biome_modifier/cobalt_ore.json": {
+    "mtime": 1795357308.5782921,
+    "seen": 1795359110.4912815,
+    "ast_hash": "efbefd388f13cf4146443170edd277ec",
+    "semantic_hash": ""
+  },
+  "mods/tconstruct/src/main/resources/data/tconstruct/neoforge/biome_modifier/copper_ore.json": {
+    "mtime": 1795357308.5774496,
+    "seen": 1795359110.4912832,
+    "ast_hash": "555899e68daa8418b441462ecc1e4f44",
+    "semantic_hash": ""
+  },
+  "mods/tconstruct/src/main/resources/data/tconstruct/neoforge/biome_modifier/oreberry_bushes.json": {
+    "mtime": 1795357308.578084,
+    "seen": 1795359110.491286,
+    "ast_hash": "c43a67ad04c256d702d5e724d23ab3c7",
+    "semantic_hash": ""
+  },
+  "mods/tconstruct/src/main/resources/data/tconstruct/neoforge/biome_modifier/slime_islands.json": {
+    "mtime": 1795357308.5866733,
+    "seen": 1795359110.491289,
+    "ast_hash": "5f4867836ee02dfcd9f1420097cecdd7",
+    "semantic_hash": ""
+  },
+  "mods/tconstruct/src/main/resources/data/tconstruct/neoforge/biome_modifier/surface_ores.json": {
+    "mtime": 1795357308.5779178,
+    "seen": 1795359110.491291,
+    "ast_hash": "a620a2fb0de2b1a5ac1aba7f70b9f9b6",
+    "semantic_hash": ""
+  },
+  "mods/tconstruct/src/main/resources/data/tconstruct/neoforge/biome_modifier/tin_ore.json": {
+    "mtime": 1795357308.5776494,
+    "seen": 1795359110.491293,
+    "ast_hash": "3f67ad2c27280401b516ef0d4d410cbe",
+    "semantic_hash": ""
+  },
+  "mods/tconstruct/src/main/resources/data/tconstruct/worldgen/feature/aluminum_ore.json": {
+    "mtime": 1795357308.57769,
+    "seen": 1795359110.4919646,
+    "ast_hash": "d6895dfc81d04e4e7ace262c949f9925",
+    "semantic_hash": ""
+  },
+  "mods/tconstruct/src/main/resources/data/tconstruct/worldgen/feature/ardite_ore.json": {
+    "mtime": 1795357308.5783417,
+    "seen": 1795359110.4919667,
+    "ast_hash": "cb8f4b0776896be3a21b189f25f04f78",
+    "semantic_hash": ""
+  },
+  "mods/tconstruct/src/main/resources/data/tconstruct/worldgen/feature/cobalt_ore.json": {
+    "mtime": 1795357308.5781338,
+    "seen": 1795359110.4919689,
+    "ast_hash": "ceda08f1b2e68d9950f5f41eef28a20c",
+    "semantic_hash": ""
+  },
+  "mods/tconstruct/src/main/resources/data/tconstruct/worldgen/feature/copper_ore.json": {
+    "mtime": 1795357308.574647,
+    "seen": 1795359110.4919705,
+    "ast_hash": "213fb06c6503e043e396d9bfb72586bd",
+    "semantic_hash": ""
+  },
+  "mods/tconstruct/src/main/resources/data/tconstruct/worldgen/feature/oreberry_bushes.json": {
+    "mtime": 1795357308.5779638,
+    "seen": 1795359110.4919722,
+    "ast_hash": "1cec2bb8aae68d810cde9110f4ca5124",
+    "semantic_hash": ""
+  },
+  "mods/tconstruct/src/main/resources/data/tconstruct/worldgen/feature/surface_ores.json": {
+    "mtime": 1795357308.5778282,
+    "seen": 1795359110.4919775,
+    "ast_hash": "e79448ecf545606f970e1ef284eb97df",
+    "semantic_hash": ""
+  },
+  "mods/tconstruct/src/main/resources/data/tconstruct/worldgen/feature/tin_ore.json": {
+    "mtime": 1795357308.5775464,
+    "seen": 1795359110.4919903,
+    "ast_hash": "2560822f411eb3ae74282b798d5e0d99",
+    "semantic_hash": ""
+  },
+  "mods/tconstruct/src/main/resources/data/tconstruct/worldgen/placed_feature/aluminum_ore.json": {
+    "mtime": 1795357308.5777466,
+    "seen": 1795359110.4919922,
+    "ast_hash": "72da63334dfb6b1401e2ba0e27cd241a",
+    "semantic_hash": ""
+  },
+  "mods/tconstruct/src/main/resources/data/tconstruct/worldgen/placed_feature/ardite_ore.json": {
+    "mtime": 1795357308.5784013,
+    "seen": 1795359110.4919941,
+    "ast_hash": "64c16dc7eb1e390ae178227e0f195eff",
+    "semantic_hash": ""
+  },
+  "mods/tconstruct/src/main/resources/data/tconstruct/worldgen/placed_feature/cobalt_ore.json": {
+    "mtime": 1795357308.5782378,
+    "seen": 1795359110.4919965,
+    "ast_hash": "595ae1984189d07f9f0bb45d15caf0d7",
+    "semantic_hash": ""
+  },
+  "mods/tconstruct/src/main/resources/data/tconstruct/worldgen/placed_feature/copper_ore.json": {
+    "mtime": 1795357308.5749114,
+    "seen": 1795359110.4919987,
+    "ast_hash": "a1d34b3752996065374b629b43c8ed7e",
+    "semantic_hash": ""
+  },
+  "mods/tconstruct/src/main/resources/data/tconstruct/worldgen/placed_feature/oreberry_bushes.json": {
+    "mtime": 1795357308.5780337,
+    "seen": 1795359110.4920003,
+    "ast_hash": "c7ab4ed41890ff0131b7ff22109a210c",
+    "semantic_hash": ""
+  },
+  "mods/tconstruct/src/main/resources/data/tconstruct/worldgen/placed_feature/surface_ores.json": {
+    "mtime": 1795357308.5778766,
+    "seen": 1795359110.4920046,
+    "ast_hash": "653dff95bba261dd73601092e28bcf6d",
+    "semantic_hash": ""
+  },
+  "mods/tconstruct/src/main/resources/data/tconstruct/worldgen/placed_feature/tin_ore.json": {
+    "mtime": 1795357308.5776052,
+    "seen": 1795359110.4920063,
+    "ast_hash": "4f201623fdd1f738c4c17134bcc0b6e6",
+    "semantic_hash": ""
+  },
+  "mods/wildcaves3/src/main/resources/data/wildcaves3/neoforge/biome_modifier/cave_decoration.json": {
+    "mtime": 1795357308.5985076,
+    "seen": 1795359110.4959383,
+    "ast_hash": "725fb0b5b612bbb4f72a64caa46f66ba",
+    "semantic_hash": ""
+  },
+  "mods/wildcaves3/src/main/resources/data/wildcaves3/neoforge/biome_modifier/fossils.json": {
+    "mtime": 1795357308.5994508,
+    "seen": 1795359110.4959414,
+    "ast_hash": "3966643a312c190585713d4d375567c1",
+    "semantic_hash": ""
+  },
+  "mods/wildcaves3/src/main/resources/data/wildcaves3/worldgen/feature/cave_decoration.json": {
+    "mtime": 1795357308.595986,
+    "seen": 1795359110.495943,
+    "ast_hash": "06bd2dfae98632a846bd23436f9e4704",
+    "semantic_hash": ""
+  },
+  "mods/wildcaves3/src/main/resources/data/wildcaves3/worldgen/placed_feature/cave_decoration.json": {
+    "mtime": 1795357308.5963914,
+    "seen": 1795359110.4959486,
+    "ast_hash": "11ba41668747e99ca531941b81a7ee2d",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/IntegratedConfig.java": {
+    "mtime": 1795357087.5207794,
+    "seen": 1795359110.495954,
+    "ast_hash": "0f03cfd3ed00a9f917836f30d2b8986c",
+    "semantic_hash": ""
+  },
+  "tools/count_blocks.py": {
+    "mtime": 1795358206.440846,
+    "seen": 1795359110.497507,
+    "ast_hash": "ae084fbfbb49fafa71a0357e7bf3d912",
     "semantic_hash": ""
   }
 }

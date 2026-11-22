@@ -51,6 +51,31 @@ public final class ArtificeWorldGen {
         OldBlockInfo.register(ArtificeIds.FLORA, Material.PLANTS, false, 0, false);
         OldBlockInfo.register(ArtificeIds.LOTUS, Material.PLANTS, false, 0, false);
         OldTerrainGen.registerWorldGenerator(FML_ID, "artifice:world", ArtificeWorldGen::generate);
+        // Hexxit Integrated: the three parts on their own; basalt and marble with y_offset -64 (basalt at the bottom
+        // of today's world, marble below sea level)
+        OldTerrainGen.registerFeature("artifice:flora", (random, chunkX, chunkZ, world) -> {
+            if (world.dimension() == 0) {
+                for (int i = 0; i < FLORA_FREQUENCY; i++) {
+                    flowers(world, random, chunkX, chunkZ);
+                }
+                for (int i = 0; i < LOTUS_FREQUENCY; i++) {
+                    lily(world, random, chunkX, chunkZ);
+                }
+            }
+        });
+        OldTerrainGen.registerFeature("artifice:basalt", (random, chunkX, chunkZ, world) -> {
+            if (world.dimension() == 0) {
+                layer(world, ArtificeIds.BASALT, BASALT_LAYER_MIN, BASALT_LAYER_MAX, chunkX, chunkZ);
+            }
+        });
+        OldTerrainGen.registerFeature("artifice:marble", (random, chunkX, chunkZ, world) -> {
+            if (world.dimension() == 0) {
+                for (int i = 0; i < MARBLE_CLUSTER_FREQUENCY; i++) {
+                    int size = MARBLE_CLUSTER_SIZE + random.nextInt(MARBLE_CLUSTER_SIZE) / 2 - random.nextInt(MARBLE_CLUSTER_SIZE) / 2;
+                    cluster(world, random, ArtificeIds.MARBLE, MARBLE_CLUSTER_HEIGHT, size, chunkX, chunkZ);
+                }
+            }
+        });
     }
 
     /** ArtificeWorldGen.generateWorld with newGen = true. */

@@ -17,11 +17,11 @@ Jeder Mod wird deshalb gegen das dekompilierte Original als Referenz **neu gesch
 - **Rezeptanzeige:** Not Enough Items wird nicht portiert. Stattdessen sind alle portierten Mods mit
   **JEI** kompatibel; eigene Rezepttypen bekommen ein JEI-Plugin.
 - **Twilight Forest** ist in die Teile 24a–24f aufgeteilt, **Tinkers' Construct** in die Teile 25a–25f.
-- **Welttypen (Teil 26, 26a erledigt):** „Hexxit Integrated“ ist der Standard (`minecraft:normal`: 26.3-Generierung
+- **Welttypen (Teil 26, 26a und 26b erledigt):** „Hexxit Integrated“ ist der Standard (`minecraft:normal`: 26.3-Generierung
   plus Hexxit-Inhalte, offen für fremde 26.3-Mods: deren Biome, Bauwerke, Rohre und Werkzeuge arbeiten mit der Welt).
   „Hexxit Legacy (1.5.2)“ (`hexxit:legacy`) ist die bitgenaue 1.5.2-Welt. Am Server: `level-type=hexxit\:legacy` in
-  `server.properties` für Legacy, ohne Eintrag Integrated. Bisher hängt in Integrated nur `natura:trees` an den Biomen
-  (Teil 26b folgt).
+  `server.properties` für Legacy, ohne Eintrag Integrated. Erze, Pflanzen, Bäume und Nether-Generatoren sind in Integrated
+  eingehängt (Teil 26b); Bauwerke folgen in 26c. Erze lassen sich in `config/worldgen152-startup.toml` abschalten.
 
 ## Arbeitsplan
 

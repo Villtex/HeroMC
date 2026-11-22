@@ -1,4 +1,5 @@
 {
   "type": "worldgen152:old_generator",
-  "generator": "wildcaves3:fossils"
+  "generator": "wildcaves3:fossils",
+  "y_offset": -64
 }

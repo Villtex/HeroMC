@@ -65,11 +65,12 @@ import java.util.concurrent.ConcurrentHashMap;
  * In the world type Hexxit Legacy (the 1.5.2 chunk generators) the feature does nothing: there the generators run
  * inside the bit-exact population.
  */
-public record OldGeneratorFeature(String generator, int minY, int maxY) implements Feature {
+public record OldGeneratorFeature(String generator, int minY, int maxY, int yOffset) implements Feature {
     public static final MapCodec<OldGeneratorFeature> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             Codec.STRING.fieldOf("generator").forGetter(OldGeneratorFeature::generator),
             Codec.intRange(0, 255).optionalFieldOf("min_y", 0).forGetter(OldGeneratorFeature::minY),
-            Codec.intRange(0, 255).optionalFieldOf("max_y", 255).forGetter(OldGeneratorFeature::maxY))
+            Codec.intRange(0, 255).optionalFieldOf("max_y", 255).forGetter(OldGeneratorFeature::maxY),
+            Codec.intRange(-128, 128).optionalFieldOf("y_offset", 0).forGetter(OldGeneratorFeature::yOffset))
             .apply(instance, OldGeneratorFeature::new));
 
     private static final Logger LOGGER = LogUtils.getLogger();
@@ -86,6 +87,9 @@ public record OldGeneratorFeature(String generator, int minY, int maxY) implemen
     @Override
     public boolean place(WorldGenLevel level, ChunkGenerator chunkGenerator, RandomSource random, BlockPos origin) {
         if (chunkGenerator instanceof OldChunkGenerator || chunkGenerator instanceof OldNetherChunkGenerator) {
+            return false;
+        }
+        if (!IntegratedConfig.enabled(this.generator)) {
             return false;
         }
         OldTerrainGen.WorldGenerator gen = OldTerrainGen.generator(this.generator);
@@ -151,6 +155,8 @@ public record OldGeneratorFeature(String generator, int minY, int maxY) implemen
         private final int maxZ;
         private final int lowY;
         private final int highY;
+        /** Real y = old y + off. */
+        private final int off;
         /** Old chunks handed to the old world, with their cells before the generator ran (0..255 high). */
         private final Map<Long, char[]> before = new HashMap<>();
 
@@ -163,8 +169,10 @@ public record OldGeneratorFeature(String generator, int minY, int maxY) implemen
             this.minZ = (chunkZ - 1) * 16;
             this.maxX = (chunkX + 2) * 16 - 1;
             this.maxZ = (chunkZ + 2) * 16 - 1;
-            this.lowY = Math.max(OldGeneratorFeature.this.minY, level.getMinY());
-            this.highY = Math.min(OldGeneratorFeature.this.maxY, level.getMaxY());
+            // old y = real y - offset; the window is in old heights
+            this.off = OldGeneratorFeature.this.yOffset;
+            this.lowY = Math.max(OldGeneratorFeature.this.minY, level.getMinY() - this.off);
+            this.highY = Math.min(Math.min(OldGeneratorFeature.this.maxY, OldWorld.HEIGHT - 1), level.getMaxY() - this.off);
         }
 
         private boolean inArea(int x, int z) {
@@ -195,12 +203,13 @@ public record OldGeneratorFeature(String generator, int minY, int maxY) implemen
                     }
                     ChunkAccess chunk = this.level.getChunk(x >> 4, z >> 4);
                     for (int y = this.lowY; y <= this.highY; y++) {
-                        LevelChunkSection section = chunk.getSection(chunk.getSectionIndex(y));
+                        int ry = y + this.off;
+                        LevelChunkSection section = chunk.getSection(chunk.getSectionIndex(ry));
                         if (section.hasOnlyAir()) {
-                            y |= 15;
+                            y += 15 - (ry & 15);
                             continue;
                         }
-                        cells[column + y] = (char) cell(section.getBlockState(x & 15, y & 15, z & 15));
+                        cells[column + y] = (char) cell(section.getBlockState(x & 15, ry & 15, z & 15));
                     }
                 }
             }
@@ -275,7 +284,7 @@ public record OldGeneratorFeature(String generator, int minY, int maxY) implemen
                             int id = world.getBlockId(ox, y, oz);
                             int cell = id << 4 | world.getBlockMetadata(ox, y, oz);
                             if (cell != old[column + y]) {
-                                changed.add(new BlockPos(ox - SHIFT, y, oz - SHIFT));
+                                changed.add(new BlockPos(ox - SHIFT, y + this.off, oz - SHIFT));
                                 cells.add(new int[] {ox, y, oz, cell});
                             }
                         }
@@ -318,7 +327,7 @@ public record OldGeneratorFeature(String generator, int minY, int maxY) implemen
                     Entity entity = OldChunkWriter.entity(old, this.level.getLevel(), this.level.registryAccess(), -SHIFT, -SHIFT);
                     if (entity != null) {
                         if (!(entity instanceof HangingEntity)) {
-                            entity.snapTo(old.x() - SHIFT, old.y(), old.z() - SHIFT,
+                            entity.snapTo(old.x() - SHIFT, old.y() + this.off, old.z() - SHIFT,
                                     old instanceof OldEntity.Mob mob ? mob.yaw() : 0.0F, 0.0F);
                         }
                         this.level.addFreshEntity(entity);

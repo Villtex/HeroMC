@@ -72,6 +72,10 @@ public final class WildCavesGen {
             }
         }
         OldTerrainGen.registerWorldGenerator(FML_ID, "wildcaves3:fossils", WildCavesGen::fossils);
+        // Hexxit Integrated (y_offset -64): the caves of today reach from -64 to about 80 instead of 10 to 80, so
+        // the decoration looks for cave ceilings up to old y 144 (real 80), twice as often
+        OldTerrainGen.registerFeature("wildcaves3:cave_decoration", (random, chunkX, chunkZ, world) ->
+                caves(random, chunkX, chunkZ, world, 2 * TIMES_PER_CHUNK, MAX_GEN_HEIGHT + 64));
     }
 
     /** Stands in for the unseeded {@code new Random()} of the original, one per chunk. */
@@ -82,15 +86,19 @@ public final class WildCavesGen {
     // ---- WorldGenWildCaves ----
 
     static void caves(Random random, int chunkX, int chunkZ, OldWorld world) {
+        caves(random, chunkX, chunkZ, world, TIMES_PER_CHUNK, MAX_GEN_HEIGHT);
+    }
+
+    static void caves(Random random, int chunkX, int chunkZ, OldWorld world, int times, int maxHeight) {
         if (world.dimension() != 0) {
             return;   // "Dimension Blacklist" of the pack: -1 and 1
         }
         Random choices = choices(world, chunkX, chunkZ);
         int blockX = chunkX * 16;
         int blockZ = chunkZ * 16;
-        for (int i = 0; i < TIMES_PER_CHUNK; i++) {
+        for (int i = 0; i < times; i++) {
             int x = blockX + random.nextInt(16);
-            int y = random.nextInt(MAX_GEN_HEIGHT);
+            int y = random.nextInt(maxHeight);
             int z = blockZ + random.nextInt(16);
             while ((!contains(WHITE_LIST, world.getBlockId(x, y + 1, z)) || !world.isAirBlock(x, y, z)) && y > 10) {
                 y--;

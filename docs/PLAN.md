@@ -74,7 +74,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 25e | Tinkers' Construct E: Spieler (Rucksack, Herzen, Handschuh, Ereignisse), Handbücher, Essen, Mobs | ~8.000 | 25a | Opus 5.5, mittel | ✅ erledigt |
 | 25f | Tinkers' Construct F: Deko-Blöcke, Fallen, Landmine, Redstone-Maschinen, Kristall/Essenz | ~9.000 | 25a | Opus 5.5, mittel | ✅ erledigt |
 | 26a | Integrated A: Welttypen Legacy/Integrated, Chunk-Brücke, Mod-Generatoren als einzelne registrierte Features | ~3.000 | 2 | Fable 5.2, hoch | ✅ erledigt |
-| 26b | Integrated B: Erze, Pflanzen, Bäume, Nether-Generatoren per Biom-Modifier und Biom-Tags | ~2.000 | 26a | Opus 5.5, hoch | offen |
+| 26b | Integrated B: Erze, Pflanzen, Bäume, Nether-Generatoren per Biom-Modifier und Biom-Tags | ~2.000 | 26a | Opus 5.5, hoch | ✅ erledigt |
 | 26c | Integrated C: Bauwerke und Dungeons als echte 26.3-Strukturen (`/locate`, Abstand zu fremden Strukturen) | ~4.000 | 26a | Fable 5.2, hoch | offen |
 | 26d | Integrated D: EBXL-Biome neben Vanilla- und fremden Biomen, Mob-Spawns per Biom-Modifier | ~3.000 | 26b | Fable 5.2, hoch | offen |
 | 26e | Integrated E: Schnittstellen für fremde Mods (Capabilities, `c:`-Tags, Werkzeug-Fähigkeiten, Rezepte über Tags) | ~4.000 | – | Opus 5.5, mittel | offen |
@@ -1994,6 +1994,42 @@ Forest, Limbo/Taschendimensionen von Dimensional Doors) behalten ihre Generatore
 - Erze, die es auch in Vanilla oder bei fremden Mods gibt (Kupfer, Zinn, Silber, Aluminium …): Mengen so wählen,
   dass sie nicht doppelt so häufig werden. Eine Konfig-Option je Erz (`generate = true`), wie im Original, damit
   ein fremder Erz-Mod übernehmen kann.
+
+#### Teil 26b – Stand (✅ erledigt)
+- **Nur-Integrated-Generatoren:** `OldTerrainGen.registerFeature(name, gen)` meldet Teile eines 1.5.2-Generators an,
+  die nur als Feature laufen (nie in der Legacy-Population). Die Sammel-Generatoren `tconstruct:world`,
+  `cofhcore:world`, `artifice:world`, `wildcaves3:caves` bleiben für Legacy; ihre Feature-Dateien aus 26a sind
+  entfernt, in Integrated laufen stattdessen die Teile.
+- **Höhen:** Feature-Feld `y_offset` (echt = alt + Offset). Erze und Höhlen-Deko laufen mit −64;
+  `OldTerrainGen.deepY(y)` streckt 1.5.2-Höhen 0–63 auf echte −64…63 (darüber 1:1). Natura, Erzbeeren, Blumen,
+  Schleiminseln, Oberflächenerze bleiben bei 0. Nether 1:1 (beide 0–127).
+- **Eingehängt** (je eine Datei unter `data/<ns>/neoforge/biome_modifier/`, Biome `#minecraft:is_overworld` bzw.
+  `#minecraft:is_nether`; der Generator prüft das Biom selbst wie im Original über `OldBiomeTags`):
+  natura `crops`, `clouds`, `trees` (je Oberwelt + Nether; Wolken sind in der Pack-Konfiguration aus);
+  tconstruct `copper_ore`, `tin_ore`, `aluminum_ore` (−64, `deepY`, in den Extreme Hills doppelt; Kupfer je Ader nur
+  zu 50 %, weil Vanilla-Kupfer da ist), `surface_ores`, `oreberry_bushes`, `slime_islands`, `cobalt_ore`,
+  `ardite_ore` (Nether); cofhcore `custom_ores` (nur die WorldCustomGen-Vorlagen = qCraft-Quantenerz, −64, `deepY`;
+  die Vanilla-Erze und das flache Grundgestein von CoFH World entfallen, das macht 26.3 selbst); artifice `flora`,
+  `basalt` (Schicht über dem Grundgestein, −64), `marble` (−64); offlawn `sunflowers`; wildcaves3
+  `cave_decoration` (−64, sucht Höhlendecken bis echt y 80, doppelt so oft) und `fossils` (−64); meteors `meteors`
+  (Untergrund-Meteorerz, −64). Schritte: Erze `underground_ores`, Höhlen-Deko/Erzbeeren `underground_decoration`,
+  Pflanzen/Bäume `vegetal_decoration`, Schleiminseln `surface_structures`.
+- **Konfiguration** `config/worldgen152-startup.toml` (`IntegratedConfig`): je Erz ein Schalter (`generateCopper`,
+  `generateTin`, `generateAluminum`, `generateCobalt`, `generateArdite`, `generateSurfaceOres`,
+  `generateQuantumOre`, `generateMeteorOre`) und `disabledFeatures` (Liste beliebiger Feature-Namen). Gilt nur für
+  Integrated. Datapacks können zusätzlich `neoforge:remove_features` nehmen.
+- **Werkzeug:** `tools/count_blocks.py` zählt Blöcke per RCON (zerstörend, nur in Test-Welten).
+- **Geprüft:** `clean pack` grün. Integrated, Seed 1234, ohne Fehler im Log. 64 Chunks Wald bei −560/32: TC-Kupfer 559,
+  Zinn 1031, Aluminium 1025 (Vanilla-Kupfer 5718), Erzbeeren 10, Basalt 64.142, Marmor 80.184, Meteorerz 983,
+  Quantenerz 785, Höhlen-Deko (Stalaktiten 213, Glowcaps, Spinnweben), Natura-Gerste. 256 Chunks bei 0/400:
+  Artifice-Blumen 56, Lotus 30, eine Schleiminsel (526 Schleimgras), Oberflächenerz. Nether 64 Chunks: Kobalt 299,
+  Ardit 339, Blutholz/Geisterholz/Dunkelholz, Dornenranken. Zeit: 625 Chunks in 246 s, mit allen Hexxit-Features
+  aus 306 s – die Brücke kostet auf dieser Maschine nichts Messbares. Legacy: `expect.sh 1234 find 260` bytegleich zu
+  26a, `verify_blocks.py` wie vorher (296.610 gleich, die 2 bekannten Ranken).
+- **Offen:** Sonnenblumen (offLawn) nicht gesehen – im Original selten (y = `nextInt(128)` muss die Oberfläche
+  treffen), nicht gezielt gesucht. Natura-Nether-Gelände (Heat Sand, Tainted Soil) kam in Legacy aus dem
+  Nether-Chunk-Generator, nicht aus einem Generator; in Integrated fehlt es (Kandidat für 26d als Oberflächenregel).
+  Hängende Entities (Bilder, Rahmen) übernehmen `y_offset` noch nicht (kein Generator aus 26b erzeugt welche).
 
 ### Teil 26c – Bauwerke und Dungeons als 26.3-Strukturen
 - betterdungeons, ruins, battletowers, projectzulu (Pyramide, Labyrinth, Friedhof), legendgear, hexxitgear,

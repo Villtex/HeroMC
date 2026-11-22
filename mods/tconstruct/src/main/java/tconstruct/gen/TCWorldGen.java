@@ -102,6 +102,7 @@ public final class TCWorldGen {
             }
         });
         OldTerrainGen.registerWorldGenerator(FML_ID, "tconstruct:slime_islands", SlimeIslandGen::generate);
+        registerIntegrated();
         // TConstruct.preInit: registerVillageCreationHandler (tool workshop, then smeltery)
         OldStructures.VILLAGE_HANDLERS.add(new ComponentToolWorkshop.Handler());
         OldStructures.VILLAGE_HANDLERS.add(new ComponentSmeltery.Handler());
@@ -147,6 +148,67 @@ public final class TCWorldGen {
             TINKER_HOUSE_PATTERNS.add(FML_ID, new OldStack(WOOD_PATTERN, i + 1, 1), 1, 3, 20);
         }
         TINKER_HOUSE_PATTERNS.add(FML_ID, new OldStack(WOOD_PATTERN, 22, 1), 1, 3, 40);
+    }
+
+    // ---------------------------------------------------------------- world type Hexxit Integrated
+
+    /**
+     * The pieces of TBaseWorldGenerator and of the SAND event handler as features of their own (world type Hexxit
+     * Integrated), so that each ore can be switched off or replaced. The underground ores run with {@code y_offset}
+     * -64 and {@link OldTerrainGen#deepY}: the heights of 1.5.2 stretched over the deeper world. Copper exists in
+     * vanilla too, so every copper vein is placed with half the chance.
+     */
+    private static void registerIntegrated() {
+        OldTerrainGen.registerFeature("tconstruct:copper_ore", (random, chunkX, chunkZ, world) ->
+                deepOre(world, random, chunkX * 16, chunkZ * 16, COPPER, COPPER_U_DENSITY, COPPER_U_MIN_Y, COPPER_U_MAX_Y, true));
+        OldTerrainGen.registerFeature("tconstruct:tin_ore", (random, chunkX, chunkZ, world) ->
+                deepOre(world, random, chunkX * 16, chunkZ * 16, TIN, TIN_U_DENSITY, TIN_U_MIN_Y, TIN_U_MAX_Y, false));
+        OldTerrainGen.registerFeature("tconstruct:aluminum_ore", (random, chunkX, chunkZ, world) ->
+                deepOre(world, random, chunkX * 16, chunkZ * 16, ALUMINUM, ALUMINUM_U_DENSITY, ALUMINUM_U_MIN_Y, ALUMINUM_U_MAX_Y, false));
+        OldTerrainGen.registerFeature("tconstruct:oreberry_bushes", (random, chunkX, chunkZ, world) -> {
+            if (world.dimension() == 0) {
+                generateOreBushes(random, chunkX * 16, chunkZ * 16, world);
+            }
+        });
+        OldTerrainGen.registerFeature("tconstruct:surface_ores", (random, chunkX, chunkZ, world) -> {
+            if (world.dimension() == 0) {
+                surfaceOres(world, random, chunkX * 16, chunkZ * 16);
+            }
+        });
+        OldTerrainGen.registerFeature("tconstruct:cobalt_ore", (random, chunkX, chunkZ, world) -> netherOre(world, random, chunkX * 16, chunkZ * 16, COBALT));
+        OldTerrainGen.registerFeature("tconstruct:ardite_ore", (random, chunkX, chunkZ, world) -> netherOre(world, random, chunkX * 16, chunkZ * 16, ARDITE));
+    }
+
+    /** generateUndergroundOres for one ore (twice in the Extreme Hills), heights through deepY. */
+    static void deepOre(OldWorld world, Random random, int xChunk, int zChunk, OldOreGens.Minable ore, int density, int minY, int maxY, boolean half) {
+        if (world.dimension() != 0) {
+            return;
+        }
+        String biomeName = world.getBiome(xChunk, zChunk).name;
+        int rounds = "Extreme Hills Edge".equals(biomeName) || "Extreme Hills".equals(biomeName) ? 2 : 1;
+        for (int round = 0; round < rounds; round++) {
+            for (int q = 0; q <= density; q++) {
+                int x = xChunk + random.nextInt(16);
+                int y = OldTerrainGen.deepY(minY + random.nextInt(maxY - minY));
+                int z = zChunk + random.nextInt(16);
+                if (!half || random.nextBoolean()) {
+                    ore.generate(world, random, x, y, z);
+                }
+            }
+        }
+    }
+
+    /** generateNether for one of the two ores: both loops of the original. */
+    static void netherOre(OldWorld world, Random random, int xChunk, int zChunk, OldOreGens.Minable ore) {
+        if (!world.isHellWorld()) {
+            return;
+        }
+        for (int i = 0; i < NETHER_DENSITY; i++) {
+            ore.generate(world, random, xChunk + random.nextInt(16), random.nextInt(64) + 32, zChunk + random.nextInt(16));
+        }
+        for (int i = 0; i < NETHER_DENSITY; i++) {
+            ore.generate(world, random, xChunk + random.nextInt(16), random.nextInt(128), zChunk + random.nextInt(16));
+        }
     }
 
     // ---------------------------------------------------------------- TBaseWorldGenerator

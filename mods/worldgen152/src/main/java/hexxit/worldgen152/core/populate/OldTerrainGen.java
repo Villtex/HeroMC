@@ -138,6 +138,24 @@ public final class OldTerrainGen {
         GENERATORS = insert(GENERATOR_ENTRIES, originalModId, generator);
     }
 
+    /**
+     * A generator that exists only as a feature of the world type Hexxit Integrated (a piece of a 1.5.2 generator
+     * with heights for the deeper world of today); it never runs in the 1.5.2 population.
+     */
+    public static void registerFeature(String name, WorldGenerator generator) {
+        if (NAMED.putIfAbsent(name, generator) != null) {
+            throw new IllegalArgumentException("World generator " + name + " is registered twice");
+        }
+    }
+
+    /**
+     * For features with {@code "y_offset": -64} (old y = real y + 64): where a 1.5.2 height {@code y} goes. The
+     * underground of 1.5.2 (y 0-63) is stretched over today's -64 to 63, above it heights stay (real y = y).
+     */
+    public static int deepY(int y) {
+        return y < 64 ? 2 * y : y + 64;
+    }
+
     /** The generator registered under {@code name}, or {@code null}. */
     public static WorldGenerator generator(String name) {
         return NAMED.get(name);
