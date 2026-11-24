@@ -78,6 +78,9 @@ public final class WorldGen152 {
         CHUNK_GENERATORS.register(modBus);
         BIOME_SOURCES.register(modBus);
         NeoForge.EVENT_BUS.addListener(WorldGen152::onServerAboutToStart);
+        if (net.neoforged.fml.loading.FMLEnvironment.getDist() == net.neoforged.api.distmarker.Dist.CLIENT) {
+            hexxit.worldgen152.client.DefaultWorldType.register();
+        }
         // load condition worldgen152:world_type (data that differs between Hexxit Legacy and other world types)
         CONDITIONS.register("world_type", () -> WorldTypeCondition.CODEC);
         CONDITIONS.register(modBus);

@@ -378,9 +378,9 @@
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/WorldGen152.java": {
-    "mtime": 1795543124.6864011,
-    "seen": 1795546647.6656947,
-    "ast_hash": "c07ff0b58a8240db2da1e8736d47e8bd",
+    "mtime": 1795550669.888613,
+    "seen": 1795550724.4548888,
+    "ast_hash": "fc7391b81104f81d0716bf82f07e1d68",
     "semantic_hash": ""
   },
   "mods/worldgen152/src/main/java/hexxit/worldgen152/core/BiomeLayout.java": {
@@ -642,9 +642,9 @@
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1795549480.026261,
-    "seen": 1795550202.0729423,
-    "ast_hash": "0d8a4cf5feab37e452dad7c55e7c9408",
+    "mtime": 1795550669.8891015,
+    "seen": 1795550724.4555242,
+    "ast_hash": "37de2e990fa15e6831d7b5cf6af073a7",
     "semantic_hash": ""
   },
   "README.md": {
@@ -95304,9 +95304,15 @@
     "semantic_hash": ""
   },
   "tools/make_zip.py": {
-    "mtime": 1795547170.2772446,
-    "seen": 1795547230.1237912,
-    "ast_hash": "3cdbb4dc5f92590e9a42066834cda04a",
+    "mtime": 1795550669.8888943,
+    "seen": 1795550724.4554846,
+    "ast_hash": "92ae84631ed8557cbe2df52ebf2f627f",
+    "semantic_hash": ""
+  },
+  "mods/worldgen152/src/main/java/hexxit/worldgen152/client/DefaultWorldType.java": {
+    "mtime": 1795550669.877572,
+    "seen": 1795550724.4548945,
+    "ast_hash": "377fd6b16160bdd2a30075e880cffabf",
     "semantic_hash": ""
   }
 }

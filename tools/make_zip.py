@@ -4,8 +4,8 @@
     python3 tools/make_zip.py [ziel.zip]      (default: build/HeroMC-mods.zip)
 
 Builds the pack (CI=true ./gradlew pack) unless --no-build, then packs:
-  mods/         the pack's jars (build/pack/mods), JEI and the performance mods (C2ME, Lithium, ScalableLux)
-  client-mods/  client only (Sodium, build/pack/client-mods)
+  mods/  the pack's jars (build/pack/mods), JEI, the performance mods (C2ME, Lithium, ScalableLux) and Sodium
+         (client only; a server skips it)
 """
 import argparse
 import os
@@ -46,8 +46,8 @@ def main():
         for jar in mods:
             z.write(jar, f'mods/{jar.name}')
         for jar in client:
-            z.write(jar, f'client-mods/{jar.name}')
-    print(f'{target}: {len(mods)} mods, {len(client)} client-only')
+            z.write(jar, f'mods/{jar.name}')
+    print(f'{target}: {len(mods) + len(client)} mods')
 
 
 if __name__ == '__main__':
