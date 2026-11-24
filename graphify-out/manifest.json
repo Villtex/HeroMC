@@ -642,9 +642,9 @@
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1795302506.557881,
-    "seen": 1795546647.6664138,
-    "ast_hash": "ee84ac87b98059880aab5697a6937229",
+    "mtime": 1795547185.433244,
+    "seen": 1795547230.1238437,
+    "ast_hash": "011e1a1cffa9e2baac96c3ae8ee77358",
     "semantic_hash": ""
   },
   "README.md": {
@@ -95301,6 +95301,12 @@
     "mtime": 1795543928.1151319,
     "seen": 1795546647.6494608,
     "ast_hash": "b530984c9c4d140e62e7f7656684f68c",
+    "semantic_hash": ""
+  },
+  "tools/make_zip.py": {
+    "mtime": 1795547170.2772446,
+    "seen": 1795547230.1237912,
+    "ast_hash": "3cdbb4dc5f92590e9a42066834cda04a",
     "semantic_hash": ""
   }
 }

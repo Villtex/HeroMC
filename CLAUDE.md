@@ -43,3 +43,9 @@ Rules:
 - Read graphify-out/GRAPH_REPORT.md only for broad architecture review or when query/path/explain do not surface enough context.
 - After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost).
 - A committed graphify-out/graph.json is rewritten whole on every build, so a large diff to it in a pull request is expected. Do not flag it as churn or suggest skipping the graph rebuild or its hooks.
+
+## Zip mit allen Mods
+
+Fragt der Nutzer nach einer Zip (mit den Mods): `python3 tools/make_zip.py <scratchpad>/HeroMC-mods.zip` und die Datei
+schicken. Sie enthält immer die Pack-Mods, JEI und die Leistungs-Mods (C2ME, Lithium, ScalableLux) in `mods/`, Sodium in
+`client-mods/`. Nie in den Projektordner legen oder committen.
