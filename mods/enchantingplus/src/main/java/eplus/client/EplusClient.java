@@ -31,7 +31,7 @@ public final class EplusClient {
     private EplusClient() {
     }
 
-    private static final RandomSource RANDOM = RandomSource.create();
+    private static final RandomSource RANDOM = RandomSource.createThreadSafe();
 
     public static void register(IEventBus modBus) {
         modBus.addListener((RegisterMenuScreensEvent event) -> event.register(EnchantingPlus.MENU.get(), EnchantTableScreen::new));

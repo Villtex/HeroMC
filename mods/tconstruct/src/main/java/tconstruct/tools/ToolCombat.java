@@ -22,7 +22,7 @@ import tconstruct.TSounds;
  * thrown dagger use {@link #attack}, the whole 1.5.2 hit.
  */
 public final class ToolCombat {
-    private static final RandomSource RANDOM = RandomSource.create();
+    private static final RandomSource RANDOM = RandomSource.createThreadSafe();
     /** True while {@link #attack} hurts the target (its damage is complete, {@link TEvents} leaves it alone). */
     static final ThreadLocal<Boolean> ATTACKING = ThreadLocal.withInitial(() -> false);
 

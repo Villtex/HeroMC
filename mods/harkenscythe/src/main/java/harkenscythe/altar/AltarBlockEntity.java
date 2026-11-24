@@ -21,7 +21,7 @@ import net.minecraft.world.level.storage.ValueOutput;
  * the altar drops it.
  */
 public class AltarBlockEntity extends BlockEntity implements Container {
-    private static final RandomSource RANDOM = RandomSource.create();
+    private static final RandomSource RANDOM = RandomSource.createThreadSafe();
     private final NonNullList<ItemStack> items = NonNullList.withSize(1, ItemStack.EMPTY);
     public int time;
     public float flip;

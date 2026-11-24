@@ -63,7 +63,7 @@ public class ToolCoreItem extends Item {
     public static final TagKey<Block> NEEDS_COBALT_TOOL = TagKey.create(Registries.BLOCK, TConstruct.id("needs_cobalt_tool"));
     public static final TagKey<Block> NEEDS_MANYULLYN_TOOL = TagKey.create(Registries.BLOCK, TConstruct.id("needs_manyullyn_tool"));
     private static final TagKey<Block> WEB = TagKey.create(Registries.BLOCK, TConstruct.id("effective/web"));
-    private static final RandomSource RANDOM = RandomSource.create();
+    private static final RandomSource RANDOM = RandomSource.createThreadSafe();
 
     public final ToolType type;
 

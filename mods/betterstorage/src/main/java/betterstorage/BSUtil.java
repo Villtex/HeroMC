@@ -14,7 +14,8 @@ import net.minecraft.world.phys.Vec3;
 /** WorldUtils, DirectionUtils and RandomUtils of the original, as far as the port needs them. */
 public final class BSUtil {
     /** RandomUtils.random: one unseeded random for everything that was not seed-bound in the original either. */
-    public static final RandomSource RANDOM = RandomSource.create();
+    /** Thread-safe: also used while chunks are generated on worker threads (mob spawns of world generation, C2ME). */
+    public static final RandomSource RANDOM = RandomSource.createThreadSafe();
 
     private BSUtil() {
     }

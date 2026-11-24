@@ -45,7 +45,7 @@ import java.util.Optional;
  * modifiers act on each block ({@link #areaBreak}).
  */
 public final class ToolAbilities {
-    private static final RandomSource RANDOM = RandomSource.create();
+    private static final RandomSource RANDOM = RandomSource.createThreadSafe();
     /** Scythe.materials: web, cactus, pumpkin, plants, vine, leaves. */
     private static final net.minecraft.tags.TagKey<Block> SCYTHE = net.minecraft.tags.TagKey.create(Registries.BLOCK,
             tconstruct.TConstruct.id("effective/scythe"));

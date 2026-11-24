@@ -18,7 +18,7 @@ import net.neoforged.neoforge.event.entity.player.CriticalHitEvent;
  * scythe (x0.75), all rounded down; the rapier pierces armor; the cutlass hits critically one time in ten.
  */
 public final class TEvents {
-    private static final RandomSource RANDOM = RandomSource.create();
+    private static final RandomSource RANDOM = RandomSource.createThreadSafe();
 
     private TEvents() {
     }
