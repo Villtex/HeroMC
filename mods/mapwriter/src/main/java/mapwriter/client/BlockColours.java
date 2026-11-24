@@ -10,7 +10,11 @@ import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.geometry.BakedQuad;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
@@ -35,6 +39,8 @@ final class BlockColours {
     }
 
     private static final Map<BlockState, Entry> CACHE = new HashMap<>();
+    /** Blocks the map looks through, like the air: Natura's clouds hang over the sea and would hide it. */
+    static final TagKey<Block> HIDDEN = TagKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath("mapwriter", "hidden"));
 
     private BlockColours() {
     }
@@ -57,7 +63,7 @@ final class BlockColours {
     }
 
     private static Entry compute(BlockState state) {
-        if (state.isAir()) {
+        if (state.isAir() || state.is(HIDDEN)) {
             return Entry.NONE;
         }
         if (state.is(Blocks.DANDELION)) {

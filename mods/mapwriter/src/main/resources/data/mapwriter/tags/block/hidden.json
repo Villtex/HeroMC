@@ -1,0 +1,8 @@
+{
+  "values": [
+    {"id": "natura:white_cloud", "required": false},
+    {"id": "natura:dark_cloud", "required": false},
+    {"id": "natura:ash_cloud", "required": false},
+    {"id": "natura:sulfur_cloud", "required": false}
+  ]
+}

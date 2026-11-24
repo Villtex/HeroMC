@@ -48102,9 +48102,9 @@
     "semantic_hash": ""
   },
   "mods/mapwriter/src/main/java/mapwriter/client/BlockColours.java": {
-    "mtime": 1795302506.9513175,
-    "seen": 1795543597.8529766,
-    "ast_hash": "675729adbda3eaa0d83da5b91c6b7557",
+    "mtime": 1795543928.1272871,
+    "seen": 1795543985.227815,
+    "ast_hash": "903928b27480550b437b2cd7e248c4f5",
     "semantic_hash": ""
   },
   "mods/mapwriter/src/main/java/mapwriter/client/ChunkScanner.java": {
@@ -95295,6 +95295,12 @@
     "mtime": 1795543124.6883829,
     "seen": 1795543597.8703654,
     "ast_hash": "0ebb16f42eb1a5f0314420316f15901e",
+    "semantic_hash": ""
+  },
+  "mods/mapwriter/src/main/resources/data/mapwriter/tags/block/hidden.json": {
+    "mtime": 1795543928.1151319,
+    "seen": 1795543985.2278364,
+    "ast_hash": "b530984c9c4d140e62e7f7656684f68c",
     "semantic_hash": ""
   }
 }
