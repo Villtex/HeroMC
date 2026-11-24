@@ -416,7 +416,9 @@ def block(bid, meta):
         return (f'minecraft:brewing_stand[has_bottle_0={flag(meta & 1)},has_bottle_1={flag(meta & 2)},'
                 f'has_bottle_2={flag(meta & 4)}]')
     if bid in (130, 146):
-        return f'minecraft:{"ender_chest" if bid == 130 else "trapped_chest"}[facing={SIDE.get(meta, "north")}]'
+        if bid == 146:
+            return 'minecraft:trapped_chest'  # pairs like chests
+        return f'minecraft:ender_chest[facing={SIDE.get(meta, "north")}]'
     if bid == 139:
         return 'minecraft:mossy_cobblestone_wall' if meta == 1 else 'minecraft:cobblestone_wall'
     if bid == 143:
@@ -484,7 +486,8 @@ def block(bid, meta):
     if bid == 140:
         return 'minecraft:' + POTS[meta if meta < 12 else 0]
     if bid == 54:
-        return f'minecraft:chest[facing={ {2: "north", 3: "south", 4: "west", 5: "east"}.get(meta, "north") }]'
+        # two chests side by side form a double chest: facing and halves follow the pair (OldLiveGen.chest)
+        return 'minecraft:chest'
     if bid == 78:
         return f'minecraft:snow[layers={(meta & 7) + 1}]'
     if bid == 86:

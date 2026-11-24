@@ -56,7 +56,8 @@ public final class TCWorldGen {
     static final int ALUMINUM_BUSH_RARITY = 2, ALUMINUM_BUSH_DENSITY = 2, ALUMINUM_BUSH_MIN_Y = 0, ALUMINUM_BUSH_MAX_Y = 60;
     static final int ESSENCE_BUSH_RARITY = 6, SILVER_BUSH_DENSITY = 1;
     static final int IRON_S_RARITY = 400, GOLD_S_RARITY = 900, COPPER_S_RARITY = 100, TIN_S_RARITY = 100, ALUMINUM_S_RARITY = 50;
-    static final int ISLAND_RARITY = 450;
+    /** islandRarity of the pack was 450; three times rarer on request of the player (both world types). */
+    static final int ISLAND_RARITY = 1350;
 
     private static final OldOreGens.Minable COPPER = new OldOreGens.Minable(ORE_SLAG, 3, 8, 1);
     private static final OldOreGens.Minable TIN = new OldOreGens.Minable(ORE_SLAG, 4, 8, 1);

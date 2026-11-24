@@ -96,6 +96,9 @@ public final class OldChunkWriter {
                     if (state.getBlock() instanceof DoorBlock) {
                         state = door(state, populated, x, y, z);
                     }
+                    // a chest next to one in the same chunk (the other chunk is not known here)
+                    state = OldLiveGen.chest(state, x, y, z, (cx, cy, cz) -> cx < 0 || cx > 15 || cz < 0 || cz > 15 ? null
+                            : OldBlockStates.get(populated.blockId(cx, cy, cz), populated.metadata(cx, cy, cz)));
                     if (state.hasProperty(BlockStateProperties.SNOWY)) {
                         state = state.setValue(BlockStateProperties.SNOWY, y + 1 < 256 && isSnow(populated.blockId(x, y + 1, z)));
                     }

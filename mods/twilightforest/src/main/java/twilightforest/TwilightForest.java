@@ -186,7 +186,14 @@ public final class TwilightForest {
                     level.sendParticles(SpellParticleOption.create(ParticleTypes.EFFECT, -1, 1.0F), item.getX(), item.getY() + 0.2, item.getZ(),
                             0, 0.0, d, 0.0, 1.0);
                 }
-                if (PORTAL.get().tryToCreatePortal(level, Mth.floor(item.getX()), Mth.floor(item.getY()), Mth.floor(item.getZ()))) {
+                // items float up to the surface today (in 1.5.2 they sank): one lying above the water means the pool below
+                int x = Mth.floor(item.getX());
+                int y = Mth.floor(item.getY());
+                int z = Mth.floor(item.getZ());
+                if (!level.getBlockState(new BlockPos(x, y, z)).is(Blocks.WATER) && level.getBlockState(new BlockPos(x, y - 1, z)).is(Blocks.WATER)) {
+                    y--;
+                }
+                if (PORTAL.get().tryToCreatePortal(level, x, y, z)) {
                     TFEventListener.award(player, "portal");
                 }
             }

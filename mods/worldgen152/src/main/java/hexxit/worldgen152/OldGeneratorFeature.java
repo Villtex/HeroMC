@@ -385,6 +385,8 @@ public record OldGeneratorFeature(String generator, int minY, int maxY, int yOff
         if (state.getBlock() instanceof DoorBlock) {
             state = OldLiveGen.door(world, state, ox, y, oz);
         }
+        state = OldLiveGen.chest(state, ox, y, oz, (cx, cy, cz) -> cy < 0 || cy >= 256 ? null
+                : OldBlockStates.get(world.getBlockId(cx, cy, cz), world.getBlockMetadata(cx, cy, cz)));
         if (state.hasProperty(BlockStateProperties.SNOWY)) {
             state = state.setValue(BlockStateProperties.SNOWY, y + 1 < 256 && OldChunkWriter.isSnow(world.getBlockId(ox, y + 1, oz)));
         }

@@ -12,10 +12,13 @@ import net.minecraft.tags.FluidTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LeavesBlock;
+import net.minecraft.world.level.block.ChestBlock;
 import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.ChestType;
+import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.material.FluidState;
 
@@ -241,6 +244,7 @@ public final class OldLiveGen {
                     if (state.getBlock() instanceof DoorBlock) {
                         state = door(world, state, x, y, z);
                     }
+                    state = chest(state, x, y, z, (cx, cy, cz) -> OldBlockStates.get(world.getBlockId(cx, cy, cz), world.getBlockMetadata(cx, cy, cz)));
                     BlockPos at = new BlockPos(x, y, z);
                     level.setBlock(at, state, Block.UPDATE_CLIENTS | Block.UPDATE_KNOWN_SHAPE);
                     written.add(at);
@@ -281,5 +285,38 @@ public final class OldLiveGen {
         return state.setValue(BlockStateProperties.HORIZONTAL_FACING, lower.getValue(BlockStateProperties.HORIZONTAL_FACING))
                 .setValue(BlockStateProperties.OPEN, lower.getValue(BlockStateProperties.OPEN))
                 .setValue(BlockStateProperties.DOOR_HINGE, top.getValue(BlockStateProperties.DOOR_HINGE));
+    }
+
+    /** The 1.5.2 state of a block next to a chest, or null where it is not known. */
+    @FunctionalInterface
+    interface StateAt {
+        BlockState at(int x, int y, int z);
+    }
+
+    private static final Direction[] CHEST_SIDES = {Direction.NORTH, Direction.SOUTH, Direction.WEST, Direction.EAST};
+
+    /**
+     * BlockChest.unifyAdjacentChests: two chests side by side were one double chest in 1.5.2, today the halves say so in
+     * their state. Both halves face the same way, across the line they form: the facing of the western/northern half
+     * if it fits, else that of the other, else south (pair along x) or east (pair along z), the default of 1.5.2.
+     */
+    static BlockState chest(BlockState state, int x, int y, int z, StateAt old) {
+        if (!(state.getBlock() instanceof ChestBlock) || !state.hasProperty(BlockStateProperties.CHEST_TYPE)) {
+            return state;
+        }
+        for (Direction side : CHEST_SIDES) {
+            BlockState other = old.at(x + side.getStepX(), y, z + side.getStepZ());
+            if (other == null || !other.is(state.getBlock())) {
+                continue;
+            }
+            Direction.Axis line = side.getAxis();
+            boolean first = side.getAxisDirection() == Direction.AxisDirection.POSITIVE;
+            Direction a = (first ? state : other).getValue(BlockStateProperties.HORIZONTAL_FACING);
+            Direction b = (first ? other : state).getValue(BlockStateProperties.HORIZONTAL_FACING);
+            Direction facing = a.getAxis() != line ? a : b.getAxis() != line ? b : line == Direction.Axis.X ? Direction.SOUTH : Direction.EAST;
+            ChestType type = side == facing.getClockWise() ? ChestType.LEFT : ChestType.RIGHT;
+            return state.setValue(BlockStateProperties.HORIZONTAL_FACING, facing).setValue(BlockStateProperties.CHEST_TYPE, type);
+        }
+        return state;
     }
 }

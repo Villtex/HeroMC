@@ -28,6 +28,23 @@ public class DimDoorBlockEntity extends BlockEntity {
         return this.linked;
     }
 
+    /**
+     * A door of world generation gets its link from the server thread shortly after its chunk was generated, before
+     * the chunk is part of the world (DDWorld.createLink cannot reach it then): so the door asks itself when it loads.
+     * The clients learn it with the chunk.
+     */
+    @Override
+    public void onLoad() {
+        super.onLoad();
+        if (this.level instanceof ServerLevel server) {
+            boolean now = DDWorld.link(server, this.worldPosition) != null;
+            if (now != this.linked) {
+                this.linked = now;
+                this.setChanged();
+            }
+        }
+    }
+
     /** Asks the save data again whether a link starts here and tells the clients. */
     public void update() {
         if (this.level instanceof ServerLevel server && !this.isRemoved() && server.isLoaded(this.worldPosition)) {

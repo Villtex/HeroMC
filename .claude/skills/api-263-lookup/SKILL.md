@@ -80,3 +80,5 @@ NeoForge 26.3 bewegt ein Lebewesen in einer eigenen Flüssigkeit **gar nicht** (
 - Eigene `MaterialLiquid` (weder Wasser noch Lava) → `FluidType` ableiten und `move` wie Luft überschreiben
   (Vorlage `tconstruct.smeltery.TFluids.MoltenType`).
 - Prüfen am Testserver: Mob über einem Becken beschwören, `data get entity … Pos` mehrmals, Y muss sinken.
+- Gegenstände (`ItemEntity`) schwimmen in 26.3 an der Wasseroberfläche (1.5.2: sie sanken). Logik, die den Block
+  unter einem Gegenstand im Wasser braucht (Twilight-Portal), muss eine Höhe tiefer schauen, wenn dort Wasser ist.

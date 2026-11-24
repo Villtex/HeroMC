@@ -36,7 +36,7 @@ public final class BDWorldGen {
         OldTerrainGen.registerReach(FML_ID, 8, BDWorldGen::reach);
         // Hexxit Integrated: the dungeons and the great wall as structures, the chunk caves as a feature
         OldTerrainGen.registerStructure("betterdungeons:dungeon", (random, chunkX, chunkZ, world) ->
-                generateBigDungeon(world, new Random(), chunkX * 16, chunkZ * 16, true));
+                generateBigDungeon(world, new Random(), chunkX * 16, chunkZ * 16, true, true));
         OldTerrainGen.registerStructure("betterdungeons:great_wall", (random, chunkX, chunkZ, world) -> {
             Random rnd = new Random(world.seed() + chunkX * 34904 + chunkZ * 34184);
             BuilderWall.generate(rnd, world, chunkX * 16, chunkZ * 16);
@@ -103,11 +103,19 @@ public final class BDWorldGen {
     }
 
     static void generateBigDungeon(OldWorld world, Random random, int i, int k, boolean addDungeon) {
+        generateBigDungeon(world, random, i, k, addDungeon, false);
+    }
+
+    /** {@code integrated}: built as a structure of Hexxit Integrated (surface templates not mostly in water). */
+    static void generateBigDungeon(OldWorld world, Random random, int i, int k, boolean addDungeon, boolean integrated) {
         random.setSeed(world.seed() + i / 16 * 34904 + k / 16 * 34184);
         BDDungeons.Dungeon dungeon = choose(random, world.getBiome(i, k).name, world.dimension(), addDungeon);
         if (dungeon != null) {
             random.setSeed(world.seed() + i / 16 * 34904 + k / 16 * 34184);
             BDDungeons.Builder builder = dungeon.builder().get();
+            if (integrated && builder instanceof BuilderTemplateSurface surface) {
+                surface.landOnly = true;
+            }
             int idMob = dungeon.mobID();
             if (idMob == BDMobs.BASED_ON_DISTANCE) {
                 idMob = BDMobs.randomIndex(random);
