@@ -44,9 +44,8 @@ public class EnchantTableScreen extends AbstractContainerScreen<EnchantTableMenu
     private double enchantingPages = 0.0;
     private double sliderY = 0.0;
     private Map<Holder<Enchantment>, Integer> enchantments;
-    private boolean clicked = false;
     private boolean sliding = false;
-    private boolean mouseDown = false;
+    private ItemStack shownItem = ItemStack.EMPTY;
     private int totalCost = 0;
     private boolean dirty = false;
     private Component error = Component.empty();
@@ -143,31 +142,13 @@ public class EnchantTableScreen extends AbstractContainerScreen<EnchantTableMenu
         }
         graphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, this.leftPos + 180, this.topPos + 16 + (int) this.sliderY, 0.0F, 182.0F, 12, 15, 256, 256);
 
-        // the mouse polling of drawScreen
-        if (!this.clicked && this.mouseDown) {
-            for (GuiItem item : this.enchantmentArray) {
-                if (this.getItemFromPos(mouseX, mouseY) == item && !item.disabled && !item.locked) {
-                    item.dragging = true;
-                }
-            }
-            if (adjustedMouseX <= 191 && adjustedMouseX >= 180 && this.enchantingPages != 0.0) {
-                this.sliding = true;
-            }
-        }
+        // drawScreen polled the mouse; the drag starts in mouseClicked and ends in mouseReleased today. As before,
+        // leaving the row ends the drag of a slider
         for (GuiItem item : this.enchantmentArray) {
             if (item.dragging && this.getItemFromPos(mouseX, mouseY) != item) {
                 item.dragging = false;
             }
         }
-        if (!this.mouseDown) {
-            for (GuiItem item : this.enchantmentArray) {
-                if (this.getItemFromPos(mouseX, mouseY) == item) {
-                    item.dragging = false;
-                }
-            }
-            this.sliding = false;
-        }
-        this.clicked = this.mouseDown;
         for (GuiItem item : this.enchantmentArray) {
             if (item.dragging) {
                 item.scroll(adjustedMouseX - 36);
@@ -274,15 +255,46 @@ public class EnchantTableScreen extends AbstractContainerScreen<EnchantTableMenu
     @Override
     public boolean mouseClicked(MouseButtonEvent event, boolean doubleClick) {
         if (event.button() == 0) {
-            this.mouseDown = true;
+            GuiItem item = this.getItemFromPos(event.x(), event.y());
+            if (item != null && !item.disabled && !item.locked) {
+                item.dragging = true;
+                item.scroll((int) event.x() - this.leftPos - 36);
+                return true;
+            }
+            int x = (int) event.x() - this.leftPos;
+            int y = (int) event.y() - this.topPos;
+            if (x >= 180 && x <= 191 && y >= 15 && y <= 87 && this.enchantingPages != 0.0) {
+                this.sliding = true;
+                return true;
+            }
         }
         return super.mouseClicked(event, doubleClick);
     }
 
     @Override
+    public boolean mouseDragged(MouseButtonEvent event, double dx, double dy) {
+        boolean any = this.sliding;
+        for (GuiItem item : this.enchantmentArray) {
+            if (item.dragging) {
+                item.scroll((int) event.x() - this.leftPos - 36);
+                any = true;
+            }
+        }
+        return any || super.mouseDragged(event, dx, dy);
+    }
+
+    @Override
     public boolean mouseReleased(MouseButtonEvent event) {
         if (event.button() == 0) {
-            this.mouseDown = false;
+            boolean any = this.sliding;
+            this.sliding = false;
+            for (GuiItem item : this.enchantmentArray) {
+                any |= item.dragging;
+                item.dragging = false;
+            }
+            if (any) {
+                return true;
+            }
         }
         return super.mouseReleased(event);
     }
@@ -322,11 +334,13 @@ public class EnchantTableScreen extends AbstractContainerScreen<EnchantTableMenu
     protected void containerTick() {
         super.containerTick();
         Map<Holder<Enchantment>, Integer> enchantments = this.menu.getEnchantments();
-        if (this.enchantments != enchantments) {
+        // by content: the menu reads a new map whenever its slot reports a change (also when nothing changed)
+        if (!enchantments.equals(this.enchantments) || !ItemStack.matches(this.shownItem, this.menu.item())) {
+            this.shownItem = this.menu.item().copy();
             this.enchantments = enchantments;
             this.enchantmentArray = this.convertMapToGuiItems(enchantments, 35 + this.leftPos, 15 + this.topPos);
             this.sliderIndex = this.enchantingPages = 0.0;
-            this.clicked = this.sliding = false;
+            this.sliding = false;
             this.error = Component.empty();
         }
         if (this.dirty) {

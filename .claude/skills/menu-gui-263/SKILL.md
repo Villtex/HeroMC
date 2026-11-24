@@ -85,3 +85,10 @@ Menüs, die von `ChestMenu`, `ShulkerBoxMenu` oder `DispenserMenu` erben, erkenn
   (Priorität HIGHEST, vor JEI) zwischenspeichern. JEI-Kategorie mit `IRecipeHolderType`.
 - Vom Server berechnete Werte (Essenz, Kosten, Rezeptnummer) über `ContainerData` an den Screen, Knopf über
   `clickMenuButton` – keine eigenen Pakete nötig. `mods/harkenscythe/.../altar`.
+
+## Regler und Ziehen (Maus)
+
+1.5.2-GUIs fragten die Maus in `drawScreen` ab (`Mouse.isButtonDown`). In 26.3 das Ziehen über Ereignisse bauen:
+`mouseClicked` startet (und gibt `true` zurück), `mouseDragged` bewegt, `mouseReleased` beendet. Zustand, den
+`containerTick` aus Menüdaten neu aufbaut, nach **Inhalt** vergleichen (`equals`, `ItemStack.matches`), nicht nach
+Objekt, sonst geht ein laufendes Ziehen bei jeder Slot-Meldung verloren. Vorlage: `eplus.client.EnchantTableScreen`.
