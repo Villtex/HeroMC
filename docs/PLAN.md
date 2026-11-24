@@ -2259,3 +2259,21 @@ feste Items. Im Original lief der Austausch über das Forge-OreDictionary; die `
 - **Grenzen:** In Legacy erscheinen fremde Erze und Features, aber keine fremden Biome und Bauwerke, weil die Biome aus
   der 1.5.2-Schicht kommen. Tinkers-Kupfererz gibt es in Integrated mit Absicht nicht (Vanilla-Kupfer).
 - **Offen:** Client-Prüfung offen (Jade-Anzeige an Hexxit-Blöcken, BOP-Farben und Übergänge zu EBXL).
+
+### Nachtrag – Leistungs-Mods C2ME, Lithium, ScalableLux (✅ erledigt)
+- **Versionen** (`tools/extra_mods.py`, Gruppe `--set perf`): C2ME `c2me-neoforge` 0.4.2-alpha.0.110+26.3, Lithium
+  mc26.3-0.26.4-neoforge, ScalableLux 0.3.0-alpha.0.17+26.3. Keine Code-Änderung nötig: Kein Hexxit-Mod hat Mixins;
+  `worldgen152` erzeugt Gelände je Chunk ohne geteilten Zustand (`OldTerrain.generate`), die Population kachelweise
+  (`OldDecoration.chunk`, `FutureTask`, wartende Threads), alle Caches sind synchronisiert bzw. `ConcurrentHashMap`.
+  Mit C2ME laufen Gelände und Population auf `c2me-worker-*`-Threads.
+- **Geprüft (Seed 1234, alle Hexxit-Mods + die drei):** Start ohne Fehler (nur die bekannten `DISTXFORM`-Meldungen der
+  Dev-Umgebung und C2MEs Hinweis auf eine fehlende VulkanMod-Klasse). Legacy: `expect.sh 1234 find 260` +
+  `verify_blocks.py` 296.293 Blöcke gleich, 0 anders, Biome 784/0, Spawner/Truhen/Entities 88/0; Nether (Chunks 0/0,
+  3/3, 5/5, 8/8) 7.901/0, Twilight Forest (dieselben Chunks) 18.184/0. Integrated: `locate` Turm −2016/−960, Dungeon
+  −624/160 wie ohne; Turmgebiet (9×9 Chunks) 25 Spawner, 49 Truhen, 3.515 Moosbruchstein mit und ohne die Mods gleich,
+  Dungeongebiet 55 Spawner, 50 Truhen. Steinziegel im Dungeongebiet schwanken um ±12 von Lauf zu Lauf **auch ohne** die
+  Mods (28.190/28.178 ohne, 28.172/28.180 mit; in drei Chunks unter y 64, Reihenfolge überlappender Features) – kein
+  C2ME-Effekt.
+- **Offen:** Client (Einzelspieler mit Sodium + den drei Mods, Licht von ScalableLux an Hexxit-Leuchtblöcken) nicht
+  geprüft.
+

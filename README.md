@@ -51,6 +51,11 @@ Jeder Mod wird deshalb gegen das dekompilierte Original als Referenz **neu gesch
   die Welt ist dann nur ohne sie bitgenau. Fremde Biome und Bauwerke gibt es in Legacy nicht, denn die Biome kommen aus
   der 1.5.2-Biomschicht. Tinkers-Kupfererz entsteht in Integrated nicht, weil Vanilla eigenes Kupfer hat. Anzeigen (Jade)
   und die Darstellung fremder Biome sind nur im Client prüfbar.
+- **Leistungs-Mods:** **C2ME** (`c2me-neoforge` 0.4.2-alpha.0.110), **Lithium** (0.26.4) und **ScalableLux** (0.3.0-alpha.0.17)
+  laufen mit dem Pack, in Hexxit Legacy und Integrated (`tools/extra_mods.py --set perf --install`). Die Hexxit-Mods brauchen
+  dafür keine Änderung: Sie haben keine Mixins, und die Weltgenerierung (`worldgen152`) ist schon für parallele Chunk-Erzeugung
+  gebaut (Gelände je Chunk ohne geteilten Zustand, Population in Kacheln über `FutureTask`, Caches synchronisiert). Legacy bleibt
+  mit den drei Mods bitgenau (Oberwelt, Nether und Twilight Forest 0 Abweichungen), in Integrated entstehen dieselben Bauwerke.
 
 ## Arbeitsplan
 
@@ -69,7 +74,7 @@ Der Port ist in Teile aufgeteilt, die je in eine Session passen: [`docs/PLAN.md`
 | `tools/biomes.py` | erzeugt die Biom-Daten (Klima, Farben aus den 1.5.2-Farbkarten, Mob-Spawns) |
 | `tools/original_server.sh`, `tools/original_spawn.py`, `tools/compare_original.py` | Original-Server 1.5.2 (Vanilla oder Hexxit) einmal laufen lassen und seine Welt mit dem Kern vergleichen |
 | `tools/integrated_tags.py` | Biom-Tags der EBXL-Biome und Mob-Spawns über Biom-Tags für Hexxit Integrated (Teil 26d) |
-| `tools/extra_mods.py` | fremde NeoForge-26.3-Mods für den Kompatibilitätstest nach `run/mods-extra/` laden (`--install` kopiert sie nach `run/server/mods`, `--uninstall` entfernt sie; Teil 26f) |
+| `tools/extra_mods.py` | fremde NeoForge-26.3-Mods für den Kompatibilitätstest nach `run/mods-extra/` laden (`--install` kopiert sie nach `run/server/mods`, `--uninstall` entfernt sie; Teil 26f; `--set perf` = C2ME, Lithium, ScalableLux, `--set all` = beide) |
 | `tools/compat_tags.py` | `c:`-/`minecraft:`-Tags aller Mods und Rezepte über Tags (Teil 26e); nach jedem `gen.py` erneut laufen lassen |
 | `tools/rcon.py` | kleiner RCON-Client für Verhaltenstests am laufenden Testserver |
 | `tools/modelbase_to_layer.py` | überträgt die Geometrie eines 1.5.2-`ModelBase` (Boxen, Hierarchie, Texturversätze) in 26.3-`createBodyLayer`-Zeilen |
