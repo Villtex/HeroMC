@@ -46,6 +46,6 @@ Rules:
 
 ## Zip mit allen Mods
 
-Fragt der Nutzer nach einer Zip (mit den Mods): `python3 tools/make_zip.py <scratchpad>/HeroMC-mods.zip` und die Datei
-schicken. Sie enthält immer die Pack-Mods, JEI und die Leistungs-Mods (C2ME, Lithium, ScalableLux) in `mods/`, Sodium in
-`client-mods/`. Nie in den Projektordner legen oder committen.
+Fragt der Nutzer nach einer Zip (mit den Mods): `python3 tools/make_zip.py` (schreibt `build/HeroMC-mods.zip`) und diese
+Datei schicken. Sie enthält immer die Pack-Mods, JEI und die Leistungs-Mods (C2ME, Lithium, ScalableLux) in `mods/`,
+Sodium in `client-mods/`. `build/` ist von Git ausgenommen; aus dem Scratchpad lässt sich die Zip in der App nicht laden.
