@@ -84,6 +84,26 @@ public final class OldLiveGen {
         if (state.is(Blocks.SUGAR_CANE)) {
             return 83;
         }
+        // blocks the generators of 1.5.2 tell apart; anything else solid counts as stone, and so would these: marble
+        // and ore clusters turned the ice of frozen oceans to stone, ruins took the ice for rock to stand on
+        if (state.is(BlockTags.ICE)) {
+            return 79;
+        }
+        if (state.is(Blocks.SNOW_BLOCK) || state.is(Blocks.POWDER_SNOW)) {
+            return 80;
+        }
+        if (state.is(Blocks.SNOW)) {
+            return 78;
+        }
+        if (state.is(Blocks.GRAVEL) || state.is(Blocks.SUSPICIOUS_GRAVEL)) {
+            return 13;
+        }
+        if (state.is(Blocks.CLAY)) {
+            return 82;
+        }
+        if (state.is(Blocks.SANDSTONE) || state.is(Blocks.RED_SANDSTONE)) {
+            return 24;
+        }
         if (state.is(BlockTags.DIRT)) {
             return 3;
         }

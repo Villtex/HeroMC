@@ -1,5 +1,6 @@
 package eplus.client;
 
+import com.mojang.blaze3d.platform.InputConstants;
 import eplus.EnchantException;
 import eplus.EnchantHelper;
 import eplus.EnchantTableMenu;
@@ -254,7 +255,7 @@ public class EnchantTableScreen extends AbstractContainerScreen<EnchantTableMenu
 
     @Override
     public boolean mouseClicked(MouseButtonEvent event, boolean doubleClick) {
-        if (event.button() == 0) {
+        if (event.button() == InputConstants.MOUSE_BUTTON_LEFT) {
             GuiItem item = this.getItemFromPos(event.x(), event.y());
             if (item != null && !item.disabled && !item.locked) {
                 item.dragging = true;
@@ -285,7 +286,7 @@ public class EnchantTableScreen extends AbstractContainerScreen<EnchantTableMenu
 
     @Override
     public boolean mouseReleased(MouseButtonEvent event) {
-        if (event.button() == 0) {
+        if (event.button() == InputConstants.MOUSE_BUTTON_LEFT) {
             boolean any = this.sliding;
             this.sliding = false;
             for (GuiItem item : this.enchantmentArray) {

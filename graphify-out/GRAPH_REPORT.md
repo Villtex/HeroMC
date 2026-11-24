@@ -1,26 +1,26 @@
 # Graph Report - HeroMC  (2026-11-24)
 
 ## Corpus Check
-- 15849 files · ~1,526,260 words
+- 15849 files · ~1,526,503 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 117 file(s) not represented in the graph (top: .mcmeta 67, .properties 46, (none) 1)
 
 ## Summary
-- 22198 nodes · 81780 edges · 518 communities (282 shown, 236 thin omitted)
-- Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 3275 edges (avg confidence: 0.86)
+- 22203 nodes · 81779 edges · 519 communities (268 shown, 251 thin omitted)
+- Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 3271 edges (avg confidence: 0.86)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `c19fcb07`
+- Built from commit: `9c34b099`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
-- net.minecraft.resources.Identifier
+- TFMaps.java
 - Layer
 - reference.py
 - net.minecraft.world.damagesource.DamageSource
-- .aiStep
+- OldStack
 - expect.sh
 - TFMaze
 - .generate
@@ -38,52 +38,54 @@
 - Modifiers
 - MapGenNetherBridge
 - TFEntityRenderers
-- SpectralModels
-- net.neoforged.neoforge.registries.DeferredItem
+- OldStructures
+- net.minecraft.world.item.Item
 - EbxlLeavesBlock
 - minecraft-dev
 - net.minecraft.world.inventory.Slot
 - TowerDeviceBlock
 - Tinkers' Construct im Port (Stand Teil 25f, Port vollständig)
-- TSmeltery
+- SmelteryControllerBlock
 - .getBlockId
 - LGBlocks.java
 - Override
 - BDProjectile
-- net.minecraft.world.item.Item
+- net.minecraft.network.chat.Component
 - DDWorld
 - gen.py
 - HumanEntity
-- GuardSound
+- Kind
 - Override
 - net.minecraft.client.gui.GuiGraphicsExtractor
 - net.minecraft.client.model.geom.ModelLayerLocation
 - net.minecraft.world.entity.EntityType
 - MageEntity
 - Portrait
-- XRItems.java
+- net.minecraft.nbt.CompoundTag
+- XRItems
 - verify_blocks.py
+- net.minecraft.world.phys.HitResult
 - artifice/tools/gen.py
 - PartType
 - ToolType
-- list
-- InvTweaksConfig
+- arraylist
+- net.minecraft.server.MinecraftServer
 - TMaterial
 - LiquidCategory.java
 - original_server.sh
 - com.mojang.serialization.MapCodec
-- Upgrade
-- XRBlocks
+- HSItems.java
+- net.minecraft.util.RandomSource
 - net.minecraft.world.damagesource.DamageSource
 - RiftBlockEntity
 - QuantumComputerBlockEntity
 - Redcap
-- SmelteryScreen
+- LiquidRender
 - Hydra
 - JEI-Plugin für einen portierten Mod
 - UrGhast
 - HSEvents
-- net.minecraft.world.entity.PathfinderMob
+- Override
 - BuildingManager
 - Material
 - TinyBird
@@ -93,12 +95,12 @@
 - InfiTool
 - HydraMortarRenderer
 - net.minecraft.client.model.geom.ModelPart
-- OldChunkGenerator
+- DDEvents.java
 - net.minecraft.core.BlockPos
 - PotionKind
 - OldChunkGenerator.java
 - net.minecraft.world.entity.player.Player
-- net.minecraft.world.entity.Mob
+- SummonedUndead.java
 - StructurePieceBlockSelector
 - ScaffoldingBlock
 - .hurtServer
@@ -107,8 +109,8 @@
 - LanCommands.java
 - twilightforest/tools/gen.py
 - SimpleSpectral
-- .isSuitableTargetAlly
-- BlueSlime
+- .addAITasks
+- TWorld.java
 - .build
 - BossRenderers
 - IMConfig
@@ -116,17 +118,17 @@
 - .write
 - BDMagicArrow
 - SmelteryBlockEntity
-- InvTweaksConfigSortingRule
+- GoblinKnightUpper
 - OldWorld
-- net.minecraft.world.level.WorldGenLevel
+- OldChunkWriter.java
 - FallingStarRenderer
 - ComponentVillageStartPiece
-- .registerMeta
+- net.neoforged.bus.api.IEventBus
 - Naga
 - UncraftingMenu
 - Bäume und Äxte bei TreeCapitator anmelden
 - .generate
-- ZuluHorseEntity
+- MonkingBoss
 - Behaviors
 - .getItem
 - ConnectableBlockEntity
@@ -138,26 +140,26 @@
 - Monolith
 - TableRenderer
 - SpectralHumanoid
-- InvTweaksItemTree
+- InvTweaksHandlerSorting
 - AltarRecipe
 - GolemBoss
 - SpectralPet
 - SpectralRenderState
 - CritterBlock
 - .build
-- AltarMenu
+- QuantumComputerMenu
 - ZuluLandAnimal
 - TankBlockEntity
 - harkenscythe/tools/gen.py
 - Override
-- com.mojang.blaze3d.vertex.PoseStack
+- net.minecraft.resources.Identifier
 - MobControlScreen
 - net.minecraft.world.item.ItemStack
 - TableBlockEntity
 - Dungeons
 - WeaponCaseBlockEntity
 - PartBuilderMenu
-- HSEvents.java
+- SoulEntity
 - meteorsmod/tools/gen.py
 - Starting the test client without a screen
 - Arbeitsplan: Hexxit 1.0.11 → NeoForge 26.3
@@ -174,13 +176,13 @@
 - TombstoneBlockEntity
 - SpectralCreeper
 - Context
-- net.minecraft.core.Holder
-- Backpacks
-- net.neoforged.bus.api.SubscribeEvent
-- BombEntity
+- net.minecraft.world.level.biome.Biome
+- item/BackpackItem.java
+- Material
+- CratePileData
 - .angle
 - TrophyBlock
-- BCConfig
+- ThrownEntity
 - LiquidState
 - net.minecraft.server.level.ServerLevel
 - gen_plants.py
@@ -188,28 +190,28 @@
 - Verhalten ohne Spieler prüfen (26.3)
 - SkullType
 - ChocopediaScreen
-- MwGui
+- Override
 - Ring
 - HauntedArmorEntity
-- .ammo
+- OldDecoration
 - QBlockEntity
-- TFBosses
+- SkeletonDruid
 - gen_humans.py
-- ZuluGear.java
+- net.minecraft.resources.ResourceKey
 - LimitedMobSpawnerBlockEntity
-- TowerGolemModel
+- SaguaroBlock
 - BattleTowerGolem
 - CentipedeEntity
 - NaturaBlocks
 - BookWritingScreen
-- CratePileData
+- CratePlayerView
 - OldVillagePiece
-- BagItem
-- RuinTemplate
+- TurtleBoss
+- .createBuilding
 - SpectralPig
-- SpiderBoss
-- LGEvents
-- GolemFireball.java
+- Detailing
+- net.neoforged.bus.api.SubscribeEvent
+- LizardSpitEntity
 - xreliquary/tools/gen.py
 - BlockColours.java
 - SpectralBat
@@ -217,24 +219,24 @@
 - PlayerEvents
 - ZuluMaze
 - SpectralSheep
-- GuardEvents
+- .getASShieldPerk
 - ZuluBigAnimal
 - legendgear/tools/gen.py
 - GuiCustomLan
 - gen_gear.py
-- MonkingBoss
+- BDBoss
 - HydraHead
-- MagicLogSpecialBlock
+- HookShoot
 - ContainerBlockEntity
 - Override
-- InvTweaksHandlerSorting
+- CrateBlockEntity
 - chococraft/tools/gen.py
-- XRData
+- 26.3 nachschlagen statt raten
 - ReinforcedChestBlockEntity
 - biomes.py
-- FallingMeteor
-- RiftSignatureItem
-- InvTweaksHandlerShortcuts
+- MeteorsConfig
+- RuinTemplate
+- LichBomb
 - OldEnchanting
 - net.minecraft.client.multiplayer.ClientLevel
 - MoreBowItem
@@ -243,7 +245,7 @@
 - NetherTerrain
 - Twilight Forest – offen nach Teil 24a
 - EssenceSlime
-- EnchantHelper
+- BackpackBlockEntity
 - BiblioBlockEntity
 - ManualScreen
 - CamoChestBlockEntity
@@ -251,10 +253,10 @@
 - LightBlock
 - net.minecraft.world.level.block.state.BlockState
 - Mobs, Spawn-Eier und Boote auf 26.3
-- MagicMirrorItem
-- GrindStarEntity
+- TConstructJeiPlugin
+- StalactiteBlock
 - json
-- betterstorage/ItemCapabilities.java
+- Override
 - net.minecraft.world.level.block.Block
 - ChannelBlockEntity
 - CampfireBlock
@@ -268,14 +270,14 @@
 - EntityState
 - PatternBuilder
 - ChocoboColor
-- MapView
+- TurtlePart
 - BearEntity
 - OldRails
 - Client-Darstellung in 26.3 (NeoForge 26.3.0.102)
-- EvilSpectralMiner
+- GuiCustomLanPermissions
 - net.neoforged.fml.common.Mod
-- BDSpawnerBlockEntity
-- Wood
+- .releaseUsing
+- ShotType
 - Essence
 - ZuluMonster
 - MammothEntity
@@ -283,62 +285,62 @@
 - State
 - tconstruct/tools/gen.py
 - AltarBlock
-- .keyPressed
-- .draw
+- MeteorData
+- RuinsGen
 - ConnectableBlock
 - HSSkullRenderer
-- TransportEvents
+- AltarBlock
 - QuantumComputerScreen
 - ToolStationScreen
 - Sounds
-- MeteorData
+- MeteorShieldBlockEntity
 - ArmorStandBlock
 - BookcaseRenderer
 - HSBlocks.java
 - WeaponCaseBlock
-- LGThrowable
-- Part
-- ChestMaterial
-- KeyringInventory
-- HarkenScytheJeiPlugin
+- FallingMeteor
+- CamoModel
+- BeanstalkBlock
+- KeyItem.java
+- component
 - HeatscarSpiderRenderer.java
-- MobileFirefly
+- FireflyRenderer
 - betterstorage/tools/gen.py
-- EplusClient
+- MeteorEvents
 - CellIndexDirection
 - HauntedArmorModel
-- net.minecraft.world.entity.ContainerUser
+- TFMapsClient
 - ChocoboSpawner
 - .useOn
 - TFLayout
 - Builder
-- BiomeLayout
-- MagicBoomerangEntity
+- BallRenderer
+- AltarBlockEntity
 - compare_original.py
 - FrostArrow
 - TFSpawns
 - TODO.md
-- MonsterRenderers.java
+- SoulRenderer
 - ArmorStandBlockEntity
 - HSMobs
-- QuantumOreBlock.java
+- TFPortalBlock
 - DimData
 - NaturaTree
 - SpikesBlock
 - TFBlocks
 - CamoModel
 - LandmineBlock
-- TFEventListener
+- gen_items.py
 - TreeDefinition
 - .dim
-- .spawnEntity
+- OldPainting
 - HydraHeadRenderer
 - AerialAnimal
 - HydraMortar
-- ListContainer
-- QCraftClient
-- Kind
-- .PrintPressMenu
+- RuinRotation
+- Override
+- projectzulu/tools/gen.py
+- TFBird
 - LGParticle
 - WildBoarModel
 - Frienderman
@@ -346,7 +348,7 @@
 - Waffen, Geschosse und Spezial-Items (1.5.2 → 26.3)
 - Kind
 - net.minecraft.server.MinecraftServer
-- TombstoneBlock
+- LostSoulEntity
 - BuilderDungeon
 - SpectralBlaze
 - HomeDimensions
@@ -355,26 +357,26 @@
 - LizardEntity
 - FinchEntity
 - TFWorld
-- BoxItem
+- ReapingWeaponItem
 - BackpackMenu
-- Holzsets und Pflanzen in 26.3
-- BDWorldGen
+- SoulCageBlockEntity
+- Vorlagen und Schematics von 1.5.2 übernehmen
 - net.minecraft.client.renderer.block.BlockAndTintGetter
 - net.minecraft.world.entity.LivingEntity
 - LegendGear – offen und bewusste Abweichungen
-- .setItem
+- ShelfBlockEntity
 - Falling Meteors – offen und bewusste Abweichungen
 - secretrooms/tools/gen.py
-- .sapling
+- AltarCategory
 - CellType
 - ReedPipesItem
 - TinkerArrow
 - DryingRackBlockEntity
-- CritterRenderer
+- Handler
 - TableEvents
 - Infernal Mobs – offen
-- .setItem
-- ShelfBlock
+- Waffen, Geschosse und Spezial-Items (1.5.2 → 26.3)
+- HSEntities
 - HydraHeadContainer
 - Xeno's Reliquary – offen und bewusste Abweichungen
 - SpectralGhast
@@ -383,36 +385,36 @@
 - EnchantingCategory
 - PelicanEntity
 - ArmadilloRenderer
-- JarBlockEntity
-- SpectralWolf
+- .get
+- RuinTemplateRule
 - SRClient
-- net.minecraft.world.level.Explosion
+- AloeVeraBlock
 - damageindicators/TODO.md
 - mapwriter/TODO.md
 - BuilderHelper
-- HookshotHookEntity
+- Menü, Screen und Pakete in 26.3 (NeoForge 26.3.0.102)
 - SpectralSquid
 - CratePileMap
 - FrostArrowRenderer
 - MimicEntity
 - MummyPharaohEntity
 - BDBlockProjectile
-- TableBlock
+- MagicArrowRenderer
 - MummyEntity
-- EnchantTableMenu
+- net.minecraft.core.Holder
 - Blueprint
 - Architect
 - SandwormEntity
-- ThrownDagger
-- PlayerData
+- ItemKey
+- AmuletItem
 - TypesettingScreen
 - Bark
 - MistWolfRenderer.java
+- net.minecraft.world.entity.player.Player
 - net.minecraft.world.level.Level
-- MazeSlime
 - ProjectileType
-- FaucetBlockEntity
-- QCConfig
+- LimitedMobSpawnerRenderer
+- com.mojang.serialization.MapCodec
 - DrawbridgeBlockEntity
 - SpectralSpider
 - ScarecrowEntity
@@ -420,44 +422,41 @@
 - Type
 - Project Zulu Teil 10 – Portierungsnotizen (Kreaturen)
 - ColormapTint
-- Effect
+- Override
 - LandmineLogic
-- MysticShrubBlock
+- BackpackBlock
 - FireJetBlock
 - list
 - UniversalFlowerPotBlockEntity
 - TDecoClient
 - AbstractChocobo
 - TreeEntEntity
-- ToolRackRenderer
-- OldBlockStates
+- RenameScreen
 - NaturaBoatRenderer.java
-- MedallionSwordRecipe
+- FallingMeteorRenderer
 - .use
 - ElephantEntity
 - RhinoEntity
 - BighornFurModel
 - BighornModel
-- CamoModel
-- PartBuilderScreen
+- BlockProjectileRenderer
 - TFClient
 - FireflyParticle
-- SpeedBlock.java
-- HedgeBlock
-- CrumbleHornItem
-- CapsuleStationBlockEntity
-- FieryPickItem
-- Action
-- FallingStarEntity
-- PromptScreen
-- NaturaWorkbenchBlock.java
+- BuilderIceCave
+- SpiderWebLaunchGoal
+- MoonwormQueenItem
+- AltarScreen
+- .serverTick
+- CloudBlock
+- VultureEntity
+- MultiBrickBlock
+- HydraRenderer
 - NitroCreeperRenderer.java
 - HornBillEntity
-- .attributes
-- DrainBlockEntity
-- DetectorAngle
-- HeatscarSpider
-- TowerEvents
+- MeteorSummonerEntity
+- LargeGlowshroomBlock
+- GiraffeEntity
+- ToolTips.java
 - SpectralOcelot
 - TFEntities.java
 - CapsuleStationBlock
@@ -465,26 +464,27 @@
 - ToolCoreItem
 - ChocoboModel
 - ThornVinesBlock.java
-- Tier
+- CandleFlameParticle
 - net.minecraft.world.level.storage.ValueInput
-- .neighborChanged
+- ImpRenderer
 - Acuteness
-- QuakeEntity
-- BossSpawnerBlock
-- MoonwormShot
-- net.neoforged.bus.api.IEventBus
+- .get
+- .randomTick
+- LGFx.java
+- Bubble
+- FireBall
+- HealBall
+- net.neoforged.neoforge.registries.DeferredHolder
 - BloodwoodLogBlock
 - Override
-- TinyFireflyModel
-- Extrabiomes
-- WildDeer
+- CattailBlock
+- MysticSeedItem
+- EagleEntity
+- HeadDrops
 - SRBlocks.java
-- HelmetModels
-- BS.java
-- CompatCommand
+- QCraftClient.java
 - ChocoboNames
 - Tinkers' Construct – offen nach Teil 25f (Port abgeschlossen)
-- PerlinNoise
 - DimDoorBlock
 
 ## God Nodes (most connected - your core abstractions)
@@ -500,49 +500,53 @@
 10. `BDProjectile` - 82 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `Teil 18 – Stand` --references--> `MobModifier`  [INFERRED]
-  docs/PLAN.md → mods/infernalmobs/src/main/java/atomicstryker/infernalmobs/common/MobModifier.java
+- `ICraftingHandler (onCrafting) von 1.5.2` --references--> `SatchelRecipe`  [INFERRED]
+  .claude/skills/api-263-lookup/SKILL.md → mods/xreliquary/src/main/java/xreliquary/recipe/SatchelRecipe.java
+- `WAV-Sounds aus 1.5.2` --references--> `ImportOriginalAssets`  [INFERRED]
+  .claude/skills/api-263-lookup/SKILL.md → buildSrc/src/main/groovy/hexxit/ImportOriginalAssets.groovy
+- `Teil 26e – Stand (✅ erledigt)` --references--> `WorldTypeCondition`  [INFERRED]
+  docs/PLAN.md → mods/worldgen152/src/main/java/hexxit/worldgen152/WorldTypeCondition.java
 - `Teil 24b – Stand (✅ erledigt)` --references--> `TFDecorator`  [INFERRED]
   docs/PLAN.md → mods/twilightforest/src/main/java/twilightforest/gen/TFDecorator.java
 - `Teil 24e – Stand (✅ erledigt)` --references--> `TFStrongholdPieces`  [INFERRED]
   docs/PLAN.md → mods/twilightforest/src/main/java/twilightforest/gen/structure/TFStrongholdPieces.java
-- `Teil 26e – Stand (✅ erledigt)` --references--> `WorldTypeCondition`  [INFERRED]
-  docs/PLAN.md → mods/worldgen152/src/main/java/hexxit/worldgen152/WorldTypeCondition.java
-- `Nur in Hexxit Legacy` --references--> `ModePayload`  [INFERRED]
-  .claude/skills/compat-263/SKILL.md → mods/combat152/src/main/java/hexxit/combat152/Combat152.java
 
 ## Import Cycles
 - None detected.
 
-## Communities (518 total, 236 thin omitted)
+## Communities (519 total, 251 thin omitted)
 
-### Community 0 - "net.minecraft.resources.Identifier"
-Cohesion: 0.05
-Nodes (7): BetterStorage, BiblioCraft, BiblioRender, HarkenScythe, MeteorsClient, ProjectZulu, MagicTexture
+### Community 0 - "TFMaps.java"
+Cohesion: 0.04
+Nodes (9): ASConfig, ConfigCondition, BackTools, BuffBarMod, DamageIndicatorsMod, MapWriterMod, Mode, TFMaps (+1 more)
 
 ### Community 1 - "Layer"
-Cohesion: 0.08
+Cohesion: 0.07
 Nodes (17): Layer, Layers, AddIsland, AddMushroomIsland, AddSnow, Biome, FuzzyZoom, Hills (+9 more)
 
 ### Community 2 - "reference.py"
-Cohesion: 0.08
-Nodes (22): shaped(), shapeless(), write(), frames(), main(), model_item(), write(), ids() (+14 more)
+Cohesion: 0.07
+Nodes (21): item(), shaped(), write(), shaped(), shapeless(), write(), ids(), download() (+13 more)
 
 ### Community 3 - "net.minecraft.world.damagesource.DamageSource"
 Cohesion: 0.03
 Nodes (20): BDHumans, HumanMobs, ArmoredEnderman, ArmoredPigZombie, ArmoredSkeleton, ArmoredZombie, Dwarf, Goblin (+12 more)
 
+### Community 4 - "OldStack"
+Cohesion: 0.05
+Nodes (20): Eigene Dimension (Dimensional Doors, Teil 15), Truhen und Spawner, Teil 14 – Battle Towers, Ruins, Teil 14 – Stand, Teil 15 – Dimensional Doors, Teil 15 – Stand, BDLoot, Entry (+12 more)
+
 ### Community 6 - "TFMaze"
-Cohesion: 0.09
-Nodes (3): ComponentTFHillMaze, ComponentTFMinotaurMaze, TFMaze
+Cohesion: 0.05
+Nodes (12): ComponentTFHillMaze, ComponentTFMazeDeadEnd, ComponentTFMazeDeadEndChest, ComponentTFMazeDeadEndFountain, ComponentTFMazeDeadEndFountainLava, ComponentTFMazeDeadEndPainting, ComponentTFMazeDeadEndRoots, ComponentTFMazeDeadEndShrooms (+4 more)
 
 ### Community 8 - "StructureTFStrongholdComponent"
 Cohesion: 0.03
 Nodes (31): ComponentTFStrongholdAccessChamber, ComponentTFStrongholdAtrium, ComponentTFStrongholdBalconyRoom, ComponentTFStrongholdBossRoom, ComponentTFStrongholdCrossing, ComponentTFStrongholdDeadEnd, ComponentTFStrongholdEntrance, ComponentTFStrongholdFoundry (+23 more)
 
 ### Community 9 - "Override"
-Cohesion: 0.04
-Nodes (10): AnimalMountedByEntity, Buff, Caster, Controlled, ControlledFollowOwner, Firefighter, FollowOwner, IdleSit (+2 more)
+Cohesion: 0.03
+Nodes (17): HumanGoals, AnimalMountedByEntity, ArrowAttack, AttackHeal, Buff, Caster, Controlled, ControlledFollowOwner (+9 more)
 
 ### Community 11 - "HeroMC – Hinweise für Claude"
 Cohesion: 0.29
@@ -550,43 +554,47 @@ Nodes (6): Arbeitsweise beim Portieren, Branches, graphify, HeroMC – Hinweise 
 
 ### Community 17 - "OldBiome"
 Cohesion: 0.07
-Nodes (8): EbxlBiomes, Decoration, GrassChooser, OldBiome, OldBiomes, OldCarver, OldCaves, OldRavines
+Nodes (9): EbxlBiomes, Decoration, GrassChooser, OldBiome, OldBiomes, OldCarver, OldCaves, OldMath (+1 more)
 
 ### Community 18 - "State"
 Cohesion: 0.03
-Nodes (20): AlligatorModel, BearModel, BigAnimalRenderer, State, BigAnimalRenderers, BigModelParts, Transform, CentipedeModel (+12 more)
+Nodes (19): AlligatorModel, BearModel, BigAnimalRenderer, State, BigModelParts, Transform, CentipedeRenderer, ElephantModel (+11 more)
 
 ### Community 19 - "StructureBoundingBox"
 Cohesion: 0.01
-Nodes (64): ChunkCoordinates, ComponentTFDarkTowerBalcony, ComponentTFDarkTowerBeard, ComponentTFDarkTowerBossBridge, ComponentTFDarkTowerBossTrap, ComponentTFDarkTowerBridge, ComponentTFDarkTowerEntranceBridge, ComponentTFDarkTowerMain (+56 more)
+Nodes (55): Bauteile aus dem Original übernehmen, ComponentTFDarkTowerBalcony, ComponentTFDarkTowerBeard, ComponentTFDarkTowerBossBridge, ComponentTFDarkTowerBossTrap, ComponentTFDarkTowerBridge, ComponentTFDarkTowerEntranceBridge, ComponentTFDarkTowerMain (+47 more)
 
 ### Community 20 - "TFGen"
 Cohesion: 0.04
-Nodes (34): TFGen, TFPlants, FireJet, HangBerries, MyceliumBlob, Penguins, PlantRoots, TallPlant (+26 more)
+Nodes (35): Grower, TFGen, TFPlants, FireJet, HangBerries, MyceliumBlob, Penguins, PlantRoots (+27 more)
 
 ### Community 22 - "MobHead"
-Cohesion: 0.04
-Nodes (41): MobHead, ALLIGATOR, ARMADILLO, BEAVER, BLACK_BEAR, BOAR, BROWN_BEAR, ELEPHANT (+33 more)
+Cohesion: 0.07
+Nodes (20): MobHead, ALLIGATOR, ARMADILLO, BEAVER, BLACK_BEAR, BOAR, BROWN_BEAR, ELEPHANT (+12 more)
 
 ### Community 23 - "OldGen"
 Cohesion: 0.03
-Nodes (50): Aufbau, Biome und Dekoratoren, Blöcke anmelden, Bäume im Spiel (Setzlinge), Eigene Dimension (Dimensional Doors, Teil 15), Mod-Dimension mit eigenem Gelände und Population (Twilight Forest, Teil 24a), Nether, Prüfen (+42 more)
+Nodes (56): Aufbau, Biome und Dekoratoren, Blöcke anmelden, Bäume im Spiel (Setzlinge), Nether, Prüfen, Regel 1: Kern-Klassen ohne Spielklassen, Strukturen (+48 more)
 
 ### Community 24 - "Modifiers"
-Cohesion: 0.06
-Nodes (18): Modifiers, AbilityHelperBridge, AntiSpider, Attack, AutoSmelt, Blaze, BooleanMod, Buttertouch (+10 more)
+Cohesion: 0.07
+Nodes (13): Modifiers, AbilityHelperBridge, AntiSpider, Attack, AutoSmelt, BooleanMod, Durability, IntegerMod (+5 more)
 
 ### Community 25 - "MapGenNetherBridge"
 Cohesion: 0.27
 Nodes (4): Found, MapGenNetherBridge, Region, SpawnEntry
 
 ### Community 26 - "TFEntityRenderers"
-Cohesion: 0.05
-Nodes (11): RavenModel, TFEntityRenderers, FurLayer, QuestRamBands, QuestRamLines, TFMobRenderer, TFRenderStates, Bighorn (+3 more)
+Cohesion: 0.04
+Nodes (12): ChocoCraftClient, EbxlClient, NaturaEntityRenderers, State, TFEntityRenderers, FurLayer, QuestRamBands, QuestRamLines (+4 more)
 
-### Community 28 - "net.neoforged.neoforge.registries.DeferredItem"
-Cohesion: 0.02
-Nodes (40): ASAddons, Material, ASConfig, AsgardShield, GuardState, ASItems, ItemAsgardShield, ItemZedSword (+32 more)
+### Community 27 - "OldStructures"
+Cohesion: 0.06
+Nodes (11): OldStructures, Found, VillageBlocks, VillagePiece, VillagePieceFactory, StructureMineshaftStart, StructureNetherBridgeStart, StructureScatteredFeatureStart (+3 more)
+
+### Community 28 - "net.minecraft.world.item.Item"
+Cohesion: 0.01
+Nodes (74): ArtificeItems, SickleItem, SledgeItem, Upgrade, ARMOR_SPIKES, COUNTERWEIGHT, DIVE_KIT, ELASTIC_LAYERING (+66 more)
 
 ### Community 30 - "EbxlLeavesBlock"
 Cohesion: 0.06
@@ -597,128 +605,132 @@ Cohesion: 0.50
 Nodes (3): npx, minecraft-dev, @mcdxai/minecraft-dev-mcp
 
 ### Community 32 - "net.minecraft.world.inventory.Slot"
-Cohesion: 0.07
-Nodes (18): ContainerSection, ARMOR, BREWING_BOTTLES, BREWING_INGREDIENT, CHEST, CRAFTING_IN, CRAFTING_IN_PERSISTENT, CRAFTING_OUT (+10 more)
+Cohesion: 0.05
+Nodes (33): ContainerSection, ARMOR, BREWING_BOTTLES, BREWING_INGREDIENT, CHEST, CRAFTING_IN, CRAFTING_IN_PERSISTENT, CRAFTING_OUT (+25 more)
 
 ### Community 33 - "TowerDeviceBlock"
 Cohesion: 0.07
-Nodes (5): GhastTrapBlockEntity, ReactorBlockEntity, ReverterBlockEntity, TowerBuilderBlockEntity, TowerDeviceBlock
+Nodes (6): GhastTrapBlockEntity, ReactorBlockEntity, ReverterBlockEntity, TowerBuilderBlockEntity, TowerDeviceBlock, TowerTranslucentBlock
 
 ### Community 35 - "Tinkers' Construct im Port (Stand Teil 25f, Port vollständig)"
-Cohesion: 0.12
-Nodes (11): Abbildung 1.5.2 → 26.3, Deko, Fallen, Maschinen (25f), Prüfen ohne Spieler, Schmelzerei (25c), Spieler (25e), Tinkers' Construct im Port (Stand Teil 25f, Port vollständig), Welt (25d), Werte und Regeln (+3 more)
+Cohesion: 0.29
+Nodes (6): Deko, Fallen, Maschinen (25f), Prüfen ohne Spieler, Schmelzerei (25c), Spieler (25e), Tinkers' Construct im Port (Stand Teil 25f, Port vollständig), Welt (25d)
 
-### Community 36 - "TSmeltery"
-Cohesion: 0.05
-Nodes (8): CastingChannelBlock, DryingRackBlock, SearedBrickBlock, SearedTankBlock, SmelteryControllerBlock, SmelteryDrainBlock, SoilBlock, TSmeltery
+### Community 36 - "SmelteryControllerBlock"
+Cohesion: 0.10
+Nodes (4): SearedBrickBlock, SearedTankBlock, SmelteryControllerBlock, SmelteryDrainBlock
 
 ### Community 37 - ".getBlockId"
-Cohesion: 0.01
-Nodes (44): Generator anmelden, Teil 5 – Hexxit Gear, More Bows, Enchanting Plus, offLawn, Wild Caves 3, RiftGen, Links, BigAutumn, BaseCloudWorldgen, BaseTreeWorldgen, BerryBushGen (+36 more)
+Cohesion: 0.02
+Nodes (43): Generator anmelden, Teil 5 – Hexxit Gear, More Bows, Enchanting Plus, offLawn, Wild Caves 3, BaseCloudWorldgen, BaseTreeWorldgen, BerryBushGen, BloodTreeLargeGen, BushTreeGen, CloudGen (+35 more)
 
 ### Community 38 - "LGBlocks.java"
 Cohesion: 0.04
-Nodes (14): ChainedBlock, ClayJarBlock, PedestalBlockEntity, SkybeamBlock, SkybeamBlockEntity, StarbeamTorchBlock, Standing, Wall (+6 more)
+Nodes (13): CaltropsBlock, ChainedBlock, ClayJarBlock, JarBlockEntity, PedestalBlockEntity, SkybeamBlock, SkybeamBlockEntity, StarstoneBlock (+5 more)
 
 ### Community 39 - "Override"
-Cohesion: 0.14
-Nodes (3): ExtraModifier, Lapis, Repair
+Cohesion: 0.12
+Nodes (7): Blaze, Buttertouch, ExtraModifier, Lapis, Piston, Redstone, Repair
 
 ### Community 40 - "BDProjectile"
-Cohesion: 0.08
-Nodes (4): BDProjectile, Dummy, FireBall, ProjectileBehavior
+Cohesion: 0.09
+Nodes (3): BDProjectile, Dummy, ProjectileBehavior
 
-### Community 41 - "net.minecraft.world.item.Item"
+### Community 41 - "net.minecraft.network.chat.Component"
 Cohesion: 0.02
-Nodes (55): RedstoneBookItem, ClientName, LightBlockItem, WeaponCaseItem, ChaseItem, EnchantedPlateItem, PlateItem, EternalFabricBlock (+47 more)
+Nodes (23): RedstoneBookItem, ClientName, LightBlockItem, WeaponCaseItem, EnchantedPlateItem, PlateItem, DimDoorItem, RiftRemoverItem (+15 more)
 
 ### Community 43 - "gen.py"
 Cohesion: 0.09
 Nodes (23): age(), ages(), bitag(), blockstate(), btag(), cube_all(), flam(), generated_item() (+15 more)
 
-### Community 45 - "GuardSound"
-Cohesion: 0.10
-Nodes (16): AbstractGuardItem, GuardSound, BONE, CRYSTAL, FLESH, METAL, STONE, WOOD (+8 more)
+### Community 45 - "Kind"
+Cohesion: 0.05
+Nodes (28): HeadModel, Kind, ARMADILLO, BEAR, BEAVER, BOAR, CROCODILE, ELEPHANT (+20 more)
 
 ### Community 46 - "Override"
 Cohesion: 0.05
 Nodes (8): HumanBosses, Boss, GoblinBoss, GremlinBoss, MinotaurBoss, PirateBoss, SpecterBoss, WalkerBoss
 
 ### Community 47 - "net.minecraft.client.gui.GuiGraphicsExtractor"
-Cohesion: 0.02
-Nodes (33): GuardHud, BackpackScreen, RenameScreen, WorkbenchBackpackScreen, BSScreen, CrateScreen, PressScreen, Portrait (+25 more)
+Cohesion: 0.03
+Nodes (22): BackpackScreen, WorkbenchBackpackScreen, BSScreen, CrateScreen, InvTweaksGuiIconButton, InvTweaksGuiSettingsButton, InvTweaksGuiSortingButton, InvTweaksConst (+14 more)
 
 ### Community 48 - "net.minecraft.client.model.geom.ModelLayerLocation"
 Cohesion: 0.03
-Nodes (35): BDHumanRenderers, EndermanArmorLayer, HumanModel, Anim, ENDERMAN, GREMLIN, HUMAN, MONKEY (+27 more)
+Nodes (33): BackItemLayer, BDHumanRenderers, EndermanArmorLayer, HumanModel, Anim, ENDERMAN, GREMLIN, HUMAN (+25 more)
 
 ### Community 49 - "net.minecraft.world.entity.EntityType"
-Cohesion: 0.03
-Nodes (13): BDSummoner, RivalTargetGoal, BabyHeatscarSpider, ZuluEntities, ZuluMonsters, ZuluSounds, RedcapGoals, TFGoals (+5 more)
+Cohesion: 0.06
+Nodes (5): BabyHeatscarSpider, HeatscarSpider, ZuluSounds, TFGoals, TFSpider
 
 ### Community 50 - "MageEntity"
-Cohesion: 0.08
+Cohesion: 0.09
 Nodes (5): MageEntity, HumanTargetGoals.HurtBy, Liche, Necromancer, PigMage
 
 ### Community 51 - "Portrait"
-Cohesion: 0.12
-Nodes (3): DIClient, Popoffs, Pop
+Cohesion: 0.09
+Nodes (4): DIClient, Popoffs, Pop, Portrait
 
-### Community 53 - "XRItems.java"
-Cohesion: 0.02
-Nodes (36): ThrownEntity, AmmoItem, ChargeItem, CondensedPotionItem, DestructionCatalystItem, DistortionCloakItem, EmperorChaliceItem, EmptyVoidTearItem (+28 more)
+### Community 53 - "XRItems"
+Cohesion: 0.04
+Nodes (14): ChargeItem, CondensedPotionItem, DestructionCatalystItem, EmperorChaliceItem, EmptyVoidTearItem, FortuneCoinItem, MagicbaneItem, MidasTouchstoneItem (+6 more)
 
 ### Community 55 - "verify_blocks.py"
 Cohesion: 0.12
 Nodes (18): main(), main(), packet(), read(), block(), ebxl(), flag(), main() (+10 more)
 
 ### Community 57 - "artifice/tools/gen.py"
-Cohesion: 0.11
-Nodes (21): bitag(), blockstate(), btag(), cube_all(), cube_element(), face(), generated_item(), handheld_item() (+13 more)
+Cohesion: 0.10
+Nodes (22): bitag(), blockstate(), btag(), cube_all(), cube_element(), face(), generated_item(), handheld_item() (+14 more)
 
 ### Community 58 - "PartType"
-Cohesion: 0.05
+Cohesion: 0.06
 Nodes (30): CustomPartItem, IToolPart, ToolPartItem, PartType, ARROWHEAD, AXE_HEAD, BINDING, BOWSTRING (+22 more)
 
 ### Community 59 - "ToolType"
-Cohesion: 0.05
-Nodes (27): TClient, ToolType, ARROW, BATTLEAXE, BATTLESIGN, BROADSWORD, CHISEL, CLEAVER (+19 more)
+Cohesion: 0.06
+Nodes (22): ToolBuilder, ToolType, ARROW, BATTLEAXE, BATTLESIGN, BROADSWORD, CHISEL, CLEAVER (+14 more)
 
-### Community 60 - "list"
+### Community 60 - "arraylist"
 Cohesion: 0.02
-Nodes (19): ArtificeJeiPlugin, AsgardShieldJeiPlugin, BackpackJeiPlugin, IRecipeTransferInfo<WorkbenchBackpackMenu, RecipeHolder<CraftingRecipe>>, BDEntityIds, BSJeiPlugin, ChestTransporterJeiPlugin, EbxlJeiPlugin (+11 more)
+Nodes (7): Abbildung 1.5.2 → 26.3, CustomMaterials, Bowstring, Fletching, TBlocks, TItems, OldId
 
-### Community 61 - "InvTweaksConfig"
-Cohesion: 0.10
-Nodes (4): InvTweaksConfig, OrderedProperties, InvTweaksConfigManager, InvTweaksHandlerAutoRefill
+### Community 61 - "net.minecraft.server.MinecraftServer"
+Cohesion: 0.07
+Nodes (6): BookFiles, Combat152, Client, ModePayload, PendingAttack, Entanglements
 
 ### Community 62 - "TMaterial"
-Cohesion: 0.06
-Nodes (21): TConstructJeiPlugin, TMaterial, ALUMITE, ARDITE, BLUE_SLIME, BONE, BRONZE, CACTUS (+13 more)
+Cohesion: 0.07
+Nodes (20): Werte und Regeln, TMaterial, ALUMITE, ARDITE, BLUE_SLIME, BONE, BRONZE, CACTUS (+12 more)
 
 ### Community 63 - "LiquidCategory.java"
 Cohesion: 0.15
 Nodes (4): LiquidCategory, Row, TinkerCategory, Row
 
 ### Community 65 - "com.mojang.serialization.MapCodec"
+Cohesion: 0.03
+Nodes (25): BoxRecipe, UpgradeRecipe, GildShieldRecipe, Backpack, BackpackItem, Kind, ENDER, NORMAL (+17 more)
+
+### Community 66 - "HSItems.java"
+Cohesion: 0.07
+Nodes (7): HSItems, BookItem, GlaiveItem, ScytheItem, SeedItem, SkullItem, SpectralArmorItem
+
+### Community 67 - "net.minecraft.util.RandomSource"
 Cohesion: 0.02
-Nodes (30): ArtificeRecipes, BoxItem, UpgradeRecipe, ShieldColorTint, GildShieldRecipe, Backpack, BackpackItem, Kind (+22 more)
-
-### Community 66 - "Upgrade"
-Cohesion: 0.08
-Nodes (18): ArtificeItems, SickleItem, SledgeItem, Upgrade, ARMOR_SPIKES, COUNTERWEIGHT, DIVE_KIT, ELASTIC_LAYERING (+10 more)
-
-### Community 67 - "XRBlocks"
-Cohesion: 0.12
-Nodes (3): LotusBlock, LotusLilyBlock, FertileLilypadBlock
+Nodes (23): LotusBlock, LotusLilyBlock, GysahlStemBlock, EbxlSaplingBlock, ShieldTorchBlock, ShieldWallTorchBlock, BerryBushBlock, GlowshroomBlock (+15 more)
 
 ### Community 68 - "net.minecraft.world.damagesource.DamageSource"
 Cohesion: 0.02
-Nodes (14): ASGiantSwordPerks, ASShieldPerks, ImpEntity, NitroCreeper, BeaverEntity, BoarEntity, FrogEntity, OstrichEntity (+6 more)
+Nodes (14): BattleTowerGolem, MeleeAttackGoal, GolemFireball, BDEntityClass, GolemBoss, SpiderBoss, EvilSpectralMiner, ImpEntity (+6 more)
+
+### Community 70 - "QuantumComputerBlockEntity"
+Cohesion: 0.12
+Nodes (3): AreaData, Shape, QuantumComputerBlockEntity
 
 ### Community 71 - "Redcap"
 Cohesion: 0.07
-Nodes (6): AvoidTnt, LightTnt, PlantTnt, Shy, Redcap, RedcapSapper
+Nodes (7): RedcapGoals, AvoidTnt, LightTnt, PlantTnt, Shy, Redcap, RedcapSapper
 
 ### Community 74 - "JEI-Plugin für einen portierten Mod"
 Cohesion: 0.40
@@ -726,154 +738,150 @@ Nodes (4): Einbindung (schon erledigt, in `build.gradle`), JEI-Plugin für einen
 
 ### Community 75 - "UrGhast"
 Cohesion: 0.05
-Nodes (5): UrGhast, MiniGhast, TFFlyingMonster, TowerGhast, Wraith
+Nodes (5): UrGhast, MiniGhast, TFFlyingMonster, TowerGhast, Einhängepunkte für andere Teile
 
-### Community 77 - "net.minecraft.world.entity.PathfinderMob"
-Cohesion: 0.04
-Nodes (9): SpiderAttackGoal, SpiderWebLaunchGoal, ChargeAttack, FlockToSameKind, KidnapRider, MagicAttack, PanicOnFlockDeath, Kobold (+1 more)
+### Community 77 - "Override"
+Cohesion: 0.06
+Nodes (7): ChargeAttack, FlockToSameKind, KidnapRider, MagicAttack, PanicOnFlockDeath, SlimeBlob, SlimeBeetle
 
 ### Community 79 - "Material"
 Cohesion: 0.02
-Nodes (68): Einen Generator einhängen, Teil 1 – Vanilla-1.5.2-Dekoration, ArtificeWorldGen, Pos, XSRandom, ChocoWorldGen, CoFHWorldGen, Feature (+60 more)
+Nodes (36): Einen Generator einhängen, 4. Reichweite, Stolperfallen, Teil 12 und 13 – Better Dungeons (Chocolate Quest), Teil 13 – Stand, Teil 1 – Vanilla-1.5.2-Dekoration, ArtificeWorldGen, Pos (+28 more)
 
 ### Community 80 - "TinyBird"
 Cohesion: 0.07
-Nodes (6): Penguin, Raven, RavenLookControl, TFBird, TinyBird, BirdFlyGoal
+Nodes (5): MobileFirefly, Raven, RavenLookControl, TinyBird, BirdFlyGoal
 
 ### Community 81 - "Chicobo"
-Cohesion: 0.11
+Cohesion: 0.14
 Nodes (4): Chicobo, FollowOwner, Swim, Wander
 
 ### Community 83 - "QuestRam"
-Cohesion: 0.10
-Nodes (3): QuestRam, EatLooseGoal, FindLooseGoal
+Cohesion: 0.06
+Nodes (7): DispenseBox, DispenseSledge, Entry, SledgeParts, QuestRam, EatLooseGoal, FindLooseGoal
 
 ### Community 84 - "InfiTool"
-Cohesion: 0.12
-Nodes (9): Neues einhängen, ToolPartProperty, InfiTool, ToolCombat, ToolData, Durability, Mods, Stats (+1 more)
+Cohesion: 0.16
+Nodes (3): Neues einhängen, InfiTool, ToolCombat
 
 ### Community 85 - "HydraMortarRenderer"
-Cohesion: 0.11
-Nodes (8): HydraModels, Body, Head, Mortar, MortarState, Neck, PartState, HydraMortarRenderer
+Cohesion: 0.13
+Nodes (7): HydraModels, Head, Mortar, MortarState, Neck, PartState, HydraMortarRenderer
 
 ### Community 86 - "net.minecraft.client.model.geom.ModelPart"
 Cohesion: 0.02
-Nodes (48): BullModel, GolemBossModel, DisplayModels, PrintingModels, ShelfModels, ChicoboModel, ScarecrowModel, SoulModel (+40 more)
+Nodes (59): BullModel, GolemBossModel, WyvernModel, State, DisplayModels, PrintingModels, ShelfModels, ChicoboModel (+51 more)
 
-### Community 87 - "OldChunkGenerator"
-Cohesion: 0.11
-Nodes (9): Capabilities (NeoForge 26.3 Transfer-API), Mit echten fremden Mods testen (Teil 26f), Nur in Hexxit Legacy, Prüfen am Server, Rezepte über Tags, Schnittstellen für fremde Mods (26.3), Tags, Biome, Oberflächen, Spawns (Teil 26d) (+1 more)
+### Community 87 - "DDEvents.java"
+Cohesion: 0.05
+Nodes (4): BuffBarHud, ZuluEffect, ZuluPotions, TreeCapitatorMod
 
 ### Community 88 - "net.minecraft.core.BlockPos"
 Cohesion: 0.01
-Nodes (16): DisplayLight, LabelBlock, ClientHooks, TypesettingBlock, BombFlowerBlock, FrezariteBlock, KreknoriteBlock, MeteorBlock (+8 more)
+Nodes (21): Look, TypesettingBlock, GysahlGreenBlock, UnraveledFabricBlock, HexbiscusBlock, MysticShrubBlock, KreknoriteBlock, MeteorBlock (+13 more)
 
 ### Community 89 - "PotionKind"
-Cohesion: 0.04
-Nodes (44): Kind, ACID, APHRODITE, BLINDING, CONFUSION, FERTILIZER, GLOWING_WATER, GRENADE (+36 more)
+Cohesion: 0.05
+Nodes (31): PotionKind, ACID, APHRODITE, BLINDING, BOUNDING, BREATHING, CELERITY, CONFUSION (+23 more)
 
 ### Community 90 - "OldChunkGenerator.java"
-Cohesion: 0.07
-Nodes (4): LimboChunkGenerator, TFChunkGenerator, OldNetherChunkGenerator, World
+Cohesion: 0.06
+Nodes (5): LimboTerrain, LimboChunkGenerator, OldChunkGenerator, OldNetherChunkGenerator, World
 
 ### Community 91 - "net.minecraft.world.entity.player.Player"
 Cohesion: 0.02
-Nodes (41): BSMenu, KeyringMenu, Slot, Slot, Slot, BiblioMenu, MenuConstructor, TableMenu (+33 more)
+Nodes (53): BackpackMenu, BackpackSlot, Location, BSMenu, CrateMenu, DataSlot, KeyringMenu, Slot (+45 more)
 
-### Community 92 - "net.minecraft.world.entity.Mob"
-Cohesion: 0.04
-Nodes (13): Bewaffnete Biped-Mobs mit eigener KI (Vorbild Better Dungeons, `betterdungeons.mob`), BDDungeonMob, FollowOwnerGoal, HurtBy, Nearest, NearestAttackable, NearestRival, Target (+5 more)
+### Community 92 - "SummonedUndead.java"
+Cohesion: 0.06
+Nodes (6): BDSummoner, FollowOwnerGoal, TargetOwnerGoal, SummonedBait, SummonedMob, SummonedUndead
 
 ### Community 93 - "StructurePieceBlockSelector"
 Cohesion: 0.07
 Nodes (10): StructureTFMazeStones, StructureTFStrongholdStones, StructureTFTowerWoods, ComponentScatteredFeature, ComponentScatteredFeatureDesertPyramid, ComponentScatteredFeatureJunglePyramid, ComponentScatteredFeatureSwampHut, StructurePieceBlockSelector (+2 more)
 
 ### Community 94 - "ScaffoldingBlock"
-Cohesion: 0.13
-Nodes (3): DetectorBlock, FrameBlock, ScaffoldingBlock
-
-### Community 95 - ".hurtServer"
 Cohesion: 0.10
-Nodes (4): ChargeAttack, GrenadeAttack, HookAttack, MeleeAttack
+Nodes (8): Tier, ADVANCED, BASIC, INDUSTRIAL, REINFORCED, DetectorBlock, FrameBlock, ScaffoldingBlock
 
 ### Community 96 - "Chocobo"
 Cohesion: 0.14
 Nodes (3): Chocobo, ActionGoal, BagContainer
 
 ### Community 97 - "ArmorStandRenderer"
-Cohesion: 0.06
-Nodes (11): LockerBlockEntity, ArmorStandRenderer, State, BackpackRenderer, State, BSModels, ArmorStandModel, BackpackModel (+3 more)
+Cohesion: 0.03
+Nodes (28): LockerBlockEntity, ChestMaterial, COPPER, DIAMOND, EMERALD, GOLD, IRON, SILVER (+20 more)
 
 ### Community 98 - "LanCommands.java"
 Cohesion: 0.12
 Nodes (3): CoFHCommand, LanCommands, Registrar
 
 ### Community 99 - "twilightforest/tools/gen.py"
-Cohesion: 0.06
-Nodes (31): bitag(), block_name(), btag(), chance(), column_state(), cube(), flam(), generated_item() (+23 more)
+Cohesion: 0.09
+Nodes (27): bitag(), block_name(), btag(), chance(), column_state(), cube(), flam(), generated_item() (+19 more)
 
 ### Community 100 - "SimpleSpectral"
 Cohesion: 0.19
 Nodes (6): Kind, CHICKEN, COW, SILVERFISH, VILLAGER, SimpleSpectral
 
-### Community 101 - ".isSuitableTargetAlly"
-Cohesion: 0.12
-Nodes (3): AttackHeal, OwnerTarget, KnightEntity
+### Community 101 - ".addAITasks"
+Cohesion: 0.06
+Nodes (11): Mount, HumanTargetGoals, HurtBy, Nearest, NearestAttackable, NearestHurtAlly, NearestMount, NearestRival (+3 more)
+
+### Community 102 - "TWorld.java"
+Cohesion: 0.08
+Nodes (7): Holder, Liquid, MoltenBlock, MoltenType, TFluids, FluidHolder, TWorld
 
 ### Community 103 - ".build"
-Cohesion: 0.09
+Cohesion: 0.07
 Nodes (9): OldStructure, Piece, OldStructureBuild, ChunkChanges, Context, Key, Result, Terrain (+1 more)
 
 ### Community 104 - "BossRenderers"
-Cohesion: 0.06
-Nodes (16): State, UniversalFlowerPotRenderer, BossRenderers, BoxModel, LichModel, LichRenderer, LichState, MinionRenderer (+8 more)
+Cohesion: 0.07
+Nodes (14): BossRenderers, BoxModel, LichModel, LichRenderer, LichState, MinionRenderer, MinionState, MinoshroomModel (+6 more)
 
 ### Community 105 - "IMConfig"
-Cohesion: 0.10
-Nodes (4): EplusConfig, IMConfig, TCSettings, IntegratedConfig
+Cohesion: 0.11
+Nodes (4): EplusClient, EplusConfig, TCSettings, IntegratedConfig
 
 ### Community 106 - "Override"
 Cohesion: 0.05
-Nodes (10): Bubble, BulletPistol, FireShield, HealBall, HookShoot, Slingshot, SpiderWeb, SpiderWebVertical (+2 more)
+Nodes (8): BulletPistol, EarthQuake, FireShield, SpiderWeb, SpiderWebVertical, ThunderBolt, VampiricBall, WindBall
 
 ### Community 107 - ".write"
-Cohesion: 0.05
+Cohesion: 0.07
 Nodes (8): Aufbau, Prüfen, Stolperfallen, Twilight Forest weiterbauen, OldDecoratedChunk, OldChunkWriter, OldModData, TileWriter
 
-### Community 108 - "BDMagicArrow"
+### Community 110 - "GoblinKnightUpper"
 Cohesion: 0.11
-Nodes (3): ArrowAttack, GunnerAttack, BDMagicArrow
-
-### Community 110 - "InvTweaksConfigSortingRule"
-Cohesion: 0.08
-Nodes (7): InvTweaksConfigInventoryRuleset, InvTweaksConfigSortingRule, Type, COLUMN, RECTANGLE, ROW, SLOT
+Nodes (4): GoblinKnightLower, RiderSpearGoal, GoblinKnightUpper, HeavySpearGoal
 
 ### Community 111 - "OldWorld"
 Cohesion: 0.02
-Nodes (51): Teil 26a – Stand (✅ erledigt), BuilderEmptyCave, CatTail, EbxlPlantGens, Flowers, LeafPile, Marsh, Melon (+43 more)
+Nodes (56): RiftGen, Links, CatTail, EbxlPlantGens, Flowers, LeafPile, Marsh, Melon (+48 more)
 
-### Community 112 - "net.minecraft.world.level.WorldGenLevel"
-Cohesion: 0.12
+### Community 112 - "OldChunkWriter.java"
+Cohesion: 0.05
 Nodes (12): OldGeneratorFeature, Run, OldWorld.TerrainSource, Arbeitsplan, Aufbau, Bauen und Starten, HeroMC – Hexxit 1:1 für Minecraft 26.3, Referenzquellen des Originals (+4 more)
 
 ### Community 113 - "FallingStarRenderer"
-Cohesion: 0.12
-Nodes (7): DimDoorBlockEntity, DDClient, DoorRenderer, DoorState, MonolithModel, MonolithRenderer, MonolithState
+Cohesion: 0.08
+Nodes (9): DimDoorBlockEntity, DDClient, DoorRenderer, DoorState, MonolithModel, MonolithRenderer, MonolithState, FallingStarRenderer (+1 more)
 
 ### Community 114 - "ComponentVillageStartPiece"
-Cohesion: 0.01
-Nodes (79): Teil 2 – Vanilla-1.5.2-Strukturen und Abgleich, Teil 7b – Natura-Nether, ComponentSmeltery, Handler, ComponentToolWorkshop, Handler, ComponentTFDarkTowerEntrance, ComponentMineshaftCorridor (+71 more)
+Cohesion: 0.02
+Nodes (65): Teil 2 – Vanilla-1.5.2-Strukturen und Abgleich, Teil 7b – Natura-Nether, ComponentTFDarkTowerEntrance, ComponentMineshaftCorridor, ComponentMineshaftCross, ComponentMineshaftRoom, ComponentMineshaftStairs, ComponentNetherBridgeCorridor2 (+57 more)
 
-### Community 115 - ".registerMeta"
-Cohesion: 0.06
-Nodes (6): Bauteile aus dem Original übernehmen, Grower, Natura, BuiltIn, TFSaplings, OldGameIds
+### Community 115 - "net.neoforged.bus.api.IEventBus"
+Cohesion: 0.02
+Nodes (28): Artifice, ASClient, BDEntities, BDClient, BSNetwork, Printing, ChestTransporter, Extrabiomes (+20 more)
 
 ### Community 116 - "Naga"
 Cohesion: 0.06
 Nodes (3): Naga, MoveControl, NagaSegment
 
 ### Community 117 - "UncraftingMenu"
-Cohesion: 0.12
+Cohesion: 0.13
 Nodes (4): UncraftingMenu, ResultSlot, Uncraft, Slot
 
 ### Community 118 - "Bäume und Äxte bei TreeCapitator anmelden"
@@ -881,68 +889,64 @@ Cohesion: 0.40
 Nodes (4): Bäume: Daten-Registry `treecapitator:tree`, Bäume und Äxte bei TreeCapitator anmelden, Prüfen, Äxte und Scheren: Item-Tags
 
 ### Community 119 - ".generate"
-Cohesion: 0.07
+Cohesion: 0.08
 Nodes (12): BTConfig, BTItems, BTTower, TowerType, CobbleStone, CobbleStoneMossy, Ice, Jungle (+4 more)
 
 ### Community 121 - "Behaviors"
 Cohesion: 0.07
 Nodes (12): Behaviors, Bullet, Capsule, Grenade, GrenadeArcane, GrenadeElectric, GrenadeFire, GrenadeIce (+4 more)
 
-### Community 124 - "PrintPressBlockEntity"
-Cohesion: 0.12
-Nodes (3): PrintPressRenderer, State, PrintPressBlockEntity
-
 ### Community 125 - "MeteorType"
-Cohesion: 0.13
+Cohesion: 0.14
 Nodes (7): Craters, MeteorType, FREZARITE, KITTY, KREKNORITE, METEORITE, UNKNOWN
 
 ### Community 126 - "InvTweaks"
-Cohesion: 0.09
-Nodes (3): InvTweaks, Scheduled, InvTweaksClient
+Cohesion: 0.06
+Nodes (7): InvTweaks, Scheduled, InvTweaksClient, InvTweaksConfig, OrderedProperties, InvTweaksConfigManager, InvTweaksHandlerAutoRefill
 
 ### Community 128 - "SmallCritter"
 Cohesion: 0.13
 Nodes (3): Bunny, SmallCritter, Squirrel
 
 ### Community 130 - "TableRenderer"
-Cohesion: 0.15
+Cohesion: 0.14
 Nodes (5): LightRenderer, State, ObjModel, TableRenderer, State
 
 ### Community 131 - "SpectralHumanoid"
-Cohesion: 0.11
+Cohesion: 0.12
 Nodes (8): Kind, MINER, PIG_ZOMBIE, SKELETON, WITCH, WITHER_SKELETON, ZOMBIE, SpectralHumanoid
 
-### Community 132 - "InvTweaksItemTree"
-Cohesion: 0.08
-Nodes (4): InvTweaksItemTree, InvTweaksItemTreeCategory, InvTweaksItemTreeItem, InvTweaksItemTreeLoader
+### Community 132 - "InvTweaksHandlerSorting"
+Cohesion: 0.04
+Nodes (11): InvTweaksConfigInventoryRuleset, InvTweaksConfigSortingRule, Type, COLUMN, RECTANGLE, ROW, SLOT, InvTweaksHandlerSorting (+3 more)
 
 ### Community 133 - "AltarRecipe"
 Cohesion: 0.08
-Nodes (7): Eigener Rezepttyp für eine Maschine (Vorbild: Harken-Scythe-Altäre), Harken Scythe: die Altäre (Teil 9, Teilauftrag 2), AltarRecipe, Kind, BLOOD, SOUL, AltarCategory
+Nodes (13): Eigener Rezepttyp für eine Maschine (Vorbild: Harken-Scythe-Altäre), Harken Scythe: die Altäre (Teil 9, Teilauftrag 2), Action, ATTUNE, AUGMENT, ENTHRALL, ENTWINE, GERMINATE (+5 more)
 
 ### Community 134 - "GolemBoss"
-Cohesion: 0.16
-Nodes (10): StaffItem, Element, DARK, ELECTRIC, FIRE, ICE, LIFE, POISON (+2 more)
+Cohesion: 0.20
+Nodes (9): Element, DARK, ELECTRIC, FIRE, ICE, LIFE, POISON, WATER (+1 more)
 
 ### Community 136 - "SpectralRenderState"
 Cohesion: 0.04
-Nodes (19): BackItemLayer, Anim, Biped, Model, Bat, Biped, Blaze, Eyes (+11 more)
+Nodes (19): ScarecrowRenderer, Anim, Biped, Model, SpectralModels, Bat, Biped, Blaze (+11 more)
 
 ### Community 137 - "CritterBlock"
-Cohesion: 0.12
+Cohesion: 0.14
 Nodes (6): CritterBlock, Kind, CICADA, FIREFLY, MOONWORM, CritterBlockEntity
 
 ### Community 138 - ".build"
-Cohesion: 0.05
-Nodes (12): BDDungeons, Dungeon, BDFiles, Ordered, BDMobs, Mob, DDNbt, DungeonBuilder (+4 more)
-
-### Community 139 - "AltarMenu"
 Cohesion: 0.09
-Nodes (5): AltarMenu, AltarScreen, Menu, QuantumComputerMenu, ContainerData
+Nodes (6): DDNbt, DungeonBuilder, Door, Result, Schematic, Rotation
 
 ### Community 140 - "ZuluLandAnimal"
-Cohesion: 0.06
-Nodes (9): AlligatorEntity, FoxEntity, FollowOwnerGoal, Mode, FOLLOW, GUARD, SIT, STAY (+1 more)
+Cohesion: 0.03
+Nodes (17): AlligatorEntity, BeaverEntity, BoarEntity, FoxEntity, FollowOwnerGoal, Mode, FOLLOW, GUARD (+9 more)
+
+### Community 141 - "TankBlockEntity"
+Cohesion: 0.12
+Nodes (3): Tank, SimpleTank, TankBlockEntity
 
 ### Community 142 - "harkenscythe/tools/gen.py"
 Cohesion: 0.14
@@ -952,113 +956,109 @@ Nodes (20): altar_recipe(), block_item(), block_model(), blockstate(), book_rows
 Cohesion: 0.22
 Nodes (3): ArchitectCemetary, BuildingManagerCemetary, Weighted
 
-### Community 144 - "com.mojang.blaze3d.vertex.PoseStack"
-Cohesion: 0.02
-Nodes (39): BallRenderer, State, BlockProjectileRenderer, MagicArrowRenderer, State, ArmorStandBlockEntity, ArmorStandRenderer, State (+31 more)
+### Community 144 - "net.minecraft.resources.Identifier"
+Cohesion: 0.03
+Nodes (33): BetterStorage, BiblioRender, BCConfig, ArmorStandRenderer, State, LabelRenderer, State, PrintPressRenderer (+25 more)
 
 ### Community 145 - "MobControlScreen"
-Cohesion: 0.17
+Cohesion: 0.19
 Nodes (7): MobControlScreen, EnumAiState, FOLLOW, HOLD, PATH, SIT, WARD
 
 ### Community 146 - "net.minecraft.world.item.ItemStack"
 Cohesion: 0.02
-Nodes (13): Entry, SledgeParts, BackpackSlot, Lockable, KeyItem, KeyLike, ArmorRules, AltarBlockEntity (+5 more)
+Nodes (22): RangedItems, Grenade, Pistol, ListContainer, Slot, MenuConstructor, ArmorRules, Slot (+14 more)
 
 ### Community 150 - "WeaponCaseBlockEntity"
-Cohesion: 0.11
-Nodes (4): LabelRenderer, State, LabelBlockEntity, WeaponCaseBlockEntity
+Cohesion: 0.06
+Nodes (8): ArmorStandBlockEntity, DisplayText, WeaponCaseRenderer, Parts, State, DisplayLight, LabelBlockEntity, WeaponCaseBlockEntity
 
 ### Community 151 - "PartBuilderMenu"
-Cohesion: 0.12
-Nodes (4): PatternChestBlockEntity, TableBlock, TableSlabBlock, PartBuilderMenu
-
-### Community 152 - "HSEvents.java"
-Cohesion: 0.06
-Nodes (4): LostSoulEntity, SoulEntity, HSEntities, SpecialTierAbilities
+Cohesion: 0.13
+Nodes (9): TableBlock, Kind, CRAFTING_STATION, PART_BUILDER, PATTERN_CHEST, STENCIL_TABLE, TOOL_FORGE, TOOL_STATION (+1 more)
 
 ### Community 153 - "meteorsmod/tools/gen.py"
 Cohesion: 0.17
 Nodes (22): block_loot(), block_model(), block_tex(), cube(), flat(), fortune_bonus(), heat(), heated() (+14 more)
 
 ### Community 154 - "Starting the test client without a screen"
-Cohesion: 0.25
-Nodes (7): Dem Testserver beitreten (Teil 16), Einzelspielerwelt direkt laden (Teil 26e), Erfahrungen aus Teil 22, Recipe, Sodium und Iris im Testclient, Starting the test client without a screen, What does not work and why
+Cohesion: 0.22
+Nodes (8): Dem Testserver beitreten (Teil 16), Einzelspielerwelt direkt laden (Teil 26e), Erfahrungen aus Teil 22, In the game (tested: Twilight portal, Enchanting Plus table), Recipe, Sodium und Iris im Testclient, Starting the test client without a screen, What does not work and why
 
 ### Community 156 - "Arbeitsplan: Hexxit 1.0.11 → NeoForge 26.3"
 Cohesion: 0.04
-Nodes (44): Arbeitsplan: Hexxit 1.0.11 → NeoForge 26.3, Regeln für jeden Teil, Teil 10 – Stand, Teil 10 und 11 – Project Zulu, Teil 11 – Stand, Teil 16 – BiblioCraft, Teil 16 – Stand, Teil 17 – BetterStorage, Backpacks, qCraft (+36 more)
+Nodes (48): Capabilities (NeoForge 26.3 Transfer-API), Mit echten fremden Mods testen (Teil 26f), Nur in Hexxit Legacy, Prüfen am Server, Rezepte über Tags, Schnittstellen für fremde Mods (26.3), Tags, 1.5.2-Dorfkomponente als Haus der 26.3-Dörfer (+40 more)
 
 ### Community 157 - "ArmorBarHud"
 Cohesion: 0.14
 Nodes (10): Kind, AMOUNT, CHEST, DURABILITY, FEET, HEAD, LEGS, Unit (+2 more)
 
 ### Community 158 - "EssenceExtractorBlockEntity"
-Cohesion: 0.14
-Nodes (5): ExtractorRenderer, EssenceExtractorBlockEntity, TrophyRenderer, HydraHead, State
+Cohesion: 0.08
+Nodes (8): ExtractorRenderer, EssenceExtractorBlockEntity, CritterRenderer, MoonwormModel, State, TrophyRenderer, HydraHead, State
 
 ### Community 159 - "Mw"
-Cohesion: 0.11
-Nodes (5): Mw, MwClient, MwOptionsScreen, Trail, Point
+Cohesion: 0.04
+Nodes (14): Teil 22 – Client-Mods, Teil 22 – Stand, MapMode, MapPainter, MapView, Marker, MarkerManager, Mw (+6 more)
 
 ### Community 161 - "convert_tree.py"
-Cohesion: 0.11
-Nodes (15): camel(), convert(), emit_additions(), walk(), main(), Out, resolve_tags(), get() (+7 more)
+Cohesion: 0.09
+Nodes (19): camel(), convert(), emit_additions(), walk(), main(), Out, resolve_tags(), get() (+11 more)
 
 ### Community 162 - "EnchantTableScreen"
-Cohesion: 0.10
-Nodes (9): Container → `AbstractContainerMenu`, GuiContainer → `AbstractContainerScreen`, Konfiguration und Spielerdaten, Menü, Screen und Pakete in 26.3 (NeoForge 26.3.0.102), Pakete → Custom Payloads, Regler und Ziehen (Maus), Truhen-GUIs und Inventory Tweaks, EnchantTableScreen (+1 more)
+Cohesion: 0.08
+Nodes (3): EnchantTableScreen, GuiItem, SmelteryScreen
 
 ### Community 163 - "TableBlockEntity"
-Cohesion: 0.08
-Nodes (6): CraftingStationBlockEntity, PartBuilderBlockEntity, StencilTableBlockEntity, TableBlockEntity, ToolStationBlockEntity, CraftingStationMenu
+Cohesion: 0.09
+Nodes (5): PartBuilderBlockEntity, StencilTableBlockEntity, TableBlockEntity, ToolStationBlockEntity, CraftingStationMenu
 
 ### Community 166 - ".get"
-Cohesion: 0.10
-Nodes (6): InvTweaksGuiModNotWorking, InvTweaksGuiSettings, InvTweaksGuiSettingsAbstract, TextButton, InvTweaksGuiSettingsAdvanced, InvTweaksGuiShortcutsHelp
+Cohesion: 0.07
+Nodes (8): InvTweaksGuiModNotWorking, InvTweaksGuiSettings, InvTweaksGuiSettingsAbstract, TextButton, InvTweaksGuiSettingsAdvanced, InvTweaksGuiShortcutsHelp, InvTweaksKeys, PromptScreen
 
 ### Community 167 - "betterdungeons/tools/gen.py"
 Cohesion: 0.23
 Nodes (12): item(), item_tex(), model(), n(), plain_def(), shaped(), shapeless(), simple() (+4 more)
 
-### Community 168 - "TombstoneBlockEntity"
-Cohesion: 0.09
-Nodes (5): TombstoneBlockEntity, State, TombstoneModel, TombstoneRenderer, TombstoneScreen
-
 ### Community 170 - "Context"
-Cohesion: 0.03
-Nodes (28): BDCreatureRenderers, BaitRenderer, BaitState, BullRenderer, GolemBossRenderer, MonkingRenderer, SpiderBossRenderer, EyesLayer<> (+20 more)
+Cohesion: 0.04
+Nodes (22): BDCreatureRenderers, BaitRenderer, BaitState, BullRenderer, GolemBossRenderer, MonkingRenderer, SpiderBossRenderer, EyesLayer<> (+14 more)
 
-### Community 171 - "net.minecraft.core.Holder"
-Cohesion: 0.02
-Nodes (15): GuardItem, BuffBarHud, EbxlRegion, RFTL, ImpMeatItem, ZuluEffect, ZuluPotions, TCLog (+7 more)
+### Community 171 - "net.minecraft.world.level.biome.Biome"
+Cohesion: 0.05
+Nodes (9): Die Brücke (`mods/worldgen152/.../OldGeneratorFeature.java`), Mod-Dimension mit eigenem Gelände und Population (Twilight Forest, Teil 24a), EbxlRegion, TFBiomeSource, BiomeLayout, OldTerrain, OldBiomeSource, OldBiomeTags (+1 more)
 
-### Community 172 - "Backpacks"
+### Community 172 - "item/BackpackItem.java"
+Cohesion: 0.04
+Nodes (9): BackpackArmorSlot, BackpackData, Saved, BackpackEvents, Backpacks, EquippedBackpackInventory, ContainerWrapper, BSUtil (+1 more)
+
+### Community 173 - "Material"
 Cohesion: 0.06
-Nodes (6): BackpackArmorSlot, BackpackData, Saved, BackpackEvents, Backpacks, BackpackItem
+Nodes (32): Material, AIR, ANVIL, CACTUS, CAKE, CIRCUITS, CLAY, CLOTH (+24 more)
 
-### Community 173 - "net.neoforged.bus.api.SubscribeEvent"
-Cohesion: 0.10
-Nodes (6): ArmorSet, SCALE, THIEF, TRIBAL, SetBonuses, State
+### Community 174 - "CratePileData"
+Cohesion: 0.11
+Nodes (3): CratePileCollection, CratePileData, SavedStack
 
 ### Community 175 - ".angle"
 Cohesion: 0.06
-Nodes (5): BookcaseBlock, BookcaseBlockEntity, ArmorStandBlock, WritingDeskBlock, ToolRackBlock
+Nodes (5): BookcaseBlock, BookcaseBlockEntity, TableBlock, ArmorStandBlock, ShelfBlock
 
 ### Community 176 - "TrophyBlock"
 Cohesion: 0.13
 Nodes (8): TrophyBlock, Kind, HYDRA, LICH, NAGA, UR_GHAST, Wall, TrophyBlockEntity
 
-### Community 177 - "BCConfig"
-Cohesion: 0.08
-Nodes (3): BookcaseMenu, BCConfig, WritingDeskBlockEntity
+### Community 177 - "ThrownEntity"
+Cohesion: 0.09
+Nodes (16): ConcussiveExplosion, ThrownEntity, Kind, ACID, APHRODITE, BLINDING, CONFUSION, FERTILIZER (+8 more)
 
 ### Community 178 - "LiquidState"
-Cohesion: 0.17
+Cohesion: 0.12
 Nodes (10): SmelteryRenderers, Base, Box, Casting, Channel, DryingRack, Faucet, LiquidState (+2 more)
 
 ### Community 179 - "net.minecraft.server.level.ServerLevel"
 Cohesion: 0.02
-Nodes (22): Effects, TowerDestroyer, BaseDungeonMonsters, RegisterDungeonMobs, BasedOnDistance, ByName, GoblinBlue, BDMobUtil (+14 more)
+Nodes (18): ASGiantSwordPerks, BaseDungeonMonsters, RegisterDungeonMobs, BasedOnDistance, ByName, GoblinBlue, BDSpawnerBlockEntity, FallenSoul (+10 more)
 
 ### Community 180 - "gen_plants.py"
 Cohesion: 0.15
@@ -1073,64 +1073,52 @@ Cohesion: 0.09
 Nodes (17): SkullType, BAT, CAVE_SPIDER, CHICKEN, COW, ENDER_DRAGON, ENDERMAN, MOOSHROOM (+9 more)
 
 ### Community 184 - "ChocopediaScreen"
-Cohesion: 0.14
+Cohesion: 0.13
 Nodes (3): ChocopediaScreen, NameChocoboScreen, SelectOwnerScreen
 
-### Community 185 - "MwGui"
-Cohesion: 0.12
-Nodes (3): Marker, MwGui, Label
+### Community 185 - "Override"
+Cohesion: 0.11
+Nodes (7): MiscItems, Controller, CursedBone, GoldenFeather, MagicPickaxe, PathMarker, ScrollOfEscape
 
 ### Community 186 - "Ring"
-Cohesion: 0.08
-Nodes (5): EarthQuake, EarthQuakeArea, FireWall, Ring, WindBall
-
-### Community 187 - "HauntedArmorEntity"
 Cohesion: 0.15
-Nodes (3): HauntedArmorRenderer, RenderLayer<>, HauntedArmorEntity
+Nodes (3): EarthQuakeArea, FireWall, Ring
+
+### Community 188 - "OldDecoration"
+Cohesion: 0.13
+Nodes (7): Teil 24a – Dimension, Gelände, Biome, Portal, Teil 24a – Stand (✅ erledigt), Teil 26a – Stand (✅ erledigt), Teil 26a – Welttypen, Chunk-Brücke, einzelne Features, OldDecoration, ChunkPopulator, TerrainSource
 
 ### Community 189 - "QBlockEntity"
-Cohesion: 0.07
-Nodes (7): EntanglementRegistry, Entanglements, QBlockEntity, Appearance, BLOCK, FUZZ, SWIRL
+Cohesion: 0.09
+Nodes (6): EntanglementRegistry, QBlockEntity, Appearance, BLOCK, FUZZ, SWIRL
 
-### Community 190 - "TFBosses"
-Cohesion: 0.03
-Nodes (10): PurpleChocoboEgg, LichBolt, LichBomb, NatureBolt, SlimeBlob, TFThrowable, TomeBolt, SkeletonDruid (+2 more)
+### Community 190 - "SkeletonDruid"
+Cohesion: 0.12
+Nodes (3): NatureBolt, TomeBolt, SkeletonDruid
 
 ### Community 191 - "gen_humans.py"
 Cohesion: 0.24
 Nodes (12): all_of(), boss_diamonds(), chance(), item(), lvl(), pool(), potion_entries(), potion_pools() (+4 more)
 
-### Community 192 - "ZuluGear.java"
+### Community 192 - "net.minecraft.resources.ResourceKey"
 Cohesion: 0.02
-Nodes (14): ArtificeClient, HarkenScythe, BSEnchantments, Combat152, Client, PendingAttack, OldCost, Augment (+6 more)
-
-### Community 193 - "LimitedMobSpawnerBlockEntity"
-Cohesion: 0.11
-Nodes (3): LimitedMobSpawnerRenderer, LimitedMobSpawnerBlockEntity, SpawnEntry
-
-### Community 194 - "TowerGolemModel"
-Cohesion: 0.11
-Nodes (4): BeetleLegs, FireBeetleModel, Flags, TowerGolemModel
+Nodes (20): ArtificeClient, HarkenScythe, BDItems, Reading, ChocoCraft, ChocopediaItem, PurpleChocoboEggItem, OldCost (+12 more)
 
 ### Community 195 - "BattleTowerGolem"
 Cohesion: 0.02
-Nodes (17): BattleTowerGolem, MeleeAttackGoal, Flagged, DeathTome, FireBeetle, GoblinKnightLower, RiderSpearGoal, GoblinKnightUpper (+9 more)
+Nodes (19): TowerDestroyer, BDMobUtil, FireBreathGoal, Flagged, DeathTome, FireBeetle, HelmetCrab, HostileWolf (+11 more)
 
-### Community 199 - "CratePileData"
+### Community 197 - "NaturaBlocks"
 Cohesion: 0.05
-Nodes (8): CrateBlockEntity, CratePileCollection, CratePileData, SavedStack, CratePlayerView, CrateWatcher, ItemKey, DataSlot
+Nodes (17): NaturaBlocks, NaturaItems, ToolSet, Wood, AMARANTH, BLOODWOOD, DARKWOOD, EUCALYPTUS (+9 more)
 
-### Community 201 - "BagItem"
+### Community 204 - "Detailing"
 Cohesion: 0.11
-Nodes (4): BDEvents, BagItem, Holder, Menu
+Nodes (16): Teil 25 – Tinkers' Construct (25a–25f), Teil 25a – Stand (✅ erledigt), Teil 25a – Werkzeug-Kern, Teil 25b – Stand (✅ erledigt), Teil 25b – Werkzeuge im Einsatz und Darstellung, Teil 25c – Schmelzerei, Teil 25c – Stand (✅ erledigt), Teil 25d – Stand (✅ erledigt) (+8 more)
 
-### Community 202 - "RuinTemplate"
-Cohesion: 0.06
-Nodes (9): Text-Vorlagen ohne Umwandlung (Ruins, Teil 14), RuinRotation, RuinsFiles, RuinsGen, Generator, Handler, History, RuinTemplate (+1 more)
-
-### Community 205 - "LGEvents"
-Cohesion: 0.08
-Nodes (3): ArtificeEvents, HeadDrops, LGEvents
+### Community 205 - "net.neoforged.bus.api.SubscribeEvent"
+Cohesion: 0.02
+Nodes (18): ArtificeEvents, BDEvents, BagItem, Holder, Menu, ChestTransporterItem, TransportEvents, ArmorSet (+10 more)
 
 ### Community 207 - "xreliquary/tools/gen.py"
 Cohesion: 0.20
@@ -1140,12 +1128,20 @@ Nodes (15): block_model(), btex(), item_def(), itex(), model(), n(), name(), pla
 Cohesion: 0.13
 Nodes (5): BlockColours, Entry, ChunkScanner, Region, RegionStore
 
+### Community 211 - "PlayerEvents"
+Cohesion: 0.09
+Nodes (4): PlayerData, Inv, Saved, PlayerEvents
+
 ### Community 212 - "ZuluMaze"
 Cohesion: 0.15
 Nodes (8): ArchitectLabyrinth, ChestPiece, HauntedArmorPiece, MimicPiece, Piece, SpawnerPiece, TombstonePiece, ZuluMaze
 
+### Community 214 - ".getASShieldPerk"
+Cohesion: 0.07
+Nodes (5): ASShieldPerks, Effects, GuardEvents, AbstractGuardItem, ItemAsgardShield
+
 ### Community 215 - "ZuluBigAnimal"
-Cohesion: 0.16
+Cohesion: 0.18
 Nodes (3): ReachMeleeAttackGoal, SmoothSwimGoal, ZuluBigAnimal
 
 ### Community 216 - "legendgear/tools/gen.py"
@@ -1153,108 +1149,100 @@ Cohesion: 0.19
 Nodes (18): block_item(), block_model(), block_tex(), flat_model(), handheld_model(), item(), item_def(), _lower() (+10 more)
 
 ### Community 217 - "GuiCustomLan"
-Cohesion: 0.10
-Nodes (5): CustomLanClient, GuiCustomLan, GuiCustomLanPermissions, CLOptions, CLPermissions
+Cohesion: 0.17
+Nodes (3): CustomLanClient, GuiCustomLan, CLOptions
 
 ### Community 218 - "gen_gear.py"
 Cohesion: 0.14
 Nodes (6): _zg_flat_item(), _zg_item_def(), _zg_plane_cross(), _zg_recipe(), _zg_shaped(), _zg_strip()
 
-### Community 219 - "MonkingBoss"
-Cohesion: 0.02
-Nodes (12): Blocken und „solange benutzt“, Bosse (aus Better Dungeons, `mods/betterdungeons/.../mob`), BossAttackGoal, FlyGoal, BDBoss, BDCreatures, GolemBoss, IceBull (+4 more)
+### Community 219 - "BDBoss"
+Cohesion: 0.05
+Nodes (7): BossAttackGoal, FlyGoal, SpiderAttackGoal, BDBoss, BDCreatures, IceBull, Wyvern
 
-### Community 222 - "ContainerBlockEntity"
-Cohesion: 0.08
-Nodes (3): BackpackBlockEntity, ContainerBlockEntity, EnderBackpackInventory
+### Community 223 - "Override"
+Cohesion: 0.15
+Nodes (3): Barley, Cotton, NaturaCropBlock
 
 ### Community 225 - "chococraft/tools/gen.py"
 Cohesion: 0.28
 Nodes (13): cross_block(), egg(), item(), item_def(), leg_pool(), n(), self_drop(), shaped() (+5 more)
 
-### Community 226 - "XRData"
-Cohesion: 0.07
-Nodes (15): 26.3 nachschlagen statt raten, Datenformate, Eigene Flüssigkeiten (FluidType): Entities frieren ein, ICraftingHandler (onCrafting) von 1.5.2, Ressourcenpfade nur klein, Umbenennungen (1.21 → 26.3), die schon vorkamen, WAV-Sounds aus 1.5.2, Werkzeuge (lokal, ohne Netz) (+7 more)
-
-### Community 227 - "ReinforcedChestBlockEntity"
-Cohesion: 0.12
-Nodes (4): ReinforcedChestBlockEntity, ChestModel, ReinforcedChestRenderer, State
+### Community 226 - "26.3 nachschlagen statt raten"
+Cohesion: 0.20
+Nodes (9): 26.3 nachschlagen statt raten, Datenformate, Eigene Flüssigkeiten (FluidType): Entities frieren ein, ICraftingHandler (onCrafting) von 1.5.2, Maustasten zählen ab 1, Ressourcenpfade nur klein, Umbenennungen (1.21 → 26.3), die schon vorkamen, WAV-Sounds aus 1.5.2 (+1 more)
 
 ### Community 228 - "biomes.py"
 Cohesion: 0.14
 Nodes (10): ColorMaps, f32(), fixed(), hexcolor(), integrated_generation(), main(), multiply(), sky_color() (+2 more)
-
-### Community 229 - "FallingMeteor"
-Cohesion: 0.05
-Nodes (5): FallingMeteor, MeteorSummonerEntity, Crash, MeteorEvents, MeteorsConfig
-
-### Community 231 - "InvTweaksHandlerShortcuts"
-Cohesion: 0.09
-Nodes (16): Action, DROP, MOVE, InvTweaksHandlerShortcuts, Scope, ALL_ITEMS, EVERYTHING, ONE_ITEM (+8 more)
 
 ### Community 232 - "OldEnchanting"
 Cohesion: 0.16
 Nodes (13): OldEnchanting, Data, Ench, Item, Type, ARMOR, BOW, DIGGER (+5 more)
 
 ### Community 233 - "net.minecraft.client.multiplayer.ClientLevel"
-Cohesion: 0.12
-Nodes (7): CandleFlameParticle, Provider, MeteorDustParticle, Provider, LargeFlameParticle, Provider, Provider
+Cohesion: 0.15
+Nodes (6): Provider, MeteorDustParticle, Provider, LargeFlameParticle, Provider, Provider
 
 ### Community 234 - "MoreBowItem"
 Cohesion: 0.18
 Nodes (7): Kind, ENDER, FLAME, FROST, MULTI, PLAIN, MoreBowItem
 
 ### Community 235 - "KeeperItem"
-Cohesion: 0.08
-Nodes (9): KeeperItem, Kind, BLOOD_VESSEL, BLOODKEEPER, ESSENCE_KEEPER, ESSENCE_VESSEL, SOUL_VESSEL, SOULKEEPER (+1 more)
+Cohesion: 0.07
+Nodes (11): BoxItem, KeeperItem, Kind, BLOOD_VESSEL, BLOODKEEPER, ESSENCE_KEEPER, ESSENCE_VESSEL, SOUL_VESSEL (+3 more)
 
 ### Community 236 - "hexxit.worldgen152.core.layer.Layer"
 Cohesion: 0.18
 Nodes (4): BiomeBorders, Biomes, Stream, Stack
 
 ### Community 237 - "NetherTerrain"
-Cohesion: 0.07
-Nodes (16): Nachtrag – Leistungs-Mods C2ME, Lithium, ScalableLux (✅ erledigt), Teil 26 – Welttyp „Integrated“ mit Platz für fremde Mods (26a–26f), Teil 26a – Welttypen, Chunk-Brücke, einzelne Features, Teil 26b – Erze, Pflanzen, Bäume, Nether, Teil 26b – Stand (✅ erledigt), Teil 26c – Bauwerke und Dungeons als 26.3-Strukturen, Teil 26c – Stand (✅ erledigt), Teil 26d – EBXL-Biome neben Vanilla- und fremden Biomen (+8 more)
+Cohesion: 0.12
+Nodes (4): NetherCaves, NetherTerrain, OctaveNoise, PerlinNoise
 
 ### Community 238 - "Twilight Forest – offen nach Teil 24a"
 Cohesion: 0.06
-Nodes (27): Abweichungen, Abweichungen, Abweichungen, Abweichungen, Aufbau, Bewusste Abweichungen, Bewusste Abweichungen von 1.5.2, Client-Prüfung offen (+19 more)
+Nodes (29): Abweichungen, Abweichungen, Abweichungen, Abweichungen, Abweichungen, Aufbau, Bewusste Abweichungen, Bewusste Abweichungen von 1.5.2 (+21 more)
 
-### Community 241 - "BiblioBlockEntity"
+### Community 240 - "BackpackBlockEntity"
 Cohesion: 0.13
-Nodes (3): BiblioBlockEntity, ShelfItems, PotionShelfBlockEntity
+Nodes (3): BackpackBlockEntity, EnderBackpackInventory, BSConfig
 
 ### Community 242 - "ManualScreen"
 Cohesion: 0.06
 Nodes (16): ManualPages, Blank, BlockCast, Contents, Crafting, Furnace, Material, Modifier (+8 more)
 
 ### Community 244 - "net.minecraft.world.level.saveddata.maps.MapItemSavedData"
-Cohesion: 0.09
-Nodes (4): TFMapsClient, MagicMapItem, MazeMapItem, TFFilledMapItem
+Cohesion: 0.14
+Nodes (3): MagicMapItem, MazeMapItem, TFFilledMapItem
 
 ### Community 245 - "LightBlock"
-Cohesion: 0.14
-Nodes (3): LanternBlock, LightBlock, LightBlockEntity
+Cohesion: 0.13
+Nodes (4): LampBlock, LanternBlock, LightBlock, LightBlockEntity
 
 ### Community 246 - "net.minecraft.world.level.block.state.BlockState"
-Cohesion: 0.02
-Nodes (19): RiftBlock, StateBlockItem, MeteorTimerBlock, BerryBushBlock, SaguaroBlock, SaguaroSproutBlock, BeanstalkBlock, CoconutBlock (+11 more)
+Cohesion: 0.03
+Nodes (16): BDSpawnerBlock, CrateBlock, RiftBlock, MeteorTimerBlock, MeteorTimerBlockEntity, TombstoneBlock, CoconutBlock, LimitedMobSpawnerBlock (+8 more)
 
 ### Community 248 - "Mobs, Spawn-Eier und Boote auf 26.3"
-Cohesion: 0.09
-Nodes (20): Boote, Client, Drops, Mobs ohne KI und Reittiere mit Reiter-Bewegung (aus Teil 18, ChocoCraft `mods/chococraft`), Mobs, Spawn-Eier und Boote auf 26.3, Prüfen ohne Spieler, Registrieren, Spawn-Eier (+12 more)
+Cohesion: 0.11
+Nodes (14): Bewaffnete Biped-Mobs mit eigener KI (Vorbild Better Dungeons, `betterdungeons.mob`), Boote, Client, Drops, Mobs ohne KI und Reittiere mit Reiter-Bewegung (aus Teil 18, ChocoCraft `mods/chococraft`), Mobs, Spawn-Eier und Boote auf 26.3, Prüfen ohne Spieler, Registrieren (+6 more)
+
+### Community 249 - "TConstructJeiPlugin"
+Cohesion: 0.15
+Nodes (6): TConstructJeiPlugin, Kind, CORE, DUAL, HARVEST, WEAPON
 
 ### Community 251 - "json"
-Cohesion: 0.07
-Nodes (24): check_model(), van(), item(), shaped(), write(), shaped(), write(), check_model() (+16 more)
+Cohesion: 0.09
+Nodes (20): check_model(), shaped(), write(), check_model(), check_model(), modelpath(), add(), both() (+12 more)
 
-### Community 252 - "betterstorage/ItemCapabilities.java"
-Cohesion: 0.14
-Nodes (5): ItemCapabilities, ItemCapabilities, ItemCapabilities, ItemCapabilities, ItemCapabilities
+### Community 252 - "Override"
+Cohesion: 0.17
+Nodes (3): TorchLeverBlock, Standing, Wall
 
 ### Community 253 - "net.minecraft.world.level.block.Block"
-Cohesion: 0.01
-Nodes (38): FloraBlock, LampBlock, GysahlGreenBlock, GysahlStemBlock, StrawBlock, CattailBlock, EbxlPlantBlock, EbxlSaplingBlock (+30 more)
+Cohesion: 0.03
+Nodes (15): FloraBlock, BiblioBlock, StrawBlock, EbxlPlantBlock, QuicksandBlock, HeatSandBlock, NaturaPlantBlock, SaguaroFruitBlock (+7 more)
 
 ### Community 255 - "CampfireBlock"
 Cohesion: 0.19
@@ -1269,7 +1257,7 @@ Cohesion: 0.36
 Nodes (3): BackToolsClient, Back, BackItem
 
 ### Community 260 - "Connection"
-Cohesion: 0.15
+Cohesion: 0.13
 Nodes (8): Connection, DOWN, EAST, NONE, NORTH, SOUTH, UP, WEST
 
 ### Community 263 - "EntityState"
@@ -1285,28 +1273,28 @@ Cohesion: 0.10
 Nodes (11): ChocoboBreeding, ChocoboColor, BLACK, BLUE, GOLD, GREEN, PINK, PURPLE (+3 more)
 
 ### Community 267 - "BearEntity"
-Cohesion: 0.16
+Cohesion: 0.23
 Nodes (4): BearEntity, Black, Brown, Polar
 
 ### Community 269 - "Client-Darstellung in 26.3 (NeoForge 26.3.0.102)"
-Cohesion: 0.10
-Nodes (15): Block mit dem Modell eines anderen Blocks (Tarnblöcke, Vorlage `mods/secretrooms`), Block mit TileEntitySpecialRenderer und IItemRenderer (Vorlage `mods/bibliocraft`), Client-Darstellung in 26.3 (NeoForge 26.3.0.102), Etwas am Spielermodell zeichnen (Rücken, Schultern), Fremde Effekte, Leben und Bewegung auf dem Client, Halbdurchsichtige Blöcke (Alpha im Renderer), HUD (statt `ITickHandler` mit `TickType.RENDER`), Mob im HUD zeigen (Portrait, Vorschaukasten) (+7 more)
+Cohesion: 0.15
+Nodes (12): Block mit dem Modell eines anderen Blocks (Tarnblöcke, Vorlage `mods/secretrooms`), Block mit TileEntitySpecialRenderer und IItemRenderer (Vorlage `mods/bibliocraft`), Client-Darstellung in 26.3 (NeoForge 26.3.0.102), Etwas am Spielermodell zeichnen (Rücken, Schultern), Fremde Effekte, Leben und Bewegung auf dem Client, Halbdurchsichtige Blöcke (Alpha im Renderer), HUD (statt `ITickHandler` mit `TickType.RENDER`), Mob im HUD zeigen (Portrait, Vorschaukasten) (+4 more)
 
 ### Community 272 - "net.neoforged.fml.common.Mod"
 Cohesion: 0.02
-Nodes (46): ASClient, BackpackNetwork, OpenBackpack, Rename, AIModePayload, BackpackState, TeleportPayload, PrintingNetwork (+38 more)
+Nodes (53): AsgardShield, GuardHud, GuardState, GuardStatePayload, BackpackNetwork, OpenBackpack, Rename, AIModePayload (+45 more)
 
-### Community 274 - "Wood"
-Cohesion: 0.11
-Nodes (14): Wood, AMARANTH, BLOODWOOD, DARKWOOD, EUCALYPTUS, FUSEWOOD, GHOSTWOOD, HOPSEED (+6 more)
+### Community 274 - "ShotType"
+Cohesion: 0.12
+Nodes (12): AmmoItem, ShotType, BLAZE, BUSTER, CONCUSSIVE, EMPTY, ENDER, EXORCISM (+4 more)
 
 ### Community 275 - "Essence"
-Cohesion: 0.07
+Cohesion: 0.08
 Nodes (9): AmuletItem, Kind, ETHEREAL, NETHER, OVERWORLD, Essence, NecronomiconItem, Ritual (+1 more)
 
 ### Community 276 - "ZuluMonster"
-Cohesion: 0.10
-Nodes (8): ReachAttackGoal, State, ATTACKING, IDLE, LOOKING, StateTargetGoal, StayStillGoal, ZuluMonster
+Cohesion: 0.09
+Nodes (9): MinotaurEntity, ReachAttackGoal, State, ATTACKING, IDLE, LOOKING, StateTargetGoal, StayStillGoal (+1 more)
 
 ### Community 279 - "State"
 Cohesion: 0.15
@@ -1316,45 +1304,33 @@ Nodes (3): State, ChicoboRenderer, ChocoboRenderer
 Cohesion: 0.08
 Nodes (32): block_tex(), box_model(), connected_glass(), faced(), glass_table(), pane(), slab(), slab_loot() (+24 more)
 
-### Community 282 - ".keyPressed"
-Cohesion: 0.21
-Nodes (3): Teil 22 – Client-Mods, Teil 22 – Stand, MarkerManager
-
 ### Community 284 - "ConnectableBlock"
-Cohesion: 0.11
+Cohesion: 0.12
 Nodes (3): ConnectableBlock, LockerBlock, ReinforcedChestBlock
 
 ### Community 285 - "HSSkullRenderer"
-Cohesion: 0.10
-Nodes (4): HSSkullBlockEntity, AltarRenderer, State, HSSkullRenderer
+Cohesion: 0.13
+Nodes (4): AltarRenderer, State, HSSkullRenderer, State
 
 ### Community 289 - "ToolStationScreen"
-Cohesion: 0.18
-Nodes (3): ToolGuiElement, ToolStationScreen, ToolButton
-
-### Community 291 - "MeteorData"
-Cohesion: 0.06
-Nodes (8): MeteorShieldBlock, MeteorShieldBlockEntity, MeteorTimerBlockEntity, ShieldTorchBlock, ShieldWallTorchBlock, MeteorData, Ghost, Shield
+Cohesion: 0.12
+Nodes (4): PartBuilderScreen, ToolGuiElement, ToolStationScreen, ToolButton
 
 ### Community 293 - "BookcaseRenderer"
-Cohesion: 0.23
+Cohesion: 0.19
 Nodes (3): BookcaseRenderer, Parts, State
 
 ### Community 294 - "HSBlocks.java"
-Cohesion: 0.04
-Nodes (14): AltarBlock, CrucibleVisitor, BiomassBlock, BiomassPlantBlock, BloodColor, GREEN, PURPLE, RED (+6 more)
+Cohesion: 0.03
+Nodes (15): BiomassBlock, BiomassPlantBlock, BloodColor, GREEN, PURPLE, RED, BloodSplashBlock, ClothBlock (+7 more)
 
-### Community 296 - "LGThrowable"
-Cohesion: 0.13
-Nodes (8): LGThrowable, MedallionEntity, Kind, EARTH, ENDER, FIRE, WIND, WhirlwindEntity
+### Community 299 - "KeyItem.java"
+Cohesion: 0.07
+Nodes (7): Lockable, BSEnchantments, KeyItem, KeyLike, KeyringItem, KeyringInventory, LockItem
 
-### Community 298 - "ChestMaterial"
-Cohesion: 0.08
-Nodes (15): ChestMaterial, COPPER, DIAMOND, EMERALD, GOLD, IRON, SILVER, TIN (+7 more)
-
-### Community 303 - "MobileFirefly"
-Cohesion: 0.12
-Nodes (3): FireflyRenderer, State, MobileFirefly
+### Community 300 - "component"
+Cohesion: 0.03
+Nodes (20): ArtificeJeiPlugin, AsgardShieldJeiPlugin, BackpackJeiPlugin, IRecipeTransferInfo<WorkbenchBackpackMenu, RecipeHolder<CraftingRecipe>>, BSJeiPlugin, ChestTransporterJeiPlugin, EbxlJeiPlugin, EplusJeiPlugin (+12 more)
 
 ### Community 304 - "betterstorage/tools/gen.py"
 Cohesion: 0.36
@@ -1365,104 +1341,80 @@ Cohesion: 0.13
 Nodes (15): CellIndexDirection, EastMiddle, EastWall, Inner, Middle, NorthEastCorner, NorthMiddle, NorthWall (+7 more)
 
 ### Community 311 - "TFLayout"
-Cohesion: 0.09
-Nodes (6): TFCaves, TFFeature, TFLayout, TFPopulator, TFRavine, TFTerrain
+Cohesion: 0.06
+Nodes (8): MapGenTFMajorFeature, StructureTFMajorFeatureStart, TFCaves, TFFeature, TFLayout, TFPopulator, TFRavine, TFTerrain
 
 ### Community 312 - "Builder"
-Cohesion: 0.04
-Nodes (10): Builder, MobHeadBlock, AloeVeraBlock, WateredDirtBlock, Standing, Wall, FrypanBlock, ConnectedGlassBlock (+2 more)
-
-### Community 313 - "BiomeLayout"
-Cohesion: 0.17
-Nodes (3): BiomeLayout, OctaveNoise, OldTerrain
+Cohesion: 0.03
+Nodes (10): Builder, FrezariteBlock, MobHeadBlock, FrypanBlock, BarricadeBlock, ConnectedGlassBlock, DrawbridgeBlock, FirestarterBlock (+2 more)
 
 ### Community 315 - "compare_original.py"
-Cohesion: 0.18
+Cohesion: 0.24
 Nodes (8): Häufigkeit von Strukturen gegen das Original messen, cells(), main(), read_nbt(), payload(), string(), take(), region_chunks()
 
 ### Community 317 - "TFSpawns"
-Cohesion: 0.10
-Nodes (9): Teil 24d – Stand (✅ erledigt), Teil 24d – Strukturen A, MapGenTFMajorFeature, StructureTFMajorFeatureStart, TFSpawns, Entry, Abweichungen, Einhängepunkte für andere Teile (+1 more)
+Cohesion: 0.13
+Nodes (13): Teil 24 – Twilight Forest (24a–24f), Teil 24b – Blöcke, Pflanzen, Dekoration, Teil 24b – Stand (✅ erledigt), Teil 24c – Mobs, Teil 24c – Stand (✅ erledigt), Teil 24d – Stand (✅ erledigt), Teil 24d – Strukturen A, Teil 24e – Stand (✅ erledigt) (+5 more)
+
+### Community 319 - "SoulRenderer"
+Cohesion: 0.20
+Nodes (3): SoulModel, SoulRenderer, SoulRenderState
 
 ### Community 321 - "HSMobs"
-Cohesion: 0.12
+Cohesion: 0.13
 Nodes (5): Abweichungen (bewusst), Harken Scythe: Mobs (Teil 9, Teilauftrag 3) – Stand, Offen, Hooks, HSMobs
 
 ### Community 324 - "NaturaTree"
-Cohesion: 0.08
-Nodes (20): Blöcke (Java), NaturaTree, AMARANTH, BLOODWOOD, BLUE_GLOWSHROOM, DARKWOOD, EUCALYPTUS, FUSEWOOD (+12 more)
+Cohesion: 0.05
+Nodes (35): Blöcke (Java), Brennwert und Brennbarkeit, Holzsets und Pflanzen in 26.3, Modelle und Blockstates aus Vanilla erzeugen, Prüfen, Rezeptkonflikte mit Vanilla, Tags (Block + Item), Growth (+27 more)
 
 ### Community 325 - "SpikesBlock"
-Cohesion: 0.14
+Cohesion: 0.13
 Nodes (9): Mount, BARS, FENCE, NONE, SpikesBlock, Type, NORMAL, POISON (+1 more)
 
-### Community 327 - "CamoModel"
-Cohesion: 0.22
-Nodes (5): CamoModel, Kind, BOX, FULL, ONE_WAY
+### Community 326 - "TFBlocks"
+Cohesion: 0.05
+Nodes (9): BossSpawnerBlock, Kind, HYDRA, LICH, NAGA, TOWER, BossSpawnerBlockEntity, OreMagnet (+1 more)
 
-### Community 329 - "TFEventListener"
-Cohesion: 0.16
-Nodes (3): PotionEvents, TFEventListener, Kept
+### Community 329 - "gen_items.py"
+Cohesion: 0.18
+Nodes (4): item_name(), item_tex(), simple_item(), using_item()
 
 ### Community 330 - "TreeDefinition"
 Cohesion: 0.06
 Nodes (6): Teil 6 – bspkrsCore, TreeCapitator, Inventory Tweaks, Custom LAN Ports, BlockID, TreeCapitator, Data, TreeDefinition, TreeRegistry
 
-### Community 332 - ".spawnEntity"
-Cohesion: 0.05
-Nodes (8): BDPainting, Hanging, BuilderIceCave, ZuluPyramid, ZuluStructureContent, TFMobs, OldPainting, Hanging
+### Community 332 - "OldPainting"
+Cohesion: 0.16
+Nodes (3): ChunkCoordinates, OldPainting, Hanging
 
-### Community 338 - "QCraftClient"
-Cohesion: 0.14
-Nodes (3): QCraftClient, QBlockSide, QBlockTint
-
-### Community 339 - "Kind"
-Cohesion: 0.22
-Nodes (7): Kind, CRAFTING_STATION, PART_BUILDER, PATTERN_CHEST, STENCIL_TABLE, TOOL_FORGE, TOOL_STATION
-
-### Community 340 - ".PrintPressMenu"
-Cohesion: 0.24
-Nodes (4): Slot, Slot, Slot, Slot
+### Community 339 - "projectzulu/tools/gen.py"
+Cohesion: 0.21
+Nodes (8): n(), brew(), item_id(), potion_id(), simple_item(), uniform(), uniform_int(), write()
 
 ### Community 345 - "Waffen, Geschosse und Spezial-Items (1.5.2 → 26.3)"
-Cohesion: 0.06
-Nodes (16): Bogen, magische Pfeile, Köcher, Damage-Varianten und alte IDs, Eigene Geschoss-Entity mit Typen (EntityBaseBall-Muster), Einmal-Spawner mit Spieler-Nähe, Kapseln (Bereich ins Item), Lade-Angriffe (Speer, großes Schwert), Prüfen, Taschen / Köcher (+8 more)
+Cohesion: 0.09
+Nodes (6): BDItemUtil, BigSwordItem, Earth, Monking, SpearItem, StaffItem
 
 ### Community 346 - "Kind"
 Cohesion: 0.20
 Nodes (8): Kind, CLOVER_PATCH, FIDDLEHEAD, MAYAPPLE, MOSS_PATCH, MUSHGLOOM, ROOT_STRAND, TORCHBERRY
 
-### Community 347 - "net.minecraft.server.MinecraftServer"
-Cohesion: 0.14
-Nodes (3): BookFiles, DDEvents, GeneratedRifts
-
-### Community 351 - "HomeDimensions"
-Cohesion: 0.13
-Nodes (3): HomeDimensions, SoulEvents, SoulShardItem
-
 ### Community 356 - "TFWorld"
 Cohesion: 0.08
-Nodes (8): Teil 24a – Stand (✅ erledigt), TFWorld, OldChunk, OldDecoration, ChunkPopulator, TerrainSource, OldWorld.TerrainSource, Expect
-
-### Community 357 - "BoxItem"
-Cohesion: 0.14
-Nodes (4): DispenseBox, DispenseSledge, BoxRecipe, DefaultDispenseItemBehavior
+Nodes (5): TFWorld, TFChunkGenerator, OldChunk, OldWorld.TerrainSource, Expect
 
 ### Community 358 - "BackpackMenu"
-Cohesion: 0.11
+Cohesion: 0.10
 Nodes (4): BackpackContainer, WorkbenchBackpackMenu, CraftSlot, Grid
 
-### Community 359 - "Holzsets und Pflanzen in 26.3"
-Cohesion: 0.29
-Nodes (6): Brennwert und Brennbarkeit, Holzsets und Pflanzen in 26.3, Modelle und Blockstates aus Vanilla erzeugen, Prüfen, Rezeptkonflikte mit Vanilla, Tags (Block + Item)
-
-### Community 360 - "BDWorldGen"
-Cohesion: 0.07
-Nodes (15): 1. Daten-Archive importieren, 2. Lesen ohne Spielklassen (für expect.sh), 3. In die Welt setzen (`OldWorld`), 4. Reichweite, 5. Prüfen, Vorlagen und Schematics von 1.5.2 übernehmen, Vorlagen zur Laufzeit in die Welt (Dimensional Doors, Teil 15), Teil 12 und 13 – Better Dungeons (Chocolate Quest) (+7 more)
+### Community 360 - "Vorlagen und Schematics von 1.5.2 übernehmen"
+Cohesion: 0.08
+Nodes (13): 1. Daten-Archive importieren, 2. Lesen ohne Spielklassen (für expect.sh), 3. In die Welt setzen (`OldWorld`), 5. Prüfen, Text-Vorlagen ohne Umwandlung (Ruins, Teil 14), Vorlagen und Schematics von 1.5.2 übernehmen, Vorlagen zur Laufzeit in die Welt (Dimensional Doors, Teil 15), BDDungeons (+5 more)
 
 ### Community 362 - "net.minecraft.world.entity.LivingEntity"
 Cohesion: 0.01
-Nodes (38): BDCommandableMob, ReapingWeaponItem, Teleports, InfernalMobsClient, Cached, EntityEventHandler, InfernalMobsCore, Drop (+30 more)
+Nodes (40): Blocken und „solange benutzt“, BDCommandableMob, Teleports, InfernalMobsClient, Cached, EntityEventHandler, IMConfig, InfernalMobsCore (+32 more)
 
 ### Community 363 - "LegendGear – offen und bewusste Abweichungen"
 Cohesion: 0.40
@@ -1476,17 +1428,13 @@ Nodes (4): Bewusste Abweichungen, Client-Prüfung offen, Falling Meteors – off
 Cohesion: 0.29
 Nodes (10): block_model(), btex(), drop(), item_def(), itex(), n(), shaped(), shapeless() (+2 more)
 
-### Community 367 - ".sapling"
-Cohesion: 0.20
-Nodes (9): Growth, FLORA, NETHER, RARE, REDWOOD, Soil, CEILING, NETHER (+1 more)
-
 ### Community 369 - "CellType"
 Cohesion: 0.12
 Nodes (11): CellType, AirCell, DeadEnd, EastWall, InnerWall, NorthWall, RandomUnCarved, SoutherWall (+3 more)
 
-### Community 374 - "CritterRenderer"
-Cohesion: 0.24
-Nodes (3): CritterRenderer, MoonwormModel, State
+### Community 377 - "Waffen, Geschosse und Spezial-Items (1.5.2 → 26.3)"
+Cohesion: 0.18
+Nodes (10): Bogen, magische Pfeile, Köcher, Damage-Varianten und alte IDs, Eigene Geschoss-Entity mit Typen (EntityBaseBall-Muster), Einmal-Spawner mit Spieler-Nähe, Kapseln (Bereich ins Item), Lade-Angriffe (Speer, großes Schwert), Prüfen, Taschen / Köcher (+2 more)
 
 ### Community 380 - "Xeno's Reliquary – offen und bewusste Abweichungen"
 Cohesion: 0.40
@@ -1498,43 +1446,59 @@ Nodes (3): Bewusste Abweichungen, Client-Prüfung offen, SecretRoomsMod – offe
 
 ### Community 383 - "BDCreatureRenderers.java"
 Cohesion: 0.02
-Nodes (26): Aus Teil 24c (Twilight Forest, `mods/twilightforest/.../entity`, `client/entity`), BackpackModel, BTClient, GolemRenderer, GolemState, Dummy, BackpackArmorModel, FriendermanRenderer (+18 more)
+Nodes (27): Rüstungstextur je Färbefarbe, Aus Teil 24c (Twilight Forest, `mods/twilightforest/.../entity`, `client/entity`), BackpackModel, BTClient, GolemRenderer, GolemState, Dummy, BackpackArmorModel (+19 more)
 
 ### Community 386 - "ArmadilloRenderer"
-Cohesion: 0.08
-Nodes (9): State, ArmadilloRenderer, Easing, Eased, EasingCache, Easing, PingPong, VultureRenderer (+1 more)
+Cohesion: 0.07
+Nodes (12): AerialRenderer, ArmadilloModel, State, ArmadilloRenderer, Easing, Eased, EasingCache, State (+4 more)
 
-### Community 391 - "net.minecraft.world.level.Explosion"
-Cohesion: 0.09
-Nodes (4): CloudBlock, CreeperBlossomBlock, CreeperBlossomPrimed, BarricadeBlock
+### Community 390 - "SRClient"
+Cohesion: 0.15
+Nodes (6): Kind, BOX, FULL, ONE_WAY, SRClient, CamoTint
+
+### Community 391 - "AloeVeraBlock"
+Cohesion: 0.08
+Nodes (5): AloeVeraBlock, CreeperBlossomBlock, NightBloomBlock, ZuluFlowerBlock, CreeperBlossomPrimed
 
 ### Community 394 - "BuilderHelper"
 Cohesion: 0.02
-Nodes (42): Dorf-Bauteile, Dorfbewohner und Truhen eines Mods (Tinkers' Construct, Teil 25d), Truhen und Spawner, Teil 12 – Stand, Teil 14 – Battle Towers, Ruins, Teil 14 – Stand, BDLoot, Entry, BDNbt (+34 more)
+Nodes (29): Dorf-Bauteile, Dorfbewohner und Truhen eines Mods (Tinkers' Construct, Teil 25d), Teil 12 – Stand, BDNbt, BDPainting, Hanging, BDSpawnerTile, BDTemplate, BuilderEmptyCave (+21 more)
 
-### Community 407 - "EnchantTableMenu"
-Cohesion: 0.19
-Nodes (3): EnchantTableMenu, Slot, Settings
+### Community 395 - "Menü, Screen und Pakete in 26.3 (NeoForge 26.3.0.102)"
+Cohesion: 0.20
+Nodes (8): Container → `AbstractContainerMenu`, GuiContainer → `AbstractContainerScreen`, Konfiguration und Spielerdaten, Menü, Screen und Pakete in 26.3 (NeoForge 26.3.0.102), Pakete → Custom Payloads, Regler und Ziehen (Maus), Truhen-GUIs und Inventory Tweaks, Vanilla-Block ersetzen (Mod hat Block-ID überschrieben)
+
+### Community 407 - "net.minecraft.core.Holder"
+Cohesion: 0.12
+Nodes (5): GuardItem, EnchantHelper, Restriction, EnchantTableMenu, Settings
 
 ### Community 408 - "Blueprint"
 Cohesion: 0.20
 Nodes (3): Blueprint, DeadEndChest, LabyrinthRandomWall
 
-### Community 412 - "PlayerData"
+### Community 412 - "AmuletItem"
 Cohesion: 0.27
-Nodes (3): PlayerData, Inv, Saved
+Nodes (5): AmuletItem, Kind, AERO, GEO, PYRO
 
 ### Community 414 - "Bark"
-Cohesion: 0.33
+Cohesion: 0.20
 Nodes (5): Bark, NE, NW, SE, SW
 
-### Community 416 - "net.minecraft.world.level.Level"
+### Community 416 - "net.minecraft.world.entity.player.Player"
 Cohesion: 0.02
-Nodes (20): EggItem, MiscItems, Controller, CursedBone, MagicPickaxe, PathMarker, ScrollOfEscape, CrateBlock (+12 more)
+Nodes (16): EggItem, TapeMeasureItem, FabricBlock, SpecialTierAbilities, OreberryItem, EmptyMagicMapItem, EmptyMazeMapItem, OreMeterItem (+8 more)
+
+### Community 417 - "net.minecraft.world.level.Level"
+Cohesion: 0.02
+Nodes (12): PurpleChocoboEgg, StarbeamTorchBlock, Standing, Wall, AlienCreeper, CometKitty, HomeDimensions, HedgeSpider (+4 more)
 
 ### Community 418 - "ProjectileType"
+Cohesion: 0.07
+Nodes (26): ProjectileType, BUBBLE, BULLET_PISTOL, CAPSULE, EARTHQUAKE, EARTHQUAKE_AREA, FIREBALL, FIRESHIELD (+18 more)
+
+### Community 420 - "com.mojang.serialization.MapCodec"
 Cohesion: 0.06
-Nodes (29): RangedItems, Grenade, Pistol, ProjectileType, BUBBLE, BULLET_PISTOL, CAPSULE, EARTHQUAKE (+21 more)
+Nodes (7): ShieldColorTint, MobLevelCondition, DetectorAngle, QCConfig, Condition, ReplaceVanillaOresModifier, TimeTint
 
 ### Community 424 - "net.neoforged.neoforge.fluids.FluidStack"
 Cohesion: 0.11
@@ -1548,17 +1512,13 @@ Nodes (9): Type, DROP, MOVE_ALL_ITEMS, MOVE_DOWN, MOVE_EVERYTHING, MOVE_ONE_ITEM
 Cohesion: 0.25
 Nodes (7): Batches C, D, E (parallel in eigenen Worktrees), Kanonische Registrierungsnamen, Konventionen, Nicht portieren, Pakete (parallel, je eigener Worktree), Project Zulu Teil 10 – Portierungsnotizen (Kreaturen), Teil 11 – Blöcke, Items, Tränke, Weltgenerierung
 
-### Community 428 - "Effect"
-Cohesion: 0.33
-Nodes (5): Effect, MINING, SORTING, TIME, TRANSFORMATION
-
 ### Community 429 - "LandmineLogic"
-Cohesion: 0.13
-Nodes (12): LandmineLogic, Kind, BLOCK_THROW, DUMMY, EXPLOSIVE, FIREBALL, FIREWORK, POTION (+4 more)
+Cohesion: 0.11
+Nodes (13): LandmineBlockEntity, LandmineLogic, Kind, BLOCK_THROW, DUMMY, EXPLOSIVE, FIREBALL, FIREWORK (+5 more)
 
-### Community 430 - "MysticShrubBlock"
-Cohesion: 0.07
-Nodes (6): BackpackBlock, MysticShrubBlock, MoltenSource, SlimeFluid, Flowing, Source
+### Community 430 - "BackpackBlock"
+Cohesion: 0.09
+Nodes (5): BackpackBlock, BombFlowerBlock, SlimeFluid, Flowing, Source
 
 ### Community 431 - "FireJetBlock"
 Cohesion: 0.13
@@ -1566,103 +1526,87 @@ Nodes (10): FireJetBlock, Kind, ENCASED_FIRE_JET, ENCASED_SMOKER, FIRE_JET, SMOK
 
 ### Community 432 - "list"
 Cohesion: 0.03
-Nodes (20): EbxlIds, HSWorldGen, ZuluLoot, ComponentTFMazeCorridorIronFence, TFBiomes, OldBlocks, OldBlockInfo, OldEntity (+12 more)
+Nodes (18): HSWorldGen, ZuluLoot, ComponentSmeltery, Handler, ComponentToolWorkshop, Handler, PatternChest, TFBiomes (+10 more)
 
-### Community 438 - "OldBlockStates"
-Cohesion: 0.09
-Nodes (10): 1.5.2-Dorfkomponente als Haus der 26.3-Dörfer, Die Brücke (`mods/worldgen152/.../OldGeneratorFeature.java`), Ein Bauwerk als 26.3-Struktur (Teil 26c), Prüfen am Server, Welttyp Hexxit Integrated (26.3-Gelände + Hexxit-Generatoren), Welttypen, TreeGrower, OldBlockStates (+2 more)
-
-### Community 447 - "CamoModel"
-Cohesion: 0.25
-Nodes (4): CamoModel, Kind, BOX, FULL
+### Community 434 - "TDecoClient"
+Cohesion: 0.19
+Nodes (5): Kind, BOX, FULL, TDecoClient, CamoTint
 
 ### Community 449 - "TFClient"
-Cohesion: 0.24
+Cohesion: 0.22
 Nodes (3): TFClient, BlockTintSource, WorldTint
 
-### Community 459 - "Action"
-Cohesion: 0.25
-Nodes (7): Action, ATTUNE, AUGMENT, ENTHRALL, ENTWINE, GERMINATE, IMBUE
+### Community 456 - "MoonwormQueenItem"
+Cohesion: 0.09
+Nodes (4): CrumbleHornItem, MoonwormQueenItem, OreMagnetItem, PeacockFanItem
 
 ### Community 477 - "TFEntities.java"
-Cohesion: 0.06
-Nodes (3): CharmEffect, WildBoar, TFEntities
+Cohesion: 0.04
+Nodes (6): CharmEffect, WildBoar, WildDeer, MoonwormShot, TwilightWandBolt, TFEntities
 
 ### Community 482 - "DaggerItem"
 Cohesion: 0.29
 Nodes (3): DaggerItem, Ninja, Trickster
 
 ### Community 483 - "ToolCoreItem"
-Cohesion: 0.10
-Nodes (3): TEvents, ToolAbilities, ToolCoreItem
-
-### Community 486 - "Tier"
-Cohesion: 0.33
-Nodes (5): Tier, ADVANCED, BASIC, INDUSTRIAL, REINFORCED
+Cohesion: 0.07
+Nodes (4): ThrownDagger, TEvents, ToolAbilities, ToolCoreItem
 
 ### Community 487 - "net.minecraft.world.level.storage.ValueInput"
-Cohesion: 0.03
-Nodes (7): BDSummonedMob, BDFx, HumanGoals, HumanTargetGoals, ChocoConfig, CreeperAccess, UrGhastFireball
+Cohesion: 0.02
+Nodes (7): BDEntityIds, BDSummonedMob, BDFx, BDSounds, RivalTargetGoal, ChocoConfig, UrGhastFireball
 
 ### Community 489 - "Acuteness"
 Cohesion: 0.50
 Nodes (4): Acuteness, LOOSE, TIGHT, TIGHTER
 
-### Community 497 - "QuakeEntity"
-Cohesion: 0.07
-Nodes (6): EnderBombEntity, FireblastEntity, LGEffectEntity, QuakeEntity, ArrowDamage, Options
+### Community 497 - "LGFx.java"
+Cohesion: 0.03
+Nodes (26): ArrowStormEntity, BombBlastEntity, BombEntity, EnderBombEntity, FallingStarEntity, FireblastEntity, GrindStarEntity, HookshotHookEntity (+18 more)
 
-### Community 499 - "BossSpawnerBlock"
-Cohesion: 0.17
-Nodes (7): BossSpawnerBlock, Kind, HYDRA, LICH, NAGA, TOWER, BossSpawnerBlockEntity
-
-### Community 500 - "MoonwormShot"
-Cohesion: 0.12
-Nodes (4): MoonwormShot, TwilightWandBolt, MoonwormQueenItem, TFItemUtil
-
-### Community 501 - "net.neoforged.bus.api.IEventBus"
-Cohesion: 0.01
-Nodes (93): ArmorBarMod, Artifice, ArtificeBlocks, ArtificeIds, BackTools, BattleTowers, BDEntities, BDSounds (+85 more)
+### Community 501 - "net.neoforged.neoforge.registries.DeferredHolder"
+Cohesion: 0.02
+Nodes (66): ArmorBarMod, ArtificeBlocks, ArtificeRecipes, ArtificeIds, BattleTowers, BetterDungeons, BiblioCraft, Bookcases (+58 more)
 
 ### Community 502 - "BloodwoodLogBlock"
 Cohesion: 0.19
 Nodes (6): Bark, NE, NW, SE, SW, BloodwoodLogBlock
 
 ### Community 517 - "SRBlocks.java"
-Cohesion: 0.03
-Nodes (21): CamoButtonBlock, CamoChestBlock, CamoDoorBlock, CamoDummyBlock, CamoFullBlock, CamoGateBlock, CamoLeverBlock, CamoLightDetectorBlock (+13 more)
+Cohesion: 0.02
+Nodes (22): CamoButtonBlock, CamoChestBlock, CamoDoorBlock, CamoDummyBlock, CamoFullBlock, CamoGateBlock, CamoLeverBlock, CamoLightDetectorBlock (+14 more)
 
-### Community 519 - "BS.java"
+### Community 519 - "QCraftClient.java"
 Cohesion: 0.04
-Nodes (11): BackpackMenu, Location, BS, BSConfig, BSUtil, BSClient, Frienderman, KeyringItem (+3 more)
+Nodes (18): BSClient, BookcasesClient, BCClient, BiblioScreen, BlockItemRenderers, ItemRenderer, DecorClient, DisplaysClient (+10 more)
 
 ### Community 542 - "Tinkers' Construct – offen nach Teil 25f (Port abgeschlossen)"
-Cohesion: 0.25
+Cohesion: 0.22
 Nodes (7): Client-Prüfung offen, Nach 25b – kleine Abweichungen und Offenes, Nach 25c – Schmelzerei, Nach 25d – Welt, Nach 25e – Spieler, Nach 25f – Deko, Fallen, Redstone, Tinkers' Construct – offen nach Teil 25f (Port abgeschlossen)
 
 ### Community 553 - "DimDoorBlock"
-Cohesion: 0.10
-Nodes (8): DimDoorBlock, Kind, DIMENSIONAL, TRANSIENT, UNSTABLE, WARP, DimHatchBlock, CamoTrapDoorBlock
+Cohesion: 0.22
+Nodes (6): DimDoorBlock, Kind, DIMENSIONAL, TRANSIENT, UNSTABLE, WARP
 
 ## Knowledge Gaps
 - **624 isolated node(s):** `Villager`, `Witch`, `CHICKEN`, `COW`, `SILVERFISH` (+619 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 3154 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **236 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 3155 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **251 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `OldWorld` connect `OldWorld` to `TFMaze`, `BuilderHelper`, `.build`, `OldRails`, `Override`, `OldBiome`, `StructureBoundingBox`, `TFGen`, `OldGen`, `Blueprint`, `Architect`, `.getBlockId`, `net.minecraft.world.item.Item`, `DDWorld`, `net.minecraft.core.Holder`, `list`, `list`, `TFSpawns`, `RuinTemplate`, `.spawnEntity`, `BuildingManager`, `Material`, `BuilderDungeon`, `TFWorld`, `.build`, `BDWorldGen`, `NetherTerrain`, `Twilight Forest – offen nach Teil 24a`, `ComponentVillageStartPiece`, `.generate`?**
-  _High betweenness centrality (0.059) - this node is a cross-community bridge._
+- **Why does `OldWorld` connect `OldWorld` to `OldStack`, `TFMaze`, `BuilderHelper`, `.build`, `OldRails`, `Override`, `OldBiome`, `StructureBoundingBox`, `TFGen`, `OldGen`, `Blueprint`, `Architect`, `RuinsGen`, `OldStructures`, `Arbeitsplan: Hexxit 1.0.11 → NeoForge 26.3`, `.getBlockId`, `DDWorld`, `list`, `arraylist`, `OldDecoration`, `.createBuilding`, `OldPainting`, `BuildingManager`, `Material`, `OldChunkGenerator.java`, `BuilderDungeon`, `RuinTemplate`, `Twilight Forest – offen nach Teil 24a`, `net.neoforged.neoforge.registries.DeferredHolder`, `.generate`?**
+  _High betweenness centrality (0.084) - this node is a cross-community bridge._
 - **What connects `Villager`, `Witch`, `CHICKEN` to the rest of the system?**
   _624 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `net.minecraft.resources.Identifier` be split into smaller, more focused modules?**
-  _Cohesion score 0.04532163742690058 - nodes in this community are weakly interconnected._
-- **Why does `Builder` connect `Builder` to `net.minecraft.world.damagesource.DamageSource`, `SRBlocks.java`, `BS.java`, `net.neoforged.neoforge.registries.DeferredItem`, `EbxlLeavesBlock`, `TSmeltery`, `LGBlocks.java`, `HumanEntity`, `XRItems.java`, `net.minecraft.world.damagesource.DamageSource`, `Hydra`, `UrGhast`, `net.minecraft.world.entity.PathfinderMob`, `TinyBird`, `Chicobo`, `ShotEntity`, `QuestRam`, `net.minecraft.core.BlockPos`, `net.minecraft.world.entity.Mob`, `Chocobo`, `IMConfig`, `BDMagicArrow`, `OldWorld`, `Naga`, `.generate`, `SmallCritter`, `Monolith`, `CritterBlock`, `.build`, `TankBlockEntity`, `Dungeons`, `PartBuilderMenu`, `net.minecraft.core.Holder`, `BombEntity`, `.angle`, `TrophyBlock`, `BCConfig`, `net.minecraft.server.level.ServerLevel`, `BlockGoblin`, `TFBosses`, `BattleTowerGolem`, `SpiderBoss`, `MonkingBoss`, `HydraHead`, `MagicLogSpecialBlock`, `FallingMeteor`, `LightBlock`, `net.minecraft.world.level.block.state.BlockState`, `GrindStarEntity`, `net.minecraft.world.level.block.Block`, `CampfireBlock`, `ChocoboColor`, `AltarBlock`, `ConnectableBlock`, `MeteorData`, `ArmorStandBlock`, `WeaponCaseBlock`, `LGThrowable`, `SpikesBlock`, `LandmineBlock`, `.spawnEntity`, `HydraMortar`, `TombstoneBlock`, `BuilderDungeon`, `FrypanBlockEntity`, `TinkerArrow`, `net.minecraft.world.level.Explosion`, `BuilderHelper`, `HookshotHookEntity`, `MummyPharaohEntity`, `BDBlockProjectile`, `TableBlock`, `ThrownDagger`, `net.minecraft.world.level.Level`, `QCConfig`, `DrawbridgeBlockEntity`, `MysticShrubBlock`, `FireJetBlock`, `AbstractChocobo`, `FallingStarEntity`, `TFEntities.java`, `QuakeEntity`, `net.neoforged.bus.api.IEventBus`?**
-  _High betweenness centrality (0.019) - this node is a cross-community bridge._
+- **Should `TFMaps.java` be split into smaller, more focused modules?**
+  _Cohesion score 0.037023324694557574 - nodes in this community are weakly interconnected._
+- **Why does `Builder` connect `Builder` to `TFMaps.java`, `Monolith`, `SmallCritter`, `net.minecraft.world.damagesource.DamageSource`, `SRBlocks.java`, `AloeVeraBlock`, `ChocoboColor`, `BuilderHelper`, `TurtlePart`, `CritterBlock`, `TankBlockEntity`, `net.minecraft.resources.Identifier`, `BDBlockProjectile`, `PartBuilderMenu`, `AltarBlock`, `ConnectableBlock`, `net.minecraft.world.item.Item`, `EbxlLeavesBlock`, `MeteorShieldBlockEntity`, `ArmorStandBlock`, `com.mojang.serialization.MapCodec`, `LGBlocks.java`, `WeaponCaseBlock`, `BDProjectile`, `FallingMeteor`, `DrawbridgeBlockEntity`, `SmelteryControllerBlock`, `HumanEntity`, `BackpackBlock`, `.angle`, `FireJetBlock`, `TrophyBlock`, `ThrownEntity`, `net.minecraft.server.level.ServerLevel`, `BlockGoblin`, `net.minecraft.resources.ResourceKey`, `BuilderIceCave`, `net.minecraft.world.damagesource.DamageSource`, `net.minecraft.util.RandomSource`, `SpikesBlock`, `TFBlocks`, `LandmineBlock`, `TurtleBoss`, `Hydra`, `UrGhast`, `BattleTowerGolem`, `Override`, `HydraMortar`, `TinyBird`, `Chicobo`, `ShotEntity`, `QuestRam`, `TFBird`, `Frienderman`, `net.minecraft.core.BlockPos`, `BDBoss`, `SummonedUndead.java`, `BuilderDungeon`, `HydraHead`, `TFEntities.java`, `Chocobo`, `FrypanBlockEntity`, `ToolCoreItem`, `Vorlagen und Schematics von 1.5.2 übernehmen`, `IMConfig`, `BDMagicArrow`, `GoblinKnightUpper`, `OldWorld`, `LGFx.java`, `TinkerArrow`, `Naga`, `LightBlock`, `net.minecraft.world.level.block.state.BlockState`, `Override`, `net.minecraft.world.level.block.Block`, `CampfireBlock`?**
+  _High betweenness centrality (0.013) - this node is a cross-community bridge._
 - **Should `Layer` be split into smaller, more focused modules?**
-  _Cohesion score 0.0763888888888889 - nodes in this community are weakly interconnected._
-- **Why does `Hydra` connect `Hydra` to `net.minecraft.world.level.storage.ValueInput`, `Context`, `net.minecraft.world.entity.Mob`, `com.mojang.blaze3d.vertex.PoseStack`, `net.minecraft.server.level.ServerLevel`, `net.neoforged.bus.api.IEventBus`, `HydraHeadContainer`, `HydraHead`?**
-  _High betweenness centrality (0.012) - this node is a cross-community bridge._
+  _Cohesion score 0.07451923076923077 - nodes in this community are weakly interconnected._
+- **Why does `ZuluMaze` connect `ZuluMaze` to `BuildingManager`, `Override`, `list`, `CellType`, `CellIndexDirection`, `Blueprint`, `Architect`?**
+  _High betweenness centrality (0.013) - this node is a cross-community bridge._
 - **Should `reference.py` be split into smaller, more focused modules?**
-  _Cohesion score 0.07896575821104122 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06838106370543542 - nodes in this community are weakly interconnected._

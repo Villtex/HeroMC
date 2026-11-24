@@ -1,5 +1,6 @@
 package tconstruct.client;
 
+import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.input.MouseButtonEvent;
@@ -80,7 +81,7 @@ public class SmelteryScreen extends AbstractContainerScreen<SmelteryMenu> {
     public boolean mouseClicked(MouseButtonEvent event, boolean doubleClick) {
         int xScroll = this.leftPos + 67;
         int yScroll = this.topPos + 8;
-        if (this.layers() > 2 && event.button() == 0 && event.x() >= xScroll && event.y() >= yScroll && event.x() < xScroll + 14
+        if (this.layers() > 2 && event.button() == InputConstants.MOUSE_BUTTON_LEFT && event.x() >= xScroll && event.y() >= yScroll && event.x() < xScroll + 14
                 && event.y() < yScroll + 144) {
             this.isScrolling = true;
             this.scroll(event.y());

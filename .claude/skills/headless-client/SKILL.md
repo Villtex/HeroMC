@@ -33,8 +33,16 @@ DISPLAY=:99 LIBGL_ALWAYS_SOFTWARE=1 SDL_VIDEO_FORCE_EGL=1 nohup ./gradlew runCli
 - Input: `xdotool` (`mousemove`, `click 1`, `type`, `key`) on `DISPLAY=:99`.
 - Shutdown: `pkill -f net.neoforged; pkill Xvfb`.
 
-As of the first test: the client got as far as loading textures. Creating a world and moving in-game have not been tried yet.
-Add to this skill once that is done.
+## In the game (tested: Twilight portal, Enchanting Plus table)
+
+- The window is 854×480 in the 1280×720 screen; a screenshot scaled to 960×540 maps to the screen by ×1.333.
+- Title → Singleplayer (≈637,323) → Game Mode twice = Creative (commands on) → Create New World (≈480,567); ~90 s.
+- Commands: `xdotool key slash; xdotool type --delay 15 "<cmd>"; xdotool key Return`. Only near the player
+  (otherwise "That position is not loaded"); results come in the log as `[CHAT]` lines.
+- Look at a block with `tp @s x y z <yaw> <pitch>` (clicks do not turn the camera), right click `xdotool click 3`,
+  pick hotbar slot with `xdotool key 3`.
+- Drag in a GUI: `mousedown 1`, several `mousemove`, `mouseup 1`.
+- A temporary `LOGGER.info` in the screen code shows what arrives (never commit it).
 
 ## Dem Testserver beitreten (Teil 16)
 

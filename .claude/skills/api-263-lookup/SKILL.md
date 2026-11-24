@@ -82,3 +82,10 @@ NeoForge 26.3 bewegt ein Lebewesen in einer eigenen Flüssigkeit **gar nicht** (
 - Prüfen am Testserver: Mob über einem Becken beschwören, `data get entity … Pos` mehrmals, Y muss sinken.
 - Gegenstände (`ItemEntity`) schwimmen in 26.3 an der Wasseroberfläche (1.5.2: sie sanken). Logik, die den Block
   unter einem Gegenstand im Wasser braucht (Twilight-Portal), muss eine Höhe tiefer schauen, wenn dort Wasser ist.
+
+## Maustasten zählen ab 1
+
+26.3 (SDL3) nummeriert Maustasten **ab 1**: `InputConstants.MOUSE_BUTTON_LEFT = 1`, `MIDDLE = 2`, `RIGHT = 3`.
+`event.button() == 0` trifft nie; immer die Konstanten benutzen (Teil 26-Nachlauf: Enchanting Plus, MapWriter,
+Tinkers-Schmelze reagierten deshalb nicht auf Klicks). Slot-Klicks an das Menü (`handleInventoryMouseClick`, PICKUP
+mit 0/1) sind davon nicht betroffen.

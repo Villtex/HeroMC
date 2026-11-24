@@ -195,7 +195,7 @@ final class MwGui extends Screen {
         double x = event.x(), y = event.y();
         Marker marker = markerNear(x, y);
         Marker prev = mw.markers.selected;
-        if (event.button() == 0) {
+        if (event.button() == InputConstants.MOUSE_BUTTON_LEFT) {
             if (dimensionLabel.within(x, y)) {
                 minecraft.gui.setScreen(new PromptScreen(this, "Set dimension to:", view.dimension, s -> s.isBlank() ? "invalid dimension" : null, s -> {
                     String dim = s.trim().contains(":") ? s.trim() : "minecraft:" + s.trim();
@@ -218,7 +218,7 @@ final class MwGui extends Screen {
                     movingZStart = marker.z;
                 }
             }
-        } else if (event.button() == 1) {
+        } else if (event.button() == InputConstants.MOUSE_BUTTON_RIGHT) {
             if (marker != null && prev == marker) {
                 editMarker(marker);
             } else if (marker == null) {
@@ -232,7 +232,7 @@ final class MwGui extends Screen {
 
     @Override
     public boolean mouseReleased(MouseButtonEvent event) {
-        if (event.button() == 0) {
+        if (event.button() == InputConstants.MOUSE_BUTTON_LEFT) {
             leftHeld = false;
             movingMarker = null;
         }
@@ -241,7 +241,7 @@ final class MwGui extends Screen {
 
     @Override
     public boolean mouseDragged(MouseButtonEvent event, double dx, double dy) {
-        if (leftHeld && event.button() == 0) {
+        if (leftHeld && event.button() == InputConstants.MOUSE_BUTTON_LEFT) {
             double offX = (dragStartX - event.x()) * view.w / mode.w;
             double offZ = (dragStartY - event.y()) * view.h / mode.h;
             if (!dragged && Math.abs(dragStartX - event.x()) + Math.abs(dragStartY - event.y()) < 3) {
