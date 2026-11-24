@@ -29280,9 +29280,9 @@
     "semantic_hash": ""
   },
   "mods/betterdungeons/src/main/java/betterdungeons/projectile/BDProjectile.java": {
-    "mtime": 1795302506.9181488,
-    "seen": 1795543597.8473654,
-    "ast_hash": "cfa3650b51b08d0d1bf37114b4cd6a44",
+    "mtime": 1795544061.8743017,
+    "seen": 1795544114.9281154,
+    "ast_hash": "514472e973cd2b769da073117f7c5eba",
     "semantic_hash": ""
   },
   "mods/betterdungeons/src/main/java/betterdungeons/projectile/Behaviors.java": {

@@ -179,6 +179,15 @@ public class BDProjectile extends Projectile {
         return this.behavior;
     }
 
+    /**
+     * A rider (the mob caught in a bubble) sits in the middle of the ball as BallRenderer draws it (from -0.25 to 0.75
+     * of its size around the position), not on top of the box as today's default would put it.
+     */
+    @Override
+    protected Vec3 getPassengerAttachmentPoint(Entity passenger, EntityDimensions dimensions, float scale) {
+        return new Vec3(0.0, 0.25 * this.size - passenger.getBbHeight() / 2.0, 0.0);
+    }
+
     @Override
     public EntityDimensions getDimensions(Pose pose) {
         return EntityDimensions.scalable(this.size, this.size);
