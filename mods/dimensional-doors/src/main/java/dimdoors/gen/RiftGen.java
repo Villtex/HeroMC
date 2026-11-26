@@ -99,7 +99,11 @@ public final class RiftGen {
                 valid = checkGatewayLocation(world, x, y, z);
             }
             if (valid) {
-                int orientation = random.nextInt(4);
+                // The original links the gateway with random.nextInt(4), but the door always faces 0: coming back
+                // with 1 or 3 put the player into a pillar, and teleportToPocket then cleared its two lower blocks.
+                // The draw stays for the world generation; the link takes the door's facing, as later DimDoors did.
+                random.nextInt(4);
+                int orientation = 0;
                 // createPocket -> createLink: the rift at the door's lower half, overwritten by the door below
                 world.setBlock(x, y + 1, z, RIFT);
                 int block = 98;
