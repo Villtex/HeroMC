@@ -78,6 +78,8 @@ public record OldGeneratorFeature(String generator, int minY, int maxY, int yOff
     private static final int SHIFT = 8;
     private static final Set<String> REPORTED = ConcurrentHashMap.newKeySet();
     private static final Map<BlockState, Integer> CELLS = new ConcurrentHashMap<>();
+    /** See {@link #cell}. */
+    private static volatile int[] cellsById = new int[0];
 
     @Override
     public MapCodec<? extends Feature> codec() {
@@ -125,7 +127,31 @@ public record OldGeneratorFeature(String generator, int minY, int maxY, int yOff
         return new OldGeneratorFeature(name, 0, 255, 0).new Run(level, chunkX, chunkZ, false, 0).run(gen);
     }
 
+    /**
+     * {@link OldLiveGen#oldCell} of a block state, cached. The cache is indexed by the id of the state: a map keyed by
+     * the state itself would hash it, and the hash of a block state is computed from its properties on every call.
+     */
     static int cell(BlockState state) {
+        int id = Block.getId(state);
+        int[] known = cellsById;
+        if (id >= 0 && id < known.length) {
+            int cell = known[id];
+            if (cell == 0) {
+                // cell + 1 is stored, 0 means not known yet; two threads may both compute it, with the same result
+                cell = OldLiveGen.oldCell(state) + 1;
+                known[id] = cell;
+            }
+            return cell - 1;
+        }
+        if (known.length < Block.BLOCK_STATE_REGISTRY.size()) {
+            synchronized (OldGeneratorFeature.class) {
+                if (cellsById.length < Block.BLOCK_STATE_REGISTRY.size()) {
+                    cellsById = java.util.Arrays.copyOf(cellsById, Block.BLOCK_STATE_REGISTRY.size());
+                }
+            }
+            return cell(state);
+        }
+        // not a registered state
         Integer cell = CELLS.get(state);
         if (cell == null) {
             cell = OldLiveGen.oldCell(state);
@@ -167,6 +193,19 @@ public record OldGeneratorFeature(String generator, int minY, int maxY, int yOff
                 || OldBlockStates.modCell(state) >= 0;
     }
 
+    private static final char[] EMPTY_SECTION = new char[4096];
+
+    /** Index of the first cell from {@code from} on where the two sections differ, or -1. */
+    private static int mismatch(char[] was, char[] now, int from) {
+        int at = java.util.Arrays.mismatch(was, from, 4096, now, from, 4096);
+        return at < 0 ? -1 : from + at;
+    }
+
+    /** The sections of one old chunk as they were read, before the generator ran. */
+    private static final class Before {
+        final char[][] sections = new char[16][];
+    }
+
     /** One run of a generator for one chunk. */
     private final class Run {
         private final WorldGenLevel level;
@@ -184,8 +223,11 @@ public record OldGeneratorFeature(String generator, int minY, int maxY, int yOff
         private final int highY;
         /** Real y = old y + off. */
         private final int off;
-        /** Old chunks handed to the old world, with their cells before the generator ran (0..255 high). */
-        private final Map<Long, char[]> before = new HashMap<>();
+        /**
+         * Old chunks handed to the old world: the sections read so far, each as it was before the generator ran
+         * ({@code null} for a section without blocks). Only these can have changed.
+         */
+        private final Map<Long, Before> before = new HashMap<>();
 
         Run(WorldGenLevel level, int chunkX, int chunkZ, boolean nether, int shift) {
             this.shift = shift;
@@ -207,41 +249,71 @@ public record OldGeneratorFeature(String generator, int minY, int maxY, int yOff
             return x >= this.minX && x <= this.maxX && z >= this.minZ && z <= this.maxZ;
         }
 
-        /** The cells of old chunk ocx/ocz, 256 high, index (x * 16 + z) * 256 + y. */
-        private char[] read(int ocx, int ocz) {
-            long key = (long) ocx << 32 | ocz & 0xFFFFFFFFL;
-            char[] cells = this.before.get(key);
-            if (cells != null) {
-                return cells;
-            }
-            cells = new char[256 * 256];
+        /**
+         * The cells of old y 16 * index to 16 * index + 15 of old chunk ocx/ocz (index (x * 16 + z) * 16 + (y & 15)), or
+         * {@code null} when there is no block; a copy stays in {@link #before}.
+         */
+        private char[] readSection(int ocx, int ocz, int index) {
+            int y0 = index * 16;
+            int yLow = Math.max(y0, this.lowY);
+            int yHigh = Math.min(y0 + 15, this.highY);
             int baseX = ocx * 16 - this.shift;
             int baseZ = ocz * 16 - this.shift;
-            for (int lx = 0; lx < 16; lx++) {
-                for (int lz = 0; lz < 16; lz++) {
-                    int x = baseX + lx;
-                    int z = baseZ + lz;
-                    int column = (lx * 16 + lz) * 256;
-                    if (!this.inArea(x, z)) {
+            char[] cells = null;
+            BlockState lastState = null;
+            int lastCell = 0;
+            // the old chunk lies over up to 2x2 real chunks (shifted by 8); the area is whole real chunks
+            for (int lx0 = 0; lx0 < 16; ) {
+                int lx1 = Math.min(16, lx0 + 16 - (baseX + lx0 & 15));
+                for (int lz0 = 0; lz0 < 16; ) {
+                    int lz1 = Math.min(16, lz0 + 16 - (baseZ + lz0 & 15));
+                    int x0 = baseX + lx0;
+                    int z0 = baseZ + lz0;
+                    if (!this.inArea(x0, z0)) {
                         // outside what may be read: plain ground up to below sea level, nothing is written there
-                        for (int y = 0; y < 62; y++) {
-                            cells[column + y] = (char) (1 << 4);
+                        for (int y = y0; y < Math.min(y0 + 16, 62); y++) {
+                            if (cells == null) {
+                                cells = new char[4096];
+                            }
+                            for (int lx = lx0; lx < lx1; lx++) {
+                                for (int lz = lz0; lz < lz1; lz++) {
+                                    cells[(lx * 16 + lz) * 16 + (y & 15)] = (char) (1 << 4);
+                                }
+                            }
                         }
-                        continue;
-                    }
-                    ChunkAccess chunk = this.level.getChunk(x >> 4, z >> 4);
-                    for (int y = this.lowY; y <= this.highY; y++) {
-                        int ry = y + this.off;
-                        LevelChunkSection section = chunk.getSection(chunk.getSectionIndex(ry));
-                        if (section.hasOnlyAir()) {
-                            y += 15 - (ry & 15);
-                            continue;
+                    } else if (yLow <= yHigh) {
+                        ChunkAccess chunk = this.level.getChunk(x0 >> 4, z0 >> 4);
+                        for (int y = yLow; y <= yHigh; y++) {
+                            int ry = y + this.off;
+                            LevelChunkSection section = chunk.getSection(chunk.getSectionIndex(ry));
+                            if (section.hasOnlyAir()) {
+                                y += 15 - (ry & 15);
+                                continue;
+                            }
+                            int sy = ry & 15;
+                            for (int lz = lz0; lz < lz1; lz++) {
+                                int sz = baseZ + lz & 15;
+                                for (int lx = lx0; lx < lx1; lx++) {
+                                    BlockState state = section.getBlockState(baseX + lx & 15, sy, sz);
+                                    if (state != lastState) {
+                                        lastState = state;
+                                        lastCell = cell(state);
+                                    }
+                                    if (lastCell != 0) {
+                                        if (cells == null) {
+                                            cells = new char[4096];
+                                        }
+                                        cells[(lx * 16 + lz) * 16 + (y & 15)] = (char) lastCell;
+                                    }
+                                }
+                            }
                         }
-                        cells[column + y] = (char) cell(section.getBlockState(x & 15, ry & 15, z & 15));
                     }
+                    lz0 = lz1;
                 }
+                lx0 = lx1;
             }
-            this.before.put(key, cells);
+            this.before.get((long) ocx << 32 | ocz & 0xFFFFFFFFL).sections[index] = cells == null ? null : cells.clone();
             return cells;
         }
 
@@ -262,22 +334,23 @@ public record OldGeneratorFeature(String generator, int minY, int maxY, int yOff
             OldWorld.TerrainSource terrain = new OldWorld.TerrainSource() {
                 @Override
                 public OldChunk chunk(int ocx, int ocz) {
-                    char[] cells = Run.this.read(ocx, ocz);
-                    char[] low = new char[256 * OldChunk.HEIGHT];
-                    for (int column = 0; column < 256; column++) {
-                        System.arraycopy(cells, column * 256, low, column * OldChunk.HEIGHT, OldChunk.HEIGHT);
-                    }
-                    return OldChunk.wide(ocx, ocz, low, Run.this.biomes(ocx, ocz));
+                    throw new IllegalStateException("read by sections");
                 }
 
                 @Override
-                public char[] upper(int ocx, int ocz) {
-                    char[] cells = Run.this.read(ocx, ocz);
-                    char[] high = new char[256 * 128];
-                    for (int column = 0; column < 256; column++) {
-                        System.arraycopy(cells, column * 256 + 128, high, column * 128, 128);
-                    }
-                    return high;
+                public OldWorld.Sections sections(int ocx, int ocz) {
+                    Run.this.before.put((long) ocx << 32 | ocz & 0xFFFFFFFFL, new Before());
+                    return new OldWorld.Sections() {
+                        @Override
+                        public byte[] biomes() {
+                            return Run.this.biomes(ocx, ocz);
+                        }
+
+                        @Override
+                        public char[] section(int index) {
+                            return Run.this.readSection(ocx, ocz, index);
+                        }
+                    };
                 }
             };
             long seed = this.level.getSeed();
@@ -298,26 +371,29 @@ public record OldGeneratorFeature(String generator, int minY, int maxY, int yOff
         private boolean write(OldWorld world) {
             List<BlockPos> changed = new ArrayList<>();
             List<int[]> cells = new ArrayList<>();
-            for (Map.Entry<Long, char[]> entry : this.before.entrySet()) {
+            for (Map.Entry<Long, Before> entry : this.before.entrySet()) {
                 int ocx = (int) (entry.getKey() >> 32);
                 int ocz = (int) (long) entry.getKey();
-                char[] old = entry.getValue();
-                for (int lx = 0; lx < 16; lx++) {
-                    for (int lz = 0; lz < 16; lz++) {
+                char[][] old = entry.getValue().sections;
+                for (int index = 0; index < 16; index++) {
+                    char[] now = world.sectionNow(ocx, ocz, index);
+                    if (now == null) {
+                        // never read, or read without blocks and still without
+                        continue;
+                    }
+                    char[] was = old[index] != null ? old[index] : EMPTY_SECTION;
+                    int at = 0;
+                    while ((at = mismatch(was, now, at)) >= 0) {
+                        int lx = at >> 8;
+                        int lz = at >> 4 & 15;
+                        int y = index * 16 + (at & 15);
                         int ox = ocx * 16 + lx;
                         int oz = ocz * 16 + lz;
-                        if (!this.inArea(ox - this.shift, oz - this.shift)) {
-                            continue;
+                        if (y >= this.lowY && y <= this.highY && this.inArea(ox - this.shift, oz - this.shift)) {
+                            changed.add(new BlockPos(ox - this.shift, y + this.off, oz - this.shift));
+                            cells.add(new int[] {ox, y, oz, now[at]});
                         }
-                        int column = (lx * 16 + lz) * 256;
-                        for (int y = this.lowY; y <= this.highY && y < OldWorld.HEIGHT; y++) {
-                            int id = world.getBlockId(ox, y, oz);
-                            int cell = id << 4 | world.getBlockMetadata(ox, y, oz);
-                            if (cell != old[column + y]) {
-                                changed.add(new BlockPos(ox - this.shift, y + this.off, oz - this.shift));
-                                cells.add(new int[] {ox, y, oz, cell});
-                            }
-                        }
+                        at++;
                     }
                 }
             }

@@ -2277,3 +2277,36 @@ feste Items. Im Original lief der Austausch über das Forge-OreDictionary; die `
 - **Offen:** Client (Einzelspieler mit Sodium + den drei Mods, Licht von ScalableLux an Hexxit-Leuchtblöcken) nicht
   geprüft.
 
+
+### Nachtrag – Schnellere Weltgenerierung in Hexxit Integrated (✅ erledigt)
+- **Messung** (Seed 1234, je 16×16 neue Chunks bei Chunk 100/100, 100/130, −100/−100, 4 Kerne, frische Welt,
+  `tools/bench_chunks.py`): vorher 68 / 53 s (die ersten beiden Gebiete), jetzt 15 / 13 / 12 s; mit C2ME + Lithium + ScalableLux vorher
+  25 / 22 / 15 s, jetzt 8,4 / 8,4 / 8,9 s. Startgebiet 28 s → 7 s. Untergrenze ohne alle Hexxit-Generatoren
+  (`disabledFeatures`, `replaceVanillaOres = false`): 8 / 5,5 s.
+- **Ursachen** (Profil mit JFR, `tools/jfr_top.py`):
+  1. Die Hilfs-Chunks der Strukturen (`OldStructureBuild.buildTerrain`, Gelände vor dem Bauen) fragten beim
+     Oberflächen-Bauen für fast jeden Block das Biom beim punktweisen Resolver ab, also jedes Mal das ganze
+     Klima-Rauschen (≈ 40 % der Rechenzeit; ein echter Chunk liest seine gespeicherten Biome). Jetzt `ChunkBiomes`:
+     jede Quart-Zelle des Chunks und eines Rings von einer Zelle einmal, in einem festen Feld. Dieselben Werte wie vorher.
+     Die Biome des Hilfs-Chunks selbst werden absichtlich nicht übernommen: `createResolverForChunk` tastet als Volumen
+     ab und weicht an Biomgrenzen in einzelnen Zellen ab (2 Treffer bei der Gegenprobe), das würde Bauten in begonnenen
+     Welten verschieben.
+  2. Die Chunk-Brücke (`OldGeneratorFeature`) las für jeden der ≈ 30 Generatoren und jeden Chunk die berührten alten
+     Chunks (meist 4) in voller Höhe (je 65.536 Zellen) und verglich danach alle wieder (≈ 32 %). Jetzt liest
+     `OldWorld` einen 16 hohen Abschnitt erst, wenn der Generator ihn anfasst (`TerrainSource.sections`, Legacy
+     unverändert über `chunk`/`upper`), das Lesen holt den echten Abschnitt je Chunk-Viertel einmal, und beim
+     Zurückschreiben werden nur die ausgegebenen Abschnitte mit `Arrays.mismatch` verglichen.
+  3. Zelle je Blockzustand über ein Feld nach `Block.getId` statt einer `ConcurrentHashMap` (`BlockState.hashCode` wird
+     in 26.3 bei jedem Aufruf aus den Eigenschaften berechnet).
+- **Geprüft:** Alter und neuer Brücken-Code vorübergehend im selben Lauf trocken nebeneinander: 34.000 Generator-Läufe
+  (Oberwelt und Nether, 5,3 Mio. geänderte Blöcke), alle Änderungslisten gleich. Welten verglichen
+  (`tools/compare_worlds.py`, 576 Chunks, 56,6 Mio. Blöcke): alt/alt 0,078 %, neu/neu 0,075 %, alt/neu 0,059 %
+  abweichend – dieselben Paare (Erzblasen Marmor/Andesit/Diorit, Kirschlaub, Wasser an Chunk-Grenzen), also die
+  Lauf-zu-Lauf-Streuung paralleler Erzeugung, nicht der Umbau. Legacy: `expect.sh 1234 find 260` und
+  `twilight find 30` bytegleich zum alten Kern. Mit C2ME/Lithium/ScalableLux ohne neue Fehler im Log.
+- **Werkzeuge:** `tools/bench_chunks.py` (Zeit für ein Chunk-Gebiet per RCON), `tools/jfr_top.py` (JFR-Profil
+  zusammenfassen, `--callers`), `tools/compare_worlds.py` (Blöcke zweier 26.3-Welten vergleichen). Vorgehen im Skill
+  `integrated-263` („Leistung messen und Gleichheit prüfen“).
+- **Offen:** Der Rest des Hexxit-Aufschlags ist vor allem das Gelände der Hilfs-Chunks (≈ 350 je 1.000 echte Chunks,
+  nötig, damit die Bau-Generatoren das Gelände kennen) und das Lesen der Erz-Generatoren (`OldOreGens.Minable`, je Ader
+  ein bis zwei ganze Abschnitte; feinere Stücke von 4 Höhen könnten das noch etwa vierteln).

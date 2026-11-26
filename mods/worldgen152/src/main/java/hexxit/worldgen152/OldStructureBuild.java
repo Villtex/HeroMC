@@ -12,7 +12,10 @@ import net.minecraft.core.RegistryAccess;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.LevelHeightAccessor;
 import net.minecraft.world.level.StructureManager;
+import net.minecraft.core.Holder;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeManager;
+import net.minecraft.world.level.biome.BiomeResolver;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkAccess;
@@ -118,12 +121,14 @@ final class OldStructureBuild {
         return terrain;
     }
 
+
     private static Terrain buildTerrain(Context context, int chunkX, int chunkZ) {
         ChunkGenerator generator = context.generator();
         ProtoChunk chunk = new ProtoChunk(new ChunkPos(chunkX, chunkZ), UpgradeData.EMPTY, context.height(),
                 PalettedContainerFactory.create(context.registries()), null);
         generator.createBiomes(context.randomState(), Blender.empty(), NO_STRUCTURES, chunk).join();
-        net.minecraft.world.level.biome.BiomeResolver resolver = generator.getBiomeSource().createUncachedResolver(context.randomState());
+        // the surface rules ask for the biome of nearly every block near the surface; each quart cell is sampled once
+        BiomeResolver resolver = new ChunkBiomes(chunk, generator.getBiomeSource().createUncachedResolver(context.randomState()));
         BiomeManager biomes = new BiomeManager(resolver,
                 BiomeManager.obfuscateSeed(context.seed()));
         generator.buildTerrain(chunk, Blender.empty(), context.randomState(), NO_STRUCTURES, biomes, null,
@@ -152,6 +157,50 @@ final class OldStructureBuild {
             }
         }
         return new Terrain(cells, oldBiomes, surface);
+    }
+
+    /**
+     * The biomes around one scratch chunk, each quart cell of the chunk and of a ring of one quart around it sampled
+     * once (anything further away, which the surface rules do not ask for, straight from the resolver). The surface
+     * rules ask for the biome of nearly every block near the surface; the biome manager of a real chunk reads the biomes
+     * the chunk holds instead. Those come from {@code createResolverForChunk}, which samples the climate as a volume and
+     * differs from {@code resolver} in a few cells on biome borders, so they are not used: the scratch terrain stays as it
+     * was, and so do the structures of worlds begun before.
+     */
+    private static final class ChunkBiomes implements BiomeResolver {
+        private final BiomeResolver resolver;
+        private final int minQx;
+        private final int minQy;
+        private final int minQz;
+        private final int sizeY;
+        private final Holder<Biome>[] known;
+
+        @SuppressWarnings("unchecked")
+        ChunkBiomes(ChunkAccess chunk, BiomeResolver resolver) {
+            this.resolver = resolver;
+            this.minQx = QuartPos.fromBlock(chunk.getPos().getMinBlockX()) - 1;
+            this.minQz = QuartPos.fromBlock(chunk.getPos().getMinBlockZ()) - 1;
+            this.minQy = QuartPos.fromBlock(chunk.getMinY()) - 1;
+            this.sizeY = QuartPos.fromBlock(chunk.getHeight()) + 2;
+            this.known = new Holder[6 * 6 * this.sizeY];
+        }
+
+        @Override
+        public Holder<Biome> getNoiseBiome(int quartX, int quartY, int quartZ) {
+            int x = quartX - this.minQx;
+            int y = quartY - this.minQy;
+            int z = quartZ - this.minQz;
+            if (x < 0 || x >= 6 || z < 0 || z >= 6 || y < 0 || y >= this.sizeY) {
+                return this.resolver.getNoiseBiome(quartX, quartY, quartZ);
+            }
+            int index = (x * 6 + z) * this.sizeY + y;
+            Holder<Biome> biome = this.known[index];
+            if (biome == null) {
+                biome = this.resolver.getNoiseBiome(quartX, quartY, quartZ);
+                this.known[index] = biome;
+            }
+            return biome;
+        }
     }
 
     /** The result for the start chunk, computed on first use. */

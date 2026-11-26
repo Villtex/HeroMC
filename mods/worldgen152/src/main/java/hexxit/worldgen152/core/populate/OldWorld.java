@@ -37,19 +37,57 @@ public final class OldWorld {
         default char[] upper(int chunkX, int chunkZ) {
             return null;
         }
+
+        /**
+         * The chunk read section by section when a generator first touches it, instead of {@link #chunk} and
+         * {@link #upper} (terrain of today, where reading all 256 heights of every chunk for every generator costs more
+         * than the generator), or {@code null} for the whole chunk at once.
+         */
+        default Sections sections(int chunkX, int chunkZ) {
+            return null;
+        }
+    }
+
+    /** One chunk of a {@link TerrainSource} read on demand. */
+    public interface Sections {
+        /** 1.5.2 biome id of each column, index x + z * 16. */
+        byte[] biomes();
+
+        /**
+         * The cells of y 16 * index to 16 * index + 15 ({@code id << 4 | meta}, index (x * 16 + z) * 16 + (y & 15)), or
+         * {@code null} when there is no block; a new array the world then changes.
+         */
+        char[] section(int index);
     }
 
     static final class Column {
         final int chunkX;
         final int chunkZ;
-        /** id << 4 | metadata, index (x * 16 + z) * 16 + (y & 15); a section stays null until a block is set in it. */
+        /**
+         * id << 4 | metadata, index (x * 16 + z) * 16 + (y & 15); a section stays null until a block is set in it.
+         * Read through {@link #get} (a section of {@link #lazy} comes in on first use).
+         */
         final char[][] sections = new char[16][];
-        final byte[] biomes;
+        byte[] biomes;
         final Map<Integer, OldTile> tiles = new HashMap<>();
         final List<OldEntity> entities = new ArrayList<>();
         int topSection = -1;
+        /** Sections still to read, or {@code null} when the whole terrain came in the constructor. */
+        private final Sections lazy;
+        /** Bit i: section i of {@link #lazy} has been read. */
+        private int loaded;
+        /** Whether the sections above {@link #topSection} are known to be empty. */
+        private boolean topKnown;
+
+        Column(int chunkX, int chunkZ, Sections lazy) {
+            this.chunkX = chunkX;
+            this.chunkZ = chunkZ;
+            this.lazy = lazy;
+        }
 
         Column(OldChunk terrain) {
+            this.lazy = null;
+            this.topKnown = true;
             this.chunkX = terrain.chunkX();
             this.chunkZ = terrain.chunkZ();
             this.biomes = terrain.biomes();
@@ -75,8 +113,24 @@ public final class OldWorld {
             }
         }
 
+        /** Section {@code index} as it is now, or {@code null} while it holds no block. */
+        char[] get(int index) {
+            if (this.lazy != null && (this.loaded & 1 << index) == 0) {
+                this.loaded |= 1 << index;
+                char[] read = this.lazy.section(index);
+                if (read != null) {
+                    this.sections[index] = read;
+                    if (index > this.topSection) {
+                        this.topSection = index;
+                    }
+                }
+            }
+            return this.sections[index];
+        }
+
+        /** Section {@code index} to write into, created when it holds no block yet. */
         char[] section(int index) {
-            char[] section = this.sections[index];
+            char[] section = this.get(index);
             if (section == null) {
                 section = new char[4096];
                 this.sections[index] = section;
@@ -88,12 +142,26 @@ public final class OldWorld {
         }
 
         int cell(int x, int y, int z) {
-            char[] section = this.sections[y >> 4];
+            char[] section = this.get(y >> 4);
             return section == null ? 0 : section[(x * 16 + z) * 16 + (y & 15)];
+        }
+
+        byte[] biomes() {
+            if (this.biomes == null) {
+                this.biomes = this.lazy.biomes();
+            }
+            return this.biomes;
         }
 
         /** Highest y that can hold a block: top of the highest section in use (Chunk.getTopFilledSegment() + 15). */
         int topY() {
+            if (!this.topKnown) {
+                this.topKnown = true;
+                // read from the top down to the first section with a block; everything above it is air
+                for (int i = 15; i > this.topSection; i--) {
+                    this.get(i);
+                }
+            }
             return this.topSection < 0 ? 15 : this.topSection * 16 + 15;
         }
     }
@@ -198,7 +266,11 @@ public final class OldWorld {
         }
         long key = (long) chunkX << 32 | chunkZ & 0xFFFFFFFFL;
         Column column = this.columns.get(key);
-        if (column == null) {
+        Sections lazy = column == null ? this.terrain.sections(chunkX, chunkZ) : null;
+        if (lazy != null) {
+            column = new Column(chunkX, chunkZ, lazy);
+            this.columns.put(key, column);
+        } else if (column == null) {
             column = new Column(this.terrain.chunk(chunkX, chunkZ));
             char[] upper = this.terrain.upper(chunkX, chunkZ);
             if (upper != null) {
@@ -213,6 +285,16 @@ public final class OldWorld {
         }
         this.last = column;
         return column;
+    }
+
+    /**
+     * Section {@code index} of chunk chunkX/chunkZ as the generators left it (index (x * 16 + z) * 16 + (y & 15)), or
+     * {@code null} when it holds no block or that chunk was never touched. For a {@link TerrainSource#sections} chunk only
+     * the sections it handed out can have changed.
+     */
+    public char[] sectionNow(int chunkX, int chunkZ, int index) {
+        Column column = this.columns.get((long) chunkX << 32 | chunkZ & 0xFFFFFFFFL);
+        return column == null ? null : column.sections[index];
     }
 
     /**
@@ -335,7 +417,7 @@ public final class OldWorld {
         int lz = z & 15;
         int cell = id << 4 | meta & 15;
         int index = (lx * 16 + lz) * 16 + (y & 15);
-        char[] section = column.sections[y >> 4];
+        char[] section = column.get(y >> 4);
         int old = section == null ? 0 : section[index];
         if (old == cell) {
             return false;
@@ -384,7 +466,7 @@ public final class OldWorld {
         Column column = this.column(x >> 4, z >> 4);
         int lx = x & 15;
         int lz = z & 15;
-        char[] section = column.sections[y >> 4];
+        char[] section = column.get(y >> 4);
         if (section == null) {
             if (id == 0) {
                 return;
@@ -412,7 +494,7 @@ public final class OldWorld {
     /** Changes only the metadata, without onBlockAdded. */
     void setBlockMetadata(int x, int y, int z, int meta) {
         Column column = this.column(x >> 4, z >> 4);
-        char[] section = column.sections[y >> 4];
+        char[] section = column.get(y >> 4);
         if (section != null) {
             int index = ((x & 15) * 16 + (z & 15)) * 16 + (y & 15);
             section[index] = (char) (section[index] & 0xFFF0 | meta & 15);
@@ -647,7 +729,7 @@ public final class OldWorld {
         if (this.dimension == -1) {
             return OldBiomes.HELL;
         }
-        return OldBiomes.byId(this.column(x >> 4, z >> 4).biomes[(x & 15) + (z & 15) * 16] & 0xFF);
+        return OldBiomes.byId(this.column(x >> 4, z >> 4).biomes()[(x & 15) + (z & 15) * 16] & 0xFF);
     }
 
     /** World.getHeightValue: one above the highest block that dims light. */

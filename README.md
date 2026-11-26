@@ -56,6 +56,10 @@ Jeder Mod wird deshalb gegen das dekompilierte Original als Referenz **neu gesch
   dafür keine Änderung: Sie haben keine Mixins, und die Weltgenerierung (`worldgen152`) ist schon für parallele Chunk-Erzeugung
   gebaut (Gelände je Chunk ohne geteilten Zustand, Population in Kacheln über `FutureTask`, Caches synchronisiert). Legacy bleibt
   mit den drei Mods bitgenau (Oberwelt, Nether und Twilight Forest 0 Abweichungen), in Integrated entstehen dieselben Bauwerke.
+- **Weltgenerierung in Integrated beschleunigt:** 16×16 neue Chunks brauchen am Testserver (4 Kerne) 12–15 s statt
+  53–68 s, mit C2ME/Lithium/ScalableLux 8–9 s statt 15–25 s. Die Hilfs-Chunks der Hexxit-Bauwerke fragen ihre Biome nicht
+  mehr für jeden Block beim Klima-Rauschen ab, und die Chunk-Brücke liest für jeden Generator nur noch die Abschnitte, die
+  er anfasst. Die Welt bleibt dieselbe (alte und neue Brücke im selben Lauf verglichen, Legacy bytegleich).
 
 ## Arbeitsplan
 
@@ -77,6 +81,7 @@ Der Port ist in Teile aufgeteilt, die je in eine Session passen: [`docs/PLAN.md`
 | `tools/extra_mods.py` | fremde NeoForge-26.3-Mods für den Kompatibilitätstest nach `run/mods-extra/` laden (`--install` kopiert sie nach `run/server/mods`, `--uninstall` entfernt sie; Teil 26f; `--set perf` = C2ME, Lithium, ScalableLux, `--set all` = beide) |
 | `tools/compat_tags.py` | `c:`-/`minecraft:`-Tags aller Mods und Rezepte über Tags (Teil 26e); nach jedem `gen.py` erneut laufen lassen |
 | `tools/rcon.py` | kleiner RCON-Client für Verhaltenstests am laufenden Testserver |
+| `tools/bench_chunks.py`, `tools/jfr_top.py`, `tools/compare_worlds.py` | Weltgenerierung messen (Zeit für ein Chunk-Gebiet per RCON), JFR-Profil zusammenfassen, Blöcke zweier 26.3-Welten vergleichen |
 | `tools/modelbase_to_layer.py` | überträgt die Geometrie eines 1.5.2-`ModelBase` (Boxen, Hierarchie, Texturversätze) in 26.3-`createBodyLayer`-Zeilen |
 | `gradle/neoforge.mods.toml` | gemeinsame Vorlage für die Mod-Metadaten |
 | `docs/JEI.md` | Vorlage für das JEI-Plugin eines Mods (JEI ersetzt NEI) |
@@ -93,7 +98,7 @@ Der Port ist in Teile aufgeteilt, die je in eine Session passen: [`docs/PLAN.md`
 | `.claude/skills/tinkers-tools-263/` | Projekt-Skill: Tinkers' Construct weiterbauen (Komponente `tconstruct:tool`, Teile/Materialien/Muster, alte IDs, Modifikatoren, Schmelzerei-Tabellen und Flüssigkeiten, Prüfen ohne Spieler) |
 | `.claude/skills/twilight-forest-263/` | Projekt-Skill: Twilight Forest weiterbauen (Kern `twilightforest.gen`, Bauwerke `gen.structure` mit Übersetzungsskript, Starts, Truhen, Spawnlisten, Prüfung mit `expect.sh … twilight structures`) |
 | `.claude/skills/headless-client/` | Projekt-Skill: Testclient im Cloud-Container ohne Bildschirm starten (Xvfb, `SDL_VIDEO_FORCE_EGL=1`, Screenshots, xdotool, Testserver beitreten), Sodium/Iris gegen den Vanilla-Renderer vergleichen |
-| `.claude/skills/integrated-263/` | Projekt-Skill: Welttyp Hexxit Integrated (Teil 26) – 1.5.2-Generator als 26.3-Feature mit Biom-Modifier einhängen, Chunk-Brücke `OldGeneratorFeature` (Verschiebung, Höhenfenster, Biome über Tags, was ersetzt wird), Bauwerke als 26.3-Strukturen (`worldgen152:old_structure`), 1.5.2-Dorfteile in 26.3-Dörfern, Legacy/Integrated am Server umschalten und prüfen |
+| `.claude/skills/integrated-263/` | Projekt-Skill: Welttyp Hexxit Integrated (Teil 26) – 1.5.2-Generator als 26.3-Feature mit Biom-Modifier einhängen, Chunk-Brücke `OldGeneratorFeature` (Verschiebung, Höhenfenster, Biome über Tags, was ersetzt wird), Bauwerke als 26.3-Strukturen (`worldgen152:old_structure`), 1.5.2-Dorfteile in 26.3-Dörfern, Legacy/Integrated am Server umschalten und prüfen, Weltgenerierung messen und Gleichheit prüfen |
 | `.claude/skills/compat-263/` | Projekt-Skill: Schnittstellen für fremde Mods (Teil 26e) – Item-/Fluid-Capabilities mit der Transfer-API, `c:`-Tags über `tools/compat_tags.py`, Rezepte über Tags, Daten nur in Legacy (`worldgen152:world_type`), Prüfbefehl `/hexxitcompat`, Test mit fremden Mods (Pipez-Rohre per NBT, `mine`) |
 
 ## Bauen und Starten

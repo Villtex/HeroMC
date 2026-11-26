@@ -66,6 +66,11 @@ Nachbearbeitung im Schritt `raw_generation` (`natura/gen/NetherSoilGen`).
   (stehen in 26.3 **nicht** in `#minecraft:dirt`), Stämme, Laub, Hexxit-Blöcke (`OldBlockStates.modCell`). Nie:
   Grundgestein, Block-Entities, fremde Blöcke.
 - Zufall: `modRandom`-Formel von 1.5.2 mit `seed ^ hash(name)`, je Generator eigene Folge.
+- Gelesen wird nur, was der Generator anfasst: je alter Chunk 16 hohe Abschnitte bei Bedarf
+  (`OldWorld.TerrainSource.sections`), beim Zurückschreiben werden nur diese mit `Arrays.mismatch` verglichen. Nie wieder
+  ganze 256er-Spalten je Generator vorab lesen (≈ 30 Generatoren × 4 Chunks × 65.536 Zellen je Chunk). Zellen über
+  `OldGeneratorFeature.cell` (Feld nach `Block.getId`): `BlockState.hashCode` wird in 26.3 bei jedem Aufruf berechnet,
+  also keine Map mit Blockzuständen als Schlüssel in heißen Schleifen.
 - `world.layout()` und `world.structures()` sind in Integrated `null`; Generatoren, die sie brauchen, erst in 26c.
   Fehler werden einmal je Generator geloggt („1.5.2 world generator … failed“) und der Chunk bleibt ohne ihn.
 
@@ -128,4 +133,22 @@ grep -E "ERROR|Exception" run/server/logs/latest.log
 Für große `forceload`: `max-tick-time=-1` in `server.properties`, sonst beendet der Watchdog den Server.
 Zählen: `python3 tools/count_blocks.py [--dim minecraft:the_nether] X1 Z1 X2 Z2 YMIN YMAX block…` (ersetzt durch
 Luft, nur Test-Welt; Bereich vorher forceloaden und ~1–2 min warten). `fill … X replace X` taugt nicht zum Zählen
-(meldet nur geänderte Zustände). Zeitvergleich: dieselbe Fläche mit allen Namen in `disabledFeatures`.
+(meldet nur geänderte Zustände). Zeitvergleich: dieselbe Fläche mit allen Namen in `disabledFeatures`
+(+ `replaceVanillaOres = false`) als Untergrenze.
+
+## Leistung messen und Gleichheit prüfen
+
+- Zeit: frische Welt, immer dasselbe Gebiet, `python3 tools/bench_chunks.py 100 100 16` (bis alle 256 Chunks voll
+  geladen sind; der erste Lauf nach dem Start ist ~15 % langsamer). Stand nach der Beschleunigung: 16×16 Chunks
+  ≈ 12–15 s, Untergrenze ohne Hexxit ≈ 5,5–8 s (4 Kerne, ohne C2ME).
+- Profil: `jcmd` (Prozess `net.neoforged.devlaunch.Main`) `<pid> JFR.start name=x settings=profile filename=x.jfr`,
+  messen, `JFR.stop name=x`, dann `python3 tools/jfr_top.py x.jfr --filter hexxit` bzw. `--callers <Methode>`.
+  Gelände und Oberfläche laufen über `supplyAsync`: Die Hilfs-Chunks der Strukturen (`OldStructureBuild.buildTerrain`)
+  stehen dort **ohne** Hexxit-Frames im Vanilla-Anteil. Ihre Biom-Abfragen beim Oberflächen-Bauen gehen über
+  `ChunkBiomes` (jede Quart-Zelle einmal). Die Biome des Hilfs-Chunks nicht übernehmen: `createResolverForChunk` tastet
+  als Volumen ab und weicht an Biomgrenzen in einzelnen Zellen vom Resolver ab → andere Bauten in begonnenen Welten.
+- Gleichheit Integrated: Welt nach `save-all flush` kopieren, alter Code über `git worktree add --detach <dir> HEAD`
+  bzw. `git stash`, `python3 tools/compare_worlds.py A B --area X1 Z1 X2 Z2`. Zwei Läufe mit **demselben** Code
+  unterscheiden sich schon um ≈ 0,07 % (Erzblasen, Laub, Wasser an Chunk-Grenzen) – immer gegen alt/alt vergleichen.
+  Exakt: alten und neuen Brücken-Code vorübergehend im selben Lauf trocken nebeneinander laufen lassen und die
+  Änderungslisten je Generator vergleichen. Legacy: `expect.sh 1234 find 260` (und `twilight find 30`) alt/neu mit `cmp`.
