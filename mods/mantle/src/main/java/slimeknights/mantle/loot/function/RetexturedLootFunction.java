@@ -1,0 +1,66 @@
+package slimeknights.mantle.loot.function;
+
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.functions.LootItemConditionalFunction;
+import net.minecraft.core.Holder;
+import java.util.Optional;
+import net.minecraft.util.context.ContextKey;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import slimeknights.mantle.Mantle;
+import slimeknights.mantle.block.entity.IRetexturedBlockEntity;
+import slimeknights.mantle.loot.MantleLoot;
+import slimeknights.mantle.util.RetexturedHelper;
+
+import java.util.List;
+import java.util.Set;
+
+/**
+ * Applies the data for a retextured block to the dropped item. No configuration needed.
+ * @see RetexturedHelper#copyTexture()
+ * @deprecated use {@link net.minecraft.world.level.storage.loot.functions.CopyComponentsFunction} with {@link slimeknights.mantle.registration.MantleData#BLOCK_TEXTURE}.
+ */
+@SuppressWarnings("unused") // API
+@Deprecated(forRemoval = true)
+public class RetexturedLootFunction extends LootItemConditionalFunction {
+  public static final MapCodec<RetexturedLootFunction> CODEC = RecordCodecBuilder.mapCodec(inst -> commonFields(inst).apply(inst, RetexturedLootFunction::new));
+
+  /**
+   * Creates a new instance from the given conditions
+   * @param conditions Conditions list
+   */
+  public RetexturedLootFunction(Optional<Holder<LootItemCondition>> conditions) {
+    super(conditions);
+  }
+
+  /** Creates a new instance with no conditions */
+  public RetexturedLootFunction() {
+    super(Optional.empty());
+  }
+
+  @Override
+  public Set<ContextKey<?>> getReferencedContextParams() {
+    return Set.of(LootContextParams.BLOCK_ENTITY);
+  }
+
+  @Override
+  protected ItemStack run(ItemStack stack, LootContext context) {
+    BlockEntity te = context.getOptional(LootContextParams.BLOCK_ENTITY);
+    if (te instanceof IRetexturedBlockEntity retextured) {
+      RetexturedHelper.setTexture(stack, retextured.getTexture());
+    } else {
+      String name = te == null ? "null" : te.getClass().getName();
+      Mantle.logger.warn("Found wrong tile entity for loot function, expected IRetexturedTileEntity, found {}", name);
+    }
+    return stack;
+  }
+
+  @Override
+  public MapCodec<RetexturedLootFunction> codec() {
+    return CODEC;
+  }
+}

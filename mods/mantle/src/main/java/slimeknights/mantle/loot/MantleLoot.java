@@ -72,7 +72,9 @@ public class MantleLoot {
   /** Condition for global loot modifiers that ensures a context set is present. Useful to check if we are in a specific context like entity. */
   public static final Holder<MapCodec<? extends LootItemCondition>> HAS_CONTEXT_SET = LOOT_CONDITIONS.register("has_context_set", () -> HasLootContextSetCondition.CODEC);
 
-  // PORT-TODO(27b block): fill_retextured_block (RetexturedLootFunction, needs IRetexturedBlockEntity)
+  /** Function to add block entity texture to a dropped item */
+  @SuppressWarnings("removal")
+  public static final Holder<MapCodec<? extends LootItemFunction>> RETEXTURED_FUNCTION = LOOT_FUNCTIONS.register("fill_retextured_block", () -> slimeknights.mantle.loot.function.RetexturedLootFunction.CODEC);
   /** Function to add a fluid to an item fluid capability */
   public static final Holder<MapCodec<? extends LootItemFunction>> SET_FLUID_FUNCTION = LOOT_FUNCTIONS.register("set_fluid", () -> SetFluidLootFunction.CODEC);
 

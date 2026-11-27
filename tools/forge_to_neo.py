@@ -31,7 +31,7 @@ RULES = [
     (r'\bnet\.minecraftforge\.common\.MinecraftForge\b', 'net.neoforged.neoforge.common.NeoForge'),
     (r'\bMinecraftForge\.EVENT_BUS\b', 'NeoForge.EVENT_BUS'),
     # --- registries ---
-    (r'\bnet\.minecraftforge\.registries\.RegistryObject\b', 'net.neoforged.neoforge.registries.DeferredHolder'),
+    (r'\bnet\.minecraftforge\.registries\.RegistryObject\b', 'slimeknights.mantle.registration.RegistryObject'),
     (r'\bnet\.minecraftforge\.registries\.ForgeRegistries\b', 'net.minecraft.core.registries.BuiltInRegistries'),
     (r'\bnet\.minecraftforge\.registries\.IForgeRegistry\b', 'net.minecraft.core.Registry'),
     (r'\bIForgeRegistry<', 'Registry<'),
@@ -96,6 +96,8 @@ RULES = [
     (r'\bnet\.minecraftforge\.client\.', 'net.neoforged.neoforge.client.'),
     (r'\bnet\.minecraftforge\.common\.', 'net.neoforged.neoforge.common.'),
     (r'\bnet\.minecraftforge\.entity\.', 'net.neoforged.neoforge.entity.'),
+    # Forge item handler API -> Mantle's compat layer on the 26.3 transfer API (slimeknights.mantle.inventory.compat)
+    (r'\bnet\.(?:minecraftforge|neoforged\.neoforge)\.items\.(?:wrapper\.)?(IItemHandler|IItemHandlerModifiable|ItemStackHandler|ItemHandlerHelper|SlotItemHandler|InvWrapper|SidedInvWrapper|EmptyHandler)\b', r'slimeknights.mantle.inventory.compat.\1'),
     (r'\bnet\.minecraftforge\.items\.', 'net.neoforged.neoforge.items.'),
     (r'\bnet\.minecraftforge\.data\.', 'net.neoforged.neoforge.data.'),
     # --- removed annotations / renamed classes of Minecraft ---
