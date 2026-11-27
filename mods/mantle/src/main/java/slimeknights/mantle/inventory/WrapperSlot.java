@@ -71,7 +71,7 @@ public class WrapperSlot extends Slot {
   }
 
   @Override
-  public Pair<Identifier, Identifier> getNoItemIcon() {
+  public Identifier getNoItemIcon() {
     return this.parent.getNoItemIcon();
   }
 
@@ -91,8 +91,8 @@ public class WrapperSlot extends Slot {
   }
 
   @Override
-  public Slot setBackground(Identifier atlas, Identifier sprite) {
-    return this.parent.setBackground(atlas, sprite);
+  public Slot setBackground(Identifier sprite) {
+    return this.parent.setBackground(sprite);
   }
 
   @Override

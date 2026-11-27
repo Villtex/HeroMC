@@ -65,7 +65,7 @@ import java.util.function.Supplier;
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class BlockDeferredRegister extends DeferredRegisterWrapper<Block> {
-  private static final BlockBehaviour.Properties POTTED_PROPS = BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.DESTROY);
+  private static final BlockBehaviour.Properties POTTED_PROPS = BlockBehaviour.Properties.of().instabreak().noOcclusion().pushReaction(PushReaction.POPPED);
 
   protected final SynchronizedDeferredRegister<Item> itemRegister;
   public BlockDeferredRegister(String modID) {
@@ -116,7 +116,7 @@ public class BlockDeferredRegister extends DeferredRegisterWrapper<Block> {
    */
   public <B extends Block> ItemObject<B> register(String name, Supplier<? extends B> block, final Function<? super B, ? extends BlockItem> item) {
     RegistryObject<B> blockObj = registerNoItem(name, block);
-    itemRegister.register(name, () -> item.apply(blockObj.get()));
+    itemRegister.register(name, () -> item.apply(blockObj.get()), true);
     return new ItemObject<>(blockObj);
   }
 
@@ -145,8 +145,8 @@ public class BlockDeferredRegister extends DeferredRegisterWrapper<Block> {
     ItemObject<Block> blockObj = register(name, block, item);
     return new BuildingBlockObject(
         blockObj,
-        this.register(name + "_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(blockObj.get())), item),
-        this.register(name + "_stairs", () -> new StairBlock(() -> blockObj.get().defaultBlockState(), BlockBehaviour.Properties.copy(blockObj.get())), item));
+        this.register(name + "_slab", () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(blockObj.get())), item),
+        this.register(name + "_stairs", () -> new StairBlock(blockObj.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(blockObj.get())), item));
   }
 
   /**
@@ -160,7 +160,7 @@ public class BlockDeferredRegister extends DeferredRegisterWrapper<Block> {
     ItemObject<Block> blockObj = register(name, props, item);
     return new BuildingBlockObject(blockObj,
       register(name + "_slab", () -> new SlabBlock(props), item),
-      register(name + "_stairs", () -> new StairBlock(() -> blockObj.get().defaultBlockState(), props), item)
+      register(name + "_stairs", () -> new StairBlock(blockObj.get().defaultBlockState(), props), item)
     );
   }
 
@@ -173,7 +173,7 @@ public class BlockDeferredRegister extends DeferredRegisterWrapper<Block> {
    */
   public WallBuildingBlockObject registerWallBuilding(String name, Supplier<? extends Block> block, Function<? super Block, ? extends BlockItem> item) {
     BuildingBlockObject obj = this.registerBuilding(name, block, item);
-    return new WallBuildingBlockObject(obj, this.register(name + "_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(obj.get())), item));
+    return new WallBuildingBlockObject(obj, this.register(name + "_wall", () -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(obj.get())), item));
   }
 
   /**
@@ -199,7 +199,7 @@ public class BlockDeferredRegister extends DeferredRegisterWrapper<Block> {
    */
   public FenceBuildingBlockObject registerFenceBuilding(String name, Supplier<? extends Block> block, Function<? super Block, ? extends BlockItem> item) {
     BuildingBlockObject obj = this.registerBuilding(name, block, item);
-    return new FenceBuildingBlockObject(obj, this.register(name + "_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(obj.get())), item));
+    return new FenceBuildingBlockObject(obj, this.register(name + "_fence", () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(obj.get())), item));
   }
 
   /**
@@ -253,7 +253,7 @@ public class BlockDeferredRegister extends DeferredRegisterWrapper<Block> {
     Function<? super Block, ? extends BlockItem> burnable300 = burnableItem.apply(300);
     BlockBehaviour.Properties planksProps = behaviorCreator.apply(WoodBlockObject.WoodVariant.PLANKS).instrument(NoteBlockInstrument.BASS).strength(2.0f, 3.0f);
     BuildingBlockObject planks = registerBuilding(name + "_planks", planksProps, block -> burnableItem.apply(block instanceof SlabBlock ? 150 : 300).apply(block));
-    ItemObject<FenceBlock> fence = register(name + "_fence", () -> new FenceBlock(Properties.copy(planks.get()).forceSolidOn()), burnable300);
+    ItemObject<FenceBlock> fence = register(name + "_fence", () -> new FenceBlock(Properties.ofFullCopy(planks.get()).forceSolidOn()), burnable300);
     // logs and wood
     Supplier<? extends RotatedPillarBlock> stripped = () -> new RotatedPillarBlock(behaviorCreator.apply(WoodBlockObject.WoodVariant.PLANKS).instrument(NoteBlockInstrument.BASS).strength(2.0f));
     ItemObject<RotatedPillarBlock> strippedLog = register("stripped_" + name + "_log", stripped, burnable300);
@@ -262,26 +262,26 @@ public class BlockDeferredRegister extends DeferredRegisterWrapper<Block> {
     ItemObject<RotatedPillarBlock> wood = register(name + "_wood", () -> new StrippableLogBlock(strippedWood, behaviorCreator.apply(WoodBlockObject.WoodVariant.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0f)), burnable300);
 
     // doors
-    ItemObject<DoorBlock> door = register(name + "_door", () -> new DoorBlock(behaviorCreator.apply(WoodBlockObject.WoodVariant.PLANKS).instrument(NoteBlockInstrument.BASS).strength(3.0F).noOcclusion().pushReaction(PushReaction.DESTROY), setType), burnableTallItem);
-    ItemObject<TrapDoorBlock> trapdoor = register(name + "_trapdoor", () -> new TrapDoorBlock(behaviorCreator.apply(WoodBlockObject.WoodVariant.PLANKS).instrument(NoteBlockInstrument.BASS).strength(3.0F).noOcclusion().isValidSpawn(Blocks::never), setType), burnable300);
-    ItemObject<FenceGateBlock> fenceGate = register(name + "_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(fence.get()), woodType), burnable300);
+    ItemObject<DoorBlock> door = register(name + "_door", () -> new DoorBlock(setType, behaviorCreator.apply(WoodBlockObject.WoodVariant.PLANKS).instrument(NoteBlockInstrument.BASS).strength(3.0F).noOcclusion().pushReaction(PushReaction.POPPED)), burnableTallItem);
+    ItemObject<TrapDoorBlock> trapdoor = register(name + "_trapdoor", () -> new TrapDoorBlock(setType, behaviorCreator.apply(WoodBlockObject.WoodVariant.PLANKS).instrument(NoteBlockInstrument.BASS).strength(3.0F).noOcclusion().isValidSpawn(Blocks::never)), burnable300);
+    ItemObject<FenceGateBlock> fenceGate = register(name + "_fence_gate", () -> new FenceGateBlock(woodType, BlockBehaviour.Properties.ofFullCopy(fence.get())), burnable300);
     // redstone
-    BlockBehaviour.Properties redstoneProps = behaviorCreator.apply(WoodBlockObject.WoodVariant.PLANKS).forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollission().pushReaction(PushReaction.DESTROY).strength(0.5F);
+    BlockBehaviour.Properties redstoneProps = behaviorCreator.apply(WoodBlockObject.WoodVariant.PLANKS).forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollision().pushReaction(PushReaction.POPPED).strength(0.5F);
     ItemObject<PressurePlateBlock> pressurePlate = register(name + "_pressure_plate", () -> new PressurePlateBlock(setType, redstoneProps), burnable300);
-    ItemObject<ButtonBlock> button = register(name + "_button", () -> new ButtonBlock(redstoneProps, setType, 30, true), burnableItem.apply(100));
+    ItemObject<ButtonBlock> button = register(name + "_button", () -> new ButtonBlock(setType, 30, redstoneProps), burnableItem.apply(100));
     // signs
-    RegistryObject<StandingSignBlock> standingSign = registerNoItem(name + "_sign", () -> new MantleStandingSignBlock(behaviorCreator.apply(WoodBlockObject.WoodVariant.PLANKS).instrument(NoteBlockInstrument.BASS).forceSolidOn().noCollission().strength(1.0F), woodType));
-    RegistryObject<WallSignBlock> wallSign = registerNoItem(name + "_wall_sign", () -> new MantleWallSignBlock(behaviorCreator.apply(WoodBlockObject.WoodVariant.PLANKS).instrument(NoteBlockInstrument.BASS).forceSolidOn().noCollission().strength(1.0F).lootFrom(standingSign), woodType));
-    RegistryObject<MantleCeilingHangingSignBlock> hangingSign = registerNoItem(name + "_hanging_sign", () -> new MantleCeilingHangingSignBlock(behaviorCreator.apply(WoodBlockObject.WoodVariant.PLANKS).instrument(NoteBlockInstrument.BASS).forceSolidOn().noCollission().strength(1.0F), woodType));
-    RegistryObject<MantleWallHangingSignBlock> wallHangingSign = registerNoItem(name + "_wall_hanging_sign", () -> new MantleWallHangingSignBlock(behaviorCreator.apply(WoodBlockObject.WoodVariant.PLANKS).instrument(NoteBlockInstrument.BASS).forceSolidOn().noCollission().strength(1.0F).lootFrom(hangingSign), woodType));
+    RegistryObject<StandingSignBlock> standingSign = registerNoItem(name + "_sign", () -> new MantleStandingSignBlock(behaviorCreator.apply(WoodBlockObject.WoodVariant.PLANKS).instrument(NoteBlockInstrument.BASS).forceSolidOn().noCollision().strength(1.0F), woodType));
+    RegistryObject<WallSignBlock> wallSign = registerNoItem(name + "_wall_sign", () -> new MantleWallSignBlock(behaviorCreator.apply(WoodBlockObject.WoodVariant.PLANKS).instrument(NoteBlockInstrument.BASS).forceSolidOn().noCollision().strength(1.0F).overrideLootTable(standingSign.get().getLootTable()), woodType));
+    RegistryObject<MantleCeilingHangingSignBlock> hangingSign = registerNoItem(name + "_hanging_sign", () -> new MantleCeilingHangingSignBlock(behaviorCreator.apply(WoodBlockObject.WoodVariant.PLANKS).instrument(NoteBlockInstrument.BASS).forceSolidOn().noCollision().strength(1.0F), woodType));
+    RegistryObject<MantleWallHangingSignBlock> wallHangingSign = registerNoItem(name + "_wall_hanging_sign", () -> new MantleWallHangingSignBlock(behaviorCreator.apply(WoodBlockObject.WoodVariant.PLANKS).instrument(NoteBlockInstrument.BASS).forceSolidOn().noCollision().strength(1.0F).overrideLootTable(hangingSign.get().getLootTable()), woodType));
     // tell mantle to inject these into the TE
     MantleSignBlockEntity.registerSignBlock(standingSign);
     MantleSignBlockEntity.registerSignBlock(wallSign);
     MantleHangingSignBlockEntity.registerSignBlock(hangingSign);
     MantleHangingSignBlockEntity.registerSignBlock(wallHangingSign);
     // sign is included automatically in asItem of the standing sign
-    this.itemRegister.register(name + "_sign", () -> burnableSignItem.apply(standingSign.get(), wallSign.get()));
-    this.itemRegister.register(name + "_hanging_sign", () -> burnableHangingSignItem.apply(hangingSign.get(), wallHangingSign.get()));
+    this.itemRegister.register(name + "_sign", () -> burnableSignItem.apply(standingSign.get(), wallSign.get()), true);
+    this.itemRegister.register(name + "_hanging_sign", () -> burnableHangingSignItem.apply(hangingSign.get(), wallHangingSign.get()), true);
     // finally, return
     return new WoodBlockObject(resource(name), woodType,
                                planks, log, strippedLog, wood, strippedWood,
@@ -300,7 +300,7 @@ public class BlockDeferredRegister extends DeferredRegisterWrapper<Block> {
    */
   public RegistryObject<FlowerPotBlock> registerPotted(String name, Supplier<? extends Block> block) {
     RegistryObject<FlowerPotBlock> potted = registerNoItem("potted_" + name, () -> new FlowerPotBlock(() -> (FlowerPotBlock)Blocks.FLOWER_POT, block, POTTED_PROPS));
-    ((FlowerPotBlock)Blocks.FLOWER_POT).addPlant(resource(name), potted);
+    // Port: FlowerPotBlock#addPlant is gone in 26.3; NeoForge fills the pot map from the supplier constructor (check in 27j)
     return potted;
   }
 

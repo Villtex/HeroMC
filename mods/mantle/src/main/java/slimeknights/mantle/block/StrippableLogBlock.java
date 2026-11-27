@@ -18,12 +18,6 @@ public class StrippableLogBlock extends RotatedPillarBlock {
     this.stripped = stripped;
   }
 
-  @Nullable
-  @Override
-  public BlockState getToolModifiedState(BlockState state, UseOnContext context, ItemAbility toolAction, boolean simulate) {
-    if (toolAction == ItemAbilities.AXE_STRIP) {
-      return stripped.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
-    }
-    return null;
-  }
+  // Port: 26.3 strips logs through the data map neoforge:transformable (block -> stripped block); the blocks
+  // registered by registerWood need entries there (Teil 27j, see TODO.md). The stripped supplier is kept for that.
 }

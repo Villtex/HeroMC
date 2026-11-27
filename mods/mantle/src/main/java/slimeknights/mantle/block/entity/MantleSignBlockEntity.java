@@ -1,5 +1,7 @@
 package slimeknights.mantle.block.entity;
 
+import net.minecraft.world.level.block.entity.BlockEntityTypes;
+
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
@@ -31,6 +33,6 @@ public final class MantleSignBlockEntity {
 
   /** Adds all registered sign blocks to the vanilla type, mod bus listener */
   public static void addBlocks(BlockEntityTypeAddBlocksEvent event) {
-    event.modify(BlockEntityType.SIGN, SIGN_BLOCKS.stream().map(Supplier::get).toArray(Block[]::new));
+    event.modify(net.minecraft.world.level.block.entity.BlockEntityTypes.SIGN, SIGN_BLOCKS.stream().map(Supplier::get).toArray(Block[]::new));
   }
 }

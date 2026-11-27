@@ -1,5 +1,6 @@
 package slimeknights.mantle.block.fluid;
 
+import net.minecraft.world.entity.InsideBlockEffectApplier;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
@@ -19,16 +20,16 @@ import java.util.function.Supplier;
 public class MobEffectLiquidBlock extends LiquidBlock {
   private final Supplier<MobEffectInstance> effect;
   public MobEffectLiquidBlock(Supplier<? extends FlowingFluid> supplier, Properties properties, Supplier<MobEffectInstance> effect) {
-    super(supplier, properties);
+    // Port: 26.3 takes the fluid itself; fluids are registered before blocks
+    super(supplier.get(), properties);
     this.effect = effect;
   }
 
   @Override
-  public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-    if (entity.getFluidTypeHeight(getFluid().getFluidType()) > 0 && entity instanceof LivingEntity living) {
-      MobEffectInstance effect = this.effect.get();
-      effect.setCurativeItems(new ArrayList<>());
-      living.addEffect(effect);
+  protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier effects, boolean intersects) {
+    if (entity.getFluidTypeHeight(fluid.getFluidType()) > 0 && entity instanceof LivingEntity living) {
+      // Port: NeoForge 26.3 has no curative items, milk clears the effect as any other
+      living.addEffect(this.effect.get());
     }
   }
 

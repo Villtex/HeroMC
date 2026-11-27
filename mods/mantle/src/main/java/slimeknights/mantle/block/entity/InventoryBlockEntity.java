@@ -60,6 +60,15 @@ public abstract class InventoryBlockEntity extends NameableBlockEntity implement
    * Port: offers {@link #getItemHandler()} as {@code Capabilities.Item.BLOCK} for the block entity type (replaces
    * Forge's {@code getCapability(ITEM_HANDLER)}). Call from a {@code RegisterCapabilitiesEvent} listener.
    */
+  /** Port: drops the contents through the block, where 1.20.1 did it in {@code Block#onRemove} */
+  @Override
+  public void preRemoveSideEffects(BlockPos pos, BlockState state) {
+    super.preRemoveSideEffects(pos, state);
+    if (level != null && state.getBlock() instanceof slimeknights.mantle.block.InventoryBlock block) {
+      block.onInventoryRemoved(state, level, pos, itemHandler);
+    }
+  }
+
   public static <T extends InventoryBlockEntity> void registerItemCapability(RegisterCapabilitiesEvent event, BlockEntityType<T> type) {
     event.registerBlockEntity(Capabilities.Item.BLOCK, type, (be, side) -> ItemHandlers.asResourceHandler(be.getItemHandler()));
   }

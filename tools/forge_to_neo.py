@@ -133,14 +133,126 @@ RULES = [
     (r'\bFMLEnvironment\.dist\b', 'FMLEnvironment.getDist()'),
     (r'\bFMLEnvironment\.production\b', 'FMLEnvironment.isProduction()'),
     (r'\bScreen\.has(Shift|Control|Alt)Down\(\)', r'Minecraft.getInstance().has\1Down()'),
+    # --- block properties and block constructors of 26.3 ---
+    (r'\b(BlockBehaviour\.)?Properties\.copy\(', r'\1Properties.ofFullCopy('),
+    (r'\bPushReaction\.DESTROY\b', 'PushReaction.POPPED'),
+    (r'\bPushReaction\.BLOCK\b', 'PushReaction.IMMOVEABLE'),
+    (r'\.noCollission\(\)', '.noCollision()'),
+    (r'\.dropsLike\(([\w.]+)\)', r'.overrideLootTable(\1.getLootTable())'),
+    (r'\bnew StairBlock\(\(\) -> ([\w.()]+?)\.defaultBlockState\(\),', r'new StairBlock(\1.defaultBlockState(),'),
+    (r'\bnew StairBlock\((\w+)::defaultBlockState,', r'new StairBlock(\1.defaultBlockState(),'),
+    # block methods with new 26.3 signatures (bodies using the removed parameters are left for the compiler)
+    (r'public InteractionResult use\(BlockState (\w+), Level (\w+), BlockPos (\w+), Player (\w+), InteractionHand \w+, BlockHitResult (\w+)\)',
+     r'protected InteractionResult useWithoutItem(BlockState \1, Level \2, BlockPos \3, Player \4, BlockHitResult \5)'),
+    (r'public BlockState updateShape\(BlockState (\w+), Direction (\w+), BlockState (\w+), LevelAccessor (\w+), BlockPos (\w+), BlockPos (\w+)\)',
+     r'protected BlockState updateShape(BlockState \1, LevelReader \4, ScheduledTickAccess tickAccess, BlockPos \5, Direction \2, BlockPos \6, BlockState \3, RandomSource random)'),
+    (r'\bpublic (VoxelShape get(?:Collision|Visual)?Shape|boolean canSurvive|RenderShape getRenderShape|BlockState rotate|BlockState mirror|boolean isSignalSource|int getSignal|int getDirectSignal|boolean hasAnalogOutputSignal|int getAnalogOutputSignal|void tick|void randomTick|boolean isRandomlyTicking|FluidState getFluidState)\(',
+     r'protected \1('),
+    # chat: action bar / system messages
+    (r'\.displayClientMessage\(((?:[^()]|\((?:[^()]|\([^()]*\))*\))*), true\)', r'.sendOverlayMessage(\1)'),
+    (r'\.displayClientMessage\(((?:[^()]|\((?:[^()]|\([^()]*\))*\))*), false\)', r'.sendSystemMessage(\1)'),
+    (r'\b(fluid\w*|\w*[fF]luid|stack|transferred)\.getDisplayName\(\)', r'\1.getHoverName()'),
+    # Forge pick block -> NeoForge 26.3 IBlockExtension#getCloneItemStack
+    (r'public ItemStack getCloneItemStack\(BlockState (\w+), HitResult \w+, (?:BlockGetter|LevelReader) (\w+), BlockPos (\w+), Player (\w+)\)',
+     r'public ItemStack getCloneItemStack(LevelReader \2, BlockPos \3, BlockState \1, boolean includeData, Player \4)'),
+    # block entity types: no builder and no datafixer type in 26.3
+    (r'\bBlockEntityType\.Builder\.(<\w+>)?of\(([^;]*?)\)\.build\([^()]*(?:\([^()]*\))?\)', r'new BlockEntityType\1(\2)'),
+    (r'\bnew BlockEntityType<>\((\w+), ([^;]*?), getType\(name\)\)', r'new BlockEntityType<>(\1, java.util.Set.<Block>copyOf(\2))'),
+    (r'\.lootFrom\(([\w.]+)\)', r'.overrideLootTable(\1.get().getLootTable())'),
     # --- javax annotations: keep, jsr305 is on the 26.3 classpath? (checked by the compiler) ---
 ]
+
+
+# 26.3 moved these constructor arguments: class -> (old argument order -> new order), by argument count
+CTOR_ORDER = {
+    'DoorBlock': {2: (1, 0)},
+    'TrapDoorBlock': {2: (1, 0)},
+    'FenceGateBlock': {2: (1, 0)},
+    'ButtonBlock': {4: (1, 2, 0)},
+    'PressurePlateBlock': {3: (2, 1)},
+    'StandingSignBlock': {2: (1, 0)},
+    'WallSignBlock': {2: (1, 0)},
+    'CeilingHangingSignBlock': {2: (1, 0)},
+    'WallHangingSignBlock': {2: (1, 0)},
+}
+
+
+def _split_args(text: str, start: int):
+    """Arguments of the call whose '(' is at start: (list of argument strings, index after ')') or None"""
+    depth, args, cur, i = 0, [], [], start + 1
+    while i < len(text):
+        c = text[i]
+        if c in '([{<' and not (c == '<' and depth == 0 and False):
+            depth += c in '([{'
+        if c in ')]}':
+            if depth == 0:
+                args.append(''.join(cur).strip())
+                return args, i + 1
+            depth -= 1
+        if c == ',' and depth == 0:
+            args.append(''.join(cur).strip())
+            cur = []
+        else:
+            cur.append(c)
+        i += 1
+    return None
+
+
+def reorder_constructors(text: str) -> str:
+    """Puts the arguments of the constructors in CTOR_ORDER into their 26.3 order (only for the 1.20.1 signatures:
+    BlockSetType/WoodType last; already reordered calls have it first and are left alone)."""
+    for name, orders in CTOR_ORDER.items():
+        pos = 0
+        pattern = re.compile(r'\bnew ' + name + r'\(')
+        while (m := pattern.search(text, pos)):
+            res = _split_args(text, m.end() - 1)
+            pos = m.end()
+            if not res:
+                continue
+            args, end = res
+            order = orders.get(len(args))
+            # old form: properties first (props variable or a builder chain), type second
+            if order is None or re.search(r'(Type|setType|woodType|Sensitivity)\b', args[0]):
+                continue
+            new = [args[i] for i in order]
+            if name == 'PressurePlateBlock':
+                pass  # sensitivity is part of BlockSetType in 26.3, dropped
+            replacement = 'new ' + name + '(' + ', '.join(new) + ')'
+            text = text[:m.start()] + replacement + text[end:]
+            pos = m.start() + len(replacement)
+    return text
+
+
+# types the rules above introduce: simple name -> import
+IMPORTS = {
+    'ScheduledTickAccess': 'net.minecraft.world.level.ScheduledTickAccess',
+    'RandomSource': 'net.minecraft.util.RandomSource',
+    'LevelReader': 'net.minecraft.world.level.LevelReader',
+    'ServerLevel': 'net.minecraft.server.level.ServerLevel',
+    'BlockEntityTypes': 'net.minecraft.world.level.block.entity.BlockEntityTypes',
+    'Prediction': 'net.minecraft.util.Prediction',
+}
+
+
+def add_imports(text: str) -> str:
+    """Adds imports for the types in IMPORTS that the file uses but does not import"""
+    m = re.search(r'^package [\w.]+;\n', text, re.M)
+    if not m:
+        return text
+    missing = []
+    for name, full in IMPORTS.items():
+        if re.search(r'\b' + name + r'\b', text) and not re.search(r'^import ' + re.escape(full) + ';', text, re.M) \
+                and not re.search(r'^import [\w.]+\.' + name + ';', text, re.M):
+            missing.append(f'import {full};\n')
+    if missing:
+        text = text[:m.end()] + '\n' + ''.join(missing) + text[m.end():]
+    return text
 
 
 def convert(text: str) -> str:
     for pattern, repl in RULES:
         text = re.sub(pattern, repl, text)
-    return text
+    return add_imports(reorder_constructors(text))
 
 
 def main(args):

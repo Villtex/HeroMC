@@ -18,9 +18,9 @@ import java.util.function.Supplier;
  * @param <T>  Registered value type
  */
 public final class RegistryObject<T> implements Supplier<T> {
-  private final DeferredHolder<?, ? extends T> holder;
+  private final DeferredHolder<?, ?> holder;
 
-  private RegistryObject(DeferredHolder<?, ? extends T> holder) {
+  private RegistryObject(DeferredHolder<?, ?> holder) {
     this.holder = holder;
   }
 
@@ -36,8 +36,9 @@ public final class RegistryObject<T> implements Supplier<T> {
 
   /** Registered value, throws if not yet registered */
   @Override
+  @SuppressWarnings("unchecked")
   public T get() {
-    return holder.get();
+    return (T) holder.get();
   }
 
   /** Registry name */
@@ -63,8 +64,8 @@ public final class RegistryObject<T> implements Supplier<T> {
 
   /** The NeoForge holder (also a {@link Holder} of the registry type) */
   @SuppressWarnings("unchecked")
-  public <R> DeferredHolder<R, ? extends T> holder() {
-    return (DeferredHolder<R, ? extends T>) holder;
+  public <R> DeferredHolder<R, ?> holder() {
+    return (DeferredHolder<R, ?>) holder;
   }
 
   /** Same as Forge's {@code getHolder()} */

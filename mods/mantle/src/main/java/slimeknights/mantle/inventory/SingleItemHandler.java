@@ -1,5 +1,7 @@
 package slimeknights.mantle.inventory;
 
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import net.minecraft.nbt.CompoundTag;
@@ -137,22 +139,17 @@ public abstract class SingleItemHandler<T extends MantleBlockEntity> implements 
   }
 
   /**
-   * Writes this module to NBT
-   * @return  Module in NBT
+   * Writes this module to the block entity data.
+   * Port: 26.3 block entities save through {@link ValueOutput} (item components need the registries), was a CompoundTag.
    */
-  public CompoundTag writeToNBT() {
-    CompoundTag nbt = new CompoundTag();
+  public void write(ValueOutput output) {
     if (!stack.isEmpty()) {
-      stack.save(nbt);
+      output.store("item", ItemStack.CODEC, stack);
     }
-    return nbt;
   }
 
-  /**
-   * Reads this module from NBT
-   * @param nbt  NBT
-   */
-  public void readFromNBT(CompoundTag nbt) {
-    stack = ItemStack.of(nbt);
+  /** Reads this module from the block entity data, see {@link #write(ValueOutput)} */
+  public void read(ValueInput input) {
+    stack = input.read("item", ItemStack.CODEC).orElse(ItemStack.EMPTY);
   }
 }

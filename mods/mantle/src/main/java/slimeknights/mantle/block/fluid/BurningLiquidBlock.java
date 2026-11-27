@@ -1,5 +1,7 @@
 package slimeknights.mantle.block.fluid;
 
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.InsideBlockEffectApplier;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
@@ -20,18 +22,18 @@ public class BurningLiquidBlock extends LiquidBlock {
   /** Damage from being in the fluid, lava uses 4 */
   private final float damage;
   public BurningLiquidBlock(Supplier<? extends FlowingFluid> supplier, Properties properties, int burnTime, float damage) {
-    super(supplier, properties);
+    // Port: 26.3 takes the fluid itself; fluids are registered before blocks
+    super(supplier.get(), properties);
     this.burnTime = burnTime;
     this.damage = damage;
   }
 
-  @SuppressWarnings("deprecation")  // useless annotation on block methods
   @Override
-  public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-    if (!entity.fireImmune() && entity.getFluidTypeHeight(getFluid().getFluidType()) > 0) {
-      entity.setSecondsOnFire(burnTime);
-      if (entity.hurt(entity.damageSources().lava(), damage)) {
-        entity.playSound(SoundEvents.GENERIC_BURN, 0.4F, 2.0F + level.random.nextFloat() * 0.4F);
+  protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier effects, boolean intersects) {
+    if (!entity.fireImmune() && entity.getFluidTypeHeight(fluid.getFluidType()) > 0) {
+      entity.igniteForSeconds(burnTime);
+      if (level instanceof ServerLevel server && entity.hurtServer(server, entity.damageSources().lava(), damage)) {
+        entity.playSound(SoundEvents.GENERIC_BURN, 0.4F, 2.0F + level.getRandom().nextFloat() * 0.4F);
       }
     }
   }

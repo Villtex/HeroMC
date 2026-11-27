@@ -1,5 +1,6 @@
 package slimeknights.mantle.registration.deferred;
 
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import net.minecraft.core.registries.Registries;
@@ -23,7 +24,6 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import slimeknights.mantle.registration.RegistryObject;
 import slimeknights.mantle.block.fluid.BurningLiquidBlock;
 import slimeknights.mantle.block.fluid.MobEffectLiquidBlock;
-import slimeknights.mantle.fluid.InvertedFluid;
 import slimeknights.mantle.fluid.InvertedFluidType;
 import slimeknights.mantle.fluid.TextureFluidType;
 import slimeknights.mantle.fluid.UnplaceableFluid;
@@ -150,7 +150,7 @@ public class FluidDeferredRegister extends DeferredRegisterWrapper<Fluid> {
 
     /** Creates the default bucket */
     public Builder bucket() {
-      return bucket(itemRegister.register(name + "_bucket", () -> new BucketItem(stillDelayed, RegistrationHelper.BUCKET_PROPS)));
+      return bucket(itemRegister.register(name + "_bucket", () -> new BucketItem(stillDelayed.get(), RegistrationHelper.BUCKET_PROPS)));
     }
 
 
@@ -167,7 +167,7 @@ public class FluidDeferredRegister extends DeferredRegisterWrapper<Fluid> {
 
     /** Creates the default block from the given material and light level */
     public Builder block(MapColor color, int lightLevel) {
-      return block(sup -> new LiquidBlock(sup, createProperties(color, lightLevel)));
+      return block(sup -> new LiquidBlock(sup.get(), createProperties(color, lightLevel)));
     }
 
     /** Creates a block that lights entities on fire and damages them over time */
@@ -211,10 +211,7 @@ public class FluidDeferredRegister extends DeferredRegisterWrapper<Fluid> {
       return flowing(BaseFlowingFluid.Source::new, BaseFlowingFluid.Flowing::new);
     }
 
-    /** Builds a flowing fluid with the default constructors */
-    public FlowingFluidObject<InvertedFluid> invertedFlowing() {
-      return flowing(InvertedFluid.Source::new, InvertedFluid.Flowing::new);
-    }
+    // Port: invertedFlowing() is gone with InvertedFluid (not used by Tinkers 3.12.1, see TODO.md)
 
     /**
      * Builds a flowing fluid with the given constructors
@@ -245,6 +242,6 @@ public class FluidDeferredRegister extends DeferredRegisterWrapper<Fluid> {
 
   /** Creates properties for a fluid */
   public static BlockBehaviour.Properties createProperties(MapColor color, int lightLevel) {
-    return BlockBehaviour.Properties.of().mapColor(color).replaceable().noCollission().randomTicks().strength(100.0F).lightLevel(state -> lightLevel).pushReaction(PushReaction.DESTROY).noLootTable().liquid().sound(SoundType.EMPTY);
+    return BlockBehaviour.Properties.of().mapColor(color).replaceable().noCollision().randomTicks().strength(100.0F).lightLevel(state -> lightLevel).pushReaction(PushReaction.POPPED).noLootTable().liquid().sound(SoundType.EMPTY);
   }
 }

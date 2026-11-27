@@ -1,5 +1,7 @@
 package slimeknights.mantle.registration.deferred;
 
+import slimeknights.mantle.registration.RegistrationContext;
+import slimeknights.mantle.registration.RegistryObject;
 import lombok.RequiredArgsConstructor;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
@@ -28,8 +30,19 @@ public class SynchronizedDeferredRegister<T> {
 
   /** Registers the given object, synchronized over the internal register */
   public <I extends T> RegistryObject<I> register(final String name, final Supplier<? extends I> sup) {
+    return register(name, sup, false);
+  }
+
+  /**
+   * Registers the given object, synchronized over the internal register.
+   * Port: the supplier runs inside {@link RegistrationContext}, so item and block properties get the registry key
+   * 26.3 needs ({@code setId}) without the callers setting it.
+   * @param blockItem  If true, the entry is the item of a block (block description ID, as in 1.20.1)
+   */
+  public <I extends T> RegistryObject<I> register(final String name, final Supplier<? extends I> sup, boolean blockItem) {
     synchronized (internal) {
-      return internal.register(name, sup);
+      ResourceKey<? extends Registry<T>> registry = internal.getRegistryKey();
+      return RegistryObject.of(internal.<I>register(name, id -> RegistrationContext.create(ResourceKey.create(registry, id), blockItem, sup::get)));
     }
   }
 

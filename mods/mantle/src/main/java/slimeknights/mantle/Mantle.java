@@ -1,5 +1,8 @@
 package slimeknights.mantle;
 
+import slimeknights.mantle.block.entity.MantleHangingSignBlockEntity;
+import slimeknights.mantle.block.entity.MantleSignBlockEntity;
+import slimeknights.mantle.item.IFluidContainerItem;
 import slimeknights.mantle.loot.LootTableInjector;
 import slimeknights.mantle.loot.MantleLoot;
 import slimeknights.mantle.datagen.MantleTags;
@@ -51,6 +54,10 @@ public class Mantle {
     MantleRecipes.init(bus);
     MantleTags.init();
     MantleLoot.init(bus);
+    // Port: Mantle's signs use the vanilla sign block entity types, fluid container items get their capability here
+    bus.addListener(MantleSignBlockEntity::addBlocks);
+    bus.addListener(MantleHangingSignBlockEntity::addBlocks);
+    bus.addListener(IFluidContainerItem::registerCapabilities);
     LootTableInjector.init(bus);
     FluidContainerTransferManager.INSTANCE.init();
     FluidContainerTransferManager.TRANSFER_LOADERS.registerDeserializer(EmptyFluidContainerTransfer.ID, EmptyFluidContainerTransfer.DESERIALIZER);

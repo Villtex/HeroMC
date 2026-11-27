@@ -1,5 +1,7 @@
 package slimeknights.mantle.block;
 
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Containers;
@@ -56,7 +58,7 @@ public abstract class InventoryBlock extends Block implements EntityBlock {
   @SuppressWarnings("deprecation")
   @Deprecated
   @Override
-  public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult rayTraceResult) {
+  protected InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult rayTraceResult) {
     if (!world.isClientSide()) {
       return this.openGui(player, world, pos) ? InteractionResult.CONSUME : InteractionResult.PASS;
     }
@@ -71,7 +73,7 @@ public abstract class InventoryBlock extends Block implements EntityBlock {
     super.setPlacedBy(worldIn, pos, state, placer, stack);
 
     // set custom name from named stack
-    if (stack.hasCustomHoverName()) {
+    if (stack.has(DataComponents.CUSTOM_NAME)) {
       if (worldIn.getBlockEntity(pos) instanceof INameableMenuProvider provider) {
         provider.setCustomName(stack.getHoverName());
       }
@@ -89,19 +91,18 @@ public abstract class InventoryBlock extends Block implements EntityBlock {
 
   /* Inventory handling */
 
-  @SuppressWarnings("deprecation")
-  @Deprecated
-  @Override
-  public void onRemove(BlockState state, Level worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
-    if (state.getBlock() != newState.getBlock()) {
-      BlockEntity te = worldIn.getBlockEntity(pos);
-      if (te != null) {
-        slimeknights.mantle.inventory.compat.ItemHandlers.getBlockHandler(worldIn, pos, null).ifPresent(inventory -> dropInventoryItems(state, worldIn, pos, inventory));
-        worldIn.updateNeighbourForOutputSignal(pos, this);
-      }
-    }
+  /**
+   * Port: 26.3 has no {@code onRemove}; {@link InventoryBlockEntity#preRemoveSideEffects} calls this before the block
+   * is replaced, so the contents drop as in 1.20.1.
+   */
+  public void onInventoryRemoved(BlockState state, Level worldIn, BlockPos pos, IItemHandler inventory) {
+    dropInventoryItems(state, worldIn, pos, inventory);
+  }
 
-    super.onRemove(state, worldIn, pos, newState, isMoving);
+  @Override
+  protected void affectNeighborsAfterRemoval(BlockState state, ServerLevel level, BlockPos pos, boolean movedByPiston) {
+    level.updateNeighbourForOutputSignal(pos, this);
+    super.affectNeighborsAfterRemoval(state, level, pos, movedByPiston);
   }
 
   /**

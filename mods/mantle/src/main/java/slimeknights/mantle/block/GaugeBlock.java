@@ -1,5 +1,8 @@
 package slimeknights.mantle.block;
 
+import net.minecraft.world.level.ScheduledTickAccess;
+import net.minecraft.util.RandomSource;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -67,7 +70,7 @@ public class GaugeBlock extends Block {
   @SuppressWarnings("deprecation")
   @Deprecated
   @Override
-  public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+  protected InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit) {
     // display adjacent tank contents
     if (!world.isClientSide()) {
       Direction side = state.getValue(FACING);
@@ -78,10 +81,10 @@ public class GaugeBlock extends Block {
           FluidStack fluid = handler.getFluidInTank(0);
           if (fluid.isEmpty()) {
             // show simple empty message if gauge amount is hidden
-            player.displayClientMessage(formatCapacity(handler.getTankCapacity(0)), true);
+            player.sendOverlayMessage(formatCapacity(handler.getTankCapacity(0)));
           } else {
-            Component contents = Component.translatable(CONTENTS_FORMAT, COMMA_FORMAT.format(fluid.getAmount()), COMMA_FORMAT.format(handler.getTankCapacity(0)), fluid.getDisplayName());
-            player.displayClientMessage(Component.translatable(CONTENTS_KEY, contents), true);
+            Component contents = Component.translatable(CONTENTS_FORMAT, COMMA_FORMAT.format(fluid.getAmount()), COMMA_FORMAT.format(handler.getTankCapacity(0)), fluid.getHoverName());
+            player.sendOverlayMessage(Component.translatable(CONTENTS_KEY, contents));
           }
         }
       }
@@ -96,14 +99,14 @@ public class GaugeBlock extends Block {
   @SuppressWarnings("deprecation")
   @Deprecated
   @Override
-  public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
+  protected VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
     return BOUNDS[state.getValue(FACING).get3DDataValue()];
   }
 
   @SuppressWarnings("deprecation")
   @Deprecated
   @Override
-  public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos) {
+  protected boolean canSurvive(BlockState state, LevelReader world, BlockPos pos) {
     Direction direction = state.getValue(FACING);
     BlockEntity te = world.getBlockEntity(pos.relative(direction.getOpposite()));
     // Port: capabilities need a Level; during world generation (other readers) the gauge stays
@@ -130,21 +133,21 @@ public class GaugeBlock extends Block {
   @SuppressWarnings("deprecation")
   @Deprecated
   @Override
-  public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor worldIn, BlockPos currentPos, BlockPos facingPos) {
+  protected BlockState updateShape(BlockState state, LevelReader worldIn, ScheduledTickAccess tickAccess, BlockPos currentPos, Direction facing, BlockPos facingPos, BlockState facingState, RandomSource random) {
     return facing.getOpposite() == state.getValue(FACING) && !state.canSurvive(worldIn, currentPos) ? Blocks.AIR.defaultBlockState() : state;
   }
 
   @Override
   @SuppressWarnings("deprecation")
   @Deprecated
-  public BlockState rotate(BlockState state, Rotation rot) {
+  protected BlockState rotate(BlockState state, Rotation rot) {
     return state.setValue(FACING, rot.rotate(state.getValue(FACING)));
   }
 
   @Override
   @SuppressWarnings("deprecation")
   @Deprecated
-  public BlockState mirror(BlockState state, Mirror mirror) {
+  protected BlockState mirror(BlockState state, Mirror mirror) {
     return state.rotate(mirror.getRotation(state.getValue(FACING)));
   }
 
