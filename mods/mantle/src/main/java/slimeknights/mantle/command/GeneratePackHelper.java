@@ -37,7 +37,7 @@ public class GeneratePackHelper {
   public static Path getDatapackPath(MinecraftServer server, String packName) {
     // if we have JSON Things, do a global datapack
     if (ModList.get().isLoaded("jsonthings")) {
-      return server.getServerDirectory().toPath().resolve("thingpacks/" + packName);
+      return server.getServerDirectory().resolve("thingpacks/" + packName);
     }
     // TODO: consider option to put in the standard datapacks folder via config property
     // otherwise, do a world local datapack
@@ -87,7 +87,10 @@ public class GeneratePackHelper {
     JsonObject meta = new JsonObject();
     JsonObject pack = new JsonObject();
     pack.addProperty("description", description);
-    pack.addProperty("pack_format", SharedConstants.getCurrentVersion().getPackVersion(packType));
+    // Port: 26.3 pack.mcmeta uses min_format/max_format
+    net.minecraft.server.packs.metadata.pack.PackFormat format = SharedConstants.getCurrentVersion().packVersion(packType);
+    pack.addProperty("min_format", format.major());
+    pack.addProperty("max_format", format.major());
     meta.add("pack", pack);
     saveJson(meta, path);
   }
@@ -131,6 +134,6 @@ public class GeneratePackHelper {
    * @return  Clickable text component
    */
   public static MutableComponent getPathComponent(MutableComponent text, String path) {
-    return text.withStyle(style -> style.withUnderlined(true).withClickEvent(new ClickEvent(Action.OPEN_FILE, path)));
+    return text.withStyle(style -> style.withUnderlined(true).withClickEvent(new ClickEvent.OpenFile(path)));
   }
 }

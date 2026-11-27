@@ -207,12 +207,14 @@ public class TagsForCommand {
   private static int heldEnchantments(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
     CommandSourceStack source = context.getSource();
     ItemStack stack = source.getPlayerOrException().getMainHandItem();
-    Map<Enchantment, Integer> enchantments = EnchantmentHelper.getEnchantments(stack);
+    // Port: enchantments are a data component and a datapack registry in 26.3
+    net.minecraft.world.item.enchantment.ItemEnchantments enchantments = EnchantmentHelper.getEnchantmentsForCrafting(stack);
     if (!enchantments.isEmpty()) {
       int totalTags = 0;
+      Registry<Enchantment> registry = source.registryAccess().lookupOrThrow(net.minecraft.core.registries.Registries.ENCHANTMENT);
       // print tags for each contained enchantment
-      for (Enchantment enchantment : enchantments.keySet()) {
-        totalTags += printOwningTags(context, BuiltInRegistries.ENCHANTMENT, enchantment);
+      for (net.minecraft.core.Holder<Enchantment> enchantment : enchantments.keySet()) {
+        totalTags += printOwningTags(context, registry, enchantment.value());
       }
       return totalTags;
     }
@@ -225,7 +227,7 @@ public class TagsForCommand {
     CommandSourceStack source = context.getSource();
     ItemStack stack = source.getPlayerOrException().getMainHandItem();
     if (stack.getItem() instanceof SpawnEggItem egg) {
-      EntityType<?> type = egg.getType(stack.getTag());
+      EntityType<?> type = SpawnEggItem.getType(stack);
       return printOwningTags(context, BuiltInRegistries.ENTITY_TYPE, type);
     }
     source.sendSuccess(() -> NO_HELD_ENTITY, true);
@@ -310,10 +312,10 @@ public class TagsForCommand {
     Player player = source.getPlayerOrException();
     Vec3 start = player.getEyePosition(1F);
     Vec3 look = player.getLookAngle();
-    double range = Objects.requireNonNull(player.getAttribute(NeoForgeMod.ENTITY_REACH.get())).getValue();
+    double range = Objects.requireNonNull(player.getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ENTITY_INTERACTION_RANGE)).getValue();
     Vec3 direction = start.add(look.x * range, look.y * range, look.z * range);
     AABB bb = player.getBoundingBox().expandTowards(look.x * range, look.y * range, look.z * range).expandTowards(1, 1, 1);
-    EntityHitResult entityTrace = ProjectileUtil.getEntityHitResult(source.getLevel(), player, start, direction, bb, e -> true);
+    EntityHitResult entityTrace = ProjectileUtil.getEntityHitResult(player, start, direction, bb, e -> true, range * range);
     if (entityTrace != null) {
       EntityType<?> target = entityTrace.getEntity().getType();
       return printOwningTags(context, BuiltInRegistries.ENTITY_TYPE, target);

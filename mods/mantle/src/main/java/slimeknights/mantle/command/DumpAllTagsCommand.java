@@ -34,14 +34,14 @@ public class DumpAllTagsCommand {
    * @param subCommand  Command builder
    */
   public static void register(LiteralArgumentBuilder<CommandSourceStack> subCommand) {
-    subCommand.requires(sender -> sender.hasPermission(MantleCommand.PERMISSION_EDIT_SPAWN))
+    subCommand.requires(sender -> MantleCommand.hasPermission(sender, MantleCommand.PERMISSION_EDIT_SPAWN))
               .executes(DumpAllTagsCommand::runAll)
               .then(TagSourceArgument.argument().executes(DumpAllTagsCommand::runType));
   }
 
   /** Gets the path for the output */
   protected static File getOutputFile(CommandContext<CommandSourceStack> context) {
-    return context.getSource().getServer().getFile(TAG_DUMP_PATH);
+    return context.getSource().getServer().getFile(TAG_DUMP_PATH).toFile();
   }
 
   /** @deprecated use {@link GeneratePackHelper#getOutputComponent(File)} */

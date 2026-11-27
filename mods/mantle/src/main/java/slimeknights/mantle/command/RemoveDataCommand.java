@@ -93,7 +93,7 @@ public class RemoveDataCommand {
     // start by fetching the existing structure set JSON
     Identifier modifierLocation = JsonHelper.wrap(id.identifier(), BIOME_MODIFIERS.identifier().getNamespace() + '/' + BIOME_MODIFIERS.identifier().getPath() + '/', ".json");
     JsonObject json = new JsonObject();
-    json.addProperty("type", NeoForgeMod.NONE_BIOME_MODIFIER_TYPE.getId().toString());
+    json.addProperty("type", "neoforge:none");
 
     // determine the path for the resulting datapack
     Path pack = GeneratePackHelper.getDatapackPath(context.getSource().getServer());

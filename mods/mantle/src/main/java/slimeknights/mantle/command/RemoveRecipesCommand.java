@@ -1,5 +1,6 @@
 package slimeknights.mantle.command;
 
+import net.minecraft.world.item.crafting.RecipeHolder;
 import com.google.gson.JsonObject;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
@@ -77,7 +78,7 @@ public class RemoveRecipesCommand {
 
   /** Suggestion builder for recipe IDs */
   private static final SuggestionProvider<CommandSourceStack> SUGGESTS_RECIPES = (context, builder)
-    -> SharedSuggestionProvider.suggestResource(context.getSource().getRecipeManager().getRecipeIds(), builder);
+    -> SharedSuggestionProvider.suggestResource(context.getSource().getServer().getRecipeManager().getRecipes().stream().map(holder -> holder.id().identifier()), builder);
   /** Suggests presets for the command */
   private static final SuggestionProvider<CommandSourceStack> SUGGEST_PRESETS = SourcesCommand.suggestFolder(PRESETS);
 
@@ -120,21 +121,21 @@ public class RemoveRecipesCommand {
   private static int runByResult(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
     long startTime = System.nanoTime();
     Holder<RecipeType<?>> recipeType = ResourceArgument.getResource(context, "recipe_type", Registries.RECIPE_TYPE);
-    return run(context, List.of(recipeType.get()), getPredicate(context, "result"), null, startTime);
+    return run(context, List.of(recipeType.value()), getPredicate(context, "result"), null, startTime);
   }
 
   /** Runs the command for provided arguments */
   private static int runByInput(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
     long startTime = System.nanoTime();
     Holder<RecipeType<?>> recipeType = ResourceArgument.getResource(context, "recipe_type", Registries.RECIPE_TYPE);
-    return run(context, List.of(recipeType.get()), null, getPredicate(context, "input"), startTime);
+    return run(context, List.of(recipeType.value()), null, getPredicate(context, "input"), startTime);
   }
 
   /** Runs the command for provided arguments */
   private static int runResultInput(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
     long startTime = System.nanoTime();
     Holder<RecipeType<?>> recipeType = ResourceArgument.getResource(context, "recipe_type", Registries.RECIPE_TYPE);
-    return run(context, List.of(recipeType.get()), getPredicate(context, "result"), getPredicate(context, "input"), startTime);
+    return run(context, List.of(recipeType.value()), getPredicate(context, "result"), getPredicate(context, "input"), startTime);
   }
 
   /** Runs the command using a JSON preset */
@@ -173,27 +174,32 @@ public class RemoveRecipesCommand {
 
   /** Runs the command */
   @SuppressWarnings("unchecked")  // not like we are using the generics at all
-  private static <C extends Container, T extends Recipe<C>> int run(CommandContext<CommandSourceStack> context, List<RecipeType<?>> recipeTypes, @Nullable Predicate<Item> removeResult, @Nullable Predicate<Item> removeInput, long startTime) {
+  private static int run(CommandContext<CommandSourceStack> context, List<RecipeType<?>> recipeTypes, @Nullable Predicate<Item> removeResult, @Nullable Predicate<Item> removeInput, long startTime) {
     // iterate all recipes for the type storing recipes that craft the tag
     ServerLevel level = context.getSource().getLevel();
     RegistryAccess access = level.registryAccess();
     List<Identifier> recipes = new ArrayList<>();
-    for (RecipeType<?> recipeType : recipeTypes) {
-      for (Recipe<?> recipe : context.getSource().getLevel().getRecipeManager().getAllRecipesFor((RecipeType<T>) recipeType)) {
-        // result must match or not be requested
-        if (removeResult == null || removeResult.test(recipe.getResultItem(access).getItem())) {
-          // no input predicate? we are done
-          if (removeInput == null) {
-            recipes.add(recipe.getId());
-          } else {
-            // at least one ingredient must match the ingredient predicate
-            ingredientLoop:
-            for (Ingredient ingredient : recipe.getIngredients()) {
-              for (ItemStack stack : ingredient.getItems()) {
-                if (removeInput.test(stack.getItem())) {
-                  recipes.add(recipe.getId());
-                  break ingredientLoop;
-                }
+    // Port: 26.3 recipe holders with resource keys, ingredients from the placement info, results only for Mantle recipes
+    for (RecipeHolder<?> holder : context.getSource().getServer().getRecipeManager().getRecipes()) {
+      Recipe<?> recipe = holder.value();
+      if (!recipeTypes.contains(recipe.getType())) {
+        continue;
+      }
+      Identifier id = holder.id().identifier();
+      // result must match or not be requested
+      ItemStack result = recipe instanceof slimeknights.mantle.recipe.ICommonRecipe<?> common ? common.getResultItem(access) : ItemStack.EMPTY;
+      if (removeResult == null || removeResult.test(result.getItem())) {
+        // no input predicate? we are done
+        if (removeInput == null) {
+          recipes.add(id);
+        } else {
+          // at least one ingredient must match the ingredient predicate
+          ingredientLoop:
+          for (Ingredient ingredient : recipe.placementInfo().ingredients()) {
+            for (Holder<Item> item : ingredient.items().toList()) {
+              if (removeInput.test(item.value())) {
+                recipes.add(id);
+                break ingredientLoop;
               }
             }
           }

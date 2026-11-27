@@ -28,12 +28,12 @@ public record RegistryTagSource<T>(Registry<T> registry) implements TagSource<T>
 
   @Override
   public boolean hasTag(TagKey<T> tag) {
-    return registry.getTag(tag).isPresent();
+    return registry.get(tag).isPresent();
   }
 
   @Override
   public Stream<TagKey<T>> tagKeys() {
-    return registry.getTagNames();
+    return registry.getTags().map(net.minecraft.core.HolderSet.Named::key);
   }
 
 
@@ -42,7 +42,7 @@ public record RegistryTagSource<T>(Registry<T> registry) implements TagSource<T>
   @Nullable
   @Override
   public List<T> valuesInTag(TagKey<T> tag) {
-    HolderSet.Named<T> holder = registry.getTag(tag).orElse(null);
+    HolderSet.Named<T> holder = registry.get(tag).orElse(null);
     if (holder == null) {
       return null;
     }
@@ -52,7 +52,7 @@ public record RegistryTagSource<T>(Registry<T> registry) implements TagSource<T>
   @Nullable
   @Override
   public List<Identifier> keysInTag(TagKey<T> tag) {
-    HolderSet.Named<T> holder = registry.getTag(tag).orElse(null);
+    HolderSet.Named<T> holder = registry.get(tag).orElse(null);
     if (holder == null) {
       return null;
     }
@@ -75,7 +75,7 @@ public record RegistryTagSource<T>(Registry<T> registry) implements TagSource<T>
 
   @Override
   public Stream<TagKey<T>> tagsFor(T value) {
-    return registry.get(registry.getId(value)).stream().flatMap(Holder::getTagKeys);
+    return registry.wrapAsHolder(value).tags();
   }
 
   @Override

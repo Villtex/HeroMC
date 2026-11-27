@@ -61,10 +61,19 @@ public record ResourceOrTagKeyArgument<T>(@Nullable ResourceKey<? extends Regist
     return new Result(Identifier.read(reader), false);
   }
 
+  /** Suggests all elements and tags of the registry */
+  @SuppressWarnings({"unchecked", "rawtypes"})
+  private static CompletableFuture<Suggestions> suggest(SharedSuggestionProvider suggestions, ResourceKey<? extends Registry<?>> registry, SuggestionsBuilder builder) {
+    suggestions.registryAccess().lookup((ResourceKey) registry)
+      .ifPresent(lookup -> suggestions.suggestRegistryElements((net.minecraft.core.HolderLookup) lookup, ElementSuggestionType.ALL, builder, element -> true));
+    return builder.buildFuture();
+  }
+
   @Override
   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> context, SuggestionsBuilder builder) {
     if (registry != null && context.getSource() instanceof SharedSuggestionProvider suggestions) {
-      return suggestions.suggestRegistryElements(registry, ElementSuggestionType.ALL, builder, context);
+      // Port: 26.3 suggests from the registry lookup, not the key
+      return suggest(suggestions, registry, builder);
     }
     return Suggestions.empty();
   }

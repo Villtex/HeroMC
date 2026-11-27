@@ -1,5 +1,6 @@
 package slimeknights.mantle.command;
 
+import net.minecraft.server.permissions.PermissionCheck;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.suggestion.SuggestionProvider;
 import net.minecraft.commands.CommandBuildContext;
@@ -39,6 +40,20 @@ public class MantleCommand {
   public static SuggestionProvider<CommandSourceStack> REGISTRY;
 
   /** Registers all Mantle command related content */
+  /**
+   * Port: 26.3 replaced permission levels by permission checks; same meaning as 1.20.1's {@code MantleCommand.hasPermission(source, level)}.
+   */
+  public static boolean hasPermission(CommandSourceStack source, int level) {
+    PermissionCheck check = switch (level) {
+      case 0 -> Commands.LEVEL_ALL;
+      case 1 -> Commands.LEVEL_MODERATORS;
+      case 2 -> Commands.LEVEL_GAMEMASTERS;
+      case 3 -> Commands.LEVEL_ADMINS;
+      default -> Commands.LEVEL_OWNERS;
+    };
+    return Commands.hasPermission(check).test(source);
+  }
+
   public static void init() {
     RegistryArgument.registerSuggestions();
     VALID_TAGS = RegistryArgument.TAG;
@@ -47,10 +62,11 @@ public class MantleCommand {
     TagSourceArgument.registerSuggestions();
 
     // register interesting sources
-    SourcesCommand.register(LootDataType.TABLE.directory(), (context, builder)
-      -> SharedSuggestionProvider.suggestResource(context.getSource().getServer().getLootData().getKeys(LootDataType.TABLE), builder));
-    SourcesCommand.register("recipes", (context, builder)
-      -> SharedSuggestionProvider.suggestResource(context.getSource().getRecipeNames(), builder));
+    // Port: 26.3 loot tables are a reloadable registry, recipes are keyed by resource keys
+    SourcesCommand.register(net.minecraft.core.registries.Registries.elementsDirPath(net.minecraft.core.registries.Registries.LOOT_TABLE), (context, builder)
+      -> SharedSuggestionProvider.suggestResource(context.getSource().getServer().reloadableRegistries().lookup().lookupOrThrow(net.minecraft.core.registries.Registries.LOOT_TABLE).listElementIds().map(net.minecraft.resources.ResourceKey::identifier), builder));
+    SourcesCommand.register("recipe", (context, builder)
+      -> SharedSuggestionProvider.suggestResource(context.getSource().getServer().getRecipeManager().getRecipes().stream().map(holder -> holder.id().identifier()), builder));
 
     // add command listener
     NeoForge.EVENT_BUS.addListener(MantleCommand::registerCommand);
@@ -80,7 +96,7 @@ public class MantleCommand {
     register(builder, "dump_loot_modifiers", DumpLootModifiers::register);
     // Port: harvest_tiers is gone, 26.3 has no tool tiers (tool materials with tags)
     register(builder, "remove", b -> {
-      b = b.requires(sender -> sender.hasPermission(MantleCommand.PERMISSION_GAME_COMMANDS));
+      b = b.requires(sender -> MantleCommand.hasPermission(sender, MantleCommand.PERMISSION_GAME_COMMANDS));
       register(b, "recipes", b2 -> RemoveRecipesCommand.register(b2, context));
       RemoveDataCommand.register(b);
     });
@@ -104,6 +120,6 @@ public class MantleCommand {
    * @return  True if the command can be run
    */
   public static boolean requiresDebugInfoOrOp(CommandSourceStack source, int reducedDebugLevel) {
-    return !source.getLevel().getGameRules().get(GameRules.REDUCED_DEBUG_INFO) || source.hasPermission(reducedDebugLevel);
+    return !source.getLevel().getGameRules().get(GameRules.REDUCED_DEBUG_INFO) || MantleCommand.hasPermission(source, reducedDebugLevel);
   }
 }

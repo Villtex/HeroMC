@@ -152,6 +152,12 @@ RULES = [
     (r'\.displayClientMessage\(((?:[^()]|\((?:[^()]|\([^()]*\))*\))*), true\)', r'.sendOverlayMessage(\1)'),
     (r'\.displayClientMessage\(((?:[^()]|\((?:[^()]|\([^()]*\))*\))*), false\)', r'.sendSystemMessage(\1)'),
     (r'\b(fluid\w*|\w*[fF]luid|stack|transferred)\.getDisplayName\(\)', r'\1.getHoverName()'),
+    # registry tags and lookups of 26.3
+    (r'\.getTagNames\(\)', '.getTags().map(net.minecraft.core.HolderSet.Named::key)'),
+    (r'\b(registry|result|reg)\.getTag\(', r'\1.get('),
+    (r'(registryAccess\(\)\s*\.)registry\(', r'\1lookup('),
+    (r'\bResourceKey::location\b', 'ResourceKey::identifier'),
+    (r'\bHolder::getTagKeys\b', 'Holder::tags'),
     # Forge pick block -> NeoForge 26.3 IBlockExtension#getCloneItemStack
     (r'public ItemStack getCloneItemStack\(BlockState (\w+), HitResult \w+, (?:BlockGetter|LevelReader) (\w+), BlockPos (\w+), Player (\w+)\)',
      r'public ItemStack getCloneItemStack(LevelReader \2, BlockPos \3, BlockState \1, boolean includeData, Player \4)'),
