@@ -1,5 +1,7 @@
 package slimeknights.mantle.fluid.transfer;
 
+import slimeknights.mantle.util.typed.TypedMap;
+import slimeknights.mantle.data.loadable.common.IngredientLoadable;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
@@ -36,7 +38,7 @@ public class FillFluidContainerTransfer implements IFluidContainerTransfer.WithD
 
   @Override
   public void addRepresentativeItems(Consumer<Item> consumer) {
-    for (ItemStack stack : input.getItems()) {
+    for (ItemStack stack : input.items().map(ItemStack::new).toList()) {
       consumer.accept(stack.getItem());
     }
   }
@@ -58,7 +60,7 @@ public class FillFluidContainerTransfer implements IFluidContainerTransfer.WithD
       return null;
     }
     int amount = this.fluid.getAmount(fluid.getFluid());
-    FluidStack toDrain = new FluidStack(fluid, amount);
+    FluidStack toDrain = fluid.copyWithAmount(amount);
     FluidStack simulated = handler.drain(toDrain.copy(), FluidAction.SIMULATE);
     if (simulated.getAmount() == amount) {
       FluidStack actual = handler.drain(toDrain.copy(), FluidAction.EXECUTE);
@@ -74,7 +76,7 @@ public class FillFluidContainerTransfer implements IFluidContainerTransfer.WithD
   public JsonObject serialize(JsonSerializationContext context) {
     JsonObject json = new JsonObject();
     json.addProperty("type", ID.toString());
-    json.add("input", input.toJson());
+    json.add("input", IngredientLoadable.DISALLOW_EMPTY.serialize(input));
     if (!result.isEmpty()) {
       json.add("result", result.serialize(false));
     }
@@ -91,7 +93,7 @@ public class FillFluidContainerTransfer implements IFluidContainerTransfer.WithD
     @Override
     public T deserialize(JsonElement element, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
       JsonObject json = element.getAsJsonObject();
-      Ingredient input = Ingredient.fromJson(JsonHelper.getElement(json, "input"));
+      Ingredient input = IngredientLoadable.DISALLOW_EMPTY.convert(JsonHelper.getElement(json, "input"), "input", TypedMap.EMPTY);
       ItemOutput result = EmptyFluidContainerTransfer.getResult(json);
       FluidIngredient fluid = FluidIngredient.LOADABLE.getIfPresent(json, "fluid");
       return factory.apply(input, result, fluid);

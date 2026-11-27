@@ -47,7 +47,7 @@ public interface ItemPredicate extends IJsonPredicate<Item> {
   @SuppressWarnings("deprecation")
   ItemPredicate HAS_CONTAINER = simple(item -> item.getCraftingRemainder() != null);
   /** Predicate matching any items with fluid transfer registered with {@link FluidContainerTransferManager} */
-  ItemPredicate MAY_HAVE_TRANSFER = simple(item -> false); // PORT-TODO(27b fluid): FluidContainerTransferManager.INSTANCE::mayHaveTransfer
+  ItemPredicate MAY_HAVE_TRANSFER = simple(item -> slimeknights.mantle.fluid.transfer.FluidContainerTransferManager.INSTANCE.mayHaveTransfer(item));
 
 
   /* Helper methods */

@@ -20,7 +20,7 @@ public class FluidContainerTransferPacket implements IThreadsafePacket {
     int size = buffer.readVarInt();
     List<Item> builder = new ArrayList<>(size);
     for (int i = 0; i < size; i++) {
-      builder.add(buffer.readRegistryIdUnsafe(BuiltInRegistries.ITEM));
+      builder.add(BuiltInRegistries.ITEM.byId(buffer.readVarInt()));
     }
     this.items = Set.copyOf(builder);
   }
@@ -29,7 +29,7 @@ public class FluidContainerTransferPacket implements IThreadsafePacket {
   public void encode(FriendlyByteBuf buffer) {
     buffer.writeVarInt(items.size());
     for (Item item : items) {
-      buffer.writeRegistryIdUnsafe(BuiltInRegistries.ITEM, item);
+      buffer.writeVarInt(BuiltInRegistries.ITEM.getId(item));
     }
   }
 

@@ -1,5 +1,12 @@
 package slimeknights.mantle;
 
+import slimeknights.mantle.datagen.MantleTags;
+import slimeknights.mantle.fluid.transfer.EmptyFluidContainerTransfer;
+import slimeknights.mantle.fluid.transfer.EmptyFluidWithNBTTransfer;
+import slimeknights.mantle.fluid.transfer.EmptyPotionTransfer;
+import slimeknights.mantle.fluid.transfer.FillFluidContainerTransfer;
+import slimeknights.mantle.fluid.transfer.FillFluidWithNBTTransfer;
+import slimeknights.mantle.fluid.transfer.FluidContainerTransferManager;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.Identifier;
@@ -40,6 +47,13 @@ public class Mantle {
     // NeoForge registers payloads in RegisterPayloadHandlersEvent, before common setup
     MantleNetwork.registerPackets();
     MantleRecipes.init(bus);
+    MantleTags.init();
+    FluidContainerTransferManager.INSTANCE.init();
+    FluidContainerTransferManager.TRANSFER_LOADERS.registerDeserializer(EmptyFluidContainerTransfer.ID, EmptyFluidContainerTransfer.DESERIALIZER);
+    FluidContainerTransferManager.TRANSFER_LOADERS.registerDeserializer(FillFluidContainerTransfer.ID, FillFluidContainerTransfer.DESERIALIZER);
+    FluidContainerTransferManager.TRANSFER_LOADERS.registerDeserializer(EmptyFluidWithNBTTransfer.ID, EmptyFluidWithNBTTransfer.DESERIALIZER);
+    FluidContainerTransferManager.TRANSFER_LOADERS.registerDeserializer(FillFluidWithNBTTransfer.ID, FillFluidWithNBTTransfer.DESERIALIZER);
+    FluidContainerTransferManager.TRANSFER_LOADERS.registerDeserializer(EmptyPotionTransfer.ID, EmptyPotionTransfer.DESERIALIZER);
     if (FMLEnvironment.getDist() == Dist.CLIENT) {
       MantleClient.onConstruct();
     }

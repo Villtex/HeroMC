@@ -2,6 +2,7 @@ package slimeknights.mantle.network;
 
 import slimeknights.mantle.network.NetworkDirection;
 import slimeknights.mantle.Mantle;
+import slimeknights.mantle.fluid.transfer.FluidContainerTransferPacket;
 
 public class MantleNetwork {
   /**
@@ -16,7 +17,8 @@ public class MantleNetwork {
    * Registers packets into this network
    */
   public static void registerPackets() {
-    // PORT-TODO(27b fluid): FluidContainerTransferPacket; PORT-TODO(27c): book packets (OpenLecternBook, UpdateHeldPage,
+    INSTANCE.registerPacket(FluidContainerTransferPacket.class, FluidContainerTransferPacket::new, NetworkDirection.PLAY_TO_CLIENT);
+    // PORT-TODO(27c): book packets (OpenLecternBook, UpdateHeldPage,
     // UpdateInventoryPage, UpdateLecternPage, DropLecternBook, OpenNamedBook). SwingArmPacket is gone (vanilla swing).
   }
 }

@@ -1,3 +1,4 @@
 # Converted data (src/converted, written by mods/tconstruct3/tools/convert_data.py) that goes into the jar.
 # One path prefix per line, e.g. data/tconstruct3/tinkering/materials/ . Teil 27a: nothing yet; each part of
 # Teil 27 adds the folders whose loaders, registry entries and formats it has ported.
+data/mantle/mantle/fluid_transfer/

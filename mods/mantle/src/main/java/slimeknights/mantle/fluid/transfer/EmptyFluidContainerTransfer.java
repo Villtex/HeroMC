@@ -1,5 +1,7 @@
 package slimeknights.mantle.fluid.transfer;
 
+import slimeknights.mantle.util.typed.TypedMap;
+import slimeknights.mantle.data.loadable.common.IngredientLoadable;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
@@ -42,7 +44,7 @@ public class EmptyFluidContainerTransfer implements IFluidContainerTransfer.With
 
   @Override
   public void addRepresentativeItems(Consumer<Item> consumer) {
-    for (ItemStack stack : input.getItems()) {
+    for (ItemStack stack : input.items().map(ItemStack::new).toList()) {
       consumer.accept(stack.getItem());
     }
   }
@@ -81,7 +83,7 @@ public class EmptyFluidContainerTransfer implements IFluidContainerTransfer.With
   public JsonObject serialize(JsonSerializationContext context) {
     JsonObject json = new JsonObject();
     json.addProperty("type", ID.toString());
-    json.add("input", input.toJson());
+    json.add("input", IngredientLoadable.DISALLOW_EMPTY.serialize(input));
     if (!result.isEmpty()) {
       json.add("result", result.serialize(false));
     }
@@ -109,7 +111,7 @@ public class EmptyFluidContainerTransfer implements IFluidContainerTransfer.With
     @Override
     public T deserialize(JsonElement element, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
       JsonObject json = element.getAsJsonObject();
-      Ingredient input = Ingredient.fromJson(JsonHelper.getElement(json, "input"));
+      Ingredient input = IngredientLoadable.DISALLOW_EMPTY.convert(JsonHelper.getElement(json, "input"), "input", TypedMap.EMPTY);
       ItemOutput result = getResult(json);
       FluidOutput fluid = FluidOutput.Loadable.REQUIRED.getIfPresent(json, "fluid");
       return factory.apply(input, result, fluid);

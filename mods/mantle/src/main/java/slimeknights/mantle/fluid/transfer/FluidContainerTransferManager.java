@@ -18,7 +18,8 @@ import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.NeoForge;
 import slimeknights.mantle.util.CraftingHelper;
 import net.neoforged.neoforge.common.conditions.ICondition.IContext;
-import net.neoforged.neoforge.event.AddReloadListenerEvent;
+import net.neoforged.neoforge.event.AddServerReloadListenersEvent;
+import slimeknights.mantle.Mantle;
 import net.neoforged.neoforge.event.OnDatapackSyncEvent;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.neoforge.fluids.FluidStack;
@@ -44,7 +45,7 @@ public class FluidContainerTransferManager extends JsonReloadListener {
   public static final String FOLDER = "mantle/fluid_transfer";
   /** GSON instance */
   public static final Gson GSON = (new GsonBuilder())
-    .registerTypeAdapter(Identifier.class, new Identifier.Serializer())
+    .registerTypeAdapter(Identifier.class, slimeknights.mantle.data.gson.ResourceLocationSerializer.resourceLocation("minecraft"))
     .registerTypeHierarchyAdapter(IFluidContainerTransfer.class, TRANSFER_LOADERS)
     .setPrettyPrinting()
     .disableHtmlEscaping()
@@ -58,9 +59,6 @@ public class FluidContainerTransferManager extends JsonReloadListener {
   /** Set of all items that match a recipe, exists on both sides */
   @Setter @Nullable
   private Set<Item> containerItems = Collections.emptySet();
-
-  /** Condition context for tags */
-  private IContext context = IContext.EMPTY;
 
   private FluidContainerTransferManager() {
     super(GSON, FOLDER);
@@ -81,10 +79,7 @@ public class FluidContainerTransferManager extends JsonReloadListener {
 
   /** For internal use only */
   public void init() {
-    NeoForge.EVENT_BUS.addListener(EventPriority.NORMAL, false, AddReloadListenerEvent.class, e -> {
-      e.addListener(this);
-      this.context = e.getConditionContext();
-    });
+    NeoForge.EVENT_BUS.addListener(EventPriority.NORMAL, false, AddServerReloadListenersEvent.class, e -> e.addListener(Mantle.getResource("fluid_container_transfer"), this));
     NeoForge.EVENT_BUS.addListener(EventPriority.NORMAL, false, OnDatapackSyncEvent.class, e -> JsonHelper.syncPackets(e, MantleNetwork.INSTANCE, new FluidContainerTransferPacket(this.getContainerItems())));
   }
 
@@ -92,7 +87,7 @@ public class FluidContainerTransferManager extends JsonReloadListener {
   @Nullable
   private IFluidContainerTransfer loadFluidTransfer(Identifier key, JsonObject json) {
     try {
-      if (!json.has("conditions") || CraftingHelper.processConditions(GsonHelper.getAsJsonArray(json, "conditions"), context)) {
+      if (!json.has("conditions") || CraftingHelper.processConditions(GsonHelper.getAsJsonArray(json, "conditions"), getConditionContext())) {
         return GSON.fromJson(json, IFluidContainerTransfer.class);
       }
     } catch (JsonSyntaxException e) {
