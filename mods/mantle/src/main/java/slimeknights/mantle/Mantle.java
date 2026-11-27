@@ -100,7 +100,7 @@ public class Mantle {
       TagPreference.init();
     });
     if (FMLEnvironment.getDist() == Dist.CLIENT) {
-      MantleClient.onConstruct();
+      MantleClient.onConstruct(bus);
     }
   }
 

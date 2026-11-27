@@ -36,6 +36,23 @@ public class IngredientData implements IDataElement {
   private transient String error;
   private transient NonNullList<ItemStack> items;
   private transient boolean customData;
+  /** Port: stacks given with legacy NBT ({@code "type": "forge:nbt"}), they cannot be an {@link SizedIngredient} in 26.3 */
+  private transient List<ItemStack> nbtStacks = new ArrayList<>();
+
+  /**
+   * Port (Teil 27c): turns item ID, count and legacy NBT of a book JSON into a stack. Mods replace this to map their old
+   * NBT keys to components (Tinkers' {@code Material}); the default keeps unknown NBT as {@code minecraft:custom_data}.
+   */
+  public static NbtStackFactory nbtStackFactory = (item, count, nbt) -> {
+    ItemStack stack = new ItemStack(item, count);
+    stack.applyComponents(slimeknights.mantle.util.LegacyNbt.toComponents(nbt));
+    return stack;
+  };
+
+  @FunctionalInterface
+  public interface NbtStackFactory {
+    ItemStack create(Item item, int count, CompoundTag nbt);
+  }
 
   public NonNullList<ItemStack> getItems() {
     return this.items;
@@ -71,6 +88,7 @@ public class IngredientData implements IDataElement {
 
       stacks.addAll(ingredient.getMatchingStacks());
     }
+    stacks.addAll(nbtStacks);
 
     if(ingredients == null || stacks.isEmpty() || !StringUtil.isNullOrEmpty(error)) {
       items = NonNullList.withSize(1, getMissingItem());
@@ -107,7 +125,9 @@ public class IngredientData implements IDataElement {
 
         for(int i = 0; i < array.size(); i++) {
           try {
-            data.ingredients[i] = readIngredient(array.get(i));
+            if (!readNbtStack(array.get(i), data)) {
+              data.ingredients[i] = readIngredient(array.get(i));
+            }
           } catch (Exception e) {
             data.ingredients[i] = SizedIngredient.of(Ingredient.of(Items.BARRIER));
           }
@@ -117,7 +137,7 @@ public class IngredientData implements IDataElement {
       }
 
       try {
-        data.ingredients = new SizedIngredient[]{ readIngredient(json) };
+        data.ingredients = readNbtStack(json, data) ? new SizedIngredient[0] : new SizedIngredient[]{ readIngredient(json) };
       } catch (Exception e) {
         data.error = e.getMessage();
         return data;
@@ -137,6 +157,30 @@ public class IngredientData implements IDataElement {
       }
 
       return data;
+    }
+
+    /** Port: reads {@code {"type": "forge:nbt", "item": ..., "count": ..., "nbt": ...}} into {@link #nbtStacks} */
+    private static boolean readNbtStack(JsonElement json, IngredientData data) {
+      if (!json.isJsonObject()) {
+        return false;
+      }
+      JsonObject object = json.getAsJsonObject();
+      String type = object.has("type") ? object.get("type").getAsString() : "";
+      if (!object.has("nbt") || !(type.isEmpty() || type.endsWith(":nbt")) || !object.has("item")) {
+        return false;
+      }
+      Item item = BuiltInRegistries.ITEM.getValue(Identifier.parse(object.get("item").getAsString()));
+      int count = object.has("count") ? object.get("count").getAsInt() : 1;
+      JsonElement nbtJson = object.get("nbt");
+      CompoundTag nbt;
+      try {
+        nbt = nbtJson.isJsonPrimitive() ? net.minecraft.nbt.TagParser.parseCompoundFully(nbtJson.getAsString())
+          : (CompoundTag) com.mojang.serialization.JsonOps.INSTANCE.convertTo(net.minecraft.nbt.NbtOps.INSTANCE, nbtJson);
+      } catch (Exception e) {
+        throw new JsonParseException("Invalid nbt in book item: " + e.getMessage(), e);
+      }
+      data.nbtStacks.add(nbtStackFactory.create(item, count, nbt));
+      return true;
     }
 
     private SizedIngredient readIngredient(JsonElement json) {
