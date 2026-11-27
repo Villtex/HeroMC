@@ -25,13 +25,14 @@ Jeder Mod wird deshalb gegen das dekompilierte Original als Referenz **neu gesch
 - **Rezeptanzeige:** Not Enough Items wird nicht portiert. Stattdessen sind alle portierten Mods mit
   **JEI** kompatibel; eigene Rezepttypen bekommen ein JEI-Plugin.
 - **Twilight Forest** ist in die Teile 24a–24f aufgeteilt, **Tinkers' Construct** in die Teile 25a–25f.
-- **Tinkers' Construct 3.12.1 für Hexxit Integrated (Teil 27a erledigt, 27b in Arbeit, 27c–27k offen):** Beide Tinkers-Versionen sind
+- **Tinkers' Construct 3.12.1 für Hexxit Integrated (Teil 27a und 27b erledigt, 27c–27k offen):** Beide Tinkers-Versionen sind
   installiert, der Welttyp entscheidet: Legacy hat das originale 1.4.3 (`tconstruct`), Integrated das heutige 3.12.1
   (`tconstruct3`, mit Mantle). Rezepte, Beute und Weltgenerierung der jeweils anderen Version laden nicht, JEI und
   Kreativ-Tabs blenden sie aus. Lösung und Aufteilung in `docs/PLAN.md`, Teil 27. Stand 27a: Gerüst `mantle` und
   `tconstruct3` (Assets aus dem Original-Tag), Daten-Konverter, Welttyp-Schalter `HexxitWorldType`; 1.4.3-Rezepte
-  laden nur noch in Legacy-Welten. 27b (Zwischenstand): Mantle-Kern zum Teil auf 26.3 (Datenlader, Netzwerk, Rezept-
-  Grundlage, Flüssigkeits-Brücke), Rest in `mods/mantle/TODO.md`.
+  laden nur noch in Legacy-Welten. 27b: Mantle-Kern auf 26.3 (Datenlader, Netzwerk, Rezepte und Zutaten,
+  Flüssigkeiten, Beute, Registrierung, Blöcke, Items, Inventare, `/mantle`-Befehle); was für spätere Teile offen
+  ist, steht in `mods/mantle/TODO.md`.
 - **Welttypen (Teil 26 erledigt):** „Hexxit Integrated“ ist der Standard (`minecraft:normal`: 26.3-Generierung
   plus Hexxit-Inhalte, offen für fremde 26.3-Mods: deren Biome, Bauwerke, Rohre und Werkzeuge arbeiten mit der Welt).
   „Hexxit Legacy (1.5.2)“ (`hexxit:legacy`) ist die bitgenaue 1.5.2-Welt. Am Server: `level-type=hexxit\:legacy` in
@@ -274,7 +275,7 @@ Prüfen: `tools/expect.sh 1234 nether structures 60 > expect.txt`, dann `verify_
 | Project Zulu | `projectzulu` 1.0.3.8 | — | 42.845 | ✅ Teil 10 Kreaturen, Teil 11 Blöcke, Items, Tränke, Strukturen (Client-Prüfung offen) |
 | The Twilight Forest | `twilightforest` 1.18.1 | Benimatic | 50.329 | Teil 24a–24f erledigt (Dimension, Gelände, Portal, Blöcke, Bäume, Dekoration, Mobs, Strukturen A und B mit Turm-Geräten, Bosse, Ausrüstung, Karten, Entwerkbank, Fortschritte) |
 | Tinkers' Construct | `tconstruct` 1.4.3 | mDiyo | 59.808 | aufgeteilt in Teil 25a–25f; ✅ 25a (Werkzeug-Kern: Materialien, Teile, Muster, Tische, Zusammenbau, Modifikatoren anbringen; Client-Prüfung offen), ✅ 25b (Fähigkeiten, Modifikator-Effekte, Bogen/Pfeile, Dolch, Bratpfanne, Werkzeugmodelle in Schichten; Client-Prüfung offen), ✅ 25c (Schmelzerei, 24 Flüssigkeiten, Gießen, Legierungen, Trockengestell, Erze/Metallblöcke; Client-Prüfung offen), ✅ 25d (Erze, Erzbeeren, Schleiminseln, blauer Schleim, Werkzeugschmiede/Schmelzerei im Dorf, Tüftler; Client-Prüfung offen), ✅ 25e (Rüstungs-Inventar mit Tabs, Rucksack, Herzkanister, Handbücher, Essen, Essenzkristall, Schleim-Eier, Spieler-Regeln, Mob-Drops; Client-Prüfung offen), ✅ 25f (klares/gefärbtes Glas, Ziegel, Brownstone, Wollstufen, Steinfackel, Punji, Barrikaden, Landmine, Zugbrücke, Feueranzünder, Essenz-Extraktor, Natura-Saguaro, JEI-Meißel; Client-Prüfung offen) |
-| Tinkers' Construct 3 (nur Hexxit Integrated) + Mantle | `tconstruct3` 3.12.1.231, `mantle` 1.11.117 (1.20.1, MIT) | SlimeKnights | 244.000 | 27a erledigt (Gerüst, Konverter, Welttyp-Schalter), 27b in Arbeit, 27c–27k offen |
+| Tinkers' Construct 3 (nur Hexxit Integrated) + Mantle | `tconstruct3` 3.12.1.231, `mantle` 1.11.117 (1.20.1, MIT) | SlimeKnights | 244.000 | 27a erledigt (Gerüst, Konverter, Welttyp-Schalter), 27b erledigt (Mantle-Kern), 27c–27k offen |
 
 Weitere Archive des Packs, die kein eigener Mod sind:
 

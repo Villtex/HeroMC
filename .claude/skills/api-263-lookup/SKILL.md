@@ -47,7 +47,9 @@ zeigt meist alle Abweichungen auf einmal – dann gesammelt korrigieren.
 | `FarmBlock` | `FarmlandBlock` |
 | `simpleCodec`/`codec()` an `BaseEntityBlock` | entfällt |
 | `dimensionType().bedWorks()` | z. B. `level.dimension() == Level.OVERWORLD` (canRespawnHere von 1.5.2) |
-| `ModConfig.Type.SERVER` | gibt es nicht; `STARTUP` (feste Pack-Werte) |
+| `ModConfig.Type.SERVER`/`COMMON` | gibt es nicht; `STARTUP` (feste Pack-Werte) oder `SYNCED` (Server, an Clients geschickt) |
+| `source.hasPermission(2)` | `Commands.hasPermission(Commands.LEVEL_GAMEMASTERS).test(source)` |
+| `Component.translatable(key, identifier)` | Argumente nur Text/Zahl/Boolean/Component, sonst Laufzeitfehler: `String.valueOf(x)` |
 | `ItemOwner` | `net.minecraft.world.entity.ItemOwner` |
 | `AbstractArrow.getBaseDamage()` | privat, ohne Getter (Reflection auf `baseDamage`) |
 | `TriState` | `net.minecraft.util.TriState` |

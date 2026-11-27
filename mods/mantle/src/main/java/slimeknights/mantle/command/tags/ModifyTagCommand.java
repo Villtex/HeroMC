@@ -1,5 +1,6 @@
 package slimeknights.mantle.command.tags;
 
+import slimeknights.mantle.util.TranslationHelper;
 import com.mojang.brigadier.builder.ArgumentBuilder;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
@@ -32,8 +33,8 @@ import java.util.Locale;
 
 /** Command to add or remove an entry from a tag */
 public class ModifyTagCommand {
-  private static final Dynamic2CommandExceptionType ERROR_READING_TAG = new Dynamic2CommandExceptionType((type, name) -> Component.translatable("command.mantle.modify_tag.read_error", type, name));
-  private static final Dynamic2CommandExceptionType ERROR_WRITING_TAG = new Dynamic2CommandExceptionType((type, name) -> Component.translatable("command.mantle.modify_tag.write_error", type, name));
+  private static final Dynamic2CommandExceptionType ERROR_READING_TAG = new Dynamic2CommandExceptionType((type, name) -> Component.translatable("command.mantle.modify_tag.read_error", TranslationHelper.arg(type), TranslationHelper.arg(name)));
+  private static final Dynamic2CommandExceptionType ERROR_WRITING_TAG = new Dynamic2CommandExceptionType((type, name) -> Component.translatable("command.mantle.modify_tag.write_error", TranslationHelper.arg(type), TranslationHelper.arg(name)));
 
   /**
    * Registers this sub command with the root command
@@ -143,9 +144,7 @@ public class ModifyTagCommand {
     }
 
     // success
-    source.sendSuccess(() -> Component.translatable(
-      "command.mantle.modify_tag.success." + action.name().toLowerCase(Locale.ROOT),
-      entry, regName, tagComponent(tag, tagPath), GeneratePackHelper.getOutputComponent(pack)), true);
+    source.sendSuccess(() -> Component.translatable("command.mantle.modify_tag.success." + action.name().toLowerCase(Locale.ROOT), TranslationHelper.arg(entry), TranslationHelper.arg(regName), TranslationHelper.arg(tagComponent(tag, tagPath)), TranslationHelper.arg(GeneratePackHelper.getOutputComponent(pack))), true);
     return changed;
   }
 
@@ -166,7 +165,7 @@ public class ModifyTagCommand {
     saveTag(regName, tag, tagPath, new TagFile(List.of(), true, List.of()));
 
     // success
-    source.sendSuccess(() -> Component.translatable("command.mantle.modify_tag.success.clear", regName, tagComponent(tag, tagPath), GeneratePackHelper.getOutputComponent(pack)), true);
+    source.sendSuccess(() -> Component.translatable("command.mantle.modify_tag.success.clear", TranslationHelper.arg(regName), TranslationHelper.arg(tagComponent(tag, tagPath)), TranslationHelper.arg(GeneratePackHelper.getOutputComponent(pack))), true);
     return 0;
   }
 

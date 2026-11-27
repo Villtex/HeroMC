@@ -648,9 +648,9 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1795771835.6684709,
-    "seen": 1795785091.3235333,
-    "ast_hash": "60cff283ae332155ed73e993a1c6dd81",
+    "mtime": 1795791175.9888365,
+    "seen": 1795791229.9167063,
+    "ast_hash": "19a12b53fce0a13a2b512a98ef8a6aa7",
     "semantic_hash": ""
   },
   "mods/ebxl/original-assets.txt": {
@@ -684,9 +684,9 @@
     "semantic_hash": ""
   },
   "docs/PLAN.md": {
-    "mtime": 1795785029.7583222,
-    "seen": 1795785091.3235364,
-    "ast_hash": "9f0846c07998c28418236c8c5710811f",
+    "mtime": 1795791176.17407,
+    "seen": 1795791229.9167094,
+    "ast_hash": "87df108c7db85e3ed76ab852f198018c",
     "semantic_hash": ""
   },
   ".mcp.json": {
@@ -42624,9 +42624,9 @@
     "semantic_hash": ""
   },
   ".claude/skills/api-263-lookup/SKILL.md": {
-    "mtime": 1795710605.9254127,
-    "seen": 1795715524.1252184,
-    "ast_hash": "42d687e530c03d0deaec47f3cd4499fb",
+    "mtime": 1795791176.175442,
+    "seen": 1795791229.9166753,
+    "ast_hash": "b4366bbb605e241f3207355cda600405",
     "semantic_hash": ""
   },
   "mods/legendgear/TODO.md": {
@@ -95490,9 +95490,9 @@
     "semantic_hash": ""
   },
   "mods/mantle/src/main/java/slimeknights/mantle/Mantle.java": {
-    "mtime": 1795784556.3559973,
-    "seen": 1795785091.2910655,
-    "ast_hash": "372ae7569ff2457a9923ea054457f943",
+    "mtime": 1795791103.2641346,
+    "seen": 1795791229.8913329,
+    "ast_hash": "34e74deaac63fa9b6755158336845ad6",
     "semantic_hash": ""
   },
   "mods/tconstruct/tools/legacy_condition.py": {
@@ -131412,9 +131412,9 @@
     "semantic_hash": ""
   },
   "mods/mantle/src/main/java/slimeknights/mantle/util/TranslationHelper.java": {
-    "mtime": 1795771835.8772671,
-    "seen": 1795785091.2919364,
-    "ast_hash": "9ea06cc0acfa1130c61316f0500bb711",
+    "mtime": 1795791059.5672917,
+    "seen": 1795791229.8917856,
+    "ast_hash": "8d09992804f11191f2120e3dbd1a7532",
     "semantic_hash": ""
   },
   "mods/mantle/src/main/java/slimeknights/mantle/util/WeakConsumerWrapper.java": {
@@ -131615,144 +131615,6 @@
     "ast_hash": "08936702b0354d5a77a767976730fe1f",
     "semantic_hash": ""
   },
-  "mods/mantle/todo/slimeknights/mantle/Mantle.java": {
-    "mtime": 1795771835.8783703,
-    "seen": 1795785091.2920663,
-    "ast_hash": "2f8149dc9624c3594e0d366629ea8071",
-    "semantic_hash": ""
-  },
-  "mods/mantle/todo/slimeknights/mantle/MantleEvents.java": {
-    "mtime": 1795771835.8783956,
-    "seen": 1795785091.292068,
-    "ast_hash": "be58b055285cf667aa2739d5d94586fb",
-    "semantic_hash": ""
-  },
-  "mods/mantle/todo/slimeknights/mantle/command/DumpAllTagsCommand.java": {
-    "mtime": 1795784609.9985244,
-    "seen": 1795785091.2920709,
-    "ast_hash": "dc285133c2bfde2df27dc8fe9da221f9",
-    "semantic_hash": ""
-  },
-  "mods/mantle/todo/slimeknights/mantle/command/DumpLootModifiers.java": {
-    "mtime": 1795771835.8788373,
-    "seen": 1795785091.292073,
-    "ast_hash": "d1dcdb4baedbe7706b9172f194f39178",
-    "semantic_hash": ""
-  },
-  "mods/mantle/todo/slimeknights/mantle/command/DumpTagCommand.java": {
-    "mtime": 1795784609.9996367,
-    "seen": 1795785091.292075,
-    "ast_hash": "48423ff25f6fffaa98c7756648fac4b4",
-    "semantic_hash": ""
-  },
-  "mods/mantle/todo/slimeknights/mantle/command/GeneratePackHelper.java": {
-    "mtime": 1795784598.446928,
-    "seen": 1795785091.2920773,
-    "ast_hash": "5af9d7e3c4fbd3a753ed8e4e4b32ffd1",
-    "semantic_hash": ""
-  },
-  "mods/mantle/todo/slimeknights/mantle/command/HungerCommand.java": {
-    "mtime": 1795771835.8788373,
-    "seen": 1795785091.2920794,
-    "ast_hash": "224c027a73e31edf7a7bce532ae0e029",
-    "semantic_hash": ""
-  },
-  "mods/mantle/todo/slimeknights/mantle/command/MantleCommand.java": {
-    "mtime": 1795784606.196029,
-    "seen": 1795785091.2920814,
-    "ast_hash": "7895a4ccb22733d4cec2633e5fb88f55",
-    "semantic_hash": ""
-  },
-  "mods/mantle/todo/slimeknights/mantle/command/RegistryArgument.java": {
-    "mtime": 1795784609.9983106,
-    "seen": 1795785091.292084,
-    "ast_hash": "a824a077d1d6fd166b1811162781c2fc",
-    "semantic_hash": ""
-  },
-  "mods/mantle/todo/slimeknights/mantle/command/RemoveDataCommand.java": {
-    "mtime": 1795784609.997723,
-    "seen": 1795785091.2920856,
-    "ast_hash": "2cdaa7813547768cf6ab4b065aa24877",
-    "semantic_hash": ""
-  },
-  "mods/mantle/todo/slimeknights/mantle/command/RemoveRecipesCommand.java": {
-    "mtime": 1795784598.447282,
-    "seen": 1795785091.2920876,
-    "ast_hash": "0297b334d2831831e9807f2f4754b52f",
-    "semantic_hash": ""
-  },
-  "mods/mantle/todo/slimeknights/mantle/command/SourcesCommand.java": {
-    "mtime": 1795771835.8788373,
-    "seen": 1795785091.29209,
-    "ast_hash": "cc9f87eb2d8b6133ef142eb13b43d816",
-    "semantic_hash": ""
-  },
-  "mods/mantle/todo/slimeknights/mantle/command/TagPreferenceCommand.java": {
-    "mtime": 1795784610.0002694,
-    "seen": 1795785091.2920916,
-    "ast_hash": "2e95ea50c19e380cf3d3bac2be87e975",
-    "semantic_hash": ""
-  },
-  "mods/mantle/todo/slimeknights/mantle/command/TagsForCommand.java": {
-    "mtime": 1795784610.0000486,
-    "seen": 1795785091.2920935,
-    "ast_hash": "660c5b96920bc4afb5792bf354000df8",
-    "semantic_hash": ""
-  },
-  "mods/mantle/todo/slimeknights/mantle/command/ViewTagCommand.java": {
-    "mtime": 1795784609.9980483,
-    "seen": 1795785091.2920957,
-    "ast_hash": "bd353ffe2fbad4e8b5713e7747bdba21",
-    "semantic_hash": ""
-  },
-  "mods/mantle/todo/slimeknights/mantle/command/argument/RegistryTagSource.java": {
-    "mtime": 1795784609.9992626,
-    "seen": 1795785091.2920976,
-    "ast_hash": "29234f1381fa3e4ec58f125fcb696965",
-    "semantic_hash": ""
-  },
-  "mods/mantle/todo/slimeknights/mantle/command/argument/ResourceOrTagKeyArgument.java": {
-    "mtime": 1795784609.9994373,
-    "seen": 1795785091.292101,
-    "ast_hash": "28ca3dfa82ef247e6028b0f8e245b896",
-    "semantic_hash": ""
-  },
-  "mods/mantle/todo/slimeknights/mantle/command/argument/TagSource.java": {
-    "mtime": 1795771835.8792675,
-    "seen": 1795785091.2921028,
-    "ast_hash": "6e97686809cdb347e29eef9cfabb232c",
-    "semantic_hash": ""
-  },
-  "mods/mantle/todo/slimeknights/mantle/command/argument/TagSourceArgument.java": {
-    "mtime": 1795771835.8792675,
-    "seen": 1795785091.292105,
-    "ast_hash": "0c7dead3316c2b5153e6a804444436dd",
-    "semantic_hash": ""
-  },
-  "mods/mantle/todo/slimeknights/mantle/command/argument/package-info.java": {
-    "mtime": 1795771835.8792675,
-    "seen": 1795785091.2921064,
-    "ast_hash": "ea708aeaa07a646624c3f7fd358c0fbb",
-    "semantic_hash": ""
-  },
-  "mods/mantle/todo/slimeknights/mantle/command/package-info.java": {
-    "mtime": 1795771835.8794265,
-    "seen": 1795785091.2921095,
-    "ast_hash": "c7b0db9e9a2bb6ee3401b08edafa003c",
-    "semantic_hash": ""
-  },
-  "mods/mantle/todo/slimeknights/mantle/command/tags/ModifyTagCommand.java": {
-    "mtime": 1795784609.9997935,
-    "seen": 1795785091.2921119,
-    "ast_hash": "a4ef0cd76997b2eca2db7791705b300e",
-    "semantic_hash": ""
-  },
-  "mods/mantle/todo/slimeknights/mantle/command/tags/package-info.java": {
-    "mtime": 1795771835.8795974,
-    "seen": 1795785091.2921147,
-    "ast_hash": "b7d61e4312a0c75949ccaece232995e9",
-    "semantic_hash": ""
-  },
   "tools/fix_by_errors.py": {
     "mtime": 1795771835.966702,
     "seen": 1795785091.3234713,
@@ -131760,15 +131622,15 @@
     "semantic_hash": ""
   },
   "tools/forge_to_neo.py": {
-    "mtime": 1795784441.5868495,
-    "seen": 1795785091.323473,
-    "ast_hash": "254211e075892f995753ef7125a4dfcb",
+    "mtime": 1795790748.4056275,
+    "seen": 1795791229.9166524,
+    "ast_hash": "bd430a1f786e4b107ada603fcc949e82",
     "semantic_hash": ""
   },
   "mods/mantle/TODO.md": {
-    "mtime": 1795785029.7561824,
-    "seen": 1795785091.3235805,
-    "ast_hash": "4bdb7c19a1d47ab059c37377ed8e548e",
+    "mtime": 1795791185.5614715,
+    "seen": 1795791229.9167533,
+    "ast_hash": "164984b6ef25e8f841b03faaeca45e28",
     "semantic_hash": ""
   },
   "mods/mantle/src/main/java/slimeknights/mantle/block/GaugeBlock.java": {
@@ -132633,6 +132495,138 @@
     "mtime": 1795771835.8811104,
     "seen": 1795785091.2920644,
     "ast_hash": "ebdfdda3b25bc359740d40e0a1c4de41",
+    "semantic_hash": ""
+  },
+  "mods/mantle/src/main/java/slimeknights/mantle/MantleEvents.java": {
+    "mtime": 1795790884.2191012,
+    "seen": 1795791229.8913357,
+    "ast_hash": "5f2b944555c32e8eb3a7d8c1b0aeb0e2",
+    "semantic_hash": ""
+  },
+  "mods/mantle/src/main/java/slimeknights/mantle/command/DumpAllTagsCommand.java": {
+    "mtime": 1795791059.5952928,
+    "seen": 1795791229.891364,
+    "ast_hash": "ad4152759937de15a65799b9dcb6a16e",
+    "semantic_hash": ""
+  },
+  "mods/mantle/src/main/java/slimeknights/mantle/command/DumpLootModifiers.java": {
+    "mtime": 1795791059.5934877,
+    "seen": 1795791229.8913655,
+    "ast_hash": "f550f278a3a69236b59a13c9db59b629",
+    "semantic_hash": ""
+  },
+  "mods/mantle/src/main/java/slimeknights/mantle/command/DumpTagCommand.java": {
+    "mtime": 1795791059.5955586,
+    "seen": 1795791229.8913667,
+    "ast_hash": "1baa75226877d3d12ad61c9b41da5cd6",
+    "semantic_hash": ""
+  },
+  "mods/mantle/src/main/java/slimeknights/mantle/command/GeneratePackHelper.java": {
+    "mtime": 1795791059.5928626,
+    "seen": 1795791229.8913674,
+    "ast_hash": "091feb88f7bc3ff45d94b678d4230459",
+    "semantic_hash": ""
+  },
+  "mods/mantle/src/main/java/slimeknights/mantle/command/HungerCommand.java": {
+    "mtime": 1795791059.597392,
+    "seen": 1795791229.8913686,
+    "ast_hash": "827885a1b929ddb62976536e21e6c01f",
+    "semantic_hash": ""
+  },
+  "mods/mantle/src/main/java/slimeknights/mantle/command/MantleCommand.java": {
+    "mtime": 1795790800.5304103,
+    "seen": 1795791229.8913696,
+    "ast_hash": "b42c1496923a2e9f65c7e8f6fd52d1a5",
+    "semantic_hash": ""
+  },
+  "mods/mantle/src/main/java/slimeknights/mantle/command/RegistryArgument.java": {
+    "mtime": 1795791059.5950656,
+    "seen": 1795791229.8913703,
+    "ast_hash": "02ed92093d17d8be93468058a9af8d8a",
+    "semantic_hash": ""
+  },
+  "mods/mantle/src/main/java/slimeknights/mantle/command/RemoveDataCommand.java": {
+    "mtime": 1795791059.5932262,
+    "seen": 1795791229.8913717,
+    "ast_hash": "6ff2004c8e1bc7d284d8d0c04363d9ed",
+    "semantic_hash": ""
+  },
+  "mods/mantle/src/main/java/slimeknights/mantle/command/RemoveRecipesCommand.java": {
+    "mtime": 1795791059.5945091,
+    "seen": 1795791229.8913734,
+    "ast_hash": "2eba04db211dc387e24c25fef29ffef4",
+    "semantic_hash": ""
+  },
+  "mods/mantle/src/main/java/slimeknights/mantle/command/SourcesCommand.java": {
+    "mtime": 1795791059.5948336,
+    "seen": 1795791229.8913743,
+    "ast_hash": "c370062b568bbe095beae026df474bab",
+    "semantic_hash": ""
+  },
+  "mods/mantle/src/main/java/slimeknights/mantle/command/TagPreferenceCommand.java": {
+    "mtime": 1795791059.5965893,
+    "seen": 1795791229.8913753,
+    "ast_hash": "0bf88c3156e7c5ec43bd9268fc0a648e",
+    "semantic_hash": ""
+  },
+  "mods/mantle/src/main/java/slimeknights/mantle/command/TagsForCommand.java": {
+    "mtime": 1795791059.5962896,
+    "seen": 1795791229.8913765,
+    "ast_hash": "fba2e48a558cf1bcc889349482f70a5a",
+    "semantic_hash": ""
+  },
+  "mods/mantle/src/main/java/slimeknights/mantle/command/ViewTagCommand.java": {
+    "mtime": 1795791059.593771,
+    "seen": 1795791229.8913772,
+    "ast_hash": "af1dda52394c16868c55cb5457433f7b",
+    "semantic_hash": ""
+  },
+  "mods/mantle/src/main/java/slimeknights/mantle/command/argument/RegistryTagSource.java": {
+    "mtime": 1795790748.6174266,
+    "seen": 1795791229.891378,
+    "ast_hash": "9e3d6db3600f079a2781c77bbeb95283",
+    "semantic_hash": ""
+  },
+  "mods/mantle/src/main/java/slimeknights/mantle/command/argument/ResourceOrTagKeyArgument.java": {
+    "mtime": 1795790856.5802553,
+    "seen": 1795791229.8913786,
+    "ast_hash": "c1ed365e0ada2a3a7328431264f4da78",
+    "semantic_hash": ""
+  },
+  "mods/mantle/src/main/java/slimeknights/mantle/command/argument/TagSource.java": {
+    "mtime": 1795771835.8792675,
+    "seen": 1795791229.8913796,
+    "ast_hash": "6e97686809cdb347e29eef9cfabb232c",
+    "semantic_hash": ""
+  },
+  "mods/mantle/src/main/java/slimeknights/mantle/command/argument/TagSourceArgument.java": {
+    "mtime": 1795791059.597817,
+    "seen": 1795791229.8913808,
+    "ast_hash": "03d2c594a019592b2b08ed577495d83b",
+    "semantic_hash": ""
+  },
+  "mods/mantle/src/main/java/slimeknights/mantle/command/argument/package-info.java": {
+    "mtime": 1795771835.8792675,
+    "seen": 1795791229.891382,
+    "ast_hash": "ea708aeaa07a646624c3f7fd358c0fbb",
+    "semantic_hash": ""
+  },
+  "mods/mantle/src/main/java/slimeknights/mantle/command/package-info.java": {
+    "mtime": 1795771835.8794265,
+    "seen": 1795791229.8913834,
+    "ast_hash": "c7b0db9e9a2bb6ee3401b08edafa003c",
+    "semantic_hash": ""
+  },
+  "mods/mantle/src/main/java/slimeknights/mantle/command/tags/ModifyTagCommand.java": {
+    "mtime": 1795791059.5981598,
+    "seen": 1795791229.8913846,
+    "ast_hash": "0d5163d20d682c539f48d97f3742f38c",
+    "semantic_hash": ""
+  },
+  "mods/mantle/src/main/java/slimeknights/mantle/command/tags/package-info.java": {
+    "mtime": 1795771835.8795974,
+    "seen": 1795791229.8913853,
+    "ast_hash": "b7d61e4312a0c75949ccaece232995e9",
     "semantic_hash": ""
   }
 }

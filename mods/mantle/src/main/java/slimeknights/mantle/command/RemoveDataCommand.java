@@ -1,5 +1,6 @@
 package slimeknights.mantle.command;
 
+import slimeknights.mantle.util.TranslationHelper;
 import com.google.gson.JsonObject;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
@@ -30,7 +31,7 @@ import static net.neoforged.neoforge.registries.NeoForgeRegistries.Keys.BIOME_MO
  */
 public class RemoveDataCommand {
   /* Name is invalid */
-  private static final Dynamic2CommandExceptionType INVALID_REGISTRY = new Dynamic2CommandExceptionType((name, registry) -> Mantle.makeComponent("command", "key.wrong_registry", name, registry));
+  private static final Dynamic2CommandExceptionType INVALID_REGISTRY = new Dynamic2CommandExceptionType((name, registry) -> Mantle.makeComponent("command", "key.wrong_registry", TranslationHelper.arg(name), TranslationHelper.arg(registry)));
   // success
   /** Translation key for successfully removing structure sets */
   private static final String STRUCTURE_SET_SUCCESS = Mantle.makeDescriptionId("command", "remove_data.structure.success");
@@ -81,7 +82,7 @@ public class RemoveDataCommand {
 
     // send success
     float time = (System.nanoTime() - startTime) / 1000000f;
-    context.getSource().sendSuccess(() -> Component.translatable(STRUCTURE_SET_SUCCESS, id.identifier(), time, GeneratePackHelper.getOutputComponent(pack)), true);
+    context.getSource().sendSuccess(() -> Component.translatable(STRUCTURE_SET_SUCCESS, TranslationHelper.arg(id.identifier()), TranslationHelper.arg(time), TranslationHelper.arg(GeneratePackHelper.getOutputComponent(pack))), true);
     return 1;
   }
 
@@ -106,7 +107,7 @@ public class RemoveDataCommand {
 
     // send success
     float time = (System.nanoTime() - startTime) / 1000000f;
-    context.getSource().sendSuccess(() -> Component.translatable(BIOME_MODIFIER_SUCCESS, id.identifier(), time, GeneratePackHelper.getOutputComponent(pack)), true);
+    context.getSource().sendSuccess(() -> Component.translatable(BIOME_MODIFIER_SUCCESS, TranslationHelper.arg(id.identifier()), TranslationHelper.arg(time), TranslationHelper.arg(GeneratePackHelper.getOutputComponent(pack))), true);
     return 1;
   }
 }

@@ -1,5 +1,6 @@
 package slimeknights.mantle.command;
 
+import slimeknights.mantle.util.TranslationHelper;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
@@ -57,7 +58,7 @@ import java.util.Objects;
 @SuppressWarnings("deprecation")
 public class TagsForCommand {
   /** Tag type cannot be found */
-  protected static final Dynamic2CommandExceptionType VALUE_NOT_FOUND = new Dynamic2CommandExceptionType((type, name) -> Component.translatable("command.mantle.tags_for.not_found", type, name));
+  protected static final Dynamic2CommandExceptionType VALUE_NOT_FOUND = new Dynamic2CommandExceptionType((type, name) -> Component.translatable("command.mantle.tags_for.not_found", TranslationHelper.arg(type), TranslationHelper.arg(name)));
 
   /* Missing target errors */
   private static final Component NO_HELD_BLOCK = Component.translatable("command.mantle.tags_for.no_held_block");
@@ -118,7 +119,7 @@ public class TagsForCommand {
    * @return  Number of tags printed
    */
   private static <T> int printOwningTags(CommandContext<CommandSourceStack> context, TagSource<T> registry, T value, @Nullable Identifier key) {
-    MutableComponent output = Component.translatable("command.mantle.tags_for.success", registry.key().identifier(), key);
+    MutableComponent output = Component.translatable("command.mantle.tags_for.success", TranslationHelper.arg(registry.key().identifier()), TranslationHelper.arg(key));
     List<Identifier> tags = registry.tagsFor(value).map(TagKey::location).toList();
     if (tags.isEmpty()) {
       output.append("\n* ").append(NO_TAGS);

@@ -1,5 +1,6 @@
 package slimeknights.mantle.command;
 
+import slimeknights.mantle.util.TranslationHelper;
 import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
@@ -85,9 +86,9 @@ public class HungerCommand {
       // log success
       if (players.size() == 1) {
         Player player = players.iterator().next();
-        context.getSource().sendSuccess(() -> Component.translatable("command.mantle.hunger." + name + ".single", player.getName(), hunger), true);
+        context.getSource().sendSuccess(() -> Component.translatable("command.mantle.hunger." + name + ".single", TranslationHelper.arg(player.getName()), TranslationHelper.arg(hunger)), true);
       } else {
-        context.getSource().sendSuccess(() -> Component.translatable("command.mantle.hunger." + name + ".multiple", players.size(), hunger), true);
+        context.getSource().sendSuccess(() -> Component.translatable("command.mantle.hunger." + name + ".multiple", TranslationHelper.arg(players.size()), TranslationHelper.arg(hunger)), true);
       }
       return players.size();
     }

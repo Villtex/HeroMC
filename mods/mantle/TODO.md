@@ -1,8 +1,7 @@
-# Mantle 1.11.117 auf 26.3 – offen (Teil 27b, Zwischenstand)
+# Mantle 1.11.117 auf 26.3 – Stand nach Teil 27b
 
-Stand: Kern teilweise portiert und baut (`mods/mantle/src/main`). Noch nicht portierte Quellen liegen bereits
-umbenannt (`tools/forge_to_neo.py` ist gelaufen) in `mods/mantle/todo/` (27b) und `mods/mantle/todo-27c/` (Client, 27c).
-Sie werden nicht kompiliert. Vorgehen je Paket: nach `src/main/java` verschieben, kompilieren,
+Stand: Kern portiert und baut (`mods/mantle/src/main`). Die Client-Quellen liegen umbenannt (`tools/forge_to_neo.py`
+ist gelaufen) in `mods/mantle/todo-27c/` (27c), gestrichene Klassen in `mods/mantle/todo/dropped/`. Beides wird nicht kompiliert. Vorgehen je Paket: nach `src/main/java` verschieben, kompilieren,
 `python3 tools/fix_by_errors.py <log>` laufen lassen, Rest von Hand (Skill `tinkers3-263`, Abschnitt „Port-Werkzeuge“).
 
 ## Fertig (src/main)
@@ -33,15 +32,9 @@ Sie werden nicht kompiliert. Vorgehen je Paket: nach `src/main/java` verschieben
 - `ArmorTooltipItem` (26.3 hat kein `ArmorItem`), `HarvestTiersCommand` (keine Werkzeug-Stufen), `MissingMappingsEvent`/
   `ObjectHolder`-Teile von `RegistrationHelper`/`MantleRegistrations`.
 
-## Offen in 27b (todo/)
-1. **command** (`todo/slimeknights/mantle/command`, `fix_by_errors.py` ist schon gelaufen, ~50 Fehler übrig):
-   `hasPermission(int)` → 26.3-Rechte, Rezept-Manager/`getRecipeIds`, `LootDataType`/`getLootData`, Registry-Tags
-   (`getTagNames`/`getTag` → `listTagIds`/`get`), `ClickEvent.OpenFile`, Pack-Version, Verzauberungen als Holder,
-   `ProjectileUtil.getEntityHitResult`, Reichweite `Attributes.ENTITY_INTERACTION_RANGE`. Tinkers braucht davon
-   `MantleCommand`, `GeneratePackHelper`, `RemoveRecipesCommand`, `argument/TagSource(Argument)`.
-2. **MantleEvents** (Seelengebunden über `MantleData.SOULBOUND_SLOT`, Lectern-Buch → 27c), dann die restlichen
-   Registrierungen aus `todo/slimeknights/mantle/Mantle.java` (Prädikat-Lader `BlockPredicate.LOADER.register(...)` usw.,
-   `TagPreference.init`, `MantleCommand.init`).
+## 27b erledigt
+- `command` (ohne `command/client`, das ist 27c) und `MantleEvents` sind portiert, die Registrierungen aus dem alten
+  `Mantle.java` (Prädikat-Lader, `TagPreference.init`, `MantleCommand.init`, Konfiguration) stehen in `Mantle`.
 
 ## Offen für spätere Teile (Folgen der 26.3-Änderungen)
 - **Keine ItemStacks beim Reload**: 26.3 bindet Item-Komponenten erst nach allen Reload-Listenern („Components not

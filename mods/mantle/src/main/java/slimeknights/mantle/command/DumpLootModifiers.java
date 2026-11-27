@@ -1,5 +1,6 @@
 package slimeknights.mantle.command;
 
+import slimeknights.mantle.util.TranslationHelper;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -28,13 +29,13 @@ import java.util.List;
 /** Command to dump global loot modifiers */
 public class DumpLootModifiers {
   /** Resource location of the global loot manager "tag" */
-  protected static final Identifier GLOBAL_LOOT_MODIFIERS = Identifier.fromNamespaceAndPath("forge", "loot_modifiers/global_loot_modifiers.json");
+  protected static final Identifier GLOBAL_LOOT_MODIFIERS = Identifier.fromNamespaceAndPath("neoforge", "loot_modifiers/global_loot_modifiers.json");
   /** Path for saving the loot modifiers */
   private static final String LOOT_MODIFIER_PATH = GLOBAL_LOOT_MODIFIERS.getNamespace() + "/" + GLOBAL_LOOT_MODIFIERS.getPath();
 
   // loot modifiers
   private static final Component LOOT_MODIFIER_SUCCESS_LOG = Component.translatable("command.mantle.dump_loot_modifiers.success_log");
-  protected static final SimpleCommandExceptionType ERROR_READING_LOOT_MODIFIERS = new SimpleCommandExceptionType(Component.translatable("command.mantle.dump_loot_modifiers.read_error", GLOBAL_LOOT_MODIFIERS));
+  protected static final SimpleCommandExceptionType ERROR_READING_LOOT_MODIFIERS = new SimpleCommandExceptionType(Component.translatable("command.mantle.dump_loot_modifiers.read_error", TranslationHelper.arg(GLOBAL_LOOT_MODIFIERS.toString())));
 
   /**
    * Registers this sub command with the root command
@@ -100,7 +101,7 @@ public class DumpLootModifiers {
       } catch (IOException ex) {
         Mantle.logger.error("Couldn't save global loot manager to {}", path, ex);
       }
-      context.getSource().sendSuccess(() -> Component.translatable("command.mantle.dump_loot_modifiers.success_save", GeneratePackHelper.getOutputComponent(output)), true);
+      context.getSource().sendSuccess(() -> Component.translatable("command.mantle.dump_loot_modifiers.success_save", TranslationHelper.arg(GeneratePackHelper.getOutputComponent(output))), true);
     } else {
       // print to console
       context.getSource().sendSuccess(() -> LOOT_MODIFIER_SUCCESS_LOG, true);

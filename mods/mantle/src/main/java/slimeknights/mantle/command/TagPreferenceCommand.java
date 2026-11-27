@@ -1,5 +1,6 @@
 package slimeknights.mantle.command;
 
+import slimeknights.mantle.util.TranslationHelper;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
@@ -47,10 +48,10 @@ public class TagPreferenceCommand {
     TagKey<T> tag = TagKey.create(registry.key(), name);
     T preference = TagPreference.getPreference(tag).orElse(null);
     if (preference == null) {
-      context.getSource().sendSuccess(() -> Component.translatable(EMPTY_TAG, registry.key().identifier(), name), true);
+      context.getSource().sendSuccess(() -> Component.translatable(EMPTY_TAG, TranslationHelper.arg(registry.key().identifier()), TranslationHelper.arg(name)), true);
       return 0;
     } else {
-      context.getSource().sendSuccess(() -> Component.translatable(PREFERENCE, registry.key().identifier(), name, registry.getKey(preference)), true);
+      context.getSource().sendSuccess(() -> Component.translatable(PREFERENCE, TranslationHelper.arg(registry.key().identifier()), TranslationHelper.arg(name), TranslationHelper.arg(registry.getKey(preference))), true);
       return 1;
     }
   }

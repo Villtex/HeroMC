@@ -27,6 +27,14 @@ public class TranslationHelper {
    * @param key  Key to check
    * @return  True if its translatable
    */
+  /**
+   * Port: 26.3 only accepts components, numbers, booleans and strings as translation arguments; anything else
+   * (identifiers, keys) becomes its string form, as 1.20.1 did when formatting.
+   */
+  public static Object arg(Object value) {
+    return value instanceof net.minecraft.network.chat.Component || value instanceof Number || value instanceof Boolean || value instanceof String ? value : String.valueOf(value);
+  }
+
   public static boolean canTranslate(String key) {
     return Language.getInstance().has(key);
   }

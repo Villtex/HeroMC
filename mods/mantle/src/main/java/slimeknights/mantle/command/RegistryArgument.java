@@ -1,5 +1,6 @@
 package slimeknights.mantle.command;
 
+import slimeknights.mantle.util.TranslationHelper;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
@@ -27,7 +28,7 @@ import static slimeknights.mantle.Mantle.getResource;
  */
 public class RegistryArgument {
   /* Name is invalid */
-  private static final DynamicCommandExceptionType NOT_FOUND = new DynamicCommandExceptionType(name -> Component.translatable("command.mantle.registry.not_found", name));
+  private static final DynamicCommandExceptionType NOT_FOUND = new DynamicCommandExceptionType(name -> Component.translatable("command.mantle.registry.not_found", TranslationHelper.arg(name)));
 
   // suggestion providers
   /** Suggestion provider for a registry */

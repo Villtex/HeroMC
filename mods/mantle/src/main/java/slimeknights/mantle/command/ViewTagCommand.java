@@ -1,5 +1,6 @@
 package slimeknights.mantle.command;
 
+import slimeknights.mantle.util.TranslationHelper;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
@@ -23,7 +24,7 @@ public class ViewTagCommand {
   /** Tag has no values */
   private static final Component EMPTY = Component.translatable("command.mantle.tag.empty");
   /** Tag type cannot be found */
-  protected static final Dynamic2CommandExceptionType TAG_NOT_FOUND = new Dynamic2CommandExceptionType((type, name) -> Component.translatable("command.mantle.tag.not_found", type, name));
+  protected static final Dynamic2CommandExceptionType TAG_NOT_FOUND = new Dynamic2CommandExceptionType((type, name) -> Component.translatable("command.mantle.tag.not_found", TranslationHelper.arg(type), TranslationHelper.arg(name)));
 
   /**
    * Registers this sub command with the root command
@@ -45,7 +46,7 @@ public class ViewTagCommand {
     Collection<Identifier> values = registry.keysInTag(name);
     if (values != null) {
       // start building output message
-      MutableComponent output = Component.translatable("command.mantle.view_tag.success", registry.key().identifier(), name);
+      MutableComponent output = Component.translatable("command.mantle.view_tag.success", TranslationHelper.arg(registry.key().identifier()), TranslationHelper.arg(name));
 
       // if no values, print empty
       if (values.isEmpty()) {

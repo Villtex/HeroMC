@@ -1,5 +1,6 @@
 package slimeknights.mantle.command;
 
+import slimeknights.mantle.util.TranslationHelper;
 import com.google.common.collect.Maps;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
@@ -55,7 +56,7 @@ public class DumpAllTagsCommand {
     File output = getOutputFile(context);
     int tagsDumped = TagSourceArgument.allSources(context).mapToInt(reg -> runForFolder(context, reg, output)).sum();
     // print the output path
-    context.getSource().sendSuccess(() -> Component.translatable("command.mantle.dump_all_tags.success", GeneratePackHelper.getOutputComponent(output)), true);
+    context.getSource().sendSuccess(() -> Component.translatable("command.mantle.dump_all_tags.success", TranslationHelper.arg(GeneratePackHelper.getOutputComponent(output))), true);
     return tagsDumped;
   }
 
@@ -65,7 +66,7 @@ public class DumpAllTagsCommand {
     TagSource<?> registry = TagSourceArgument.get(context);
     int result = runForFolder(context, registry, output);
     // print result
-    context.getSource().sendSuccess(() -> Component.translatable("command.mantle.dump_all_tags.type_success", registry.key().identifier(), GeneratePackHelper.getOutputComponent(output)), true);
+    context.getSource().sendSuccess(() -> Component.translatable("command.mantle.dump_all_tags.type_success", TranslationHelper.arg(registry.key().identifier()), TranslationHelper.arg(GeneratePackHelper.getOutputComponent(output))), true);
     return result;
   }
 

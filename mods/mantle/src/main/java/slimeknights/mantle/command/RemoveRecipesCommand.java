@@ -1,5 +1,6 @@
 package slimeknights.mantle.command;
 
+import slimeknights.mantle.util.TranslationHelper;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import com.google.gson.JsonObject;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
@@ -66,9 +67,9 @@ public class RemoveRecipesCommand {
 
   // failure
   /** Error on invalid item or tag ID */
-  private static final DynamicCommandExceptionType ITEM_NOT_FOUND = new DynamicCommandExceptionType(id -> Mantle.makeComponent("command", "item.not_found", id));
+  private static final DynamicCommandExceptionType ITEM_NOT_FOUND = new DynamicCommandExceptionType(id -> Mantle.makeComponent("command", "item.not_found", TranslationHelper.arg(id)));
   /** Error on invalid preset */
-  private static final DynamicCommandExceptionType PRESET_NOT_FOUND = new DynamicCommandExceptionType(id -> Mantle.makeComponent("command", "remove_recipes.preset_not_found", id));
+  private static final DynamicCommandExceptionType PRESET_NOT_FOUND = new DynamicCommandExceptionType(id -> Mantle.makeComponent("command", "remove_recipes.preset_not_found", TranslationHelper.arg(id)));
 
   // presets
   /** Loadable for saving a list of recipe types */
@@ -234,7 +235,7 @@ public class RemoveRecipesCommand {
     // send success
     int successFinal = successes;
     float time = (System.nanoTime() - startTime) / 1000000f;
-    context.getSource().sendSuccess(() -> Component.translatable(KEY_SUCCESS, successFinal, time, GeneratePackHelper.getOutputComponent(pack)), true);
+    context.getSource().sendSuccess(() -> Component.translatable(KEY_SUCCESS, TranslationHelper.arg(successFinal), TranslationHelper.arg(time), TranslationHelper.arg(GeneratePackHelper.getOutputComponent(pack))), true);
     return successes;
   }
 
@@ -256,7 +257,7 @@ public class RemoveRecipesCommand {
 
     // send success
     float time = (System.nanoTime() - startTime) / 1000000f;
-    context.getSource().sendSuccess(() -> Component.translatable(KEY_SUCCESS, 1, time, GeneratePackHelper.getOutputComponent(pack)), true);
+    context.getSource().sendSuccess(() -> Component.translatable(KEY_SUCCESS, TranslationHelper.arg(1), TranslationHelper.arg(time), TranslationHelper.arg(GeneratePackHelper.getOutputComponent(pack))), true);
     return 1;
   }
 }

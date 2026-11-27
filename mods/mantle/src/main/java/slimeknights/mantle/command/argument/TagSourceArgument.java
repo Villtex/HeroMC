@@ -1,5 +1,6 @@
 package slimeknights.mantle.command.argument;
 
+import slimeknights.mantle.util.TranslationHelper;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
@@ -31,7 +32,7 @@ import static slimeknights.mantle.Mantle.getResource;
  */
 public class TagSourceArgument {
   /* Name is invalid */
-  private static final DynamicCommandExceptionType NOT_FOUND = new DynamicCommandExceptionType(name -> Component.translatable("command.mantle.tag_source.not_found", name));
+  private static final DynamicCommandExceptionType NOT_FOUND = new DynamicCommandExceptionType(name -> Component.translatable("command.mantle.tag_source.not_found", TranslationHelper.arg(name)));
   /** Map of non-registry tag sources */
   private static final Map<ResourceKey<? extends Registry<?>>,TagSource<?>> CUSTOM_TAG_SOURCES = new HashMap<>();
 
