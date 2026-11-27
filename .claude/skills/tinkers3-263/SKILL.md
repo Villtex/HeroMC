@@ -102,3 +102,15 @@ Mantle-Ersatz für weggefallene 26.3-APIs (Tinkers benutzt diese):
   `getItemHandler`; anderen Mods anbieten mit `FluidHandlers.asResourceHandler(tank)` in `RegisterCapabilitiesEvent`.
 - **Daten:** Item-NBT → Komponenten (`MantleData`, `LegacyNbt.toComponents` für alte `"nbt"`), `MobType` als
   `slimeknights.mantle.data.predicate.entity.MobType` (über Entity-Tags), Enchantments nur als `ResourceKey`.
+- **Registrierung:** `slimeknights.mantle.registration.RegistryObject<T>` ersetzt Forges `RegistryObject` (auf
+  `DeferredHolder`; `forge_to_neo.py` stellt den Import um). Mantles Register führen jeden Konstruktor in
+  `RegistrationContext` aus, die Mixins `ItemPropertiesMixin`/`BlockPropertiesMixin` setzen damit die Registry-ID
+  (26.3 braucht sie vor dem Bauen). Eigene `DeferredRegister` von Tinkers ohne Mantle brauchen `setId` selbst.
+- **Keine ItemStacks während eines Reloads** (Item-Komponenten sind erst danach gebunden, „Components not bound yet“):
+  Lader mit `ItemOutput` parsen beim ersten Gebrauch (`FluidContainerTransferManager.ensureLoaded`).
+- **Item-Fähigkeiten:** `IFluidContainerItem` (statt `initCapabilities`), `ConstantFluidContainerWrapper` ist ein
+  `ItemAccessResourceHandler`; Blöcke: `inventory.compat.ItemHandlers`/`fluid.compat.FluidHandlers`.
+- **Daten statt Code in 26.3:** Brennwerte `neoforge:furnace_fuels`, Entrinden `neoforge:transformable`,
+  Entflammbarkeit `neoforge:flammable`; Schilder hängen an den Vanilla-Typen (`BlockEntityTypeAddBlocksEvent`).
+- Tooltips: `TooltipItem`/`BlockTooltipItem` rufen die 1.20.1-Form `appendHoverText(stack, level, List, flag)` auf,
+  Unterklassen überschreiben weiter diese.

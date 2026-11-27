@@ -6,7 +6,7 @@ import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.SharedSuggestionProvider;
-import net.minecraft.world.level.GameRules;
+import net.minecraft.world.level.gamerules.GameRules;
 import net.minecraft.world.level.storage.loot.LootDataType;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
@@ -78,7 +78,7 @@ public class MantleCommand {
       ModifyTagCommand.register(b);
     });
     register(builder, "dump_loot_modifiers", DumpLootModifiers::register);
-    register(builder, "harvest_tiers", HarvestTiersCommand::register);
+    // Port: harvest_tiers is gone, 26.3 has no tool tiers (tool materials with tags)
     register(builder, "remove", b -> {
       b = b.requires(sender -> sender.hasPermission(MantleCommand.PERMISSION_GAME_COMMANDS));
       register(b, "recipes", b2 -> RemoveRecipesCommand.register(b2, context));
@@ -104,6 +104,6 @@ public class MantleCommand {
    * @return  True if the command can be run
    */
   public static boolean requiresDebugInfoOrOp(CommandSourceStack source, int reducedDebugLevel) {
-    return !source.getLevel().getGameRules().getBoolean(GameRules.RULE_REDUCEDDEBUGINFO) || source.hasPermission(reducedDebugLevel);
+    return !source.getLevel().getGameRules().get(GameRules.REDUCED_DEBUG_INFO) || source.hasPermission(reducedDebugLevel);
   }
 }

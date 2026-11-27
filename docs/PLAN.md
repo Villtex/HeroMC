@@ -2420,21 +2420,17 @@ Welttyp-Bedingung. `datagen` entfällt (Daten kommen aus dem Konverter).
   nicht), Mantle 1.21 dient als Vorlage, wo 26.3 dieselben Änderungen verlangt (Kampf, Komponenten, Codecs, Beute).
   Datagen (Provider, Builder) entfällt.
 - **Werkzeuge** (auch für Tinkers 27d–27h): `tools/forge_to_neo.py` (Pakete/Klassen/Aufrufe Forge 1.20.1 → NeoForge
-  26.3, idempotent) und `tools/fix_by_errors.py <javac-log>` (setzt Fehler-genau um: NBT-Getter mit `Optional`,
-  `ResourceKey.location()`, Registry-Aufrufe). Build: `mod_uses_lombok=true` (Lombok + JSR-305), `mod_mixins=…`
-  (Mixin-Konfiguration in `neoforge.mods.toml`), `-Xmaxerrs` im Build.
-- **Fertig:** util, data, network, config, recipe-Grundlage, Flüssigkeits-Brücke, Komponenten – Liste in
-  `mods/mantle/TODO.md`. Kernentscheidungen: `NetworkWrapper` auf NeoForge-Payloads (Pakete vor
-  `RegisterPayloadHandlersEvent` anmelden), `JsonReloadListener` statt des alten Gson-Listeners (filtert
-  `neoforge:conditions` mit dem Reload-Kontext), `CraftingHelper` (Bedingungen, prüft `conditions` und
-  `neoforge:conditions`), Rezept-ID per Mixin in `RecipeIdContext`, `ICommonRecipe` bringt `getId`/`getResultItem`/
-  `getIngredients`/`getGroup` zurück, `fluid.compat` (IFluidHandler, FluidTank, Adapter zu `ResourceHandler<FluidResource>`),
-  Offhand-Angriff über den Vanilla-Angriff mit getauschten Händen, Offhand-Abklingzeit als Data-Attachment.
-- **Geprüft:** `CI=true ./gradlew pack` grün; Testserver bis `Done`, keine Fehler von Mantle (Mixin greift beim
-  Rezeptladen).
-- **Offen:** Zutaten-Typen, Flüssigkeitsbehälter-Transfer, Beute, registration, block, item, inventory, command,
-  MantleEvents, Registrierungen in `Mantle` – Schritte in `mods/mantle/TODO.md` (Quellen schon umbenannt in
-  `mods/mantle/todo/`). In einer neuen Session weitermachen („starte Teil 27b“).
+  26.3, idempotent; seit Session 3 auch Block-Eigenschaften, Konstruktor-Reihenfolge von Tür/Falltür/Knopf/Schild,
+  Block-Methoden `use`/`updateShape`/`getCloneItemStack`, Chat-Meldungen, fehlende Importe) und
+  `tools/fix_by_errors.py <javac-log>` (NBT-Getter, `ResourceKey.location()`, Registry-Aufrufe).
+- **Fertig und baut:** util, data, network, config, recipe mit Zutaten-Typen, Flüssigkeits-Brücke und -Transfer,
+  Beute (Bedingungen, Funktionen, Modifier, Injektionen), registration (`RegistryObject`-Ersatz, `RegistrationContext`
+  für die Registry-ID vor dem Bauen), block, item, inventory (Item-Handler-Brücke) – Einzelheiten und Gestrichenes in
+  `mods/mantle/TODO.md`.
+- **Geprüft:** `CI=true ./gradlew pack` grün; Testserver Integrated und Legacy (Seed 1234) bis `Done`, 0 ERROR.
+- **Offen:** `command` (Quellen in `mods/mantle/todo/`, ~50 Fehler übrig), `MantleEvents`, restliche Registrierungen in
+  `Mantle` (Prädikat-Lader, `TagPreference.init`, `MantleCommand.init`). In einer neuen Session weitermachen
+  („starte Teil 27b“).
 
 ### Teil 27c – Mantle-Client
 `client`: Modell-Lader (Connected/Retextured/Fluid-Textur-Modelle, `ColoredBlockModel`, `NBTKeyModel`), Bildschirm-

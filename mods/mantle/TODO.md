@@ -8,31 +8,57 @@ Sie werden nicht kompiliert. Vorgehen je Paket: nach `src/main/java` verschieben
 ## Fertig (src/main)
 - `util` (ohne Client), `data` (Loadables, Lader, Prädikate, Registries, Datamaps), `network` (NetworkWrapper auf
   NeoForge-Payloads), `config`, `recipe` (ICommonRecipe/Container auf RecipeInput, Serializer-Fabriken, Rezept-ID per
-  Mixin, RecipeHelper mit Client-Rezepten, Bedingungen `mantle:tag_filled|tag_empty|tag_combination_filled`,
-  `mantle:crafting_shaped_retextured`, ItemOutput/FluidOutput/SizedIngredient/EntityIngredient/FluidIngredient),
-  `fluid/compat` (IFluidHandler-Brücke), `registration/MantleData` (Komponenten), `client/SafeClientAccess`, `TooltipKey`.
+  Mixin, RecipeHelper, Bedingungen `mantle:tag_filled|tag_empty|tag_combination_filled`, `mantle:crafting_shaped_retextured`,
+  ItemOutput/FluidOutput/SizedIngredient/EntityIngredient/FluidIngredient), `fluid/compat` (IFluidHandler-Brücke),
+  `MantleData` (Komponenten), `client/SafeClientAccess`, `TooltipKey`.
+- **Zutaten-Typen** `mantle:potion`, `mantle:potion_display`, `mantle:fluid_container` als `ICustomIngredient`
+  (JSON im 1.20.1-Format, so wie der Konverter es liefert).
+- **Flüssigkeits-Transfer** (`FluidTransferHelper`, `fluid/transfer`, Lader `mantle/fluid_transfer` über
+  `AddServerReloadListenersEvent`, Paket), `datagen/MantleTags` (nur die Tag-Schlüssel). Daten `data/mantle/mantle/fluid_transfer/` eingeschaltet.
+- **Beute**: Bedingungen (`block_tag`, `has_context_set`, …), Funktionen (`set_fluid`, `fill_retextured_block`),
+  Eintrag `tag_preference`, Beute-Modifier `add_entry`/`replace_item` (Funktionen als Holder-Liste), `LootTableInjector`
+  als Welt-Registry (lädt vor den Beute-Tabellen, `LootPool#entries` per Reflection).
+- **registration**: `RegistryObject<T>` (Ersatz für Forge, auf `DeferredHolder`), `RegistrationContext` + Mixins
+  `ItemPropertiesMixin`/`BlockPropertiesMixin` (Registry-ID vor dem Bauen, sonst „Item id not set“; Block-Items mit
+  `block.`-Beschreibung), alle Deferred-Register, Objekte (`ItemObject`, `EnumObject`, `WoodBlockObject`, `FluidObject` …).
+- **block/item/inventory**: Schilder auf den Vanilla-Blockentity-Typen (`BlockEntityTypeAddBlocksEvent`),
+  `inventory/compat` (IItemHandler-Brücke auf die 26.3-Transfer-API), `ConstantFluidContainerWrapper` als
+  `ItemAccessResourceHandler`, `IFluidContainerItem` (Ersatz für `initCapabilities`), Tooltip-Items mit Brücke zur
+  1.20.1-Methode `appendHoverText(stack, level, List, flag)`, Inventar-Blöcke droppen über `preRemoveSideEffects`.
+
+## Gestrichen (todo/dropped/, Tinkers 3.12.1 braucht es nicht)
+- `registration/adapter` (bekommt fertig gebaute Objekte; 26.3 braucht die ID vor dem Bauen).
+- `InvertedFluid` und `FluidDeferredRegister#invertedFlowing` (aufwärts fließende Flüssigkeit, Flüssigkeits-Interna von
+  26.3 komplett anders). `InvertedFluidType` bleibt (nur die Client-Textur, 27c).
+- `ArmorTooltipItem` (26.3 hat kein `ArmorItem`), `HarvestTiersCommand` (keine Werkzeug-Stufen), `MissingMappingsEvent`/
+  `ObjectHolder`-Teile von `RegistrationHelper`/`MantleRegistrations`.
 
 ## Offen in 27b (todo/)
-1. **recipe/ingredient** `ItemIngredient`, `PotionIngredient`, `PotionDisplayIngredient`, `FluidContainerIngredient`,
-   `recipe/helper/LoadableIngredientSerializer`: als `ICustomIngredient` + `IngredientType` (MapCodec aus
-   `LoadableMapCodec`, StreamCodec aus `LoadableStreamCodec`), registriert in `NeoForgeRegistries.Keys.INGREDIENT_TYPES`
-   als `mantle:potion`, `mantle:potion_display`, `mantle:fluid_container`. Vorlage: Mantle 1.21 `recipe/ingredient/item`.
-2. **fluid** `FluidTransferHelper`, `UnplaceableFluid`, `InvertedFluid`, `fluid/transfer/*` (Behälter-Transfer, Lader
-   `mantle/fluid_transfer`, Paket `FluidContainerTransferPacket` in `MantleNetwork` eintragen): über
-   `fluid.compat.FluidHandlers`; `AddReloadListenerEvent` → `AddServerReloadListenersEvent`; `PotionUtils` →
-   `PotionContents`. Danach `ItemPredicate.MAY_HAVE_TRANSFER` wieder auf `FluidContainerTransferManager` stellen
-   (PORT-TODO dort).
-3. **loot** (Basis schon aus Mantle 1.21 kopiert, Pakete umgehängt): an 26.3 anpassen – Bedingungen in Funktionen als
-   `Optional<Holder<LootItemCondition>>`, `LootContextParam(Set)` → `ContextKey`/`ContextKeySet`,
-   `getReferencedContextParams` → `validate(ValidationContext)`, `LootPoolSingletonContainer` →
-   `LootPoolEntry`/`SingleEntryContainerBase`, Builder (Datagen) streichen. `MantleLoot.init(bus)` im Konstruktor.
-4. **registration** (deferred, object, adapter, Builder): `RegistryObject` → `DeferredHolder`, `IForgeRegistry` →
-   `Registry`, `ForgeFlowingFluid` → `BaseFlowingFluid`; Holz-/Bau-Objekte gegen 26.3 (`WoodType`, `BlockSetType`).
-5. **block**, **block/entity**, **block/fluid**, **inventory**, **item**: Block-Entities mit `ValueInput/ValueOutput`,
-   Menüs (`IContainerFactory`), Schilder ggf. streichen (26.3-Schilder anders), Bücher-Items → 27c.
-6. **command** (ohne `command/client`, das ist 27c), **MantleEvents** (Seelengebunden über `MantleData.SOULBOUND_SLOT`,
-   Lectern-Buch → 27c), dann alle Registrierungen in `Mantle` (Vorlage: `todo/slimeknights/mantle/Mantle.java`):
-   Prädikat-Lader (`BlockPredicate.LOADER.register(...)` usw.), `TagPreference.init`, `LootTableInjector`.
+1. **command** (`todo/slimeknights/mantle/command`, `fix_by_errors.py` ist schon gelaufen, ~50 Fehler übrig):
+   `hasPermission(int)` → 26.3-Rechte, Rezept-Manager/`getRecipeIds`, `LootDataType`/`getLootData`, Registry-Tags
+   (`getTagNames`/`getTag` → `listTagIds`/`get`), `ClickEvent.OpenFile`, Pack-Version, Verzauberungen als Holder,
+   `ProjectileUtil.getEntityHitResult`, Reichweite `Attributes.ENTITY_INTERACTION_RANGE`. Tinkers braucht davon
+   `MantleCommand`, `GeneratePackHelper`, `RemoveRecipesCommand`, `argument/TagSource(Argument)`.
+2. **MantleEvents** (Seelengebunden über `MantleData.SOULBOUND_SLOT`, Lectern-Buch → 27c), dann die restlichen
+   Registrierungen aus `todo/slimeknights/mantle/Mantle.java` (Prädikat-Lader `BlockPredicate.LOADER.register(...)` usw.,
+   `TagPreference.init`, `MantleCommand.init`).
+
+## Offen für spätere Teile (Folgen der 26.3-Änderungen)
+- **Keine ItemStacks beim Reload**: 26.3 bindet Item-Komponenten erst nach allen Reload-Listenern („Components not
+  bound yet“). Lader, die `ItemOutput`/`ItemStack` lesen, parsen deshalb erst beim ersten Gebrauch (Vorbild:
+  `FluidContainerTransferManager.ensureLoaded`). Gilt für alle Tinkers-Lader (27d–27h).
+- **Fluid-Transfer im Spiel prüfen** (Client oder FakePlayer): Lader parst erst beim ersten Gebrauch, am Server ohne
+  Spieler noch nicht ausgelöst.
+- **Brennwerte** (27g/27j): `Burnable*Item` speichern die Zeit nur noch; 26.3 kennt Brennstoff nur über die Datenkarte
+  `neoforge:furnace_fuels`. Für die Holz-Sets von Tinkers (Greenheart, Skyroot, Bloodshroom: Holz 300, Knopf 100,
+  Schild 200 …) eine Datenkarte schreiben.
+- **Entrinden** (27j): `StrippableLogBlock` entrindet nicht mehr selbst; Einträge in der Datenkarte `neoforge:transformable`.
+- **Entflammbarkeit** (27j): prüfen, ob `registerWood` sie setzt; in 26.3 Datenkarte `neoforge:flammable`.
+- **Blumentöpfe** (27j): `FlowerPotBlock#addPlant` fehlt in 26.3; prüfen, ob der Supplier-Konstruktor den Topf füllt.
+- **Spawn-Eier**: Farben gibt es nicht mehr (Texturen), `registerWithEgg` ignoriert sie.
+- **Item-NBT von SingleItemHandler** jetzt `write(ValueOutput)`/`read(ValueInput)` (Tinkers 27g anpassen).
+- **Lebensmittel-Effekte** kommen aus der Komponente `minecraft:consumable` (`ContainerFoodItem.getEffects`), Tinkers'
+  `TinkerFood` (27g) muss Effekte als `ApplyStatusEffectsConsumeEffect` setzen.
 
 ## Für 27c (todo-27c/)
 - Buch-Pakete (`network/packet/*Book*`, `*Page*`) in `MantleNetwork.registerPackets` eintragen; `fluid/texture`,

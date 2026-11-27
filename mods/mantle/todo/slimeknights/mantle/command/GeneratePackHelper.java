@@ -12,7 +12,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.level.storage.LevelResource;
 import slimeknights.mantle.util.CraftingHelper;
-import net.neoforged.neoforge.common.conditions.FalseCondition;
+import net.neoforged.neoforge.common.conditions.NeverCondition;
 import net.neoforged.neoforge.common.conditions.ICondition;
 import net.neoforged.fml.ModList;
 import slimeknights.mantle.Mantle;
@@ -72,7 +72,7 @@ public class GeneratePackHelper {
   /** Saves a JSON that removes the given resource using forge conditions */
   public static boolean saveConditionRemove(Path path, String conditionKey) {
     JsonObject json = new JsonObject();
-    json.add(conditionKey, CraftingHelper.serialize(new ICondition[]{FalseCondition.INSTANCE}));
+    json.add(conditionKey, CraftingHelper.serialize(new ICondition[]{NeverCondition.INSTANCE}));
     return saveJson(json, path);
   }
 

@@ -55,6 +55,14 @@ public class FluidContainerTransferManager extends JsonReloadListener {
 
   /** List of loaded transfer logic, only exists serverside */
   private List<IFluidContainerTransfer> transfers = Collections.emptyList();
+  /**
+   * Port: JSON of the last reload, parsed on first use. 26.3 binds item components only after all reload listeners
+   * ran, so item stacks (results of the transfers) cannot be created in {@link #apply}.
+   */
+  @Nullable
+  private Map<Identifier,JsonElement> pending = null;
+  /** Condition context of the reload that filled {@link #pending} */
+  private IContext pendingContext = IContext.EMPTY;
 
   /** Set of all items that match a recipe, exists on both sides */
   @Setter @Nullable
@@ -64,8 +72,24 @@ public class FluidContainerTransferManager extends JsonReloadListener {
     super(GSON, FOLDER);
   }
 
+  /** Parses the JSON of the last reload, if not done yet */
+  private synchronized void ensureLoaded() {
+    Map<Identifier,JsonElement> json = this.pending;
+    if (json != null) {
+      this.pending = null;
+      long time = System.nanoTime();
+      this.transfers = json.entrySet().stream()
+                           .map(entry -> loadFluidTransfer(entry.getKey(), entry.getValue().getAsJsonObject()))
+                           .filter(Objects::nonNull)
+                           .toList();
+      this.containerItems = null;
+      log.info("Loaded {} fluid container transfers in {} ms", transfers.size(), (System.nanoTime() - time) / 1000000f);
+    }
+  }
+
   /** Lazily initializes the set of container items */
   protected Set<Item> getContainerItems() {
+    ensureLoaded();
     if (this.containerItems == null) {
       List<Item> builder = new ArrayList<>();
       Consumer<Item> consumer = builder::add;
@@ -87,7 +111,7 @@ public class FluidContainerTransferManager extends JsonReloadListener {
   @Nullable
   private IFluidContainerTransfer loadFluidTransfer(Identifier key, JsonObject json) {
     try {
-      if (!json.has("conditions") || CraftingHelper.processConditions(GsonHelper.getAsJsonArray(json, "conditions"), getConditionContext())) {
+      if (!json.has("conditions") || CraftingHelper.processConditions(GsonHelper.getAsJsonArray(json, "conditions"), pendingContext)) {
         return GSON.fromJson(json, IFluidContainerTransfer.class);
       }
     } catch (JsonSyntaxException e) {
@@ -98,13 +122,10 @@ public class FluidContainerTransferManager extends JsonReloadListener {
 
   @Override
   protected void apply(Map<Identifier,JsonElement> splashList, ResourceManager manager, ProfilerFiller profiler) {
-    long time = System.nanoTime();
-    this.transfers = splashList.entrySet().stream()
-                               .map(entry -> loadFluidTransfer(entry.getKey(), entry.getValue().getAsJsonObject()))
-                               .filter(Objects::nonNull)
-                               .toList();
+    this.pending = Map.copyOf(splashList);
+    this.pendingContext = getConditionContext();
+    this.transfers = Collections.emptyList();
     this.containerItems = null;
-    log.info("Loaded {} dynamic modifiers in {} ms", transfers.size(), (System.nanoTime() - time) / 1000000f);
   }
 
   /**
@@ -128,6 +149,7 @@ public class FluidContainerTransferManager extends JsonReloadListener {
   /** Gets the transfer for the given item and fluid, or null if its not a valid item and fluid */
   @Nullable
   public IFluidContainerTransfer getTransfer(ItemStack stack, FluidStack fluid) {
+    ensureLoaded();
     for (IFluidContainerTransfer transfer : transfers) {
       if (transfer.matches(stack, fluid)) {
         return transfer;

@@ -18,8 +18,8 @@ public record RegistryLoadable<T>(Registry<T> registry, Identifier registryId) i
     this(Objects.requireNonNull(RegistryHelper.getRegistry(registryId), "Unknown registry " + registryId.identifier()), registryId.identifier());
   }
 
-  @SuppressWarnings("unchecked")
+  /** Port: uses the registry's own key, NeoForge registries are not yet in the root registry during mod construction */
   public RegistryLoadable(Registry<T> registry) {
-    this(registry, Objects.requireNonNull(((Registry<Registry<?>>) BuiltInRegistries.REGISTRY).getKey(registry)));
+    this(registry, registry.key().identifier());
   }
 }
