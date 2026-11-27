@@ -89,7 +89,7 @@ public class NBTKeyModel implements IUnbakedGeometry<NBTKeyModel> {
       for (Pair<String,Identifier> extra : EXTRA_TEXTURES.get(extraTexturesKey)) {
         String key = extra.getFirst();
         if (!textures.containsKey(key)) {
-          textures.put(key, new Material(InventoryMenu.BLOCK_ATLAS, extra.getSecond()));
+          textures.put(key, new Material(net.minecraft.client.renderer.texture.TextureAtlas.LOCATION_BLOCKS, extra.getSecond()));
         }
       }
     }

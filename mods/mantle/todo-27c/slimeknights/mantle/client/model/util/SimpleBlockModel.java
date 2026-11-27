@@ -296,7 +296,7 @@ public class SimpleBlockModel implements IUnbakedGeometry<SimpleBlockModel> {
     // textures, empty map if missing
     Map<String, Either<Material, String>> textureMap;
     if (json.has("textures")) {
-      Identifier atlas = InventoryMenu.BLOCK_ATLAS;
+      Identifier atlas = net.minecraft.client.renderer.texture.TextureAtlas.LOCATION_BLOCKS;
       JsonObject textures = GsonHelper.getAsJsonObject(json, "textures");
       Map<String, Either<Material, String>> builder = new HashMap<>(textures.size());
       for(Entry<String, JsonElement> entry : textures.entrySet()) {

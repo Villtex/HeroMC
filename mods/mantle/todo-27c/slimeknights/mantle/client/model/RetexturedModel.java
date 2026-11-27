@@ -239,7 +239,7 @@ public class RetexturedModel implements IUnbakedGeometry<RetexturedModel> {
     public RetexturedContext(IGeometryBakingContext base, Set<String> retextured, Identifier texture) {
       super(base);
       this.retextured = retextured;
-      this.texture = new Material(InventoryMenu.BLOCK_ATLAS, texture);
+      this.texture = new Material(net.minecraft.client.renderer.texture.TextureAtlas.LOCATION_BLOCKS, texture);
     }
 
     @Override

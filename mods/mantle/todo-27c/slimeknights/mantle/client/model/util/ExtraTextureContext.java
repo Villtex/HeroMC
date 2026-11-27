@@ -31,7 +31,7 @@ public class ExtraTextureContext extends GeometryContextWrapper {
    */
   public ExtraTextureContext(IGeometryBakingContext base, String name, Identifier texture) {
     super(base);
-    this.textures = Map.of(name, new Material(InventoryMenu.BLOCK_ATLAS, texture));
+    this.textures = Map.of(name, new Material(net.minecraft.client.renderer.texture.TextureAtlas.LOCATION_BLOCKS, texture));
   }
 
   @Override

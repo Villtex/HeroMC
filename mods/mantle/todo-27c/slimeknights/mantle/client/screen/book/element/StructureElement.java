@@ -1,5 +1,7 @@
 package slimeknights.mantle.client.screen.book.element;
 
+import org.joml.Matrix3x2fStack;
+
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.math.Transformation;
@@ -66,7 +68,7 @@ public class StructureElement extends SizedBookElement {
   @Override
   public void draw(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTicks, Font fontRenderer) {
     MultiBufferSource.BufferSource buffer = MultiBufferSource.immediate(Tesselator.getInstance().getBuilder());
-    PoseStack transform = graphics.pose();
+    Matrix3x2fStack transform = graphics.pose();
     PoseStack.Pose lastEntryBeforeTry = transform.last();
 
     try {
@@ -87,16 +89,16 @@ public class StructureElement extends SizedBookElement {
       int structureWidth = this.renderInfo.structureWidth;
       int structureHeight = this.renderInfo.structureHeight;
 
-      transform.pushPose();
+      transform.pushMatrix();
 
       final BlockRenderDispatcher blockRender = Minecraft.getInstance().getBlockRenderer();
 
-      transform.translate(this.transX, this.transY, Math.max(structureHeight, Math.max(structureWidth, structureLength)));
-      transform.scale(this.scale, -this.scale, 1);
+      transform.translate(this.transX, this.transY);
+      transform.scale(this.scale, -this.scale);
       transform.pushTransformation(this.additionalTransform);
       transform.mulPose(new Quaternionf().rotateYXZ(0, 0, 0));
 
-      transform.translate(structureLength / -2f, structureHeight / -2f, structureWidth / -2f);
+      transform.translate(structureLength / -2f, structureHeight / -2f);
 
       for (int h = 0; h < structureHeight; h++) {
         for (int l = 0; l < structureLength; l++) {
@@ -105,8 +107,8 @@ public class StructureElement extends SizedBookElement {
             BlockState state = this.structureWorld.getBlockState(pos);
 
             if (!state.isAir()) {
-              transform.pushPose();
-              transform.translate(l, h, w);
+              transform.pushMatrix();
+              transform.translate(l, h);
 
               int overlay;
 
@@ -131,14 +133,14 @@ public class StructureElement extends SizedBookElement {
                   overlay, modelData, renderType);
               }
 
-              transform.popPose();
+              transform.popMatrix();
             }
           }
         }
       }
 
-      transform.popPose();
-      transform.popPose();
+      transform.popMatrix();
+      transform.popMatrix();
 
     } catch (Exception e) {
       final long now = System.currentTimeMillis();
@@ -149,7 +151,7 @@ public class StructureElement extends SizedBookElement {
       }
 
       while (lastEntryBeforeTry != transform.last())
-        transform.popPose();
+        transform.popMatrix();
     }
 
     buffer.endBatch();

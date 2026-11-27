@@ -104,6 +104,8 @@ def rewrite_blit(text):
         elif n == 11:
             new = [PIPE, a[0], a[1], a[2], a[5], a[6], a[3], a[4], a[7], a[8], a[9], a[10]]
         else:
+            if text[max(0, m.start() - 50):m.start()].endswith('*/'):
+                continue  # already marked
             out.append(text[pos:m.start()])
             out.append('/* TODO gui_to_extract: blit with %d args */' % n)
             pos = m.start()
@@ -122,6 +124,36 @@ def opaque_colours(text):
     def repl_call(m):
         return re.sub(r'(?<![\w])(0x)([0-9A-Fa-f]{6})\b', lambda h: '0xFF' + h.group(2).upper(), m.group(0))
     return re.sub(r'\.(?:text|centeredText|fill|fillGradient)\([^;]*;', repl_call, text)
+
+
+def pose_2d(text):
+    """PoseStack variables taken from graphics.pose() become Matrix3x2fStack (2D): push/pop and drop the z argument."""
+    names = set(re.findall(r'\bPoseStack (\w+) = \w+\.pose\(\);', text))
+    text = re.sub(r'\bPoseStack (\w+) = (\w+)\.pose\(\);', r'Matrix3x2fStack \1 = \2.pose();', text)
+    names |= {'pose()'}
+    for n in names:
+        q = re.escape(n)
+        text = re.sub(r'\b' + q + r'\.pushPose\(\)', n + '.pushMatrix()', text)
+        text = re.sub(r'\b' + q + r'\.popPose\(\)', n + '.popMatrix()', text)
+        for call in ('translate', 'scale'):
+            out, pos = [], 0
+            for m in re.finditer(r'\b' + q + r'\.' + call + r'\(', text):
+                if m.start() < pos:
+                    continue
+                try:
+                    args, end = split_args(text, m.end())
+                except ValueError:
+                    continue
+                if len(args) != 3:
+                    continue
+                out.append(text[pos:m.start()])
+                out.append(n + '.' + call + '(' + ', '.join(a.strip() for a in args[:2]) + ')')
+                pos = end + 1
+            out.append(text[pos:])
+            text = ''.join(out)
+    if 'Matrix3x2fStack' in text and 'import org.joml.Matrix3x2fStack;' not in text:
+        text = re.sub(r'(\npackage [^;]+;\n)', r'\1\nimport org.joml.Matrix3x2fStack;\n', text, count=1)
+    return text
 
 
 def add_import(text):
@@ -179,6 +211,7 @@ def convert(text):
             text = re.sub(r'(\npackage [^;]+;\n)', r'\1\nimport ' + full + ';\n', text, count=1)
     text = rewrite_blit(text)
     text = opaque_colours(text)
+    text = pose_2d(text)
     return add_import(text)
 
 
