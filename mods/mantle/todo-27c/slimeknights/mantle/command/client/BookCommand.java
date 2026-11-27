@@ -15,7 +15,7 @@ import com.mojang.brigadier.context.CommandContext;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.Screenshot;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.commands.CommandRuntimeException;
@@ -222,7 +222,7 @@ public class BookCommand {
         MultiBufferSource.BufferSource buffer = Minecraft.getInstance().renderBuffers().bufferSource();
         target.bindWrite(true);
 
-        GuiGraphics gui = new GuiGraphics(Minecraft.getInstance(), buffer);
+        GuiGraphicsExtractor gui = new GuiGraphicsExtractor(Minecraft.getInstance(), buffer);
 
         String bookKey = book.getPath() + "_" + version;
         // title goes export title -> regular title -> path
@@ -252,10 +252,10 @@ public class BookCommand {
             screen.drawText = page < 0;
           }
 
-          gui.pose().pushPose();
+          gui.pose().pushMatrix();
           screen.render(gui, 0, 0, 0);
           gui.flush();
-          gui.pose().popPose();
+          gui.pose().popMatrix();
 
           try (NativeImage image = takeScreenshot(target)) {
             String pageFormat = page < 0 ? "cover" :  (html ? "clean_" : "page_") + page;
@@ -335,9 +335,9 @@ public class BookCommand {
     if (player != null) {
       Component fileComponent = GeneratePackHelper.getOutputComponent(screenshotDir);
       if (htmlDir != null) {
-        player.displayClientMessage(Component.translatable(EXPORT_SUCCESS_HTML, fileComponent, GeneratePackHelper.getOutputComponent(htmlDir)), false);
+        player.sendSystemMessage(Component.translatable(EXPORT_SUCCESS_HTML, fileComponent, GeneratePackHelper.getOutputComponent(htmlDir)));
       } else {
-        player.displayClientMessage(Component.translatable(EXPORT_SUCCESS, fileComponent), false);
+        player.sendSystemMessage(Component.translatable(EXPORT_SUCCESS, fileComponent));
       }
     }
   }
@@ -358,7 +358,7 @@ public class BookCommand {
   public static void bookNotFound(Identifier book) {
     Player player = Minecraft.getInstance().player;
     if (player != null) {
-      player.displayClientMessage(Component.translatable(BOOK_NOT_FOUND, book).withStyle(ChatFormatting.RED), false);
+      player.sendSystemMessage(Component.translatable(BOOK_NOT_FOUND, book).withStyle(ChatFormatting.RED));
     }
   }
 }

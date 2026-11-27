@@ -146,6 +146,15 @@ side="BOTH"
         sourceSets.main.resources.srcDir(convertedData.map { it.destinationDir })
     }
 
+    // Access transformer of the mod (src/main/resources/META-INF/accesstransformer.cfg, Teil 27c: Mantle). Mods that
+    // build on one (mod_requires) compile against its changes too, so their code sees e.g. non-final screen sizes.
+    def atFiles = ([project] + required.collect { project(":${it}") })
+            .collect { it.file('src/main/resources/META-INF/accesstransformer.cfg') }.findAll { it.exists() }
+    if (!atFiles.isEmpty()) {
+        neoForge.accessTransformers.from(atFiles)
+    }
+    def ownAt = file('src/main/resources/META-INF/accesstransformer.cfg').exists()
+
     // neoforge.mods.toml is generated from one shared template + the mod's gradle.properties.
     def metadata = [
             mod_id           : mod_id,
@@ -159,6 +168,7 @@ side="BOTH"
             mod_requires     : requiredToml,
             // "mod_mixins=a.mixins.json,b.mixins.json" in gradle.properties: mixin configs of the mod
             mod_mixins       : (findProperty('mod_mixins') ?: '').tokenize(',')*.trim().collect { "\n[[mixins]]\nconfig=\"${it}\"\n" }.join(''),
+            mod_ats          : ownAt ? '\n[[accessTransformers]]\nfile="META-INF/accesstransformer.cfg"\n' : '',
     ]
     tasks.named('processResources') {
         inputs.properties(metadata)

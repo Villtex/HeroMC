@@ -16,7 +16,7 @@ import slimeknights.mantle.data.listener.JsonReloadListener;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.world.level.material.Fluid;
-import net.neoforged.neoforge.client.event.RegisterClientReloadListenersEvent;
+import net.neoforged.neoforge.client.event.AddClientReloadListenersEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.TagsUpdatedEvent;
 import net.neoforged.bus.api.EventPriority;
@@ -51,7 +51,7 @@ public class FluidTooltipHandler extends JsonReloadListener {
   /** GSON instance */
   // TODO: do we even need GSON here? I feel a classical serializer is sufficient as this class is pretty simple
   public static final Gson GSON = (new GsonBuilder())
-    .registerTypeAdapter(Identifier.class, new Identifier.Serializer())
+    .registerTypeAdapter(Identifier.class, slimeknights.mantle.data.gson.ResourceLocationSerializer.resourceLocation("minecraft"))
     .registerTypeAdapter(FluidIngredient.class, FluidIngredient.LOADABLE)
     .registerTypeAdapter(TagKey.class, new TagKeySerializer<>(Registries.FLUID))
     .setPrettyPrinting()
@@ -84,8 +84,8 @@ public class FluidTooltipHandler extends JsonReloadListener {
    * Initializes this manager, registering it with the resource manager
    * @param manager  Manager
    */
-  public static void init(RegisterClientReloadListenersEvent manager) {
-    manager.registerReloadListener(INSTANCE);
+  public static void init(AddClientReloadListenersEvent manager) {
+    manager.addListener(slimeknights.mantle.Mantle.getResource("fluid_tooltips"), INSTANCE);
     // clear the cache on tag reload, if the tags changed it might be wrong
     NeoForge.EVENT_BUS.addListener(EventPriority.NORMAL, false, TagsUpdatedEvent.class, event -> INSTANCE.listCache.clear());
   }
@@ -209,7 +209,7 @@ public class FluidTooltipHandler extends JsonReloadListener {
     List<Component> tooltip = new ArrayList<>();
     Identifier key = BuiltInRegistries.FLUID.getKey(fluid.getFluid());
     // fluid name, not sure if there is a cleaner way to do this
-    tooltip.add(fluid.getDisplayName());
+    tooltip.add(fluid.getHoverName());
     // add ID if advanced
     appendAdvanced(key, tooltip);
     // material

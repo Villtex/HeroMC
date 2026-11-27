@@ -23,7 +23,10 @@ RULES = [
     (r'\bwriteResourceLocation\(', 'writeIdentifier('),
     (r'\bnet\.minecraft\.Util\b', 'net.minecraft.util.Util'),
     (r'\bnet\.minecraft\.world\.entity\.player\.Player\b', 'net.minecraft.world.entity.player.Player'),
+    (r'\bnew Identifier\.Serializer\(\)', 'slimeknights.mantle.data.gson.ResourceLocationSerializer.resourceLocation("minecraft")'),
+    (r'\bTextColor\.parseColor\(([^()]*)\)', r'TextColor.parseColor(\1).result().orElse(null)'),
     # --- event bus / fml ---
+    (r'\bRegisterClientReloadListenersEvent\b', 'AddClientReloadListenersEvent'),  # registerReloadListener(x) -> addListener(id, x) by hand
     (r'\bnet\.minecraftforge\.eventbus\.api\.', 'net.neoforged.bus.api.'),
     (r'\bnet\.minecraftforge\.fml\.common\.Mod\.EventBusSubscriber\b', 'net.neoforged.fml.common.EventBusSubscriber'),
     (r'\bnet\.minecraftforge\.fml\.', 'net.neoforged.fml.'),

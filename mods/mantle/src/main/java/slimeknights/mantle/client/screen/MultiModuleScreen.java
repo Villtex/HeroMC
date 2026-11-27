@@ -1,0 +1,331 @@
+package slimeknights.mantle.client.screen;
+
+import net.minecraft.client.input.MouseButtonEvent;
+
+import net.minecraft.client.renderer.RenderPipelines;
+
+import com.google.common.collect.Lists;
+import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.renderer.Rect2i;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.Slot;
+import slimeknights.mantle.inventory.MultiModuleContainerMenu;
+import slimeknights.mantle.inventory.WrapperSlot;
+
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+
+public class MultiModuleScreen<CONTAINER extends MultiModuleContainerMenu<?>> extends AbstractContainerScreen<CONTAINER> {
+
+  protected List<ModuleScreen<?,?>> modules = Lists.newArrayList();
+
+  public int cornerX;
+  public int cornerY;
+  public int realWidth;
+  public int realHeight;
+
+  public MultiModuleScreen(CONTAINER container, Inventory playerInventory, Component title) {
+    super(container, playerInventory, title);
+
+    this.realWidth = -1;
+    this.realHeight = -1;
+//    this.passEvents = true;  // TODO: needed?
+  }
+
+  protected void addModule(ModuleScreen<?,?> module) {
+    this.modules.add(module);
+  }
+
+  public List<Rect2i> getModuleAreas() {
+    List<Rect2i> areas = new ArrayList<>(this.modules.size());
+    for (ModuleScreen<?,?> module : this.modules) {
+      areas.add(module.getArea());
+    }
+    return areas;
+  }
+
+  @Override
+  protected void init() {
+    if (this.realWidth > -1) {
+      // has to be reset before calling initGui so the position is getting retained
+      this.imageWidth = this.realWidth;
+      this.imageHeight = this.realHeight;
+    }
+
+    super.init();
+
+    this.cornerX = this.leftPos;
+    this.cornerY = this.topPos;
+    this.realWidth = this.imageWidth;
+    this.realHeight = this.imageHeight;
+
+    assert this.minecraft != null;
+    for (ModuleScreen<?,?> module : this.modules) {
+      this.updateSubmodule(module);
+    }
+    // TODO: this is a small ordering change, does it need another hook?
+    for (ModuleScreen<?,?> module : this.modules) {
+      module.init(width, height);
+      this.updateSubmodule(module);
+    }
+  }
+
+//  @Override
+//  public void init(Minecraft mc, int width, int height) {
+//    super.init(mc, width, height);
+//
+//    for (ModuleScreen<?,?> module : this.modules) {
+//      module.init(mc, width, height);
+//      this.updateSubmodule(module);
+//    }
+//  }
+
+  @Override
+  public void extractBackground(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTicks) {
+    super.extractBackground(graphics, mouseX, mouseY, partialTicks);
+    for (ModuleScreen<?,?> module : this.modules) {
+      module.handleDrawGuiContainerBackgroundLayer(graphics, partialTicks, mouseX, mouseY);
+    }
+  }
+
+  @Override
+  protected void extractLabels(GuiGraphicsExtractor graphics, int mouseX, int mouseY) {
+    this.drawContainerName(graphics);
+    this.drawPlayerInventoryName(graphics);
+
+    var poses = graphics.pose();
+    for (ModuleScreen<?,?> module : this.modules) {
+      // set correct state for the module
+      poses.pushMatrix();
+      poses.translate(module.leftPos - this.leftPos, module.topPos - this.topPos);
+      module.handleDrawGuiContainerForegroundLayer(graphics, mouseX, mouseY);
+      poses.popMatrix();
+    }
+  }
+
+  @Override
+  protected void extractTooltip(GuiGraphicsExtractor graphics, int mouseX, int mouseY) {
+    super.extractTooltip(graphics, mouseX, mouseY);
+
+    for (ModuleScreen<?,?> module : this.modules) {
+      module.handleRenderHoveredTooltip(graphics, mouseX, mouseY);
+    }
+  }
+
+  protected void drawBackground(GuiGraphicsExtractor graphics, Identifier background) {
+    graphics.blit(RenderPipelines.GUI_TEXTURED, background, this.cornerX, this.cornerY, 0, 0, this.realWidth, this.realHeight, 256, 256);
+  }
+
+  protected void drawContainerName(GuiGraphicsExtractor graphics) {
+    graphics.text(this.font, this.getTitle().getVisualOrderText(), 8, 6, 0xFF404040, false);
+  }
+
+  protected void drawPlayerInventoryName(GuiGraphicsExtractor graphics) {
+    assert Minecraft.getInstance().player != null;
+    Component localizedName = Minecraft.getInstance().player.getInventory().getDisplayName();
+    graphics.text(this.font, localizedName.getVisualOrderText(), 8, this.imageHeight - 96 + 2, 0xFF404040, false);
+  }
+
+  @Override
+  public void resize(int width, int height) {
+    super.resize(width, height);
+
+    for (ModuleScreen<?,?> module : this.modules) {
+      module.resize(width, height);
+      this.updateSubmodule(module);
+    }
+  }
+
+  @Override
+  public void extractRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTicks) {
+    // background is extracted by Screen itself (26.3)
+    int oldX = this.leftPos;
+    int oldY = this.topPos;
+    int oldW = this.imageWidth;
+    int oldH = this.imageHeight;
+
+    this.leftPos = this.cornerX;
+    this.topPos = this.cornerY;
+    this.imageWidth = this.realWidth;
+    this.imageHeight = this.realHeight;
+    super.extractRenderState(graphics, mouseX, mouseY, partialTicks);
+    this.leftPos = oldX;
+    this.topPos = oldY;
+    this.imageWidth = oldW;
+    this.imageHeight = oldH;
+  }
+
+  // needed to get the correct slot on clicking
+  @Override
+  protected boolean isHovering(int left, int top, int width, int height, double pointX, double pointY) {
+    pointX -= this.cornerX;
+    pointY -= this.cornerY;
+    return pointX >= left - 1 && pointX < left + width + 1 && pointY >= top - 1 && pointY < top + height + 1;
+  }
+
+  protected void updateSubmodule(ModuleScreen<?,?> module) {
+    module.updatePosition(this.cornerX, this.cornerY, this.realWidth, this.realHeight);
+
+    if (module.leftPos < this.leftPos) {
+      this.imageWidth += this.leftPos - module.leftPos;
+      this.leftPos = module.leftPos;
+    }
+
+    if (module.topPos < this.topPos) {
+      this.imageHeight += this.topPos - module.topPos;
+      this.topPos = module.topPos;
+    }
+
+    if (module.guiRight() > this.leftPos + this.imageWidth) {
+      this.imageWidth = module.guiRight() - this.leftPos;
+    }
+
+    if (module.guiBottom() > this.topPos + this.imageHeight) {
+      this.imageHeight = module.guiBottom() - this.topPos;
+    }
+  }
+
+  @Override
+  protected void extractSlot(GuiGraphicsExtractor graphics, Slot slotIn, int mouseX, int mouseY) {
+    ModuleScreen<?,?> module = this.getModuleForSlot(slotIn.index);
+
+    if (module != null) {
+      Slot slot = slotIn;
+      // unwrap for the call to the module
+      if (slotIn instanceof WrapperSlot) {
+        slot = ((WrapperSlot) slotIn).parent;
+      }
+
+      if (!module.shouldDrawSlot(slot)) {
+        return;
+      }
+    }
+
+    // update slot positions
+    if (slotIn instanceof WrapperSlot) {
+      slotIn.x = ((WrapperSlot) slotIn).parent.x;
+      slotIn.y = ((WrapperSlot) slotIn).parent.y;
+    }
+
+    super.extractSlot(graphics, slotIn, mouseX, mouseY);
+  }
+
+  /** Port: {@code isHovering(Slot, double, double)} is private in 26.3; this keeps the module check of the original */
+  public boolean isHoveringSlot(Slot slotIn, double mouseX, double mouseY) {
+    ModuleScreen<?,?> module = this.getModuleForSlot(slotIn.index);
+
+    // mouse inside the module of the slot?
+    if (module != null) {
+      Slot slot = slotIn;
+      // unwrap for the call to the module
+      if (slotIn instanceof WrapperSlot) {
+        slot = ((WrapperSlot) slotIn).parent;
+      }
+
+      if (!module.shouldDrawSlot(slot)) {
+        return false;
+      }
+    }
+
+    return slotIn.isActive() && this.isHovering(slotIn.x, slotIn.y, 16, 16, mouseX, mouseY);
+  }
+
+  @Override
+  public boolean mouseClicked(MouseButtonEvent event, boolean doubleClick) {
+    double mouseX = event.x(), mouseY = event.y(); int mouseButton = event.button();
+    ModuleScreen<?,?> module = this.getModuleForPoint(mouseX, mouseY);
+
+    if (module != null) {
+      if (module.handleMouseClicked(mouseX, mouseY, mouseButton)) {
+        return false;
+      }
+    }
+
+    return super.mouseClicked(event, doubleClick);
+  }
+
+  @Override
+  public boolean mouseDragged(MouseButtonEvent event, double timeSinceLastClick, double unkowwn) {
+    double mouseX = event.x(), mouseY = event.y(); int clickedMouseButton = event.button();
+    ModuleScreen<?,?> module = this.getModuleForPoint(mouseX, mouseY);
+
+    if (module != null) {
+      if (module.handleMouseClickMove(mouseX, mouseY, clickedMouseButton, timeSinceLastClick)) {
+        return false;
+      }
+    }
+
+    return super.mouseDragged(event, timeSinceLastClick, unkowwn);
+  }
+
+  @Override
+  public boolean mouseScrolled(double mouseX, double mouseY, double scrollX, double delta) {
+    ModuleScreen<?,?> module = this.getModuleForPoint(mouseX, mouseY);
+
+    if (module != null) {
+      if (module.handleMouseScrolled(mouseX, mouseY, delta)) {
+        return false;
+      }
+    }
+
+    return super.mouseScrolled(mouseX, mouseY, scrollX, delta);
+  }
+
+  @Override
+  public boolean mouseReleased(MouseButtonEvent event) {
+    double mouseX = event.x(), mouseY = event.y(); int state = event.button();
+    // every module gets the release, even ones the cursor has left; a module tracking a drag needs the button up to stop tracking
+    // the default implementation still bounds checks before running the module's own handler, so only modules that opt in see releases outside their area
+    boolean handled = false;
+    for (ModuleScreen<?,?> module : this.modules) {
+      if (module.handleMouseReleased(mouseX, mouseY, state)) {
+        handled = true;
+      }
+    }
+
+    if (handled) {
+      return false;
+    }
+
+    return super.mouseReleased(event);
+  }
+
+  @Nullable
+  protected ModuleScreen<?,?> getModuleForPoint(double x, double y) {
+    for (ModuleScreen<?,?> module : this.modules) {
+      if (this.isHovering(module.leftPos, module.topPos, module.imageWidth, module.imageHeight, x + this.cornerX, y + this.cornerY)) {
+        return module;
+      }
+    }
+
+    return null;
+  }
+
+  @Nullable
+  protected ModuleScreen<?,?> getModuleForSlot(int slotNumber) {
+    return this.getModuleForContainer(this.getMenu().getSlotContainer(slotNumber));
+  }
+
+  @Nullable
+  protected ModuleScreen<?,?> getModuleForContainer(AbstractContainerMenu container) {
+    for (ModuleScreen<?,?> module : this.modules) {
+      if (module.getMenu() == container) {
+        return module;
+      }
+    }
+
+    return null;
+  }
+
+  @Override
+  public CONTAINER getMenu() {
+    return this.menu;
+  }
+}
