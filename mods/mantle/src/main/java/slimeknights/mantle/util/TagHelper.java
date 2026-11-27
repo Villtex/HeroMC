@@ -35,4 +35,32 @@ public class TagHelper {
     }
     return null;
   }
+
+  /* 1.20.1 typed lookups, gone in 26.3 (Teil 27d) */
+
+  /** Tag type of any number in 1.20.1 ({@code Tag.TAG_ANY_NUMERIC}) */
+  public static final int TAG_ANY_NUMERIC = 99;
+
+  /**
+   * 1.20.1 {@code tag.contains(key, type)}: true if the key holds a tag of the given type ({@link net.minecraft.nbt.Tag}
+   * {@code TAG_*} constants, {@link #TAG_ANY_NUMERIC} for any number)
+   */
+  public static boolean contains(@Nullable CompoundTag tag, String key, int type) {
+    if (tag == null) {
+      return false;
+    }
+    net.minecraft.nbt.Tag value = tag.get(key);
+    if (value == null) {
+      return false;
+    }
+    return type == TAG_ANY_NUMERIC ? value instanceof NumericTag : value.getId() == type;
+  }
+
+  /** 1.20.1 {@code tag.getList(key, type)}: the list under the key if its elements have the given type (or it is empty), else an empty list */
+  public static net.minecraft.nbt.ListTag getList(@Nullable CompoundTag tag, String key, int type) {
+    if (tag != null && tag.get(key) instanceof net.minecraft.nbt.ListTag list && (list.isEmpty() || list.get(0).getId() == type)) {
+      return list;
+    }
+    return new net.minecraft.nbt.ListTag();
+  }
 }

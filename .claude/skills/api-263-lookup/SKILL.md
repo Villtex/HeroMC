@@ -38,7 +38,7 @@ zeigt meist alle Abweichungen auf einmal – dann gesammelt korrigieren.
 |---|---|
 | `PushReaction.DESTROY` / `BLOCK` | `POPPED` / `IMMOVEABLE` |
 | `Blocks.WHITE_WOOL` … | `Blocks.WOOL.white()`, `Blocks.WOOL.asList()` |
-| `entity.hurtMarked = true` | `entity.needsSync = true` |
+| `entity.hurtMarked = true` (markHurt) | `entity.syncVelocity = true`; `hasImpulse` (push) → `needsSync` |
 | `entity.invulnerableTime = n` | `setInvulnerableTime(n)` |
 | `EntityType.LIGHTNING_BOLT` | `EntityTypes.LIGHTNING_BOLT` |
 | `player.drop(stack, false)` | `drop(stack, false, Prediction.SERVER_ONLY)` |

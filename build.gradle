@@ -69,6 +69,11 @@ subprojects {
         // every mod may bring a JEI plugin; JEI itself is only on the runtime classpath of the pack runs
         compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
     }
+    // Work in progress of a large port (Teil 27): sources in wip/java do not build yet and are only compiled with
+    // -Pwip (e.g. ./gradlew :tconstruct3:compileJava -Pwip). The normal build ignores them and stays green.
+    if (rootProject.hasProperty('wip') && file('wip/java').isDirectory()) {
+        sourceSets.main.java.srcDir('wip/java')
+    }
     // "mod_uses_lombok=true": original sources written with Lombok and JSR-305 annotations (Teil 27: Mantle, Tinkers 3)
     if ((findProperty('mod_uses_lombok') ?: 'false').toBoolean()) {
         dependencies {

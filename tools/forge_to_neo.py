@@ -111,6 +111,33 @@ RULES = [
     (r'\bnet\.minecraftforge\.common\.loot\.', 'net.neoforged.neoforge.common.loot.'),
     (r'\bnet\.minecraftforge\.common\.world\.', 'net.neoforged.neoforge.common.world.'),
     (r'\bnet\.minecraftforge\.common\.SoundActions?\b', lambda m: m.group(0).replace('net.minecraftforge.common', 'net.neoforged.neoforge.common')),
+    # typed NBT lookups of 1.20.1 (gone in 26.3) -> Mantle TagHelper (Teil 27d); receiver must be a simple expression; Tinkers mod data views (modData, persistentData ...) keep their own contains/getList
+    (r'\b(?!(?:modData|persistentData|persistent|volatileData|toolData)\b)([A-Za-z_][\w.]*(?:\(\))?)\.contains\(([^,()]+), (Tag\.TAG_[A-Z_]+|\d+)\)', r'slimeknights.mantle.util.TagHelper.contains(\1, \2, \3)'),
+    (r'\b(?!(?:modData|persistentData|persistent|volatileData|toolData)\b)([A-Za-z_][\w.]*(?:\(\))?)\.getList\(([^,()]+), (Tag\.TAG_[A-Z_]+|\d+)\)', r'slimeknights.mantle.util.TagHelper.getList(\1, \2, \3)'),
+    (r'\bTag\.TAG_ANY_NUMERIC\b', 'slimeknights.mantle.util.TagHelper.TAG_ANY_NUMERIC'),
+    # Entity sync flags: push() sets needsSync (1.20.1 hasImpulse), markHurt() sets syncVelocity (1.20.1 hurtMarked)
+    (r'\.hasImpulse\b', '.needsSync'),
+    (r'\.hurtMarked\b', '.syncVelocity'),
+    (r'\bLivingTickEvent\b', 'EntityTickEvent.Pre'),
+    (r'\bimport net\.neoforged\.neoforge\.event\.entity\.living\.LivingEvent\.EntityTickEvent\.Pre;', 'import net.neoforged.neoforge.event.tick.EntityTickEvent;'),
+    # 26.3 renames (Teil 27d)
+    (r'\bimport net\.minecraft\.world\.item\.ArmorItem\.Type;', 'import net.minecraft.world.item.equipment.ArmorType;'),
+    (r'\bArmorItem\.Type\b', 'ArmorType'),
+    (r'\bimport net\.minecraft\.world\.entity\.projectile\.AbstractArrow;', 'import net.minecraft.world.entity.projectile.arrow.AbstractArrow;'),
+    (r'\bimport net\.minecraft\.world\.item\.UseAnim;', 'import net.minecraft.world.item.ItemUseAnimation;'),
+    (r'\bUseAnim\b', 'ItemUseAnimation'),
+    (r'\bimport net\.neoforged\.neoforge\.event\.AddReloadListenerEvent;', 'import net.neoforged.neoforge.event.AddServerReloadListenersEvent;'),
+    (r'\bAddReloadListenerEvent\b', 'AddServerReloadListenersEvent'),
+    (r'\bimport net\.neoforged\.neoforge\.event\.entity\.living\.MobSpawnEvent\.FinalizeSpawn;', 'import net.neoforged.neoforge.event.entity.living.FinalizeSpawnEvent;'),
+    (r'\bMobSpawnEvent\.FinalizeSpawn\b', 'FinalizeSpawnEvent'),
+    (r'\bFinalizeSpawn\b(?!Event)', 'FinalizeSpawnEvent'),
+    (r'\bimport net\.minecraft\.world\.level\.storage\.loot\.parameters\.LootContextParamSet;', 'import net.minecraft.util.context.ContextKeySet;'),
+    (r'\bLootContextParamSet\b', 'ContextKeySet'),
+    (r'\bimport net\.minecraft\.world\.level\.storage\.loot\.parameters\.LootContextParam;', 'import net.minecraft.util.context.ContextKey;'),
+    (r'\bLootContextParam<', 'ContextKey<'),
+    (r'\bEntityType\.([A-Z][A-Z_0-9]+)\b', r'EntityTypes.\1'),  # vanilla entity type constants moved to EntityTypes
+    # LazyOptional is gone in NeoForge 26.3; Tinkers 3 keeps it as its own stand-in (Teil 27d)
+    (r'\bnet\.minecraftforge\.common\.util\.LazyOptional\b', 'slimeknights.tconstruct.library.utils.LazyOptional'),
     (r'\bnet\.minecraftforge\.common\.util\.', 'net.neoforged.neoforge.common.util.'),
     (r'\bnet\.minecraftforge\.common\.extensions\.', 'net.neoforged.neoforge.common.extensions.'),
     (r'\bnet\.minecraftforge\.common\.crafting\.', 'net.neoforged.neoforge.common.crafting.'),
@@ -262,6 +289,8 @@ IMPORTS = {
     'ServerLevel': 'net.minecraft.server.level.ServerLevel',
     'BlockEntityTypes': 'net.minecraft.world.level.block.entity.BlockEntityTypes',
     'Prediction': 'net.minecraft.util.Prediction',
+    'EntityTypes': 'net.minecraft.world.entity.EntityTypes',
+    'ArmorType': 'net.minecraft.world.item.equipment.ArmorType',
 }
 
 
