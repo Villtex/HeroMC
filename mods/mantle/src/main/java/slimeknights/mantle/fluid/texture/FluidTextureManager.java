@@ -1,5 +1,14 @@
 package slimeknights.mantle.fluid.texture;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.block.FluidModel;
+import net.minecraft.client.resources.model.sprite.Material;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.Fluids;
+import net.neoforged.neoforge.client.event.RegisterFluidModelsEvent;
+import net.neoforged.neoforge.client.fluid.FluidTintSource;
+
 import com.google.gson.JsonElement;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.resources.ResourceManager;
@@ -37,7 +46,39 @@ public class FluidTextureManager implements IEarlySafeManagerReloadListener {
    * Initializes this manager, registering it with the resource manager
    */
   public static void init(AddClientReloadListenersEvent event) {
-    event.registerReloadListener(INSTANCE);
+    event.addListener(Mantle.getResource("fluid_textures"), INSTANCE);
+  }
+
+  /**
+   * Port (Teil 27c): 26.3 bakes fluid textures and tint into a {@link FluidModel} per fluid. The texture JSONs are read
+   * here too (the event runs during model loading, possibly before the reload listener above), then every fluid whose
+   * type has a fluid texture gets a model.
+   */
+  public static void registerModels(RegisterFluidModelsEvent event) {
+    INSTANCE.onReloadSafe(Minecraft.getInstance().getResourceManager());
+    Map<FluidType,FluidTexture> textures = INSTANCE.textures;
+    for (Fluid fluid : BuiltInRegistries.FLUID) {
+      if (fluid == Fluids.EMPTY) {
+        continue;
+      }
+      FluidType type = fluid.getFluidType();
+      FluidTexture texture = textures.get(type);
+      if (texture == null) {
+        continue;
+      }
+      Identifier flowing = texture.flowing();
+      if (type instanceof slimeknights.mantle.fluid.InvertedFluidType) {
+        flowing = flowing.withSuffix("_inverted");
+      }
+      int color = texture.color();
+      FluidTintSource tint = state -> color;
+      try {
+        event.register(new FluidModel.Unbaked(new Material(texture.still()), new Material(flowing),
+          texture.overlay() == null ? null : new Material(texture.overlay()), tint), fluid);
+      } catch (IllegalStateException e) {
+        Mantle.logger.debug("Fluid {} already has a fluid model, keeping it", BuiltInRegistries.FLUID.getKey(fluid));
+      }
+    }
   }
 
   @Override
@@ -49,7 +90,7 @@ public class FluidTextureManager implements IEarlySafeManagerReloadListener {
 
     // start building fluid type map
     Map<FluidType, FluidTexture> map = new HashMap<>();
-    Registry<FluidType> fluidTypeRegistry = NeoForgeRegistries.FLUID_TYPES;
+    Registry<FluidType> fluidTypeRegistry = net.neoforged.neoforge.registries.NeoForgeRegistries.FLUID_TYPES;
 
 
     for (Map.Entry<Identifier,JsonElement> entry : jsons.entrySet()) {

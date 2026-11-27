@@ -41,6 +41,12 @@ RULES = [
     (r'\b(\w+)\.writeItem\(([^;]+)\);', r'ItemStack.OPTIONAL_STREAM_CODEC.encode((net.minecraft.network.RegistryFriendlyByteBuf) \1, \2);'),
     (r'\bInventoryMenu\.BLOCK_ATLAS\b', 'net.minecraft.client.renderer.texture.TextureAtlas.LOCATION_BLOCKS'),
     (r'\bInteractionResult\.sidedSuccess\([^()]*(?:\([^()]*\))?\)', 'InteractionResult.SUCCESS'),
+    (r'\bnet\.minecraft\.client\.renderer\.RenderType\b', 'net.minecraft.client.renderer.rendertype.RenderType'),
+    (r'\bRenderType\.(entitySolid|entityCutout|entityCutoutNoCull|entityTranslucent|entityTranslucentCull|itemEntityTranslucentCull|translucent|cutout|solid)\(', r'net.minecraft.client.renderer.rendertype.RenderTypes.\1('),
+    (r'\bMinecraft\.getInstance\(\)\.getModelManager\(\)\.getAtlas\(([^()]+)\)\.getSprite\(([^()]+)\)', r'Minecraft.getInstance().getAtlasManager().get(new net.minecraft.client.resources.model.sprite.SpriteId(\1, \2))'),
+    (r'\bnet\.minecraft\.world\.level\.BlockAndTintGetter\b', 'net.minecraft.client.renderer.block.BlockAndTintGetter'),
+    (r'\.mulPose\(Axis\.(\w+)\.rotationDegrees\(', r'.rotateDegrees(Axis.\1, ('),  # 26.3 PoseStack; closing parens stay balanced
+    (r'\.mulPose\(Axis\.(\w+)\.rotation\(', r'.rotate(Axis.\1, ('),
     # --- event bus / fml ---
     (r'\bRegisterClientReloadListenersEvent\b', 'AddClientReloadListenersEvent'),  # registerReloadListener(x) -> addListener(id, x) by hand
     (r'\bnet\.minecraftforge\.eventbus\.api\.', 'net.neoforged.bus.api.'),
@@ -274,10 +280,27 @@ def add_imports(text: str) -> str:
     return text
 
 
+VERTEX_CHAIN = [
+    (r'\.vertex\(', '.addVertex('), (r'\.color\(', '.setColor('), (r'\.uv\(', '.setUv('), (r'\.uv2\(', '.setUv2('),
+    (r'\.overlayCoords\(', '.setOverlay('), (r'\.normal\(', '.setNormal('), (r'\.endVertex\(\)', ''),
+]
+
+
+def vertex_chains(text: str) -> str:
+    """1.20.1 vertex builder chains (vertex(...).color(...).uv(...).endVertex()) -> 26.3 (addVertex(...).setColor(...))"""
+    out = []
+    for line in text.split('\n'):
+        if re.search(r'\.vertex\([^)]*\)\.(?:color|uv|normal|overlayCoords)\(', line) or ('.endVertex()' in line and '.vertex(' in line):
+            for pattern, repl in VERTEX_CHAIN:
+                line = re.sub(pattern, repl, line)
+        out.append(line)
+    return '\n'.join(out)
+
+
 def convert(text: str) -> str:
     for pattern, repl in RULES:
         text = re.sub(pattern, repl, text)
-    return add_imports(reorder_constructors(text))
+    return add_imports(reorder_constructors(vertex_chains(text)))
 
 
 def main(args):

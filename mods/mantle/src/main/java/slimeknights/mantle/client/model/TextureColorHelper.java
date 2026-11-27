@@ -6,7 +6,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
 import net.minecraft.client.renderer.texture.SpriteContents;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
 import net.minecraft.world.inventory.InventoryMenu;
@@ -46,11 +45,11 @@ public class TextureColorHelper {
       SpriteContents contents = sprite.contents();
       for (int x = 0; x < contents.width(); x++) {
         for (int y = 0; y < contents.height(); y++) {
-          int argb = sprite.getPixelRGBA(0, x, y);
-          // integer is in format of 0xAABBGGRR
-          int cr = argb & 0xFF;
+          int argb = sprite.getPixelARGB(0, x, y);
+          // Port: 26.3 returns 0xAARRGGBB (1.20.1: getPixelRGBA with 0xAABBGGRR)
+          int cb = argb & 0xFF;
           int cg = argb >> 8 & 0xFF;
-          int cb = argb >> 16 & 0xFF;
+          int cr = argb >> 16 & 0xFF;
           int ca = argb >> 24 & 0xFF;
           if (ca > 0x7F && NumberUtils.max(cr, cg, cb) > 0x1F) {
             Color.RGBtoHSB(ca, cr, cg, hsb);
@@ -79,7 +78,7 @@ public class TextureColorHelper {
   /** Getter mapping a block sprite texture to a single average color */
   private static final ToIntFunction<Identifier> COMPUTE_SPRITE_COLOR = key -> {
     Minecraft mc = Minecraft.getInstance();
-    TextureAtlasSprite sprite = mc.getModelManager().getAtlas(net.minecraft.client.renderer.texture.TextureAtlas.LOCATION_BLOCKS).getSprite(key);
+    TextureAtlasSprite sprite = mc.getAtlasManager().get(new net.minecraft.client.resources.model.sprite.SpriteId(net.minecraft.client.renderer.texture.TextureAtlas.LOCATION_BLOCKS, key));
     //noinspection ConstantValue  eh, its better to be safe
     if (sprite == null || sprite.contents().name() == MissingTextureAtlasSprite.getLocation()) {
       return -1;
@@ -109,11 +108,14 @@ public class TextureColorHelper {
   /** Computes the color for an item based on the particle icon */
   private static final ToIntFunction<Item> COMPUTE_ITEM_COLOR = item -> {
     Minecraft mc = Minecraft.getInstance();
-    BakedModel model = mc.getItemRenderer().getModel(new ItemStack(item), null, null, 0);
-    if (model == mc.getModelManager().getMissingModel()) {
+    // Port: item models are resolved into a render state in 26.3
+    net.minecraft.client.renderer.item.ItemStackRenderState state = new net.minecraft.client.renderer.item.ItemStackRenderState();
+    mc.getItemModelResolver().updateForTopItem(state, new ItemStack(item), net.minecraft.world.item.ItemDisplayContext.GUI, null, null, 0);
+    var material = state.pickParticleMaterial(net.minecraft.util.RandomSource.create(0));
+    if (material == null || material.sprite().contents().name().equals(MissingTextureAtlasSprite.getLocation())) {
       return -1;
     }
-    return getAverageColor(model.getParticleIcon(ModelData.EMPTY));
+    return getAverageColor(material.sprite());
   };
 
   /** Gets the average color of an item's default particle icon */
@@ -124,11 +126,11 @@ public class TextureColorHelper {
   /** Computes the color for an item based on the particle icon */
   private static final ToIntFunction<Block> COMPUTE_BLOCK_COLOR = block -> {
     Minecraft mc = Minecraft.getInstance();
-    BakedModel model = mc.getBlockRenderer().getBlockModel(block.defaultBlockState());
-    if (model == mc.getModelManager().getMissingModel()) {
+    var blockModels = mc.getModelManager().getBlockStateModelSet();
+    if (blockModels.get(block.defaultBlockState()) == blockModels.missingModel()) {
       return -1;
     }
-    return getAverageColor(model.getParticleIcon(ModelData.EMPTY));
+    return getAverageColor(blockModels.getParticleMaterial(block.defaultBlockState()).sprite());
   };
 
   /** Gets the average color of an blocks default particle icon */

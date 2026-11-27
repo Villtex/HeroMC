@@ -1,22 +1,15 @@
 package slimeknights.mantle.client.render;
 
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.BufferBuilder;
-import com.mojang.blaze3d.vertex.BufferUploader;
-import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.blaze3d.vertex.VertexFormat;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.GameRenderer;
-import net.minecraft.client.renderer.LightTexture;
-import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.SubmitNodeCollector;
+import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.renderer.block.FluidModel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.Identifier;
-import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.neoforged.neoforge.fluids.FluidStack;
@@ -35,7 +28,7 @@ public class FluidRenderer {
    * @return  Sprite location
    */
   public static TextureAtlasSprite getBlockSprite(Identifier sprite) {
-    return Minecraft.getInstance().getModelManager().getAtlas(net.minecraft.client.renderer.texture.TextureAtlas.LOCATION_BLOCKS).getSprite(sprite);
+    return Minecraft.getInstance().getAtlasManager().get(new net.minecraft.client.resources.model.sprite.SpriteId(net.minecraft.client.renderer.texture.TextureAtlas.LOCATION_BLOCKS, sprite));
   }
 
   /**
@@ -44,6 +37,32 @@ public class FluidRenderer {
    * @param blockLight     New 0-15 block light value
    * @return  Updated packed light including the new light value
    */
+  /** Port (Teil 27c): fluid textures and tint come from the baked fluid model in 26.3 */
+  public static FluidModel getModel(FluidStack fluid) {
+    return Minecraft.getInstance().getModelManager().getFluidStateModelSet().get(fluid.getFluid().defaultFluidState());
+  }
+
+  /** Tint of a fluid stack from its model, -1 (white) without tint */
+  public static int getColor(FluidModel model, FluidStack fluid) {
+    net.neoforged.neoforge.client.fluid.FluidTintSource tint = model.fluidTintSource();
+    return tint != null ? tint.colorAsStack(fluid) : -1;
+  }
+
+  /** Still sprite of a fluid stack */
+  public static TextureAtlasSprite getStillSprite(FluidStack fluid) {
+    return getModel(fluid).stillMaterial().sprite();
+  }
+
+  /** Flowing sprite of a fluid stack */
+  public static TextureAtlasSprite getFlowingSprite(FluidStack fluid) {
+    return getModel(fluid).flowingMaterial().sprite();
+  }
+
+  /** Tint of a fluid stack */
+  public static int getColor(FluidStack fluid) {
+    return getColor(getModel(fluid), fluid);
+  }
+
   public static int withBlockLight(int combinedLight, int blockLight) {
     // skylight from the combined plus larger block light between combined and parameter
     // not using methods from LightTexture to reduce number of operations
@@ -137,7 +156,8 @@ public class FluidRenderer {
 
     // if rotating by 90 or 270, swap U and V
     float minU, maxU, minV, maxV;
-    double size = flowing ? 8 : 16;
+    // Port: sprite UVs take 0..1 in 26.3 (1.20.1: 0..16 pixels); flowing textures use half of the sprite
+    float size = flowing ? 0.5f : 1f;
     if ((rotation % 180) == 90) {
       minU = sprite.getU(v1 * size);
       maxU = sprite.getU(v2 * size);
@@ -184,42 +204,44 @@ public class FluidRenderer {
     int r = color >> 16 & 0xFF;
     int g = color >> 8 & 0xFF;
     int b = color & 0xFF;
+    // Port: 26.3 block/entity formats need a normal (and the entity ones an overlay)
+    float nx = face.getStepX(), ny = face.getStepY(), nz = face.getStepZ();
     switch (face) {
       case DOWN -> {
-        renderer.vertex(matrix, x1, y1, z2).color(r, g, b, a).uv(u1, v1).uv2(light1, light2).endVertex();
-        renderer.vertex(matrix, x1, y1, z1).color(r, g, b, a).uv(u2, v2).uv2(light1, light2).endVertex();
-        renderer.vertex(matrix, x2, y1, z1).color(r, g, b, a).uv(u3, v3).uv2(light1, light2).endVertex();
-        renderer.vertex(matrix, x2, y1, z2).color(r, g, b, a).uv(u4, v4).uv2(light1, light2).endVertex();
+        renderer.addVertex(matrix, x1, y1, z2).setColor(r, g, b, a).setUv(u1, v1).setUv2(light1, light2).setOverlay(OverlayTexture.NO_OVERLAY).setNormal(nx, ny, nz);
+        renderer.addVertex(matrix, x1, y1, z1).setColor(r, g, b, a).setUv(u2, v2).setUv2(light1, light2).setOverlay(OverlayTexture.NO_OVERLAY).setNormal(nx, ny, nz);
+        renderer.addVertex(matrix, x2, y1, z1).setColor(r, g, b, a).setUv(u3, v3).setUv2(light1, light2).setOverlay(OverlayTexture.NO_OVERLAY).setNormal(nx, ny, nz);
+        renderer.addVertex(matrix, x2, y1, z2).setColor(r, g, b, a).setUv(u4, v4).setUv2(light1, light2).setOverlay(OverlayTexture.NO_OVERLAY).setNormal(nx, ny, nz);
       }
       case UP -> {
-        renderer.vertex(matrix, x1, y2, z1).color(r, g, b, a).uv(u1, v1).uv2(light1, light2).endVertex();
-        renderer.vertex(matrix, x1, y2, z2).color(r, g, b, a).uv(u2, v2).uv2(light1, light2).endVertex();
-        renderer.vertex(matrix, x2, y2, z2).color(r, g, b, a).uv(u3, v3).uv2(light1, light2).endVertex();
-        renderer.vertex(matrix, x2, y2, z1).color(r, g, b, a).uv(u4, v4).uv2(light1, light2).endVertex();
+        renderer.addVertex(matrix, x1, y2, z1).setColor(r, g, b, a).setUv(u1, v1).setUv2(light1, light2).setOverlay(OverlayTexture.NO_OVERLAY).setNormal(nx, ny, nz);
+        renderer.addVertex(matrix, x1, y2, z2).setColor(r, g, b, a).setUv(u2, v2).setUv2(light1, light2).setOverlay(OverlayTexture.NO_OVERLAY).setNormal(nx, ny, nz);
+        renderer.addVertex(matrix, x2, y2, z2).setColor(r, g, b, a).setUv(u3, v3).setUv2(light1, light2).setOverlay(OverlayTexture.NO_OVERLAY).setNormal(nx, ny, nz);
+        renderer.addVertex(matrix, x2, y2, z1).setColor(r, g, b, a).setUv(u4, v4).setUv2(light1, light2).setOverlay(OverlayTexture.NO_OVERLAY).setNormal(nx, ny, nz);
       }
       case NORTH -> {
-        renderer.vertex(matrix, x1, y1, z1).color(r, g, b, a).uv(u1, v1).uv2(light1, light2).endVertex();
-        renderer.vertex(matrix, x1, y2, z1).color(r, g, b, a).uv(u2, v2).uv2(light1, light2).endVertex();
-        renderer.vertex(matrix, x2, y2, z1).color(r, g, b, a).uv(u3, v3).uv2(light1, light2).endVertex();
-        renderer.vertex(matrix, x2, y1, z1).color(r, g, b, a).uv(u4, v4).uv2(light1, light2).endVertex();
+        renderer.addVertex(matrix, x1, y1, z1).setColor(r, g, b, a).setUv(u1, v1).setUv2(light1, light2).setOverlay(OverlayTexture.NO_OVERLAY).setNormal(nx, ny, nz);
+        renderer.addVertex(matrix, x1, y2, z1).setColor(r, g, b, a).setUv(u2, v2).setUv2(light1, light2).setOverlay(OverlayTexture.NO_OVERLAY).setNormal(nx, ny, nz);
+        renderer.addVertex(matrix, x2, y2, z1).setColor(r, g, b, a).setUv(u3, v3).setUv2(light1, light2).setOverlay(OverlayTexture.NO_OVERLAY).setNormal(nx, ny, nz);
+        renderer.addVertex(matrix, x2, y1, z1).setColor(r, g, b, a).setUv(u4, v4).setUv2(light1, light2).setOverlay(OverlayTexture.NO_OVERLAY).setNormal(nx, ny, nz);
       }
       case SOUTH -> {
-        renderer.vertex(matrix, x2, y1, z2).color(r, g, b, a).uv(u1, v1).uv2(light1, light2).endVertex();
-        renderer.vertex(matrix, x2, y2, z2).color(r, g, b, a).uv(u2, v2).uv2(light1, light2).endVertex();
-        renderer.vertex(matrix, x1, y2, z2).color(r, g, b, a).uv(u3, v3).uv2(light1, light2).endVertex();
-        renderer.vertex(matrix, x1, y1, z2).color(r, g, b, a).uv(u4, v4).uv2(light1, light2).endVertex();
+        renderer.addVertex(matrix, x2, y1, z2).setColor(r, g, b, a).setUv(u1, v1).setUv2(light1, light2).setOverlay(OverlayTexture.NO_OVERLAY).setNormal(nx, ny, nz);
+        renderer.addVertex(matrix, x2, y2, z2).setColor(r, g, b, a).setUv(u2, v2).setUv2(light1, light2).setOverlay(OverlayTexture.NO_OVERLAY).setNormal(nx, ny, nz);
+        renderer.addVertex(matrix, x1, y2, z2).setColor(r, g, b, a).setUv(u3, v3).setUv2(light1, light2).setOverlay(OverlayTexture.NO_OVERLAY).setNormal(nx, ny, nz);
+        renderer.addVertex(matrix, x1, y1, z2).setColor(r, g, b, a).setUv(u4, v4).setUv2(light1, light2).setOverlay(OverlayTexture.NO_OVERLAY).setNormal(nx, ny, nz);
       }
       case WEST -> {
-        renderer.vertex(matrix, x1, y1, z2).color(r, g, b, a).uv(u1, v1).uv2(light1, light2).endVertex();
-        renderer.vertex(matrix, x1, y2, z2).color(r, g, b, a).uv(u2, v2).uv2(light1, light2).endVertex();
-        renderer.vertex(matrix, x1, y2, z1).color(r, g, b, a).uv(u3, v3).uv2(light1, light2).endVertex();
-        renderer.vertex(matrix, x1, y1, z1).color(r, g, b, a).uv(u4, v4).uv2(light1, light2).endVertex();
+        renderer.addVertex(matrix, x1, y1, z2).setColor(r, g, b, a).setUv(u1, v1).setUv2(light1, light2).setOverlay(OverlayTexture.NO_OVERLAY).setNormal(nx, ny, nz);
+        renderer.addVertex(matrix, x1, y2, z2).setColor(r, g, b, a).setUv(u2, v2).setUv2(light1, light2).setOverlay(OverlayTexture.NO_OVERLAY).setNormal(nx, ny, nz);
+        renderer.addVertex(matrix, x1, y2, z1).setColor(r, g, b, a).setUv(u3, v3).setUv2(light1, light2).setOverlay(OverlayTexture.NO_OVERLAY).setNormal(nx, ny, nz);
+        renderer.addVertex(matrix, x1, y1, z1).setColor(r, g, b, a).setUv(u4, v4).setUv2(light1, light2).setOverlay(OverlayTexture.NO_OVERLAY).setNormal(nx, ny, nz);
       }
       case EAST -> {
-        renderer.vertex(matrix, x2, y1, z1).color(r, g, b, a).uv(u1, v1).uv2(light1, light2).endVertex();
-        renderer.vertex(matrix, x2, y2, z1).color(r, g, b, a).uv(u2, v2).uv2(light1, light2).endVertex();
-        renderer.vertex(matrix, x2, y2, z2).color(r, g, b, a).uv(u3, v3).uv2(light1, light2).endVertex();
-        renderer.vertex(matrix, x2, y1, z2).color(r, g, b, a).uv(u4, v4).uv2(light1, light2).endVertex();
+        renderer.addVertex(matrix, x2, y1, z1).setColor(r, g, b, a).setUv(u1, v1).setUv2(light1, light2).setOverlay(OverlayTexture.NO_OVERLAY).setNormal(nx, ny, nz);
+        renderer.addVertex(matrix, x2, y2, z1).setColor(r, g, b, a).setUv(u2, v2).setUv2(light1, light2).setOverlay(OverlayTexture.NO_OVERLAY).setNormal(nx, ny, nz);
+        renderer.addVertex(matrix, x2, y2, z2).setColor(r, g, b, a).setUv(u3, v3).setUv2(light1, light2).setOverlay(OverlayTexture.NO_OVERLAY).setNormal(nx, ny, nz);
+        renderer.addVertex(matrix, x2, y1, z2).setColor(r, g, b, a).setUv(u4, v4).setUv2(light1, light2).setOverlay(OverlayTexture.NO_OVERLAY).setNormal(nx, ny, nz);
       }
     }
   }
@@ -238,7 +260,11 @@ public class FluidRenderer {
    * @param isGas     If true, fluid is a gas
    */
   public static void renderCuboid(PoseStack matrices, VertexConsumer buffer, FluidCuboid cube, TextureAtlasSprite still, TextureAtlasSprite flowing, Vector3f from, Vector3f to, int color, int light, boolean isGas) {
-    Matrix4f matrix = matrices.last().pose();
+    renderCuboid(matrices.last().pose(), buffer, cube, still, flowing, from, to, color, light, isGas);
+  }
+
+  /** Port: matrix form, for {@link SubmitNodeCollector#submitCustomGeometry} callbacks that get a copied pose */
+  public static void renderCuboid(Matrix4f matrix, VertexConsumer buffer, FluidCuboid cube, TextureAtlasSprite still, TextureAtlasSprite flowing, Vector3f from, Vector3f to, int color, int light, boolean isGas) {
     int rotation = isGas ? 180 : 0;
     for (Direction dir : Direction.values()) {
       FluidFace face = cube.getFace(dir);
@@ -264,10 +290,10 @@ public class FluidRenderer {
     }
 
     // fluid attributes, fetch once for all fluids to save effort
-    IClientFluidTypeExtensions clientFluid = IClientFluidTypeExtensions.of(fluid.getFluid());
-    TextureAtlasSprite still = getBlockSprite(clientFluid.getStillTexture(fluid));
-    TextureAtlasSprite flowing = getBlockSprite(clientFluid.getFlowingTexture(fluid));
-    int color = clientFluid.getTintColor(fluid);
+    FluidModel model = getModel(fluid);
+    TextureAtlasSprite still = model.stillMaterial().sprite();
+    TextureAtlasSprite flowing = model.flowingMaterial().sprite();
+    int color = getColor(model, fluid);
     FluidType type = fluid.getFluid().getFluidType();
     light = withBlockLight(light, type.getLightLevel(fluid));
     boolean isGas = type.isLighterThanAir();
@@ -312,19 +338,19 @@ public class FluidRenderer {
    * @param cube      Fluid cuboid instance
    * @param flipGas   If true, flips gas cubes
    */
-  public static void renderScaledCuboid(PoseStack matrices, MultiBufferSource buffer, FluidCuboid cube, FluidStack fluid, float offset, int capacity, int light, boolean flipGas) {
+  public static void renderScaledCuboid(PoseStack matrices, SubmitNodeCollector buffer, FluidCuboid cube, FluidStack fluid, float offset, int capacity, int light, boolean flipGas) {
     // nothing to render
     if (fluid.isEmpty() || capacity <= 0) {
       return;
     }
 
     // fluid attributes
-    IClientFluidTypeExtensions clientFluid = IClientFluidTypeExtensions.of(fluid.getFluid());
-    TextureAtlasSprite still = getBlockSprite(clientFluid.getStillTexture(fluid));
-    TextureAtlasSprite flowing = getBlockSprite(clientFluid.getFlowingTexture(fluid));
+    FluidModel model = getModel(fluid);
+    TextureAtlasSprite still = model.stillMaterial().sprite();
+    TextureAtlasSprite flowing = model.flowingMaterial().sprite();
     FluidType type = fluid.getFluid().getFluidType();
     boolean isGas = type.isLighterThanAir();
-    int color = clientFluid.getTintColor(fluid);
+    int color = getColor(model, fluid);
     light = withBlockLight(light, type.getLightLevel(fluid));
 
     // determine height based on fluid amount
@@ -343,39 +369,23 @@ public class FluidRenderer {
     }
 
     // draw cuboid
-    renderCuboid(matrices, buffer.getBuffer(MantleRenderTypes.FLUID), cube, still, flowing, from, to, color, light, isGas);
+    Vector3f fromF = from, toF = to;
+    int colorF = color, lightF = light;
+    buffer.submitCustomGeometry(matrices, MantleRenderTypes.FLUID, (pose, consumer) -> renderCuboid(pose.pose(), consumer, cube, still, flowing, fromF, toF, colorF, lightF, isGas));
   }
 
-  /** Same as {@link net.minecraft.client.renderer.ScreenEffectRenderer#renderFluid(Minecraft, PoseStack, Identifier)} but with opacity and color control */
-  public static void renderCamera(Minecraft minecraft, PoseStack poseStack, Identifier texture, float opacity, int color) {
-    assert minecraft.player != null;
-    RenderSystem.setShader(GameRenderer::getPositionTexShader);
-    RenderSystem.setShaderTexture(0, texture);
-    BufferBuilder buffer = Tesselator.getInstance().getBuilder();
-    BlockPos pos = BlockPos.containing(minecraft.player.getX(), minecraft.player.getEyeY(), minecraft.player.getZ());
-    Level level = minecraft.player.level();
-    float brightness = LightTexture.getBrightness(level.dimensionType(), level.getMaxLocalRawBrightness(pos));
-    RenderSystem.enableBlend();
-    // apply fluid tint if one is set
-    if (color != -1) {
-      RenderSystem.setShaderColor(
-        brightness * (color >> 16 & 255) / 255f,
-        brightness * (color >> 8 & 255) / 255f,
-        brightness * (color & 255) / 255f,
-        opacity * (color >>> 24) / 255f);
-    } else {
-      RenderSystem.setShaderColor(brightness, brightness, brightness, opacity);
+  /** Port: submit form of {@link #renderCuboids(PoseStack, VertexConsumer, List, FluidStack, int)} for block entity renderers */
+  public static void renderCuboids(PoseStack matrices, SubmitNodeCollector collector, List<FluidCuboid> cubes, FluidStack fluid, int light) {
+    if (fluid.isEmpty() || cubes.isEmpty()) {
+      return;
     }
-    float yRot = -minecraft.player.getYRot() / 64;
-    float xRot = minecraft.player.getXRot() / 64;
-    Matrix4f matrix = poseStack.last().pose();
-    buffer.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-    buffer.vertex(matrix, -1, -1, -0.5f).uv(4 + yRot, 4 + xRot).endVertex();
-    buffer.vertex(matrix,  1, -1, -0.5f).uv(0 + yRot, 4 + xRot).endVertex();
-    buffer.vertex(matrix,  1,  1, -0.5f).uv(0 + yRot, 0 + xRot).endVertex();
-    buffer.vertex(matrix, -1,  1, -0.5f).uv(4 + yRot, 0 + xRot).endVertex();
-    BufferUploader.drawWithShader(buffer.end());
-    RenderSystem.setShaderColor(1, 1, 1, 1);
-    RenderSystem.disableBlend();
+    FluidStack copy = fluid.copy();
+    collector.submitCustomGeometry(matrices, MantleRenderTypes.FLUID, (pose, consumer) -> {
+      PoseStack local = new PoseStack();
+      local.last().set(pose);
+      renderCuboids(local, consumer, cubes, copy, light);
+    });
   }
+
+  // Port: renderCamera (immediate-mode overlay) is gone, see ClientTextureFluidType#extractOverlay
 }

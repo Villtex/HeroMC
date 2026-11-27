@@ -5,7 +5,7 @@ import com.google.gson.JsonObject;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Transformation;
 import lombok.RequiredArgsConstructor;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.block.model.ItemOverrides;
 import net.minecraft.client.renderer.texture.SpriteContents;
@@ -86,7 +86,7 @@ public class MantleItemLayerModel implements IUnbakedGeometry<MantleItemLayerMod
     if (renderTypeHint != null) {
       return context.getRenderType(renderTypeHint);
     } else {
-      return new RenderTypeGroup(RenderType.translucent(), ForgeRenderTypes.ITEM_UNSORTED_TRANSLUCENT.get());
+      return new RenderTypeGroup(net.minecraft.client.renderer.rendertype.RenderTypes.translucent(), ForgeRenderTypes.ITEM_UNSORTED_TRANSLUCENT.get());
     }
   }
 

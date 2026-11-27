@@ -10,7 +10,7 @@ import com.mojang.datafixers.util.Either;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.block.model.ItemOverrides;
 import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;

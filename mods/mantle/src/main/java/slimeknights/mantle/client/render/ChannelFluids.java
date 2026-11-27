@@ -36,7 +36,7 @@ public record ChannelFluids(FluidCuboid down, Center center, Side side) {
       return;
     }
     initialized = true;
-    event.registerReloadListener(REGISTRY);
+    event.addListener(slimeknights.mantle.Mantle.getResource("channel_fluids"), REGISTRY);
   }
 
   /** Gets a fluid for the center */

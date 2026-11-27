@@ -51,7 +51,7 @@ public record FaucetFluid(List<FluidCuboid> side, List<FluidCuboid> center, bool
       return;
     }
     initialized = true;
-    event.registerReloadListener(REGISTRY);
+    event.addListener(slimeknights.mantle.Mantle.getResource("faucet_fluids"), REGISTRY);
   }
 
   /**

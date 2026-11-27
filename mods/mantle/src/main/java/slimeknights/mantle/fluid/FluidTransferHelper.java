@@ -1,5 +1,7 @@
 package slimeknights.mantle.fluid;
 
+import net.minecraft.util.Prediction;
+
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import net.minecraft.core.BlockPos;
