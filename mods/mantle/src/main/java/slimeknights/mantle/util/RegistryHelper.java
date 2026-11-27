@@ -29,6 +29,12 @@ public class RegistryHelper {
   }
 
   /** Gets a stream of tag holders for the given registry */
+  /** Port (from Mantle 1.21): casts a wildcard registry key */
+  @SuppressWarnings({"unchecked", "rawtypes"})
+  public static <T> ResourceKey<? extends Registry<T>> castKey(ResourceKey<? extends Registry<?>> key) {
+    return (ResourceKey) key;
+  }
+
   public static <T> Stream<Holder<T>> getTagStream(Registry<T> registry, TagKey<T> key) {
     return StreamSupport.stream(registry.getTagOrEmpty(key).spliterator(), false);
   }

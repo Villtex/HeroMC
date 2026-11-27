@@ -1,83 +1,66 @@
 package slimeknights.mantle.loot;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.util.GsonHelper;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.NeoForge;
-import slimeknights.mantle.util.CraftingHelper;
-import net.neoforged.neoforge.common.conditions.ICondition.IContext;
-import net.neoforged.neoforge.event.AddReloadListenerEvent;
 import net.neoforged.neoforge.event.LootTableLoadEvent;
-import net.neoforged.bus.api.EventPriority;
+import net.neoforged.neoforge.registries.DataPackRegistryEvent;
+import net.neoforged.neoforge.registries.callback.BakeCallback;
 import slimeknights.mantle.Mantle;
-import slimeknights.mantle.data.listener.IEarlyReloadListener;
 import slimeknights.mantle.loot.LootTableInjection.LootPoolInjection;
-import slimeknights.mantle.util.JsonHelper;
 
-import java.io.IOException;
-import java.io.Reader;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /** Class handling injecting additional entries into loot tables */
-public enum LootTableInjector implements IEarlyReloadListener {
+public enum LootTableInjector implements BakeCallback<LootTableInjection> {
   INSTANCE;
 
+  /** Registry key */
+  public static final ResourceKey<Registry<LootTableInjection>> REGISTRY_KEY = ResourceKey.createRegistryKey(Mantle.getResource("loot_injectors"));
   /** Datapack folder for the injector */
   public static final String FOLDER = "mantle/loot_injectors";
 
   /** Initializes the loot table injector */
-  public static void init() {
-    NeoForge.EVENT_BUS.addListener(EventPriority.NORMAL, false, AddReloadListenerEvent.class, event -> {
-      event.addListener(INSTANCE);
-      INSTANCE.context = event.getConditionContext();
-    });
-    NeoForge.EVENT_BUS.addListener(EventPriority.NORMAL, false, LootTableLoadEvent.class, INSTANCE::lootTableLoad);
+  public static void init(IEventBus modBus) {
+    modBus.addListener(DataPackRegistryEvent.NewRegistry.class, INSTANCE::addRegistries);
+    NeoForge.EVENT_BUS.addListener(LootTableLoadEvent.class, INSTANCE::lootTableLoad);
   }
 
-  /** Condition context for preventing load */
-  private IContext context = IContext.EMPTY;
   /** Map of injections to use on loot table load */
   private Map<Identifier,LootTableInjection> injections = Collections.emptyMap();
 
+  /**
+   * Called to register the injector as a data registry
+   * Needed to ensure it loads before loot tables which are a reloadable registry.
+   */
+  private void addRegistries(DataPackRegistryEvent.NewRegistry event) {
+    event.dataPackRegistry(REGISTRY_KEY, LootTableInjection.CODEC, null, builder -> {
+      builder.onBake(this);
+    });
+  }
+
   @Override
-  public void onResourceManagerReload(ResourceManager manager) {
+  public void onBake(Registry<LootTableInjection> registry) {
     long time = System.nanoTime();
     Map<Identifier,LootTableInjection.Builder> builders = new HashMap<>();
     int loaded = 0;
-    for (Entry<Identifier,Resource> entry : manager.listResources(FOLDER, loc -> loc.getPath().endsWith(".json")).entrySet()) {
-      try (Reader reader = entry.getValue().openAsReader()) {
-        JsonObject json = GsonHelper.fromJson(JsonHelper.DEFAULT_GSON, reader, JsonObject.class);
-        if (json != null) {
-          // skip if empty for easy removals
-          if (!json.keySet().isEmpty() && CraftingHelper.processConditions(json, "conditions", context)) {
-            // the builder allows us to merge from multiple sources, for efficiency
-            // ensures a given table name and pool name both show just once
-            LootTableInjection injection = LootTableInjection.LOADABLE.deserialize(json);
-            LootTableInjection.Builder builder = builders.computeIfAbsent(injection.name(), id -> new LootTableInjection.Builder());
-            for (LootPoolInjection pool : injection.pools()) {
-              builder.addToPool(pool);
-            }
-            loaded++;
-          }
-        } else {
-          Mantle.logger.error("Couldn't parse loot table injection from {} as it's null or empty", entry.getKey());
-        }
-      } catch (IllegalArgumentException | IOException | JsonParseException ex) {
-        Mantle.logger.error("Couldn't parse loot injection from {}", entry.getKey(), ex);
+    for (LootTableInjection injection : registry) {
+      LootTableInjection.Builder builder = builders.computeIfAbsent(injection.name(), id -> new LootTableInjection.Builder());
+      for (LootPoolInjection pool : injection.pools()) {
+        builder.addToPool(pool);
       }
+      loaded++;
     }
     // build final map
     injections = builders.entrySet().stream().map(entry -> entry.getValue().build(entry.getKey()))
-                         .collect(Collectors.toUnmodifiableMap(LootTableInjection::name, Function.identity()));
+      .collect(Collectors.toUnmodifiableMap(LootTableInjection::name, Function.identity()));
     // log timer
     Mantle.logger.info("Loaded {} loot table injectors injecting into {} tables in {} ms", loaded, injections.size(), (System.nanoTime() - time) / 1000000f);
   }

@@ -24,8 +24,8 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.common.capabilities.ForgeCapabilities;
 import net.neoforged.neoforge.fluids.FluidStack;
-import net.neoforged.neoforge.fluids.capability.IFluidHandler;
-import net.neoforged.neoforge.fluids.capability.templates.EmptyFluidHandler;
+import slimeknights.mantle.fluid.compat.IFluidHandler;
+import slimeknights.mantle.fluid.compat.EmptyFluidHandler;
 import slimeknights.mantle.Mantle;
 import slimeknights.mantle.util.TranslationHelper;
 

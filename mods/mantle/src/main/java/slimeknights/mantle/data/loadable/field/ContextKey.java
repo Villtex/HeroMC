@@ -34,6 +34,9 @@ public class ContextKey<T> implements Key<T> {
   /** Port (from Mantle 1.21): registry lookup for parsing registry based values. If missing, {@link #registryOps(TypedMap)} uses the lookup of the running data reload. */
   public static final ContextKey<HolderLookup.Provider> REGISTRY_LOOKUP = new ContextKey<>("registry lookup");
 
+  /** Port: registry ops of the codec that is decoding (recipes, loot), preferred by {@link #registryOps(TypedMap)} */
+  public static final ContextKey<RegistryOps<?>> REGISTRY_OPS = new ContextKey<>("registry ops");
+
   /** Name of the field, used primarily for debug */
   @Getter
   private final String name;
@@ -121,7 +124,8 @@ public class ContextKey<T> implements Key<T> {
 
   /** JSON ops with registry access (and the condition context, if given) */
   public static DynamicOps<JsonElement> registryOps(TypedMap context) {
-    RegistryOps<JsonElement> ops = registryLookup(context).createSerializationContext(JsonOps.INSTANCE);
+    RegistryOps<?> parent = context.get(REGISTRY_OPS);
+    RegistryOps<JsonElement> ops = parent != null ? parent.withParent(JsonOps.INSTANCE) : registryLookup(context).createSerializationContext(JsonOps.INSTANCE);
     IContext conditionContext = context.get(CONDITION_CONTEXT);
     if (conditionContext != null) {
       return new ConditionalOps<>(ops, conditionContext);

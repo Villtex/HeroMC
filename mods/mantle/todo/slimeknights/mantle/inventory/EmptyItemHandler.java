@@ -8,7 +8,7 @@ import net.neoforged.neoforge.items.IItemHandler;
 import javax.annotation.Nonnull;
 
 /**
- * Item handler that contains no items. Use similarly to {@link net.neoforged.neoforge.fluids.capability.templates.EmptyFluidHandler}
+ * Item handler that contains no items. Use similarly to {@link slimeknights.mantle.fluid.compat.EmptyFluidHandler}
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class EmptyItemHandler implements IItemHandler {

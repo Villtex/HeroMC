@@ -4,7 +4,7 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.fluids.FluidStack;
-import net.neoforged.neoforge.fluids.capability.IFluidHandler;
+import slimeknights.mantle.fluid.compat.IFluidHandler;
 import slimeknights.mantle.data.gson.GenericRegisteredSerializer.IJsonSerializable;
 import slimeknights.mantle.fluid.FluidTransferHelper;
 

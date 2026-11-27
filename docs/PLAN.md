@@ -80,7 +80,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 26e | Integrated E: Schnittstellen für fremde Mods (Capabilities, `c:`-Tags, Werkzeug-Fähigkeiten, Rezepte über Tags) | ~4.000 | – | Opus 5.5, mittel | ✅ erledigt |
 | 26f | Integrated F: Test mit fremden 26.3-Mods, Gesamtprüfung | – | 26a–26e | Opus 5.5, mittel | ✅ erledigt |
 | 27a | Tinkers 3 A: Zwei-Versionen-Schalter (Welttyp am Client, Bedingungen, Ausblenden), Quellen, Daten-Konverter, Gerüst `mantle`/`tconstruct3` | – | 26 | Opus 5.5, hoch | ✅ erledigt |
-| 27b | Tinkers 3 B: Mantle-Kern (Datenlader, JSON-Helfer, Rezepte, Flüssigkeiten, Registrierung, Netzwerk, Befehle) | ~33.000 | 27a | Opus 5.5, hoch | offen |
+| 27b | Tinkers 3 B: Mantle-Kern (Datenlader, JSON-Helfer, Rezepte, Flüssigkeiten, Registrierung, Netzwerk, Befehle) | ~33.000 | 27a | Opus 5.5, hoch | in Arbeit |
 | 27c | Tinkers 3 C: Mantle-Client (Modell-Lader, Bildschirme, Handbuch-Engine) | ~17.000 | 27b | Fable 5.2, hoch | offen |
 | 27d | Tinkers 3 D: Werkzeug-Datenmodell (Materialien, Stats, Werkzeugdaten als Komponenten, Definitionen, Teile, JSON-Variablen) | ~35.000 | 27b | Fable 5.2, hoch | offen |
 | 27e | Tinkers 3 E: Modifikator-System (Hooks, Module, Flüssigkeits-Effekte, Modifikator-Rezepte) | ~30.000 | 27d | Opus 5.5, hoch | offen |
@@ -2414,6 +2414,27 @@ nichts anderes zeigt: Flags kommen aus Datapacks bei der Welterstellung, vorhand
 `block`, `command`, `config`, `data` (Lader, Bedingungen, `JsonHelper`, `LoadableField`/Records), `fluid`,
 `inventory`, `item`, `loot`, `network`, `recipe`, `registration` (Deferred-Register-Hilfen), `util`. Lader prüfen die
 Welttyp-Bedingung. `datagen` entfällt (Daten kommen aus dem Konverter).
+
+#### Teil 27b – Stand (in Arbeit, Zwischenstand gepusht)
+- **Weg:** API von Mantle 1.20.1 bleibt (Tinkers 3.12.1 ruft sie auf; ein öffentlicher Tinkers-1.21-Zweig existiert
+  nicht), Mantle 1.21 dient als Vorlage, wo 26.3 dieselben Änderungen verlangt (Kampf, Komponenten, Codecs, Beute).
+  Datagen (Provider, Builder) entfällt.
+- **Werkzeuge** (auch für Tinkers 27d–27h): `tools/forge_to_neo.py` (Pakete/Klassen/Aufrufe Forge 1.20.1 → NeoForge
+  26.3, idempotent) und `tools/fix_by_errors.py <javac-log>` (setzt Fehler-genau um: NBT-Getter mit `Optional`,
+  `ResourceKey.location()`, Registry-Aufrufe). Build: `mod_uses_lombok=true` (Lombok + JSR-305), `mod_mixins=…`
+  (Mixin-Konfiguration in `neoforge.mods.toml`), `-Xmaxerrs` im Build.
+- **Fertig:** util, data, network, config, recipe-Grundlage, Flüssigkeits-Brücke, Komponenten – Liste in
+  `mods/mantle/TODO.md`. Kernentscheidungen: `NetworkWrapper` auf NeoForge-Payloads (Pakete vor
+  `RegisterPayloadHandlersEvent` anmelden), `JsonReloadListener` statt des alten Gson-Listeners (filtert
+  `neoforge:conditions` mit dem Reload-Kontext), `CraftingHelper` (Bedingungen, prüft `conditions` und
+  `neoforge:conditions`), Rezept-ID per Mixin in `RecipeIdContext`, `ICommonRecipe` bringt `getId`/`getResultItem`/
+  `getIngredients`/`getGroup` zurück, `fluid.compat` (IFluidHandler, FluidTank, Adapter zu `ResourceHandler<FluidResource>`),
+  Offhand-Angriff über den Vanilla-Angriff mit getauschten Händen, Offhand-Abklingzeit als Data-Attachment.
+- **Geprüft:** `CI=true ./gradlew pack` grün; Testserver bis `Done`, keine Fehler von Mantle (Mixin greift beim
+  Rezeptladen).
+- **Offen:** Zutaten-Typen, Flüssigkeitsbehälter-Transfer, Beute, registration, block, item, inventory, command,
+  MantleEvents, Registrierungen in `Mantle` – Schritte in `mods/mantle/TODO.md` (Quellen schon umbenannt in
+  `mods/mantle/todo/`). In einer neuen Session weitermachen („starte Teil 27b“).
 
 ### Teil 27c – Mantle-Client
 `client`: Modell-Lader (Connected/Retextured/Fluid-Textur-Modelle, `ColoredBlockModel`, `NBTKeyModel`), Bildschirm-

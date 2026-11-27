@@ -61,6 +61,9 @@ RULES = [
     # --- fluids ---
     (r'\bnet\.minecraftforge\.fluids\.ForgeFlowingFluid\b', 'net.neoforged.neoforge.fluids.BaseFlowingFluid'),
     (r'\bForgeFlowingFluid\b', 'BaseFlowingFluid'),
+    # Forge fluid handler API -> Mantle's compat layer on the 26.3 transfer API (slimeknights.mantle.fluid.compat)
+    (r'\bnet\.(?:minecraftforge|neoforged\.neoforge)\.fluids\.capability\.templates\.(FluidTank|EmptyFluidHandler)\b', r'slimeknights.mantle.fluid.compat.\1'),
+    (r'\bnet\.(?:minecraftforge|neoforged\.neoforge)\.fluids\.capability\.(IFluidHandler|IFluidHandlerItem)\b', r'slimeknights.mantle.fluid.compat.\1'),
     (r'\bnet\.minecraftforge\.fluids\.', 'net.neoforged.neoforge.fluids.'),
     (r'\bnet\.minecraftforge\.client\.extensions\.common\.', 'net.neoforged.neoforge.client.extensions.common.'),
     # --- common / events / conditions ---

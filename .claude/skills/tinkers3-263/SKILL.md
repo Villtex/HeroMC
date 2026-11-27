@@ -74,3 +74,31 @@ wenn alle genannten Items/Blöcke registriert sind (Tags kennen keine Bedingung)
 - Rezept da/nicht da: Crafter + RCON (Skill `server-tests-263`), z. B. 1.4.3 `tconstruct:alubrass_ingot` aus 9
   `tconstruct:alubrass_nugget`: in Legacy ein Barren, in Integrated nichts.
 - Log: `grep -c "worldgen152:world_type\|Couldn't parse" run/server/logs/latest.log` – keine Fehler der Bedingung.
+
+## Port-Werkzeuge Forge 1.20.1 → NeoForge 26.3 (seit 27b, auch für Tinkers-Code)
+
+1. Original-Dateien kopieren, `python3 tools/forge_to_neo.py <dir>` (Pakete, `ResourceLocation`→`Identifier`,
+   `RegistryObject`→`DeferredHolder`, `ForgeRegistries.X`→`BuiltInRegistries.X`, `ToolAction`→`ItemAbility`,
+   `isClientSide`→`isClientSide()`, Forge-Fluid-API → `slimeknights.mantle.fluid.compat`, `NetworkEvent`/
+   `NetworkDirection` → Mantle-Shims, `CraftingHelper` → `slimeknights.mantle.util.CraftingHelper`,
+   `SimpleJsonResourceReloadListener` → `slimeknights.mantle.data.listener.JsonReloadListener`). Neue Regeln dort ergänzen.
+2. Kompilieren: `CI=true ./gradlew :<mod>:compileJava -q > log 2>&1` (alle Fehler, `-Xmaxerrs`), dann
+   `python3 tools/fix_by_errors.py log` (NBT-Getter → `getIntOr(k, 0)` usw., `ResourceKey.location()` →
+   `identifier()`, `registry.get(id)` → `getValue`, `getHolder` → `get`). Wiederholen, Rest von Hand.
+3. Große Pakete stufenweise: noch nicht portierte Quellen in einen nicht kompilierten Ordner (`mods/<mod>/todo/`),
+   paketweise nach `src/main/java` holen. So bleibt jeder Zwischenstand baubar.
+4. Lombok/JSR-305: `mod_uses_lombok=true`, Mixins: `mod_mixins=<name>.mixins.json` in `gradle.properties`.
+
+Mantle-Ersatz für weggefallene 26.3-APIs (Tinkers benutzt diese):
+- **Netzwerk:** `NetworkWrapper` (Pakete im Mod-Konstruktor registrieren), Handler bekommt `NetworkEvent.Context`.
+- **Rezepte:** `ICommonRecipe` (`getId`, `getResultItem(RegistryAccess)`, `assemble(C, RegistryAccess)`,
+  `getIngredients`, `getGroup`), Eingaben `IRecipeContainer`/`ISingleStackContainer`/`IEmptyContainer` sind
+  `RecipeInput`. `LoadableRecipeSerializer.of(loadable[, type])` → `RecipeSerializer` (Record); Rezept-ID beim Laden
+  in `ContextKey.ID` (Mixin `PendingRegistrationMixin` → `RecipeIdContext`). Rezepte am Client: `RecipeHelper.recipeMap(level)`
+  (nur Typen, die der Server per `OnDatapackSyncEvent#sendRecipes` schickt).
+- **Lader:** `JsonReloadListener` (Gson-Form, verwirft Dateien mit falschen `neoforge:conditions`), Registry-Zugriff
+  beim JSON-Lesen über `ContextKey.registryOps(context)`; `CodecLoadable` nutzt das.
+- **Flüssigkeiten:** `fluid.compat.IFluidHandler`/`FluidTank`; Block/Item-Lookup `FluidHandlers.getBlockHandler`,
+  `getItemHandler`; anderen Mods anbieten mit `FluidHandlers.asResourceHandler(tank)` in `RegisterCapabilitiesEvent`.
+- **Daten:** Item-NBT → Komponenten (`MantleData`, `LegacyNbt.toComponents` für alte `"nbt"`), `MobType` als
+  `slimeknights.mantle.data.predicate.entity.MobType` (über Entity-Tags), Enchantments nur als `ResourceKey`.

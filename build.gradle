@@ -157,6 +157,8 @@ side="BOTH"
             minecraft_version: minecraft_version,
             neo_version      : neo_version,
             mod_requires     : requiredToml,
+            // "mod_mixins=a.mixins.json,b.mixins.json" in gradle.properties: mixin configs of the mod
+            mod_mixins       : (findProperty('mod_mixins') ?: '').tokenize(',')*.trim().collect { "\n[[mixins]]\nconfig=\"${it}\"\n" }.join(''),
     ]
     tasks.named('processResources') {
         inputs.properties(metadata)

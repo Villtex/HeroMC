@@ -1,94 +1,86 @@
 package slimeknights.mantle.loot;
 
-import com.google.gson.JsonDeserializer;
-import com.mojang.serialization.Codec;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.storage.loot.Serializer;
-import net.minecraft.world.level.storage.loot.entries.LootPoolEntryType;
+import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
-import net.minecraft.world.level.storage.loot.functions.LootItemFunctionType;
-import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
-import net.minecraft.core.registries.BuiltInRegistries;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
+import com.mojang.serialization.MapCodec;
+import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.storage.loot.entries.LootPoolEntryType;
+import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.neoforged.neoforge.registries.RegisterEvent;
 import slimeknights.mantle.Mantle;
 import slimeknights.mantle.loot.condition.BlockTagLootCondition;
-import slimeknights.mantle.loot.condition.ContainsItemModifierLootCondition;
-import slimeknights.mantle.loot.condition.EmptyModifierLootCondition;
 import slimeknights.mantle.loot.condition.HasLootContextSetCondition;
+import slimeknights.mantle.loot.entry.TagPreferenceLootEntry;
+import slimeknights.mantle.loot.function.SetFluidLootFunction;
+import slimeknights.mantle.loot.AddEntryLootModifier;
+import slimeknights.mantle.loot.ReplaceItemLootModifier;
+import slimeknights.mantle.loot.condition.AndLootModifierCondition;
+import slimeknights.mantle.loot.condition.ContainsItemModifierLootCondition;
+import slimeknights.mantle.loot.condition.ContextLootModifierCondition;
+import slimeknights.mantle.loot.condition.EmptyModifierLootCondition;
 import slimeknights.mantle.loot.condition.ILootModifierCondition;
 import slimeknights.mantle.loot.condition.InvertedModifierLootCondition;
-import slimeknights.mantle.loot.entry.TagPreferenceLootEntry;
-import slimeknights.mantle.loot.function.RetexturedLootFunction;
-import slimeknights.mantle.loot.function.SetFluidLootFunction;
+import slimeknights.mantle.loot.condition.OrLootModifierCondition;
 import slimeknights.mantle.recipe.condition.TagEmptyCondition;
-import slimeknights.mantle.recipe.condition.TagFilledCondition;
-import slimeknights.mantle.registration.adapter.RegistryAdapter;
 
 import java.util.Objects;
 
-import static slimeknights.mantle.loot.condition.ILootModifierCondition.MODIFIER_CONDITIONS;
-
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+/** Handles any loot table registration */
 public class MantleLoot {
+  private static final DeferredRegister<MapCodec<? extends LootItemCondition>> LOOT_CONDITIONS = DeferredRegister.create(Registries.LOOT_CONDITION_TYPE, Mantle.modId);
+  private static final DeferredRegister<MapCodec<? extends LootItemFunction>> LOOT_FUNCTIONS = DeferredRegister.create(Registries.LOOT_FUNCTION_TYPE, Mantle.modId);
+  private static final DeferredRegister<MapCodec<? extends LootPoolEntryContainer>> LOOT_ENTRIES = DeferredRegister.create(Registries.LOOT_POOL_ENTRY_TYPE, Mantle.modId);
+  private static final DeferredRegister<MapCodec<? extends IGlobalLootModifier>> LOOT_MODIFIERS = DeferredRegister.create(NeoForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, Mantle.modId);
+
+
+  private MantleLoot() {}
+
+  /** Registers this to the bus */
+  public static void init(IEventBus bus) {
+    LOOT_CONDITIONS.register(bus);
+    LOOT_FUNCTIONS.register(bus);
+    LOOT_ENTRIES.register(bus);
+    LOOT_MODIFIERS.register(bus);
+    // loot modifier conditions
+    ILootModifierCondition.LOADER.register(Mantle.getResource("inverted"), InvertedModifierLootCondition.CODEC);
+    ILootModifierCondition.LOADER.register(Mantle.getResource("and"), AndLootModifierCondition.CODEC);
+    ILootModifierCondition.LOADER.register(Mantle.getResource("or"), OrLootModifierCondition.CODEC);
+    ILootModifierCondition.LOADER.register(Mantle.getResource("context"), ContextLootModifierCondition.CODEC);
+    ILootModifierCondition.LOADER.register(Mantle.getResource("contains_item"), ContainsItemModifierLootCondition.CODEC);
+    ILootModifierCondition.LOADER.register(Mantle.getResource("empty"), EmptyModifierLootCondition.CODEC);
+  }
+
+  /** Port: in 26.3 loot types are their map codecs */
+  public static final Holder<MapCodec<? extends IGlobalLootModifier>> ADD_ENTRY = LOOT_MODIFIERS.register("add_entry", () -> AddEntryLootModifier.CODEC);
+  public static final Holder<MapCodec<? extends IGlobalLootModifier>> REPLACE_ITEM = LOOT_MODIFIERS.register("replace_item", () -> ReplaceItemLootModifier.CODEC);
+
   /** Matches if the passed tag is empty */
-  public static LootItemConditionType TAG_EMPTY;
+  public static final Holder<MapCodec<? extends LootItemCondition>> TAG_EMPTY = LOOT_CONDITIONS.register("tag_empty", () -> TagEmptyCondition.CODEC);
   /** Matches if the passed tag is filled */
-  public static LootItemConditionType TAG_FILLED;
+  public static final Holder<MapCodec<? extends LootItemCondition>> TAG_FILLED = LOOT_CONDITIONS.register("tag_filled", () -> slimeknights.mantle.recipe.condition.TagFilledCondition.CODEC);
   /** Condition to match a block tag and property predicate */
-  public static LootItemConditionType BLOCK_TAG_CONDITION;
+  public static final Holder<MapCodec<? extends LootItemCondition>> BLOCK_TAG_CONDITION = LOOT_CONDITIONS.register("block_tag", () -> BlockTagLootCondition.CODEC);
   /** Condition for global loot modifiers that ensures a context set is present. Useful to check if we are in a specific context like entity. */
-  public static LootItemConditionType HAS_CONTEXT_SET;
+  public static final Holder<MapCodec<? extends LootItemCondition>> HAS_CONTEXT_SET = LOOT_CONDITIONS.register("has_context_set", () -> HasLootContextSetCondition.CODEC);
+
   /** Function to add block entity texture to a dropped item */
-  public static LootItemFunctionType RETEXTURED_FUNCTION;
+  @SuppressWarnings("removal")
+  public static final Holder<MapCodec<? extends LootItemFunction>> RETEXTURED_FUNCTION = LOOT_FUNCTIONS.register("fill_retextured_block", () -> slimeknights.mantle.loot.function.RetexturedLootFunction.CODEC);
   /** Function to add a fluid to an item fluid capability */
-  public static LootItemFunctionType SET_FLUID_FUNCTION;
+  public static final Holder<MapCodec<? extends LootItemFunction>> SET_FLUID_FUNCTION = LOOT_FUNCTIONS.register("set_fluid", () -> SetFluidLootFunction.CODEC);
+
   /** Entry to pull a value from a tag preference */
-  public static LootPoolEntryType TAG_PREFERENCE;
+  public static final Holder<MapCodec<? extends LootPoolEntryContainer>> TAG_PREFERENCE = LOOT_ENTRIES.register("tag_preference", () -> TagPreferenceLootEntry.CODEC);
 
-
-  /**
-   * Called during serializer registration to register any relevant loot logic
-   */
-  public static void registerGlobalLootModifiers(final RegisterEvent event) {
-    ResourceKey<?> key = event.getRegistryKey();
-
-    if (key == NeoForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS) {
-      RegistryAdapter<Codec<? extends IGlobalLootModifier>> adapter = new RegistryAdapter<>(Objects.requireNonNull(event.getForgeRegistry()));
-      adapter.register(AddEntryLootModifier.CODEC, "add_entry");
-      adapter.register(ReplaceItemLootModifier.CODEC, "replace_item");
-
-      // loot modifier conditions
-      MODIFIER_CONDITIONS.registerDeserializer(InvertedModifierLootCondition.ID, (JsonDeserializer<? extends ILootModifierCondition>)InvertedModifierLootCondition::deserialize);
-      MODIFIER_CONDITIONS.registerDeserializer(EmptyModifierLootCondition.ID, EmptyModifierLootCondition.INSTANCE);
-      MODIFIER_CONDITIONS.registerDeserializer(ContainsItemModifierLootCondition.ID, (JsonDeserializer<? extends ILootModifierCondition>)ContainsItemModifierLootCondition::deserialize);
-    } else if (key == Registries.LOOT_FUNCTION_TYPE) {
-      RETEXTURED_FUNCTION = registerFunction("fill_retextured_block", RetexturedLootFunction.SERIALIZER);
-      SET_FLUID_FUNCTION = registerFunction("set_fluid", SetFluidLootFunction.SERIALIZER);
-
-    } else if (key == Registries.LOOT_CONDITION_TYPE) {
-      BLOCK_TAG_CONDITION = Registry.register(BuiltInRegistries.LOOT_CONDITION_TYPE, Mantle.getResource("block_tag"), new LootItemConditionType(BlockTagLootCondition.SERIALIZER));
-      HAS_CONTEXT_SET = Registry.register(BuiltInRegistries.LOOT_CONDITION_TYPE, Mantle.getResource("has_context_set"), new LootItemConditionType(new HasLootContextSetCondition.Serializer()));
-      TAG_EMPTY = Registry.register(BuiltInRegistries.LOOT_CONDITION_TYPE, TagEmptyCondition.SERIALIZER.getID(), new LootItemConditionType(TagEmptyCondition.SERIALIZER));
-      TAG_FILLED = Registry.register(BuiltInRegistries.LOOT_CONDITION_TYPE, TagFilledCondition.SERIALIZER.getID(), new LootItemConditionType(TagFilledCondition.SERIALIZER));
-
-    } else if (key == Registries.LOOT_POOL_ENTRY_TYPE) {
-      TAG_PREFERENCE = Registry.register(BuiltInRegistries.LOOT_POOL_ENTRY_TYPE, Mantle.getResource("tag_preference"), new LootPoolEntryType(new TagPreferenceLootEntry.Serializer()));
-    }
-  }
-
-  /**
-   * Registers a loot function
-   * @param name        Loot function name
-   * @param serializer  Loot function serializer
-   * @return  Registered loot function
-   */
-  private static LootItemFunctionType registerFunction(String name, Serializer<? extends LootItemFunction> serializer) {
-    return Registry.register(BuiltInRegistries.LOOT_FUNCTION_TYPE, Mantle.getResource(name), new LootItemFunctionType(serializer));
-  }
 }

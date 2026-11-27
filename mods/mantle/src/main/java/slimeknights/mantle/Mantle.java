@@ -8,7 +8,11 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.fml.loading.FMLEnvironment;
+import slimeknights.mantle.client.MantleClient;
 import slimeknights.mantle.network.MantleNetwork;
+import slimeknights.mantle.recipe.MantleRecipes;
 import slimeknights.mantle.registration.MantleData;
 import slimeknights.mantle.util.OffhandCooldownTracker;
 
@@ -35,6 +39,10 @@ public class Mantle {
     OffhandCooldownTracker.register(bus);
     // NeoForge registers payloads in RegisterPayloadHandlersEvent, before common setup
     MantleNetwork.registerPackets();
+    MantleRecipes.init(bus);
+    if (FMLEnvironment.getDist() == Dist.CLIENT) {
+      MantleClient.onConstruct();
+    }
   }
 
   /**
