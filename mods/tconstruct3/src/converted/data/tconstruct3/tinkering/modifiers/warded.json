@@ -1,0 +1,32 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:adjust_damage",
+      "damage_source": "mantle:can_protect",
+      "formula": [
+        "$protection",
+        "$level",
+        "-",
+        1.0,
+        "max",
+        "$protection",
+        "min"
+      ],
+      "holder": "tconstruct3:full_health",
+      "hooks": [
+        "tconstruct3:modify_damage",
+        "tconstruct3:tooltip"
+      ],
+      "percent": false,
+      "tooltip_value": 100.0
+    }
+  ],
+  "priority": 50
+}

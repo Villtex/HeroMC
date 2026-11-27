@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:flinging",
+    "tconstruct3:springing",
+    "tconstruct3:bonking",
+    "tconstruct3:warping",
+    "tconstruct3:throwing"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:tipped_tool_transform",
+  "input": {
+    "neoforge:ingredient_type": "mantle:potion_display",
+    "item": "minecraft:tipped_arrow"
+  },
+  "materials": [
+    "tconstruct3:flint",
+    "tconstruct3:wood",
+    "tconstruct3:feather"
+  ],
+  "modifier": "tconstruct3:tipped",
+  "result": "tconstruct3:arrow",
+  "slot_layout": "tconstruct3:tinker_station"
+}

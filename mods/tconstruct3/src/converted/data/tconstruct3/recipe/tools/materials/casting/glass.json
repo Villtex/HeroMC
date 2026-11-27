@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material_fluid",
+  "fluid": {
+    "amount": 250,
+    "tag": "tconstruct3:molten_glass"
+  },
+  "output": "tconstruct3:glass",
+  "temperature": 750
+}

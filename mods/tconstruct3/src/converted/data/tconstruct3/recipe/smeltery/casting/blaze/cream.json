@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_table",
+  "cast": "#c:slime_balls/earth",
+  "cast_consumed": true,
+  "cooling_time": 60,
+  "fluid": {
+    "amount": 50,
+    "tag": "tconstruct3:blazing_blood"
+  },
+  "result": "minecraft:magma_cream"
+}

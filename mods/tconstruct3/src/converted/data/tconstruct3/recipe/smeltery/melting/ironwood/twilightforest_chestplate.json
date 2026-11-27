@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "neoforge:registered",
+      "value": "twilightforest:ironwood_chestplate"
+    }
+  ],
+  "type": "tconstruct3:damagable_melting",
+  "byproducts": [
+    {
+      "amount": 80,
+      "tag": "c:molten_gold",
+      "unit_size": 10
+    }
+  ],
+  "ingredient": "twilightforest:ironwood_chestplate",
+  "result": {
+    "amount": 720,
+    "tag": "c:molten_iron",
+    "unit_size": 10
+  },
+  "temperature": 800,
+  "time": 170
+}

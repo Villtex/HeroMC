@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": [
+    "minecraft:iron_bars",
+    "minecraft:rail"
+  ],
+  "result": {
+    "amount": 30,
+    "tag": "c:molten_iron"
+  },
+  "temperature": 800,
+  "time": 35
+}

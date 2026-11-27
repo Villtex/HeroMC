@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:overgrowth",
+    "tconstruct3:overcast",
+    "tconstruct3:overburn",
+    "tconstruct3:overlord",
+    "tconstruct3:overshield",
+    "tconstruct3:overwield",
+    "tconstruct3:overforced",
+    "tconstruct3:overslime_friend",
+    "tconstruct3:overworked"
+  ]
+}

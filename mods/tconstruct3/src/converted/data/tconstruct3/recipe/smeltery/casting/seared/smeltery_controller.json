@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:retextured_casting_basin",
+  "cast": "#tconstruct3:smeltery_bricks",
+  "cast_consumed": true,
+  "cooling_time": 100,
+  "fluid": {
+    "amount": 360,
+    "tag": "c:molten_copper"
+  },
+  "result": "tconstruct3:smeltery_controller"
+}

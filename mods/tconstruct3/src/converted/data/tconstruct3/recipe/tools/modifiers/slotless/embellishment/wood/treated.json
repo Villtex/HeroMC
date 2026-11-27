@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:treated_wood"
+    }
+  ],
+  "type": "tconstruct3:swappable_modifier",
+  "allow_crystal": false,
+  "inputs": [
+    "#c:treated_wood",
+    "tconstruct3:pattern",
+    "#c:treated_wood"
+  ],
+  "result": {
+    "name": "tconstruct3:embellishment",
+    "value": "tconstruct3:treated_wood"
+  },
+  "tools": "#tconstruct3:modifiable/embellishment/wood",
+  "variant_formatter": "tconstruct3:material"
+}

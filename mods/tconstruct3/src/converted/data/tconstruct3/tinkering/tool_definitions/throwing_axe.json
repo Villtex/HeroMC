@@ -1,0 +1,48 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "modules": [
+    {
+      "type": "tconstruct3:part_stats",
+      "parts": [
+        "tconstruct3:arrow_head",
+        "tconstruct3:arrow_shaft"
+      ],
+      "primary_part": 0
+    },
+    {
+      "type": "tconstruct3:default_materials",
+      "materials": [
+        {
+          "type": "tconstruct3:random"
+        },
+        {
+          "type": "tconstruct3:random"
+        }
+      ]
+    },
+    {
+      "type": "tconstruct3:base_stats",
+      "stats": {
+        "tconstruct3:accuracy": 0.5,
+        "tconstruct3:projectile_damage": 1.5,
+        "tconstruct3:velocity": 0.75,
+        "tconstruct3:water_inertia": 0.5
+      }
+    },
+    {
+      "type": "tconstruct3:multiply_stats",
+      "multipliers": {
+        "tconstruct3:projectile_damage": 3.0
+      }
+    },
+    {
+      "type": "tconstruct3:fixed_material_name",
+      "index": 0
+    }
+  ]
+}

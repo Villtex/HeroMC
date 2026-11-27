@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material_fluid",
+  "fluid": {
+    "amount": 90,
+    "tag": "tconstruct3:molten_knightmetal"
+  },
+  "output": "tconstruct3:knightmetal",
+  "temperature": 1300
+}

@@ -1,0 +1,94 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "parent": "tconstruct3:world/tinkers_gadgetry",
+  "criteria": {
+    "earth": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:slime_balls/earth"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "ender": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:slime_balls/ender"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "ichor": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:slime_balls/ichor"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "magma_cream": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:magma_cream"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "sky": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:slime_balls/sky"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.tconstruct3.world.slime_collector.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "tconstruct3:ichor_slime_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tconstruct3.world.slime_collector.title"
+    }
+  },
+  "requirements": [
+    [
+      "earth"
+    ],
+    [
+      "sky"
+    ],
+    [
+      "ichor"
+    ],
+    [
+      "ender"
+    ],
+    [
+      "magma_cream"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

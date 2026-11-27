@@ -1,0 +1,18 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:wires"
+    }
+  ],
+  "type": "tconstruct3:molding_table",
+  "material": {
+    "tag": "tconstruct3:casts/red_sand"
+  },
+  "pattern": "#c:wires",
+  "result": "tconstruct3:wire_red_sand_cast"
+}

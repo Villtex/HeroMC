@@ -1,0 +1,29 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:conditional_melee_damage",
+      "each_level": 2.0,
+      "percent": false,
+      "target": {
+        "type": "mantle:or",
+        "predicates": [
+          {
+            "type": "mantle:mob_type",
+            "mobs": "minecraft:illager"
+          },
+          {
+            "type": "mantle:tag",
+            "tag": "tconstruct3:killagers"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:pluses",
+  "modules": [
+    {
+      "type": "tconstruct3:autosmelt",
+      "extra_drop_chance": 0.2,
+      "recipe_types": "minecraft:smelting"
+    }
+  ]
+}

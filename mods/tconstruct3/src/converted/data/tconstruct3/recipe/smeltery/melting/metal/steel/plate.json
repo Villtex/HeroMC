@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:plates/steel"
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": "#c:plates/steel",
+  "result": {
+    "amount": 90,
+    "tag": "c:molten_steel"
+  },
+  "temperature": 950,
+  "time": 65
+}

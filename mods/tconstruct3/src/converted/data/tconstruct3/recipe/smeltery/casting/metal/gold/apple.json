@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_table",
+  "cast": "minecraft:apple",
+  "cast_consumed": true,
+  "cooling_time": 161,
+  "fluid": {
+    "amount": 720,
+    "tag": "c:molten_gold"
+  },
+  "result": "minecraft:golden_apple"
+}

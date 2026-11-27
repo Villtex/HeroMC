@@ -1,0 +1,32 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "neoforge:or",
+      "values": [
+        {
+          "type": "tconstruct3:config",
+          "prop": "force_integration_materials"
+        },
+        {
+          "type": "mantle:tag_filled",
+          "tag": "c:ingots/fiery"
+        }
+      ]
+    }
+  ],
+  "block_effects": [
+    {
+      "type": "tconstruct3:melt_block",
+      "min_amount": 90,
+      "temperature": 1500
+    }
+  ],
+  "fluid": {
+    "amount": 50,
+    "tag": "tconstruct3:fiery_liquid"
+  }
+}

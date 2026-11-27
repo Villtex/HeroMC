@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "mantle:crafting_shaped_retextured",
+  "category": "misc",
+  "key": {
+    "m": "#tconstruct3:anvil_metal",
+    "s": "#tconstruct3:seared_blocks"
+  },
+  "match_all": true,
+  "pattern": [
+    "mmm",
+    " s ",
+    "sss"
+  ],
+  "result": {
+    "id": "tconstruct3:tinkers_anvil"
+  },
+  "show_notification": true,
+  "texture": "m"
+}

@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 400,
+  "experience": 0.2,
+  "group": "tconstruct3:slime_dirt",
+  "ingredient": "tconstruct3:ender_slime_dirt",
+  "result": {
+    "id": "tconstruct3:ender_slime_crystal"
+  }
+}

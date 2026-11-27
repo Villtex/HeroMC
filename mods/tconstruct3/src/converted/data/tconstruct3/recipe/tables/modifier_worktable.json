@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "mantle:crafting_shaped_retextured",
+  "category": "misc",
+  "key": {
+    "r": "#tconstruct3:workstation_rock",
+    "s": "#tconstruct3:seared_blocks"
+  },
+  "match_all": true,
+  "pattern": [
+    "sss",
+    "r r",
+    "r r"
+  ],
+  "result": {
+    "id": "tconstruct3:modifier_worktable"
+  },
+  "show_notification": true,
+  "texture": "r"
+}

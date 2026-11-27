@@ -1,0 +1,14 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:molding_table",
+  "material": {
+    "tag": "tconstruct3:casts/red_sand"
+  },
+  "pattern": "#c:gems",
+  "result": "tconstruct3:gem_red_sand_cast"
+}

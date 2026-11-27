@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material_fluid",
+  "fluid": {
+    "amount": 200,
+    "tag": "tconstruct3:blazing_blood"
+  },
+  "input": "tconstruct3:slimewood#bloodshroom",
+  "output": "tconstruct3:blazewood",
+  "temperature": 1500
+}

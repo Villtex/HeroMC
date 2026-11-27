@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:severing",
+  "entity": {
+    "types": [
+      "minecraft:skeleton",
+      "minecraft:skeleton_horse",
+      "minecraft:stray"
+    ]
+  },
+  "looting_bonus": 0.01,
+  "per_level_chance": 0.05,
+  "result": {
+    "id": "minecraft:bone",
+    "count": 2
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "C": "tconstruct3:obsidian_pane",
+    "G": "#c:glass_panes/colorless"
+  },
+  "pattern": [
+    " C ",
+    "CGC",
+    " C "
+  ],
+  "result": {
+    "id": "tconstruct3:obsidian_gauge",
+    "count": 4
+  },
+  "show_notification": true
+}

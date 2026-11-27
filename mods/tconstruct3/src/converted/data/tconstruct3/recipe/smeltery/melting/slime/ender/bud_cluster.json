@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:ore_melting",
+  "ingredient": "tconstruct3:ender_slime_crystal_cluster",
+  "rate": "gem",
+  "result": {
+    "amount": 1000,
+    "fluid": "tconstruct3:ender_slime"
+  },
+  "temperature": 70,
+  "time": 79
+}

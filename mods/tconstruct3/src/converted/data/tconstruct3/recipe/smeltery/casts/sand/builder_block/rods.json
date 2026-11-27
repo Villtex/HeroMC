@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:item_part_builder",
+  "pattern": "tconstruct3:rod",
+  "pattern_item": "#c:sands/colorless",
+  "result": {
+    "id": "tconstruct3:rod_sand_cast",
+    "count": 4
+  },
+  "title_key": "tconstruct3:sand_cast"
+}

@@ -1,0 +1,18 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:no_levels",
+  "modules": [
+    {
+      "type": "tconstruct3:banner"
+    }
+  ],
+  "priority": 25,
+  "show_in_tooltips": [
+    "tinker_station"
+  ]
+}

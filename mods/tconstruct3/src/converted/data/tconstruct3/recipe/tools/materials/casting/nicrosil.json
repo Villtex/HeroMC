@@ -1,0 +1,36 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "neoforge:or",
+      "values": [
+        {
+          "type": "mantle:tag_filled",
+          "tag": "c:ingots/nicrosil"
+        },
+        {
+          "type": "mantle:tag_filled",
+          "tag": "c:ingots/tin"
+        },
+        {
+          "type": "mantle:tag_filled",
+          "tag": "c:ingots/nickel"
+        },
+        {
+          "type": "mantle:tag_filled",
+          "tag": "c:ingots/chromium"
+        }
+      ]
+    }
+  ],
+  "type": "tconstruct3:material_fluid",
+  "fluid": {
+    "amount": 90,
+    "tag": "c:molten_nicrosil"
+  },
+  "output": "tconstruct3:nicrosil",
+  "temperature": 1100
+}

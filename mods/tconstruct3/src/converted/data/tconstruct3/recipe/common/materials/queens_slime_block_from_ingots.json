@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tconstruct3:queens_slime_block",
+  "key": {
+    "#": "#c:ingots/queens_slime",
+    "*": "tconstruct3:queens_slime_ingot"
+  },
+  "pattern": [
+    "###",
+    "#*#",
+    "###"
+  ],
+  "result": {
+    "id": "tconstruct3:queens_slime_block"
+  },
+  "show_notification": true
+}

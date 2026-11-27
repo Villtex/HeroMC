@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:wood",
+    "tconstruct3:flint",
+    "tconstruct3:rock",
+    "tconstruct3:bone",
+    "tconstruct3:leather",
+    "tconstruct3:string",
+    "tconstruct3:gold",
+    "tconstruct3:slimewood",
+    "tconstruct3:nahuatl",
+    "tconstruct3:obsidian",
+    "tconstruct3:darkthread",
+    "tconstruct3:steel",
+    "tconstruct3:ancient",
+    "#tconstruct3:nether/gated"
+  ]
+}

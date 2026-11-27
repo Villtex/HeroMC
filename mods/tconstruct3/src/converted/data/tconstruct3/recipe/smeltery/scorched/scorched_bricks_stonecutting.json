@@ -1,0 +1,18 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "neoforge:ingredient_type": "neoforge:difference",
+    "base": "#tconstruct3:scorched_blocks",
+    "subtracted": "tconstruct3:scorched_bricks"
+  },
+  "result": {
+    "id": "tconstruct3:scorched_bricks",
+    "count": 1
+  }
+}

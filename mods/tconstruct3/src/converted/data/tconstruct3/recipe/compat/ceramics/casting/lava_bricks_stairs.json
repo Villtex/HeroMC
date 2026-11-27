@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "ceramics"
+    }
+  ],
+  "type": "tconstruct3:casting_basin",
+  "cast": "minecraft:brick_stairs",
+  "cast_consumed": true,
+  "cooling_time": 70,
+  "fluid": {
+    "amount": 100,
+    "fluid": "minecraft:lava"
+  },
+  "result": "ceramics:lava_bricks_stairs"
+}

@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_table",
+  "cast": "#tconstruct3:casts/single_use/nugget",
+  "cast_consumed": true,
+  "cooling_time": 17,
+  "fluid": {
+    "amount": 10,
+    "tag": "c:molten_copper"
+  },
+  "result": {
+    "tag": "c:nuggets/copper"
+  }
+}

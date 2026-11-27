@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": "tconstruct3:silky_cloth",
+  "result": {
+    "amount": 90,
+    "tag": "c:molten_rose_gold"
+  },
+  "temperature": 550,
+  "time": 52
+}

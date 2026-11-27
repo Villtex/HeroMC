@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.3,
+  "ingredient": "tconstruct3:nether_grout",
+  "result": {
+    "id": "tconstruct3:scorched_brick"
+  }
+}

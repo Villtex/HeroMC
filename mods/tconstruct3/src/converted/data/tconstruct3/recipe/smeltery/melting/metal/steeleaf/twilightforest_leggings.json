@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "neoforge:registered",
+      "value": "twilightforest:steeleaf_leggings"
+    }
+  ],
+  "type": "tconstruct3:damagable_melting",
+  "ingredient": "twilightforest:steeleaf_leggings",
+  "result": {
+    "amount": 630,
+    "fluid": "tconstruct3:molten_steeleaf",
+    "unit_size": 10
+  },
+  "temperature": 934,
+  "time": 170
+}

@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_basin",
+  "cast": "tconstruct3:ichor_congealed_slime",
+  "cast_consumed": true,
+  "cooling_time": 212,
+  "fluid": {
+    "amount": 1250,
+    "tag": "tconstruct3:ichor"
+  },
+  "result": "tconstruct3:ichor_slime"
+}

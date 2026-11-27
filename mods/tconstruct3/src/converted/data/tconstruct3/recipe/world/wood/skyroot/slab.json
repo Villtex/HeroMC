@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "wooden_slab",
+  "key": {
+    "#": "tconstruct3:skyroot_planks"
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "id": "tconstruct3:skyroot_planks_slab",
+    "count": 6
+  },
+  "show_notification": true
+}

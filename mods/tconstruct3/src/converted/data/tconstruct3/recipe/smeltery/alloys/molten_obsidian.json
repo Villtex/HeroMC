@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:alloy",
+  "inputs": [
+    {
+      "amount": 250,
+      "catalyst": true,
+      "fluid": "minecraft:water"
+    },
+    {
+      "amount": 100,
+      "fluid": "minecraft:lava"
+    }
+  ],
+  "result": {
+    "amount": 100,
+    "fluid": "tconstruct3:molten_obsidian"
+  },
+  "temperature": 1000
+}

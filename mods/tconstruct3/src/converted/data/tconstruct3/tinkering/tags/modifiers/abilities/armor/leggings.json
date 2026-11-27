@@ -1,0 +1,14 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:pockets",
+    "tconstruct3:soul_belt",
+    "tconstruct3:tool_belt",
+    "tconstruct3:crafting_table"
+  ]
+}

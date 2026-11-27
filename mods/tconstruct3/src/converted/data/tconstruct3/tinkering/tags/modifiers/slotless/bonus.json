@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:draconic",
+    "tconstruct3:rebalanced",
+    "tconstruct3:redirected",
+    "tconstruct3:trim",
+    "tconstruct3:harmonious",
+    "tconstruct3:recapitated",
+    "tconstruct3:forecast",
+    "tconstruct3:writable",
+    {
+      "id": "tconstruct3:embossed",
+      "required": false
+    }
+  ]
+}

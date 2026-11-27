@@ -1,0 +1,14 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:tinker_station_part_swapping",
+  "max_stack_size": 4,
+  "tools": [
+    "tconstruct3:arrow",
+    "tconstruct3:shuriken"
+  ]
+}

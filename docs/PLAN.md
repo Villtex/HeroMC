@@ -79,7 +79,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 26d | Integrated D: EBXL-Biome neben Vanilla- und fremden Biomen, Mob-Spawns per Biom-Modifier | ~3.000 | 26b | Fable 5.2, hoch | ✅ erledigt |
 | 26e | Integrated E: Schnittstellen für fremde Mods (Capabilities, `c:`-Tags, Werkzeug-Fähigkeiten, Rezepte über Tags) | ~4.000 | – | Opus 5.5, mittel | ✅ erledigt |
 | 26f | Integrated F: Test mit fremden 26.3-Mods, Gesamtprüfung | – | 26a–26e | Opus 5.5, mittel | ✅ erledigt |
-| 27a | Tinkers 3 A: Zwei-Versionen-Schalter (Welttyp am Client, Bedingungen, Ausblenden), Quellen, Daten-Konverter, Gerüst `mantle`/`tconstruct3` | – | 26 | Opus 5.5, hoch | offen |
+| 27a | Tinkers 3 A: Zwei-Versionen-Schalter (Welttyp am Client, Bedingungen, Ausblenden), Quellen, Daten-Konverter, Gerüst `mantle`/`tconstruct3` | – | 26 | Opus 5.5, hoch | ✅ erledigt |
 | 27b | Tinkers 3 B: Mantle-Kern (Datenlader, JSON-Helfer, Rezepte, Flüssigkeiten, Registrierung, Netzwerk, Befehle) | ~33.000 | 27a | Opus 5.5, hoch | offen |
 | 27c | Tinkers 3 C: Mantle-Client (Modell-Lader, Bildschirme, Handbuch-Engine) | ~17.000 | 27b | Fable 5.2, hoch | offen |
 | 27d | Tinkers 3 D: Werkzeug-Datenmodell (Materialien, Stats, Werkzeugdaten als Komponenten, Definitionen, Teile, JSON-Variablen) | ~35.000 | 27b | Fable 5.2, hoch | offen |
@@ -2378,6 +2378,37 @@ nichts anderes zeigt: Flags kommen aus Datapacks bei der Welterstellung, vorhand
   die 1.4.3-Rezepte, Integrated-Welt nicht (am Server per Crafter + RCON, Skill `server-tests-263`).
 - Feature-Flag-Alternative kurz prüfen (s. o.) und Entscheidung hier notieren.
 - Skill `tinkers3-263` anlegen (Namensraum, Konverter, Welttyp-Regel, Paket-Übersicht).
+
+#### Teil 27a – Stand (✅ erledigt)
+- **Quellen:** `tools/reference_tc3.py` klont flach per git (die GitHub-Archiv-URLs sind hinter dem Proxy gesperrt) nach
+  `.reference/tc3/{tconstruct,mantle,mantle-1.21}`.
+- **Gerüst:** `mods/mantle` (Mod-ID `mantle`, Paket `slimeknights.mantle`) und `mods/tconstruct3` (Mod-ID `tconstruct3`,
+  Paket `slimeknights.tconstruct`, `TConstruct.MOD_ID`), nur Mod-Klassen. `settings.gradle`, `pack` und `make_zip.py`
+  nehmen jedes Teilprojekt von selbst mit. Assets holt der neue Build-Task `ImportTagAssets` aus dem Tag (Einstellungen
+  `tag_assets_*` in `gradle.properties`, klont bei Bedarf selbst) und benennt dabei den Namensraum um (Ordner,
+  `tconstruct:`-Verweise, Sprachschlüssel). 3.12.1: 21.900 Asset-Dateien, Mantle: 150.
+- **Daten-Konverter** `mods/tconstruct3/tools/convert_data.py`: 5.729 Dateien → `mods/tconstruct3/src/converted`,
+  `mods/mantle/src/converted` (eingecheckt, 2,8 MB). Regeln im Kopf des Skripts und im Skill `tinkers3-263`; was nicht
+  sicher ging, steht in `mods/tconstruct3/tools/convert_report.md` (u. a. 19× `copy_nbt` in Block-Beute, 16 Trim-
+  Materialien, vorläufige Komponenten-Namen, 204 eigene Zutaten-Typen für 27b–27f). Die ~18.000 Dateien des Plans
+  sind Daten (5.700) plus Assets (12.500, die der Build umbenennt). Ins Jar kommt nur, was `data-enabled.txt` listet
+  (jetzt nichts), damit Daten ohne Lader/Registry-Einträge den Start nicht brechen.
+- **Welttyp:** `HexxitWorldType` in `worldgen152` (`isLegacy(MinecraftServer|Level)`, `clientLegacy()`,
+  `onClientChange`, Paket `worldgen152:world_type` beim Betreten, Reset beim Verlassen).
+- **1.4.3 nur in Legacy:** `mods/tconstruct/tools/legacy_condition.py` (auch von `gen.py` benutzt) setzt `legacy:true`
+  an 236 Rezepte und die Entity-Beute. Ohne Bedingung bleiben Block-Beute (gesetzte Blöcke alter Integrated-Welten
+  droppen weiter), Tags, Dorfbewohner-Handel (Registry-Einträge, in 27k per Code) und die Integrated-Features aus
+  26b/26c (fallen in 27k weg). Rezepte, die 1.4.3 im Code anlegt (Meißel, Schmelzerei, Werkzeugbau), schaltet 27k ab.
+  `gen.py` ist hinter den Handänderungen von 26b/26e zurück (siehe `mods/tconstruct/TODO.md`).
+- **Feature-Flags geprüft und verworfen:** Flags stehen pro Welt fest (`enabled_features` beim Anlegen aus den
+  Datapacks); vorhandene Legacy-Welten hätten das 1.4.3-Flag nicht und verlören alle Tinkers-Items und -Blöcke, ein
+  abgeschaltetes Flag macht auch gesetzte Blöcke unbenutzbar. Es bleibt bei Ladebedingung + `HexxitWorldType`.
+- **Geprüft:** `CI=true ./gradlew clean pack` grün (Jars `mantle` 104 Dateien, `tconstruct3` 23.362 Dateien, nur
+  Assets). Testserver Seed 1234 in beiden Welttypen bis `Done`, 0 ERROR. Crafter + RCON: 9 `tconstruct:alubrass_nugget`
+  → `alubrass_ingot` in Legacy, in Integrated bleibt der Crafter voll (Gegenprobe Stöcke aus Planken geht).
+- **Skill** `tinkers3-263`.
+- **Offen:** Client-Prüfung des Pakets `worldgen152:world_type` (Wert von `clientLegacy()` nach dem Betreten, noch
+  kein Nutzer); Punkte für 27b–27k in `mods/tconstruct3/TODO.md`.
 
 ### Teil 27b – Mantle-Kern
 `block`, `command`, `config`, `data` (Lader, Bedingungen, `JsonHelper`, `LoadableField`/Records), `fluid`,

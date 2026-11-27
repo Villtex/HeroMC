@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_table_potion",
+  "bottle": "minecraft:glass_bottle",
+  "fluid": {
+    "amount": 250,
+    "tag": "c:potion"
+  },
+  "result": "minecraft:potion"
+}

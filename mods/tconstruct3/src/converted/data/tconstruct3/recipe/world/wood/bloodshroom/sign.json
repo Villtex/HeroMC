@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "sign",
+  "key": {
+    "#": "tconstruct3:bloodshroom_planks",
+    "X": "#c:rods/wooden"
+  },
+  "pattern": [
+    "###",
+    "###",
+    " X "
+  ],
+  "result": {
+    "id": "tconstruct3:bloodshroom_sign",
+    "count": 3
+  },
+  "show_notification": true
+}

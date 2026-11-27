@@ -1,0 +1,34 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:protection",
+      "damage_source": "mantle:can_protect",
+      "formula": [
+        "$equipment",
+        "$level",
+        "*",
+        "$protection",
+        "+"
+      ],
+      "variables": {
+        "equipment": {
+          "type": "tconstruct3:entity",
+          "entity_type": "tconstruct3:equipment_count",
+          "fallback": 2.0,
+          "slots": [
+            "mainhand",
+            "offhand"
+          ],
+          "which": "attacker"
+        }
+      }
+    }
+  ]
+}

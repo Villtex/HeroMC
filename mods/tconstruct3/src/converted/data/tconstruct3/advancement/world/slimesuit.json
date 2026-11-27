@@ -1,0 +1,87 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "parent": "tconstruct3:world/sky_island",
+  "criteria": {
+    "crafted_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:slime_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "crafted_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:slimy_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "crafted_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:slime_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "crafted_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:slime_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.tconstruct3.world.slimesuit.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "tconstruct3:slimy_chestplate",
+      "components": {
+        "tconstruct3:materials": [
+          "tconstruct3:bone",
+          "tconstruct3:skyslime"
+        ]
+      }
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tconstruct3.world.slimesuit.title"
+    }
+  },
+  "requirements": [
+    [
+      "crafted_helmet"
+    ],
+    [
+      "crafted_chestplate"
+    ],
+    [
+      "crafted_leggings"
+    ],
+    [
+      "crafted_boots"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

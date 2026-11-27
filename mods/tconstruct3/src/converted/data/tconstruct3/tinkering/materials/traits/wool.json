@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "perStat": {
+    "tconstruct3:ammo": [
+      {
+        "level": 1,
+        "name": "tconstruct3:soft"
+      }
+    ],
+    "tconstruct3:armor": [
+      {
+        "level": 1,
+        "name": "tconstruct3:knockback_resistance"
+      }
+    ]
+  }
+}

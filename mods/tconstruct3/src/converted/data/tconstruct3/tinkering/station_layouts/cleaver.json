@@ -1,0 +1,61 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "icon": {
+    "id": "tconstruct3:cleaver",
+    "components": {
+      "tconstruct3:display": true,
+      "tconstruct3:materials": [
+        "tconstruct3:ui_render#head",
+        "tconstruct3:ui_render#handle",
+        "tconstruct3:ui_render#extra",
+        "tconstruct3:ui_render#large",
+        "tconstruct3:ui_render#extra_large"
+      ]
+    }
+  },
+  "input_slots": [
+    {
+      "filter": {
+        "item": "tconstruct3:broad_blade"
+      },
+      "icon": "tconstruct3:broad_blade",
+      "translation_key": "item.tconstruct3.broad_blade",
+      "x": 45,
+      "y": 26
+    },
+    {
+      "filter": {
+        "item": "tconstruct3:tough_handle"
+      },
+      "icon": "tconstruct3:tough_handle",
+      "translation_key": "item.tconstruct3.tough_handle",
+      "x": 7,
+      "y": 62
+    },
+    {
+      "filter": {
+        "item": "tconstruct3:tough_handle"
+      },
+      "icon": "tconstruct3:tough_handle",
+      "translation_key": "item.tconstruct3.tough_handle",
+      "x": 25,
+      "y": 46
+    },
+    {
+      "filter": {
+        "item": "tconstruct3:large_plate"
+      },
+      "icon": "tconstruct3:large_plate",
+      "translation_key": "item.tconstruct3.large_plate",
+      "x": 45,
+      "y": 46
+    }
+  ],
+  "sortIndex": 9,
+  "translation_key": "item.tconstruct3.cleaver"
+}

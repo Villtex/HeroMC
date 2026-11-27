@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "byproducts": [
+    {
+      "amount": 3000,
+      "fluid": "tconstruct3:molten_glass"
+    }
+  ],
+  "ingredient": {
+    "neoforge:ingredient_type": "tconstruct3:no_container",
+    "item": "tconstruct3:seared_ingot_tank"
+  },
+  "result": {
+    "amount": 1500,
+    "fluid": "tconstruct3:seared_stone"
+  },
+  "temperature": 600,
+  "time": 134
+}

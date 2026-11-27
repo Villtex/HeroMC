@@ -1,0 +1,25 @@
+{
+  "values": [
+    "tconstruct3:pick_head",
+    "tconstruct3:hammer_head",
+    "tconstruct3:small_axe_head",
+    "tconstruct3:broad_axe_head",
+    "tconstruct3:small_blade",
+    "tconstruct3:broad_blade",
+    "tconstruct3:adze_head",
+    "tconstruct3:large_plate",
+    "tconstruct3:tool_binding",
+    "tconstruct3:tough_binding",
+    "tconstruct3:tool_handle",
+    "tconstruct3:tough_handle",
+    "tconstruct3:bow_limb",
+    "tconstruct3:bow_grip",
+    "tconstruct3:bowstring",
+    "tconstruct3:maille",
+    "tconstruct3:shield_core",
+    "tconstruct3:helmet_plating",
+    "tconstruct3:chestplate_plating",
+    "tconstruct3:leggings_plating",
+    "tconstruct3:boots_plating"
+  ]
+}

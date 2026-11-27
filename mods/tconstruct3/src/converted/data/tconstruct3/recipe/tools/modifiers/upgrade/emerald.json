@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:modifier",
+  "allow_crystal": true,
+  "inputs": "#c:gems/emerald",
+  "level": 1,
+  "result": "tconstruct3:emerald",
+  "slots": {
+    "upgrades": 1
+  },
+  "tools": "#tconstruct3:modifiable/durability"
+}

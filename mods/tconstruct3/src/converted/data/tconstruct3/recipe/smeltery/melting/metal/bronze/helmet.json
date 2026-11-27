@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:armors/helmets/bronze"
+    }
+  ],
+  "type": "tconstruct3:damagable_melting",
+  "ingredient": "#c:armors/helmets/bronze",
+  "result": {
+    "amount": 450,
+    "tag": "c:molten_bronze",
+    "unit_size": 10
+  },
+  "temperature": 700,
+  "time": 127
+}

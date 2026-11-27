@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:quiver_inventory",
+      "pattern": "tconstruct3:arrow",
+      "slots": {
+        "each_level": 2
+      }
+    },
+    {
+      "type": "tconstruct3:bulk_quiver",
+      "check_standard_arrows": true
+    },
+    {
+      "type": "tconstruct3:inventory_menu",
+      "on_key": "any"
+    }
+  ],
+  "priority": 60
+}

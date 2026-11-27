@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "stats": {
+    "tconstruct3:arrow_shaft": {},
+    "tconstruct3:grip": {
+      "accuracy": -0.05,
+      "durability": -0.1,
+      "melee_damage": 1.5
+    },
+    "tconstruct3:limb": {
+      "accuracy": -0.1,
+      "draw_speed": -0.05,
+      "durability": 110,
+      "velocity": 0.05
+    },
+    "tconstruct3:shield_core": {}
+  }
+}

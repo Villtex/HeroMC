@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:depth_strider",
+    "tconstruct3:feather_fall",
+    "tconstruct3:long_fall",
+    "tconstruct3:lightspeed",
+    "tconstruct3:soulspeed"
+  ]
+}

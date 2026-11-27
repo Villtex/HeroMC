@@ -1,0 +1,35 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:modifier",
+  "allow_crystal": true,
+  "inputs": [
+    {
+      "amount_needed": 4,
+      "item": "tconstruct3:obsidian_pane"
+    },
+    "minecraft:writable_book",
+    {
+      "amount_needed": 4,
+      "item": "tconstruct3:obsidian_pane"
+    },
+    {
+      "amount_needed": 2,
+      "item": "tconstruct3:ichor_slime_crystal"
+    },
+    {
+      "amount_needed": 2,
+      "item": "tconstruct3:ichor_slime_crystal"
+    }
+  ],
+  "level": 1,
+  "result": "tconstruct3:boundless",
+  "slots": {
+    "abilities": 1
+  },
+  "tools": "#tconstruct3:modifiable/shields"
+}

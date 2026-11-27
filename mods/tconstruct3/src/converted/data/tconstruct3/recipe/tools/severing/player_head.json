@@ -1,0 +1,11 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:player_beheading",
+  "looting_bonus": 0.02,
+  "per_level_chance": 0.1
+}

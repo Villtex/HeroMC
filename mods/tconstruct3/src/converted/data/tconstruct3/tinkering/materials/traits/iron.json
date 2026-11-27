@@ -1,0 +1,42 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "default": [
+    {
+      "level": 1,
+      "name": "tconstruct3:magnetic"
+    }
+  ],
+  "perStat": {
+    "tconstruct3:armor": [
+      {
+        "level": 1,
+        "name": "tconstruct3:projectile_protection"
+      },
+      {
+        "level": 1,
+        "name": "tconstruct3:iron_armor"
+      }
+    ],
+    "tconstruct3:maille": [
+      {
+        "level": 1,
+        "name": "tconstruct3:projectile_protection"
+      }
+    ],
+    "tconstruct3:skull": [
+      {
+        "level": 1,
+        "name": "tconstruct3:rebuff"
+      },
+      {
+        "level": 1,
+        "name": "tconstruct3:husk_disguise"
+      }
+    ]
+  }
+}

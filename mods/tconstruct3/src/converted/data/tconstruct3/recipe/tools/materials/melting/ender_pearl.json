@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material_melting",
+  "input": "tconstruct3:ender_pearl",
+  "result": {
+    "amount": 250,
+    "tag": "c:ender"
+  },
+  "temperature": 477
+}

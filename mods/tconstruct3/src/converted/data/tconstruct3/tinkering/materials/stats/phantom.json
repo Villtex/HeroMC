@@ -1,0 +1,14 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "stats": {
+    "tconstruct3:repair_kit": {},
+    "tconstruct3:shell": {
+      "repair_amount": 432
+    }
+  }
+}

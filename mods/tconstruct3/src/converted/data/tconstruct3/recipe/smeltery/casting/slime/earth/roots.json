@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_basin",
+  "cast": "tconstruct3:enderbark_roots",
+  "cast_consumed": true,
+  "cooling_time": 103,
+  "fluid": {
+    "amount": 1000,
+    "tag": "c:slime"
+  },
+  "result": "tconstruct3:earth_enderbark_roots"
+}

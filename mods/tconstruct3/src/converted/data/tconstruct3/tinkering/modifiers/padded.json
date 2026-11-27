@@ -1,0 +1,37 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:knockback",
+      "formula": [
+        "$knockback",
+        2.0,
+        "$level",
+        "^",
+        "/"
+      ]
+    },
+    {
+      "type": "tconstruct3:sling_force",
+      "formula": [
+        "$value",
+        2.0,
+        "$level",
+        "^",
+        "/"
+      ],
+      "percent": false,
+      "sling": {
+        "type": "tconstruct3:tag",
+        "tag": "tconstruct3:knockback_slings"
+      }
+    }
+  ],
+  "priority": 75
+}

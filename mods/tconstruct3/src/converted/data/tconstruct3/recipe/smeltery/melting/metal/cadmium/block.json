@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:storage_blocks/cadmium"
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": "#c:storage_blocks/cadmium",
+  "result": {
+    "amount": 810,
+    "tag": "c:molten_cadmium"
+  },
+  "temperature": 294,
+  "time": 126
+}

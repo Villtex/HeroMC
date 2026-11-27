@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_basin",
+  "cooling_time": 182,
+  "fluid": {
+    "amount": 810,
+    "tag": "c:molten_amethyst_bronze"
+  },
+  "result": {
+    "tag": "c:storage_blocks/amethyst_bronze"
+  }
+}

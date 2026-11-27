@@ -1,0 +1,13 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material",
+  "ingredient": "tconstruct3:earth_slime_crystal",
+  "material": "tconstruct3:earthslime",
+  "needed": 1,
+  "value": 1
+}

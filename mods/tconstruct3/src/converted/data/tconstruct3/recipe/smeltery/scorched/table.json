@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "tconstruct3:scorched_brick",
+    "G": "tconstruct3:gold_bars"
+  },
+  "pattern": [
+    "###",
+    "#G#",
+    "# #"
+  ],
+  "result": {
+    "id": "tconstruct3:scorched_table"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "byproducts": [
+    {
+      "amount": 1000,
+      "fluid": "tconstruct3:liquid_soul"
+    }
+  ],
+  "ingredient": "tconstruct3:scorched_soul_glass",
+  "result": {
+    "amount": 1000,
+    "fluid": "tconstruct3:scorched_stone"
+  },
+  "temperature": 500,
+  "time": 100
+}

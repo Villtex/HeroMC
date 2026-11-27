@@ -1,0 +1,36 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:ingots/enderium"
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:ingots/lead"
+    }
+  ],
+  "type": "tconstruct3:alloy",
+  "inputs": [
+    {
+      "amount": 270,
+      "tag": "c:molten_lead"
+    },
+    {
+      "amount": 100,
+      "tag": "tconstruct3:molten_diamond"
+    },
+    {
+      "amount": 500,
+      "tag": "c:ender"
+    }
+  ],
+  "result": {
+    "amount": 180,
+    "tag": "c:molten_enderium"
+  },
+  "temperature": 1350
+}

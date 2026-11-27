@@ -1,0 +1,18 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:table_duplication",
+  "cast": [
+    "minecraft:netherite_upgrade_smithing_template",
+    "#minecraft:trim_templates"
+  ],
+  "cooling_time": 186,
+  "fluid": {
+    "amount": 500,
+    "tag": "tconstruct3:molten_diamond"
+  }
+}

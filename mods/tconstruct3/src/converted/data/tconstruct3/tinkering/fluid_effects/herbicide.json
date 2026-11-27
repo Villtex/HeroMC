@@ -1,0 +1,89 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "registry": "minecraft:fluid",
+      "tag": "c:herbicide"
+    }
+  ],
+  "block_effects": [
+    {
+      "type": "tconstruct3:offset",
+      "block": {
+        "type": "mantle:or",
+        "predicates": [
+          {
+            "type": "mantle:tag",
+            "tag": "minecraft:replaceable_by_trees"
+          },
+          "tconstruct3:bush"
+        ]
+      },
+      "effect": {
+        "type": "tconstruct3:remove_block"
+      },
+      "offset_type": "tconstruct3:conditional"
+    },
+    {
+      "type": "tconstruct3:offset",
+      "block": {
+        "type": "mantle:or",
+        "predicates": [
+          {
+            "type": "mantle:tag",
+            "tag": "minecraft:replaceable_by_trees"
+          },
+          "tconstruct3:bush"
+        ]
+      },
+      "effect": {
+        "type": "tconstruct3:remove_block"
+      },
+      "offset_direction": "up",
+      "offset_type": "tconstruct3:conditional"
+    },
+    {
+      "type": "tconstruct3:conditional",
+      "block": {
+        "type": "mantle:or",
+        "predicates": [
+          {
+            "type": "mantle:set",
+            "blocks": [
+              "minecraft:grass_block",
+              "minecraft:mycelium",
+              "minecraft:podzol",
+              "minecraft:farmland"
+            ]
+          },
+          {
+            "type": "mantle:tag",
+            "tag": "tconstruct3:slimy_soil/vanilla"
+          }
+        ]
+      },
+      "effect": {
+        "type": "tconstruct3:set_block",
+        "block": "minecraft:dirt"
+      }
+    },
+    {
+      "type": "tconstruct3:conditional",
+      "block": {
+        "type": "mantle:tag",
+        "tag": "minecraft:leaves"
+      },
+      "effect": {
+        "type": "tconstruct3:remove_block"
+      }
+    }
+  ],
+  "fluid": {
+    "amount": 10,
+    "tag": "c:herbicide"
+  }
+}

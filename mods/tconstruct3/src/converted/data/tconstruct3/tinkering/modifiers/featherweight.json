@@ -1,0 +1,69 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:stat_boost",
+      "each_level": 0.05,
+      "operation": "add",
+      "stat": "tconstruct3:draw_speed"
+    },
+    {
+      "type": "tconstruct3:stat_boost",
+      "each_level": 0.05,
+      "operation": "add",
+      "stat": "tconstruct3:accuracy"
+    },
+    {
+      "type": "tconstruct3:protection",
+      "damage_source": "mantle:can_protect",
+      "each_level": -0.625,
+      "tool": {
+        "neoforge:ingredient_type": "mantle:tag",
+        "tag": "tconstruct3:modifiable/armor"
+      }
+    },
+    {
+      "type": "tconstruct3:attribute",
+      "attribute": "minecraft:generic.movement_speed",
+      "each_level": 0.05,
+      "operation": "multiply_base",
+      "slots": [
+        "mainhand",
+        "offhand",
+        "feet",
+        "legs",
+        "chest",
+        "head"
+      ],
+      "tool": {
+        "neoforge:ingredient_type": "mantle:tag",
+        "tag": "tconstruct3:modifiable/armor"
+      }
+    },
+    {
+      "type": "tconstruct3:attribute",
+      "attribute": "tconstruct3:player.use_item_speed",
+      "each_level": 0.05,
+      "operation": "addition",
+      "slots": [
+        "mainhand",
+        "offhand",
+        "feet",
+        "legs",
+        "chest",
+        "head"
+      ],
+      "tool": {
+        "neoforge:ingredient_type": "mantle:tag",
+        "tag": "tconstruct3:modifiable/armor"
+      },
+      "tooltip_style": "percent"
+    }
+  ]
+}

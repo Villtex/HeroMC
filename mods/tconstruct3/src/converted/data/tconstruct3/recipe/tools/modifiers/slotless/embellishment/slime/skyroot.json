@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "tconstruct3:modifiable/embellishment/slime"
+    }
+  ],
+  "type": "tconstruct3:swappable_modifier",
+  "allow_crystal": false,
+  "inputs": [
+    "tconstruct3:skyroot_planks",
+    "tconstruct3:sky_slime_sapling",
+    "tconstruct3:skyroot_planks"
+  ],
+  "result": {
+    "name": "tconstruct3:embellishment",
+    "value": "tconstruct3:skyslime"
+  },
+  "tools": "#tconstruct3:modifiable/embellishment/slime",
+  "variant_formatter": "tconstruct3:material"
+}

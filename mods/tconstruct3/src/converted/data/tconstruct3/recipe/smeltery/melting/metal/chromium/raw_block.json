@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:ingots/aluminum"
+    }
+  ],
+  "type": "tconstruct3:ore_melting",
+  "byproducts": [
+    {
+      "amount": 810,
+      "rate": "metal",
+      "tag": "c:molten_aluminum"
+    }
+  ],
+  "ingredient": "#c:storage_blocks/raw_chromium",
+  "rate": "metal",
+  "result": {
+    "amount": 810,
+    "tag": "c:molten_chromium"
+  },
+  "temperature": 900,
+  "time": 380
+}

@@ -1,0 +1,12 @@
+{
+  "values": [
+    "tconstruct3:melting_pan",
+    "tconstruct3:war_pick",
+    "tconstruct3:battlesign",
+    "tconstruct3:swasher",
+    {
+      "id": "tconstruct3:minotaur_axe",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:single_level",
+  "modules": [
+    {
+      "type": "tconstruct3:restore_lost_health",
+      "chance": {
+        "flat": 1.0
+      },
+      "durability_usage": {
+        "each_level": 1
+      },
+      "effect_level": {
+        "each_level": 1
+      },
+      "percentage": {
+        "flat": 0.5
+      },
+      "tool": {
+        "neoforge:ingredient_type": "mantle:tag",
+        "tag": "tconstruct3:modifiable/armor"
+      }
+    }
+  ],
+  "priority": 25
+}

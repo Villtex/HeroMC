@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:stat_boost",
+      "each_level": 0.5,
+      "operation": "add",
+      "stat": "tconstruct3:accuracy"
+    },
+    {
+      "type": "tconstruct3:stat_boost",
+      "each_level": 0.25,
+      "operation": "add",
+      "stat": "tconstruct3:velocity",
+      "tool": {
+        "neoforge:ingredient_type": "mantle:tag",
+        "tag": "tconstruct3:modifiable/ammo/thrown"
+      }
+    }
+  ]
+}

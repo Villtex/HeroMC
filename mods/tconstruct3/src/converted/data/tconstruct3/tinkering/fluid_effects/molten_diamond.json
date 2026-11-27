@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "block_effects": [
+    {
+      "type": "tconstruct3:conditional",
+      "block": {
+        "type": "tconstruct3:harvest_tier",
+        "tier": "minecraft:diamond"
+      },
+      "effect": {
+        "type": "tconstruct3:break_block",
+        "enchantments": {
+          "minecraft:fortune": 3
+        },
+        "hardness": 10.0
+      }
+    }
+  ],
+  "fluid": {
+    "amount": 25,
+    "tag": "tconstruct3:molten_diamond"
+  }
+}

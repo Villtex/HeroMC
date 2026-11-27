@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:plates/copper"
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": "#c:plates/copper",
+  "result": {
+    "amount": 90,
+    "tag": "c:molten_copper"
+  },
+  "temperature": 500,
+  "time": 50
+}

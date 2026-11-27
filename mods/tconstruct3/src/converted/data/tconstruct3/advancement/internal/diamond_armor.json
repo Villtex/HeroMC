@@ -1,0 +1,43 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "criteria": {
+    "has_armor": {
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "tconstruct3:tool_stack": {
+                "type": "mantle:and",
+                "predicates": [
+                  {
+                    "type": "mantle:tag",
+                    "tag": "tconstruct3:modifiable/armor/worn"
+                  },
+                  {
+                    "type": "tconstruct3:has_volatile_key",
+                    "key": "tconstruct3:diamond_armor"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_armor"
+    ]
+  ],
+  "rewards": {
+    "function": "tconstruct3:grant_advancement/story_shiny_gear"
+  },
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,52 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "icon": {
+    "id": "tconstruct3:arrow",
+    "components": {
+      "tconstruct3:display": true,
+      "tconstruct3:materials": [
+        "tconstruct3:ui_render#head",
+        "tconstruct3:ui_render#handle",
+        "tconstruct3:ui_render#extra",
+        "tconstruct3:ui_render#large",
+        "tconstruct3:ui_render#extra_large"
+      ]
+    }
+  },
+  "input_slots": [
+    {
+      "filter": {
+        "item": "tconstruct3:arrow_head"
+      },
+      "icon": "tconstruct3:arrow_head",
+      "translation_key": "item.tconstruct3.arrow_head",
+      "x": 53,
+      "y": 22
+    },
+    {
+      "filter": {
+        "item": "tconstruct3:arrow_shaft"
+      },
+      "icon": "tconstruct3:arrow_shaft",
+      "translation_key": "item.tconstruct3.arrow_shaft",
+      "x": 33,
+      "y": 42
+    },
+    {
+      "filter": {
+        "item": "tconstruct3:fletching"
+      },
+      "icon": "tconstruct3:fletching",
+      "translation_key": "item.tconstruct3.fletching",
+      "x": 15,
+      "y": 60
+    }
+  ],
+  "sortIndex": 7,
+  "translation_key": "item.tconstruct3.arrow"
+}

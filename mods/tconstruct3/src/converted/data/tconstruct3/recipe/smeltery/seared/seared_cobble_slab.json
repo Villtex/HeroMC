@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "tconstruct3:seared_cobble_slab",
+  "key": {
+    "B": "tconstruct3:seared_cobble"
+  },
+  "pattern": [
+    "BBB"
+  ],
+  "result": {
+    "id": "tconstruct3:seared_cobble_slab",
+    "count": 6
+  },
+  "show_notification": true
+}

@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "stats": {
+    "tconstruct3:arrow_head": {},
+    "tconstruct3:repair_kit": {},
+    "tconstruct3:shield_core": {},
+    "tconstruct3:skull": {
+      "durability": 75
+    }
+  }
+}

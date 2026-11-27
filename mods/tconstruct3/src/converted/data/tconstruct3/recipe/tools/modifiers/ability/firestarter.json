@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:modifier",
+  "allow_crystal": true,
+  "check_trait_level": true,
+  "inputs": [
+    "#c:ingots/steel",
+    "minecraft:flint"
+  ],
+  "level": 1,
+  "result": "tconstruct3:firestarter",
+  "slots": {
+    "abilities": 1
+  },
+  "tools": {
+    "neoforge:ingredient_type": "neoforge:intersection",
+    "children": [
+      "#tconstruct3:modifiable/durability",
+      "#tconstruct3:modifiable/interactable"
+    ]
+  }
+}

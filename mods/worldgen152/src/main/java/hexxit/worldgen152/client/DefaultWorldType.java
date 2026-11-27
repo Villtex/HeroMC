@@ -26,6 +26,9 @@ public final class DefaultWorldType {
     }
 
     public static void register() {
+        // leaving a world: back to the default until the next server says its world type (HexxitWorldType)
+        NeoForge.EVENT_BUS.addListener(net.neoforged.neoforge.client.event.ClientPlayerNetworkEvent.LoggingOut.class,
+                event -> hexxit.worldgen152.HexxitWorldType.setClient(true));
         NeoForge.EVENT_BUS.addListener(ScreenEvent.Init.Post.class, event -> {
             if (!(event.getScreen() instanceof CreateWorldScreen screen) || !SEEN.add(screen)) {
                 return;

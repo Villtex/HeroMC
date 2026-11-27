@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_basin",
+  "cast": "minecraft:glowstone",
+  "cast_consumed": true,
+  "cooling_time": 166,
+  "fluid": {
+    "amount": 1000,
+    "tag": "tconstruct3:scorched_stone"
+  },
+  "result": "tconstruct3:scorched_lamp"
+}

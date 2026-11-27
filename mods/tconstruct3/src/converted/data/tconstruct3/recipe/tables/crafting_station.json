@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "p": "tconstruct3:pattern",
+    "w": {
+      "neoforge:ingredient_type": "neoforge:difference",
+      "base": "#c:player_workstations/crafting_tables",
+      "subtracted": "tconstruct3:crafting_station"
+    }
+  },
+  "pattern": [
+    "p",
+    "w"
+  ],
+  "result": {
+    "id": "tconstruct3:crafting_station"
+  },
+  "show_notification": true
+}

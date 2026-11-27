@@ -1,0 +1,11 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:tinker_station_damaging",
+  "damage_amount": 500,
+  "ingredient": "minecraft:lava_bucket"
+}

@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "neoforge:registered",
+      "value": "oreberriesreplanted:silver_oreberry"
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": "oreberriesreplanted:silver_oreberry",
+  "result": {
+    "amount": 10,
+    "tag": "c:molten_silver"
+  },
+  "temperature": 790,
+  "time": 20
+}

@@ -1,0 +1,43 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "block_effects": [
+    {
+      "type": "tconstruct3:scaling",
+      "effects": [
+        {
+          "effect": {
+            "type": "tconstruct3:place_block",
+            "block": "tconstruct3:obsidian_pane"
+          },
+          "level": 1.0
+        },
+        {
+          "effect": {
+            "type": "tconstruct3:place_block",
+            "block": "minecraft:obsidian"
+          },
+          "level": 4.0
+        }
+      ]
+    }
+  ],
+  "entity_effects": [
+    {
+      "type": "tconstruct3:damage",
+      "damage": 2.0,
+      "damage_type": {
+        "melee": "tconstruct3:fluid_spike_melee",
+        "ranged": "tconstruct3:fluid_spike_ranged"
+      }
+    }
+  ],
+  "fluid": {
+    "amount": 250,
+    "tag": "tconstruct3:molten_obsidian"
+  }
+}

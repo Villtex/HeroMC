@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "neoforge:registered",
+      "value": "mekanism:refined_glowstone_shield"
+    }
+  ],
+  "type": "tconstruct3:damagable_melting",
+  "ingredient": "mekanism:refined_glowstone_shield",
+  "result": {
+    "amount": 540,
+    "tag": "c:molten_refined_glowstone",
+    "unit_size": 10
+  },
+  "temperature": 825,
+  "time": 149
+}

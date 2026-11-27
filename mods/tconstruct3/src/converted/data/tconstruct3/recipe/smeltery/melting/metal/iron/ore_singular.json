@@ -1,0 +1,33 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_combination_filled",
+      "ignore": "tconstruct3:non_singular_ore_rates",
+      "match": "c:ores/iron"
+    }
+  ],
+  "type": "tconstruct3:ore_melting",
+  "byproducts": [
+    {
+      "amount": 180,
+      "rate": "metal",
+      "tag": "c:molten_steel"
+    }
+  ],
+  "ingredient": {
+    "neoforge:ingredient_type": "neoforge:difference",
+    "base": "#c:ores/iron",
+    "subtracted": "#tconstruct3:non_singular_ore_rates"
+  },
+  "rate": "metal",
+  "result": {
+    "amount": 180,
+    "tag": "c:molten_iron"
+  },
+  "temperature": 800,
+  "time": 150
+}

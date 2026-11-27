@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:protection",
+      "attacker": "mantle:on_fire",
+      "damage_source": "mantle:can_protect",
+      "each_level": 1.25
+    }
+  ]
+}

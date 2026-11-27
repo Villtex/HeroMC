@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": "minecraft:flower_pot",
+  "result": {
+    "amount": 750,
+    "fluid": "tconstruct3:molten_clay"
+  },
+  "temperature": 450,
+  "time": 96
+}

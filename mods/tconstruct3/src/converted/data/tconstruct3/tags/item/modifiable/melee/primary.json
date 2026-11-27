@@ -1,0 +1,18 @@
+{
+  "values": [
+    "tconstruct3:sledge_hammer",
+    "tconstruct3:hand_axe",
+    "tconstruct3:broad_axe",
+    "tconstruct3:scythe",
+    "tconstruct3:dagger",
+    "tconstruct3:sword",
+    "tconstruct3:cleaver",
+    "tconstruct3:javelin",
+    "tconstruct3:battlesign",
+    "tconstruct3:swasher",
+    {
+      "id": "tconstruct3:minotaur_axe",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "headlight"
+    }
+  ],
+  "type": "tconstruct3:swappable_modifier",
+  "allow_crystal": false,
+  "inputs": [
+    "minecraft:leather",
+    "minecraft:lantern",
+    "minecraft:leather"
+  ],
+  "result": {
+    "name": "tconstruct3:headlight",
+    "value": "15"
+  },
+  "slots": {
+    "upgrades": 1
+  },
+  "tools": "#tconstruct3:modifiable/armor/helmets",
+  "variant_formatter": "tconstruct3:parameter"
+}

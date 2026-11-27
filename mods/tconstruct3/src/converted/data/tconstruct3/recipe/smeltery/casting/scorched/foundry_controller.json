@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:retextured_casting_basin",
+  "cast": "#tconstruct3:foundry_bricks",
+  "cast_consumed": true,
+  "cooling_time": 221,
+  "fluid": {
+    "amount": 1000,
+    "tag": "tconstruct3:molten_obsidian"
+  },
+  "result": "tconstruct3:foundry_controller"
+}

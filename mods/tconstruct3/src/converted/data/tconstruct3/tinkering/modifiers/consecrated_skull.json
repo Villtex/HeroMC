@@ -1,0 +1,31 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": {
+    "type": "tconstruct3:map_level",
+    "level": {
+      "each_level": 1,
+      "flat": 1
+    }
+  },
+  "modules": [
+    {
+      "type": "tconstruct3:trait",
+      "fixed_level": false,
+      "level": 1,
+      "name": "tconstruct3:consecrated"
+    },
+    {
+      "type": "tconstruct3:trait",
+      "fixed_level": true,
+      "level": 1,
+      "name": "tconstruct3:consecrated"
+    }
+  ],
+  "show_in_tooltips": "parts_only",
+  "translation_key": "modifier.tconstruct3.consecrated"
+}

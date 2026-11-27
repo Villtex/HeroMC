@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "perStat": {
+    "tconstruct3:armor": [
+      {
+        "level": 1,
+        "name": "tconstruct3:consecrated"
+      }
+    ],
+    "tconstruct3:melee_harvest": [
+      {
+        "level": 1,
+        "name": "tconstruct3:smite"
+      }
+    ],
+    "tconstruct3:ranged": [
+      {
+        "level": 1,
+        "name": "tconstruct3:holy"
+      }
+    ]
+  }
+}

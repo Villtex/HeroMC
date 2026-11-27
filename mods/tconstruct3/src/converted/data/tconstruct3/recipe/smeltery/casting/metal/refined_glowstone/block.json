@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:storage_blocks/refined_glowstone"
+    }
+  ],
+  "type": "tconstruct3:casting_basin",
+  "cooling_time": 183,
+  "fluid": {
+    "amount": 810,
+    "tag": "c:molten_refined_glowstone"
+  },
+  "result": {
+    "tag": "c:storage_blocks/refined_glowstone"
+  }
+}

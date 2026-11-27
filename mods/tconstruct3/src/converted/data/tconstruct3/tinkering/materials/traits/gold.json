@@ -1,0 +1,36 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "perStat": {
+    "tconstruct3:armor": [
+      {
+        "level": 1,
+        "name": "tconstruct3:golden"
+      },
+      {
+        "level": 1,
+        "name": "tconstruct3:magic_protection"
+      }
+    ],
+    "tconstruct3:plating_shield": [
+      {
+        "level": 1,
+        "name": "tconstruct3:magic_protection"
+      }
+    ],
+    "tconstruct3:skull": [
+      {
+        "level": 1,
+        "name": "tconstruct3:chrysophilite"
+      },
+      {
+        "level": 1,
+        "name": "tconstruct3:piglin_disguise"
+      }
+    ]
+  }
+}

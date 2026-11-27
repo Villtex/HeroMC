@@ -1,0 +1,18 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:conditional_mining_speed",
+      "blocks": "tconstruct3:can_melt",
+      "each_level": 6.0,
+      "percent": false,
+      "require_effective": true
+    }
+  ]
+}

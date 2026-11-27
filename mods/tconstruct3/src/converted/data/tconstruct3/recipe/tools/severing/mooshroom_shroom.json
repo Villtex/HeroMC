@@ -1,0 +1,11 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:mooshroom_demushrooming",
+  "looting_bonus": 0.01,
+  "per_level_chance": 0.05
+}

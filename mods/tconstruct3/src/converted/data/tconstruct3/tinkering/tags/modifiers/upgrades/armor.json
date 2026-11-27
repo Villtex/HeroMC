@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "#tconstruct3:upgrades/armor/general",
+    "#tconstruct3:upgrades/armor/helmet",
+    "#tconstruct3:upgrades/armor/chestplate",
+    "#tconstruct3:upgrades/armor/leggings",
+    "#tconstruct3:upgrades/armor/boots"
+  ]
+}

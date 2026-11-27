@@ -1,0 +1,31 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:modifier",
+  "allow_crystal": true,
+  "inputs": [
+    "#c:bottles/splash",
+    {
+      "neoforge:ingredient_type": "tconstruct3:no_container",
+      "tag": "tconstruct3:tanks"
+    },
+    "#c:bottles/splash",
+    "#c:ingots/copper",
+    "#c:ingots/copper"
+  ],
+  "result": "tconstruct3:splashing",
+  "slots": {
+    "abilities": 1
+  },
+  "tools": {
+    "neoforge:ingredient_type": "neoforge:intersection",
+    "children": [
+      "#tconstruct3:modifiable/durability",
+      "#tconstruct3:modifiable/interactable"
+    ]
+  }
+}

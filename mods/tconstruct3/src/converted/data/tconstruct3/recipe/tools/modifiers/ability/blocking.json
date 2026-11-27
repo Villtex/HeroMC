@@ -1,0 +1,37 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:modifier",
+  "allow_crystal": true,
+  "check_trait_level": true,
+  "inputs": [
+    "#minecraft:planks",
+    "#c:ingots/steel",
+    "#minecraft:planks",
+    "#minecraft:planks",
+    "#minecraft:planks"
+  ],
+  "level": 1,
+  "result": "tconstruct3:blocking",
+  "slots": {
+    "abilities": 1
+  },
+  "tools": {
+    "neoforge:ingredient_type": "neoforge:difference",
+    "base": {
+      "neoforge:ingredient_type": "neoforge:intersection",
+      "children": [
+        "#tconstruct3:modifiable/interactable/charge",
+        "#tconstruct3:modifiable/durability"
+      ]
+    },
+    "subtracted": [
+      "#tconstruct3:modifiable/melee/parry",
+      "#tconstruct3:modifiable/shields"
+    ]
+  }
+}

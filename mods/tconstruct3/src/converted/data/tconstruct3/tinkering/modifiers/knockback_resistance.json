@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:single_level",
+  "modules": [
+    {
+      "type": "tconstruct3:stat_boost",
+      "each_level": 0.1,
+      "operation": "add",
+      "stat": "tconstruct3:knockback_resistance"
+    },
+    {
+      "type": "tconstruct3:material_variant_color",
+      "material": "tconstruct3:wool"
+    }
+  ]
+}

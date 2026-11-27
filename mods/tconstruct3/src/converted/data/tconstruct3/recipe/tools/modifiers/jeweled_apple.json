@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_table",
+  "cast": "minecraft:apple",
+  "cast_consumed": true,
+  "cooling_time": 118,
+  "fluid": {
+    "amount": 200,
+    "tag": "tconstruct3:molten_diamond"
+  },
+  "result": "tconstruct3:jeweled_apple"
+}

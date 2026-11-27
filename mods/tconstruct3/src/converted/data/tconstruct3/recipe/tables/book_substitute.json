@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:paper",
+    "minecraft:paper",
+    "minecraft:paper",
+    "#c:slime_balls",
+    "tconstruct3:pattern",
+    "tconstruct3:pattern"
+  ],
+  "result": {
+    "id": "minecraft:book"
+  }
+}

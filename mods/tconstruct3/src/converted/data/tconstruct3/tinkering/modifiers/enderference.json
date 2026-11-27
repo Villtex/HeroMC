@@ -1,0 +1,48 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:volatile_flag",
+      "flag": "tconstruct3:enderference",
+      "hooks": [
+        "tconstruct3:projectile_launch",
+        "tconstruct3:projectile_shot",
+        "tconstruct3:projectile_thrown"
+      ]
+    },
+    {
+      "type": "tconstruct3:weapon_mob_effect",
+      "apply_before_melee": true,
+      "effect": "tconstruct3:enderference",
+      "level": {
+        "flat": 1.0
+      },
+      "time": {
+        "flat": 100.0
+      }
+    },
+    {
+      "type": "tconstruct3:counter_mob_effect",
+      "chance": {
+        "each_level": 0.25
+      },
+      "effect": "tconstruct3:enderference",
+      "level": {
+        "flat": 1.0
+      },
+      "time": {
+        "flat": 100.0
+      },
+      "tool": {
+        "neoforge:ingredient_type": "mantle:tag",
+        "tag": "tconstruct3:modifiable/armor"
+      }
+    }
+  ]
+}

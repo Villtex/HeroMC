@@ -1,0 +1,59 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "parent": "tconstruct3:tools/tinker_tool",
+  "criteria": {
+    "harvest_level": {
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "tconstruct3:tool_stack": {
+                "type": "mantle:and",
+                "predicates": [
+                  {
+                    "type": "mantle:tag",
+                    "tag": "tconstruct3:modifiable/harvest"
+                  },
+                  {
+                    "type": "tconstruct3:stat_in_set",
+                    "stat": "tconstruct3:harvest_tier",
+                    "values": [
+                      "minecraft:netherite"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.tconstruct3.tools.netherite_tier.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "minecraft:netherite_ingot"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tconstruct3.tools.netherite_tier.title"
+    }
+  },
+  "requirements": [
+    [
+      "harvest_level"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

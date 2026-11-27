@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:entity_melting",
+  "damage": 2,
+  "entity": {
+    "type": "tconstruct3:ender_slime"
+  },
+  "result": {
+    "amount": 25,
+    "fluid": "tconstruct3:ender_slime"
+  }
+}

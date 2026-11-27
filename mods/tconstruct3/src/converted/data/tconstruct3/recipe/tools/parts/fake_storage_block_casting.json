@@ -1,0 +1,11 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:basin_casting_material",
+  "item_cost": 9,
+  "result": "tconstruct3:fake_storage_block"
+}

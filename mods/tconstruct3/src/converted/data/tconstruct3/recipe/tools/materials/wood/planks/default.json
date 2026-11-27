@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_combination_filled",
+      "ignore": "tconstruct3:wood_variants/planks",
+      "match": "minecraft:planks"
+    }
+  ],
+  "type": "tconstruct3:material",
+  "ingredient": {
+    "neoforge:ingredient_type": "neoforge:difference",
+    "base": "#minecraft:planks",
+    "subtracted": "#tconstruct3:wood_variants/planks"
+  },
+  "material": "tconstruct3:wood",
+  "needed": 1,
+  "value": 1
+}

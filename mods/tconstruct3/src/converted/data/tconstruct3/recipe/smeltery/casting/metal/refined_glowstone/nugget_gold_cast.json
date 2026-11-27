@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:nuggets/refined_glowstone"
+    }
+  ],
+  "type": "tconstruct3:casting_table",
+  "cast": "#tconstruct3:casts/multi_use/nugget",
+  "cooling_time": 20,
+  "fluid": {
+    "amount": 10,
+    "tag": "c:molten_refined_glowstone"
+  },
+  "result": {
+    "tag": "c:nuggets/refined_glowstone"
+  }
+}

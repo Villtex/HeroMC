@@ -1,0 +1,130 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "parent": "tconstruct3:tools/tinker_tool",
+  "criteria": {
+    "dagger": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:dagger"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "hand_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:hand_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "kama": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:kama"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "mattock": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:mattock"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "pickadze": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:pickadze"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.tconstruct3.tools.tool_smith.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "id": "tconstruct3:pickaxe",
+      "components": {
+        "tconstruct3:display": true,
+        "tconstruct3:materials": [
+          "tconstruct3:ui_render#head",
+          "tconstruct3:ui_render#handle",
+          "tconstruct3:ui_render#extra",
+          "tconstruct3:ui_render#large",
+          "tconstruct3:ui_render#extra_large"
+        ]
+      }
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tconstruct3.tools.tool_smith.title"
+    }
+  },
+  "requirements": [
+    [
+      "pickaxe"
+    ],
+    [
+      "mattock"
+    ],
+    [
+      "pickadze"
+    ],
+    [
+      "hand_axe"
+    ],
+    [
+      "kama"
+    ],
+    [
+      "dagger"
+    ],
+    [
+      "sword"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

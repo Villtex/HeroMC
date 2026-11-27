@@ -1,0 +1,14 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:blocking",
+    "tconstruct3:parrying",
+    "tconstruct3:dual_wielding",
+    "tconstruct3:spilling"
+  ]
+}

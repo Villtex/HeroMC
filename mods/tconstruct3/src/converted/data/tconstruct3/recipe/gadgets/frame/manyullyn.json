@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tconstruct3:fancy_item_frame",
+  "key": {
+    "M": "tconstruct3:obsidian_pane",
+    "e": "#c:nuggets/manyullyn"
+  },
+  "pattern": [
+    " e ",
+    "eMe",
+    " e "
+  ],
+  "result": {
+    "id": "tconstruct3:manyullyn_item_frame"
+  },
+  "show_notification": true
+}

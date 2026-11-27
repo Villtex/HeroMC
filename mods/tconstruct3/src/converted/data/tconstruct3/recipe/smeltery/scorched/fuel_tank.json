@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "tconstruct3:scorched_brick",
+    "B": "#c:gems/quartz"
+  },
+  "pattern": [
+    "###",
+    "#B#",
+    "###"
+  ],
+  "result": {
+    "id": "tconstruct3:scorched_fuel_tank"
+  },
+  "show_notification": true
+}

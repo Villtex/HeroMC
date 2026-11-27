@@ -1,0 +1,12 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "craftable": true,
+  "hidden": false,
+  "sortOrder": 20,
+  "tier": 3
+}

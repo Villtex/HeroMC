@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "stats": {
+    "tconstruct3:arrow_shaft": {},
+    "tconstruct3:ribcage": {
+      "repair_amount": 150
+    },
+    "tconstruct3:skull": {
+      "durability": 150
+    }
+  }
+}

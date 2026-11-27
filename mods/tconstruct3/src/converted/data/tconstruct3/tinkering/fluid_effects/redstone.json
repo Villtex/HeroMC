@@ -1,0 +1,47 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "registry": "minecraft:fluid",
+      "tag": "c:redstone"
+    }
+  ],
+  "block_effects": [
+    {
+      "type": "tconstruct3:explosion",
+      "block_interaction": "keep",
+      "damage": {},
+      "knockback": {
+        "each_level": -2.0
+      },
+      "place_fire": false,
+      "radius": {
+        "each_level": 0.5,
+        "flat": 1.0
+      }
+    }
+  ],
+  "entity_effects": [
+    {
+      "type": "tconstruct3:explosion",
+      "block_interaction": "keep",
+      "damage": {},
+      "knockback": {
+        "each_level": -2.0
+      },
+      "place_fire": false,
+      "radius": {
+        "each_level": 0.5,
+        "flat": 1.0
+      }
+    }
+  ],
+  "fluid": {
+    "amount": 100,
+    "tag": "c:redstone"
+  }
+}

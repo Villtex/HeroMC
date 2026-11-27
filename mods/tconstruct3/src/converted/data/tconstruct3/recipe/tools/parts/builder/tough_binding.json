@@ -1,0 +1,18 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:part_builder",
+  "cost": 3,
+  "pattern": "tconstruct3:tough_binding",
+  "pattern_item": [
+    "#tconstruct3:patterns/default",
+    "tconstruct3:tough_binding_cast"
+  ],
+  "result": {
+    "id": "tconstruct3:tough_binding"
+  }
+}

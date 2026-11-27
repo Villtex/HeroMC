@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:pierce",
+    "tconstruct3:power",
+    "tconstruct3:punch",
+    "tconstruct3:quick_charge",
+    "tconstruct3:sinistral",
+    "tconstruct3:trueshot",
+    "tconstruct3:fiery",
+    "tconstruct3:freezing",
+    "tconstruct3:impaling",
+    "tconstruct3:bounce",
+    "tconstruct3:necrotic",
+    "tconstruct3:lure",
+    "tconstruct3:collecting",
+    "tconstruct3:fins"
+  ]
+}

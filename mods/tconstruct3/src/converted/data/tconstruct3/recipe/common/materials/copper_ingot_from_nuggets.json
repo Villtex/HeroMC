@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tconstruct3:copper_ingot",
+  "key": {
+    "#": "#c:nuggets/copper",
+    "*": "tconstruct3:copper_nugget"
+  },
+  "pattern": [
+    "###",
+    "#*#",
+    "###"
+  ],
+  "result": {
+    "id": "minecraft:copper_ingot"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "parent": "tconstruct3:foundry/alloyer",
+  "criteria": {
+    "open_foundry": {
+      "conditions": {
+        "type": "tconstruct3:foundry"
+      },
+      "trigger": "tconstruct3:block_container_opened"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.tconstruct3.foundry.structure.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "tconstruct3:foundry_controller"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tconstruct3.foundry.structure.title"
+    }
+  },
+  "requirements": [
+    [
+      "open_foundry"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

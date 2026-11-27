@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_table",
+  "cooling_time": 98,
+  "fluid": {
+    "amount": 250,
+    "tag": "tconstruct3:molten_glass"
+  },
+  "result": "tconstruct3:clear_glass_pane"
+}

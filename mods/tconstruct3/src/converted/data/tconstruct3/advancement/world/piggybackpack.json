@@ -1,0 +1,47 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "parent": "tconstruct3:world/tinkers_gadgetry",
+  "criteria": {
+    "used_pack": {
+      "conditions": {
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "minecraft:pig"
+          }
+        },
+        "item": {
+          "items": "tconstruct3:piggy_backpack"
+        }
+      },
+      "trigger": "minecraft:player_interacted_with_entity"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.tconstruct3.world.piggybackpack.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "tconstruct3:piggy_backpack"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tconstruct3.world.piggybackpack.title"
+    }
+  },
+  "requirements": [
+    [
+      "used_pack"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

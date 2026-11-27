@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material",
+  "ingredient": {
+    "neoforge:ingredient_type": "tconstruct3:instrument",
+    "instrument": "minecraft:dream_goat_horn",
+    "item": "minecraft:goat_horn"
+  },
+  "material": "tconstruct3:horn#minecraft.dream_goat_horn",
+  "needed": 1,
+  "value": 4
+}

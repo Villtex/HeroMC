@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": "minecraft:honey_block",
+  "result": {
+    "amount": 1000,
+    "tag": "c:honey"
+  },
+  "temperature": 1,
+  "time": 94
+}

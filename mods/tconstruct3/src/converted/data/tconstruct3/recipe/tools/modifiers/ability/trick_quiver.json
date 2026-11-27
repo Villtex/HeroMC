@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:modifier",
+  "allow_crystal": true,
+  "inputs": [
+    "tconstruct3:silky_cloth",
+    "tconstruct3:sky_slime_vine",
+    "tconstruct3:silky_cloth",
+    "tconstruct3:sky_slime_vine",
+    "tconstruct3:sky_slime_vine"
+  ],
+  "result": "tconstruct3:trick_quiver",
+  "slots": {
+    "abilities": 1
+  },
+  "tools": {
+    "neoforge:ingredient_type": "neoforge:intersection",
+    "children": [
+      "#tconstruct3:modifiable/ranged/bows",
+      "#tconstruct3:modifiable/interactable"
+    ]
+  }
+}

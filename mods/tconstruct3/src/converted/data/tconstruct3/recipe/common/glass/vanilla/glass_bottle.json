@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "tconstruct3:config",
+      "prop": "glass_recipe_fix"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "#c:glass_blocks/colorless"
+  },
+  "pattern": [
+    "# #",
+    " # "
+  ],
+  "result": {
+    "id": "minecraft:glass_bottle",
+    "count": 3
+  },
+  "show_notification": true
+}

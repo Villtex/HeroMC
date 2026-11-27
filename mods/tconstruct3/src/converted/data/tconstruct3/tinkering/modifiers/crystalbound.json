@@ -1,0 +1,34 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:restrict_projectile_angle"
+    },
+    {
+      "type": "tconstruct3:stat_boost",
+      "each_level": 0.1,
+      "operation": "add",
+      "stat": "tconstruct3:velocity",
+      "tool": {
+        "neoforge:ingredient_type": "mantle:tag",
+        "tag": "tconstruct3:modifiable/ranged"
+      }
+    },
+    {
+      "type": "tconstruct3:stat_boost",
+      "each_level": 0.75,
+      "operation": "add",
+      "stat": "tconstruct3:projectile_damage",
+      "tool": {
+        "neoforge:ingredient_type": "mantle:tag",
+        "tag": "tconstruct3:modifiable/ammo"
+      }
+    }
+  ]
+}

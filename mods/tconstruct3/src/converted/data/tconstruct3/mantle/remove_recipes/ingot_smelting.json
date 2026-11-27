@@ -1,0 +1,32 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "input": "mantle:any",
+  "recipe_type": [
+    "minecraft:smelting",
+    "minecraft:blasting"
+  ],
+  "result": {
+    "type": "mantle:and",
+    "predicates": [
+      {
+        "type": "mantle:tag",
+        "tag": "c:ingots"
+      },
+      {
+        "type": "mantle:inverted",
+        "inverted_type": "mantle:set",
+        "items": [
+          "minecraft:brick",
+          "tconstruct3:seared_brick",
+          "tconstruct3:scorched_brick"
+        ]
+      },
+      "tconstruct3:castable"
+    ]
+  }
+}

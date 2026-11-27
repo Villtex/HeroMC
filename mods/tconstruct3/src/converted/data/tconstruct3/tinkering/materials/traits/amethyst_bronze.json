@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "perStat": {
+    "tconstruct3:armor": [
+      {
+        "level": 1,
+        "name": "tconstruct3:crystalstrike"
+      }
+    ],
+    "tconstruct3:melee_harvest": [
+      {
+        "level": 1,
+        "name": "tconstruct3:crumbling"
+      }
+    ],
+    "tconstruct3:ranged": [
+      {
+        "level": 1,
+        "name": "tconstruct3:crystalbound"
+      }
+    ]
+  }
+}

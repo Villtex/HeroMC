@@ -1,0 +1,18 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "stats": {
+    "tconstruct3:binding": {},
+    "tconstruct3:bowstring": {},
+    "tconstruct3:laces": {
+      "repair_amount": 200
+    },
+    "tconstruct3:skull": {
+      "durability": 200
+    }
+  }
+}

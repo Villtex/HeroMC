@@ -1,0 +1,50 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "criteria": {
+    "iron_pick": {
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "tconstruct3:tool_stack": {
+                "type": "mantle:and",
+                "predicates": [
+                  {
+                    "type": "mantle:tag",
+                    "tag": "tconstruct3:modifiable/harvest"
+                  },
+                  {
+                    "type": "tconstruct3:tool_action",
+                    "action": "pickaxe_dig"
+                  },
+                  {
+                    "type": "tconstruct3:stat_in_set",
+                    "stat": "tconstruct3:harvest_tier",
+                    "values": [
+                      "minecraft:iron"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "iron_pick"
+    ]
+  ],
+  "rewards": {
+    "function": "tconstruct3:grant_advancement/story_iron_tools"
+  },
+  "sends_telemetry_event": false
+}

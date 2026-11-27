@@ -1,0 +1,12 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:overslime_modifier",
+  "ingredient": "tconstruct3:ender_slime_bottle",
+  "restore_amount": 80,
+  "tools": "#tconstruct3:modifiable/durability"
+}

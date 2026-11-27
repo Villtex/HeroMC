@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_basin",
+  "cast": "minecraft:dirt",
+  "cast_consumed": true,
+  "cooling_time": 134,
+  "fluid": {
+    "amount": 500,
+    "tag": "tconstruct3:ichor"
+  },
+  "result": "tconstruct3:ichor_slime_dirt"
+}

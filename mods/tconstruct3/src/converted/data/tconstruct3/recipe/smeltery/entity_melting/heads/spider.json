@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": [
+    "tconstruct3:spider_head",
+    "tconstruct3:cave_spider_head"
+  ],
+  "result": {
+    "amount": 500,
+    "fluid": "tconstruct3:venom"
+  },
+  "temperature": 10,
+  "time": 68
+}

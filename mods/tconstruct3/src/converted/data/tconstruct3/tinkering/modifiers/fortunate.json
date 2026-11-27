@@ -1,0 +1,59 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": {
+    "type": "tconstruct3:unique",
+    "first_unique": false,
+    "unique_until": 2
+  },
+  "modules": [
+    {
+      "type": "tconstruct3:constant_enchantment",
+      "level": {
+        "flat": 1
+      },
+      "name": "minecraft:fortune",
+      "tool": {
+        "neoforge:ingredient_type": "mantle:tag",
+        "tag": "tconstruct3:modifiable/harvest"
+      }
+    },
+    {
+      "type": "tconstruct3:attribute",
+      "attribute": "minecraft:generic.luck",
+      "flat": 1.0,
+      "operation": "addition",
+      "slots": [
+        "mainhand",
+        "offhand",
+        "feet",
+        "legs",
+        "chest",
+        "head"
+      ],
+      "tool": {
+        "neoforge:ingredient_type": "mantle:tag",
+        "tag": "tconstruct3:modifiable/armor"
+      }
+    },
+    {
+      "type": "tconstruct3:armor_looting",
+      "level": {
+        "flat": 1
+      },
+      "modifier_level": {
+        "min": 2
+      },
+      "slots": [
+        "feet",
+        "legs",
+        "chest",
+        "head"
+      ]
+    }
+  ]
+}

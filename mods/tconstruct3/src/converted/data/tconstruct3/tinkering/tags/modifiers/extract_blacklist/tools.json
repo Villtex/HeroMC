@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:embellishment",
+    "tconstruct3:dyed",
+    "tconstruct3:trim",
+    "tconstruct3:banner",
+    "tconstruct3:rebalanced",
+    "tconstruct3:overslime",
+    "#tconstruct3:remove_blacklist"
+  ]
+}

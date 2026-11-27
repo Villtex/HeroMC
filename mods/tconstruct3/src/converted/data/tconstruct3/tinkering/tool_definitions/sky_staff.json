@@ -1,0 +1,65 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "modules": [
+    {
+      "type": "tconstruct3:base_stats",
+      "stats": {
+        "tconstruct3:block_amount": 15.0,
+        "tconstruct3:draw_speed": 1.25,
+        "tconstruct3:durability": 500.0,
+        "tconstruct3:use_item_speed": 0.4,
+        "tconstruct3:velocity": 0.8
+      }
+    },
+    {
+      "type": "tconstruct3:modifier_slots",
+      "slots": {
+        "abilities": 2,
+        "upgrades": 5
+      }
+    },
+    {
+      "type": "tconstruct3:traits",
+      "traits": [
+        {
+          "level": 1,
+          "name": "tconstruct3:overslime_friend"
+        },
+        {
+          "level": 1,
+          "name": "tconstruct3:reach"
+        }
+      ]
+    },
+    {
+      "type": "tconstruct3:traits",
+      "hooks": [
+        "tconstruct3:rebalanced_trait"
+      ],
+      "traits": [
+        {
+          "level": 1,
+          "name": "tconstruct3:reach"
+        }
+      ]
+    },
+    {
+      "type": "tconstruct3:material_repair",
+      "material": "tconstruct3:slimewood",
+      "stat_type": "tconstruct3:limb"
+    },
+    {
+      "type": "tconstruct3:circle_aoe",
+      "3D": false,
+      "diameter": 1
+    },
+    {
+      "type": "tconstruct3:dual_option_interaction"
+    }
+  ]
+}

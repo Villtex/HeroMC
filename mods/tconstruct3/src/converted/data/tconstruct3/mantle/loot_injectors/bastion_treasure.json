@@ -1,0 +1,176 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "name": "minecraft:chests/bastion_treasure",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "tconstruct3:battlesign",
+          "weight": 12,
+          "modifier": {
+            "type": "tconstruct3:add_tool_data",
+            "materials": [
+              {
+                "type": "tconstruct3:ancient"
+              },
+              {
+                "type": "tconstruct3:ancient"
+              }
+            ]
+          }
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tconstruct3:plate_helmet",
+          "weight": 6,
+          "modifier": {
+            "type": "tconstruct3:add_tool_data",
+            "materials": [
+              {
+                "type": "tconstruct3:random",
+                "allow_hidden": true,
+                "material": {
+                  "type": "mantle:inverted",
+                  "inverted_type": "mantle:tag",
+                  "tag": "tconstruct3:exclude_from_loot"
+                },
+                "tier": {
+                  "max": 4,
+                  "min": 3
+                }
+              },
+              {
+                "type": "tconstruct3:random",
+                "allow_hidden": true,
+                "material": {
+                  "type": "mantle:inverted",
+                  "inverted_type": "mantle:tag",
+                  "tag": "tconstruct3:exclude_from_loot"
+                },
+                "tier": {
+                  "max": 4,
+                  "min": 3
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tconstruct3:plate_chestplate",
+          "weight": 6,
+          "modifier": {
+            "type": "tconstruct3:add_tool_data",
+            "materials": [
+              {
+                "type": "tconstruct3:random",
+                "allow_hidden": true,
+                "material": {
+                  "type": "mantle:inverted",
+                  "inverted_type": "mantle:tag",
+                  "tag": "tconstruct3:exclude_from_loot"
+                },
+                "tier": {
+                  "max": 4,
+                  "min": 3
+                }
+              },
+              {
+                "type": "tconstruct3:random",
+                "allow_hidden": true,
+                "material": {
+                  "type": "mantle:inverted",
+                  "inverted_type": "mantle:tag",
+                  "tag": "tconstruct3:exclude_from_loot"
+                },
+                "tier": {
+                  "max": 4,
+                  "min": 3
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tconstruct3:plate_leggings",
+          "weight": 6,
+          "modifier": {
+            "type": "tconstruct3:add_tool_data",
+            "materials": [
+              {
+                "type": "tconstruct3:random",
+                "allow_hidden": true,
+                "material": {
+                  "type": "mantle:inverted",
+                  "inverted_type": "mantle:tag",
+                  "tag": "tconstruct3:exclude_from_loot"
+                },
+                "tier": {
+                  "max": 4,
+                  "min": 3
+                }
+              },
+              {
+                "type": "tconstruct3:random",
+                "allow_hidden": true,
+                "material": {
+                  "type": "mantle:inverted",
+                  "inverted_type": "mantle:tag",
+                  "tag": "tconstruct3:exclude_from_loot"
+                },
+                "tier": {
+                  "max": 4,
+                  "min": 3
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tconstruct3:plate_boots",
+          "weight": 6,
+          "modifier": {
+            "type": "tconstruct3:add_tool_data",
+            "materials": [
+              {
+                "type": "tconstruct3:random",
+                "allow_hidden": true,
+                "material": {
+                  "type": "mantle:inverted",
+                  "inverted_type": "mantle:tag",
+                  "tag": "tconstruct3:exclude_from_loot"
+                },
+                "tier": {
+                  "max": 4,
+                  "min": 3
+                }
+              },
+              {
+                "type": "tconstruct3:random",
+                "allow_hidden": true,
+                "material": {
+                  "type": "mantle:inverted",
+                  "inverted_type": "mantle:tag",
+                  "tag": "tconstruct3:exclude_from_loot"
+                },
+                "tier": {
+                  "max": 4,
+                  "min": 3
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "name": "main"
+    }
+  ]
+}

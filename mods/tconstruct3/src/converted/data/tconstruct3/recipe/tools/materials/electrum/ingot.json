@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:ingots/electrum"
+    }
+  ],
+  "type": "tconstruct3:material",
+  "ingredient": "#c:ingots/electrum",
+  "material": "tconstruct3:electrum",
+  "needed": 1,
+  "value": 1
+}

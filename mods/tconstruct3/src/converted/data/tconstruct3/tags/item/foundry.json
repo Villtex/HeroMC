@@ -1,0 +1,14 @@
+{
+  "values": [
+    "#tconstruct3:scorched_blocks",
+    "#tconstruct3:scorched_tanks",
+    "tconstruct3:foundry_controller",
+    "tconstruct3:scorched_ladder",
+    "tconstruct3:scorched_drain",
+    "tconstruct3:scorched_chute",
+    "tconstruct3:scorched_duct",
+    "tconstruct3:scorched_glass",
+    "tconstruct3:scorched_soul_glass",
+    "tconstruct3:scorched_tinted_glass"
+  ]
+}

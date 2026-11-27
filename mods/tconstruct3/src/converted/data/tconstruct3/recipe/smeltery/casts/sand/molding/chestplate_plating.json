@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:molding_table",
+  "material": {
+    "tag": "tconstruct3:casts/sand"
+  },
+  "pattern": [
+    {
+      "neoforge:ingredient_type": "tconstruct3:material",
+      "item": "tconstruct3:chestplate_plating"
+    },
+    "tconstruct3:chestplate_plating_dummy"
+  ],
+  "result": "tconstruct3:chestplate_plating_sand_cast"
+}

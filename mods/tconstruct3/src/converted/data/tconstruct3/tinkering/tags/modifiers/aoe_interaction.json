@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:pathing",
+    "tconstruct3:stripping",
+    "tconstruct3:tilling",
+    "tconstruct3:brushing",
+    "tconstruct3:splashing",
+    "tconstruct3:harvest"
+  ]
+}

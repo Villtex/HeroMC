@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "mantle:crafting_shaped_retextured",
+  "category": "misc",
+  "key": {
+    "p": "tconstruct3:pattern",
+    "w": {
+      "neoforge:ingredient_type": "neoforge:difference",
+      "base": "#tconstruct3:tables",
+      "subtracted": "tconstruct3:crafting_station"
+    }
+  },
+  "match_all": false,
+  "pattern": [
+    "p",
+    "w"
+  ],
+  "result": {
+    "id": "tconstruct3:crafting_station"
+  },
+  "show_notification": true,
+  "texture": "w"
+}

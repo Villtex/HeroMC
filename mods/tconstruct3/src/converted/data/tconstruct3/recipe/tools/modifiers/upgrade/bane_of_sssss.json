@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:incremental_modifier",
+  "allow_crystal": true,
+  "amount_per_item": 1,
+  "input": "minecraft:fermented_spider_eye",
+  "level": {
+    "max": 5
+  },
+  "needed_per_level": 15,
+  "result": "tconstruct3:bane_of_sssss",
+  "slots": {
+    "upgrades": 1
+  },
+  "tools": "#tconstruct3:modifiable/melee"
+}

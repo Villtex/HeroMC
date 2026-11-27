@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:modifier_salvage",
+  "level": 1,
+  "modifier": "tconstruct3:reflecting",
+  "slots": {
+    "abilities": 1
+  },
+  "tools": "#tconstruct3:modifiable/shields"
+}

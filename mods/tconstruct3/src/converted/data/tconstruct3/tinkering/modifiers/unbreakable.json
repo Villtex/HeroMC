@@ -1,0 +1,63 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:no_levels",
+  "modules": [
+    {
+      "type": "tconstruct3:requirements",
+      "display_modifiers": [
+        {
+          "level": 1,
+          "name": "tconstruct3:netherite"
+        },
+        {
+          "level": 5,
+          "name": "tconstruct3:reinforced"
+        }
+      ],
+      "requirement": {
+        "type": "mantle:and",
+        "predicates": [
+          {
+            "type": "tconstruct3:has_modifier",
+            "check": "all",
+            "modifier": {
+              "type": "tconstruct3:single",
+              "modifier": "tconstruct3:netherite"
+            }
+          },
+          {
+            "type": "tconstruct3:has_modifier",
+            "check": "all",
+            "level": {
+              "min": 5
+            },
+            "modifier": {
+              "type": "tconstruct3:single",
+              "modifier": "tconstruct3:reinforced"
+            }
+          }
+        ]
+      },
+      "translation_key": "modifier.tconstruct3.unbreakable.requirements"
+    },
+    {
+      "type": "tconstruct3:durability_color",
+      "color": "FFFFFF"
+    },
+    {
+      "type": "tconstruct3:reduce_tool_damage",
+      "cause": {
+        "type": "mantle:inverted",
+        "inverted_type": "tconstruct3:tag",
+        "tag": "tconstruct3:durability/bypass_reinforced"
+      },
+      "flat": 1.0
+    }
+  ],
+  "priority": 125
+}

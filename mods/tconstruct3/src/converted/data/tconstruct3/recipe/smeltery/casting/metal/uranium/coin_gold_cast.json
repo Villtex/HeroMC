@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:coins/uranium"
+    }
+  ],
+  "type": "tconstruct3:casting_table",
+  "cast": "#tconstruct3:casts/multi_use/coin",
+  "cooling_time": 35,
+  "fluid": {
+    "amount": 30,
+    "tag": "c:molten_uranium"
+  },
+  "result": {
+    "tag": "c:coins/uranium"
+  }
+}

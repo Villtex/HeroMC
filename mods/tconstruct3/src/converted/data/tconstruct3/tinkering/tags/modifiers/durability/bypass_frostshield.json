@@ -1,0 +1,12 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "#tconstruct3:durability/bypass_extra_bar",
+    "tconstruct3:glowing"
+  ]
+}

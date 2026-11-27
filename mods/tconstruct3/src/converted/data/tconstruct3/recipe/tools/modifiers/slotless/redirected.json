@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:modifier",
+  "allow_crystal": true,
+  "inputs": "minecraft:dragon_breath",
+  "result": "tconstruct3:redirected",
+  "tools": {
+    "neoforge:ingredient_type": "tconstruct3:tool_hook",
+    "hook": "tconstruct3:rebalanced_trait",
+    "tag": "tconstruct3:modifiable/ammo"
+  }
+}

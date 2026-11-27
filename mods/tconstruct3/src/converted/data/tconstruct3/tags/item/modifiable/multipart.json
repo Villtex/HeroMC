@@ -1,0 +1,51 @@
+{
+  "values": [
+    "tconstruct3:pickaxe",
+    "tconstruct3:sledge_hammer",
+    "tconstruct3:vein_hammer",
+    "tconstruct3:mattock",
+    "tconstruct3:pickadze",
+    "tconstruct3:excavator",
+    "tconstruct3:hand_axe",
+    "tconstruct3:broad_axe",
+    "tconstruct3:kama",
+    "tconstruct3:scythe",
+    "tconstruct3:dagger",
+    "tconstruct3:sword",
+    "tconstruct3:cleaver",
+    "tconstruct3:crossbow",
+    "tconstruct3:longbow",
+    "tconstruct3:fishing_rod",
+    "tconstruct3:javelin",
+    "tconstruct3:arrow",
+    "tconstruct3:shuriken",
+    "tconstruct3:throwing_axe",
+    "tconstruct3:melting_pan",
+    "tconstruct3:war_pick",
+    "tconstruct3:battlesign",
+    "tconstruct3:swasher",
+    {
+      "id": "tconstruct3:minotaur_axe",
+      "required": false
+    },
+    "tconstruct3:travelers_helmet",
+    "tconstruct3:travelers_chestplate",
+    "tconstruct3:travelers_leggings",
+    "tconstruct3:travelers_boots",
+    "tconstruct3:plate_helmet",
+    "tconstruct3:plate_chestplate",
+    "tconstruct3:plate_leggings",
+    "tconstruct3:plate_boots",
+    "tconstruct3:slimy_chestplate",
+    "tconstruct3:slime_leggings",
+    "tconstruct3:slime_boots",
+    "tconstruct3:slime_wings",
+    "tconstruct3:slime_helmet",
+    "tconstruct3:travelers_shield",
+    "tconstruct3:plate_shield",
+    {
+      "id": "#tconstruct3:modifiable/multipart/single",
+      "required": false
+    }
+  ]
+}

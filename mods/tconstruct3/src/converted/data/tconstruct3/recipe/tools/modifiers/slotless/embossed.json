@@ -1,0 +1,18 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "tconstruct3:boss_trophies"
+    }
+  ],
+  "type": "tconstruct3:modifier",
+  "allow_crystal": true,
+  "inputs": "#tconstruct3:boss_trophies",
+  "level": 1,
+  "result": "tconstruct3:embossed",
+  "tools": "#tconstruct3:modifiable/bonus_slots"
+}

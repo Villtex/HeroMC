@@ -1,0 +1,51 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:wood",
+    "tconstruct3:string",
+    "tconstruct3:vine",
+    "tconstruct3:leather",
+    "tconstruct3:iron",
+    "tconstruct3:slimewood",
+    "tconstruct3:slimesteel",
+    "tconstruct3:pig_iron",
+    "tconstruct3:rose_gold",
+    "tconstruct3:cobalt",
+    "tconstruct3:cinderslime",
+    "tconstruct3:queens_slime",
+    "tconstruct3:enderslime_vine",
+    {
+      "id": "tconstruct3:treated_wood",
+      "required": false
+    },
+    {
+      "id": "tconstruct3:osmium",
+      "required": false
+    },
+    {
+      "id": "tconstruct3:ironwood",
+      "required": false
+    },
+    {
+      "id": "tconstruct3:plated_slimewood",
+      "required": false
+    },
+    {
+      "id": "tconstruct3:electrum",
+      "required": false
+    },
+    {
+      "id": "tconstruct3:steeleaf",
+      "required": false
+    },
+    {
+      "id": "tconstruct3:fiery",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "values": [
+    "tconstruct3:blank_sand_cast",
+    "tconstruct3:ingot_sand_cast",
+    "tconstruct3:nugget_sand_cast",
+    "tconstruct3:gem_sand_cast",
+    "tconstruct3:rod_sand_cast",
+    "tconstruct3:repair_kit_sand_cast",
+    "tconstruct3:plate_sand_cast",
+    "tconstruct3:gear_sand_cast",
+    "tconstruct3:coin_sand_cast",
+    "tconstruct3:wire_sand_cast",
+    "tconstruct3:pick_head_sand_cast",
+    "tconstruct3:small_axe_head_sand_cast",
+    "tconstruct3:small_blade_sand_cast",
+    "tconstruct3:adze_head_sand_cast",
+    "tconstruct3:hammer_head_sand_cast",
+    "tconstruct3:broad_axe_head_sand_cast",
+    "tconstruct3:broad_blade_sand_cast",
+    "tconstruct3:large_plate_sand_cast",
+    "tconstruct3:tool_binding_sand_cast",
+    "tconstruct3:tough_binding_sand_cast",
+    "tconstruct3:tool_handle_sand_cast",
+    "tconstruct3:tough_handle_sand_cast",
+    "tconstruct3:bow_limb_sand_cast",
+    "tconstruct3:bow_grip_sand_cast",
+    "tconstruct3:helmet_plating_sand_cast",
+    "tconstruct3:chestplate_plating_sand_cast",
+    "tconstruct3:leggings_plating_sand_cast",
+    "tconstruct3:boots_plating_sand_cast",
+    "tconstruct3:maille_sand_cast"
+  ]
+}

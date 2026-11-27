@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_basin",
+  "cast": "minecraft:black_concrete_powder",
+  "cast_consumed": true,
+  "cooling_time": 30,
+  "fluid": {
+    "amount": 100,
+    "fluid": "minecraft:water"
+  },
+  "result": "minecraft:black_concrete"
+}

@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:stat_boost",
+      "each_level": 0.5,
+      "operation": "add",
+      "stat": "tconstruct3:attack_damage"
+    },
+    {
+      "type": "tconstruct3:weapon_mob_effect",
+      "apply_before_melee": true,
+      "effect": "tconstruct3:pierce",
+      "level": {
+        "per_level": 1.0
+      },
+      "time": {
+        "flat": 80.0
+      }
+    }
+  ]
+}

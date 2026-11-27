@@ -1,0 +1,143 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:conditional_mining_speed",
+      "formula": [
+        "$temperature",
+        0.75,
+        "!-",
+        "non-negative",
+        "$level",
+        "*",
+        6.0,
+        "*",
+        "$multiplier",
+        "*",
+        "$speed",
+        "+"
+      ],
+      "percent": false,
+      "require_effective": true,
+      "variables": {
+        "temperature": {
+          "type": "tconstruct3:biome_temperature",
+          "fallback": -0.5
+        }
+      }
+    },
+    {
+      "type": "tconstruct3:conditional_stat",
+      "formula": [
+        "$temperature",
+        0.75,
+        "!-",
+        "non-negative",
+        "$level",
+        "*",
+        0.120000005,
+        "*",
+        "$multiplier",
+        "*",
+        "$value",
+        "+"
+      ],
+      "percent": false,
+      "stat": "tconstruct3:draw_speed",
+      "variables": {
+        "temperature": {
+          "type": "tconstruct3:entity",
+          "entity_type": "tconstruct3:biome_temperature",
+          "fallback": -0.5
+        }
+      }
+    },
+    {
+      "type": "tconstruct3:protection",
+      "damage_source": "mantle:can_protect",
+      "formula": [
+        "$temperature",
+        0.75,
+        "!-",
+        "non-negative",
+        "$level",
+        "*",
+        "$protection",
+        "+"
+      ],
+      "tool": {
+        "neoforge:ingredient_type": "mantle:tag",
+        "tag": "tconstruct3:modifiable/armor"
+      },
+      "variables": {
+        "temperature": {
+          "type": "tconstruct3:entity",
+          "entity_type": "tconstruct3:biome_temperature",
+          "fallback": 0.75,
+          "which": "target"
+        }
+      }
+    },
+    {
+      "type": "tconstruct3:reduce_tool_damage",
+      "cause": {
+        "type": "mantle:inverted",
+        "inverted_type": "tconstruct3:tag",
+        "tag": "tconstruct3:durability/bypass_reinforced"
+      },
+      "formula": [
+        "$temperature",
+        0.75,
+        "-",
+        "non-negative",
+        "$level",
+        "*",
+        1.6,
+        "*",
+        "duplicate",
+        "duplicate",
+        11.0,
+        "!-",
+        "*",
+        0.025,
+        "*",
+        "swap",
+        "duplicate",
+        5.0,
+        ">=",
+        "swap",
+        5.0,
+        "-",
+        0.05,
+        "*",
+        0.75,
+        "+",
+        "*",
+        "max"
+      ],
+      "reinforced_tooltip": true,
+      "tool": {
+        "neoforge:ingredient_type": "tconstruct3:has_modifier",
+        "check": "all",
+        "level": 0,
+        "modifier": {
+          "type": "tconstruct3:single",
+          "modifier": "tconstruct3:unbreakable"
+        }
+      },
+      "variables": {
+        "temperature": {
+          "type": "tconstruct3:entity",
+          "entity_type": "tconstruct3:biome_temperature",
+          "fallback": 2.0
+        }
+      }
+    }
+  ]
+}

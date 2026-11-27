@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "mantle:replace_item",
+  "functions": [],
+  "original": {
+    "item": "minecraft:bone"
+  },
+  "replacement": "tconstruct3:necrotic_bone",
+  "condition": {
+    "type": "minecraft:all_of",
+    "terms": [
+      {
+        "type": "neoforge:loot_table_id",
+        "loot_table_id": "minecraft:entities/wither_skeleton"
+      },
+      {
+        "type": "tconstruct3:config",
+        "prop": "wither_bone_drop"
+      }
+    ]
+  }
+}

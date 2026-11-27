@@ -1,0 +1,13 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material",
+  "ingredient": "#c:nuggets/steel",
+  "material": "tconstruct3:steel",
+  "needed": 9,
+  "value": 1
+}

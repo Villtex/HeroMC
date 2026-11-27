@@ -1,0 +1,44 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "name": "minecraft:chests/shipwreck_treasure",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "tconstruct3:swasher",
+          "weight": 10,
+          "modifier": [
+            {
+              "type": "tconstruct3:add_tool_data",
+              "materials": [
+                {
+                  "type": "tconstruct3:ancient"
+                },
+                {
+                  "type": "tconstruct3:ancient"
+                },
+                {
+                  "type": "tconstruct3:ancient"
+                }
+              ]
+            },
+            {
+              "type": "mantle:set_fluid",
+              "fluid": {
+                "amount": 1000,
+                "fluid": "minecraft:lava"
+              }
+            }
+          ]
+        }
+      ],
+      "name": "main"
+    }
+  ]
+}

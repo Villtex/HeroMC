@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_basin",
+  "cast": "tconstruct3:bloodshroom_planks_slab",
+  "cast_consumed": true,
+  "cooling_time": 85,
+  "fluid": {
+    "amount": 100,
+    "tag": "tconstruct3:blazing_blood"
+  },
+  "result": "tconstruct3:blazewood_slab"
+}

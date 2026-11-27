@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "frequency": 0.5,
+    "salt": 65245622,
+    "separation": 7,
+    "spacing": 15
+  },
+  "structures": [
+    {
+      "structure": "tconstruct3:blood_island",
+      "weight": 1
+    }
+  ]
+}

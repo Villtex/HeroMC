@@ -1,0 +1,14 @@
+{
+  "asset_name": "tconstruct_manyullyn",
+  "description": {
+    "color": "#9261CC",
+    "translate": "trim_material.tconstruct3.format",
+    "with": [
+      {
+        "translate": "material.tconstruct3.manyullyn"
+      }
+    ]
+  },
+  "ingredient": "tconstruct3:manyullyn_ingot",
+  "item_model_index": 1.0
+}

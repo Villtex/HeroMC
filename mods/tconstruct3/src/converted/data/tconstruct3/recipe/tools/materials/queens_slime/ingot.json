@@ -1,0 +1,13 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material",
+  "ingredient": "#c:ingots/queens_slime",
+  "material": "tconstruct3:queens_slime",
+  "needed": 1,
+  "value": 1
+}

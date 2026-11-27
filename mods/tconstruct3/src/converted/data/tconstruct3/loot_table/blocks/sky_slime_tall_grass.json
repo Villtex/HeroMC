@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "tconstruct3:sky_slime_tall_grass"
+        }
+      ],
+      "rolls": 1.0,
+      "condition": {
+        "type": "neoforge:can_item_perform_ability",
+        "ability": "shears_dig"
+      }
+    }
+  ],
+  "random_sequence": "tconstruct3:blocks/sky_slime_tall_grass"
+}

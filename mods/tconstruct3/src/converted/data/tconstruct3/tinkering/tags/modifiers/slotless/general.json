@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:overslime",
+    "tconstruct3:worldbound",
+    "tconstruct3:offhanded",
+    "tconstruct3:blunted",
+    "tconstruct3:workbench",
+    "tconstruct3:blindshot",
+    "tconstruct3:barebow"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "parent": "tconstruct3:world/tinkers_gadgetry",
+  "criteria": {
+    "found_island": {
+      "conditions": {
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:location": {
+              "structures": "tconstruct3:blood_island"
+            }
+          }
+        }
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.tconstruct3.world.blood_island.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "tconstruct3:blood_slime_sapling"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tconstruct3.world.blood_island.title"
+    }
+  },
+  "requirements": [
+    [
+      "found_island"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,30 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:modifier",
+  "allow_crystal": true,
+  "check_trait_level": true,
+  "inputs": [
+    "minecraft:vine",
+    "tconstruct3:earth_slime_crystal",
+    "minecraft:vine",
+    "tconstruct3:earth_congealed_slime",
+    "tconstruct3:earth_congealed_slime"
+  ],
+  "level": 1,
+  "result": "tconstruct3:flinging",
+  "slots": {
+    "abilities": 1
+  },
+  "tools": {
+    "neoforge:ingredient_type": "neoforge:intersection",
+    "children": [
+      "#tconstruct3:modifiable/durability",
+      "#tconstruct3:modifiable/interactable/charge"
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:multilevel_modifier",
+  "allow_crystal": true,
+  "inputs": [
+    {
+      "amount_needed": 4,
+      "item": "tconstruct3:sky_congealed_slime"
+    },
+    {
+      "amount_needed": 4,
+      "item": "tconstruct3:ichor_congealed_slime"
+    },
+    {
+      "amount_needed": 4,
+      "item": "tconstruct3:sky_congealed_slime"
+    },
+    {
+      "amount_needed": 4,
+      "item": "tconstruct3:earth_congealed_slime"
+    },
+    {
+      "amount_needed": 4,
+      "item": "tconstruct3:earth_congealed_slime"
+    }
+  ],
+  "levels": [
+    {
+      "level": 1,
+      "slots": {
+        "abilities": 1
+      }
+    },
+    {
+      "level": {
+        "max": 3,
+        "min": 2
+      },
+      "slots": {
+        "upgrades": 1
+      }
+    }
+  ],
+  "result": "tconstruct3:reflecting",
+  "tools": "#tconstruct3:modifiable/shields"
+}

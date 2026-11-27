@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "mantle:fill_item",
+  "fluid": {
+    "amount": 250,
+    "tag": "tconstruct3:ichor"
+  },
+  "input": "minecraft:glass_bottle",
+  "result": "tconstruct3:ichor_slime_bottle"
+}

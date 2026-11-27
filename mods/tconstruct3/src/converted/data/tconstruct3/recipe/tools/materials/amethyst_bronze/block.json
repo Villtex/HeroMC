@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material",
+  "ingredient": "#c:storage_blocks/amethyst_bronze",
+  "leftover": {
+    "count": 1,
+    "tag": "c:ingots/amethyst_bronze"
+  },
+  "material": "tconstruct3:amethyst_bronze",
+  "needed": 1,
+  "value": 9
+}

@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": "#c:chests/wooden",
+    "p": "tconstruct3:pattern",
+    "s": "#c:rods/wooden",
+    "w": "#minecraft:planks"
+  },
+  "pattern": [
+    " p ",
+    "sCs",
+    "sws"
+  ],
+  "result": {
+    "id": "tconstruct3:part_chest"
+  },
+  "show_notification": true
+}

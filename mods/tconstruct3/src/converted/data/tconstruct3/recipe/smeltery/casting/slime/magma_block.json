@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_basin",
+  "cooling_time": 141,
+  "fluid": {
+    "amount": 1000,
+    "tag": "c:magma"
+  },
+  "result": "minecraft:magma_block"
+}

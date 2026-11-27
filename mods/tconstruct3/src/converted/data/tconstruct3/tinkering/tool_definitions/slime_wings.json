@@ -1,0 +1,75 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "modules": [
+    {
+      "type": "tconstruct3:material_stats",
+      "primary_part": -1,
+      "stat_types": [
+        {
+          "scale": 1.6,
+          "stat": "tconstruct3:slime"
+        }
+      ]
+    },
+    {
+      "type": "tconstruct3:default_materials",
+      "materials": [
+        {
+          "type": "tconstruct3:fixed",
+          "material": "tconstruct3:blood"
+        }
+      ]
+    },
+    {
+      "type": "tconstruct3:base_stats",
+      "stats": {
+        "tconstruct3:durability": 222.0
+      }
+    },
+    {
+      "type": "tconstruct3:multiply_stats",
+      "multipliers": {
+        "tconstruct3:attack_damage": 0.5
+      }
+    },
+    {
+      "type": "tconstruct3:modifier_slots",
+      "slots": {
+        "abilities": 1,
+        "upgrades": 4
+      }
+    },
+    {
+      "type": "tconstruct3:material_repair",
+      "durability": 672,
+      "material": "tconstruct3:phantom"
+    },
+    {
+      "type": "tconstruct3:traits",
+      "traits": [
+        {
+          "level": 1,
+          "name": "tconstruct3:wings"
+        }
+      ]
+    },
+    {
+      "type": "tconstruct3:material_traits",
+      "hooks": [
+        "tconstruct3:rebalanced_trait",
+        "tconstruct3:trim_trait"
+      ],
+      "material_index": 0,
+      "stat_type": "tconstruct3:slime"
+    },
+    {
+      "type": "tconstruct3:unique_material_name",
+      "index": 0
+    }
+  ]
+}

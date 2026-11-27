@@ -1,0 +1,53 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "parent": "tconstruct3:smeltery/structure",
+  "criteria": {
+    "crafted_nether": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:scorched_anvil"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "crafted_overworld": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:tinkers_anvil"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.tconstruct3.smeltery.tinkers_anvil.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "tconstruct3:tinkers_anvil"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tconstruct3.smeltery.tinkers_anvil.title"
+    }
+  },
+  "requirements": [
+    [
+      "crafted_overworld",
+      "crafted_nether"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,43 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "icon": {
+    "id": "tconstruct3:dagger",
+    "components": {
+      "tconstruct3:display": true,
+      "tconstruct3:materials": [
+        "tconstruct3:ui_render#head",
+        "tconstruct3:ui_render#handle",
+        "tconstruct3:ui_render#extra",
+        "tconstruct3:ui_render#large",
+        "tconstruct3:ui_render#extra_large"
+      ]
+    }
+  },
+  "input_slots": [
+    {
+      "filter": {
+        "item": "tconstruct3:small_blade"
+      },
+      "icon": "tconstruct3:small_blade",
+      "translation_key": "item.tconstruct3.small_blade",
+      "x": 39,
+      "y": 35
+    },
+    {
+      "filter": {
+        "item": "tconstruct3:tool_handle"
+      },
+      "icon": "tconstruct3:tool_handle",
+      "translation_key": "item.tconstruct3.tool_handle",
+      "x": 21,
+      "y": 53
+    }
+  ],
+  "sortIndex": 3,
+  "translation_key": "item.tconstruct3.dagger"
+}

@@ -1,0 +1,10 @@
+{
+  "values": [
+    "minecraft:pumpkin",
+    "minecraft:beehive",
+    "minecraft:bee_nest",
+    "#tconstruct3:harvestable/crops",
+    "#tconstruct3:harvestable/interact",
+    "#tconstruct3:harvestable/stackable"
+  ]
+}

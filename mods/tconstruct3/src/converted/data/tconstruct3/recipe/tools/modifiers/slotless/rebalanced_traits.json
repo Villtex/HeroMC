@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:swappable_modifier",
+  "allow_crystal": false,
+  "inputs": [
+    "#c:nuggets/manyullyn",
+    "minecraft:end_crystal",
+    "#c:nuggets/manyullyn",
+    "tconstruct3:ender_slime_crystal_block",
+    "tconstruct3:ender_slime_crystal_block"
+  ],
+  "result": {
+    "name": "tconstruct3:rebalanced",
+    "value": "traits"
+  },
+  "tools": {
+    "neoforge:ingredient_type": "tconstruct3:tool_hook",
+    "hook": "tconstruct3:rebalanced_trait",
+    "tag": "tconstruct3:modifiable/bonus_slots"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "neoforge:registered",
+      "value": "tools_complement:copper_excavator"
+    }
+  ],
+  "type": "tconstruct3:damagable_melting",
+  "ingredient": "tools_complement:copper_excavator",
+  "result": {
+    "amount": 990,
+    "tag": "c:molten_copper",
+    "unit_size": 10
+  },
+  "temperature": 500,
+  "time": 166
+}

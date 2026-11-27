@@ -1,0 +1,18 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:bouncy",
+    "tconstruct3:double_jump",
+    "tconstruct3:flamewake",
+    "tconstruct3:snowdrift",
+    "tconstruct3:tilling",
+    "tconstruct3:pathing",
+    "tconstruct3:frost_walker",
+    "tconstruct3:glowing"
+  ]
+}

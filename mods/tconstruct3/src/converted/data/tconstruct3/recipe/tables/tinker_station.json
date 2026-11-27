@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "mantle:crafting_shaped_retextured",
+  "category": "misc",
+  "key": {
+    "p": "tconstruct3:pattern",
+    "w": "#tconstruct3:planklike"
+  },
+  "match_all": true,
+  "pattern": [
+    "ppp",
+    "w w",
+    "w w"
+  ],
+  "result": {
+    "id": "tconstruct3:tinker_station"
+  },
+  "show_notification": true,
+  "texture": "w"
+}

@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:fiery",
+    "tconstruct3:freezing",
+    "tconstruct3:thorns",
+    "tconstruct3:ricochet",
+    "tconstruct3:springy",
+    "tconstruct3:blockade"
+  ]
+}

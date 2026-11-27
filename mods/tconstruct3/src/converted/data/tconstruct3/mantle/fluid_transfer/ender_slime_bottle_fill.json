@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "mantle:fill_item",
+  "fluid": {
+    "amount": 250,
+    "tag": "tconstruct3:ender_slime"
+  },
+  "input": "minecraft:glass_bottle",
+  "result": "tconstruct3:ender_slime_bottle"
+}

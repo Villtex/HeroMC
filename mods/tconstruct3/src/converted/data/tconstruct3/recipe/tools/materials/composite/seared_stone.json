@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material_fluid",
+  "fluid": {
+    "amount": 125,
+    "tag": "tconstruct3:molten_clay"
+  },
+  "input": "tconstruct3:rock",
+  "output": "tconstruct3:seared_stone",
+  "temperature": 450
+}

@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "frequency": 0.5,
+    "salt": 14357800,
+    "separation": 4,
+    "spacing": 35
+  },
+  "structures": [
+    {
+      "structure": "tconstruct3:sky_slime_island",
+      "weight": 4
+    },
+    {
+      "structure": "tconstruct3:clay_island",
+      "weight": 1
+    }
+  ]
+}

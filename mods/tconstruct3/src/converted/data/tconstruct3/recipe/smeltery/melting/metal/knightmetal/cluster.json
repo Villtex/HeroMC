@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": "tconstruct3:knightmetal_cluster",
+  "result": {
+    "amount": 40,
+    "fluid": "tconstruct3:molten_knightmetal"
+  },
+  "temperature": 1300,
+  "time": 187
+}

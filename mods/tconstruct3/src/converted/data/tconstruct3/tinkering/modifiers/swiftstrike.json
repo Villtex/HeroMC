@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": {
+    "type": "tconstruct3:unique",
+    "first_unique": false,
+    "unique_until": 5
+  },
+  "modules": [
+    {
+      "type": "tconstruct3:stat_boost",
+      "each_level": 0.05,
+      "operation": "multiply_base",
+      "stat": "tconstruct3:attack_speed"
+    }
+  ]
+}

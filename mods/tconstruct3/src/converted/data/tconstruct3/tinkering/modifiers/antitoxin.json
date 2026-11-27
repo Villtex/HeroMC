@@ -1,0 +1,69 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:conditional_melee_damage",
+      "attacker": {
+        "type": "mantle:has_effect",
+        "effect": "minecraft:poison"
+      },
+      "formula": [
+        "$poison",
+        0.5,
+        "+",
+        "$level",
+        "*",
+        "$multiplier",
+        "*",
+        "$damage",
+        "+"
+      ],
+      "percent": false,
+      "variables": {
+        "poison": {
+          "type": "tconstruct3:entity",
+          "effect": "minecraft:poison",
+          "entity_type": "tconstruct3:effect_level",
+          "fallback": 0.0,
+          "which": "attacker"
+        }
+      }
+    },
+    {
+      "type": "tconstruct3:conditional_stat",
+      "entity": {
+        "type": "mantle:has_effect",
+        "effect": "minecraft:poison"
+      },
+      "formula": [
+        "$poison",
+        0.5,
+        "+",
+        0.1,
+        "*",
+        "$level",
+        "*",
+        "$multiplier",
+        "*",
+        "$value",
+        "+"
+      ],
+      "percent": false,
+      "stat": "tconstruct3:draw_speed",
+      "variables": {
+        "poison": {
+          "type": "tconstruct3:entity",
+          "effect": "minecraft:poison",
+          "entity_type": "tconstruct3:effect_level",
+          "fallback": 0.0
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:single_level",
+  "modules": [
+    {
+      "type": "tconstruct3:enderclearance",
+      "chance": {
+        "flat": 0.25
+      },
+      "diameter": {
+        "each_level": 8,
+        "flat": 8
+      },
+      "teleport_chances": {
+        "flat": 16
+      }
+    }
+  ]
+}

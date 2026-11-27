@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": "tconstruct3:gold_platform",
+  "result": {
+    "amount": 100,
+    "tag": "c:molten_gold"
+  },
+  "temperature": 700,
+  "time": 60
+}

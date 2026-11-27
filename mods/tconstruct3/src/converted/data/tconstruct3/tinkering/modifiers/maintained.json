@@ -1,0 +1,109 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:conditional_mining_speed",
+      "formula": [
+        "$max_durability",
+        0.5,
+        "*",
+        "duplicate",
+        "$durability",
+        "!-",
+        "non-negative",
+        "!/",
+        "$level",
+        "*",
+        6.0,
+        "*",
+        "$multiplier",
+        "*",
+        "$speed",
+        "+"
+      ],
+      "percent": false,
+      "require_effective": true,
+      "variables": {
+        "durability": "tconstruct3:tool_durability",
+        "max_durability": {
+          "type": "tconstruct3:tool_stat",
+          "stat": "tconstruct3:durability"
+        }
+      }
+    },
+    {
+      "type": "tconstruct3:conditional_stat",
+      "formula": [
+        "$max_durability",
+        0.5,
+        "*",
+        "duplicate",
+        "$durability",
+        "!-",
+        "non-negative",
+        "!/",
+        "$level",
+        "*",
+        0.08,
+        "*",
+        "$multiplier",
+        "*",
+        "$value",
+        "+"
+      ],
+      "percent": false,
+      "stat": "tconstruct3:velocity",
+      "variables": {
+        "durability": "tconstruct3:tool_durability",
+        "max_durability": {
+          "type": "tconstruct3:tool_stat",
+          "stat": "tconstruct3:durability"
+        }
+      }
+    },
+    {
+      "type": "tconstruct3:attribute",
+      "attribute": "minecraft:generic.armor_toughness",
+      "formula": [
+        "$max_durability",
+        0.5,
+        "*",
+        "duplicate",
+        "$durability",
+        "!-",
+        "non-negative",
+        "!/",
+        "$level",
+        "*",
+        2.0,
+        "*"
+      ],
+      "operation": "addition",
+      "slots": [
+        "mainhand",
+        "offhand",
+        "feet",
+        "legs",
+        "chest",
+        "head"
+      ],
+      "tool": {
+        "neoforge:ingredient_type": "mantle:tag",
+        "tag": "tconstruct3:modifiable/armor"
+      },
+      "variables": {
+        "durability": "tconstruct3:tool_durability",
+        "max_durability": {
+          "type": "tconstruct3:tool_stat",
+          "stat": "tconstruct3:durability"
+        }
+      }
+    }
+  ]
+}

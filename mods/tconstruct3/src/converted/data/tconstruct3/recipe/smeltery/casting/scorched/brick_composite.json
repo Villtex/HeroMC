@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_table",
+  "cast": "minecraft:flint",
+  "cast_consumed": true,
+  "cooling_time": 50,
+  "fluid": {
+    "amount": 125,
+    "tag": "c:magma"
+  },
+  "result": "tconstruct3:scorched_brick"
+}

@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:modifier",
+  "allow_crystal": true,
+  "inputs": [
+    "minecraft:shulker_shell",
+    "#c:ingots/iron",
+    "minecraft:shulker_shell",
+    "minecraft:leather",
+    "minecraft:leather"
+  ],
+  "level": {
+    "max": 2
+  },
+  "result": "tconstruct3:pockets",
+  "slots": {
+    "abilities": 1
+  },
+  "tools": "#tconstruct3:modifiable/armor/leggings"
+}

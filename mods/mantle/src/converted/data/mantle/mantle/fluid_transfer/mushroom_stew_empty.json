@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "registry": "minecraft:fluid",
+      "tag": "c:mushroom_stew"
+    }
+  ],
+  "type": "mantle:empty_item",
+  "fluid": {
+    "amount": 250,
+    "tag": "c:mushroom_stew"
+  },
+  "input": "minecraft:mushroom_stew",
+  "result": "minecraft:bowl"
+}

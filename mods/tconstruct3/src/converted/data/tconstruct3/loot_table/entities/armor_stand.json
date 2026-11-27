@@ -1,0 +1,10 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:entity",
+  "random_sequence": "tconstruct3:entities/armor_stand"
+}

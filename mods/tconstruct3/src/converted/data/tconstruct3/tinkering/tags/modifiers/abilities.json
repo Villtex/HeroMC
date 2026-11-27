@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "#tconstruct3:abilities/general",
+    "#tconstruct3:abilities/interaction",
+    "#tconstruct3:abilities/melee",
+    "#tconstruct3:abilities/harvest",
+    "#tconstruct3:abilities/armor",
+    "#tconstruct3:abilities/ranged"
+  ]
+}

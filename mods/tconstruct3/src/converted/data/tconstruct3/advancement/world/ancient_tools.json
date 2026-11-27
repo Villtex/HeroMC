@@ -1,0 +1,91 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "parent": "tconstruct3:world/tinkers_gadgetry",
+  "criteria": {
+    "battlesign": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:battlesign"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "melting_pan": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:melting_pan"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "swasher": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:swasher"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "war_pick": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:war_pick"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.tconstruct3.world.ancient_tools.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "id": "tconstruct3:battlesign",
+      "components": {
+        "tconstruct3:display": true,
+        "tconstruct3:materials": [
+          "tconstruct3:ui_render#head",
+          "tconstruct3:ui_render#handle",
+          "tconstruct3:ui_render#extra",
+          "tconstruct3:ui_render#large",
+          "tconstruct3:ui_render#extra_large"
+        ]
+      }
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tconstruct3.world.ancient_tools.title"
+    }
+  },
+  "requirements": [
+    [
+      "melting_pan"
+    ],
+    [
+      "war_pick"
+    ],
+    [
+      "battlesign"
+    ],
+    [
+      "swasher"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

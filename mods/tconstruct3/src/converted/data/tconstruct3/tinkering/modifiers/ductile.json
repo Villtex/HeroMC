@@ -1,0 +1,35 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:stat_boost",
+      "each_level": 0.1,
+      "operation": "multiply_base",
+      "stat": "tconstruct3:durability"
+    },
+    {
+      "type": "tconstruct3:stat_boost",
+      "each_level": 0.05,
+      "operation": "multiply_base",
+      "stat": "tconstruct3:attack_damage"
+    },
+    {
+      "type": "tconstruct3:stat_boost",
+      "each_level": 0.25,
+      "operation": "add",
+      "stat": "tconstruct3:projectile_damage"
+    },
+    {
+      "type": "tconstruct3:stat_boost",
+      "each_level": 1.0,
+      "operation": "add",
+      "stat": "tconstruct3:armor_toughness"
+    }
+  ]
+}

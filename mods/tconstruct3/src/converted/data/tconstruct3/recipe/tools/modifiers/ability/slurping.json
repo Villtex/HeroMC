@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:modifier",
+  "allow_crystal": true,
+  "inputs": [
+    "minecraft:glass_bottle",
+    {
+      "neoforge:ingredient_type": "tconstruct3:no_container",
+      "tag": "tconstruct3:tanks"
+    },
+    "minecraft:glass_bottle",
+    "#c:ingots/copper",
+    "#c:ingots/copper"
+  ],
+  "result": "tconstruct3:slurping",
+  "slots": {
+    "abilities": 1
+  },
+  "tools": [
+    "#tconstruct3:modifiable/armor/helmets",
+    "#tconstruct3:modifiable/interactable/charge"
+  ]
+}

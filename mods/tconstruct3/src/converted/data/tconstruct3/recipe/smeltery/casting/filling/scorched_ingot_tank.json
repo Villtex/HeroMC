@@ -1,0 +1,11 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:basin_filling",
+  "container": "tconstruct3:scorched_ingot_tank",
+  "fluid_amount": 90
+}

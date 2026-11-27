@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material_fluid",
+  "fluid": {
+    "amount": 100,
+    "tag": "tconstruct3:molten_emerald"
+  },
+  "input": "tconstruct3:blaze",
+  "output": "tconstruct3:jadeite",
+  "temperature": 934
+}

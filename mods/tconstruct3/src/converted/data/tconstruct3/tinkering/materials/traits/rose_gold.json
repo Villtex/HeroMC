@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "default": [
+    {
+      "level": 1,
+      "name": "tconstruct3:enhanced"
+    }
+  ],
+  "perStat": {
+    "tconstruct3:skull": [
+      {
+        "level": 1,
+        "name": "tconstruct3:gold_guard"
+      },
+      {
+        "level": 1,
+        "name": "tconstruct3:piglin_brute_disguise"
+      }
+    ]
+  }
+}

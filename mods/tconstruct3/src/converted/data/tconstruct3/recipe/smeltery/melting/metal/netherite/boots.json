@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:damagable_melting",
+  "byproducts": [
+    {
+      "amount": 400,
+      "fluid": "tconstruct3:molten_diamond",
+      "unit_size": 25
+    }
+  ],
+  "ingredient": "minecraft:netherite_boots",
+  "result": {
+    "amount": 90,
+    "tag": "c:molten_netherite",
+    "unit_size": 10
+  },
+  "temperature": 1250,
+  "time": 74
+}

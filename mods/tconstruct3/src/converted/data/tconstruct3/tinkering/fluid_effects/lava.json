@@ -1,0 +1,41 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "block_effects": [
+    {
+      "type": "tconstruct3:place_block",
+      "block": "minecraft:fire",
+      "sound": "minecraft:item.firecharge.use"
+    }
+  ],
+  "entity_effects": [
+    {
+      "type": "tconstruct3:conditional",
+      "effect": {
+        "type": "tconstruct3:damage",
+        "damage": 1.0,
+        "damage_type": {
+          "melee": "tconstruct3:fluid_fire_melee",
+          "ranged": "tconstruct3:fluid_fire_ranged"
+        }
+      },
+      "target": {
+        "type": "mantle:inverted",
+        "inverted_type": "mantle:fire_immune"
+      }
+    },
+    {
+      "type": "tconstruct3:fire",
+      "action": "add",
+      "time": 4
+    }
+  ],
+  "fluid": {
+    "amount": 50,
+    "fluid": "minecraft:lava"
+  }
+}

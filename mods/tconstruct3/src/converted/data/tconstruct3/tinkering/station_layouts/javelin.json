@@ -1,0 +1,61 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "icon": {
+    "id": "tconstruct3:javelin",
+    "components": {
+      "tconstruct3:display": true,
+      "tconstruct3:materials": [
+        "tconstruct3:ui_render#head",
+        "tconstruct3:ui_render#handle",
+        "tconstruct3:ui_render#extra",
+        "tconstruct3:ui_render#large",
+        "tconstruct3:ui_render#extra_large"
+      ]
+    }
+  },
+  "input_slots": [
+    {
+      "filter": {
+        "item": "tconstruct3:small_blade"
+      },
+      "icon": "tconstruct3:small_blade",
+      "translation_key": "item.tconstruct3.small_blade",
+      "x": 45,
+      "y": 26
+    },
+    {
+      "filter": {
+        "item": "tconstruct3:tool_handle"
+      },
+      "icon": "tconstruct3:tool_handle",
+      "translation_key": "item.tconstruct3.tool_handle",
+      "x": 7,
+      "y": 62
+    },
+    {
+      "filter": {
+        "item": "tconstruct3:bow_limb"
+      },
+      "icon": "tconstruct3:bow_limb",
+      "translation_key": "item.tconstruct3.bow_limb",
+      "x": 45,
+      "y": 46
+    },
+    {
+      "filter": {
+        "item": "tconstruct3:bow_grip"
+      },
+      "icon": "tconstruct3:bow_grip",
+      "translation_key": "item.tconstruct3.bow_grip",
+      "x": 25,
+      "y": 46
+    }
+  ],
+  "sortIndex": 14,
+  "translation_key": "item.tconstruct3.javelin"
+}

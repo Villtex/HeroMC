@@ -1,0 +1,51 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "condition": {
+    "type": "neoforge:or",
+    "values": [
+      {
+        "type": "tconstruct3:config",
+        "prop": "force_integration_materials"
+      },
+      {
+        "type": "mantle:tag_filled",
+        "tag": "c:ingots/nicrosil"
+      },
+      {
+        "type": "neoforge:and",
+        "values": [
+          {
+            "type": "tconstruct3:config",
+            "prop": "allow_ingotless_alloys"
+          },
+          {
+            "type": "neoforge:or",
+            "values": [
+              {
+                "type": "mantle:tag_filled",
+                "tag": "c:ingots/tin"
+              },
+              {
+                "type": "mantle:tag_filled",
+                "tag": "c:ingots/nickel"
+              },
+              {
+                "type": "mantle:tag_filled",
+                "tag": "c:ingots/chromium"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "craftable": false,
+  "hidden": false,
+  "sortOrder": 7,
+  "tier": 4
+}

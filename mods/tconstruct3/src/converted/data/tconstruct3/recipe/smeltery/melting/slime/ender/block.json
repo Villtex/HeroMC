@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": "tconstruct3:ender_slime",
+  "result": {
+    "amount": 2250,
+    "fluid": "tconstruct3:ender_slime"
+  },
+  "temperature": 70,
+  "time": 95
+}

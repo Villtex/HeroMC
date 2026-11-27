@@ -1,0 +1,36 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "redirect": [
+    {
+      "condition": {
+        "type": "mantle:tag_filled",
+        "tag": "c:ingots/lead"
+      },
+      "id": "tconstruct3:lead"
+    },
+    {
+      "condition": {
+        "type": "neoforge:or",
+        "values": [
+          {
+            "type": "mantle:tag_filled",
+            "tag": "c:ingots/invar"
+          },
+          {
+            "type": "mantle:tag_filled",
+            "tag": "c:ingots/nickel"
+          }
+        ]
+      },
+      "id": "tconstruct3:invar"
+    },
+    {
+      "id": "tconstruct3:iron"
+    }
+  ]
+}

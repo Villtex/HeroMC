@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:modifier",
+  "allow_crystal": true,
+  "inputs": [
+    "minecraft:piston",
+    "#c:ingots/amethyst_bronze",
+    "minecraft:piston",
+    "#c:slime_balls/ichor",
+    "#c:slime_balls/ichor"
+  ],
+  "result": "tconstruct3:expanded",
+  "slots": {
+    "abilities": 1
+  },
+  "tools": "#tconstruct3:modifiable/aoe"
+}

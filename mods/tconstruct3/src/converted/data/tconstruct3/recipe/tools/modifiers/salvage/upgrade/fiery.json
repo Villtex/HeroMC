@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:modifier_salvage",
+  "modifier": "tconstruct3:fiery",
+  "slots": {
+    "upgrades": 1
+  },
+  "tools": [
+    "#tconstruct3:modifiable/melee",
+    "#tconstruct3:modifiable/ranged/bows",
+    "#tconstruct3:modifiable/fishing_rods",
+    "#tconstruct3:modifiable/armor/worn",
+    "#tconstruct3:modifiable/shields"
+  ]
+}

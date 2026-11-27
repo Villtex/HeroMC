@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "tconstruct3:knightslime_ingot",
+  "ingredients": "tconstruct3:knightslime_block",
+  "result": {
+    "id": "tconstruct3:knightslime_ingot",
+    "count": 9
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:tool_building",
+  "result": "tconstruct3:plate_leggings",
+  "result_count": 1,
+  "slot_layout": "tconstruct3:plate_armor"
+}

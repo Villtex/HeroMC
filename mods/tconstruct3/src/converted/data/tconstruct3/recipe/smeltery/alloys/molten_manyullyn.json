@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:alloy",
+  "inputs": [
+    {
+      "amount": 270,
+      "tag": "c:molten_cobalt"
+    },
+    {
+      "amount": 90,
+      "tag": "tconstruct3:molten_debris"
+    }
+  ],
+  "result": {
+    "amount": 360,
+    "tag": "c:molten_manyullyn"
+  },
+  "temperature": 1200
+}

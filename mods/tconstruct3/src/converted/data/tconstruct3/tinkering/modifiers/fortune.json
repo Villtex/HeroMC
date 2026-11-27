@@ -1,0 +1,59 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:constant_enchantment",
+      "level": 1,
+      "name": "minecraft:fortune",
+      "tool": {
+        "neoforge:ingredient_type": "mantle:tag",
+        "tag": "tconstruct3:modifiable/harvest"
+      }
+    },
+    {
+      "type": "tconstruct3:armor_harvest_enchantment",
+      "level": 1,
+      "name": "minecraft:fortune",
+      "slots": [
+        "feet",
+        "legs",
+        "chest",
+        "head"
+      ],
+      "tool": {
+        "neoforge:ingredient_type": "mantle:tag",
+        "tag": "tconstruct3:modifiable/armor/worn"
+      }
+    },
+    {
+      "type": "tconstruct3:stat_boost",
+      "each_level": 1.0,
+      "operation": "add",
+      "stat": "tconstruct3:sea_luck"
+    },
+    {
+      "type": "tconstruct3:attribute",
+      "attribute": "minecraft:generic.luck",
+      "each_level": 1.0,
+      "operation": "addition",
+      "slots": [
+        "mainhand",
+        "offhand",
+        "feet",
+        "legs",
+        "chest",
+        "head"
+      ],
+      "tool": {
+        "neoforge:ingredient_type": "mantle:tag",
+        "tag": "tconstruct3:modifiable/armor/worn"
+      }
+    }
+  ]
+}

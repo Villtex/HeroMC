@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "tconstruct3:config",
+      "prop": "slimy_loot_chests"
+    }
+  ],
+  "name": "minecraft:chests/bastion_bridge",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "tconstruct3:blood_slime_sapling"
+        }
+      ],
+      "name": "main"
+    }
+  ]
+}

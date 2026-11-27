@@ -1,0 +1,62 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "modules": [
+    {
+      "type": "tconstruct3:part_stats",
+      "parts": [
+        "tconstruct3:bow_limb",
+        "tconstruct3:bow_limb",
+        "tconstruct3:bow_grip",
+        "tconstruct3:bowstring"
+      ],
+      "primary_part": 0
+    },
+    {
+      "type": "tconstruct3:default_materials",
+      "materials": [
+        {
+          "type": "tconstruct3:random",
+          "tier": 1
+        },
+        {
+          "type": "tconstruct3:random",
+          "tier": 1
+        },
+        {
+          "type": "tconstruct3:random",
+          "tier": 1
+        },
+        {
+          "type": "tconstruct3:random",
+          "tier": 1
+        }
+      ]
+    },
+    {
+      "type": "tconstruct3:base_stats",
+      "stats": {
+        "tconstruct3:attack_damage": 0.0,
+        "tconstruct3:attack_speed": 1.0,
+        "tconstruct3:durability": 120.0
+      }
+    },
+    {
+      "type": "tconstruct3:multiply_stats",
+      "multipliers": {
+        "tconstruct3:durability": 1.5
+      }
+    },
+    {
+      "type": "tconstruct3:modifier_slots",
+      "slots": {
+        "abilities": 1,
+        "upgrades": 2
+      }
+    }
+  ]
+}

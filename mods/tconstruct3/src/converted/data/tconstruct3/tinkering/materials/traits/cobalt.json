@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "default": [
+    {
+      "level": 1,
+      "name": "tconstruct3:lightweight"
+    }
+  ],
+  "perStat": {
+    "tconstruct3:armor": [
+      {
+        "level": 1,
+        "name": "tconstruct3:melee_protection"
+      }
+    ]
+  }
+}

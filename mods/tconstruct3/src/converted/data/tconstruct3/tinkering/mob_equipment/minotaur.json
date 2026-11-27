@@ -1,0 +1,30 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "twilightforest"
+    }
+  ],
+  "entity": "twilightforest:minotaur",
+  "equip": {
+    "chance": 0.05,
+    "materials": [
+      {
+        "type": "tconstruct3:ancient"
+      },
+      {
+        "type": "tconstruct3:ancient"
+      },
+      {
+        "type": "tconstruct3:ancient"
+      }
+    ],
+    "priority": 100,
+    "slot": "mainhand",
+    "tool": "tconstruct3:minotaur_axe"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "tconstruct3:hepatizon_ingot",
+  "ingredients": "tconstruct3:hepatizon_block",
+  "result": {
+    "id": "tconstruct3:hepatizon_ingot",
+    "count": 9
+  }
+}

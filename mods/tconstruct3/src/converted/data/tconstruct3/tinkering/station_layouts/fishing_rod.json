@@ -1,0 +1,52 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "icon": {
+    "id": "tconstruct3:fishing_rod",
+    "components": {
+      "tconstruct3:display": true,
+      "tconstruct3:materials": [
+        "tconstruct3:ui_render#head",
+        "tconstruct3:ui_render#handle",
+        "tconstruct3:ui_render#extra",
+        "tconstruct3:ui_render#large",
+        "tconstruct3:ui_render#extra_large"
+      ]
+    }
+  },
+  "input_slots": [
+    {
+      "filter": {
+        "item": "tconstruct3:bow_limb"
+      },
+      "icon": "tconstruct3:bow_limb",
+      "translation_key": "item.tconstruct3.bow_limb",
+      "x": 28,
+      "y": 38
+    },
+    {
+      "filter": {
+        "item": "tconstruct3:bowstring"
+      },
+      "icon": "tconstruct3:bowstring",
+      "translation_key": "item.tconstruct3.bowstring",
+      "x": 50,
+      "y": 38
+    },
+    {
+      "filter": {
+        "item": "tconstruct3:arrow_head"
+      },
+      "icon": "tconstruct3:arrow_head",
+      "translation_key": "item.tconstruct3.arrow_head",
+      "x": 50,
+      "y": 58
+    }
+  ],
+  "sortIndex": 8,
+  "translation_key": "item.tconstruct3.fishing_rod"
+}

@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material_fluid",
+  "fluid": {
+    "amount": 250,
+    "tag": "c:slime"
+  },
+  "input": "tconstruct3:wood",
+  "output": "tconstruct3:slimewood#composite",
+  "temperature": 50
+}

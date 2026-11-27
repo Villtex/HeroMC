@@ -1,0 +1,32 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:rock",
+    "tconstruct3:copper",
+    "tconstruct3:seared_stone",
+    "tconstruct3:whitestone",
+    "tconstruct3:skyslime_vine",
+    "tconstruct3:twisting_vine",
+    "tconstruct3:amethyst_bronze",
+    "tconstruct3:hepatizon",
+    "tconstruct3:jeweled_hide",
+    "tconstruct3:knightslime",
+    {
+      "id": "tconstruct3:lead",
+      "required": false
+    },
+    {
+      "id": "tconstruct3:bronze",
+      "required": false
+    },
+    {
+      "id": "tconstruct3:constantan",
+      "required": false
+    }
+  ]
+}

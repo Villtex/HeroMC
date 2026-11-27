@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "byproducts": [
+    {
+      "amount": 800,
+      "fluid": "tconstruct3:ichor"
+    }
+  ],
+  "ingredient": "tconstruct3:ichor_congealed_slime",
+  "result": {
+    "amount": 40,
+    "fluid": "tconstruct3:blazing_blood"
+  },
+  "temperature": 1500,
+  "time": 160
+}

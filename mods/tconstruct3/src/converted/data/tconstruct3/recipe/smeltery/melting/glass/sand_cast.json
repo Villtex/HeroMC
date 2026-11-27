@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": [
+    "tconstruct3:blank_sand_cast",
+    "tconstruct3:blank_red_sand_cast"
+  ],
+  "result": {
+    "amount": 250,
+    "fluid": "tconstruct3:molten_glass"
+  },
+  "temperature": 750,
+  "time": 44
+}

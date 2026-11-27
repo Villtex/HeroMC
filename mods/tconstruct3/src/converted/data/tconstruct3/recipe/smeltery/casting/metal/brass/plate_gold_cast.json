@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:plates/brass"
+    }
+  ],
+  "type": "tconstruct3:casting_table",
+  "cast": "#tconstruct3:casts/multi_use/plate",
+  "cooling_time": 54,
+  "fluid": {
+    "amount": 90,
+    "tag": "c:molten_brass"
+  },
+  "result": {
+    "tag": "c:plates/brass"
+  }
+}

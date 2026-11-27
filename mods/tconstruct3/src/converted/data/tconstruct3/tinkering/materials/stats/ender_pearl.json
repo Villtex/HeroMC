@@ -1,0 +1,18 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "stats": {
+    "tconstruct3:arrow_head": {},
+    "tconstruct3:skull": {
+      "durability": 250
+    },
+    "tconstruct3:slime": {
+      "durability": 250,
+      "overslime_capacity": 0
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": "#c:glass_blocks/silica",
+  "result": {
+    "amount": 1000,
+    "fluid": "tconstruct3:molten_glass"
+  },
+  "temperature": 750,
+  "time": 59
+}

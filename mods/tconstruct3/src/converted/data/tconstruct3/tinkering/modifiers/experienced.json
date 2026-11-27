@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:volatile_float",
+      "each_level": 0.5,
+      "flag": "tconstruct3:experience",
+      "hooks": [
+        "tconstruct3:volatile_data",
+        "tconstruct3:projectile_launch"
+      ]
+    },
+    {
+      "type": "tconstruct3:attribute",
+      "attribute": "tconstruct3:player.experience_multiplier",
+      "each_level": 0.25,
+      "operation": "multiply_base",
+      "slots": [
+        "mainhand",
+        "offhand",
+        "feet",
+        "legs",
+        "chest",
+        "head"
+      ],
+      "tool": {
+        "neoforge:ingredient_type": "mantle:tag",
+        "tag": "tconstruct3:modifiable/armor"
+      }
+    }
+  ]
+}

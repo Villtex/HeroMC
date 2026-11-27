@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": {
+    "type": "tconstruct3:unique",
+    "first_unique": false,
+    "unique_until": 4
+  },
+  "modules": [
+    {
+      "type": "tconstruct3:attribute",
+      "attribute": "tconstruct3:player.jump_count",
+      "each_level": 1.0,
+      "operation": "addition",
+      "slots": [
+        "feet",
+        "legs",
+        "chest",
+        "head"
+      ],
+      "tooltip_style": "none"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "neoforge:or",
+      "values": [
+        {
+          "type": "tconstruct3:config",
+          "prop": "force_integration_materials"
+        },
+        {
+          "type": "mantle:tag_filled",
+          "tag": "c:ingots/uranium"
+        }
+      ]
+    }
+  ],
+  "type": "tconstruct3:material",
+  "ingredient": "tconstruct3:necronium_bone",
+  "material": "tconstruct3:necronium",
+  "needed": 1,
+  "value": 1
+}

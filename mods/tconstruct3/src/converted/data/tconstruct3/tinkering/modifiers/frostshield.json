@@ -1,0 +1,37 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:single_level",
+  "modules": [
+    {
+      "type": "tconstruct3:capacity_bar",
+      "each_level": 100,
+      "multiplier": "tconstruct3:durability"
+    },
+    {
+      "type": "tconstruct3:durability_shield",
+      "cause": {
+        "type": "mantle:inverted",
+        "inverted_type": "tconstruct3:tag",
+        "tag": "tconstruct3:durability/bypass_frostshield"
+      },
+      "color": "AAFFFF"
+    },
+    {
+      "type": "tconstruct3:damage_to_capacity",
+      "multiplier": {
+        "flat": 1.0
+      },
+      "reduce_damage": true,
+      "source": {
+        "type": "mantle:tag",
+        "tag": "minecraft:is_freezing"
+      }
+    }
+  ],
+  "priority": 175
+}

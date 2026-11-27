@@ -1,0 +1,41 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "block_effects": [
+    {
+      "type": "tconstruct3:mob_effect_cloud",
+      "effects": [
+        {
+          "effect": "tconstruct3:pierce",
+          "level": 2,
+          "time": 100
+        }
+      ]
+    }
+  ],
+  "entity_effects": [
+    {
+      "type": "tconstruct3:damage",
+      "damage": 3.0,
+      "damage_type": {
+        "melee": "tconstruct3:fluid_spike_melee",
+        "ranged": "tconstruct3:fluid_spike_ranged"
+      }
+    },
+    {
+      "type": "tconstruct3:mob_effect",
+      "action": "set",
+      "effect": "tconstruct3:pierce",
+      "level": 2,
+      "time": 100
+    }
+  ],
+  "fluid": {
+    "amount": 10,
+    "tag": "tconstruct3:molten_knightmetal"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:crafting_shaped_materials",
+  "category": "equipment",
+  "key": {
+    "c": [
+      {
+        "neoforge:ingredient_type": "tconstruct3:material_value",
+        "material": {
+          "type": "mantle:and",
+          "predicates": [
+            {
+              "type": "mantle:or",
+              "predicates": [
+                "tconstruct3:castable",
+                "tconstruct3:composite"
+              ]
+            },
+            {
+              "type": "tconstruct3:stat_type",
+              "stat_type": "tconstruct3:plating_chestplate"
+            }
+          ]
+        },
+        "value": 1.0
+      },
+      {
+        "neoforge:ingredient_type": "tconstruct3:material",
+        "item": "tconstruct3:fake_ingot",
+        "material": {
+          "type": "tconstruct3:stat_type",
+          "stat_type": "tconstruct3:plating_chestplate"
+        }
+      }
+    ],
+    "l": {
+      "neoforge:ingredient_type": "tconstruct3:material_value",
+      "material": {
+        "type": "tconstruct3:stat_type",
+        "stat_type": "tconstruct3:cuirass"
+      },
+      "value": 1.0
+    },
+    "s": "#c:strings"
+  },
+  "parts": "cl",
+  "pattern": [
+    "lsl",
+    "lcl",
+    "lcl"
+  ],
+  "result": {
+    "id": "tconstruct3:travelers_chestplate"
+  },
+  "show_notification": true
+}

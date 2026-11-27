@@ -1,0 +1,29 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "entity": [
+    "minecraft:zombie_villager",
+    "minecraft:vindicator"
+  ],
+  "equip": {
+    "chance": 0.05,
+    "materials": [
+      {
+        "type": "tconstruct3:ancient"
+      },
+      {
+        "type": "tconstruct3:ancient"
+      },
+      {
+        "type": "tconstruct3:ancient"
+      }
+    ],
+    "priority": 100,
+    "slot": "mainhand",
+    "tool": "tconstruct3:war_pick"
+  }
+}

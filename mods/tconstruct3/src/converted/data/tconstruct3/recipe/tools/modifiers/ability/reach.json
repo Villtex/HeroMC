@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:modifier",
+  "allow_crystal": true,
+  "inputs": [
+    "minecraft:piston",
+    "#c:ingots/queens_slime",
+    "minecraft:piston",
+    "#c:slime_balls/ender",
+    "#c:slime_balls/ender"
+  ],
+  "level": {
+    "max": 2
+  },
+  "result": "tconstruct3:reach",
+  "slots": {
+    "abilities": 1
+  },
+  "tools": "#tconstruct3:modifiable/armor/chestplate"
+}

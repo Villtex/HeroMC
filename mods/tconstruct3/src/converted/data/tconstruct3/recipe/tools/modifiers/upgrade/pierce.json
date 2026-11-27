@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:incremental_modifier",
+  "allow_crystal": true,
+  "amount_per_item": 1,
+  "input": "tconstruct3:punji",
+  "level": {
+    "max": 3
+  },
+  "needed_per_level": 10,
+  "result": "tconstruct3:pierce",
+  "slots": {
+    "upgrades": 1
+  },
+  "tools": [
+    "#tconstruct3:modifiable/melee",
+    "#tconstruct3:modifiable/ranged/launcher"
+  ]
+}

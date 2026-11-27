@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "default": [
+    {
+      "level": 1,
+      "name": "tconstruct3:overgrowth"
+    },
+    {
+      "level": 1,
+      "name": "tconstruct3:overslime"
+    }
+  ],
+  "perStat": {
+    "tconstruct3:ammo": [
+      {
+        "level": 2,
+        "name": "tconstruct3:bounce"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "tconstruct3:seared_bricks",
+    "C": "#c:chests/wooden",
+    "b": "tconstruct3:seared_brick",
+    "c": "#tconstruct3:casts/gold"
+  },
+  "pattern": [
+    " c ",
+    "bCb",
+    "bBb"
+  ],
+  "result": {
+    "id": "tconstruct3:cast_chest"
+  },
+  "show_notification": true
+}

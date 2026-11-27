@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "minecraft:flint",
+    [
+      "tconstruct3:seared_brick",
+      "tconstruct3:scorched_brick"
+    ]
+  ],
+  "result": {
+    "id": "tconstruct3:flint_and_brick"
+  }
+}

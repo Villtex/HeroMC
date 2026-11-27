@@ -1,0 +1,48 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "parent": "tconstruct3:tools/tinker_tool",
+  "criteria": {
+    "damage": {
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "tconstruct3:tool_stack": {
+                "type": "tconstruct3:stat_in_range",
+                "min": 20.0,
+                "stat": "tconstruct3:attack_damage"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.tconstruct3.tools.one_shot.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "minecraft:zombie_head"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tconstruct3.tools.one_shot.title"
+    }
+  },
+  "requirements": [
+    [
+      "damage"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,49 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:single_level",
+  "modules": [
+    {
+      "type": "tconstruct3:trait",
+      "fixed_level": true,
+      "level": 1,
+      "name": "tconstruct3:edible"
+    },
+    {
+      "type": "tconstruct3:edible_representative_item",
+      "representative_item": "tconstruct3:cheese_ingot"
+    },
+    {
+      "type": "tconstruct3:edible_consume_durability",
+      "durability_usage": {
+        "each_level": 4,
+        "flat": 4
+      }
+    },
+    {
+      "type": "tconstruct3:edible_cure_random_effect"
+    },
+    {
+      "type": "tconstruct3:stat_boost",
+      "each_level": 1.0,
+      "operation": "add",
+      "stat": "tconstruct3:hunger"
+    },
+    {
+      "type": "tconstruct3:stat_boost",
+      "flat": 0.4,
+      "operation": "add",
+      "stat": "tconstruct3:saturation"
+    },
+    {
+      "type": "tconstruct3:stat_boost",
+      "each_level": 0.15,
+      "operation": "add",
+      "stat": "tconstruct3:edible_counter_chance"
+    }
+  ]
+}

@@ -104,6 +104,38 @@ side="BOTH"
         sourceSets.main.resources.srcDir(importOriginalAssets.flatMap { it.outputDir })
     }
 
+    // Assets of a mod taken from its release tag on GitHub (Teil 27: Mantle, Tinkers' Construct 3.12.1), see
+    // ImportTagAssets: tag_assets_url/_ref/_dir (clone in .reference/tc3/<dir>), _folders (comma list) and
+    // _namespace (the original mod ID, renamed to mod_id on the way)
+    if (findProperty('tag_assets_url')) {
+        def importTagAssets = tasks.register('importTagAssets', hexxit.ImportTagAssets) {
+            url = tag_assets_url
+            ref = tag_assets_ref
+            folders = tag_assets_folders.tokenize(',')*.trim()
+            fromNamespace = tag_assets_namespace
+            toNamespace = mod_id
+            cloneDir = rootProject.file(".reference/tc3/${tag_assets_dir}")
+            outputDir = layout.buildDirectory.dir('generated/tag-assets')
+        }
+        sourceSets.main.resources.srcDir(importTagAssets.flatMap { it.outputDir })
+    }
+
+    // Data converted from a newer original (Teil 27, mods/tconstruct3/tools/convert_data.py writes src/converted/):
+    // only the paths listed in data-enabled.txt (prefixes such as data/tconstruct3/tinkering/materials/, one per
+    // line, # comments) go into the jar, so data whose loaders and registry entries are not ported yet stays out.
+    if (file('src/converted').isDirectory()) {
+        def enabled = file('data-enabled.txt').exists()
+                ? file('data-enabled.txt').readLines()*.trim().findAll { it && !it.startsWith('#') } : []
+        def convertedData = tasks.register('convertedData', Sync) {
+            inputs.property('enabled', enabled)
+            from('src/converted') {
+                include(enabled.isEmpty() ? ['nothing-enabled'] : enabled.collect { it.endsWith('/') ? it + '**' : it })
+            }
+            into layout.buildDirectory.dir('generated/converted-data')
+        }
+        sourceSets.main.resources.srcDir(convertedData.map { it.destinationDir })
+    }
+
     // neoforge.mods.toml is generated from one shared template + the mod's gradle.properties.
     def metadata = [
             mod_id           : mod_id,

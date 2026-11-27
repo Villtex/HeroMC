@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_basin",
+  "cast": "#minecraft:planks",
+  "cast_consumed": true,
+  "cooling_time": 111,
+  "fluid": {
+    "amount": 250,
+    "tag": "tconstruct3:molten_obsidian"
+  },
+  "result": "tconstruct3:nahuatl"
+}

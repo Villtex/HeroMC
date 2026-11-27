@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:bulk_quiver",
+    "tconstruct3:trick_quiver",
+    "tconstruct3:crystalshot",
+    "tconstruct3:multishot",
+    "tconstruct3:ballista",
+    "tconstruct3:grapple",
+    "tconstruct3:channeling",
+    "tconstruct3:returning",
+    "tconstruct3:slimeball",
+    "tconstruct3:sliver"
+  ]
+}

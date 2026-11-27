@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:no_levels",
+  "modules": [
+    {
+      "type": "tconstruct3:block_damage",
+      "damage_source": {
+        "type": "mantle:tag",
+        "tag": "tconstruct3:rugged/terrain"
+      },
+      "hooks": [
+        "tconstruct3:damage_block"
+      ]
+    },
+    {
+      "type": "tconstruct3:block_damage",
+      "damage_source": {
+        "type": "mantle:tag",
+        "tag": "tconstruct3:rugged/attacks"
+      },
+      "hooks": [
+        "tconstruct3:damage_block"
+      ],
+      "modifier_level": {
+        "min": 2
+      }
+    },
+    {
+      "type": "tconstruct3:volatile_flag",
+      "flag": "tconstruct3:snow_boots"
+    }
+  ]
+}

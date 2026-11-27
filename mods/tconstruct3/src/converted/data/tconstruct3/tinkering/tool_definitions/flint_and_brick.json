@@ -1,0 +1,61 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "modules": [
+    {
+      "type": "tconstruct3:base_stats",
+      "stats": {
+        "tconstruct3:durability": 100.0
+      }
+    },
+    {
+      "type": "tconstruct3:modifier_slots",
+      "slots": {
+        "upgrades": 1
+      }
+    },
+    {
+      "type": "tconstruct3:traits",
+      "traits": [
+        {
+          "level": 1,
+          "name": "tconstruct3:firestarter"
+        },
+        {
+          "level": 1,
+          "name": "tconstruct3:fiery"
+        },
+        {
+          "level": 1,
+          "name": "tconstruct3:scorching"
+        }
+      ]
+    },
+    {
+      "type": "tconstruct3:traits",
+      "hooks": [
+        "tconstruct3:rebalanced_trait"
+      ],
+      "traits": [
+        {
+          "level": 1,
+          "name": "tconstruct3:scorching"
+        }
+      ]
+    },
+    {
+      "type": "tconstruct3:material_repair",
+      "material": "tconstruct3:seared_stone",
+      "stat_type": "tconstruct3:head"
+    },
+    {
+      "type": "tconstruct3:material_repair",
+      "material": "tconstruct3:scorched_stone",
+      "stat_type": "tconstruct3:head"
+    }
+  ]
+}

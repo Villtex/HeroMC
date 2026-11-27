@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:part_builder_tool_recycling",
+  "parts": [
+    "tconstruct3:small_blade",
+    "tconstruct3:tool_handle",
+    "tconstruct3:bow_grip"
+  ],
+  "pattern": "tconstruct3:venom_bottle",
+  "tools": "tconstruct3:swasher"
+}

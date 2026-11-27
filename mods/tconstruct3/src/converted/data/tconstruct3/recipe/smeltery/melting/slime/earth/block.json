@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": "minecraft:slime_block",
+  "result": {
+    "amount": 2250,
+    "tag": "c:slime"
+  },
+  "temperature": 50,
+  "time": 92
+}

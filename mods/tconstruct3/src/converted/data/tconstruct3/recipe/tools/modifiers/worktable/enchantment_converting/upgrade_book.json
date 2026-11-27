@@ -1,0 +1,33 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:enchantment_converting",
+  "inputs": [
+    "tconstruct3:sky_slime_crystal",
+    {
+      "amount_needed": 3,
+      "tag": "c:gems/lapis"
+    }
+  ],
+  "match_book": true,
+  "modifier_predicate": {
+    "type": "mantle:and",
+    "predicates": [
+      {
+        "type": "tconstruct3:slot_type",
+        "slot": "upgrades"
+      },
+      {
+        "type": "mantle:inverted",
+        "inverted_type": "tconstruct3:tag",
+        "tag": "tconstruct3:extract_blacklist/upgrade"
+      }
+    ]
+  },
+  "name": "upgrades",
+  "return_unenchanted": false
+}

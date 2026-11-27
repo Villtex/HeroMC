@@ -1,0 +1,14 @@
+{
+  "values": [
+    "tconstruct3:thrown_tool",
+    "tconstruct3:fishing_hook",
+    "tconstruct3:fluid_impact_ranged",
+    "tconstruct3:fluid_fire_ranged",
+    "tconstruct3:fluid_cold_ranged",
+    "tconstruct3:fluid_magic_ranged",
+    "tconstruct3:water_ranged",
+    "tconstruct3:fluid_spike_ranged",
+    "tconstruct3:explosion_ranged",
+    "tconstruct3:mob_explosion_ranged"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:bottles/lingering"
+    }
+  ],
+  "type": "mantle:empty_potion",
+  "amount": 250,
+  "input": "minecraft:lingering_potion",
+  "result": {
+    "tag": "c:bottles/lingering"
+  }
+}

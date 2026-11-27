@@ -1,0 +1,31 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:pluses",
+  "modules": [
+    {
+      "type": "tconstruct3:inventory",
+      "pattern": "tconstruct3:tool_belt",
+      "slots": {
+        "each_level": 1,
+        "flat": 3
+      }
+    },
+    {
+      "type": "tconstruct3:tool_belt",
+      "on_key": [
+        "normal",
+        "control"
+      ]
+    },
+    {
+      "type": "tconstruct3:inventory_menu",
+      "on_key": "shift"
+    }
+  ],
+  "priority": 85
+}

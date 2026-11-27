@@ -1,0 +1,43 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:flint",
+    "tconstruct3:bone",
+    "tconstruct3:chorus",
+    "tconstruct3:scorched_stone",
+    "tconstruct3:necrotic_bone",
+    "tconstruct3:venombone",
+    "tconstruct3:weeping_vine",
+    "tconstruct3:nahuatl",
+    "tconstruct3:steel",
+    "tconstruct3:darkthread",
+    "tconstruct3:manyullyn",
+    "tconstruct3:blazing_bone",
+    "tconstruct3:knightmetal",
+    {
+      "id": "tconstruct3:silver",
+      "required": false
+    },
+    {
+      "id": "tconstruct3:invar",
+      "required": false
+    },
+    {
+      "id": "tconstruct3:pewter",
+      "required": false
+    },
+    {
+      "id": "tconstruct3:necronium",
+      "required": false
+    },
+    {
+      "id": "tconstruct3:nicrosil",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "neoforge:or",
+      "values": [
+        {
+          "type": "tconstruct3:config",
+          "prop": "force_integration_materials"
+        },
+        {
+          "type": "mantle:tag_filled",
+          "tag": "c:ingots/electrum"
+        },
+        {
+          "type": "mantle:tag_filled",
+          "tag": "c:ingots/silver"
+        }
+      ]
+    }
+  ],
+  "block_effects": [
+    {
+      "type": "tconstruct3:mob_effect_cloud",
+      "effects": [
+        {
+          "effect": "minecraft:haste",
+          "level": 1,
+          "time": 160
+        }
+      ]
+    }
+  ],
+  "entity_effects": [
+    {
+      "type": "tconstruct3:damage",
+      "damage": 3.0,
+      "damage_type": {
+        "melee": "tconstruct3:fluid_magic_melee",
+        "ranged": "tconstruct3:fluid_magic_ranged"
+      }
+    },
+    {
+      "type": "tconstruct3:mob_effect",
+      "action": "set",
+      "effect": "minecraft:haste",
+      "level": 1,
+      "time": 160
+    }
+  ],
+  "fluid": {
+    "amount": 10,
+    "tag": "c:molten_electrum"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    {
+      "id": "tconstruct3:bronze",
+      "required": false
+    },
+    {
+      "id": "tconstruct3:constantan",
+      "required": false
+    },
+    {
+      "id": "tconstruct3:invar",
+      "required": false
+    },
+    {
+      "id": "tconstruct3:electrum",
+      "required": false
+    },
+    {
+      "id": "tconstruct3:pewter",
+      "required": false
+    },
+    {
+      "id": "tconstruct3:nicrosil",
+      "required": false
+    }
+  ]
+}

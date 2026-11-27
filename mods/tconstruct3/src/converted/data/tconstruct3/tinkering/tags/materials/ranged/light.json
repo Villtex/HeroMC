@@ -1,0 +1,39 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:bamboo",
+    "tconstruct3:bone",
+    "tconstruct3:venombone",
+    "tconstruct3:twisting_vine",
+    "tconstruct3:nahuatl",
+    "tconstruct3:rose_gold",
+    "tconstruct3:hepatizon",
+    "tconstruct3:queens_slime",
+    "tconstruct3:knightslime",
+    {
+      "id": "tconstruct3:aluminum",
+      "required": false
+    },
+    {
+      "id": "tconstruct3:necronium",
+      "required": false
+    },
+    {
+      "id": "tconstruct3:constantan",
+      "required": false
+    },
+    {
+      "id": "tconstruct3:plated_slimewood",
+      "required": false
+    },
+    {
+      "id": "tconstruct3:nicrosil",
+      "required": false
+    }
+  ]
+}

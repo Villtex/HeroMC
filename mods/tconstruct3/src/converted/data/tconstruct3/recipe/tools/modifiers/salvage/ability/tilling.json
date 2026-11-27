@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:modifier_salvage",
+  "modifier": "tconstruct3:tilling",
+  "slots": {
+    "abilities": 1
+  },
+  "tools": {
+    "neoforge:ingredient_type": "neoforge:intersection",
+    "children": [
+      "#tconstruct3:modifiable/durability",
+      [
+        "#tconstruct3:modifiable/interactable",
+        "#tconstruct3:modifiable/armor/boots"
+      ]
+    ]
+  }
+}

@@ -1,5 +1,10 @@
 # Tinkers' Construct – offen nach Teil 25f (Port abgeschlossen)
 
+**Teil 27a:** 1.4.3 gilt nur noch in Hexxit Legacy (Integrated bekommt Tinkers 3.12.1, `mods/tconstruct3`). Rezepte und
+Entity-Beute tragen `worldgen152:world_type` `legacy:true` (`tools/legacy_condition.py`). `tools/gen.py` ist hinter den
+Handänderungen aus 26b/26e zurück (c:-Tags, Integrated-Features, Rezepte über Tags): nicht neu laufen lassen, ohne es
+vorher nachzuziehen.
+
 Stand nach 25a (Werkzeug-Kern) und 25b (Werkzeuge im Einsatz, Darstellung). Was die nächsten Unterteile brauchen oder nachholen müssen.
 
 ## Nach 25b – kleine Abweichungen und Offenes

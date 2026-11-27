@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:storage_blocks/dawnstone"
+    },
+    {
+      "type": "mantle:tag_filled",
+      "registry": "minecraft:fluid",
+      "tag": "c:molten_dawnstone"
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": "#c:storage_blocks/dawnstone",
+  "result": {
+    "amount": 810,
+    "tag": "c:molten_dawnstone"
+  },
+  "temperature": 900,
+  "time": 190
+}

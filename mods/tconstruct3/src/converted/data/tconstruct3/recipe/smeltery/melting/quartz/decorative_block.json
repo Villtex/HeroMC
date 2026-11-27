@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": [
+    "minecraft:smooth_quartz",
+    "minecraft:quartz_pillar",
+    "minecraft:quartz_bricks",
+    "minecraft:chiseled_quartz_block",
+    "minecraft:quartz_stairs",
+    "minecraft:smooth_quartz_stairs"
+  ],
+  "result": {
+    "amount": 400,
+    "fluid": "tconstruct3:molten_quartz"
+  },
+  "temperature": 637,
+  "time": 110
+}

@@ -1,0 +1,35 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:no_levels",
+  "modules": [
+    {
+      "type": "tconstruct3:tool_actions",
+      "tool_actions": [
+        "item_hook"
+      ]
+    },
+    {
+      "type": "tconstruct3:requirements",
+      "display_modifiers": [
+        {
+          "level": 1,
+          "name": "tconstruct3:fishing"
+        }
+      ],
+      "requirement": {
+        "type": "tconstruct3:has_modifier",
+        "check": "all",
+        "modifier": {
+          "type": "tconstruct3:single",
+          "modifier": "tconstruct3:fishing"
+        }
+      },
+      "translation_key": "modifier.tconstruct3.collecting.requirements"
+    }
+  ]
+}

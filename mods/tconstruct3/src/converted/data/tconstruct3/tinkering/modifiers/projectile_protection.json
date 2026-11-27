@@ -1,0 +1,33 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:max_armor_attribute",
+      "allow_broken": false,
+      "attribute": "minecraft:generic.knockback_resistance",
+      "each_level": 0.05,
+      "held_tag": "tconstruct3:modifiable/held",
+      "operation": "addition"
+    },
+    {
+      "type": "tconstruct3:protection",
+      "damage_source": {
+        "type": "mantle:and",
+        "predicates": [
+          "mantle:can_protect",
+          {
+            "type": "mantle:tag",
+            "tag": "tconstruct3:protection/projectile"
+          }
+        ]
+      },
+      "each_level": 2.0
+    }
+  ]
+}

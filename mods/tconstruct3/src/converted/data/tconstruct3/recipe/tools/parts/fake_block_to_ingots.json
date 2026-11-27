@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:crafting_shapeless_materials",
+  "category": "misc",
+  "ingredients": {
+    "neoforge:ingredient_type": "tconstruct3:material",
+    "item": "tconstruct3:fake_storage_block",
+    "material": {
+      "type": "tconstruct3:has_part",
+      "part": "tconstruct3:fake_ingot"
+    }
+  },
+  "parts": 1,
+  "result": {
+    "id": "tconstruct3:fake_ingot",
+    "count": 9
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "B": "#tconstruct3:seared_bricks",
+    "b": "tconstruct3:seared_brick"
+  },
+  "pattern": [
+    "b b",
+    "b b",
+    "BBB"
+  ],
+  "result": {
+    "id": "tconstruct3:seared_ladder",
+    "count": 4
+  },
+  "show_notification": true
+}

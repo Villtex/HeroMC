@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": [
+    "#c:ender_pearls",
+    "minecraft:ender_eye"
+  ],
+  "result": {
+    "amount": 250,
+    "tag": "c:ender"
+  },
+  "temperature": 477,
+  "time": 49
+}

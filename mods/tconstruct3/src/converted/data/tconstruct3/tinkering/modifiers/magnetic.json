@@ -1,0 +1,31 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:tool_usage_mob_effect",
+      "effect": "tconstruct3:magnetic",
+      "level": {
+        "flat": 1.0
+      },
+      "time": {
+        "flat": 40.0
+      }
+    },
+    {
+      "type": "tconstruct3:volatile_int",
+      "each_level": 1,
+      "flag": "tconstruct3:magnet"
+    },
+    {
+      "type": "tconstruct3:armor_level",
+      "allow_broken": false,
+      "key": "tconstruct3:magnet"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:no_levels",
+  "modules": [
+    {
+      "type": "tconstruct3:modifier_slot",
+      "flat": 1,
+      "name": "upgrades"
+    },
+    {
+      "type": "tconstruct3:modifier_slot",
+      "flat": 1,
+      "name": "upgrades",
+      "tool": {
+        "neoforge:ingredient_type": "mantle:inverted",
+        "inverted_type": "mantle:set",
+        "items": [
+          "tconstruct3:slime_wings"
+        ]
+      }
+    },
+    {
+      "type": "tconstruct3:modifier_slot",
+      "flat": -1,
+      "name": "abilities",
+      "tool": {
+        "neoforge:ingredient_type": "mantle:inverted",
+        "inverted_type": "mantle:set",
+        "items": [
+          "tconstruct3:slime_wings"
+        ]
+      }
+    },
+    {
+      "type": "tconstruct3:trait",
+      "fixed_level": true,
+      "level": 1,
+      "name": "tconstruct3:pocket",
+      "tool": {
+        "neoforge:ingredient_type": "mantle:set",
+        "items": [
+          "tconstruct3:slime_leggings"
+        ]
+      }
+    }
+  ]
+}

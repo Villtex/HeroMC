@@ -1,0 +1,18 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_table",
+  "cast": "#tconstruct3:casts/multi_use/gem",
+  "cooling_time": 58,
+  "fluid": {
+    "amount": 100,
+    "tag": "tconstruct3:molten_quartz"
+  },
+  "result": {
+    "tag": "c:gems/quartz"
+  }
+}

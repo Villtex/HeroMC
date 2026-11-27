@@ -1,0 +1,12 @@
+{
+  "values": [
+    "#tconstruct3:is_melee",
+    "tconstruct3:piercing",
+    "tconstruct3:fluid_fire_melee",
+    "tconstruct3:fluid_cold_melee",
+    "tconstruct3:fluid_magic_melee",
+    "tconstruct3:water_melee",
+    "tconstruct3:explosion_melee",
+    "tconstruct3:mob_explosion_melee"
+  ]
+}

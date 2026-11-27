@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "neoforge:registered",
+      "value": "twilightforest:steeleaf_chestplate"
+    }
+  ],
+  "type": "tconstruct3:damagable_melting",
+  "ingredient": "twilightforest:steeleaf_chestplate",
+  "result": {
+    "amount": 720,
+    "fluid": "tconstruct3:molten_steeleaf",
+    "unit_size": 10
+  },
+  "temperature": 934,
+  "time": 182
+}

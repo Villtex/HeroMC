@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": "#c:ingots/queens_slime",
+  "result": {
+    "amount": 90,
+    "fluid": "tconstruct3:molten_queens_slime"
+  },
+  "temperature": 1150,
+  "time": 71
+}

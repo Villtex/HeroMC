@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "mantle:crafting_shaped_retextured",
+  "category": "misc",
+  "key": {
+    "p": "tconstruct3:pattern",
+    "w": "#tconstruct3:planklike"
+  },
+  "match_all": true,
+  "pattern": [
+    "pp",
+    "ww"
+  ],
+  "result": {
+    "id": "tconstruct3:part_builder"
+  },
+  "show_notification": true,
+  "texture": "w"
+}

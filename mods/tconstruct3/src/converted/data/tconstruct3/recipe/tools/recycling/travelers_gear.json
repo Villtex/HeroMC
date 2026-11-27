@@ -1,0 +1,30 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:part_builder_tool_recycling",
+  "parts": [
+    "tconstruct3:repair_kit",
+    "tconstruct3:repair_kit"
+  ],
+  "pattern": "tconstruct3:venom_bottle",
+  "tools": {
+    "ingredient": [
+      {
+        "item": "tconstruct3:travelers_helmet"
+      },
+      {
+        "item": "tconstruct3:travelers_chestplate"
+      },
+      {
+        "item": "tconstruct3:travelers_leggings"
+      },
+      {
+        "item": "tconstruct3:travelers_boots"
+      }
+    ]
+  }
+}

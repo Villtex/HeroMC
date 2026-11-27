@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "neoforge:registered",
+      "value": "oreberriesreplanted:osmium_oreberry"
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": "oreberriesreplanted:osmium_oreberry",
+  "result": {
+    "amount": 10,
+    "tag": "c:molten_osmium"
+  },
+  "temperature": 975,
+  "time": 22
+}

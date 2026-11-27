@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "entity_effects": [
+    {
+      "type": "tconstruct3:cure_effects",
+      "item": "minecraft:milk_bucket"
+    },
+    {
+      "type": "tconstruct3:calcified"
+    }
+  ],
+  "fluid": {
+    "amount": 100,
+    "tag": "c:milk"
+  }
+}

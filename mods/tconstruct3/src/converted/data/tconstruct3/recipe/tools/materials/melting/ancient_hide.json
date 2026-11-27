@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material_melting",
+  "input": "tconstruct3:ancient_hide",
+  "result": {
+    "amount": 90,
+    "fluid": "tconstruct3:molten_debris"
+  },
+  "temperature": 1175
+}

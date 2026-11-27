@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_table",
+  "cooling_time": 77,
+  "fluid": {
+    "amount": 250,
+    "tag": "tconstruct3:liquid_soul"
+  },
+  "result": "tconstruct3:soul_glass_pane"
+}

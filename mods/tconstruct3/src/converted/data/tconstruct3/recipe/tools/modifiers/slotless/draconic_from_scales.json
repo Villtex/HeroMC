@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:modifier",
+  "allow_crystal": false,
+  "inputs": [
+    "minecraft:dragon_breath",
+    "tconstruct3:dragon_scale",
+    "minecraft:dragon_breath",
+    "tconstruct3:dragon_scale",
+    "tconstruct3:dragon_scale"
+  ],
+  "level": 1,
+  "result": "tconstruct3:draconic",
+  "tools": "#tconstruct3:modifiable/bonus_slots"
+}

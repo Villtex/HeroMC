@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:modifier",
+  "allow_crystal": true,
+  "inputs": [
+    "minecraft:piston",
+    "tconstruct3:sky_slime",
+    "minecraft:piston",
+    "minecraft:phantom_membrane",
+    "minecraft:phantom_membrane"
+  ],
+  "level": {
+    "max": 2
+  },
+  "result": "tconstruct3:double_jump",
+  "slots": {
+    "abilities": 1
+  },
+  "tools": "#tconstruct3:modifiable/armor/boots"
+}

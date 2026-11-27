@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "stats": {
+    "tconstruct3:binding": {},
+    "tconstruct3:handle": {
+      "durability": -0.1,
+      "melee_damage": 0.0,
+      "melee_speed": 0.0,
+      "mining_speed": 0.05
+    },
+    "tconstruct3:head": {
+      "durability": 130,
+      "melee_attack": 1.0,
+      "mining_speed": 4.0,
+      "mining_tier": "minecraft:stone"
+    }
+  }
+}

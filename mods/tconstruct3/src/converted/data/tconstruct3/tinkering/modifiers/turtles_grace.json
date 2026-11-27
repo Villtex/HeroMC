@@ -1,0 +1,30 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:single_level",
+  "modules": [
+    {
+      "type": "tconstruct3:attribute",
+      "attribute": "neoforge:swim_speed",
+      "each_level": 0.1,
+      "operation": "multiply_total",
+      "slots": [
+        "mainhand",
+        "offhand",
+        "feet",
+        "legs",
+        "chest",
+        "head"
+      ]
+    },
+    {
+      "type": "tconstruct3:constant_enchantment",
+      "level": 1,
+      "name": "minecraft:respiration"
+    }
+  ]
+}

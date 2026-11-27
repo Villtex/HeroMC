@@ -1,0 +1,173 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "parent": "tconstruct3:foundry/structure",
+  "criteria": {
+    "scorched_fuel_gauge": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:scorched_fuel_gauge",
+            "components": {
+              "tconstruct3:tank": {
+                "id": "tconstruct3:blazing_blood",
+                "amount": 4000
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "scorched_fuel_tank": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:scorched_fuel_tank",
+            "components": {
+              "tconstruct3:tank": {
+                "id": "tconstruct3:blazing_blood",
+                "amount": 4000
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "scorched_ingot_gauge": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:scorched_ingot_gauge",
+            "components": {
+              "tconstruct3:tank": {
+                "id": "tconstruct3:blazing_blood",
+                "amount": 4320
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "scorched_ingot_tank": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:scorched_ingot_tank",
+            "components": {
+              "tconstruct3:tank": {
+                "id": "tconstruct3:blazing_blood",
+                "amount": 4320
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "seared_fuel_gauge": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:seared_fuel_gauge",
+            "components": {
+              "tconstruct3:tank": {
+                "id": "tconstruct3:blazing_blood",
+                "amount": 4000
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "seared_fuel_tank": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:seared_fuel_tank",
+            "components": {
+              "tconstruct3:tank": {
+                "id": "tconstruct3:blazing_blood",
+                "amount": 4000
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "seared_ingot_gauge": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:seared_ingot_gauge",
+            "components": {
+              "tconstruct3:tank": {
+                "id": "tconstruct3:blazing_blood",
+                "amount": 4320
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "seared_ingot_tank": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:seared_ingot_tank",
+            "components": {
+              "tconstruct3:tank": {
+                "id": "tconstruct3:blazing_blood",
+                "amount": 4320
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.tconstruct3.foundry.blaze.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "tconstruct3:scorched_fuel_gauge",
+      "components": {
+        "tconstruct3:tank": {
+          "id": "tconstruct3:blazing_blood",
+          "amount": 4000
+        }
+      }
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tconstruct3.foundry.blaze.title"
+    }
+  },
+  "requirements": [
+    [
+      "seared_fuel_tank",
+      "seared_fuel_gauge",
+      "seared_ingot_tank",
+      "seared_ingot_gauge",
+      "scorched_fuel_tank",
+      "scorched_fuel_gauge",
+      "scorched_ingot_tank",
+      "scorched_ingot_gauge"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

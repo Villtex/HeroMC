@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:item_part_builder",
+  "cost": 3,
+  "material": "tconstruct3:rock",
+  "pattern": "tconstruct3:helmet_plating",
+  "pattern_item": [
+    "#tconstruct3:patterns/default",
+    "tconstruct3:helmet_plating_cast"
+  ],
+  "result": "tconstruct3:helmet_plating_dummy"
+}

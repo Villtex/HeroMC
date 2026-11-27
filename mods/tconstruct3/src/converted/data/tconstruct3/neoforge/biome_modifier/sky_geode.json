@@ -1,0 +1,34 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "neoforge:add_features",
+  "biomes": {
+    "type": "neoforge:and",
+    "values": [
+      {
+        "type": "neoforge:or",
+        "values": [
+          "#minecraft:is_overworld"
+        ]
+      },
+      {
+        "type": "neoforge:not",
+        "value": {
+          "type": "neoforge:or",
+          "values": [
+            "#minecraft:is_ocean",
+            "#minecraft:is_deep_ocean",
+            "#minecraft:is_beach",
+            "#minecraft:is_river"
+          ]
+        }
+      }
+    ]
+  },
+  "features": "tconstruct3:sky_geode",
+  "step": "local_modifications"
+}

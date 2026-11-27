@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:no_levels",
+  "modules": [
+    {
+      "type": "tconstruct3:place_fire"
+    },
+    {
+      "type": "tconstruct3:show_offhand",
+      "mode": "disallow_broken"
+    },
+    {
+      "type": "tconstruct3:show_interaction_source"
+    }
+  ]
+}

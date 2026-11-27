@@ -1,0 +1,40 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": {
+    "type": "tconstruct3:unique",
+    "first_unique": false,
+    "unique_until": 5
+  },
+  "modules": [
+    {
+      "type": "tconstruct3:stat_boost",
+      "each_level": 4.0,
+      "operation": "add",
+      "stat": "tconstruct3:mining_speed"
+    },
+    {
+      "type": "tconstruct3:attribute",
+      "attribute": "tconstruct3:player.mining_speed_multiplier",
+      "each_level": 0.1,
+      "operation": "multiply_total",
+      "slots": [
+        "mainhand",
+        "offhand",
+        "feet",
+        "legs",
+        "chest",
+        "head"
+      ],
+      "tool": {
+        "neoforge:ingredient_type": "mantle:inverted",
+        "inverted_type": "mantle:tag",
+        "tag": "tconstruct3:modifiable/harvest"
+      }
+    }
+  ]
+}

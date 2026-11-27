@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material",
+  "ingredient": "#c:storage_blocks/pig_iron",
+  "leftover": {
+    "count": 1,
+    "tag": "c:ingots/pig_iron"
+  },
+  "material": "tconstruct3:pig_iron",
+  "needed": 1,
+  "value": 9
+}

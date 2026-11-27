@@ -1,0 +1,31 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "tconstruct3:config",
+        "prop": "cheaper_netherite_alloy"
+      }
+    }
+  ],
+  "type": "tconstruct3:alloy",
+  "inputs": [
+    {
+      "amount": 40,
+      "tag": "tconstruct3:molten_debris"
+    },
+    {
+      "amount": 40,
+      "tag": "c:molten_gold"
+    }
+  ],
+  "result": {
+    "amount": 10,
+    "tag": "c:molten_netherite"
+  },
+  "temperature": 1250
+}

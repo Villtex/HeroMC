@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:enchantment_converting",
+  "inputs": "minecraft:amethyst_shard",
+  "match_book": false,
+  "modifier_predicate": {
+    "type": "mantle:and",
+    "predicates": [
+      "tconstruct3:slot_type",
+      {
+        "type": "mantle:inverted",
+        "inverted_type": "tconstruct3:tag",
+        "tag": "tconstruct3:extract_blacklist/slotless"
+      }
+    ]
+  },
+  "name": "slotless",
+  "return_unenchanted": false
+}

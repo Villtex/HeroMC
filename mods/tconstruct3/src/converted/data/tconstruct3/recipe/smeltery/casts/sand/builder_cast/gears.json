@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:gears"
+    }
+  ],
+  "type": "tconstruct3:item_part_builder",
+  "pattern": "tconstruct3:gear",
+  "pattern_item": "#tconstruct3:casts/sand",
+  "result": "tconstruct3:gear_sand_cast",
+  "title_key": "tconstruct3:sand_cast"
+}

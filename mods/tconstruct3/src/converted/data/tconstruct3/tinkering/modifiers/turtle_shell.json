@@ -1,0 +1,57 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:max_armor_attribute",
+      "allow_broken": false,
+      "attribute": "neoforge:swim_speed",
+      "each_level": 0.1,
+      "held_tag": "tconstruct3:modifiable/held",
+      "operation": "multiply_total"
+    },
+    {
+      "type": "tconstruct3:protection",
+      "damage_source": "mantle:can_protect",
+      "each_level": 2.5,
+      "tool": {
+        "neoforge:ingredient_type": "mantle:or",
+        "predicates": [
+          {
+            "type": "mantle:tag",
+            "tag": "tconstruct3:modifiable/armor/helmets"
+          },
+          {
+            "type": "mantle:tag",
+            "tag": "tconstruct3:modifiable/armor/chestplate"
+          }
+        ]
+      },
+      "wearing_entity": "mantle:eyes_in_water"
+    },
+    {
+      "type": "tconstruct3:protection",
+      "damage_source": "mantle:can_protect",
+      "each_level": 2.5,
+      "tool": {
+        "neoforge:ingredient_type": "mantle:or",
+        "predicates": [
+          {
+            "type": "mantle:tag",
+            "tag": "tconstruct3:modifiable/armor/leggings"
+          },
+          {
+            "type": "mantle:tag",
+            "tag": "tconstruct3:modifiable/armor/boots"
+          }
+        ]
+      },
+      "wearing_entity": "mantle:feet_in_water"
+    }
+  ]
+}

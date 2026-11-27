@@ -1,0 +1,40 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:conditional_mining_speed",
+      "formula": [
+        3.0,
+        6.0,
+        "$resistance",
+        "-",
+        1.5,
+        "/",
+        "^",
+        10.0,
+        "min",
+        "$level",
+        "*",
+        "$multiplier",
+        "*",
+        "$speed",
+        "+"
+      ],
+      "percent": false,
+      "require_effective": true,
+      "variables": {
+        "resistance": {
+          "type": "tconstruct3:block",
+          "block_type": "tconstruct3:blast_resistance",
+          "fallback": 3.0
+        }
+      }
+    }
+  ]
+}

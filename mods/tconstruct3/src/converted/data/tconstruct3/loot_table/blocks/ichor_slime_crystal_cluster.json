@@ -1,0 +1,77 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "name": "tconstruct3:ichor_slime_crystal_cluster",
+              "condition": {
+                "type": "minecraft:match_tool",
+                "predicate": {
+                  "predicates": {
+                    "minecraft:enchantments": [
+                      {
+                        "enchantments": "minecraft:silk_touch",
+                        "levels": {
+                          "min": 1
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "type": "minecraft:alternatives",
+              "children": [
+                {
+                  "type": "minecraft:item",
+                  "name": "tconstruct3:ichor_slime_crystal",
+                  "condition": {
+                    "type": "minecraft:match_tool",
+                    "predicate": {
+                      "items": "#minecraft:cluster_max_harvestables"
+                    }
+                  },
+                  "modifier": [
+                    {
+                      "type": "minecraft:set_count",
+                      "add": false,
+                      "count": 4.0
+                    },
+                    {
+                      "type": "minecraft:apply_bonus",
+                      "enchantment": "minecraft:fortune",
+                      "formula": "minecraft:ore_drops"
+                    }
+                  ]
+                },
+                {
+                  "type": "minecraft:item",
+                  "name": "tconstruct3:ichor_slime_crystal",
+                  "modifier": [
+                    {
+                      "type": "minecraft:set_count",
+                      "add": false,
+                      "count": 2.0
+                    },
+                    {
+                      "type": "minecraft:explosion_decay"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "tconstruct3:blocks/ichor_slime_crystal_cluster"
+}

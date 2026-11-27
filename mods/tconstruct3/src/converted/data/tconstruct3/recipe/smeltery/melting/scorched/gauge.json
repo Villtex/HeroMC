@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "byproducts": [
+    {
+      "amount": 500,
+      "fluid": "tconstruct3:molten_quartz"
+    }
+  ],
+  "ingredient": {
+    "neoforge:ingredient_type": "tconstruct3:no_container",
+    "match": [
+      "tconstruct3:scorched_fuel_gauge",
+      "tconstruct3:scorched_ingot_gauge"
+    ]
+  },
+  "result": {
+    "amount": 1000,
+    "fluid": "tconstruct3:scorched_stone"
+  },
+  "temperature": 500,
+  "time": 100
+}

@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:conditional_melee_damage",
+      "each_level": 1.6,
+      "percent": false,
+      "target": "mantle:fire_immune"
+    }
+  ]
+}

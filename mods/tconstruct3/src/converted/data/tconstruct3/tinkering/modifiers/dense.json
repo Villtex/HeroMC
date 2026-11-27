@@ -1,0 +1,50 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:repair",
+      "formula": [
+        "$factor",
+        1.0,
+        0.025,
+        "$level",
+        "*",
+        11.0,
+        "$level",
+        "-",
+        "*",
+        "-",
+        "*"
+      ],
+      "modifier_level": {
+        "max": 5
+      }
+    },
+    {
+      "type": "tconstruct3:repair",
+      "each_level": -0.05,
+      "flat": -0.5,
+      "modifier_level": {
+        "min": 6
+      }
+    },
+    {
+      "type": "tconstruct3:reduce_tool_damage",
+      "formula": [
+        1.0,
+        1.0,
+        1.5,
+        "$level",
+        "^",
+        "/",
+        "-"
+      ]
+    }
+  ]
+}

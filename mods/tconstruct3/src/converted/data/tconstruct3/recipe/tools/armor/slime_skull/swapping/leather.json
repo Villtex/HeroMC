@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:fixed_material_swapping",
+  "index": 0,
+  "ingredient": "minecraft:zombie_head",
+  "material": "tconstruct3:leather",
+  "max_stack_size": 16,
+  "repair_value": 6,
+  "tools": "#tconstruct3:modifiable/skulls/swappable"
+}

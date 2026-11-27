@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "ceramics"
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": "ceramics:kiln",
+  "result": {
+    "amount": 4250,
+    "fluid": "tconstruct3:molten_clay"
+  },
+  "temperature": 450,
+  "time": 192
+}

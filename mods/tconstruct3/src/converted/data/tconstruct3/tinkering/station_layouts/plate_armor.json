@@ -1,0 +1,44 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "icon": {
+    "pattern": "tconstruct3:plate_armor"
+  },
+  "input_slots": [
+    {
+      "filter": [
+        {
+          "item": "tconstruct3:helmet_plating"
+        },
+        {
+          "item": "tconstruct3:chestplate_plating"
+        },
+        {
+          "item": "tconstruct3:leggings_plating"
+        },
+        {
+          "item": "tconstruct3:boots_plating"
+        }
+      ],
+      "icon": "tconstruct3:plating",
+      "translation_key": "pattern.tconstruct3.plating",
+      "x": 33,
+      "y": 29
+    },
+    {
+      "filter": {
+        "item": "tconstruct3:maille"
+      },
+      "icon": "tconstruct3:maille",
+      "translation_key": "item.tconstruct3.maille",
+      "x": 33,
+      "y": 53
+    }
+  ],
+  "sortIndex": 15,
+  "translation_key": "gui.tconstruct3.plate_armor"
+}

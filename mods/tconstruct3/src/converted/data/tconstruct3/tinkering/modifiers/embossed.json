@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "condition": {
+    "type": "mantle:tag_filled",
+    "tag": "tconstruct3:boss_trophies"
+  },
+  "level_display": "tconstruct3:single_level",
+  "modules": [
+    {
+      "type": "tconstruct3:modifier_slot",
+      "each_level": 1,
+      "name": "upgrades"
+    }
+  ],
+  "show_in_tooltips": "bonus_slot"
+}

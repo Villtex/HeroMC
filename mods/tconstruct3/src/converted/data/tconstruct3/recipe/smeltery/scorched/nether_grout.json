@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "minecraft:magma_cream",
+    [
+      "minecraft:soul_sand",
+      "minecraft:soul_soil"
+    ],
+    "minecraft:gravel"
+  ],
+  "result": {
+    "id": "tconstruct3:nether_grout",
+    "count": 2
+  }
+}

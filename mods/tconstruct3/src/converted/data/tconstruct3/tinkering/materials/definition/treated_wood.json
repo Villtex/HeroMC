@@ -1,0 +1,30 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "condition": {
+    "type": "neoforge:or",
+    "values": [
+      {
+        "type": "tconstruct3:config",
+        "prop": "force_integration_materials"
+      },
+      {
+        "type": "mantle:tag_filled",
+        "tag": "c:treated_wood"
+      },
+      {
+        "type": "mantle:tag_filled",
+        "registry": "minecraft:fluid",
+        "tag": "c:creosote"
+      }
+    ]
+  },
+  "craftable": true,
+  "hidden": false,
+  "sortOrder": 5,
+  "tier": 2
+}

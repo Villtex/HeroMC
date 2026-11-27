@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:ingots/silver"
+    }
+  ],
+  "type": "tconstruct3:ore_melting",
+  "byproducts": [
+    {
+      "amount": 810,
+      "rate": "metal",
+      "tag": "c:molten_silver"
+    }
+  ],
+  "ingredient": "#c:storage_blocks/raw_electrum",
+  "rate": "metal",
+  "result": {
+    "amount": 810,
+    "tag": "c:molten_electrum"
+  },
+  "temperature": 760,
+  "time": 353
+}

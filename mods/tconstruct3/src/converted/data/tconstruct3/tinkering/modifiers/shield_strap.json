@@ -1,0 +1,33 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:inventory",
+      "pattern": "tconstruct3:shield_plus",
+      "slots": {
+        "each_level": 1
+      }
+    },
+    {
+      "type": "tconstruct3:shield_strap",
+      "on_key": [
+        "normal"
+      ]
+    },
+    {
+      "type": "tconstruct3:inventory_menu",
+      "on_key": "shift"
+    },
+    {
+      "type": "tconstruct3:volatile_flag",
+      "flag": "tconstruct3:inventory_show_offhand"
+    }
+  ],
+  "priority": 120
+}

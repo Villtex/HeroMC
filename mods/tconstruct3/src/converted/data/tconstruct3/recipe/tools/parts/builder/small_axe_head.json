@@ -1,0 +1,18 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:part_builder",
+  "cost": 2,
+  "pattern": "tconstruct3:small_axe_head",
+  "pattern_item": [
+    "#tconstruct3:patterns/default",
+    "tconstruct3:small_axe_head_cast"
+  ],
+  "result": {
+    "id": "tconstruct3:small_axe_head"
+  }
+}

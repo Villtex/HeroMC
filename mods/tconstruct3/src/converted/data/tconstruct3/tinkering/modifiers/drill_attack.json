@@ -1,0 +1,29 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:no_levels",
+  "modules": [
+    {
+      "type": "tconstruct3:tool_actions",
+      "tool_actions": [
+        "drill_attack"
+      ]
+    },
+    {
+      "type": "tconstruct3:requirements",
+      "requirement": {
+        "type": "tconstruct3:has_modifier",
+        "check": "all",
+        "modifier": {
+          "type": "tconstruct3:tag",
+          "tag": "tconstruct3:drill_attacks"
+        }
+      },
+      "translation_key": "modifier.tconstruct3.drill_attack.requirements"
+    }
+  ]
+}

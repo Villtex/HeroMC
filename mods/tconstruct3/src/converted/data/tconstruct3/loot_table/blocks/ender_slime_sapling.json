@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "tconstruct3:ender_slime_sapling"
+        }
+      ],
+      "rolls": 1.0,
+      "condition": {
+        "type": "minecraft:match_block",
+        "blocks": "tconstruct3:ender_slime_sapling",
+        "state": {
+          "age": "4"
+        }
+      }
+    }
+  ],
+  "random_sequence": "tconstruct3:blocks/ender_slime_sapling",
+  "modifier": {
+    "type": "minecraft:explosion_decay"
+  }
+}

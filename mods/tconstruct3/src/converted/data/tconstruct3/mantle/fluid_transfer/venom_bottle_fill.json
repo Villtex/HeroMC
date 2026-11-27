@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "mantle:fill_item",
+  "fluid": {
+    "amount": 250,
+    "tag": "tconstruct3:venom"
+  },
+  "input": "minecraft:glass_bottle",
+  "result": "tconstruct3:venom_bottle"
+}

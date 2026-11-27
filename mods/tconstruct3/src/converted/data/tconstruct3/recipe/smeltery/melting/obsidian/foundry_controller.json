@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "byproducts": [
+    {
+      "amount": 1000,
+      "fluid": "tconstruct3:scorched_stone"
+    }
+  ],
+  "ingredient": "tconstruct3:foundry_controller",
+  "result": {
+    "amount": 1000,
+    "fluid": "tconstruct3:molten_obsidian"
+  },
+  "temperature": 1000,
+  "time": 232
+}

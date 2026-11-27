@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tconstruct3:hepatizon_block",
+  "key": {
+    "#": "#c:ingots/hepatizon",
+    "*": "tconstruct3:hepatizon_ingot"
+  },
+  "pattern": [
+    "###",
+    "#*#",
+    "###"
+  ],
+  "result": {
+    "id": "tconstruct3:hepatizon_block"
+  },
+  "show_notification": true
+}

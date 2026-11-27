@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tconstruct3:raw_cobalt_block",
+  "key": {
+    "#": "#c:raw_materials/cobalt",
+    "*": "tconstruct3:raw_cobalt"
+  },
+  "pattern": [
+    "###",
+    "#*#",
+    "###"
+  ],
+  "result": {
+    "id": "tconstruct3:raw_cobalt_block"
+  },
+  "show_notification": true
+}

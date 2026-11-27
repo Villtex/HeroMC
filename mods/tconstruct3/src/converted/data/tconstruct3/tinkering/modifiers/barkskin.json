@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:no_levels",
+  "modules": [
+    {
+      "type": "tconstruct3:capacity_bar",
+      "flat": 100,
+      "multiplier": "tconstruct3:durability"
+    },
+    {
+      "type": "tconstruct3:durability_shield",
+      "color": "B9B3AC"
+    }
+  ],
+  "priority": 200
+}

@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": "minecraft:cauldron",
+  "result": {
+    "amount": 630,
+    "tag": "c:molten_iron"
+  },
+  "temperature": 800,
+  "time": 159
+}

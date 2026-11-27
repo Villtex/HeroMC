@@ -1,0 +1,18 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:part_builder",
+  "cost": 8,
+  "pattern": "tconstruct3:broad_blade",
+  "pattern_item": [
+    "#tconstruct3:patterns/default",
+    "tconstruct3:broad_blade_cast"
+  ],
+  "result": {
+    "id": "tconstruct3:broad_blade"
+  }
+}

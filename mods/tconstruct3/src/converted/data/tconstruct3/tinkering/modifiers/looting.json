@@ -1,0 +1,44 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:weapon_looting",
+      "level": 1,
+      "tool": {
+        "neoforge:ingredient_type": "mantle:or",
+        "predicates": [
+          {
+            "type": "mantle:set",
+            "items": [
+              "minecraft:air"
+            ]
+          },
+          {
+            "type": "mantle:tag",
+            "tag": "tconstruct3:modifiable/melee"
+          }
+        ]
+      }
+    },
+    {
+      "type": "tconstruct3:armor_looting",
+      "level": 1,
+      "slots": [
+        "feet",
+        "legs",
+        "chest",
+        "head"
+      ],
+      "tool": {
+        "neoforge:ingredient_type": "mantle:tag",
+        "tag": "tconstruct3:modifiable/armor/worn"
+      }
+    }
+  ]
+}

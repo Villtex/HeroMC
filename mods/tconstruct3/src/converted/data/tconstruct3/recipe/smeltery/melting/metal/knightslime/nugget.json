@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": "#c:nuggets/knightslime",
+  "result": {
+    "amount": 10,
+    "fluid": "tconstruct3:molten_knightslime"
+  },
+  "temperature": 1125,
+  "time": 23
+}

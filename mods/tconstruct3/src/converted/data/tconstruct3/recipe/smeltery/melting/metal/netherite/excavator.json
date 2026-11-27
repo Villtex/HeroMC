@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "neoforge:registered",
+      "value": "tools_complement:netherite_excavator"
+    }
+  ],
+  "type": "tconstruct3:damagable_melting",
+  "byproducts": [
+    {
+      "amount": 1100,
+      "fluid": "tconstruct3:molten_diamond",
+      "unit_size": 25
+    }
+  ],
+  "ingredient": "tools_complement:netherite_excavator",
+  "result": {
+    "amount": 90,
+    "tag": "c:molten_netherite",
+    "unit_size": 10
+  },
+  "temperature": 1250,
+  "time": 74
+}

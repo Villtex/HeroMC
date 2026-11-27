@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:swappable_modifier",
+  "allow_crystal": false,
+  "inputs": [
+    "#c:nuggets/rose_gold",
+    "minecraft:end_crystal",
+    "#c:nuggets/rose_gold",
+    "tconstruct3:sky_slime_crystal_block",
+    "tconstruct3:sky_slime_crystal_block"
+  ],
+  "result": {
+    "name": "tconstruct3:rebalanced",
+    "value": "upgrades"
+  },
+  "tools": "#tconstruct3:modifiable/bonus_slots"
+}

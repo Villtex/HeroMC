@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:expanded",
+    "tconstruct3:gilded",
+    "tconstruct3:unbreakable",
+    "tconstruct3:luck",
+    "tconstruct3:melting"
+  ]
+}

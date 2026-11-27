@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:molding_table",
+  "material": {
+    "tag": "tconstruct3:casts/red_sand"
+  },
+  "pattern": {
+    "neoforge:ingredient_type": "tconstruct3:material",
+    "item": "tconstruct3:bow_limb"
+  },
+  "result": "tconstruct3:bow_limb_red_sand_cast"
+}

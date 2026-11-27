@@ -1,0 +1,32 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:twisting_vine",
+    "tconstruct3:weeping_vine",
+    "tconstruct3:scorched_stone",
+    "tconstruct3:necrotic_bone",
+    "tconstruct3:cobalt",
+    "tconstruct3:manyullyn",
+    "tconstruct3:hepatizon",
+    "tconstruct3:cinderslime",
+    "tconstruct3:queens_slime",
+    "tconstruct3:blazing_bone",
+    "tconstruct3:blazewood",
+    "tconstruct3:jeweled_hide",
+    "tconstruct3:jadeite",
+    "tconstruct3:glowstone",
+    "tconstruct3:ichor",
+    "tconstruct3:quartz",
+    "tconstruct3:blaze",
+    "tconstruct3:magma",
+    {
+      "id": "tconstruct3:necronium",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material_melting",
+  "input": "tconstruct3:ice",
+  "result": {
+    "amount": 9000,
+    "fluid": "minecraft:water"
+  },
+  "temperature": 10
+}

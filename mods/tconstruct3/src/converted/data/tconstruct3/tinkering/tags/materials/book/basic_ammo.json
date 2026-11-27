@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:flint",
+    "tconstruct3:wool",
+    "tconstruct3:glass",
+    "tconstruct3:wood",
+    "tconstruct3:bamboo",
+    "tconstruct3:cactus",
+    "tconstruct3:feather",
+    "tconstruct3:paper",
+    "tconstruct3:leaves"
+  ]
+}

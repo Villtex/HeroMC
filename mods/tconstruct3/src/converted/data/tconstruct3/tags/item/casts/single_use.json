@@ -1,0 +1,33 @@
+{
+  "values": [
+    "#tconstruct3:casts/single_use/blank",
+    "#tconstruct3:casts/single_use/ingot",
+    "#tconstruct3:casts/single_use/nugget",
+    "#tconstruct3:casts/single_use/gem",
+    "#tconstruct3:casts/single_use/rod",
+    "#tconstruct3:casts/single_use/repair_kit",
+    "#tconstruct3:casts/single_use/plate",
+    "#tconstruct3:casts/single_use/gear",
+    "#tconstruct3:casts/single_use/coin",
+    "#tconstruct3:casts/single_use/wire",
+    "#tconstruct3:casts/single_use/pick_head",
+    "#tconstruct3:casts/single_use/small_axe_head",
+    "#tconstruct3:casts/single_use/small_blade",
+    "#tconstruct3:casts/single_use/adze_head",
+    "#tconstruct3:casts/single_use/hammer_head",
+    "#tconstruct3:casts/single_use/broad_axe_head",
+    "#tconstruct3:casts/single_use/broad_blade",
+    "#tconstruct3:casts/single_use/large_plate",
+    "#tconstruct3:casts/single_use/tool_binding",
+    "#tconstruct3:casts/single_use/tough_binding",
+    "#tconstruct3:casts/single_use/tool_handle",
+    "#tconstruct3:casts/single_use/tough_handle",
+    "#tconstruct3:casts/single_use/bow_limb",
+    "#tconstruct3:casts/single_use/bow_grip",
+    "#tconstruct3:casts/single_use/helmet_plating",
+    "#tconstruct3:casts/single_use/chestplate_plating",
+    "#tconstruct3:casts/single_use/leggings_plating",
+    "#tconstruct3:casts/single_use/boots_plating",
+    "#tconstruct3:casts/single_use/maille"
+  ]
+}

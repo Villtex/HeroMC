@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:modifier",
+  "allow_crystal": true,
+  "inputs": "minecraft:compass",
+  "level": {
+    "max": 5
+  },
+  "result": "tconstruct3:magnetic",
+  "slots": {
+    "upgrades": 1
+  },
+  "tools": [
+    "#tconstruct3:modifiable/melee/weapon",
+    "#tconstruct3:modifiable/harvest"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "tconstruct3:stained_clear_glass",
+  "key": {
+    "#": "tconstruct3:clear_glass",
+    "X": "#c:dyes/orange"
+  },
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "result": {
+    "id": "tconstruct3:orange_clear_stained_glass",
+    "count": 8
+  },
+  "show_notification": true
+}

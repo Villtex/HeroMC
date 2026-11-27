@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 25,
+  "experience": 0.2,
+  "ingredient": "tconstruct3:steel_shard",
+  "result": {
+    "id": "tconstruct3:steel_nugget"
+  }
+}

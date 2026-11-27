@@ -1,0 +1,61 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "icon": {
+    "id": "tconstruct3:scythe",
+    "components": {
+      "tconstruct3:display": true,
+      "tconstruct3:materials": [
+        "tconstruct3:ui_render#head",
+        "tconstruct3:ui_render#handle",
+        "tconstruct3:ui_render#extra",
+        "tconstruct3:ui_render#large",
+        "tconstruct3:ui_render#extra_large"
+      ]
+    }
+  },
+  "input_slots": [
+    {
+      "filter": {
+        "item": "tconstruct3:broad_blade"
+      },
+      "icon": "tconstruct3:broad_blade",
+      "translation_key": "item.tconstruct3.broad_blade",
+      "x": 35,
+      "y": 20
+    },
+    {
+      "filter": {
+        "item": "tconstruct3:tough_handle"
+      },
+      "icon": "tconstruct3:tough_handle",
+      "translation_key": "item.tconstruct3.tough_handle",
+      "x": 12,
+      "y": 55
+    },
+    {
+      "filter": {
+        "item": "tconstruct3:tough_binding"
+      },
+      "icon": "tconstruct3:tough_binding",
+      "translation_key": "item.tconstruct3.tough_binding",
+      "x": 50,
+      "y": 40
+    },
+    {
+      "filter": {
+        "item": "tconstruct3:tough_handle"
+      },
+      "icon": "tconstruct3:tough_handle",
+      "translation_key": "item.tconstruct3.tough_handle",
+      "x": 30,
+      "y": 40
+    }
+  ],
+  "sortIndex": 12,
+  "translation_key": "item.tconstruct3.scythe"
+}

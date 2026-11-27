@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": "#c:storage_blocks/pig_iron",
+  "result": {
+    "amount": 810,
+    "fluid": "tconstruct3:molten_pig_iron"
+  },
+  "temperature": 811,
+  "time": 181
+}

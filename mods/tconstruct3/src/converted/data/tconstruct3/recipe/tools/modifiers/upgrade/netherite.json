@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:modifier",
+  "allow_crystal": true,
+  "inputs": [
+    "minecraft:netherite_upgrade_smithing_template",
+    "#c:ingots/netherite"
+  ],
+  "level": 1,
+  "result": "tconstruct3:netherite",
+  "slots": {
+    "upgrades": 1
+  },
+  "tools": "#tconstruct3:modifiable/durability"
+}

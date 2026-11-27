@@ -13,7 +13,13 @@ for d in ('assets', 'data'):
     shutil.rmtree(os.path.join(RES, d), ignore_errors=True)
 
 
+import sys
+sys.path.insert(0, os.path.join(ROOT, 'tools'))
+from legacy_condition import with_condition  # noqa: E402  (Teil 27a: 1.4.3 recipes only in Hexxit Legacy)
+
+
 def write(path, obj):
+    obj = with_condition(path, obj)
     full = os.path.join(RES, path)
     os.makedirs(os.path.dirname(full), exist_ok=True)
     with open(full, 'w') as f:

@@ -1,0 +1,12 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:modifier_repair",
+  "ingredient": "tconstruct3:bacon",
+  "modifier": "tconstruct3:tasty",
+  "repair_amount": 25
+}

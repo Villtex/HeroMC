@@ -1,0 +1,42 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "parent": "tconstruct3:smeltery/melter",
+  "criteria": {
+    "crafted_cast": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#tconstruct3:casts/single_use/blank"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.tconstruct3.smeltery.sand_casting.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "tconstruct3:tool_handle_sand_cast"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tconstruct3.smeltery.sand_casting.title"
+    }
+  },
+  "requirements": [
+    [
+      "crafted_cast"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

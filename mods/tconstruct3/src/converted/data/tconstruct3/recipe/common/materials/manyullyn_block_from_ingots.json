@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tconstruct3:manyullyn_block",
+  "key": {
+    "#": "#c:ingots/manyullyn",
+    "*": "tconstruct3:manyullyn_ingot"
+  },
+  "pattern": [
+    "###",
+    "#*#",
+    "###"
+  ],
+  "result": {
+    "id": "tconstruct3:manyullyn_block"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,42 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "criteria": {
+    "crafted_book": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:materials_and_you"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "tconstruct3:gui/advancement_background",
+    "description": {
+      "translate": "advancements.tconstruct3.tools.materials_and_you.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "tconstruct3:materials_and_you"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tconstruct3.tools.materials_and_you.title"
+    }
+  },
+  "requirements": [
+    [
+      "crafted_book"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

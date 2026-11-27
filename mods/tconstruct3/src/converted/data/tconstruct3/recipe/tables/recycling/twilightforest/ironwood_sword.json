@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "twilightforest"
+    }
+  ],
+  "type": "tconstruct3:part_builder_recycling",
+  "pattern": "tconstruct3:venom_bottle",
+  "results": {
+    "tconstruct3:ingot": {
+      "count": 2,
+      "tag": "c:ingots/ironwood"
+    }
+  },
+  "tool": [
+    "twilightforest:ironwood_sword",
+    "twilightforest:ironwood_hoe"
+  ]
+}

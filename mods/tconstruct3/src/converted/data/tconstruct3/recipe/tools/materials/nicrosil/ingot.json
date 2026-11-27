@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:ingots/nicrosil"
+    }
+  ],
+  "type": "tconstruct3:material",
+  "ingredient": "#c:ingots/nicrosil",
+  "material": "tconstruct3:nicrosil",
+  "needed": 1,
+  "value": 1
+}

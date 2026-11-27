@@ -1,0 +1,14 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material",
+  "ingredient": "#tconstruct3:scorched_blocks",
+  "leftover": "tconstruct3:scorched_brick",
+  "material": "tconstruct3:scorched_stone",
+  "needed": 1,
+  "value": 4
+}

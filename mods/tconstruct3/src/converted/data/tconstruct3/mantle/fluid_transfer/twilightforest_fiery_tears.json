@@ -1,0 +1,18 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "neoforge:registered",
+      "value": "twilightforest:fiery_tears"
+    }
+  ],
+  "type": "mantle:empty_item",
+  "fluid": {
+    "amount": 250,
+    "fluid": "tconstruct3:fiery_liquid"
+  },
+  "input": "twilightforest:fiery_tears"
+}

@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": "minecraft:magma_cream",
+  "result": {
+    "amount": 250,
+    "tag": "c:magma"
+  },
+  "temperature": 300,
+  "time": 42
+}

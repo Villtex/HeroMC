@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_table",
+  "cast": "#tconstruct3:casts/single_use/ingot",
+  "cast_consumed": true,
+  "cooling_time": 2400,
+  "fluid": {
+    "amount": 250,
+    "tag": "c:milk"
+  },
+  "result": "tconstruct3:cheese_ingot"
+}

@@ -1,0 +1,9 @@
+{
+  "values": [
+    "tconstruct3:knightmetal_shard",
+    {
+      "id": "twilightforest:armor_shard",
+      "required": false
+    }
+  ]
+}

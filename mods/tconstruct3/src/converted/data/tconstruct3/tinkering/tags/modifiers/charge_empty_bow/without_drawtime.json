@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:blocking",
+    "tconstruct3:scope",
+    "tconstruct3:zoom",
+    "tconstruct3:slurping",
+    "tconstruct3:tasty",
+    "tconstruct3:savory",
+    "tconstruct3:scrumptious"
+  ]
+}

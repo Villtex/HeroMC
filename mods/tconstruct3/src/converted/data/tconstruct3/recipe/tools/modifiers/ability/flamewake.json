@@ -1,0 +1,29 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:modifier",
+  "allow_crystal": true,
+  "inputs": [
+    "minecraft:flint",
+    "#c:ingots/netherite_scrap",
+    "minecraft:flint",
+    "minecraft:flint",
+    "minecraft:flint"
+  ],
+  "level": 1,
+  "result": "tconstruct3:flamewake",
+  "slots": {
+    "abilities": 1
+  },
+  "tools": {
+    "neoforge:ingredient_type": "neoforge:intersection",
+    "children": [
+      "#tconstruct3:modifiable/armor/boots",
+      "#tconstruct3:modifiable/durability"
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:modifier",
+  "allow_crystal": true,
+  "inputs": {
+    "neoforge:ingredient_type": "tconstruct3:no_container",
+    "tag": "tconstruct3:tanks"
+  },
+  "result": "tconstruct3:tank",
+  "slots": {
+    "upgrades": 1
+  },
+  "tools": [
+    "#tconstruct3:modifiable/held",
+    "#tconstruct3:modifiable/armor"
+  ]
+}

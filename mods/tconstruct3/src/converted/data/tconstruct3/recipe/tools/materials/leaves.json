@@ -1,0 +1,13 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material",
+  "ingredient": "#minecraft:leaves",
+  "material": "tconstruct3:leaves",
+  "needed": 1,
+  "value": 1
+}

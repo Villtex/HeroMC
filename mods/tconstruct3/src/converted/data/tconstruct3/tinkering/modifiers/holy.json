@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:conditional_power",
+      "each_level": 0.75,
+      "percent": false,
+      "target": {
+        "type": "mantle:mob_type",
+        "mobs": "minecraft:undead"
+      }
+    }
+  ]
+}

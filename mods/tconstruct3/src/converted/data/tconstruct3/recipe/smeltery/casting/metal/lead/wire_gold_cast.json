@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:wires/lead"
+    }
+  ],
+  "type": "tconstruct3:casting_table",
+  "cast": "#tconstruct3:casts/multi_use/wire",
+  "cooling_time": 31,
+  "fluid": {
+    "amount": 45,
+    "tag": "c:molten_lead"
+  },
+  "result": {
+    "tag": "c:wires/lead"
+  }
+}

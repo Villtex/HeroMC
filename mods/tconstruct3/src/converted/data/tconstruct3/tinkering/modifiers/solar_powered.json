@@ -1,0 +1,33 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:single_level",
+  "modules": [
+    {
+      "type": "tconstruct3:reduce_tool_damage",
+      "formula": [
+        0.01,
+        "$level",
+        "*",
+        0.04,
+        "+",
+        "$light",
+        "*"
+      ],
+      "reinforced_tooltip": true,
+      "variables": {
+        "light": {
+          "type": "tconstruct3:entity",
+          "entity_type": "tconstruct3:light",
+          "fallback": 15.0,
+          "light_layer": "sky"
+        }
+      }
+    }
+  ],
+  "priority": 185
+}

@@ -1,0 +1,84 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "modules": [
+    {
+      "type": "tconstruct3:part_stats",
+      "parts": [
+        "tconstruct3:small_axe_head",
+        "tconstruct3:tool_handle",
+        "tconstruct3:tool_binding"
+      ],
+      "primary_part": 0
+    },
+    {
+      "type": "tconstruct3:default_materials",
+      "materials": [
+        {
+          "type": "tconstruct3:random",
+          "tier": 1
+        },
+        {
+          "type": "tconstruct3:random",
+          "tier": 1
+        },
+        {
+          "type": "tconstruct3:random",
+          "tier": 1
+        }
+      ]
+    },
+    {
+      "type": "tconstruct3:base_stats",
+      "stats": {
+        "tconstruct3:attack_damage": 6.0,
+        "tconstruct3:attack_speed": 0.9
+      }
+    },
+    {
+      "type": "tconstruct3:modifier_slots",
+      "slots": {
+        "abilities": 1,
+        "upgrades": 3
+      }
+    },
+    {
+      "type": "tconstruct3:traits",
+      "traits": [
+        {
+          "level": 1,
+          "name": "tconstruct3:stripping"
+        }
+      ]
+    },
+    {
+      "type": "tconstruct3:tool_actions",
+      "tool_actions": [
+        "axe_dig",
+        "shield_disable"
+      ]
+    },
+    {
+      "type": "tconstruct3:is_effective",
+      "predicate_type": "mantle:tag",
+      "tag": "tconstruct3:mineable/hand_axe"
+    },
+    {
+      "type": "tconstruct3:circle_aoe",
+      "3D": false,
+      "diameter": 1
+    },
+    {
+      "type": "tconstruct3:melee_particle",
+      "particle": "tconstruct3:axe_attack"
+    },
+    {
+      "type": "tconstruct3:fixed_material_name",
+      "index": 0
+    }
+  ]
+}

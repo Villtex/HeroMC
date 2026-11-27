@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "tconstruct3:modifiable/armor/golden"
+    }
+  ],
+  "type": "tconstruct3:modifier",
+  "allow_crystal": true,
+  "check_trait_level": true,
+  "inputs": [
+    "#c:ingots/gold",
+    "#c:ingots/gold",
+    "#c:ingots/gold"
+  ],
+  "level": 1,
+  "result": "tconstruct3:golden",
+  "slots": {
+    "defense": 1
+  },
+  "tools": "#tconstruct3:modifiable/armor/golden"
+}

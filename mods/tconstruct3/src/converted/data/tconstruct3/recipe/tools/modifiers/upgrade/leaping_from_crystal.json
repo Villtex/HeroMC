@@ -1,0 +1,29 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:multilevel_incremental_modifier",
+  "allow_crystal": true,
+  "amount_per_item": 1,
+  "input": "tconstruct3:sky_slime_crystal",
+  "levels": [
+    {
+      "level": 1,
+      "slots": {
+        "upgrades": 1
+      }
+    },
+    {
+      "level": 2,
+      "slots": {
+        "abilities": 1
+      }
+    }
+  ],
+  "needed_per_level": 36,
+  "result": "tconstruct3:leaping",
+  "tools": "#tconstruct3:modifiable/armor/leggings"
+}

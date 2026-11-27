@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "hanging_sign",
+  "key": {
+    "#": "tconstruct3:stripped_bloodshroom_log",
+    "X": "minecraft:chain"
+  },
+  "pattern": [
+    "X X",
+    "###",
+    "###"
+  ],
+  "result": {
+    "id": "tconstruct3:bloodshroom_hanging_sign",
+    "count": 6
+  },
+  "show_notification": true
+}

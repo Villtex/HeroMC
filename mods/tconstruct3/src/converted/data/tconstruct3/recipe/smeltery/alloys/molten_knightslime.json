@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:alloy",
+  "inputs": [
+    {
+      "amount": 90,
+      "tag": "c:molten_cobalt"
+    },
+    {
+      "amount": 250,
+      "tag": "tconstruct3:ender_slime"
+    },
+    {
+      "amount": 250,
+      "tag": "tconstruct3:molten_obsidian"
+    }
+  ],
+  "result": {
+    "amount": 180,
+    "fluid": "tconstruct3:molten_knightslime"
+  },
+  "temperature": 1125
+}

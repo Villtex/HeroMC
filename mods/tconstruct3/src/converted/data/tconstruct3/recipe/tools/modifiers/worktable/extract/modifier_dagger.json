@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:extract_modifier",
+  "inputs": [
+    "tconstruct3:ender_slime_crystal",
+    "minecraft:wet_sponge"
+  ],
+  "leftovers": [
+    "minecraft:sponge"
+  ],
+  "modifier_predicate": {
+    "type": "mantle:inverted",
+    "inverted_type": "tconstruct3:tag",
+    "tag": "tconstruct3:extract_blacklist/tools"
+  },
+  "name": "modifiers",
+  "tools": {
+    "amount_needed": 2,
+    "item": "tconstruct3:dagger"
+  }
+}

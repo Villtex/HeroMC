@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material_fluid",
+  "fluid": {
+    "amount": 90,
+    "tag": "c:molten_rose_gold"
+  },
+  "input": "tconstruct3:string",
+  "output": "tconstruct3:rose_gold",
+  "temperature": 550
+}

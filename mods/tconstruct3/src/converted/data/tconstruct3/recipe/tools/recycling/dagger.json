@@ -1,0 +1,14 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:part_builder_tool_recycling",
+  "pattern": "tconstruct3:venom_bottle",
+  "tools": {
+    "amount_needed": 2,
+    "item": "tconstruct3:dagger"
+  }
+}

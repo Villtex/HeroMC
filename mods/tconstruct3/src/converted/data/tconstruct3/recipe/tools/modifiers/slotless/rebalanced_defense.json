@@ -1,0 +1,31 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:swappable_modifier",
+  "allow_crystal": false,
+  "inputs": [
+    "#c:nuggets/cobalt",
+    "minecraft:end_crystal",
+    "#c:nuggets/cobalt",
+    "tconstruct3:earth_slime_crystal_block",
+    "tconstruct3:earth_slime_crystal_block"
+  ],
+  "result": {
+    "name": "tconstruct3:rebalanced",
+    "value": "defense"
+  },
+  "tools": {
+    "neoforge:ingredient_type": "neoforge:intersection",
+    "children": [
+      [
+        "#tconstruct3:modifiable/armor",
+        "#tconstruct3:modifiable/held"
+      ],
+      "#tconstruct3:modifiable/bonus_slots"
+    ]
+  }
+}

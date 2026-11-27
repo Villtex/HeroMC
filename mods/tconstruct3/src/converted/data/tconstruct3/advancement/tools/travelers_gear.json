@@ -1,0 +1,91 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "parent": "tconstruct3:tools/tinker_station",
+  "criteria": {
+    "crafted_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:travelers_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "crafted_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:travelers_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "crafted_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:travelers_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "crafted_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:travelers_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.tconstruct3.tools.travelers_gear.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "tconstruct3:travelers_helmet",
+      "components": {
+        "tconstruct3:display": true,
+        "tconstruct3:materials": [
+          "tconstruct3:ui_render#head",
+          "tconstruct3:ui_render#handle",
+          "tconstruct3:ui_render#extra",
+          "tconstruct3:ui_render#large",
+          "tconstruct3:ui_render#extra_large"
+        ]
+      }
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tconstruct3.tools.travelers_gear.title"
+    }
+  },
+  "requirements": [
+    [
+      "crafted_helmet"
+    ],
+    [
+      "crafted_chestplate"
+    ],
+    [
+      "crafted_leggings"
+    ],
+    [
+      "crafted_boots"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

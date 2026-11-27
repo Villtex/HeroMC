@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:enchantment_converting",
+  "inputs": [
+    "tconstruct3:ender_slime_crystal",
+    {
+      "amount_needed": 5,
+      "item": "minecraft:dragon_breath"
+    }
+  ],
+  "match_book": true,
+  "name": "modifiers",
+  "return_unenchanted": true
+}

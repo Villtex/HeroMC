@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_table",
+  "cast": "tconstruct3:obsidian_pane",
+  "cast_consumed": true,
+  "cooling_time": 34,
+  "fluid": {
+    "amount": 25,
+    "tag": "tconstruct3:molten_emerald"
+  },
+  "result": "tconstruct3:emerald_reinforcement"
+}

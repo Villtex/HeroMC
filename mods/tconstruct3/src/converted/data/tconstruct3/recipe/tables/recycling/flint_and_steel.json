@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:part_builder_recycling",
+  "pattern": "tconstruct3:venom_bottle",
+  "results": {
+    "tconstruct3:ingot": {
+      "id": "minecraft:iron_ingot"
+    },
+    "tconstruct3:shard": {
+      "id": "minecraft:flint"
+    }
+  },
+  "tool": "minecraft:flint_and_steel"
+}

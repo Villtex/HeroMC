@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material",
+  "ingredient": "#c:storage_blocks/redstone",
+  "leftover": {
+    "id": "minecraft:redstone",
+    "count": 4
+  },
+  "material": "tconstruct3:redstone",
+  "needed": 4,
+  "value": 9
+}

@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:ancient_hide",
+    {
+      "id": "tconstruct3:fiery",
+      "required": false
+    }
+  ]
+}

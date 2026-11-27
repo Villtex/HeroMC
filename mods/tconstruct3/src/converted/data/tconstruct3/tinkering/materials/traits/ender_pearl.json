@@ -1,0 +1,32 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "perStat": {
+    "tconstruct3:ammo": [
+      {
+        "level": 1,
+        "name": "tconstruct3:enderporting"
+      }
+    ],
+    "tconstruct3:skull": [
+      {
+        "level": 1,
+        "name": "tconstruct3:warping"
+      },
+      {
+        "level": 1,
+        "name": "tconstruct3:enderman_disguise"
+      }
+    ],
+    "tconstruct3:slime": [
+      {
+        "level": 1,
+        "name": "tconstruct3:enderclearance"
+      }
+    ]
+  }
+}

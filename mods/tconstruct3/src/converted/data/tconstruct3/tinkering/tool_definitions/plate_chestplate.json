@@ -1,0 +1,54 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "modules": [
+    {
+      "type": "tconstruct3:part_stats",
+      "parts": [
+        "tconstruct3:chestplate_plating",
+        "tconstruct3:maille"
+      ],
+      "primary_part": 0
+    },
+    {
+      "type": "tconstruct3:default_materials",
+      "materials": [
+        {
+          "type": "tconstruct3:random",
+          "tier": {
+            "max": 2,
+            "min": 1
+          }
+        },
+        {
+          "type": "tconstruct3:random",
+          "tier": {
+            "max": 2,
+            "min": 1
+          }
+        }
+      ]
+    },
+    {
+      "type": "tconstruct3:multiply_stats",
+      "multipliers": {
+        "tconstruct3:attack_damage": 0.5
+      }
+    },
+    {
+      "type": "tconstruct3:modifier_slots",
+      "slots": {
+        "defense": 3,
+        "upgrades": 2
+      }
+    },
+    {
+      "type": "tconstruct3:fixed_material_name",
+      "index": 0
+    }
+  ]
+}

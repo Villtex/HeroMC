@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:entity_melting",
+  "damage": 3,
+  "entity": {
+    "tag": "c:turtles"
+  },
+  "result": {
+    "amount": 25,
+    "nbt": {
+      "Potion": "minecraft:turtle_master"
+    },
+    "tag": "c:potion"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "icon": {
+    "pattern": "tconstruct3:button_repair"
+  },
+  "input_slots": [
+    {
+      "icon": "tconstruct3:quartz",
+      "x": 11,
+      "y": 41
+    },
+    {
+      "icon": "tconstruct3:dust",
+      "x": 31,
+      "y": 30
+    },
+    {
+      "icon": "tconstruct3:lapis",
+      "x": 31,
+      "y": 50
+    }
+  ],
+  "tool_slot": {
+    "filter": {
+      "tag": "tconstruct3:modifiable"
+    },
+    "icon": "tconstruct3:pickaxe",
+    "x": 53,
+    "y": 41
+  },
+  "translation_key": "gui.tconstruct3.tinker_station.repair_limited"
+}

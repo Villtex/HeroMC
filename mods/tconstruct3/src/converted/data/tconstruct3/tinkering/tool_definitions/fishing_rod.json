@@ -1,0 +1,80 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "modules": [
+    {
+      "type": "tconstruct3:part_stats",
+      "parts": [
+        "tconstruct3:bow_limb",
+        "tconstruct3:bowstring",
+        "tconstruct3:arrow_head"
+      ],
+      "primary_part": 0
+    },
+    {
+      "type": "tconstruct3:volatile_int",
+      "flag": "tconstruct3:hook_material",
+      "value": 2
+    },
+    {
+      "type": "tconstruct3:default_materials",
+      "materials": [
+        {
+          "type": "tconstruct3:random",
+          "tier": 1
+        },
+        {
+          "type": "tconstruct3:random",
+          "tier": 1
+        },
+        {
+          "type": "tconstruct3:random",
+          "tier": 1
+        }
+      ]
+    },
+    {
+      "type": "tconstruct3:base_stats",
+      "stats": {
+        "tconstruct3:attack_speed": 2.0
+      }
+    },
+    {
+      "type": "tconstruct3:multiply_stats",
+      "multipliers": {
+        "tconstruct3:durability": 1.5
+      }
+    },
+    {
+      "type": "tconstruct3:modifier_slots",
+      "slots": {
+        "abilities": 1,
+        "upgrades": 3
+      }
+    },
+    {
+      "type": "tconstruct3:traits",
+      "traits": [
+        {
+          "level": 1,
+          "name": "tconstruct3:fishing"
+        }
+      ]
+    },
+    {
+      "type": "tconstruct3:toggleable_set_interaction",
+      "interact_modifiers": {
+        "type": "tconstruct3:single",
+        "modifier": "tconstruct3:fishing"
+      }
+    },
+    {
+      "type": "tconstruct3:fixed_material_name",
+      "index": 0
+    }
+  ]
+}

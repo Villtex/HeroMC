@@ -1,0 +1,12 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:table_casting_material",
+  "cast": "#tconstruct3:casts/multi_use/broad_axe_head",
+  "item_cost": 8,
+  "result": "tconstruct3:broad_axe_head"
+}

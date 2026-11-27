@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:part_builder_recycling",
+  "pattern": "tconstruct3:venom_bottle",
+  "results": {
+    "tconstruct3:maille": {
+      "id": "minecraft:leather",
+      "count": 8
+    }
+  },
+  "tool": "minecraft:leather_chestplate"
+}

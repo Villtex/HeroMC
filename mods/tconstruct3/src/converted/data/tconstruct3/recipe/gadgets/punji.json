@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "b": "minecraft:bamboo"
+  },
+  "pattern": [
+    " b ",
+    "bbb"
+  ],
+  "result": {
+    "id": "tconstruct3:punji"
+  },
+  "show_notification": true
+}

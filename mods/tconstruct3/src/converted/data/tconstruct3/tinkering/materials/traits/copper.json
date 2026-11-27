@@ -1,0 +1,32 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "default": [
+    {
+      "level": 1,
+      "name": "tconstruct3:dwarven"
+    }
+  ],
+  "perStat": {
+    "tconstruct3:armor": [
+      {
+        "level": 1,
+        "name": "tconstruct3:depth_protection"
+      }
+    ],
+    "tconstruct3:skull": [
+      {
+        "level": 1,
+        "name": "tconstruct3:respiration_skull"
+      },
+      {
+        "level": 1,
+        "name": "tconstruct3:drowned_disguise"
+      }
+    ]
+  }
+}

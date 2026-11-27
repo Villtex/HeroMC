@@ -1,0 +1,62 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:reduce_tool_damage",
+      "cause": {
+        "type": "mantle:inverted",
+        "inverted_type": "tconstruct3:tag",
+        "tag": "tconstruct3:durability/bypass_reinforced"
+      },
+      "formula": [
+        0.025,
+        "$level",
+        "*",
+        11.0,
+        "$level",
+        "-",
+        "*"
+      ],
+      "modifier_level": {
+        "max": 5
+      },
+      "tool": {
+        "neoforge:ingredient_type": "tconstruct3:has_modifier",
+        "check": "all",
+        "level": 0,
+        "modifier": {
+          "type": "tconstruct3:single",
+          "modifier": "tconstruct3:unbreakable"
+        }
+      }
+    },
+    {
+      "type": "tconstruct3:reduce_tool_damage",
+      "cause": {
+        "type": "mantle:inverted",
+        "inverted_type": "tconstruct3:tag",
+        "tag": "tconstruct3:durability/bypass_reinforced"
+      },
+      "each_level": 0.05,
+      "flat": 0.5,
+      "modifier_level": {
+        "min": 6
+      },
+      "tool": {
+        "neoforge:ingredient_type": "tconstruct3:has_modifier",
+        "check": "all",
+        "level": 0,
+        "modifier": {
+          "type": "tconstruct3:single",
+          "modifier": "tconstruct3:unbreakable"
+        }
+      }
+    }
+  ]
+}

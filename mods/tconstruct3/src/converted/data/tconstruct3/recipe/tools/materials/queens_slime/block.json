@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material",
+  "ingredient": "#c:storage_blocks/queens_slime",
+  "leftover": {
+    "count": 1,
+    "tag": "c:ingots/queens_slime"
+  },
+  "material": "tconstruct3:queens_slime",
+  "needed": 1,
+  "value": 9
+}

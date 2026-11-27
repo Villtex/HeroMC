@@ -1,0 +1,47 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "criteria": {
+    "iron_pick": {
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "tconstruct3:tool_stack": {
+                "type": "mantle:and",
+                "predicates": [
+                  {
+                    "type": "mantle:tag",
+                    "tag": "tconstruct3:modifiable/interactable/right"
+                  },
+                  {
+                    "type": "tconstruct3:tool_action",
+                    "action": "till"
+                  },
+                  {
+                    "type": "tconstruct3:has_volatile_key",
+                    "key": "tconstruct3:netherite"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "iron_pick"
+    ]
+  ],
+  "rewards": {
+    "function": "tconstruct3:grant_advancement/husbandry_obtain_netherite_hoe"
+  },
+  "sends_telemetry_event": false
+}

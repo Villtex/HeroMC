@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": "#c:gems/quartz",
+  "result": {
+    "amount": 100,
+    "fluid": "tconstruct3:molten_quartz"
+  },
+  "temperature": 637,
+  "time": 55
+}

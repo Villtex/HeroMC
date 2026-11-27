@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:modifier_slot",
+      "each_level": 1,
+      "name": "upgrades"
+    }
+  ],
+  "priority": 60
+}

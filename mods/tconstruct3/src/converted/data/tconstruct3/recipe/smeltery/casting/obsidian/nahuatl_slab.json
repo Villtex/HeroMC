@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_basin",
+  "cast": "#minecraft:wooden_slabs",
+  "cast_consumed": true,
+  "cooling_time": 78,
+  "fluid": {
+    "amount": 125,
+    "tag": "tconstruct3:molten_obsidian"
+  },
+  "result": "tconstruct3:nahuatl_slab"
+}

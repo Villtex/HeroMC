@@ -1,0 +1,88 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "modules": [
+    {
+      "type": "tconstruct3:material_stats",
+      "primary_part": 0,
+      "stat_types": [
+        "tconstruct3:plating_shield",
+        "tconstruct3:limb"
+      ]
+    },
+    {
+      "type": "tconstruct3:default_materials",
+      "materials": [
+        {
+          "type": "tconstruct3:random",
+          "allow_hidden": true
+        },
+        {
+          "type": "tconstruct3:random",
+          "allow_hidden": true
+        }
+      ]
+    },
+    {
+      "type": "tconstruct3:material_traits",
+      "hooks": [
+        "tconstruct3:rebalanced_trait"
+      ],
+      "material_index": 1,
+      "stat_type": "tconstruct3:limb"
+    },
+    {
+      "type": "tconstruct3:base_stats",
+      "stats": {
+        "tconstruct3:block_amount": 10.0,
+        "tconstruct3:harvest_tier": "minecraft:stone",
+        "tconstruct3:knockback_resistance": 0.1,
+        "tconstruct3:mining_speed": 6.0
+      }
+    },
+    {
+      "type": "tconstruct3:modifier_slots",
+      "slots": {
+        "abilities": 2,
+        "defense": 1,
+        "upgrades": 1
+      }
+    },
+    {
+      "type": "tconstruct3:melting_fluid_effective",
+      "ignore_tier": false,
+      "inverted_type": "mantle:tag",
+      "predicate_type": "mantle:inverted",
+      "tag": "tconstruct3:mineable/melting_blacklist",
+      "temperature": 1500
+    },
+    {
+      "type": "tconstruct3:volatile_flag",
+      "flag": "tconstruct3:force_melting"
+    },
+    {
+      "type": "tconstruct3:vein_aoe",
+      "max_distance": 0
+    },
+    {
+      "type": "tconstruct3:traits",
+      "traits": [
+        {
+          "level": 2,
+          "name": "tconstruct3:melting"
+        },
+        {
+          "level": 1,
+          "name": "tconstruct3:tank"
+        }
+      ]
+    },
+    {
+      "type": "tconstruct3:dual_option_interaction"
+    }
+  ]
+}

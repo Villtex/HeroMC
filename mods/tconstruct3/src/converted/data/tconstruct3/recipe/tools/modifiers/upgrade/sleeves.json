@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:modifier",
+  "allow_crystal": true,
+  "inputs": [
+    "tconstruct3:silky_cloth",
+    "#c:ingots/cinderslime",
+    "tconstruct3:silky_cloth"
+  ],
+  "level": {
+    "max": 3
+  },
+  "result": "tconstruct3:sleeves",
+  "slots": {
+    "upgrades": 1
+  },
+  "tools": "#tconstruct3:modifiable/armor/chestplate"
+}

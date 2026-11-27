@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": "#c:storage_blocks/cinderslime",
+  "result": {
+    "amount": 810,
+    "fluid": "tconstruct3:molten_cinderslime"
+  },
+  "temperature": 1050,
+  "time": 203
+}

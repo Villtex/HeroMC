@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "p": "#minecraft:planks",
+    "s": "#c:rods/wooden"
+  },
+  "pattern": [
+    "ps",
+    "sp"
+  ],
+  "result": {
+    "id": "tconstruct3:pattern",
+    "count": 6
+  },
+  "show_notification": true
+}

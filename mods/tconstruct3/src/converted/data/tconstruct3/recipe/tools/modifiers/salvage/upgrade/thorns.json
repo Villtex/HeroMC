@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:modifier_salvage",
+  "modifier": "tconstruct3:thorns",
+  "slots": {
+    "upgrades": 1
+  },
+  "tools": [
+    "#tconstruct3:modifiable/armor/worn",
+    "#tconstruct3:modifiable/shields"
+  ]
+}

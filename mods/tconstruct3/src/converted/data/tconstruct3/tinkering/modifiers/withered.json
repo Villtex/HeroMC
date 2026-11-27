@@ -1,0 +1,32 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:single_level",
+  "modules": [
+    {
+      "type": "tconstruct3:effect_immunity",
+      "effect": "minecraft:wither",
+      "max_level": {
+        "each_level": 1
+      }
+    },
+    {
+      "type": "tconstruct3:armor_attack_mob_effect",
+      "damage_source": {
+        "type": "mantle:tag",
+        "tag": "tconstruct3:protection/melee"
+      },
+      "effect": "minecraft:wither",
+      "level": {
+        "flat": 1.0
+      },
+      "time": {
+        "flat": 120.0
+      }
+    }
+  ]
+}

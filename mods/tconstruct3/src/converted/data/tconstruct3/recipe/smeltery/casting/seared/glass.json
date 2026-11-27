@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_basin",
+  "cast": "#c:glass_blocks/colorless",
+  "cast_consumed": true,
+  "cooling_time": 178,
+  "fluid": {
+    "amount": 1000,
+    "tag": "tconstruct3:seared_stone"
+  },
+  "result": "tconstruct3:seared_glass"
+}

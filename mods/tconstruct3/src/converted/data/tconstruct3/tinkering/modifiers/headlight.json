@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "condition": {
+    "type": "neoforge:mod_loaded",
+    "modid": "headlight"
+  },
+  "level_display": "tconstruct3:no_levels",
+  "modules": [
+    {
+      "type": "tconstruct3:variant_name",
+      "formatter": "tconstruct3:parameter"
+    },
+    {
+      "type": "tconstruct3:headlight",
+      "default_light": 10
+    }
+  ]
+}

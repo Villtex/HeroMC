@@ -1,0 +1,24 @@
+{
+  "values": [
+    "tconstruct3:pickaxe",
+    "tconstruct3:sledge_hammer",
+    "tconstruct3:vein_hammer",
+    "tconstruct3:mattock",
+    "tconstruct3:pickadze",
+    "tconstruct3:excavator",
+    "tconstruct3:hand_axe",
+    "tconstruct3:broad_axe",
+    "tconstruct3:kama",
+    "tconstruct3:scythe",
+    "tconstruct3:dagger",
+    "tconstruct3:sword",
+    "tconstruct3:cleaver",
+    "tconstruct3:javelin",
+    "tconstruct3:flint_and_brick",
+    {
+      "id": "tconstruct3:minotaur_axe",
+      "required": false
+    },
+    "#tconstruct3:modifiable/interactable/dual"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:pluses",
+  "modules": [
+    {
+      "type": "tconstruct3:show_offhand",
+      "mode": "disallow_broken"
+    },
+    {
+      "type": "tconstruct3:shears",
+      "expanded": 1.0,
+      "per_level": 1.0
+    },
+    {
+      "type": "tconstruct3:show_interaction_source"
+    }
+  ],
+  "priority": 70
+}

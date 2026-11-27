@@ -1,0 +1,73 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "modules": [
+    {
+      "type": "tconstruct3:material_stats",
+      "primary_part": 1,
+      "stat_types": [
+        "tconstruct3:shield_core",
+        "tconstruct3:plating_shield"
+      ]
+    },
+    {
+      "type": "tconstruct3:tool_parts",
+      "parts": [
+        "tconstruct3:shield_core"
+      ]
+    },
+    {
+      "type": "tconstruct3:default_materials",
+      "materials": [
+        {
+          "type": "tconstruct3:random",
+          "tier": {
+            "max": 2,
+            "min": 1
+          }
+        },
+        {
+          "type": "tconstruct3:random",
+          "tier": {
+            "max": 2,
+            "min": 1
+          }
+        }
+      ]
+    },
+    {
+      "type": "tconstruct3:base_stats",
+      "stats": {
+        "tconstruct3:block_amount": 100.0,
+        "tconstruct3:block_angle": 180.0
+      }
+    },
+    {
+      "type": "tconstruct3:modifier_slots",
+      "slots": {
+        "defense": 3,
+        "upgrades": 2
+      }
+    },
+    {
+      "type": "tconstruct3:traits",
+      "traits": [
+        {
+          "level": 1,
+          "name": "tconstruct3:blocking"
+        }
+      ]
+    },
+    {
+      "type": "tconstruct3:attack_interaction"
+    },
+    {
+      "type": "tconstruct3:fixed_material_name",
+      "index": 1
+    }
+  ]
+}

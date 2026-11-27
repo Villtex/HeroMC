@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_table_tipping",
+  "cooling_time": 20,
+  "fluid": {
+    "amount": 250,
+    "tag": "c:potion"
+  },
+  "modifier": "tconstruct3:tipped",
+  "tools": "#tconstruct3:modifiable/fishing_rods"
+}

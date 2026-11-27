@@ -1,0 +1,59 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "stats": {
+    "tconstruct3:binding": {},
+    "tconstruct3:grip": {
+      "accuracy": 0.1,
+      "durability": -0.1,
+      "melee_damage": 1.75
+    },
+    "tconstruct3:handle": {
+      "durability": -0.1,
+      "melee_damage": 0.1,
+      "melee_speed": -0.1,
+      "mining_speed": 0.1
+    },
+    "tconstruct3:head": {
+      "durability": 200,
+      "melee_attack": 1.75,
+      "mining_speed": 6.5,
+      "mining_tier": "minecraft:iron"
+    },
+    "tconstruct3:limb": {
+      "accuracy": -0.05,
+      "draw_speed": -0.2,
+      "durability": 200,
+      "velocity": 0.15
+    },
+    "tconstruct3:maille": {},
+    "tconstruct3:plating_boots": {
+      "armor": 1.0,
+      "durability": 156,
+      "knockback_resistance": 0.1
+    },
+    "tconstruct3:plating_chestplate": {
+      "armor": 4.0,
+      "durability": 192,
+      "knockback_resistance": 0.1
+    },
+    "tconstruct3:plating_helmet": {
+      "armor": 2.0,
+      "durability": 132,
+      "knockback_resistance": 0.1
+    },
+    "tconstruct3:plating_leggings": {
+      "armor": 3.0,
+      "durability": 180,
+      "knockback_resistance": 0.1
+    },
+    "tconstruct3:plating_shield": {
+      "durability": 216,
+      "knockback_resistance": 0.1
+    }
+  }
+}

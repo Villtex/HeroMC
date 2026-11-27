@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:single_level",
+  "modules": [
+    {
+      "type": "tconstruct3:sling_knockback",
+      "damage_multiplier": 1.5,
+      "drawtime_multiplier": 1.5,
+      "force_multiplier": {
+        "each_level": 2.0,
+        "flat": 1.0
+      }
+    }
+  ]
+}

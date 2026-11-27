@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:single_level",
+  "modules": [
+    {
+      "type": "tconstruct3:inventory_menu",
+      "on_key": "shift"
+    },
+    {
+      "type": "tconstruct3:smelting",
+      "multiplier": 10.0,
+      "output_pattern": "tconstruct3:result",
+      "pattern": "tconstruct3:fire",
+      "recipe_type": "minecraft:smelting",
+      "slots": {
+        "each_level": 1
+      }
+    }
+  ],
+  "priority": 110
+}

@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "B": "tconstruct3:seared_brick",
+    "C": "#c:ingots/copper",
+    "G": "#c:glass_blocks"
+  },
+  "pattern": [
+    "BGB",
+    "CGC",
+    "BGB"
+  ],
+  "result": {
+    "id": "tconstruct3:seared_casting_tank"
+  },
+  "show_notification": true
+}

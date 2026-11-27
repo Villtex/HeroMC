@@ -1,0 +1,46 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:single_level",
+  "modules": [
+    {
+      "type": "tconstruct3:place_glow",
+      "tool_damage": 5
+    },
+    {
+      "type": "tconstruct3:glow_walker",
+      "min_light": 3,
+      "radius": {
+        "each_level": 1.0,
+        "flat": 2.0
+      },
+      "tool_damage": 5
+    },
+    {
+      "type": "tconstruct3:projectile_place_glow",
+      "blocks": true,
+      "entities": true,
+      "tool_damage": 5
+    },
+    {
+      "type": "tconstruct3:show_offhand",
+      "mode": "disallow_broken"
+    },
+    {
+      "type": "tconstruct3:show_interaction_source"
+    },
+    {
+      "type": "tconstruct3:block_item_provider",
+      "item": "tconstruct3:glow",
+      "tool": {
+        "neoforge:ingredient_type": "mantle:tag",
+        "tag": "tconstruct3:modifiable/held"
+      },
+      "tool_damage": 5
+    }
+  ]
+}

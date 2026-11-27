@@ -1,0 +1,41 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "block_effects": [
+    {
+      "type": "tconstruct3:mob_effect_cloud",
+      "effects": [
+        {
+          "effect": "minecraft:absorption",
+          "level": 2,
+          "time": 300
+        }
+      ]
+    }
+  ],
+  "entity_effects": [
+    {
+      "type": "tconstruct3:damage",
+      "damage": 3.0,
+      "damage_type": {
+        "melee": "tconstruct3:fluid_magic_melee",
+        "ranged": "tconstruct3:fluid_magic_ranged"
+      }
+    },
+    {
+      "type": "tconstruct3:mob_effect",
+      "action": "set",
+      "effect": "minecraft:absorption",
+      "level": 2,
+      "time": 300
+    }
+  ],
+  "fluid": {
+    "amount": 10,
+    "tag": "c:molten_rose_gold"
+  }
+}

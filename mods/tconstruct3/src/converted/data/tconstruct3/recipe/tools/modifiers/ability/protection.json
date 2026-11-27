@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:modifier",
+  "allow_crystal": true,
+  "inputs": [
+    "tconstruct3:gold_reinforcement",
+    "tconstruct3:seared_reinforcement",
+    "tconstruct3:obsidian_reinforcement",
+    "tconstruct3:iron_reinforcement",
+    "tconstruct3:cobalt_reinforcement"
+  ],
+  "level": 1,
+  "result": "tconstruct3:protection",
+  "slots": {
+    "abilities": 1
+  },
+  "tools": "#tconstruct3:modifiable/armor"
+}

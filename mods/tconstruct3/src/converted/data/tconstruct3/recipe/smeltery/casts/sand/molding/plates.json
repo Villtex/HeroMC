@@ -1,0 +1,18 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:plates"
+    }
+  ],
+  "type": "tconstruct3:molding_table",
+  "material": {
+    "tag": "tconstruct3:casts/sand"
+  },
+  "pattern": "#c:plates",
+  "result": "tconstruct3:plate_sand_cast"
+}

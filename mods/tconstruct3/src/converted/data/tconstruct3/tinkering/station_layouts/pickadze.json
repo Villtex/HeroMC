@@ -1,0 +1,52 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "icon": {
+    "id": "tconstruct3:pickadze",
+    "components": {
+      "tconstruct3:display": true,
+      "tconstruct3:materials": [
+        "tconstruct3:ui_render#head",
+        "tconstruct3:ui_render#handle",
+        "tconstruct3:ui_render#extra",
+        "tconstruct3:ui_render#large",
+        "tconstruct3:ui_render#extra_large"
+      ]
+    }
+  },
+  "input_slots": [
+    {
+      "filter": {
+        "item": "tconstruct3:pick_head"
+      },
+      "icon": "tconstruct3:pick_head",
+      "translation_key": "item.tconstruct3.pick_head",
+      "x": 31,
+      "y": 22
+    },
+    {
+      "filter": {
+        "item": "tconstruct3:tool_handle"
+      },
+      "icon": "tconstruct3:tool_handle",
+      "translation_key": "item.tconstruct3.tool_handle",
+      "x": 22,
+      "y": 53
+    },
+    {
+      "filter": {
+        "item": "tconstruct3:adze_head"
+      },
+      "icon": "tconstruct3:adze_head",
+      "translation_key": "item.tconstruct3.adze_head",
+      "x": 51,
+      "y": 34
+    }
+  ],
+  "sortIndex": 6,
+  "translation_key": "item.tconstruct3.pickadze"
+}

@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material_fluid",
+  "fluid": {
+    "amount": 50,
+    "tag": "tconstruct3:venom"
+  },
+  "hide_in_book": true,
+  "input": "tconstruct3:slimeskin",
+  "output": "tconstruct3:leather",
+  "temperature": 10
+}

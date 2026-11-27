@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:damagable_melting",
+  "ingredient": "minecraft:golden_chestplate",
+  "result": {
+    "amount": 720,
+    "tag": "c:molten_gold",
+    "unit_size": 10
+  },
+  "temperature": 700,
+  "time": 161
+}

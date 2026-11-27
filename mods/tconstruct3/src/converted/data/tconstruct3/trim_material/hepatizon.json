@@ -1,0 +1,14 @@
+{
+  "asset_name": "tconstruct_hepatizon",
+  "description": {
+    "color": "#60496B",
+    "translate": "trim_material.tconstruct3.format",
+    "with": [
+      {
+        "translate": "material.tconstruct3.hepatizon"
+      }
+    ]
+  },
+  "ingredient": "tconstruct3:hepatizon_ingot",
+  "item_model_index": 0.3
+}

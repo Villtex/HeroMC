@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": [
+    "minecraft:skeleton_skull",
+    "minecraft:wither_skeleton_skull",
+    "tconstruct3:stray_head"
+  ],
+  "result": {
+    "amount": 250,
+    "fluid": "minecraft:milk"
+  },
+  "temperature": 0,
+  "time": 47
+}

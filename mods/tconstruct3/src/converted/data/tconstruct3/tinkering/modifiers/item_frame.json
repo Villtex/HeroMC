@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:inventory",
+      "limit": {
+        "flat": 1
+      },
+      "pattern": "tconstruct3:item_frame",
+      "slots": {
+        "each_level": 3
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material",
+  "ingredient": "#c:wither_bones",
+  "material": "tconstruct3:necrotic_bone",
+  "needed": 1,
+  "value": 1
+}

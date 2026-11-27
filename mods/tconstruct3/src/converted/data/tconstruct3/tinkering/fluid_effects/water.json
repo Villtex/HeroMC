@@ -1,0 +1,48 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "block_effects": [
+    {
+      "type": "tconstruct3:conditional",
+      "block": {
+        "type": "mantle:inverted",
+        "inverted_type": "mantle:or",
+        "predicates": [
+          "mantle:blocks_motion",
+          {
+            "type": "mantle:tag",
+            "tag": "tconstruct3:unreplacable_by_liquid"
+          }
+        ]
+      },
+      "effect": {
+        "type": "tconstruct3:break_block"
+      }
+    }
+  ],
+  "entity_effects": [
+    {
+      "type": "tconstruct3:conditional",
+      "effect": {
+        "type": "tconstruct3:damage",
+        "damage": 2.0,
+        "damage_type": {
+          "melee": "tconstruct3:water_melee",
+          "ranged": "tconstruct3:water_ranged"
+        }
+      },
+      "target": "mantle:water_sensitive"
+    },
+    {
+      "type": "tconstruct3:extinguish"
+    }
+  ],
+  "fluid": {
+    "amount": 50,
+    "fluid": "minecraft:water"
+  }
+}

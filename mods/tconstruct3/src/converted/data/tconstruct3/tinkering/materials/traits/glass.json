@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "perStat": {
+    "tconstruct3:ammo": [
+      {
+        "level": 1,
+        "name": "tconstruct3:amorphous"
+      },
+      {
+        "level": 1,
+        "name": "tconstruct3:smashing_ammo"
+      },
+      {
+        "level": 1,
+        "name": "tconstruct3:spilling_rod"
+      }
+    ]
+  }
+}

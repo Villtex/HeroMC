@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material_fluid",
+  "fluid": {
+    "amount": 90,
+    "tag": "c:molten_manyullyn"
+  },
+  "output": "tconstruct3:manyullyn",
+  "temperature": 1200
+}

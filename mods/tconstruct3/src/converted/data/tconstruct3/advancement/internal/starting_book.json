@@ -1,0 +1,37 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "advancements": [
+    {
+      "advancement": {
+        "criteria": {
+          "tick": {
+            "conditions": {},
+            "trigger": "minecraft:tick"
+          }
+        },
+        "requirements": [
+          [
+            "tick"
+          ]
+        ],
+        "rewards": {
+          "loot": [
+            "tconstruct3:gameplay/starting_book"
+          ]
+        },
+        "sends_telemetry_event": false
+      },
+      "conditions": [
+        {
+          "type": "tconstruct3:config",
+          "prop": "spawn_with_book"
+        }
+      ]
+    }
+  ]
+}

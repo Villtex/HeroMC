@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_basin",
+  "cast": "minecraft:stone_brick_slab",
+  "cast_consumed": true,
+  "cooling_time": 80,
+  "fluid": {
+    "amount": 250,
+    "tag": "tconstruct3:molten_clay"
+  },
+  "result": "tconstruct3:seared_bricks_slab"
+}

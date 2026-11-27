@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:melee_protection",
+    "tconstruct3:projectile_protection",
+    "tconstruct3:fire_protection",
+    "tconstruct3:magic_protection",
+    "tconstruct3:blast_protection"
+  ]
+}

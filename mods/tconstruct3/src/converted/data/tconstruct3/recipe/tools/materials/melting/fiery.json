@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:ingots/fiery"
+    }
+  ],
+  "type": "tconstruct3:material_melting",
+  "byproducts": [
+    {
+      "amount": 90,
+      "tag": "c:molten_iron"
+    }
+  ],
+  "input": "tconstruct3:fiery",
+  "result": {
+    "amount": 250,
+    "fluid": "tconstruct3:fiery_liquid"
+  },
+  "temperature": 1500
+}

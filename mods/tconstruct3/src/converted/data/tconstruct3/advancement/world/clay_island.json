@@ -1,0 +1,46 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "parent": "tconstruct3:world/tinkers_gadgetry",
+  "criteria": {
+    "found_island": {
+      "conditions": {
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:location": {
+              "structures": "tconstruct3:clay_island"
+            }
+          }
+        }
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.tconstruct3.world.clay_island.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "minecraft:clay_ball"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tconstruct3.world.clay_island.title"
+    }
+  },
+  "requirements": [
+    [
+      "found_island"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

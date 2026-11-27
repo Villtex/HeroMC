@@ -1,0 +1,10 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:banner_modifier",
+  "clear_input": "tconstruct3:sky_slime_bottle"
+}

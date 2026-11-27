@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "tconstruct3:seared_brick",
+    "C": "#c:ingots/iron",
+    "P": "tconstruct3:seared_glass_pane"
+  },
+  "pattern": [
+    " C ",
+    "PPP",
+    "BBB"
+  ],
+  "result": {
+    "id": "tconstruct3:seared_lantern",
+    "count": 3
+  },
+  "show_notification": true
+}

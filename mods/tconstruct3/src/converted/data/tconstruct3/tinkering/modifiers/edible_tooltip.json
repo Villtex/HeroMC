@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:stat_tooltip",
+      "stat": "tconstruct3:hunger"
+    },
+    {
+      "type": "tconstruct3:stat_tooltip",
+      "stat": "tconstruct3:saturation"
+    }
+  ],
+  "show_in_tooltips": "never"
+}

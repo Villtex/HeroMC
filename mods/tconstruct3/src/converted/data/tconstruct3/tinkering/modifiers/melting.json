@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:pluses",
+  "modules": [
+    {
+      "type": "tconstruct3:trait",
+      "fixed_level": true,
+      "level": 1,
+      "name": "tconstruct3:tank_handler"
+    },
+    {
+      "type": "tconstruct3:stat_boost",
+      "each_level": 1000.0,
+      "operation": "add",
+      "stat": "tconstruct3:tank_capacity"
+    },
+    {
+      "type": "tconstruct3:melting",
+      "nuggets_per_metal": {
+        "each_level": 3,
+        "flat": 9
+      },
+      "shards_per_gem": {
+        "each_level": 2,
+        "flat": 6
+      },
+      "temperature": {
+        "each_level": 500,
+        "flat": 500
+      }
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:max_armor_attribute",
+      "allow_broken": false,
+      "attribute": "tconstruct3:player.critical_damage",
+      "each_level": 0.05,
+      "held_tag": "tconstruct3:modifiable/held",
+      "operation": "addition",
+      "tooltip_style": "percent"
+    },
+    {
+      "type": "tconstruct3:protection",
+      "damage_source": "mantle:can_protect",
+      "each_level": 2.0,
+      "wearing_entity": "tconstruct3:airborne"
+    }
+  ]
+}

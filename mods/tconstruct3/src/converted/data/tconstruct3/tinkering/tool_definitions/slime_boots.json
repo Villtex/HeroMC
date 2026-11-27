@@ -1,0 +1,72 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "modules": [
+    {
+      "type": "tconstruct3:material_stats",
+      "primary_part": 1,
+      "stat_types": [
+        "tconstruct3:laces",
+        {
+          "scale": 1.3,
+          "stat": "tconstruct3:slime"
+        }
+      ]
+    },
+    {
+      "type": "tconstruct3:material_traits",
+      "hooks": [
+        "tconstruct3:trim_trait"
+      ],
+      "material_index": 0,
+      "stat_type": "tconstruct3:laces"
+    },
+    {
+      "type": "tconstruct3:default_materials",
+      "materials": [
+        {
+          "type": "tconstruct3:fixed",
+          "material": "tconstruct3:skyslime_vine"
+        },
+        {
+          "type": "tconstruct3:fixed",
+          "material": "tconstruct3:blood"
+        }
+      ]
+    },
+    {
+      "type": "tconstruct3:tool_parts",
+      "parts": [
+        "tconstruct3:laces"
+      ]
+    },
+    {
+      "type": "tconstruct3:modifier_slots",
+      "slots": {
+        "abilities": 2,
+        "upgrades": 3
+      }
+    },
+    {
+      "type": "tconstruct3:traits",
+      "traits": [
+        {
+          "level": 1,
+          "name": "tconstruct3:bouncy"
+        }
+      ]
+    },
+    {
+      "type": "tconstruct3:unique_material_name",
+      "index": 1
+    },
+    {
+      "type": "tconstruct3:fixed_material_name",
+      "index": 0
+    }
+  ]
+}

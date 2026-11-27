@@ -1,0 +1,20 @@
+{
+  "values": [
+    "tconstruct3:iron_platform",
+    "#tconstruct3:copper_platforms",
+    "tconstruct3:earth_slime_dirt",
+    "tconstruct3:earth_earth_slime_grass",
+    "tconstruct3:sky_earth_slime_grass",
+    "tconstruct3:blood_earth_slime_grass",
+    "tconstruct3:earth_sky_slime_grass",
+    "tconstruct3:earth_vanilla_slime_grass",
+    "tconstruct3:greenheart_log",
+    "tconstruct3:greenheart_wood",
+    "tconstruct3:seared_drain",
+    "tconstruct3:seared_chute",
+    "tconstruct3:smeltery_controller",
+    "tconstruct3:seared_fluid_cannon",
+    "tconstruct3:copper_gauge",
+    "tconstruct3:cast_chest"
+  ]
+}

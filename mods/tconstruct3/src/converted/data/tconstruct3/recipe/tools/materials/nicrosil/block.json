@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:storage_blocks/nicrosil"
+    }
+  ],
+  "type": "tconstruct3:material",
+  "ingredient": "#c:storage_blocks/nicrosil",
+  "leftover": {
+    "count": 1,
+    "tag": "c:ingots/nicrosil"
+  },
+  "material": "tconstruct3:nicrosil",
+  "needed": 1,
+  "value": 9
+}

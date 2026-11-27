@@ -1,0 +1,82 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "modules": [
+    {
+      "type": "tconstruct3:material_stats",
+      "primary_part": 0,
+      "stat_types": [
+        "tconstruct3:head",
+        "tconstruct3:limb",
+        "tconstruct3:bowstring"
+      ]
+    },
+    {
+      "type": "tconstruct3:default_materials",
+      "materials": [
+        {
+          "type": "tconstruct3:random",
+          "allow_hidden": true
+        },
+        {
+          "type": "tconstruct3:random",
+          "allow_hidden": true
+        },
+        {
+          "type": "tconstruct3:random",
+          "allow_hidden": true
+        }
+      ]
+    },
+    {
+      "type": "tconstruct3:material_traits",
+      "hooks": [
+        "tconstruct3:rebalanced_trait"
+      ],
+      "material_index": 1,
+      "stat_type": "tconstruct3:limb"
+    },
+    {
+      "type": "tconstruct3:base_stats",
+      "stats": {
+        "tconstruct3:attack_speed": 1.2
+      }
+    },
+    {
+      "type": "tconstruct3:modifier_slots",
+      "slots": {
+        "abilities": 1,
+        "upgrades": 3
+      }
+    },
+    {
+      "type": "tconstruct3:traits",
+      "traits": [
+        {
+          "level": 1,
+          "name": "tconstruct3:war_charge"
+        }
+      ]
+    },
+    {
+      "type": "tconstruct3:tool_actions",
+      "tool_actions": [
+        "pickaxe_dig"
+      ]
+    },
+    {
+      "type": "tconstruct3:is_effective",
+      "predicate_type": "mantle:tag",
+      "tag": "minecraft:mineable/pickaxe"
+    },
+    {
+      "type": "tconstruct3:circle_aoe",
+      "3D": false,
+      "diameter": 1
+    }
+  ]
+}

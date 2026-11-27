@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:single_level",
+  "modules": [
+    {
+      "type": "tconstruct3:conditional_melee_damage",
+      "attacker": "mantle:sprinting",
+      "each_level": 4.0,
+      "percent": false
+    },
+    {
+      "type": "tconstruct3:melee_instrument",
+      "attacker": "mantle:sprinting",
+      "hooks": [
+        "tconstruct3:melee_hit",
+        "tconstruct3:monster_melee_hit"
+      ],
+      "instrument_material": "tconstruct3:horn",
+      "instrument_tag": "minecraft:regular_goat_horns"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "mantle:crafting_shaped_retextured",
+  "category": "redstone",
+  "key": {
+    "#": "#tconstruct3:foundry_bricks",
+    "C": "tconstruct3:obsidian_pane"
+  },
+  "match_all": false,
+  "pattern": [
+    "C",
+    "#",
+    "C"
+  ],
+  "result": {
+    "id": "tconstruct3:scorched_chute"
+  },
+  "show_notification": true,
+  "texture": "#"
+}

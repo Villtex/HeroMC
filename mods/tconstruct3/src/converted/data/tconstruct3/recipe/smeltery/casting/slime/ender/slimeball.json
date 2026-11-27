@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_table",
+  "cooling_time": 53,
+  "fluid": {
+    "amount": 250,
+    "tag": "tconstruct3:ender_slime"
+  },
+  "result": "tconstruct3:ender_slime_ball"
+}

@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material_fluid",
+  "fluid": {
+    "amount": 200,
+    "tag": "tconstruct3:blazing_blood"
+  },
+  "input": "tconstruct3:necrotic_bone",
+  "output": "tconstruct3:blazing_bone",
+  "temperature": 1500
+}

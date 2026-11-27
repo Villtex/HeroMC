@@ -1,0 +1,31 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:single_level",
+  "modules": [
+    {
+      "type": "tconstruct3:stat_boost",
+      "flat": 0.5,
+      "operation": "add",
+      "stat": "tconstruct3:water_inertia"
+    },
+    {
+      "type": "tconstruct3:conditional_power",
+      "each_level": 1.0,
+      "percent": false,
+      "target": "mantle:underwater"
+    },
+    {
+      "type": "tconstruct3:volatile_flag",
+      "flag": "tconstruct3:efln",
+      "hooks": [
+        "tconstruct3:projectile_launch",
+        "tconstruct3:projectile_shot"
+      ]
+    }
+  ]
+}

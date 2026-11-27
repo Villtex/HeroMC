@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "perStat": {
+    "tconstruct3:ribcage": [
+      {
+        "level": 1,
+        "name": "tconstruct3:ram_attack"
+      }
+    ]
+  }
+}

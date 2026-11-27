@@ -1,0 +1,39 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    {
+      "id": "tconstruct3:silver",
+      "required": false
+    },
+    {
+      "id": "tconstruct3:lead",
+      "required": false
+    },
+    {
+      "id": "tconstruct3:aluminum",
+      "required": false
+    },
+    {
+      "id": "tconstruct3:osmium",
+      "required": false
+    },
+    {
+      "id": "tconstruct3:ironwood",
+      "required": false
+    },
+    {
+      "id": "tconstruct3:steeleaf",
+      "required": false
+    },
+    {
+      "id": "tconstruct3:fiery",
+      "required": false
+    },
+    "#tconstruct3:compatibility_metals/blocks"
+  ]
+}

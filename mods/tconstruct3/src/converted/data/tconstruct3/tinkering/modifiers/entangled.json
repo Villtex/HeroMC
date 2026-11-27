@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:no_levels",
+  "modules": [
+    {
+      "type": "tconstruct3:stat_boost",
+      "flat": 6.0,
+      "operation": "add",
+      "stat": "tconstruct3:mining_speed"
+    },
+    {
+      "type": "tconstruct3:stat_boost",
+      "flat": 0.15,
+      "operation": "add",
+      "stat": "tconstruct3:draw_speed"
+    },
+    {
+      "type": "tconstruct3:damage_on_unequip",
+      "damage": 1.0,
+      "damage_type": "tconstruct3:entangled"
+    }
+  ]
+}

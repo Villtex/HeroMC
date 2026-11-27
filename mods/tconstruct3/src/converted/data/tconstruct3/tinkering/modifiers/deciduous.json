@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:share_durability",
+      "consume": {
+        "flat": 1
+      },
+      "grant": {
+        "each_level": 1,
+        "flat": 1
+      },
+      "shield": "tconstruct3:barkskin"
+    }
+  ],
+  "priority": 250
+}

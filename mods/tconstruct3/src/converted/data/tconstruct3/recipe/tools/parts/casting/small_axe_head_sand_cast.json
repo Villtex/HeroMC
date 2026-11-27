@@ -1,0 +1,13 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:table_casting_material",
+  "cast": "#tconstruct3:casts/single_use/small_axe_head",
+  "cast_consumed": true,
+  "item_cost": 2,
+  "result": "tconstruct3:small_axe_head"
+}

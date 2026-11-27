@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_table",
+  "cast": [
+    {
+      "neoforge:ingredient_type": "tconstruct3:material",
+      "item": "tconstruct3:boots_plating"
+    },
+    "tconstruct3:boots_plating_dummy"
+  ],
+  "cast_consumed": true,
+  "cooling_time": 57,
+  "fluid": {
+    "amount": 90,
+    "tag": "c:molten_gold"
+  },
+  "result": "tconstruct3:boots_plating_cast",
+  "switch_slots": true
+}

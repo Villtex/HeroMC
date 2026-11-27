@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": "tconstruct3:blaze_head",
+  "result": {
+    "amount": 100,
+    "fluid": "tconstruct3:blazing_blood"
+  },
+  "temperature": 1000,
+  "time": 80
+}

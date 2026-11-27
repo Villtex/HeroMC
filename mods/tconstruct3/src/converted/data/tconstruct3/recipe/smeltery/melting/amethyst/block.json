@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": "#c:storage_blocks/amethyst",
+  "result": {
+    "amount": 400,
+    "fluid": "tconstruct3:molten_amethyst"
+  },
+  "temperature": 950,
+  "time": 130
+}

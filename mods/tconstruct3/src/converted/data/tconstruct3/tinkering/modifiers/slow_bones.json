@@ -1,0 +1,32 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:single_level",
+  "modules": [
+    {
+      "type": "tconstruct3:effect_immunity",
+      "effect": "minecraft:slowness",
+      "max_level": {
+        "each_level": 1
+      }
+    },
+    {
+      "type": "tconstruct3:armor_attack_mob_effect",
+      "damage_source": {
+        "type": "mantle:tag",
+        "tag": "minecraft:is_projectile"
+      },
+      "effect": "minecraft:slowness",
+      "level": {
+        "per_level": 2.0
+      },
+      "time": {
+        "flat": 300.0
+      }
+    }
+  ]
+}

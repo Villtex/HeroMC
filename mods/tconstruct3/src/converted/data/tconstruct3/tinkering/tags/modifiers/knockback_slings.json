@@ -1,0 +1,12 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "#tconstruct3:knockback_slings/self",
+    "#tconstruct3:knockback_slings/target"
+  ]
+}

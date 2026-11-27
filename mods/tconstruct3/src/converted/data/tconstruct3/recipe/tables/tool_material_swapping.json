@@ -1,0 +1,14 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:tool_material_swapping",
+  "tools": {
+    "neoforge:ingredient_type": "neoforge:difference",
+    "base": "#tconstruct3:modifiable/multipart",
+    "subtracted": "#tconstruct3:modifiable/unswappable/tools"
+  }
+}

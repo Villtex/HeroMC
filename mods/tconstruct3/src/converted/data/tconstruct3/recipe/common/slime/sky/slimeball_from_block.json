@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "tconstruct3:slime_balls",
+  "ingredients": "tconstruct3:sky_slime",
+  "result": {
+    "id": "tconstruct3:sky_slime_ball",
+    "count": 9
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:no_levels",
+  "modules": [
+    {
+      "type": "tconstruct3:swappable_tool_traits",
+      "hook": "tconstruct3:rebalanced_trait"
+    }
+  ],
+  "show_in_tooltips": "bonus_slot"
+}

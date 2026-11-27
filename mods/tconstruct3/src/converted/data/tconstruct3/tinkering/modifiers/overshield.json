@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:overshield",
+      "consumed": {
+        "each_level": 2
+      },
+      "protection": {
+        "each_level": 1.25
+      }
+    }
+  ]
+}

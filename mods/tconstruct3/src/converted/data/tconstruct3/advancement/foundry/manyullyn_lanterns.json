@@ -1,0 +1,77 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "parent": "tconstruct3:foundry/structure",
+  "criteria": {
+    "scorched_lantern": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:scorched_lantern",
+            "count": {
+              "min": 64
+            },
+            "components": {
+              "tconstruct3:tank": {
+                "id": "tconstruct3:molten_manyullyn",
+                "amount": 50
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "seared_lantern": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:seared_lantern",
+            "count": {
+              "min": 64
+            },
+            "components": {
+              "tconstruct3:tank": {
+                "id": "tconstruct3:molten_manyullyn",
+                "amount": 50
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.tconstruct3.foundry.manyullyn_lanterns.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "id": "tconstruct3:scorched_lantern",
+      "components": {
+        "tconstruct3:tank": {
+          "id": "tconstruct3:molten_manyullyn",
+          "amount": 50
+        }
+      }
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tconstruct3.foundry.manyullyn_lanterns.title"
+    }
+  },
+  "requirements": [
+    [
+      "seared_lantern",
+      "scorched_lantern"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

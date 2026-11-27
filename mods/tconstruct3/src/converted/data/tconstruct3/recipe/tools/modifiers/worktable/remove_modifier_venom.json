@@ -1,0 +1,36 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:remove_modifier",
+  "inputs": {
+    "ingredient": [
+      {
+        "type": "mantle:fluid_container",
+        "amount": 1000,
+        "display": {
+          "item": "tconstruct3:venom_bucket"
+        },
+        "tag": "tconstruct3:venom"
+      },
+      {
+        "type": "mantle:fluid_container",
+        "amount": 250,
+        "display": {
+          "item": "tconstruct3:venom_bottle"
+        },
+        "tag": "tconstruct3:venom"
+      }
+    ]
+  },
+  "modifier_predicate": {
+    "type": "mantle:inverted",
+    "inverted_type": "tconstruct3:tag",
+    "tag": "tconstruct3:remove_blacklist"
+  },
+  "name": "modifiers",
+  "tools": "#tconstruct3:modifiable"
+}

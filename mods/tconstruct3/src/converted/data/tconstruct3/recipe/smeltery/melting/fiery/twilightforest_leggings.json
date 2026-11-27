@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "neoforge:registered",
+      "value": "twilightforest:fiery_leggings"
+    }
+  ],
+  "type": "tconstruct3:damagable_melting",
+  "byproducts": [
+    {
+      "amount": 630,
+      "tag": "c:molten_iron",
+      "unit_size": 10
+    }
+  ],
+  "ingredient": "twilightforest:fiery_leggings",
+  "result": {
+    "amount": 1750,
+    "fluid": "tconstruct3:fiery_liquid",
+    "unit_size": 50
+  },
+  "temperature": 1500,
+  "time": 212
+}

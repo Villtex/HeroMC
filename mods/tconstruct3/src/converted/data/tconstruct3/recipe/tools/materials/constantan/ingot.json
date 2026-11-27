@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:ingots/constantan"
+    }
+  ],
+  "type": "tconstruct3:material",
+  "ingredient": "#c:ingots/constantan",
+  "material": "tconstruct3:constantan",
+  "needed": 1,
+  "value": 1
+}

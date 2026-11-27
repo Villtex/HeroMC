@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_table",
+  "cast": "#tconstruct3:casts/multi_use/repair_kit",
+  "cooling_time": 101,
+  "fluid": {
+    "amount": 180,
+    "tag": "tconstruct3:molten_debris"
+  },
+  "result": {
+    "id": "tconstruct3:repair_kit",
+    "components": {
+      "tconstruct3:material": "tconstruct3:ancient"
+    }
+  }
+}

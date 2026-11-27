@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "neoforge:registered",
+      "value": "twilightforest:knightmetal_helmet"
+    }
+  ],
+  "type": "tconstruct3:damagable_melting",
+  "ingredient": "twilightforest:knightmetal_helmet",
+  "result": {
+    "amount": 450,
+    "fluid": "tconstruct3:molten_knightmetal",
+    "unit_size": 10
+  },
+  "temperature": 1300,
+  "time": 167
+}

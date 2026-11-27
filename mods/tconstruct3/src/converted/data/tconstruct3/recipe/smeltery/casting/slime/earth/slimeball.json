@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_table",
+  "cooling_time": 51,
+  "fluid": {
+    "amount": 250,
+    "tag": "c:slime"
+  },
+  "result": "minecraft:slime_ball"
+}

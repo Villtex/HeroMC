@@ -1,0 +1,19 @@
+{
+  "values": [
+    "tconstruct3:crystalshot",
+    "tconstruct3:molten_soulsteel_bucket",
+    "tconstruct3:soulsteel_block",
+    "tconstruct3:soulsteel_ingot",
+    "tconstruct3:soulsteel_nugget",
+    "tconstruct3:ichor_slime_leaves",
+    "tconstruct3:ichor_slime_tall_grass",
+    "tconstruct3:ichor_slime_fern",
+    "tconstruct3:ichor_slime_sapling",
+    "tconstruct3:ichor_slime_grass_seeds",
+    "tconstruct3:ichor_earth_slime_grass",
+    "tconstruct3:ichor_sky_slime_grass",
+    "tconstruct3:ichor_ichor_slime_grass",
+    "tconstruct3:ichor_ender_slime_grass",
+    "tconstruct3:ichor_vanilla_slime_grass"
+  ]
+}

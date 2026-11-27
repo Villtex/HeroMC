@@ -1,0 +1,14 @@
+{
+  "values": [
+    "tconstruct3:piercing",
+    "tconstruct3:self_destruct",
+    "tconstruct3:bleeding",
+    "tconstruct3:entangled",
+    "tconstruct3:spiny",
+    "tconstruct3:update_health",
+    "tconstruct3:water_melee",
+    "tconstruct3:water_ranged",
+    "tconstruct3:fluid_spike_melee",
+    "tconstruct3:fluid_spike_ranged"
+  ]
+}

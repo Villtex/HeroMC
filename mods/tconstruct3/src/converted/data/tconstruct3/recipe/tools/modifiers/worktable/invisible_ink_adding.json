@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:modifier_set_worktable",
+  "add_to_set": true,
+  "allow_traits": false,
+  "data_key": "tconstruct3:invisible_modifiers",
+  "inputs": {
+    "neoforge:ingredient_type": "mantle:fluid_container",
+    "amount": 250,
+    "display": "tconstruct3:sky_slime_bottle",
+    "tag": "tconstruct3:sky_slime"
+  },
+  "modifier_predicate": {
+    "type": "mantle:inverted",
+    "inverted_type": "tconstruct3:tag",
+    "tag": "tconstruct3:invisible_ink_blacklist"
+  },
+  "tools": "#tconstruct3:modifiable"
+}

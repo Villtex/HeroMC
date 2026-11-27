@@ -1,0 +1,35 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:ingots/lead"
+    },
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "mantle:tag_filled",
+        "tag": "c:ingots/tin"
+      }
+    }
+  ],
+  "type": "tconstruct3:ore_melting",
+  "byproducts": [
+    {
+      "amount": 90,
+      "rate": "metal",
+      "tag": "c:molten_lead"
+    }
+  ],
+  "ingredient": "#c:raw_materials/pewter",
+  "rate": "metal",
+  "result": {
+    "amount": 90,
+    "tag": "c:molten_pewter"
+  },
+  "temperature": 400,
+  "time": 69
+}

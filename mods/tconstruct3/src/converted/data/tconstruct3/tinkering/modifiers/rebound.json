@@ -1,0 +1,33 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:conditional_power",
+      "formula": [
+        "$bounces",
+        0.5,
+        "*",
+        "$level",
+        "*",
+        "$multiplier",
+        "*",
+        "$damage",
+        "+"
+      ],
+      "percent": false,
+      "variables": {
+        "bounces": {
+          "type": "tconstruct3:persistent_data",
+          "fallback": 1.0,
+          "key": "tconstruct3:bounce"
+        }
+      }
+    }
+  ]
+}

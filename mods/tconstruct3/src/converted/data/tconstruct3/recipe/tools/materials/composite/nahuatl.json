@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material_fluid",
+  "fluid": {
+    "amount": 250,
+    "tag": "tconstruct3:molten_obsidian"
+  },
+  "input": "tconstruct3:wood",
+  "output": "tconstruct3:nahuatl",
+  "temperature": 1000
+}

@@ -1,0 +1,11 @@
+{
+  "values": [
+    "#tconstruct3:patterns/default",
+    "#tconstruct3:patterns/reusable",
+    "#tconstruct3:casts/sand",
+    "#tconstruct3:casts/red_sand",
+    "minecraft:sand",
+    "minecraft:red_sand",
+    "tconstruct3:venom_bottle"
+  ]
+}

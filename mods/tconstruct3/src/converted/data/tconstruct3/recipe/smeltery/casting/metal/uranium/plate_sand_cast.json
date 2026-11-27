@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:plates/uranium"
+    }
+  ],
+  "type": "tconstruct3:casting_table",
+  "cast": "#tconstruct3:casts/single_use/plate",
+  "cast_consumed": true,
+  "cooling_time": 61,
+  "fluid": {
+    "amount": 90,
+    "tag": "c:molten_uranium"
+  },
+  "result": {
+    "tag": "c:plates/uranium"
+  }
+}

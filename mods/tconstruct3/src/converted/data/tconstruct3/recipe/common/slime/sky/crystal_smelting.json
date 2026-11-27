@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.2,
+  "group": "tconstruct3:slime_crystal",
+  "ingredient": "tconstruct3:sky_slime_crystal",
+  "result": {
+    "id": "tconstruct3:sky_slime_ball"
+  }
+}

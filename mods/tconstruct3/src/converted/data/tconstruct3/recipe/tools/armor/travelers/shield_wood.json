@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material_value_swapping",
+  "cost": 2,
+  "index": 0,
+  "material": {
+    "type": "tconstruct3:stat_type",
+    "stat_type": "tconstruct3:shield_core"
+  },
+  "max_stack_size": 16,
+  "tools": "tconstruct3:travelers_shield"
+}

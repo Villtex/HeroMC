@@ -1,0 +1,32 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "default": [
+    {
+      "level": 1,
+      "name": "tconstruct3:looting"
+    }
+  ],
+  "perStat": {
+    "tconstruct3:laces": [
+      {
+        "level": 1,
+        "name": "tconstruct3:looter"
+      }
+    ],
+    "tconstruct3:skull": [
+      {
+        "level": 1,
+        "name": "tconstruct3:balm_of_sssss"
+      },
+      {
+        "level": 1,
+        "name": "tconstruct3:cave_spider_disguise"
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:weapon_mob_effect",
+      "effect": "minecraft:levitation",
+      "level": {
+        "flat": 1.0
+      },
+      "time": {
+        "flat": 40.0,
+        "random": 100.0
+      }
+    }
+  ]
+}

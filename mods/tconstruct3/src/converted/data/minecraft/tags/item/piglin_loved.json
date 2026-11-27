@@ -1,0 +1,11 @@
+{
+  "values": [
+    "tconstruct3:gold_reinforcement",
+    "tconstruct3:gold_item_frame",
+    "tconstruct3:reversed_gold_item_frame",
+    "tconstruct3:molten_gold_bucket",
+    "tconstruct3:gold_bars",
+    "tconstruct3:gold_platform",
+    "#tconstruct3:casts/gold"
+  ]
+}

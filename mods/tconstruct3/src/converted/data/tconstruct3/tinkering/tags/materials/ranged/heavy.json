@@ -1,0 +1,35 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:copper",
+    "tconstruct3:cactus",
+    "tconstruct3:iron",
+    "tconstruct3:weeping_vine",
+    "tconstruct3:amethyst_bronze",
+    "tconstruct3:steel",
+    "tconstruct3:manyullyn",
+    "tconstruct3:cinderslime",
+    "tconstruct3:knightmetal",
+    {
+      "id": "tconstruct3:lead",
+      "required": false
+    },
+    {
+      "id": "tconstruct3:bronze",
+      "required": false
+    },
+    {
+      "id": "tconstruct3:electrum",
+      "required": false
+    },
+    {
+      "id": "tconstruct3:fiery",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:nuggets/tin"
+    }
+  ],
+  "type": "tconstruct3:casting_table",
+  "cast": "#tconstruct3:casts/single_use/nugget",
+  "cast_consumed": true,
+  "cooling_time": 13,
+  "fluid": {
+    "amount": 10,
+    "tag": "c:molten_tin"
+  },
+  "result": {
+    "tag": "c:nuggets/tin"
+  }
+}

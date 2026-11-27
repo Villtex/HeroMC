@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:basin_tool_casting",
+  "cast": {
+    "neoforge:ingredient_type": "tconstruct3:material",
+    "item": "tconstruct3:shell"
+  },
+  "cast_purpose": "first_material",
+  "item_cost": 7,
+  "result": "tconstruct3:slime_leggings"
+}

@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:table_tool_casting",
+  "cast": {
+    "neoforge:ingredient_type": "tconstruct3:material",
+    "item": "tconstruct3:shield_core"
+  },
+  "cast_purpose": "first_material",
+  "item_cost": 3,
+  "result": "tconstruct3:plate_shield"
+}

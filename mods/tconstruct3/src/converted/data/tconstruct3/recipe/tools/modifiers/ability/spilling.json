@@ -1,0 +1,43 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:modifier",
+  "allow_crystal": true,
+  "inputs": [
+    {
+      "ingredient": [
+        {
+          "item": "tconstruct3:seared_channel"
+        },
+        {
+          "item": "tconstruct3:scorched_channel"
+        }
+      ]
+    },
+    {
+      "neoforge:ingredient_type": "tconstruct3:no_container",
+      "tag": "tconstruct3:tanks"
+    },
+    {
+      "ingredient": [
+        {
+          "item": "tconstruct3:seared_channel"
+        },
+        {
+          "item": "tconstruct3:scorched_channel"
+        }
+      ]
+    },
+    "#c:ingots/copper",
+    "#c:ingots/copper"
+  ],
+  "result": "tconstruct3:spilling",
+  "slots": {
+    "abilities": 1
+  },
+  "tools": "#tconstruct3:modifiable/melee"
+}

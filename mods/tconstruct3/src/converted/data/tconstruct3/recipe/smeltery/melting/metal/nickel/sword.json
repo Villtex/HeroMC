@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "tconstruct3:melting/nickel/tools_costing_2"
+    }
+  ],
+  "type": "tconstruct3:damagable_melting",
+  "ingredient": "#tconstruct3:melting/nickel/tools_costing_2",
+  "result": {
+    "amount": 180,
+    "tag": "c:molten_nickel",
+    "unit_size": 10
+  },
+  "temperature": 950,
+  "time": 92
+}

@@ -1,0 +1,14 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material",
+  "ingredient": "#minecraft:warped_stems",
+  "leftover": "minecraft:warped_planks",
+  "material": "tconstruct3:wood#warped",
+  "needed": 1,
+  "value": 4
+}

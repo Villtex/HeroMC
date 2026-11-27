@@ -1,0 +1,13 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:item_part_builder",
+  "pattern": "tconstruct3:tough_handle",
+  "pattern_item": "#tconstruct3:casts/red_sand",
+  "result": "tconstruct3:tough_handle_red_sand_cast",
+  "title_key": "tconstruct3:sand_cast"
+}

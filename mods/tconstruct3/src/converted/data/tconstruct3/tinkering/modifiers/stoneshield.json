@@ -1,0 +1,31 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:capacity_bar",
+      "each_level": 100,
+      "multiplier": "tconstruct3:durability"
+    },
+    {
+      "type": "tconstruct3:durability_shield",
+      "color": "7F7F7F"
+    },
+    {
+      "type": "tconstruct3:loot_to_capacity",
+      "amount": 3,
+      "chance": {
+        "each_level": 0.2
+      },
+      "consume": {
+        "tag": "tconstruct3:stoneshields"
+      }
+    }
+  ],
+  "priority": 175
+}

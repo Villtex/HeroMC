@@ -1,0 +1,14 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material",
+  "ingredient": "#tconstruct3:enderbark_logs",
+  "leftover": "tconstruct3:enderbark_planks",
+  "material": "tconstruct3:slimewood#enderbark",
+  "needed": 1,
+  "value": 4
+}

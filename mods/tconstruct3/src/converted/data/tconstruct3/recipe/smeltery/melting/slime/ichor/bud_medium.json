@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:ore_melting",
+  "byproducts": [
+    {
+      "amount": 400,
+      "fluid": "tconstruct3:ichor"
+    }
+  ],
+  "ingredient": "tconstruct3:medium_ichor_slime_crystal_bud",
+  "rate": "gem",
+  "result": {
+    "amount": 20,
+    "fluid": "tconstruct3:blazing_blood"
+  },
+  "temperature": 1500,
+  "time": 120
+}

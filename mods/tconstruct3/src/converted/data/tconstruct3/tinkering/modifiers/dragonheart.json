@@ -1,0 +1,49 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:single_level",
+  "modules": [
+    {
+      "type": "tconstruct3:adjust_damage",
+      "damage_source": "mantle:can_protect",
+      "formula": [
+        "$protection",
+        "$max_health",
+        "$level",
+        2.0,
+        "*",
+        "-",
+        1.0,
+        "max",
+        "min"
+      ],
+      "holder": {
+        "type": "tconstruct3:variable_range",
+        "interval": "right_open",
+        "min": 2.0,
+        "variable": {
+          "type": "tconstruct3:attribute",
+          "attribute": "minecraft:generic.max_health"
+        }
+      },
+      "hooks": [
+        "tconstruct3:modify_damage"
+      ],
+      "percent": false,
+      "tooltip_value": 1.0,
+      "variables": {
+        "max_health": {
+          "type": "tconstruct3:entity",
+          "attribute": "minecraft:generic.max_health",
+          "entity_type": "tconstruct3:attribute",
+          "fallback": 20.0,
+          "which": "target"
+        }
+      }
+    }
+  ]
+}

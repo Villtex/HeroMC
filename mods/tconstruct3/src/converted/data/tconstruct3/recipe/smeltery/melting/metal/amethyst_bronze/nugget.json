@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": "#c:nuggets/amethyst_bronze",
+  "result": {
+    "amount": 10,
+    "tag": "c:molten_amethyst_bronze"
+  },
+  "temperature": 820,
+  "time": 20
+}

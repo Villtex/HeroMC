@@ -1,0 +1,31 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:crafting_shaped_materials",
+  "category": "misc",
+  "key": {
+    "m": {
+      "neoforge:ingredient_type": "tconstruct3:material",
+      "item": "tconstruct3:fake_storage_block",
+      "material": {
+        "type": "mantle:tag",
+        "tag": "tconstruct3:compatibility_metals/alloys"
+      }
+    },
+    "s": "#tconstruct3:seared_blocks"
+  },
+  "parts": "m",
+  "pattern": [
+    "mmm",
+    " s ",
+    "sss"
+  ],
+  "result": {
+    "id": "tconstruct3:tinkers_anvil"
+  },
+  "show_notification": true
+}

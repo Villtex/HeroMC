@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "E": "minecraft:egg",
+    "M": "tconstruct3:ichor_bucket",
+    "S": "#c:dusts/glowstone",
+    "W": "minecraft:warped_roots"
+  },
+  "pattern": [
+    "WWW",
+    "SES",
+    "MMM"
+  ],
+  "result": {
+    "id": "tconstruct3:ichor_cake"
+  },
+  "show_notification": true
+}

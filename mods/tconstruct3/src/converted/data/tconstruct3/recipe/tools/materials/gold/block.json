@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material",
+  "ingredient": "#c:storage_blocks/gold",
+  "leftover": {
+    "count": 1,
+    "tag": "c:ingots/gold"
+  },
+  "material": "tconstruct3:gold",
+  "needed": 1,
+  "value": 9
+}

@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:incremental_modifier",
+  "allow_crystal": true,
+  "amount_per_item": 1,
+  "input": "tconstruct3:obsidian_pane",
+  "level": {
+    "max": 3
+  },
+  "needed_per_level": 10,
+  "result": "tconstruct3:blockade",
+  "slots": {
+    "upgrades": 1
+  },
+  "tools": {
+    "neoforge:ingredient_type": "neoforge:intersection",
+    "children": [
+      "#tconstruct3:modifiable/interactable/charge",
+      "#tconstruct3:modifiable/durability"
+    ]
+  }
+}

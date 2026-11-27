@@ -1,0 +1,65 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "modules": [
+    {
+      "type": "tconstruct3:material_stats",
+      "primary_part": 1,
+      "stat_types": [
+        "tconstruct3:skull",
+        {
+          "scale": 1.1,
+          "stat": "tconstruct3:slime"
+        }
+      ]
+    },
+    {
+      "type": "tconstruct3:material_traits",
+      "hooks": [
+        "tconstruct3:trim_trait"
+      ],
+      "material_index": 0,
+      "stat_type": "tconstruct3:skull"
+    },
+    {
+      "type": "tconstruct3:remapping_materials",
+      "missing": [
+        {
+          "type": "tconstruct3:random",
+          "allow_hidden": true
+        },
+        {
+          "type": "tconstruct3:fixed",
+          "material": "tconstruct3:blood"
+        }
+      ],
+      "remap": [
+        {
+          "tconstruct3:blazing_bone": "tconstruct3:blaze",
+          "tconstruct3:glass": "tconstruct3:gunpowder",
+          "tconstruct3:venombone": "tconstruct3:ice"
+        }
+      ]
+    },
+    {
+      "type": "tconstruct3:modifier_slots",
+      "slots": {
+        "abilities": 2,
+        "upgrades": 3
+      }
+    },
+    {
+      "type": "tconstruct3:unique_material_name",
+      "index": 1
+    },
+    {
+      "type": "tconstruct3:custom_material_name",
+      "index": 0,
+      "suffix": "skull"
+    }
+  ]
+}

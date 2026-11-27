@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:geore_shards/emerald"
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": "#c:geore_shards/emerald",
+  "result": {
+    "amount": 100,
+    "fluid": "tconstruct3:molten_emerald"
+  },
+  "temperature": 934,
+  "time": 64
+}

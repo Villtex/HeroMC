@@ -1,0 +1,13 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:table_casting_material",
+  "cast": "#tconstruct3:casts/single_use/leggings_plating",
+  "cast_consumed": true,
+  "item_cost": 5,
+  "result": "tconstruct3:leggings_plating"
+}

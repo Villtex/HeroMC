@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_table",
+  "cast": "#tconstruct3:casts/multi_use/ingot",
+  "cooling_time": 80,
+  "fluid": {
+    "amount": 250,
+    "tag": "tconstruct3:molten_clay"
+  },
+  "result": "minecraft:brick"
+}

@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:bucketing",
+    "tconstruct3:firestarter",
+    "tconstruct3:glowing",
+    "tconstruct3:pathing",
+    "tconstruct3:stripping",
+    "tconstruct3:tilling",
+    "tconstruct3:brushing",
+    "tconstruct3:spitting",
+    "tconstruct3:splashing",
+    "tconstruct3:slurping",
+    "tconstruct3:bonking",
+    "tconstruct3:flinging",
+    "tconstruct3:springing",
+    "tconstruct3:warping",
+    "tconstruct3:throwing",
+    "tconstruct3:drill_attack"
+  ]
+}

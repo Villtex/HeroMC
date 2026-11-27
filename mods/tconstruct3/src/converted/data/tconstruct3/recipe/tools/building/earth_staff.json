@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": "tconstruct3:earth_slime_crystal",
+    "I": "#c:ingots/cobalt",
+    "W": "#tconstruct3:greenheart_logs"
+  },
+  "pattern": [
+    "CWC",
+    " I ",
+    " W "
+  ],
+  "result": {
+    "id": "tconstruct3:earth_staff"
+  },
+  "show_notification": true
+}

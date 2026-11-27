@@ -1,0 +1,29 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "neoforge:or",
+      "values": [
+        {
+          "type": "mantle:tag_filled",
+          "tag": "c:ingots/brass"
+        },
+        {
+          "type": "mantle:tag_filled",
+          "tag": "c:ingots/zinc"
+        }
+      ]
+    }
+  ],
+  "type": "tconstruct3:material_fluid",
+  "fluid": {
+    "amount": 90,
+    "tag": "c:molten_brass"
+  },
+  "input": "tconstruct3:slimewood",
+  "output": "tconstruct3:plated_slimewood",
+  "temperature": 605
+}

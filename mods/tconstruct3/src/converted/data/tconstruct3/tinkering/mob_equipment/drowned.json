@@ -1,0 +1,33 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "entity": "minecraft:drowned",
+  "equip": {
+    "chance": 0.05,
+    "fluid": "tconstruct3:swasher/drowned",
+    "match": {
+      "neoforge:ingredient_type": "mantle:set",
+      "items": [
+        "minecraft:air"
+      ]
+    },
+    "materials": [
+      {
+        "type": "tconstruct3:ancient"
+      },
+      {
+        "type": "tconstruct3:ancient"
+      },
+      {
+        "type": "tconstruct3:ancient"
+      }
+    ],
+    "priority": 100,
+    "slot": "mainhand",
+    "tool": "tconstruct3:swasher"
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:no_levels",
+  "modules": [
+    {
+      "type": "tconstruct3:conditional_melee_damage",
+      "formula": [
+        "$temperature",
+        0.75,
+        "-",
+        "$multiplier",
+        "*",
+        "$damage",
+        "+"
+      ],
+      "percent": false,
+      "variables": {
+        "temperature": {
+          "type": "tconstruct3:entity",
+          "entity_type": "tconstruct3:biome_temperature",
+          "fallback": 2.0,
+          "which": "attacker"
+        }
+      }
+    },
+    {
+      "type": "tconstruct3:conditional_stat",
+      "formula": [
+        "$temperature",
+        0.75,
+        "-",
+        0.6,
+        "*",
+        "$multiplier",
+        "*",
+        "$value",
+        "+"
+      ],
+      "percent": false,
+      "stat": "tconstruct3:projectile_damage",
+      "variables": {
+        "temperature": {
+          "type": "tconstruct3:entity",
+          "entity_type": "tconstruct3:biome_temperature",
+          "fallback": 2.0
+        }
+      }
+    },
+    {
+      "type": "tconstruct3:protection",
+      "damage_source": "mantle:can_protect",
+      "formula": [
+        "$temperature",
+        0.75,
+        "-",
+        "$protection",
+        "+"
+      ],
+      "tool": {
+        "neoforge:ingredient_type": "mantle:tag",
+        "tag": "tconstruct3:modifiable/armor"
+      },
+      "variables": {
+        "temperature": {
+          "type": "tconstruct3:entity",
+          "entity_type": "tconstruct3:biome_temperature",
+          "fallback": 2.0,
+          "which": "target"
+        }
+      }
+    }
+  ]
+}

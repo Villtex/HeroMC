@@ -87,6 +87,8 @@ public final class WorldGen152 {
         NeoForge.EVENT_BUS.addListener(net.neoforged.neoforge.event.server.ServerStartedEvent.class,
                 event -> WorldTypeCondition.checkLoaded(event.getServer()));
         NeoForge.EVENT_BUS.addListener(WorldGen152::onCreateSpawnPosition);
+        // world type of the loaded world for code and clients (Teil 27: which Tinkers' Construct is active)
+        HexxitWorldType.register(modBus);
     }
 
     /** A new world gets the spawn point 1.5.2 would have chosen for its seed. */

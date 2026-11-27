@@ -1,0 +1,54 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "block_effects": [
+    {
+      "type": "tconstruct3:scaling",
+      "effects": [
+        {
+          "effect": {
+            "type": "tconstruct3:drop_item",
+            "item": "tconstruct3:scorched_brick"
+          },
+          "level": 1.0
+        },
+        {
+          "effect": {
+            "type": "tconstruct3:place_block",
+            "block": "tconstruct3:scorched_bricks_slab"
+          },
+          "level": 2.0
+        },
+        {
+          "effect": {
+            "type": "tconstruct3:place_block",
+            "block": "tconstruct3:scorched_bricks"
+          },
+          "level": 4.0
+        }
+      ]
+    }
+  ],
+  "entity_effects": [
+    {
+      "type": "tconstruct3:damage",
+      "damage": 3.0,
+      "damage_type": {
+        "melee": "tconstruct3:fluid_impact_melee",
+        "ranged": "tconstruct3:fluid_impact_ranged"
+      }
+    },
+    {
+      "type": "tconstruct3:drop_item",
+      "item": "tconstruct3:scorched_brick"
+    }
+  ],
+  "fluid": {
+    "amount": 250,
+    "tag": "tconstruct3:scorched_stone"
+  }
+}

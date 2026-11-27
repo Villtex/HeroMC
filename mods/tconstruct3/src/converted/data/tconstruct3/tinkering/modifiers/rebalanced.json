@@ -1,0 +1,55 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:no_levels",
+  "modules": [
+    {
+      "type": "tconstruct3:swappable_slot",
+      "slots": 1
+    },
+    {
+      "type": "tconstruct3:swappable_slot",
+      "hooks": [
+        "tconstruct3:volatile_data"
+      ],
+      "slots": 1,
+      "tool": {
+        "neoforge:ingredient_type": "mantle:tag",
+        "tag": "tconstruct3:modifiable/ancient"
+      }
+    },
+    {
+      "type": "tconstruct3:swappable_bonus_slot",
+      "bonus": "upgrades",
+      "match": "abilities",
+      "slots": -1,
+      "tool": {
+        "neoforge:ingredient_type": "mantle:inverted",
+        "inverted_type": "mantle:tag",
+        "tag": "tconstruct3:modifiable/ancient"
+      }
+    },
+    {
+      "type": "tconstruct3:swappable_bonus_slot",
+      "bonus": "abilities",
+      "match": "abilities",
+      "slots": -1,
+      "tool": {
+        "neoforge:ingredient_type": "mantle:tag",
+        "tag": "tconstruct3:modifiable/ancient"
+      }
+    },
+    {
+      "type": "tconstruct3:swappable_tool_traits",
+      "hook": "tconstruct3:rebalanced_trait",
+      "match": "traits"
+    }
+  ],
+  "show_in_tooltips": [
+    "tinker_station"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material",
+  "ingredient": "tconstruct3:ichor_slime_crystal",
+  "material": "tconstruct3:ichor",
+  "needed": 1,
+  "value": 1
+}

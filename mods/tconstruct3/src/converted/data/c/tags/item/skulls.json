@@ -1,0 +1,14 @@
+{
+  "values": [
+    "minecraft:piglin_head",
+    "tconstruct3:blaze_head",
+    "tconstruct3:enderman_head",
+    "tconstruct3:stray_head",
+    "tconstruct3:husk_head",
+    "tconstruct3:drowned_head",
+    "tconstruct3:spider_head",
+    "tconstruct3:cave_spider_head",
+    "tconstruct3:piglin_brute_head",
+    "tconstruct3:zombified_piglin_head"
+  ]
+}

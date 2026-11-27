@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:tool_building",
+  "extra_materials": [
+    "tconstruct3:flint",
+    "tconstruct3:wood",
+    "tconstruct3:feather"
+  ],
+  "extra_requirements": "minecraft:arrow",
+  "parts_override": [],
+  "result": "tconstruct3:arrow",
+  "result_count": 1,
+  "slot_layout": "tconstruct3:tinker_station"
+}

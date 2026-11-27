@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "neoforge:registered",
+      "value": "oreberriesreplanted:tin_oreberry"
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": "oreberriesreplanted:tin_oreberry",
+  "result": {
+    "amount": 10,
+    "tag": "c:molten_tin"
+  },
+  "temperature": 225,
+  "time": 13
+}

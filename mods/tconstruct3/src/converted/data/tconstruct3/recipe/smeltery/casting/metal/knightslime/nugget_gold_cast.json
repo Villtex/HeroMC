@@ -1,0 +1,18 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_table",
+  "cast": "#tconstruct3:casts/multi_use/nugget",
+  "cooling_time": 23,
+  "fluid": {
+    "amount": 10,
+    "tag": "tconstruct3:molten_knightslime"
+  },
+  "result": {
+    "tag": "c:nuggets/knightslime"
+  }
+}

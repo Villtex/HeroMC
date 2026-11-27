@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:part_builder",
+  "cost": 4,
+  "pattern": "tconstruct3:shell",
+  "pattern_item": "#tconstruct3:patterns/default",
+  "result": {
+    "id": "tconstruct3:shell"
+  }
+}

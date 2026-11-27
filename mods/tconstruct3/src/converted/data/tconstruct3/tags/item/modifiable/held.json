@@ -1,0 +1,9 @@
+{
+  "values": [
+    "tconstruct3:war_pick",
+    "tconstruct3:swasher",
+    "#tconstruct3:modifiable/interactable/right",
+    "#tconstruct3:modifiable/interactable/left",
+    "#tconstruct3:modifiable/armor/held"
+  ]
+}

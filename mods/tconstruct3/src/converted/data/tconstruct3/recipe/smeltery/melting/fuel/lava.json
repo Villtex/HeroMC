@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting_fuel",
+  "duration": 100,
+  "fluid": {
+    "amount": 50,
+    "fluid": "minecraft:lava"
+  },
+  "rate": 10,
+  "temperature": 1000
+}

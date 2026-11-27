@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "tconstruct3:melting/osmium/tools_costing_7"
+    }
+  ],
+  "type": "tconstruct3:damagable_melting",
+  "ingredient": "#tconstruct3:melting/osmium/tools_costing_7",
+  "result": {
+    "amount": 630,
+    "tag": "c:molten_osmium",
+    "unit_size": 10
+  },
+  "temperature": 975,
+  "time": 173
+}

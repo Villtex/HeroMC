@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:bottles/splash"
+    }
+  ],
+  "type": "mantle:fill_item",
+  "fluid": {
+    "amount": 500,
+    "tag": "mantle:water"
+  },
+  "input": "#c:bottles/splash",
+  "result": {
+    "id": "minecraft:splash_potion",
+    "components": {
+      "minecraft:potion_contents": {
+        "potion": "minecraft:water"
+      }
+    }
+  }
+}

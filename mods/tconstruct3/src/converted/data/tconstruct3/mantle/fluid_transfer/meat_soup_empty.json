@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "mantle:empty_item",
+  "fluid": {
+    "amount": 250,
+    "fluid": "tconstruct3:meat_soup"
+  },
+  "input": "tconstruct3:meat_soup",
+  "result": "minecraft:bowl"
+}

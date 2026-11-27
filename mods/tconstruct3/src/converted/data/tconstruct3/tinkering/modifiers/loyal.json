@@ -1,0 +1,34 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:single_level",
+  "modules": [
+    {
+      "type": "tconstruct3:protection",
+      "damage_source": "mantle:can_protect",
+      "formula": [
+        1.0,
+        "$equipment",
+        "-",
+        10.0,
+        "*",
+        "$level",
+        "*",
+        "$protection",
+        "+"
+      ],
+      "variables": {
+        "equipment": {
+          "type": "tconstruct3:entity",
+          "entity_type": "tconstruct3:armor_coverage",
+          "fallback": 0.25,
+          "which": "target"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "ceramics"
+    }
+  ],
+  "type": "tconstruct3:casting_table",
+  "cast": "#tconstruct3:casts/multi_use/ingot",
+  "cooling_time": 95,
+  "fluid": {
+    "amount": 250,
+    "tag": "tconstruct3:molten_porcelain"
+  },
+  "result": "ceramics:porcelain_brick"
+}

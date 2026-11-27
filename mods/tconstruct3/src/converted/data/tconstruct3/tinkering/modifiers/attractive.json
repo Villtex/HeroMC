@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:projectile_attract_mobs",
+      "radius": {
+        "each_level": 3.0
+      },
+      "strength": {
+        "flat": 0.5
+      }
+    }
+  ],
+  "priority": 125
+}

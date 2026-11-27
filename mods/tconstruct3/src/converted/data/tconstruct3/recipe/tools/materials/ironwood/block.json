@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:storage_blocks/ironwood"
+    }
+  ],
+  "type": "tconstruct3:material",
+  "ingredient": "#c:storage_blocks/ironwood",
+  "leftover": {
+    "count": 1,
+    "tag": "c:ingots/ironwood"
+  },
+  "material": "tconstruct3:ironwood",
+  "needed": 1,
+  "value": 9
+}

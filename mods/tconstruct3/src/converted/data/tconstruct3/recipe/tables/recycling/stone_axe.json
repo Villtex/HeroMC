@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:part_builder_recycling",
+  "pattern": "tconstruct3:venom_bottle",
+  "results": {
+    "tconstruct3:block": {
+      "id": "minecraft:cobblestone",
+      "count": 3
+    }
+  },
+  "tool": [
+    "minecraft:stone_pickaxe",
+    "minecraft:stone_axe"
+  ]
+}

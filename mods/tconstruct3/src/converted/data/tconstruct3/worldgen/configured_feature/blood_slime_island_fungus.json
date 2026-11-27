@@ -1,0 +1,23 @@
+{
+  "type": "tconstruct3:slime_fungus",
+  "config": {
+    "decor_state": {
+      "Name": "tconstruct3:ichor_congealed_slime"
+    },
+    "hat_state": {
+      "Name": "tconstruct3:blood_slime_leaves"
+    },
+    "planted": false,
+    "replaceable_blocks": {
+      "type": "minecraft:matching_block_tag",
+      "tag": "tconstruct3:slimy_fungus_can_grow_through"
+    },
+    "stem_state": {
+      "Name": "tconstruct3:bloodshroom_log",
+      "Properties": {
+        "axis": "y"
+      }
+    },
+    "valid_base": "tconstruct3:slimy_nylium"
+  }
+}

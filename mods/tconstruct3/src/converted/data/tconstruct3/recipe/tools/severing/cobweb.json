@@ -1,0 +1,18 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:severing",
+  "entity": {
+    "types": [
+      "minecraft:spider",
+      "minecraft:cave_spider"
+    ]
+  },
+  "looting_bonus": 0.01,
+  "per_level_chance": 0.05,
+  "result": "minecraft:cobweb"
+}

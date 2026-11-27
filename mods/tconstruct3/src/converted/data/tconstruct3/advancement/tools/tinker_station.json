@@ -1,0 +1,42 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "parent": "tconstruct3:tools/part_builder",
+  "criteria": {
+    "crafted_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:tinker_station"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.tconstruct3.tools.tinker_station.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "tconstruct3:tinker_station"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tconstruct3.tools.tinker_station.title"
+    }
+  },
+  "requirements": [
+    [
+      "crafted_block"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,36 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:single_level",
+  "modules": [
+    {
+      "type": "tconstruct3:counter_mob_effect",
+      "chance": {
+        "flat": 1.0
+      },
+      "damage_source": {
+        "type": "mantle:attacker",
+        "entity_type": "mantle:any",
+        "which": "causing"
+      },
+      "direct_damage": "always",
+      "durability_usage": 0,
+      "effect": "minecraft:strength",
+      "level": {
+        "flat": 1.0
+      },
+      "target_self": true,
+      "time": {
+        "per_level": 200.0
+      }
+    },
+    {
+      "type": "tconstruct3:clear_effect_on_unequip",
+      "effect": "minecraft:strength"
+    }
+  ]
+}

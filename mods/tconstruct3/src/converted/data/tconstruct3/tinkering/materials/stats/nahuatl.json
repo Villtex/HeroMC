@@ -1,0 +1,36 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "stats": {
+    "tconstruct3:arrow_shaft": {},
+    "tconstruct3:binding": {},
+    "tconstruct3:grip": {
+      "accuracy": -0.15,
+      "durability": -0.1,
+      "melee_damage": 3.0
+    },
+    "tconstruct3:handle": {
+      "durability": -0.1,
+      "melee_damage": 0.25,
+      "melee_speed": -0.1,
+      "mining_speed": 0.0
+    },
+    "tconstruct3:head": {
+      "durability": 350,
+      "melee_attack": 3.0,
+      "mining_speed": 4.5,
+      "mining_tier": "minecraft:diamond"
+    },
+    "tconstruct3:limb": {
+      "accuracy": 0.05,
+      "draw_speed": 0.2,
+      "durability": 350,
+      "velocity": -0.15
+    },
+    "tconstruct3:shield_core": {}
+  }
+}

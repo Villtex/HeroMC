@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": "#c:slime_balls/earth",
+  "result": {
+    "amount": 250,
+    "tag": "c:slime"
+  },
+  "temperature": 50,
+  "time": 31
+}

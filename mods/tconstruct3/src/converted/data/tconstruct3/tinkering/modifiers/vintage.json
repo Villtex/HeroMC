@@ -1,0 +1,74 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:modifier_slot",
+      "each_level": 1,
+      "name": "abilities"
+    },
+    {
+      "type": "tconstruct3:stat_boost",
+      "each_level": -0.1,
+      "operation": "multiply_all",
+      "stat": "tconstruct3:mining_speed"
+    },
+    {
+      "type": "tconstruct3:stat_boost",
+      "each_level": -0.1,
+      "operation": "multiply_all",
+      "stat": "tconstruct3:attack_speed"
+    },
+    {
+      "type": "tconstruct3:stat_boost",
+      "each_level": -0.1,
+      "operation": "multiply_all",
+      "stat": "tconstruct3:draw_speed"
+    },
+    {
+      "type": "tconstruct3:attribute",
+      "attribute": "minecraft:generic.attack_speed",
+      "each_level": -0.1,
+      "operation": "multiply_total",
+      "slots": [
+        "offhand"
+      ],
+      "tool": {
+        "neoforge:ingredient_type": "mantle:tag",
+        "tag": "tconstruct3:modifiable/armor/held"
+      }
+    },
+    {
+      "type": "tconstruct3:attribute",
+      "attribute": "minecraft:generic.movement_speed",
+      "each_level": -0.1,
+      "operation": "multiply_total",
+      "slots": [
+        "feet",
+        "legs",
+        "chest",
+        "head"
+      ]
+    },
+    {
+      "type": "tconstruct3:attribute",
+      "attribute": "minecraft:gravity",
+      "each_level": 0.1,
+      "operation": "multiply_total",
+      "slots": [
+        "mainhand",
+        "offhand",
+        "feet",
+        "legs",
+        "chest",
+        "head"
+      ],
+      "tooltip_style": "percent"
+    }
+  ]
+}

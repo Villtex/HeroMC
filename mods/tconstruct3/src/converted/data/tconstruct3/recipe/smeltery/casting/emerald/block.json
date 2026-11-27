@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_basin",
+  "cooling_time": 203,
+  "fluid": {
+    "amount": 900,
+    "tag": "tconstruct3:molten_emerald"
+  },
+  "result": {
+    "tag": "c:storage_blocks/emerald"
+  }
+}

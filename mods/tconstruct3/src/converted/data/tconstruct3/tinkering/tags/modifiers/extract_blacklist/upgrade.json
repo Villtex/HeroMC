@@ -1,0 +1,13 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:leaping",
+    "tconstruct3:reflecting",
+    "tconstruct3:returning"
+  ]
+}

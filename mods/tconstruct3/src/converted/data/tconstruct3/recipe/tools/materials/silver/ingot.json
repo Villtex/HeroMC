@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:ingots/silver"
+    }
+  ],
+  "type": "tconstruct3:material",
+  "ingredient": "#c:ingots/silver",
+  "material": "tconstruct3:silver",
+  "needed": 1,
+  "value": 1
+}

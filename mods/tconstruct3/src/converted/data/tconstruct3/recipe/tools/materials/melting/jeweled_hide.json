@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material_melting",
+  "input": "tconstruct3:jeweled_hide",
+  "result": {
+    "amount": 100,
+    "fluid": "tconstruct3:molten_diamond"
+  },
+  "temperature": 1450
+}

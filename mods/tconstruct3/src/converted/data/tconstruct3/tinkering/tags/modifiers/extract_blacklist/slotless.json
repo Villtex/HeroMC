@@ -1,0 +1,13 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:luck",
+    "tconstruct3:tool_belt",
+    "tconstruct3:feather_fall"
+  ]
+}

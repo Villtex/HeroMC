@@ -1,0 +1,13 @@
+{
+  "values": [
+    "tconstruct3:travelers_helmet",
+    "tconstruct3:travelers_chestplate",
+    "tconstruct3:travelers_leggings",
+    "tconstruct3:travelers_boots",
+    "tconstruct3:slime_helmet",
+    "tconstruct3:travelers_shield",
+    "tconstruct3:plate_shield",
+    "#tconstruct3:modifiable/unsalvageable",
+    "#tconstruct3:modifiable/ancient"
+  ]
+}

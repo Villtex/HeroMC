@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "neoforge:registered",
+      "value": "allomancy:brass_flakes"
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": "allomancy:brass_flakes",
+  "result": {
+    "amount": 30,
+    "tag": "c:molten_brass"
+  },
+  "temperature": 605,
+  "time": 31
+}

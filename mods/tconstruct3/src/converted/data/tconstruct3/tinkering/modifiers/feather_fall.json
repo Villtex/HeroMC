@@ -1,0 +1,29 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:protection",
+      "damage_source": {
+        "type": "mantle:tag",
+        "tag": "tconstruct3:protection/fall"
+      },
+      "each_level": 3.0,
+      "tool": {
+        "neoforge:ingredient_type": "tconstruct3:has_modifier",
+        "check": "all",
+        "level": 0,
+        "modifier": {
+          "type": "tconstruct3:single",
+          "modifier": "tconstruct3:long_fall"
+        }
+      }
+    }
+  ],
+  "translation_key": "modifier.tconstruct3.feather_falling"
+}

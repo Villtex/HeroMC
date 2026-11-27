@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:knockback",
+    "tconstruct3:padded",
+    "tconstruct3:severing",
+    "tconstruct3:necrotic",
+    "tconstruct3:sweeping_edge",
+    "tconstruct3:fiery",
+    "tconstruct3:freezing"
+  ]
+}

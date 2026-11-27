@@ -1,0 +1,41 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:modifier",
+  "allow_crystal": true,
+  "inputs": [
+    {
+      "ingredient": [
+        {
+          "item": "tconstruct3:seared_faucet"
+        },
+        {
+          "item": "tconstruct3:scorched_faucet"
+        }
+      ]
+    },
+    "minecraft:bucket",
+    {
+      "ingredient": [
+        {
+          "item": "tconstruct3:seared_faucet"
+        },
+        {
+          "item": "tconstruct3:scorched_faucet"
+        }
+      ]
+    },
+    "#c:ingots/steel",
+    "#c:ingots/steel"
+  ],
+  "level": 1,
+  "result": "tconstruct3:bucketing",
+  "slots": {
+    "abilities": 1
+  },
+  "tools": "#tconstruct3:modifiable/interactable"
+}

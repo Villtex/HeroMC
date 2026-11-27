@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "tconstruct3:slime_crystal_block",
+  "key": {
+    "#": "tconstruct3:earth_slime_crystal"
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "id": "tconstruct3:earth_slime_crystal_block"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,192 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:conditional_mining_speed",
+      "formula": [
+        "$overslime",
+        "$level",
+        "min",
+        0.2,
+        "*",
+        1.0,
+        "+",
+        "$speed",
+        "*"
+      ],
+      "percent": true,
+      "require_effective": true,
+      "tool": {
+        "neoforge:ingredient_type": "mantle:inverted",
+        "inverted_type": "mantle:tag",
+        "tag": "tconstruct3:modifiable/broad"
+      },
+      "variables": {
+        "overslime": {
+          "type": "tconstruct3:mod_data",
+          "key": "tconstruct3:overslime",
+          "source": "persistent"
+        }
+      }
+    },
+    {
+      "type": "tconstruct3:mining_capacity",
+      "grant": {
+        "each_level": -1
+      },
+      "owner": "tconstruct3:overslime",
+      "run_before": true,
+      "tool": {
+        "neoforge:ingredient_type": "mantle:and",
+        "predicates": [
+          {
+            "type": "mantle:tag",
+            "tag": "tconstruct3:modifiable/harvest"
+          },
+          {
+            "type": "mantle:inverted",
+            "inverted_type": "mantle:tag",
+            "tag": "tconstruct3:modifiable/broad"
+          }
+        ]
+      }
+    },
+    {
+      "type": "tconstruct3:conditional_mining_speed",
+      "formula": [
+        "$overslime",
+        5.0,
+        "$level",
+        "*",
+        "min",
+        5.0,
+        "/",
+        0.2,
+        "*",
+        1.0,
+        "+",
+        "$speed",
+        "*"
+      ],
+      "percent": true,
+      "require_effective": true,
+      "tool": {
+        "neoforge:ingredient_type": "mantle:tag",
+        "tag": "tconstruct3:modifiable/broad"
+      },
+      "variables": {
+        "overslime": {
+          "type": "tconstruct3:mod_data",
+          "key": "tconstruct3:overslime",
+          "source": "persistent"
+        }
+      }
+    },
+    {
+      "type": "tconstruct3:mining_capacity",
+      "grant": {
+        "each_level": -5
+      },
+      "owner": "tconstruct3:overslime",
+      "run_before": true,
+      "tool": {
+        "neoforge:ingredient_type": "mantle:tag",
+        "tag": "tconstruct3:modifiable/broad"
+      }
+    },
+    {
+      "type": "tconstruct3:attribute",
+      "attribute": "minecraft:generic.attack_speed",
+      "formula": [
+        "$overslime",
+        "$level",
+        "min",
+        0.15,
+        "*"
+      ],
+      "operation": "multiply_total",
+      "slots": [
+        "mainhand"
+      ],
+      "variables": {
+        "overslime": {
+          "type": "tconstruct3:mod_data",
+          "key": "tconstruct3:overslime",
+          "source": "persistent"
+        }
+      }
+    },
+    {
+      "type": "tconstruct3:melee_capacity",
+      "grant": {
+        "each_level": -1
+      },
+      "owner": "tconstruct3:overslime",
+      "run_before": true
+    },
+    {
+      "type": "tconstruct3:conditional_stat",
+      "formula": [
+        "$overslime",
+        "$level",
+        "min",
+        0.06,
+        "*",
+        "$multiplier",
+        "*",
+        "$value",
+        "+"
+      ],
+      "percent": false,
+      "stat": "tconstruct3:velocity",
+      "variables": {
+        "overslime": {
+          "type": "tconstruct3:mod_data",
+          "key": "tconstruct3:overslime",
+          "source": "persistent"
+        }
+      }
+    },
+    {
+      "type": "tconstruct3:conditional_stat",
+      "formula": [
+        "$overslime",
+        "$level",
+        "min",
+        0.06,
+        "*",
+        "$multiplier",
+        "*",
+        "$value",
+        "+"
+      ],
+      "percent": false,
+      "stat": "tconstruct3:draw_speed",
+      "variables": {
+        "overslime": {
+          "type": "tconstruct3:mod_data",
+          "key": "tconstruct3:overslime",
+          "source": "persistent"
+        }
+      }
+    },
+    {
+      "type": "tconstruct3:launch_capacity",
+      "grant": {
+        "each_level": -1
+      },
+      "owner": "tconstruct3:overslime",
+      "tool": {
+        "neoforge:ingredient_type": "mantle:tag",
+        "tag": "tconstruct3:modifiable/ranged"
+      }
+    }
+  ],
+  "priority": 75
+}

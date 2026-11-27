@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_combination_filled",
+      "ignore": "tconstruct3:variant_horns",
+      "match": "minecraft:goat_horns",
+      "registry": "minecraft:instrument"
+    }
+  ],
+  "type": "tconstruct3:material",
+  "ingredient": {
+    "neoforge:ingredient_type": "tconstruct3:instrument",
+    "ignore": "tconstruct3:variant_horns",
+    "item": "minecraft:goat_horn"
+  },
+  "material": "tconstruct3:horn",
+  "needed": 1,
+  "value": 4
+}

@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": [
+    "minecraft:glistering_melon_slice",
+    "minecraft:golden_carrot"
+  ],
+  "result": {
+    "amount": 80,
+    "tag": "c:molten_gold"
+  },
+  "temperature": 700,
+  "time": 54
+}

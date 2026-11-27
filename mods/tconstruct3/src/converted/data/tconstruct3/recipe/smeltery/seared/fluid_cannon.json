@@ -1,0 +1,30 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "C": "#c:ingots/copper",
+    "R": "#c:dusts/redstone",
+    "T": {
+      "neoforge:ingredient_type": "tconstruct3:no_container",
+      "match": [
+        "tconstruct3:seared_fuel_gauge",
+        "tconstruct3:seared_ingot_gauge"
+      ]
+    }
+  },
+  "pattern": [
+    " R ",
+    "CTC",
+    "CCC"
+  ],
+  "result": {
+    "id": "tconstruct3:seared_fluid_cannon"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,33 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:chorus",
+    "tconstruct3:whitestone",
+    "tconstruct3:knightmetal",
+    "tconstruct3:knightly",
+    "tconstruct3:knightslime",
+    "tconstruct3:enderslime_vine",
+    "tconstruct3:ancient",
+    "tconstruct3:shulker",
+    "tconstruct3:dragon_scale",
+    "tconstruct3:enderslime",
+    "tconstruct3:end_rod",
+    {
+      "id": "tconstruct3:ironwood",
+      "required": false
+    },
+    {
+      "id": "tconstruct3:steeleaf",
+      "required": false
+    },
+    {
+      "id": "tconstruct3:fiery",
+      "required": false
+    }
+  ]
+}

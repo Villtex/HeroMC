@@ -1,0 +1,29 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "criteria": {
+    "crafting_station": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:crafting_station"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "crafting_station"
+    ]
+  ],
+  "rewards": {
+    "function": "tconstruct3:grant_advancement/story_root"
+  },
+  "sends_telemetry_event": false
+}

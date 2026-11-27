@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": "tconstruct3:sky_slime_sapling",
+  "result": {
+    "amount": 250,
+    "fluid": "tconstruct3:sky_slime"
+  },
+  "temperature": 10,
+  "time": 48
+}

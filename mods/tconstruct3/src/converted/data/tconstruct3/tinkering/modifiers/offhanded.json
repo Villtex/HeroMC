@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": {
+    "type": "tconstruct3:unique",
+    "first_unique": false,
+    "unique_until": 2
+  },
+  "modules": [
+    {
+      "type": "tconstruct3:volatile_flag",
+      "flag": "tconstruct3:defer_offhand"
+    },
+    {
+      "type": "tconstruct3:volatile_flag",
+      "flag": "tconstruct3:no_interaction",
+      "modifier_level": {
+        "min": 2
+      }
+    }
+  ]
+}

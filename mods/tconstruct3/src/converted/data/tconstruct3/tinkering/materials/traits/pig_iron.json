@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "default": [
+    {
+      "level": 1,
+      "name": "tconstruct3:tasty"
+    }
+  ],
+  "perStat": {
+    "tconstruct3:skull": [
+      {
+        "level": 1,
+        "name": "tconstruct3:vital_protection_skull"
+      },
+      {
+        "level": 1,
+        "name": "tconstruct3:zombified_piglin_disguise"
+      }
+    ]
+  }
+}

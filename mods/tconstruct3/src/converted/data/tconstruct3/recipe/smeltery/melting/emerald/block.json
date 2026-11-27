@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": "#c:storage_blocks/emerald",
+  "result": {
+    "amount": 900,
+    "fluid": "tconstruct3:molten_emerald"
+  },
+  "temperature": 934,
+  "time": 193
+}

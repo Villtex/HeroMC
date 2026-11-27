@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:modifier",
+  "allow_crystal": false,
+  "inputs": [
+    "#c:ingots/rose_gold",
+    "minecraft:rabbit_foot",
+    "#c:ingots/rose_gold",
+    "#c:gems/diamond",
+    "minecraft:name_tag"
+  ],
+  "level": 3,
+  "result": "tconstruct3:luck",
+  "tools": [
+    "#tconstruct3:modifiable/melee/weapon",
+    "#tconstruct3:modifiable/harvest",
+    "#tconstruct3:modifiable/ranged/launcher"
+  ]
+}

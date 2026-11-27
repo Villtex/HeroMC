@@ -1,0 +1,13 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material",
+  "ingredient": "minecraft:spider_eye",
+  "material": "tconstruct3:venom",
+  "needed": 1,
+  "value": 1
+}

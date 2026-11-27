@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:stat_boost",
+      "each_level": 1000.0,
+      "operation": "add",
+      "stat": "tconstruct3:tank_capacity"
+    },
+    {
+      "type": "tconstruct3:trait",
+      "fixed_level": true,
+      "level": 1,
+      "name": "tconstruct3:tank_handler"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material",
+  "ingredient": "minecraft:nautilus_shell",
+  "material": "tconstruct3:nautilus",
+  "needed": 1,
+  "value": 4
+}

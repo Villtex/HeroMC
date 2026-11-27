@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material",
+  "ingredient": "#c:storage_blocks/slimesteel",
+  "leftover": {
+    "count": 1,
+    "tag": "c:ingots/slimesteel"
+  },
+  "material": "tconstruct3:slimesteel",
+  "needed": 1,
+  "value": 9
+}

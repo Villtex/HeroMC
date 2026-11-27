@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_table_potion",
+  "bottle": "minecraft:arrow",
+  "cooling_time": 20,
+  "fluid": {
+    "amount": 50,
+    "tag": "c:potion"
+  },
+  "result": "minecraft:tipped_arrow"
+}

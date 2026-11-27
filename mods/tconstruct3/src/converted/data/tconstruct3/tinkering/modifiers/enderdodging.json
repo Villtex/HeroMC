@@ -1,0 +1,45 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:single_level",
+  "modules": [
+    {
+      "type": "tconstruct3:teleport_dodge",
+      "chance": {
+        "each_level": 0.15
+      },
+      "cooldown": {
+        "flat": 200
+      },
+      "damage_source": {
+        "type": "mantle:tag",
+        "tag": "minecraft:is_projectile"
+      }
+    },
+    {
+      "type": "tconstruct3:teleport_dodge",
+      "chance": {
+        "each_level": 0.075
+      },
+      "cooldown": {
+        "flat": 200
+      },
+      "damage_source": {
+        "type": "mantle:and",
+        "predicates": [
+          "mantle:has_entity",
+          {
+            "type": "mantle:inverted",
+            "inverted_type": "mantle:tag",
+            "tag": "minecraft:is_projectile"
+          }
+        ]
+      }
+    }
+  ],
+  "priority": 50
+}

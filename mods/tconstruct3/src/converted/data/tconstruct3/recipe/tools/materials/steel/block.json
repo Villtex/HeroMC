@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material",
+  "ingredient": "#c:storage_blocks/steel",
+  "leftover": {
+    "count": 1,
+    "tag": "c:ingots/steel"
+  },
+  "material": "tconstruct3:steel",
+  "needed": 1,
+  "value": 9
+}

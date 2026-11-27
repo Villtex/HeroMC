@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:shears",
+      "expanded": 1.0,
+      "flat": 1.0,
+      "tool": {
+        "neoforge:ingredient_type": "tconstruct3:has_modifier",
+        "check": "all",
+        "modifier": {
+          "type": "tconstruct3:single",
+          "modifier": "tconstruct3:silky"
+        }
+      }
+    }
+  ],
+  "priority": 70
+}

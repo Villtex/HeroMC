@@ -1,0 +1,58 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "parent": "tconstruct3:tools/tinker_tool",
+  "criteria": {
+    "accuracy": {
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "tconstruct3:tool_stack": {
+                "type": "mantle:and",
+                "predicates": [
+                  {
+                    "type": "mantle:tag",
+                    "tag": "tconstruct3:modifiable/ranged/bows"
+                  },
+                  {
+                    "type": "tconstruct3:stat_in_range",
+                    "max": 1.0,
+                    "min": 1.0,
+                    "stat": "tconstruct3:accuracy"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.tconstruct3.tools.perfect_aim.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "id": "minecraft:target"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tconstruct3.tools.perfect_aim.title"
+    }
+  },
+  "requirements": [
+    [
+      "accuracy"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

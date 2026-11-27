@@ -1,0 +1,36 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:extract_modifier",
+  "inputs": [
+    "tconstruct3:ichor_slime_crystal",
+    "minecraft:wet_sponge"
+  ],
+  "leftovers": [
+    "minecraft:sponge"
+  ],
+  "modifier_predicate": {
+    "type": "mantle:and",
+    "predicates": [
+      {
+        "type": "mantle:inverted",
+        "inverted_type": "tconstruct3:tag",
+        "tag": "tconstruct3:extract_blacklist/tools"
+      },
+      {
+        "type": "tconstruct3:slot_type",
+        "slot": "abilities"
+      }
+    ]
+  },
+  "name": "abilities",
+  "tools": {
+    "neoforge:ingredient_type": "neoforge:difference",
+    "base": "#tconstruct3:modifiable",
+    "subtracted": "#tconstruct3:modifiable/unsalvageable"
+  }
+}

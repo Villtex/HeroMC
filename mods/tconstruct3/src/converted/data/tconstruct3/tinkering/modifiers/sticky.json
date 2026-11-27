@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:mob_effect",
+      "effect": "minecraft:slowness",
+      "level": {
+        "per_level": 0.5
+      },
+      "time": {
+        "flat": 20.0,
+        "random": 10.0
+      }
+    }
+  ]
+}

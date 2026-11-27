@@ -1,0 +1,39 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:modifier",
+  "allow_crystal": true,
+  "check_trait_level": true,
+  "inputs": [
+    {
+      "amount_needed": 4,
+      "item": "tconstruct3:sky_congealed_slime"
+    },
+    {
+      "amount_needed": 4,
+      "item": "tconstruct3:ichor_congealed_slime"
+    },
+    {
+      "amount_needed": 4,
+      "item": "tconstruct3:sky_congealed_slime"
+    },
+    {
+      "amount_needed": 4,
+      "item": "tconstruct3:earth_congealed_slime"
+    },
+    {
+      "amount_needed": 4,
+      "item": "tconstruct3:earth_congealed_slime"
+    }
+  ],
+  "level": 1,
+  "result": "tconstruct3:bouncy",
+  "slots": {
+    "abilities": 1
+  },
+  "tools": "#tconstruct3:modifiable/armor/boots"
+}

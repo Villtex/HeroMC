@@ -1,0 +1,42 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "parent": "tconstruct3:tools/materials_and_you",
+  "criteria": {
+    "crafted_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tconstruct3:part_builder"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.tconstruct3.tools.part_builder.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "tconstruct3:part_builder"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tconstruct3.tools.part_builder.title"
+    }
+  },
+  "requirements": [
+    [
+      "crafted_block"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

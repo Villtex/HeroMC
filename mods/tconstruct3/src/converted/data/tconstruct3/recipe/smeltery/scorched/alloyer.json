@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "tconstruct3:scorched_brick",
+    "G": {
+      "neoforge:ingredient_type": "tconstruct3:no_container",
+      "match": [
+        "tconstruct3:scorched_ingot_gauge",
+        "tconstruct3:scorched_fuel_gauge"
+      ]
+    }
+  },
+  "pattern": [
+    "BGB",
+    "BBB"
+  ],
+  "result": {
+    "id": "tconstruct3:scorched_alloyer"
+  },
+  "show_notification": true
+}

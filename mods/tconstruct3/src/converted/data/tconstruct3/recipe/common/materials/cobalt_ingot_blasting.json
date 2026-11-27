@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 1.5,
+  "ingredient": [
+    "tconstruct3:raw_cobalt",
+    "tconstruct3:cobalt_ore"
+  ],
+  "result": {
+    "id": "tconstruct3:cobalt_ingot"
+  }
+}

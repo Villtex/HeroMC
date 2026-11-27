@@ -1,0 +1,32 @@
+{
+  "values": [
+    "#tconstruct3:casts/multi_use/ingot",
+    "#tconstruct3:casts/multi_use/nugget",
+    "#tconstruct3:casts/multi_use/gem",
+    "#tconstruct3:casts/multi_use/rod",
+    "#tconstruct3:casts/multi_use/repair_kit",
+    "#tconstruct3:casts/multi_use/plate",
+    "#tconstruct3:casts/multi_use/gear",
+    "#tconstruct3:casts/multi_use/coin",
+    "#tconstruct3:casts/multi_use/wire",
+    "#tconstruct3:casts/multi_use/pick_head",
+    "#tconstruct3:casts/multi_use/small_axe_head",
+    "#tconstruct3:casts/multi_use/small_blade",
+    "#tconstruct3:casts/multi_use/adze_head",
+    "#tconstruct3:casts/multi_use/hammer_head",
+    "#tconstruct3:casts/multi_use/broad_axe_head",
+    "#tconstruct3:casts/multi_use/broad_blade",
+    "#tconstruct3:casts/multi_use/large_plate",
+    "#tconstruct3:casts/multi_use/tool_binding",
+    "#tconstruct3:casts/multi_use/tough_binding",
+    "#tconstruct3:casts/multi_use/tool_handle",
+    "#tconstruct3:casts/multi_use/tough_handle",
+    "#tconstruct3:casts/multi_use/bow_limb",
+    "#tconstruct3:casts/multi_use/bow_grip",
+    "#tconstruct3:casts/multi_use/helmet_plating",
+    "#tconstruct3:casts/multi_use/chestplate_plating",
+    "#tconstruct3:casts/multi_use/leggings_plating",
+    "#tconstruct3:casts/multi_use/boots_plating",
+    "#tconstruct3:casts/multi_use/maille"
+  ]
+}

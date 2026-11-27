@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "name": "minecraft:chests/ruined_portal",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "tconstruct3:flint_and_brick",
+          "weight": 30,
+          "modifier": {
+            "type": "tconstruct3:add_tool_data"
+          }
+        }
+      ],
+      "name": "main"
+    }
+  ]
+}

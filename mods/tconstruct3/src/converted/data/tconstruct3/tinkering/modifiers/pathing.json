@@ -1,0 +1,36 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:no_levels",
+  "modules": [
+    {
+      "type": "tconstruct3:campfire_extinguish"
+    },
+    {
+      "type": "tconstruct3:tool_action_transform",
+      "require_ground": true,
+      "sound": "minecraft:item.shovel.flatten",
+      "tool_action": "shovel_flatten"
+    },
+    {
+      "type": "tconstruct3:tool_action_walk_transform",
+      "radius": {
+        "each_level": 1.0,
+        "flat": 0.5
+      },
+      "sound": "minecraft:item.shovel.flatten",
+      "tool_action": "shovel_flatten"
+    },
+    {
+      "type": "tconstruct3:show_offhand",
+      "mode": "disallow_broken"
+    },
+    {
+      "type": "tconstruct3:show_interaction_source"
+    }
+  ]
+}

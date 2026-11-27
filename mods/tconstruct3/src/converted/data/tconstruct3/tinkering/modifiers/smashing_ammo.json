@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:trait",
+      "fixed_level": false,
+      "level": 1,
+      "name": "tconstruct3:smashing",
+      "tool": {
+        "neoforge:ingredient_type": "mantle:tag",
+        "tag": "tconstruct3:modifiable/ammo"
+      }
+    }
+  ],
+  "show_in_tooltips": "parts_only"
+}

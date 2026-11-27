@@ -1,0 +1,9 @@
+{
+  "values": [
+    "tconstruct3:self_destruct",
+    "tconstruct3:explosion_melee",
+    "tconstruct3:explosion_ranged",
+    "tconstruct3:mob_explosion_melee",
+    "tconstruct3:mob_explosion_ranged"
+  ]
+}

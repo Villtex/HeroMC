@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "block_effects": [
+    {
+      "type": "tconstruct3:interact"
+    }
+  ],
+  "entity_effects": [
+    {
+      "type": "tconstruct3:interact"
+    }
+  ],
+  "fluid": {
+    "amount": 50,
+    "tag": "c:ender"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:sharpness",
+    "tconstruct3:pierce",
+    "tconstruct3:swiftstrike",
+    "tconstruct3:antiaquatic",
+    "tconstruct3:bane_of_sssss",
+    "tconstruct3:cooling",
+    "tconstruct3:killager",
+    "tconstruct3:smite"
+  ]
+}

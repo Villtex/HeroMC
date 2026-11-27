@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": [
+    "#tconstruct3:seared_blocks",
+    "tconstruct3:seared_ladder",
+    "tconstruct3:seared_lamp",
+    "tconstruct3:seared_cobble_wall",
+    "tconstruct3:seared_bricks_wall",
+    "tconstruct3:seared_cobble_stairs",
+    "tconstruct3:seared_stone_stairs",
+    "tconstruct3:seared_bricks_stairs",
+    "tconstruct3:seared_paver_stairs"
+  ],
+  "result": {
+    "amount": 1000,
+    "fluid": "tconstruct3:seared_stone"
+  },
+  "temperature": 600,
+  "time": 107
+}

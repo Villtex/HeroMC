@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "neoforge:registered",
+      "value": "twilightforest:steeleaf_helmet"
+    }
+  ],
+  "type": "tconstruct3:damagable_melting",
+  "ingredient": "twilightforest:steeleaf_helmet",
+  "result": {
+    "amount": 450,
+    "fluid": "tconstruct3:molten_steeleaf",
+    "unit_size": 10
+  },
+  "temperature": 934,
+  "time": 144
+}

@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "input": "mantle:any",
+  "recipe_type": [
+    "minecraft:smelting",
+    "minecraft:blasting"
+  ],
+  "result": {
+    "type": "mantle:and",
+    "predicates": [
+      {
+        "type": "mantle:tag",
+        "tag": "c:nuggets"
+      },
+      "tconstruct3:castable"
+    ]
+  }
+}

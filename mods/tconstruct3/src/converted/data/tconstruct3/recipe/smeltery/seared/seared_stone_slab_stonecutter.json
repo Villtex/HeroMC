@@ -1,0 +1,14 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": "tconstruct3:seared_stone",
+  "result": {
+    "id": "tconstruct3:seared_stone_slab",
+    "count": 2
+  }
+}

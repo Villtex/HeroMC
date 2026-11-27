@@ -1,0 +1,50 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:no_levels",
+  "modules": [
+    {
+      "type": "tconstruct3:capacity_bar",
+      "flat": 25
+    },
+    {
+      "type": "tconstruct3:mining_capacity",
+      "grant": {
+        "flat": 1
+      },
+      "run_before": false,
+      "tool": {
+        "neoforge:ingredient_type": "tconstruct3:has_persistent_key",
+        "key": "tconstruct3:crossbow_ammo"
+      }
+    },
+    {
+      "type": "tconstruct3:launch_capacity"
+    },
+    {
+      "type": "tconstruct3:conditional_stat",
+      "formula": [
+        "$charge",
+        0.01,
+        "*",
+        "$multiplier",
+        "*",
+        "$value",
+        "+"
+      ],
+      "percent": false,
+      "stat": "tconstruct3:velocity",
+      "variables": {
+        "charge": {
+          "type": "tconstruct3:mod_data",
+          "key": "tconstruct3:war_charge",
+          "source": "persistent"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:inventory",
+      "key": "tconstruct3:pockets",
+      "slots": {
+        "each_level": 3
+      }
+    },
+    {
+      "type": "tconstruct3:inventory_menu",
+      "on_key": "any"
+    }
+  ],
+  "show_in_tooltips": "never"
+}

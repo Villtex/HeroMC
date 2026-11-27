@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "byproducts": [
+    {
+      "amount": 250,
+      "fluid": "tconstruct3:molten_obsidian"
+    }
+  ],
+  "ingredient": "tconstruct3:emerald_reinforcement",
+  "result": {
+    "amount": 25,
+    "fluid": "tconstruct3:molten_emerald"
+  },
+  "temperature": 934,
+  "time": 34
+}

@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "byproducts": [
+    {
+      "amount": 1000,
+      "fluid": "tconstruct3:molten_glass"
+    }
+  ],
+  "ingredient": "tconstruct3:seared_glass",
+  "result": {
+    "amount": 1000,
+    "fluid": "tconstruct3:seared_stone"
+  },
+  "temperature": 600,
+  "time": 107
+}

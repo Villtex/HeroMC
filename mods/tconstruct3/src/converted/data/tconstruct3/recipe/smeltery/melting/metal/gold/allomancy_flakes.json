@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "neoforge:registered",
+      "value": "allomancy:gold_flakes"
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": "allomancy:gold_flakes",
+  "result": {
+    "amount": 30,
+    "tag": "c:molten_gold"
+  },
+  "temperature": 700,
+  "time": 33
+}

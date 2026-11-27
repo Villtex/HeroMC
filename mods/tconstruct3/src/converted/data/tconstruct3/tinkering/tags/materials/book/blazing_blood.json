@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:manyullyn",
+    "tconstruct3:hepatizon",
+    "tconstruct3:queens_slime",
+    "tconstruct3:cinderslime",
+    "tconstruct3:blazing_bone",
+    "tconstruct3:blazewood",
+    "tconstruct3:jeweled_hide",
+    {
+      "id": "tconstruct3:nicrosil",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_table",
+  "cast": "#tconstruct3:casts/single_use/rod",
+  "cast_consumed": true,
+  "cooling_time": 85,
+  "fluid": {
+    "amount": 100,
+    "tag": "tconstruct3:blazing_blood"
+  },
+  "result": "minecraft:blaze_rod"
+}

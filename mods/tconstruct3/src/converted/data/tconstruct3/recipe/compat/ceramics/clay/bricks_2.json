@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "ceramics"
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": [
+    "ceramics:dark_bricks_slab",
+    "ceramics:dragon_bricks_slab",
+    "ceramics:terracotta_faucet",
+    "ceramics:terracotta_channel"
+  ],
+  "result": {
+    "amount": 500,
+    "fluid": "tconstruct3:molten_clay"
+  },
+  "temperature": 450,
+  "time": 64
+}

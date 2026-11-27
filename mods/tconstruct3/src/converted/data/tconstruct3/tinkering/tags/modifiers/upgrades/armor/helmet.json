@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:item_frame",
+    "tconstruct3:respiration",
+    "tconstruct3:minimap",
+    {
+      "id": "tconstruct3:headlight",
+      "required": false
+    }
+  ]
+}

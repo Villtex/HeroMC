@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "stats": {
+    "tconstruct3:binding": {},
+    "tconstruct3:bowstring": {},
+    "tconstruct3:cuirass": {},
+    "tconstruct3:laces": {
+      "repair_amount": 87
+    }
+  }
+}

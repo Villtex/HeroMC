@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "parent": "tconstruct3:smeltery/mighty_smelting",
+  "criteria": {
+    "open_smeltery": {
+      "conditions": {
+        "type": "tconstruct3:smeltery"
+      },
+      "trigger": "tconstruct3:block_container_opened"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.tconstruct3.smeltery.structure.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "tconstruct3:smeltery_controller"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.tconstruct3.smeltery.structure.title"
+    }
+  },
+  "requirements": [
+    [
+      "open_smeltery"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

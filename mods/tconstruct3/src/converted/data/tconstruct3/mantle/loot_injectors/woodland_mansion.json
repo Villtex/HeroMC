@@ -1,0 +1,35 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "name": "minecraft:chests/woodland_mansion",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "tconstruct3:war_pick",
+          "weight": 10,
+          "modifier": {
+            "type": "tconstruct3:add_tool_data",
+            "materials": [
+              {
+                "type": "tconstruct3:ancient"
+              },
+              {
+                "type": "tconstruct3:ancient"
+              },
+              {
+                "type": "tconstruct3:ancient"
+              }
+            ]
+          }
+        }
+      ],
+      "name": "main"
+    }
+  ]
+}

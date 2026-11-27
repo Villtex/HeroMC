@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:sleeves"
+    },
+    {
+      "type": "tconstruct3:inventory",
+      "filter": {
+        "type": "mantle:tag",
+        "tag": "tconstruct3:throwable"
+      },
+      "limit": {
+        "flat": 16
+      },
+      "pattern": "tconstruct3:shuriken",
+      "slots": {
+        "each_level": 3
+      }
+    }
+  ]
+}

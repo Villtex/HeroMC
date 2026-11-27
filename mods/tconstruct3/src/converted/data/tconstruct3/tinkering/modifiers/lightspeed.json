@@ -1,0 +1,47 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:conditional_mining_speed",
+      "formula": [
+        3.0,
+        "$light",
+        5.0,
+        "-",
+        5.0,
+        "/",
+        "^",
+        "$level",
+        "*",
+        "$multiplier",
+        "*",
+        "$speed",
+        "+"
+      ],
+      "percent": false,
+      "require_effective": true,
+      "variables": {
+        "light": {
+          "type": "tconstruct3:block_light",
+          "fallback": 15.0,
+          "light_layer": "block"
+        }
+      }
+    },
+    {
+      "type": "tconstruct3:lightspeed_attribute",
+      "attribute": "minecraft:generic.movement_speed",
+      "damage_chance": 0.005,
+      "light_layer": "block",
+      "min_light": 5,
+      "operation": "addition",
+      "per_level": 0.0009
+    }
+  ]
+}

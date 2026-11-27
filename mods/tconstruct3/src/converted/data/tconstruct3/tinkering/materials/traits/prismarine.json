@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "perStat": {
+    "tconstruct3:ammo": [
+      {
+        "level": 1,
+        "name": "tconstruct3:fins_ammo"
+      },
+      {
+        "level": 1,
+        "name": "tconstruct3:lure_rod"
+      }
+    ],
+    "tconstruct3:shell": [
+      {
+        "level": 1,
+        "name": "tconstruct3:thorns_shell"
+      }
+    ]
+  }
+}

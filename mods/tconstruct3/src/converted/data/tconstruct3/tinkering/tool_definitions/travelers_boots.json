@@ -1,0 +1,66 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "modules": [
+    {
+      "type": "tconstruct3:material_stats",
+      "primary_part": 0,
+      "stat_types": [
+        {
+          "scale": 0.75,
+          "stat": "tconstruct3:plating_boots"
+        },
+        "tconstruct3:cuirass"
+      ]
+    },
+    {
+      "type": "tconstruct3:default_materials",
+      "materials": [
+        {
+          "type": "tconstruct3:fixed",
+          "material": "tconstruct3:rose_gold"
+        },
+        {
+          "type": "tconstruct3:fixed",
+          "material": "tconstruct3:leather"
+        }
+      ]
+    },
+    {
+      "type": "tconstruct3:multiply_stats",
+      "multipliers": {
+        "tconstruct3:durability": 0.75
+      }
+    },
+    {
+      "type": "tconstruct3:modifier_slots",
+      "slots": {
+        "abilities": 1,
+        "defense": 2,
+        "upgrades": 2
+      }
+    },
+    {
+      "type": "tconstruct3:statless_part_repair",
+      "part_index": 1,
+      "repair_amount": 97
+    },
+    {
+      "type": "tconstruct3:traits",
+      "traits": [
+        {
+          "level": 1,
+          "name": "tconstruct3:snow_boots"
+        }
+      ]
+    },
+    {
+      "type": "tconstruct3:fixed_material_name",
+      "index": 0
+    }
+  ]
+}

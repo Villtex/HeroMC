@@ -1,0 +1,29 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:no_levels",
+  "modules": [
+    {
+      "type": "tconstruct3:tool_damage_range",
+      "cause": {
+        "type": "mantle:inverted",
+        "inverted_type": "tconstruct3:tag",
+        "tag": "tconstruct3:durability/bypass_tanned"
+      },
+      "max": 1
+    },
+    {
+      "type": "tconstruct3:tool_damage_range",
+      "cause": {
+        "type": "tconstruct3:tag",
+        "tag": "tconstruct3:durability/secondary"
+      },
+      "max": 0
+    }
+  ],
+  "priority": 200
+}

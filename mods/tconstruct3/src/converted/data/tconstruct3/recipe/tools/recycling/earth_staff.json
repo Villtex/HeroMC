@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:part_builder_recycling",
+  "pattern": "tconstruct3:venom_bottle",
+  "results": {
+    "tconstruct3:block": {
+      "id": "tconstruct3:greenheart_log",
+      "count": 2
+    },
+    "tconstruct3:crystal": {
+      "id": "tconstruct3:earth_slime_crystal",
+      "count": 2
+    },
+    "tconstruct3:ingot": {
+      "count": 1,
+      "tag": "c:ingots/cobalt"
+    }
+  },
+  "tool": "tconstruct3:earth_staff"
+}

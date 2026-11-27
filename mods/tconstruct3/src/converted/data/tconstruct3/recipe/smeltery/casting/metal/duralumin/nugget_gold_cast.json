@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:nuggets/duralumin"
+    }
+  ],
+  "type": "tconstruct3:casting_table",
+  "cast": "#tconstruct3:casts/multi_use/nugget",
+  "cooling_time": 18,
+  "fluid": {
+    "amount": 10,
+    "tag": "c:molten_duralumin"
+  },
+  "result": {
+    "tag": "c:nuggets/duralumin"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": [
+    "minecraft:brick",
+    "#minecraft:decorated_pot_sherds"
+  ],
+  "result": {
+    "amount": 250,
+    "fluid": "tconstruct3:molten_clay"
+  },
+  "temperature": 450,
+  "time": 48
+}

@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "default": [
+    {
+      "level": 1,
+      "name": "tconstruct3:pierce"
+    }
+  ],
+  "perStat": {
+    "tconstruct3:ammo": [
+      {
+        "level": 1,
+        "name": "tconstruct3:spike"
+      }
+    ],
+    "tconstruct3:armor": [
+      {
+        "level": 1,
+        "name": "tconstruct3:piercing_guard"
+      }
+    ],
+    "tconstruct3:skull": [
+      {
+        "level": 1,
+        "name": "tconstruct3:strong_bones"
+      },
+      {
+        "level": 1,
+        "name": "tconstruct3:skeleton_disguise"
+      }
+    ]
+  }
+}

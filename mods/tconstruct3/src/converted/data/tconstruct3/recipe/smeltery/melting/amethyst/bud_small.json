@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:ore_melting",
+  "byproducts": [
+    {
+      "amount": 100,
+      "fluid": "tconstruct3:molten_quartz"
+    }
+  ],
+  "ingredient": "minecraft:small_amethyst_bud",
+  "rate": "gem",
+  "result": {
+    "amount": 100,
+    "fluid": "tconstruct3:molten_amethyst"
+  },
+  "temperature": 950,
+  "time": 65
+}

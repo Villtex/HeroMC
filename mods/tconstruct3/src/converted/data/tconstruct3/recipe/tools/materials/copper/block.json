@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material",
+  "ingredient": [
+    "#c:storage_blocks/copper",
+    "minecraft:waxed_copper_block"
+  ],
+  "leftover": {
+    "count": 1,
+    "tag": "c:ingots/copper"
+  },
+  "material": "tconstruct3:copper",
+  "needed": 1,
+  "value": 9
+}

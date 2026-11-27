@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:diamond",
+    "tconstruct3:emerald",
+    "tconstruct3:netherite",
+    "tconstruct3:reinforced",
+    "tconstruct3:overforced",
+    "tconstruct3:soulbound",
+    "tconstruct3:experienced",
+    "tconstruct3:magnetic",
+    "tconstruct3:scope",
+    "tconstruct3:zoom",
+    "tconstruct3:tank",
+    "tconstruct3:smelting",
+    "tconstruct3:fireprimer",
+    {
+      "id": "tconstruct3:the_one_probe",
+      "required": false
+    }
+  ]
+}

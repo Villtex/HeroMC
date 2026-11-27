@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": "minecraft:clay",
+  "result": {
+    "amount": 1000,
+    "fluid": "tconstruct3:molten_clay"
+  },
+  "temperature": 450,
+  "time": 48
+}

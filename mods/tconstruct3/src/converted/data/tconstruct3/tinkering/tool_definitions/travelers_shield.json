@@ -1,0 +1,70 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "modules": [
+    {
+      "type": "tconstruct3:material_stats",
+      "primary_part": 0,
+      "stat_types": [
+        "tconstruct3:shield_core",
+        "tconstruct3:cuirass"
+      ]
+    },
+    {
+      "type": "tconstruct3:default_materials",
+      "materials": [
+        {
+          "type": "tconstruct3:fixed",
+          "material": "tconstruct3:wood"
+        }
+      ]
+    },
+    {
+      "type": "tconstruct3:base_stats",
+      "stats": {
+        "tconstruct3:block_amount": 10.0,
+        "tconstruct3:block_angle": 90.0,
+        "tconstruct3:durability": 200.0,
+        "tconstruct3:use_item_speed": 0.8
+      }
+    },
+    {
+      "type": "tconstruct3:modifier_slots",
+      "slots": {
+        "abilities": 1,
+        "defense": 2,
+        "upgrades": 2
+      }
+    },
+    {
+      "type": "tconstruct3:statless_part_repair",
+      "part_index": 0,
+      "repair_amount": 100
+    },
+    {
+      "type": "tconstruct3:statless_part_repair",
+      "part_index": 1,
+      "repair_amount": 200
+    },
+    {
+      "type": "tconstruct3:traits",
+      "traits": [
+        {
+          "level": 1,
+          "name": "tconstruct3:blocking"
+        }
+      ]
+    },
+    {
+      "type": "tconstruct3:attack_interaction"
+    },
+    {
+      "type": "tconstruct3:fixed_material_name",
+      "index": 0
+    }
+  ]
+}

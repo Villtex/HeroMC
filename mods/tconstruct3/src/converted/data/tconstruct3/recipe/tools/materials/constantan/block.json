@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:storage_blocks/constantan"
+    }
+  ],
+  "type": "tconstruct3:material",
+  "ingredient": "#c:storage_blocks/constantan",
+  "leftover": {
+    "count": 1,
+    "tag": "c:ingots/constantan"
+  },
+  "material": "tconstruct3:constantan",
+  "needed": 1,
+  "value": 9
+}

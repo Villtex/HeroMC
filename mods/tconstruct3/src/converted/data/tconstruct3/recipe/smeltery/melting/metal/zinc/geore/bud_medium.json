@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:ingots/tin"
+    }
+  ],
+  "type": "tconstruct3:ore_melting",
+  "byproducts": [
+    {
+      "amount": 180,
+      "rate": "metal",
+      "tag": "c:molten_tin"
+    }
+  ],
+  "ingredient": "#c:geore_medium_buds/zinc",
+  "rate": "metal",
+  "result": {
+    "amount": 180,
+    "tag": "c:molten_zinc"
+  },
+  "temperature": 420,
+  "time": 70
+}

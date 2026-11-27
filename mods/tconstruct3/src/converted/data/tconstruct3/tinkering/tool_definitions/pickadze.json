@@ -1,0 +1,98 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "modules": [
+    {
+      "type": "tconstruct3:part_stats",
+      "parts": [
+        {
+          "item": "tconstruct3:pick_head",
+          "scale": 0.5
+        },
+        "tconstruct3:tool_handle",
+        {
+          "item": "tconstruct3:adze_head",
+          "scale": 0.5
+        }
+      ],
+      "primary_part": 0
+    },
+    {
+      "type": "tconstruct3:default_materials",
+      "materials": [
+        {
+          "type": "tconstruct3:random",
+          "tier": 1
+        },
+        {
+          "type": "tconstruct3:random",
+          "tier": 1
+        },
+        {
+          "type": "tconstruct3:random",
+          "tier": 1
+        }
+      ]
+    },
+    {
+      "type": "tconstruct3:base_stats",
+      "stats": {
+        "tconstruct3:attack_damage": 0.5,
+        "tconstruct3:attack_speed": 1.3
+      }
+    },
+    {
+      "type": "tconstruct3:modifier_slots",
+      "slots": {
+        "abilities": 1,
+        "upgrades": 3
+      }
+    },
+    {
+      "type": "tconstruct3:multiply_stats",
+      "multipliers": {
+        "tconstruct3:attack_damage": 1.15,
+        "tconstruct3:durability": 1.3,
+        "tconstruct3:mining_speed": 0.75
+      }
+    },
+    {
+      "type": "tconstruct3:traits",
+      "traits": [
+        {
+          "level": 1,
+          "name": "tconstruct3:pathing"
+        }
+      ]
+    },
+    {
+      "type": "tconstruct3:tool_actions",
+      "tool_actions": [
+        "pickaxe_dig",
+        "shovel_dig"
+      ]
+    },
+    {
+      "type": "tconstruct3:is_effective",
+      "predicate_type": "mantle:tag",
+      "tag": "tconstruct3:mineable/pickadze"
+    },
+    {
+      "type": "tconstruct3:max_tier",
+      "tier": "minecraft:gold"
+    },
+    {
+      "type": "tconstruct3:box_aoe",
+      "expansion_direction": "tconstruct3:side_hit",
+      "expansions": [
+        {
+          "height": 1
+        }
+      ]
+    }
+  ]
+}

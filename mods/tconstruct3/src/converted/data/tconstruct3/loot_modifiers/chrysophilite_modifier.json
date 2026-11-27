@@ -1,0 +1,49 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "mantle:add_entry",
+  "entry": {
+    "type": "minecraft:item",
+    "name": "minecraft:gold_nugget"
+  },
+  "functions": [
+    {
+      "type": "minecraft:set_count",
+      "add": false,
+      "count": {
+        "type": "minecraft:uniform",
+        "max": 6,
+        "min": 2
+      }
+    },
+    {
+      "type": "tconstruct3:chrysophilite_bonus",
+      "formula": "minecraft:ore_drops",
+      "include_base": false
+    },
+    {
+      "type": "minecraft:explosion_decay"
+    }
+  ],
+  "post_conditions": [
+    {
+      "type": "mantle:inverted"
+    }
+  ],
+  "condition": {
+    "type": "minecraft:all_of",
+    "terms": [
+      {
+        "type": "mantle:block_tag",
+        "tag": "tconstruct3:chrysophilite_ores"
+      },
+      {
+        "type": "tconstruct3:has_chrysophilite"
+      }
+    ]
+  }
+}

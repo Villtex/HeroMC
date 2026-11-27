@@ -1,0 +1,30 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:crafting_shaped_materials",
+  "category": "misc",
+  "key": {
+    "#": {
+      "neoforge:ingredient_type": "tconstruct3:material",
+      "item": "tconstruct3:fake_ingot",
+      "material": {
+        "type": "tconstruct3:has_part",
+        "part": "tconstruct3:fake_storage_block"
+      }
+    }
+  },
+  "parts": "#",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "id": "tconstruct3:fake_storage_block"
+  },
+  "show_notification": true
+}

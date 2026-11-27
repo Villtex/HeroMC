@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:ore_melting",
+  "byproducts": [
+    {
+      "amount": 25,
+      "fluid": "tconstruct3:molten_diamond",
+      "rate": "gem"
+    }
+  ],
+  "ingredient": "#c:raw_materials/cobalt",
+  "rate": "metal",
+  "result": {
+    "amount": 90,
+    "tag": "c:molten_cobalt"
+  },
+  "temperature": 950,
+  "time": 97
+}

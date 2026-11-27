@@ -1,0 +1,37 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:weapon_mob_effect",
+      "effect": "tconstruct3:conductive",
+      "level": {
+        "flat": 1.0
+      },
+      "time": {
+        "flat": 100.0,
+        "random": 100.0
+      }
+    },
+    {
+      "type": "tconstruct3:counter_mob_effect",
+      "chance": {
+        "flat": 0.15
+      },
+      "effect": "tconstruct3:conductive",
+      "level": {
+        "flat": 1.0
+      },
+      "time": {
+        "flat": 100.0,
+        "random": 100.0
+      }
+    }
+  ],
+  "priority": 150
+}

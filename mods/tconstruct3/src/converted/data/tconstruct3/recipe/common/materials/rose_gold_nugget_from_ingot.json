@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "tconstruct3:rose_gold_nugget",
+  "ingredients": "tconstruct3:rose_gold_ingot",
+  "result": {
+    "id": "tconstruct3:rose_gold_nugget",
+    "count": 9
+  }
+}

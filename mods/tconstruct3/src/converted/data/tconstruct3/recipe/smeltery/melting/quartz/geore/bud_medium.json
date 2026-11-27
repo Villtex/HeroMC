@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:geore_medium_buds/quartz"
+    }
+  ],
+  "type": "tconstruct3:ore_melting",
+  "byproducts": [
+    {
+      "amount": 180,
+      "rate": "metal",
+      "tag": "c:molten_iron"
+    }
+  ],
+  "ingredient": "#c:geore_medium_buds/quartz",
+  "rate": "gem",
+  "result": {
+    "amount": 200,
+    "fluid": "tconstruct3:molten_quartz"
+  },
+  "temperature": 637,
+  "time": 82
+}

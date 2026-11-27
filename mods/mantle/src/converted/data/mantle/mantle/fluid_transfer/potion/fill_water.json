@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "mantle:fill_item",
+  "fluid": {
+    "amount": 500,
+    "tag": "mantle:water"
+  },
+  "input": "minecraft:glass_bottle",
+  "result": {
+    "id": "minecraft:potion",
+    "components": {
+      "minecraft:potion_contents": {
+        "potion": "minecraft:water"
+      }
+    }
+  }
+}

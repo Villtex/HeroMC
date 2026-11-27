@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "c": "#c:ingots/copper"
+  },
+  "pattern": [
+    "c c",
+    " c "
+  ],
+  "result": {
+    "id": "tconstruct3:copper_can",
+    "count": 3
+  },
+  "show_notification": true
+}

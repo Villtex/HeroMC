@@ -1,0 +1,11 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:tool_building",
+  "result": "tconstruct3:broad_axe",
+  "result_count": 1
+}

@@ -1,0 +1,13 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material",
+  "ingredient": "#c:normal_stones",
+  "material": "tconstruct3:rock#stone",
+  "needed": 1,
+  "value": 1
+}

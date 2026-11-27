@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:storage_blocks/fiery"
+    }
+  ],
+  "type": "tconstruct3:material",
+  "ingredient": "#c:storage_blocks/fiery",
+  "leftover": {
+    "count": 1,
+    "tag": "c:ingots/fiery"
+  },
+  "material": "tconstruct3:fiery",
+  "needed": 1,
+  "value": 9
+}

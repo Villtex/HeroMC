@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_table",
+  "cast": "#tconstruct3:casts/single_use/ingot",
+  "cast_consumed": true,
+  "cooling_time": 89,
+  "fluid": {
+    "amount": 250,
+    "tag": "tconstruct3:seared_stone"
+  },
+  "result": "tconstruct3:seared_brick"
+}

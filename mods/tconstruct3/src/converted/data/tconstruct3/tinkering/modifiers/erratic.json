@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:no_levels",
+  "modules": [
+    {
+      "type": "tconstruct3:material_variant_color",
+      "material": "tconstruct3:slimeball"
+    },
+    {
+      "type": "tconstruct3:stat_boost",
+      "flat": -0.5,
+      "operation": "add",
+      "stat": "tconstruct3:accuracy"
+    }
+  ]
+}

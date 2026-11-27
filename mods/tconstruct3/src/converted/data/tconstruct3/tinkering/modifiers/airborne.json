@@ -1,0 +1,31 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:no_levels",
+  "modules": [
+    {
+      "type": "tconstruct3:conditional_mining_speed",
+      "entity": {
+        "type": "mantle:inverted",
+        "inverted_type": "mantle:on_ground"
+      },
+      "flat": 4.0,
+      "hooks": [
+        "tconstruct3:break_speed"
+      ],
+      "percent": true,
+      "require_effective": false
+    },
+    {
+      "type": "tconstruct3:conditional_stat",
+      "entity": "tconstruct3:airborne",
+      "flat": 0.1,
+      "percent": false,
+      "stat": "tconstruct3:velocity"
+    }
+  ]
+}

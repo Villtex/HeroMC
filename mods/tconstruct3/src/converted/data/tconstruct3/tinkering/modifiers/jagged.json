@@ -1,0 +1,62 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:conditional_melee_damage",
+      "formula": [
+        "$lost",
+        "$max",
+        "/",
+        "sqrt",
+        "$level",
+        "*",
+        0.005,
+        "*",
+        1.0,
+        "+",
+        "$damage",
+        "*"
+      ],
+      "percent": true,
+      "variables": {
+        "lost": "tconstruct3:tool_lost_durability",
+        "max": {
+          "type": "tconstruct3:stat_multiplier",
+          "stat": "tconstruct3:durability"
+        }
+      }
+    },
+    {
+      "type": "tconstruct3:conditional_mining_speed",
+      "formula": [
+        "$lost",
+        "$max",
+        "/",
+        "sqrt",
+        "$level",
+        "*",
+        -0.01,
+        "*",
+        1.0,
+        "+",
+        "$speed",
+        "*"
+      ],
+      "percent": true,
+      "require_effective": true,
+      "variables": {
+        "lost": "tconstruct3:tool_lost_durability",
+        "max": {
+          "type": "tconstruct3:stat_multiplier",
+          "stat": "tconstruct3:durability"
+        }
+      }
+    }
+  ]
+}

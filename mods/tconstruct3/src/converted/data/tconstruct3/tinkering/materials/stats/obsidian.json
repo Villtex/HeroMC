@@ -1,0 +1,35 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "stats": {
+    "tconstruct3:maille": {},
+    "tconstruct3:plating_boots": {
+      "armor": 2.0,
+      "durability": 143,
+      "knockback_resistance": 0.15
+    },
+    "tconstruct3:plating_chestplate": {
+      "armor": 5.0,
+      "durability": 176,
+      "knockback_resistance": 0.15
+    },
+    "tconstruct3:plating_helmet": {
+      "armor": 2.0,
+      "durability": 121,
+      "knockback_resistance": 0.15
+    },
+    "tconstruct3:plating_leggings": {
+      "armor": 4.0,
+      "durability": 165,
+      "knockback_resistance": 0.15
+    },
+    "tconstruct3:plating_shield": {
+      "durability": 198,
+      "knockback_resistance": 0.15
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "registry": "minecraft:fluid",
+      "tag": "c:glowstone"
+    }
+  ],
+  "block_effects": [
+    {
+      "type": "tconstruct3:mob_effect_cloud",
+      "effects": [
+        {
+          "effect": "minecraft:glowing",
+          "level": 1,
+          "time": 200
+        }
+      ]
+    },
+    {
+      "type": "tconstruct3:place_block",
+      "block": "tconstruct3:glow"
+    }
+  ],
+  "entity_effects": [
+    {
+      "type": "tconstruct3:mob_effect",
+      "action": "add",
+      "effect": "minecraft:glowing",
+      "level": 1,
+      "time": 200
+    }
+  ],
+  "fluid": {
+    "amount": 100,
+    "tag": "c:glowstone"
+  }
+}

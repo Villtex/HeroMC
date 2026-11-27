@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "block_effects": [
+    {
+      "type": "tconstruct3:conditional",
+      "block": {
+        "type": "tconstruct3:harvest_tier",
+        "tier": "minecraft:iron"
+      },
+      "effect": {
+        "type": "tconstruct3:break_block",
+        "enchantments": {
+          "minecraft:silk_touch": 1
+        },
+        "hardness": 10.0
+      }
+    }
+  ],
+  "fluid": {
+    "amount": 25,
+    "tag": "tconstruct3:molten_emerald"
+  }
+}

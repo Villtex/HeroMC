@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:no_levels",
+  "modules": [
+    {
+      "type": "tconstruct3:volatile_flag",
+      "flag": "tconstruct3:shiny"
+    },
+    {
+      "type": "tconstruct3:rarity",
+      "rarity": "epic"
+    }
+  ]
+}

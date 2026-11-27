@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_table_tipped_clearing",
+  "cooling_time": 20,
+  "fluid": {
+    "amount": 50,
+    "tag": "mantle:water"
+  },
+  "modifier": "tconstruct3:tipped",
+  "tools": "#tconstruct3:modifiable/ammo"
+}

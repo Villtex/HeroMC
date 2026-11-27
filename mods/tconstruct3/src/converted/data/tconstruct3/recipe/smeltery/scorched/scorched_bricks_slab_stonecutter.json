@@ -1,0 +1,14 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": "tconstruct3:scorched_bricks",
+  "result": {
+    "id": "tconstruct3:scorched_bricks_slab",
+    "count": 2
+  }
+}

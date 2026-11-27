@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "tconstruct3:debris_nugget",
+  "ingredients": "minecraft:netherite_scrap",
+  "result": {
+    "id": "tconstruct3:debris_nugget",
+    "count": 9
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": "tconstruct3:sky_slime_crystal",
+    "I": "#c:ingots/rose_gold",
+    "W": "#tconstruct3:skyroot_logs"
+  },
+  "pattern": [
+    "CWC",
+    " I ",
+    " W "
+  ],
+  "result": {
+    "id": "tconstruct3:sky_staff"
+  },
+  "show_notification": true
+}

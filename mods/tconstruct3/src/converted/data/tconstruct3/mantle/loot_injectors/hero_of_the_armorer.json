@@ -1,0 +1,31 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "name": "minecraft:gameplay/hero_of_the_village/armorer_gift",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "tconstruct3:melting_pan",
+          "modifier": {
+            "type": "tconstruct3:add_tool_data",
+            "materials": [
+              {
+                "type": "tconstruct3:ancient"
+              },
+              {
+                "type": "tconstruct3:ancient"
+              }
+            ]
+          }
+        }
+      ],
+      "name": "main"
+    }
+  ]
+}

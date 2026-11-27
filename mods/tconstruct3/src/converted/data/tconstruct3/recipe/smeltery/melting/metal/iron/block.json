@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": "#c:storage_blocks/iron",
+  "result": {
+    "amount": 810,
+    "tag": "c:molten_iron"
+  },
+  "temperature": 800,
+  "time": 180
+}

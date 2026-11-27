@@ -1,0 +1,14 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material",
+  "ingredient": "#minecraft:crimson_stems",
+  "leftover": "minecraft:crimson_planks",
+  "material": "tconstruct3:wood#crimson",
+  "needed": 1,
+  "value": 4
+}

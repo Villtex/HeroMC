@@ -1,0 +1,39 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:modifier",
+  "allow_crystal": true,
+  "check_trait_level": true,
+  "inputs": [
+    "minecraft:blaze_rod",
+    {
+      "ingredient": [
+        {
+          "item": "tconstruct3:seared_melter"
+        },
+        {
+          "item": "tconstruct3:smeltery_controller"
+        },
+        {
+          "item": "tconstruct3:foundry_controller"
+        }
+      ]
+    },
+    "minecraft:blaze_rod",
+    "minecraft:lava_bucket",
+    "minecraft:lava_bucket"
+  ],
+  "level": 1,
+  "result": "tconstruct3:melting",
+  "slots": {
+    "abilities": 1
+  },
+  "tools": [
+    "#tconstruct3:modifiable/melee",
+    "#tconstruct3:modifiable/harvest"
+  ]
+}

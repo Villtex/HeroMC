@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:geore_clusters/copper"
+    }
+  ],
+  "type": "tconstruct3:ore_melting",
+  "byproducts": [
+    {
+      "amount": 120,
+      "rate": "metal",
+      "tag": "c:molten_gold"
+    }
+  ],
+  "ingredient": "#c:geore_clusters/copper",
+  "rate": "metal",
+  "result": {
+    "amount": 360,
+    "tag": "c:molten_copper"
+  },
+  "temperature": 500,
+  "time": 125
+}

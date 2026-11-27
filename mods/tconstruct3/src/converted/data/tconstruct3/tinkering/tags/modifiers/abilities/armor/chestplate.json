@@ -1,0 +1,14 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:ambidextrous",
+    "tconstruct3:reach",
+    "tconstruct3:strength",
+    "tconstruct3:wings"
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:weapon_mob_effect",
+      "effect": "minecraft:wither",
+      "level": {
+        "per_level": 1.0
+      },
+      "time": {
+        "flat": 120.0
+      }
+    },
+    {
+      "type": "tconstruct3:tool_usage_mob_effect",
+      "chance": {
+        "flat": 0.25
+      },
+      "effect": "minecraft:wither",
+      "hooks": [
+        "tconstruct3:melee_hit",
+        "tconstruct3:monster_melee_hit",
+        "tconstruct3:projectile_launch",
+        "tconstruct3:projectile_shot",
+        "tconstruct3:projectile_thrown",
+        "tconstruct3:sling_launch"
+      ],
+      "level": {
+        "per_level": 1.0
+      },
+      "time": {
+        "flat": 120.0
+      }
+    },
+    {
+      "type": "tconstruct3:counter_mob_effect",
+      "chance": {
+        "each_level": 0.5
+      },
+      "effect": "minecraft:wither",
+      "level": {
+        "flat": 2.0
+      },
+      "time": {
+        "flat": 120.0
+      }
+    },
+    {
+      "type": "tconstruct3:counter_mob_effect",
+      "chance": {
+        "each_level": 0.1
+      },
+      "durability_usage": 0,
+      "effect": "minecraft:wither",
+      "level": {
+        "flat": 1.0
+      },
+      "target_self": true,
+      "time": {
+        "flat": 120.0
+      }
+    }
+  ]
+}

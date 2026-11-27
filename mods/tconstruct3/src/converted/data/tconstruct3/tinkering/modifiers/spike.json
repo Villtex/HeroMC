@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:no_levels",
+  "modules": [
+    {
+      "type": "tconstruct3:tool_actions",
+      "tool_actions": [
+        "shield_disable"
+      ]
+    },
+    {
+      "type": "tconstruct3:arrow_pierce",
+      "flat": 1
+    }
+  ]
+}

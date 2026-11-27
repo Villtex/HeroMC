@@ -1,0 +1,45 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "criteria": {
+    "has_boots": {
+      "conditions": {
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:equipment": {
+              "feet": {
+                "predicates": {
+                  "tconstruct3:tool_stack": {
+                    "type": "tconstruct3:has_volatile_key",
+                    "key": "tconstruct3:snow_boots"
+                  }
+                }
+              }
+            },
+            "minecraft:stepping_on": {
+              "block": {
+                "blocks": "minecraft:powder_snow"
+              }
+            }
+          }
+        }
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "requirements": [
+    [
+      "has_boots"
+    ]
+  ],
+  "rewards": {
+    "function": "tconstruct3:grant_advancement/adventure_walk_on_powder_snow_with_leather_boots"
+  },
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:swappable_modifier",
+  "allow_crystal": false,
+  "inputs": [
+    "tconstruct3:ichor_slime_crystal_cluster",
+    "minecraft:blaze_rod",
+    "tconstruct3:ichor_slime_crystal_cluster",
+    "#c:ingots/manyullyn",
+    "#c:ingots/manyullyn"
+  ],
+  "result": {
+    "name": "tconstruct3:crystalshot",
+    "value": "ichor"
+  },
+  "slots": {
+    "abilities": 1
+  },
+  "tools": "#tconstruct3:modifiable/ranged/bows"
+}

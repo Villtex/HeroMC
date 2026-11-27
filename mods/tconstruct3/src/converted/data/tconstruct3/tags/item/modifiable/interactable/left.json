@@ -1,0 +1,9 @@
+{
+  "values": [
+    "tconstruct3:crossbow",
+    "tconstruct3:longbow",
+    "tconstruct3:travelers_shield",
+    "tconstruct3:plate_shield",
+    "#tconstruct3:modifiable/interactable/dual"
+  ]
+}

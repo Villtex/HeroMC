@@ -1,0 +1,13 @@
+{
+  "values": [
+    "#tconstruct3:modifiable/multipart",
+    "#tconstruct3:modifiable/durability",
+    "#tconstruct3:modifiable/melee",
+    "#tconstruct3:modifiable/harvest",
+    "#tconstruct3:modifiable/ranged",
+    "#tconstruct3:modifiable/ammo",
+    "#tconstruct3:modifiable/aoe",
+    "#tconstruct3:modifiable/held",
+    "#tconstruct3:modifiable/bonus_slots"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:default",
+  "modules": [
+    {
+      "type": "tconstruct3:enchantment_ignoring_protection",
+      "level": 1,
+      "name": "minecraft:fire_protection"
+    },
+    {
+      "type": "tconstruct3:protection",
+      "damage_source": {
+        "type": "mantle:and",
+        "predicates": [
+          "mantle:can_protect",
+          {
+            "type": "mantle:tag",
+            "tag": "tconstruct3:protection/fire"
+          }
+        ]
+      },
+      "each_level": 2.5
+    }
+  ]
+}

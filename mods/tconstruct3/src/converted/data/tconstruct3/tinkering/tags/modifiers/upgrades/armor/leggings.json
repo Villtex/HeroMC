@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:leaping",
+    "tconstruct3:shield_strap",
+    "tconstruct3:speedy",
+    "tconstruct3:swift_sneak",
+    "tconstruct3:step_up"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tconstruct3:stained_clear_glass_pane",
+  "key": {
+    "#": "tconstruct3:red_clear_stained_glass"
+  },
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "result": {
+    "id": "tconstruct3:red_clear_stained_glass_pane",
+    "count": 16
+  },
+  "show_notification": true
+}

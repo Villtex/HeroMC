@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": "#c:sands/red",
+  "result": {
+    "id": "tconstruct3:blank_red_sand_cast",
+    "count": 4
+  }
+}

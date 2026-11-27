@@ -1,0 +1,35 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:no_levels",
+  "modules": [
+    {
+      "type": "tconstruct3:constant_enchantment",
+      "level": 1,
+      "name": "minecraft:silk_touch",
+      "tool": {
+        "neoforge:ingredient_type": "mantle:tag",
+        "tag": "tconstruct3:modifiable/harvest"
+      }
+    },
+    {
+      "type": "tconstruct3:armor_harvest_enchantment",
+      "level": 1,
+      "name": "minecraft:silk_touch",
+      "slots": [
+        "feet",
+        "legs",
+        "chest",
+        "head"
+      ],
+      "tool": {
+        "neoforge:ingredient_type": "mantle:tag",
+        "tag": "tconstruct3:modifiable/armor/worn"
+      }
+    }
+  ]
+}

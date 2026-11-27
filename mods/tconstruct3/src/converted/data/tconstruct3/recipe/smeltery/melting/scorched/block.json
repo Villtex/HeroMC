@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:melting",
+  "ingredient": [
+    "#tconstruct3:scorched_blocks",
+    "tconstruct3:scorched_ladder",
+    "tconstruct3:scorched_lamp",
+    "tconstruct3:scorched_bricks_stairs",
+    "tconstruct3:scorched_road_stairs"
+  ],
+  "result": {
+    "amount": 1000,
+    "fluid": "tconstruct3:scorched_stone"
+  },
+  "temperature": 500,
+  "time": 100
+}

@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:shiny",
+    "tconstruct3:dyed",
+    "tconstruct3:embellishment",
+    "tconstruct3:banner",
+    "tconstruct3:farsighted",
+    "tconstruct3:nearsighted"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:no_levels",
+  "modules": [
+    {
+      "type": "tconstruct3:channeling",
+      "allow_melee": false,
+      "chance_clear": 0.15,
+      "chance_rain": 0.65,
+      "chance_thunder": 1.0
+    }
+  ]
+}

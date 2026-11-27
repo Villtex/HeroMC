@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:casting_basin",
+  "cast": "#c:glass_blocks/colorless",
+  "cast_consumed": true,
+  "cooling_time": 97,
+  "fluid": {
+    "amount": 200,
+    "tag": "tconstruct3:molten_amethyst"
+  },
+  "result": "tconstruct3:clear_tinted_glass"
+}

@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:part_builder_recycling",
+  "pattern": "tconstruct3:venom_bottle",
+  "results": {
+    "tconstruct3:bowstring": {
+      "id": "minecraft:string",
+      "count": 2
+    },
+    "tconstruct3:ingot": {
+      "count": 1,
+      "tag": "c:ingots/iron"
+    },
+    "tconstruct3:rod": {
+      "id": "minecraft:stick",
+      "count": 3
+    }
+  },
+  "tool": "minecraft:crossbow"
+}

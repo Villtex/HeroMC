@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tconstruct3:knightmetal_block",
+  "key": {
+    "#": "#c:ingots/knightmetal",
+    "*": "tconstruct3:knightmetal_ingot"
+  },
+  "pattern": [
+    "###",
+    "#*#",
+    "###"
+  ],
+  "result": {
+    "id": "tconstruct3:knightmetal_block"
+  },
+  "show_notification": true
+}

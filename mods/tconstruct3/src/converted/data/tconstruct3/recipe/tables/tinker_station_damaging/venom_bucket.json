@@ -1,0 +1,11 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:tinker_station_damaging",
+  "damage_amount": 1000,
+  "ingredient": "tconstruct3:venom_bucket"
+}

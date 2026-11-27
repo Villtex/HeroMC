@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:material_fluid",
+  "fluid": {
+    "amount": 50,
+    "tag": "tconstruct3:blazing_blood"
+  },
+  "input": "tconstruct3:earthslime",
+  "output": "tconstruct3:magma",
+  "temperature": 1500
+}

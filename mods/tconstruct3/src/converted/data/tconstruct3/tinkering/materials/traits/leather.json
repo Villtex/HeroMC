@@ -1,0 +1,32 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "default": [
+    {
+      "level": 1,
+      "name": "tconstruct3:tanned"
+    }
+  ],
+  "perStat": {
+    "tconstruct3:laces": [
+      {
+        "level": 1,
+        "name": "tconstruct3:rugged"
+      }
+    ],
+    "tconstruct3:skull": [
+      {
+        "level": 1,
+        "name": "tconstruct3:consecrated_skull"
+      },
+      {
+        "level": 1,
+        "name": "tconstruct3:zombie_disguise"
+      }
+    ]
+  }
+}

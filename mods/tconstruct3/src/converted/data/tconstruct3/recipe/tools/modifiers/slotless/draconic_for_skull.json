@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:modifier",
+  "allow_crystal": true,
+  "inputs": [
+    "minecraft:dragon_head",
+    "#c:slime_balls"
+  ],
+  "level": 1,
+  "result": "tconstruct3:draconic",
+  "tools": {
+    "neoforge:ingredient_type": "neoforge:intersection",
+    "children": [
+      "#tconstruct3:modifiable/bonus_slots",
+      "#tconstruct3:modifiable/skulls"
+    ]
+  }
+}

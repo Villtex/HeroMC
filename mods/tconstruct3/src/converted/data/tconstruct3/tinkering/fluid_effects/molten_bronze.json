@@ -1,0 +1,51 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "neoforge:or",
+      "values": [
+        {
+          "type": "tconstruct3:config",
+          "prop": "force_integration_materials"
+        },
+        {
+          "type": "mantle:tag_filled",
+          "tag": "c:ingots/bronze"
+        },
+        {
+          "type": "mantle:tag_filled",
+          "tag": "c:ingots/tin"
+        }
+      ]
+    }
+  ],
+  "entity_effects": [
+    {
+      "type": "tconstruct3:conditional",
+      "effect": {
+        "type": "tconstruct3:damage",
+        "damage": 3.0,
+        "damage_type": {
+          "melee": "tconstruct3:fluid_fire_melee",
+          "ranged": "tconstruct3:fluid_fire_ranged"
+        }
+      },
+      "target": {
+        "type": "mantle:inverted",
+        "inverted_type": "mantle:fire_immune"
+      }
+    },
+    {
+      "type": "tconstruct3:award_stat",
+      "amount": -6000,
+      "stat": "minecraft:time_since_rest"
+    }
+  ],
+  "fluid": {
+    "amount": 10,
+    "tag": "c:molten_bronze"
+  }
+}

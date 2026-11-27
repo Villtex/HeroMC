@@ -1,0 +1,14 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "values": [
+    "tconstruct3:haste",
+    "tconstruct3:blasting",
+    "tconstruct3:hydraulic",
+    "tconstruct3:lightspeed"
+  ]
+}

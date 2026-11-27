@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "tconstruct3:scorched_brick",
+    "C": "tconstruct3:obsidian_pane",
+    "G": "#c:gems/quartz"
+  },
+  "pattern": [
+    "#G#",
+    "CGC",
+    "#G#"
+  ],
+  "result": {
+    "id": "tconstruct3:scorched_proxy_tank"
+  },
+  "show_notification": true
+}

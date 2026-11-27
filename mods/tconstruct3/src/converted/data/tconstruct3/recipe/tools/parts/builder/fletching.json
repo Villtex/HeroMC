@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "type": "tconstruct3:part_builder",
+  "allow_uncraftable": true,
+  "cost": 1,
+  "pattern": "tconstruct3:fletching",
+  "pattern_item": [
+    "#tconstruct3:patterns/default",
+    "tconstruct3:arrow_cast"
+  ],
+  "result": {
+    "id": "tconstruct3:fletching"
+  }
+}

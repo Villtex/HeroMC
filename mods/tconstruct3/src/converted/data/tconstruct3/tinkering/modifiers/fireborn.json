@@ -1,0 +1,25 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    }
+  ],
+  "level_display": "tconstruct3:single_level",
+  "modules": [
+    {
+      "type": "tconstruct3:enchantment_ignoring_protection",
+      "level": {
+        "flat": 7
+      },
+      "name": "minecraft:fire_protection"
+    },
+    {
+      "type": "tconstruct3:effect_immunity",
+      "effect": "tconstruct3:conductive",
+      "max_level": {
+        "each_level": 1
+      }
+    }
+  ]
+}

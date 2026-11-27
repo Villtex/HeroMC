@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "worldgen152:world_type",
+      "legacy": false
+    },
+    {
+      "type": "mantle:tag_filled",
+      "tag": "c:wires"
+    }
+  ],
+  "type": "tconstruct3:item_part_builder",
+  "pattern": "tconstruct3:wire",
+  "pattern_item": "#c:sands/red",
+  "result": {
+    "id": "tconstruct3:wire_red_sand_cast",
+    "count": 4
+  },
+  "title_key": "tconstruct3:sand_cast"
+}
