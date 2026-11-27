@@ -79,6 +79,17 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 26d | Integrated D: EBXL-Biome neben Vanilla- und fremden Biomen, Mob-Spawns per Biom-Modifier | ~3.000 | 26b | Fable 5.2, hoch | ✅ erledigt |
 | 26e | Integrated E: Schnittstellen für fremde Mods (Capabilities, `c:`-Tags, Werkzeug-Fähigkeiten, Rezepte über Tags) | ~4.000 | – | Opus 5.5, mittel | ✅ erledigt |
 | 26f | Integrated F: Test mit fremden 26.3-Mods, Gesamtprüfung | – | 26a–26e | Opus 5.5, mittel | ✅ erledigt |
+| 27a | Tinkers 3 A: Zwei-Versionen-Schalter (Welttyp am Client, Bedingungen, Ausblenden), Quellen, Daten-Konverter, Gerüst `mantle`/`tconstruct3` | – | 26 | Opus 5.5, hoch | offen |
+| 27b | Tinkers 3 B: Mantle-Kern (Datenlader, JSON-Helfer, Rezepte, Flüssigkeiten, Registrierung, Netzwerk, Befehle) | ~33.000 | 27a | Opus 5.5, hoch | offen |
+| 27c | Tinkers 3 C: Mantle-Client (Modell-Lader, Bildschirme, Handbuch-Engine) | ~17.000 | 27b | Fable 5.2, hoch | offen |
+| 27d | Tinkers 3 D: Werkzeug-Datenmodell (Materialien, Stats, Werkzeugdaten als Komponenten, Definitionen, Teile, JSON-Variablen) | ~35.000 | 27b | Fable 5.2, hoch | offen |
+| 27e | Tinkers 3 E: Modifikator-System (Hooks, Module, Flüssigkeits-Effekte, Modifikator-Rezepte) | ~30.000 | 27d | Opus 5.5, hoch | offen |
+| 27f | Tinkers 3 F: Rezept-Typen (Gießen, Schmelzen, Legieren, Teile-Bau, Tüftlertisch) und Client der Bibliothek (Material-/Werkzeugmodelle, Paletten-Texturen) | ~35.000 | 27e, 27c | Fable 5.2, hoch | offen |
+| 27g | Tinkers 3 G: Tische und Menüs, gemeinsame Blöcke/Items, Flüssigkeiten | ~28.000 | 27f | Opus 5.5, mittel | offen |
+| 27h | Tinkers 3 H: Werkzeuge, Waffen, Fernkampf, Rüstung, Modifikator-Umsetzungen | ~28.000 | 27f | Opus 5.5, hoch | offen |
+| 27i | Tinkers 3 I: Schmelzerei und Gießerei (Multiblöcke, Abfluss, Hahn, Gussbecken, Renderer) | ~20.000 | 27g | Opus 5.5, hoch | offen |
+| 27j | Tinkers 3 J: Welt (Schleiminseln, Geoden, Kobalt, Schleimbäume, Schleime) nur in Integrated, Gadgets | ~8.500 | 27g | Opus 5.5, hoch | offen |
+| 27k | Tinkers 3 K: JEI, Handbücher, Umschalten (1.4.3 nur Legacy, 3.12.1 nur Integrated), Kompat, Gesamtprüfung | ~7.000 | 27h–27j | Opus 5.5, mittel | offen |
 
 Entfallen ganz: Not Enough Items, NEI Plugins, CodeChickenCore (durch JEI ersetzt), Lumy Skin Patch,
 `basemods` (Forge 1.5.2 selbst).
@@ -2310,3 +2321,112 @@ feste Items. Im Original lief der Austausch über das Forge-OreDictionary; die `
 - **Offen:** Der Rest des Hexxit-Aufschlags ist vor allem das Gelände der Hilfs-Chunks (≈ 350 je 1.000 echte Chunks,
   nötig, damit die Bau-Generatoren das Gelände kennen) und das Lesen der Erz-Generatoren (`OldOreGens.Minable`, je Ader
   ein bis zwei ganze Abschnitte; feinere Stücke von 4 Höhen könnten das noch etwa vierteln).
+
+## Teil 27 – Tinkers' Construct 3.12.1 für Hexxit Integrated (27a–27k)
+
+Wunsch des Nutzers: In **Hexxit Legacy** bleibt das originale Tinkers 1.4.3 (Teil 25), in **Hexxit Integrated** gibt es
+stattdessen das heutige Tinkers' Construct 3.12.1 (1.20.1). Beide Versionen sind gleichzeitig installiert; welche
+gilt, entscheidet der Welttyp der geladenen Welt.
+
+Original: Tinkers' Construct `v3.12.1.231` (Paket `slimeknights.tconstruct`, ~194.000 Zeilen, davon ~15.000 Datagen)
+und die Bibliothek Mantle `v1.11.117` (`slimeknights.mantle`, ~50.000 Zeilen), beide Forge 1.20.1. Code **und**
+Texturen stehen unter MIT (README von Tinkers). Quellen von GitHub (`SlimeKnights/TinkersConstruct`,
+`SlimeKnights/Mantle`, je der Tag), nicht dekompiliert. Der Mantle-Zweig `1.21` (NeoForge 1.21.1, schon mit
+Datenkomponenten) dient als Hilfe für den Umbau, maßgeblich bleibt die API, die Tinkers 3.12.1 braucht.
+
+### Die Lösung: beide registriert, nur eine aktiv
+
+Registrierungen gelten im ganzen Spiel, Welttypen nur je Welt. Deshalb sind **beide Versionen immer registriert**,
+aber jeder Weg, an ihre Inhalte zu kommen, hängt am Welttyp:
+
+1. **Eigene Mod-ID.** 1.4.3 behält `tconstruct` (Legacy-Welten, Abgleich mit dem Original). 3.12.1 wird
+   `tconstruct3` („Tinkers' Construct 3“), Mantle bleibt `mantle`. Der Daten-Konverter (27a) benennt den Namensraum
+   `tconstruct` in allen Daten, Modellen, Blockzuständen und Sprachdateien um; im Code `TConstruct.MOD_ID`.
+2. **Daten über die Ladebedingung `worldgen152:world_type`** (gibt es seit 26e, lädt bei Bedarf nach dem Start neu):
+   - Alle Rezepte, Beute-Tabellen, Beute-Modifier, Fortschritte, Biom-Modifier und Struktur-Sets von 1.4.3 bekommen
+     `"legacy": true` (in den Generator-Skripten `mods/tconstruct/tools/gen*.py`, eine Stelle je Ausgabe).
+   - Alles von 3.12.1 bekommt `"legacy": false`, auch die eigenen Tinkers-Daten (`tinkering/materials`, `modifiers`,
+     `tool_definitions`, `station_layouts`, `fluid_effects`, `mob_equipment`). Die Mantle-Lader dafür müssen
+     NeoForge-Bedingungen auswerten (27b); was nicht geht, prüft der Lader selbst über `HexxitWorldType`.
+   - Tags bleiben ungeteilt (Tags kennen keine Bedingung), sie schaden in der anderen Welt nicht.
+3. **Code-Wege über einen Helfer** `HexxitWorldType.isLegacy(Level|MinecraftServer)` in `worldgen152`: Ereignisse,
+   die ohne Daten wirken (1.4.3: Herzkanister, Rucksack/Rüstungs-Inventar, Handbuch beim ersten Betreten, Mob-Drops,
+   Tüftler-Dorfbewohner und Dorfteile; 3.12.1: Kopf-Drops, Schleim-Spawns, Spieler-Ereignisse), prüfen den Welttyp
+   und tun in der falschen Welt nichts. Die Integrated-Features von 1.4.3 aus 26b/26c (`tconstruct:tin_ore`,
+   `aluminum_ore`, `oreberry_bushes`, `surface_ores`, `slime_islands`, `cobalt_ore`, `ardite_ore`, Dorfteile)
+   entfallen in Integrated erst in 27k, wenn 3.12.1 dort spielbar ist.
+4. **Anzeige:** Der Server schickt beim Betreten ein Paket mit dem Welttyp (`worldgen152`, Client-Merker
+   `HexxitWorldType.clientLegacy()`). Kreativ-Tabs der inaktiven Version bleiben leer (Tabs danach neu aufbauen
+   lassen, der Vanilla-Cache kennt den Welttyp nicht), das JEI-Plugin jeder Version blendet seine Zutaten und Rezept-
+   Kategorien in der anderen Welt aus. Über `/give` bleiben alle Items erreichbar (gewollt, für Tests).
+5. **Bestehende Integrated-Welten** behalten gesetzte 1.4.3-Blöcke und -Items, ohne Rezepte. Kein Umbau alter Welten.
+
+Geprüfte Alternative: eigene Feature-Flags je Version (Vanilla blendet Items dann selbst aus). Verworfen, wenn 27a
+nichts anderes zeigt: Flags kommen aus Datapacks bei der Welterstellung, vorhandene Legacy-Welten hätten das
+1.4.3-Flag nicht und verlören alle Tinkers-Items.
+
+### Teil 27a – Grundlage
+- `tools/reference_tc3.py`: holt beide Tags (flach, nach `reference/tc3/`, nicht ins Repo), wie `tools/reference.py`.
+- Gerüst `mods/mantle` und `mods/tconstruct3` (in `settings.gradle`, `pack`, `tools/make_zip.py`). Texturen, Modelle,
+  Sounds und Bücher holt der Build aus dem Tag (`src/main/resources/assets`, `src/generated/resources/assets`), nicht
+  ins Repo (Regel für alle Teile, auch wenn MIT es erlauben würde: Größe).
+- Daten-Konverter `mods/tconstruct3/tools/convert_data.py` für ~18.000 erzeugte Dateien: Namensraum `tconstruct3`,
+  Ordner nach 26.3 (`recipes`→`recipe`, `loot_tables`→`loot_table`, `advancements`→`advancement`,
+  `tags/items`→`tags/item`, `tags/blocks`→`tags/block` …), Item-Stapel (`item`→`id`, NBT→Komponenten),
+  `forge:`-Bedingungen und -Tags → `neoforge:`/`c:`, die Welttyp-Bedingung anhängen. Unbekanntes melden, nicht raten.
+- `HexxitWorldType` (Server und Client, Paket), `"legacy": true` an alle Daten von 1.4.3, Prüfung: Legacy-Welt hat
+  die 1.4.3-Rezepte, Integrated-Welt nicht (am Server per Crafter + RCON, Skill `server-tests-263`).
+- Feature-Flag-Alternative kurz prüfen (s. o.) und Entscheidung hier notieren.
+- Skill `tinkers3-263` anlegen (Namensraum, Konverter, Welttyp-Regel, Paket-Übersicht).
+
+### Teil 27b – Mantle-Kern
+`block`, `command`, `config`, `data` (Lader, Bedingungen, `JsonHelper`, `LoadableField`/Records), `fluid`,
+`inventory`, `item`, `loot`, `network`, `recipe`, `registration` (Deferred-Register-Hilfen), `util`. Lader prüfen die
+Welttyp-Bedingung. `datagen` entfällt (Daten kommen aus dem Konverter).
+
+### Teil 27c – Mantle-Client
+`client`: Modell-Lader (Connected/Retextured/Fluid-Textur-Modelle, `ColoredBlockModel`, `NBTKeyModel`), Bildschirm-
+Hilfen, die Handbuch-Engine (`client/book`, Seiten-Typen, Bücher als Daten). 26.3-Render-Weg wie im Skill
+`client-render-263`; kein Mixin in den Renderer.
+
+### Teil 27d – Werkzeug-Datenmodell
+`library/materials`, `library/tools` (`ToolStack`, `nbt` → Datenkomponenten `tconstruct3:…`, `definition`, `stat`,
+`part`, `layout`, `capability`, `helper`, `context`), `library/json` (Variablen, Prädikate, Mathe). Grundlage für alles
+Weitere; Werkzeuge müssen sich am Server bauen und speichern lassen (Komponenten überleben Speichern/Laden).
+
+### Teil 27e – Modifikator-System
+`library/modifiers` (Hooks, Module, `fluid`, `util`), `library/recipe/modifiers`. Mit Server-Test: Modifikator
+anbringen, Stufen, Plätze, Wirkung eines einfachen Moduls.
+
+### Teil 27f – Rezept-Typen und Client der Bibliothek
+`library/recipe` (Gießen, Schmelzen, Legieren, Brennstoffe, Teile-Bau, Tüftlertisch, Material-Rezepte, Zutaten),
+`library/client` (Material-/Werkzeugmodelle, Render-Materialien mit Paletten-Texturen, Modifikator-Modelle, Rüstung,
+Bücher-Inhalte). Werkzeug-Texturen werden in 3.12.1 zur Laufzeit aus Graustufen + Palette erzeugt: auf den 26.3-
+Atlas-Weg bringen.
+
+### Teil 27g – Tische, gemeinsame Inhalte, Flüssigkeiten
+`tables` (Teilebauer, Tüftlertisch, Tüftler-Amboss, Werkzeugschmiede, Muster-/Teile-Truhen, Menüs, Bildschirme; Skill
+`menu-gui-263`), `common`, `shared` (Erze, Metalle, Rohstoffe, Holz), `fluids`.
+
+### Teil 27h – Werkzeuge
+`tools` (Items, `modules`, `modifiers`, `logic`, `entity`, `recipe`, `stats`, `menu`, `network`, `client`): alle
+Werkzeuge und Waffen, Bogen/Armbrust/Schleuder, Wurfgeschosse, Rüstung (Reise-, Platten-, Schleimanzug). Mit dem
+Nahkampf aus `combat152` abstimmen (in Integrated gilt der 1.5.2-Kampf ebenfalls; Angriffsgeschwindigkeit von
+3.12.1 bleibt sichtbar, wirkt aber nicht).
+
+### Teil 27i – Schmelzerei und Gießerei
+`smeltery`: Schmelzerei, Gießerei, Brennkammer, Tanks, Abfluss, Hahn, Gussbecken/-tisch, Multiblock-Prüfung,
+Flüssigkeits-Renderer, Capabilities (Skill `compat-263`).
+
+### Teil 27j – Welt und Gadgets
+`world`: Schleiminseln (Erde, Himmel, Ozean, Blut im Nether, Ender im End, Ton) als 26.3-Strukturen mit Struktur-
+Sets, Geoden, Kobalt im Nether, Schleimbäume/-erde/-gras/-pilze, Schleime – alles nur Integrated (Biom-Modifier und
+Struktur-Sets mit `"legacy": false`). `gadgets` (Piggyback-Rucksack, Rahmen, Glühkugel, Schleimschleuder …).
+Prüfen mit `/locate` und Chunk-Stichproben (Skill `integrated-263`); `expect.sh` für Legacy muss gleich bleiben.
+
+### Teil 27k – JEI, Handbücher, Umschalten, Gesamtprüfung
+- `plugin/jei` (andere Plugins wie CraftTweaker, Curios, Immersive Engineering entfallen oder bleiben optional),
+  Handbücher („Materials and You“ …), TreeCapitator für Schleimbäume (Skill `treecapitator-trees`), `c:`-Tags.
+- Umschalten fertigstellen: 1.4.3-Integrated-Features und -Dorfteile aus, JEI/Kreativ ausblenden in beiden Richtungen.
+- Prüfung: Legacy-Welt (`expect.sh` 0 Abweichungen, 1.4.3 voll da, 3.12.1 unsichtbar) und Integrated-Welt (3.12.1 voll
+  da, 1.4.3 unsichtbar und ohne Generierung), Testserver ohne Fehler, mit `tools/extra_mods.py --set all`.
