@@ -12,7 +12,7 @@ import java.util.List;
 /** Loot condition requiring one of the existing items is the given stack */
 public record ContainsItemModifierLootCondition(Ingredient ingredient, int amountNeeded) implements ILootModifierCondition {
   public static final MapCodec<ContainsItemModifierLootCondition> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
-    Ingredient.CODEC_NONEMPTY.fieldOf("ingredient").forGetter(ContainsItemModifierLootCondition::ingredient),
+    new slimeknights.mantle.data.loadable.LoadableCodec<>(slimeknights.mantle.data.loadable.common.IngredientLoadable.DISALLOW_EMPTY).fieldOf("ingredient").forGetter(ContainsItemModifierLootCondition::ingredient),
     ExtraCodecs.POSITIVE_INT.optionalFieldOf("needed", 1).forGetter(ContainsItemModifierLootCondition::amountNeeded)
   ).apply(instance, ContainsItemModifierLootCondition::new));
 

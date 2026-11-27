@@ -12,8 +12,6 @@ import com.mojang.serialization.MapCodec;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.storage.loot.entries.LootPoolEntryType;
-import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
@@ -74,9 +72,7 @@ public class MantleLoot {
   /** Condition for global loot modifiers that ensures a context set is present. Useful to check if we are in a specific context like entity. */
   public static final Holder<MapCodec<? extends LootItemCondition>> HAS_CONTEXT_SET = LOOT_CONDITIONS.register("has_context_set", () -> HasLootContextSetCondition.CODEC);
 
-  /** Function to add block entity texture to a dropped item */
-  @SuppressWarnings("removal")
-  public static final Holder<MapCodec<? extends LootItemFunction>> RETEXTURED_FUNCTION = LOOT_FUNCTIONS.register("fill_retextured_block", () -> slimeknights.mantle.loot.function.RetexturedLootFunction.CODEC);
+  // PORT-TODO(27b block): fill_retextured_block (RetexturedLootFunction, needs IRetexturedBlockEntity)
   /** Function to add a fluid to an item fluid capability */
   public static final Holder<MapCodec<? extends LootItemFunction>> SET_FLUID_FUNCTION = LOOT_FUNCTIONS.register("set_fluid", () -> SetFluidLootFunction.CODEC);
 

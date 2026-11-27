@@ -7,10 +7,9 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParam;
+import net.minecraft.util.context.ContextKey;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 import slimeknights.mantle.loot.MantleLoot;
 
 import java.util.Optional;
@@ -34,17 +33,17 @@ public record BlockTagLootCondition(TagKey<Block> tag, Optional<StatePropertiesP
 
   @Override
   public boolean test(LootContext context) {
-    BlockState state = context.getParamOrNull(LootContextParams.BLOCK_STATE);
+    BlockState state = context.getOptional(LootContextParams.BLOCK_STATE);
     return state != null && state.is(tag) && (this.properties.isEmpty() || this.properties.get().matches(state));
   }
 
   @Override
-  public Set<LootContextParam<?>> getReferencedContextParams() {
+  public Set<ContextKey<?>> getReferencedContextParams() {
     return Set.of(LootContextParams.BLOCK_STATE);
   }
 
   @Override
-  public LootItemConditionType getType() {
-    return MantleLoot.BLOCK_TAG_CONDITION.value();
+  public MapCodec<BlockTagLootCondition> codec() {
+    return CODEC;
   }
 }

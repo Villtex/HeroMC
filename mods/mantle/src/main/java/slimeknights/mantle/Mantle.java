@@ -1,5 +1,7 @@
 package slimeknights.mantle;
 
+import slimeknights.mantle.loot.LootTableInjector;
+import slimeknights.mantle.loot.MantleLoot;
 import slimeknights.mantle.datagen.MantleTags;
 import slimeknights.mantle.fluid.transfer.EmptyFluidContainerTransfer;
 import slimeknights.mantle.fluid.transfer.EmptyFluidWithNBTTransfer;
@@ -48,6 +50,8 @@ public class Mantle {
     MantleNetwork.registerPackets();
     MantleRecipes.init(bus);
     MantleTags.init();
+    MantleLoot.init(bus);
+    LootTableInjector.init(bus);
     FluidContainerTransferManager.INSTANCE.init();
     FluidContainerTransferManager.TRANSFER_LOADERS.registerDeserializer(EmptyFluidContainerTransfer.ID, EmptyFluidContainerTransfer.DESERIALIZER);
     FluidContainerTransferManager.TRANSFER_LOADERS.registerDeserializer(FillFluidContainerTransfer.ID, FillFluidContainerTransfer.DESERIALIZER);

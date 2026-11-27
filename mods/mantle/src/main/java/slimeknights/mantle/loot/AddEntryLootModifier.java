@@ -1,13 +1,11 @@
 package slimeknights.mantle.loot;
 
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import com.google.errorprone.annotations.CheckReturnValue;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
+import net.minecraft.core.Holder;
 import net.minecraft.world.item.ItemStack;
+import java.util.Optional;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntries;
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
@@ -18,7 +16,6 @@ import net.neoforged.neoforge.common.loot.LootModifier;
 import slimeknights.mantle.loot.condition.ILootModifierCondition;
 
 import javax.annotation.Nonnull;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
@@ -28,7 +25,7 @@ public class AddEntryLootModifier extends LootModifier {
   public static final MapCodec<AddEntryLootModifier> CODEC = RecordCodecBuilder.mapCodec(inst -> codecStart(inst).and(inst.group(
     ILootModifierCondition.LOADER.codec().listOf().fieldOf("post_conditions").forGetter(m -> m.modifierConditions),
     LootPoolEntries.CODEC.fieldOf("entry").forGetter(m -> m.entry),
-    LootItemFunctions.ROOT_CODEC.listOf().optionalFieldOf("functions", List.of()).forGetter(m -> m.functions))
+    LootItemFunctions.CODEC.listOf().optionalFieldOf("functions", List.of()).forGetter(m -> m.functions))
   ).apply(inst, AddEntryLootModifier::new));
 
   /** Additional conditions that can consider the previously generated loot */
@@ -36,25 +33,26 @@ public class AddEntryLootModifier extends LootModifier {
   /** Entry for generating loot */
 	private final LootPoolEntryContainer entry;
   /** Functions to apply to the entry, allows adding functions to parented loot entries such as alternatives */
-	private final List<LootItemFunction> functions;
+	private final List<Holder<LootItemFunction>> functions;
   /** Functions merged into a single function for ease of use */
 	private final BiFunction<ItemStack, LootContext, ItemStack> combinedFunctions;
 
-	protected AddEntryLootModifier(LootItemCondition[] conditionsIn, List<ILootModifierCondition> modifierConditions, LootPoolEntryContainer entry, List<LootItemFunction> functions) {		super(conditionsIn);
+	protected AddEntryLootModifier(Optional<Holder<LootItemCondition>> condition, int priority, List<ILootModifierCondition> modifierConditions, LootPoolEntryContainer entry, List<Holder<LootItemFunction>> functions) {
+    super(condition, priority);
     this.modifierConditions = modifierConditions;
     this.entry = entry;
 		this.functions = functions;
-		this.combinedFunctions = LootItemFunctions.compose(functions);
+		this.combinedFunctions = compose(functions);
 	}
 
-  /** Creates a builder for this loot modifier */
-  public static Builder builder(LootPoolEntryContainer entry) {
-    return new Builder(entry);
-  }
-
-  /** Creates a builder for this loot modifier */
-  public static Builder builder(LootPoolEntryContainer.Builder<?> builder) {
-    return builder(builder.build());
+  /** Port: 26.3 loot functions are holders; applied in order */
+  static BiFunction<ItemStack, LootContext, ItemStack> compose(List<Holder<LootItemFunction>> functions) {
+    return (stack, context) -> {
+      for (Holder<LootItemFunction> function : functions) {
+        stack = function.value().apply(stack, context);
+      }
+      return stack;
+    };
   }
 
   @Nonnull
@@ -67,7 +65,7 @@ public class AddEntryLootModifier extends LootModifier {
       }
     }
     // generate the actual entry
-    Consumer<ItemStack> consumer = LootItemFunction.decorate(this.combinedFunctions, generatedLoot::add, context);
+    Consumer<ItemStack> consumer = stack -> generatedLoot.add(this.combinedFunctions.apply(stack, context));
     entry.expand(context, generator -> generator.createItemStack(consumer, context));
 		return generatedLoot;
 	}
@@ -75,37 +73,5 @@ public class AddEntryLootModifier extends LootModifier {
   @Override
   public MapCodec<AddEntryLootModifier> codec() {
     return CODEC;
-  }
-
-  /** Builder for a conditional loot entry */
-  @CanIgnoreReturnValue
-  @SuppressWarnings("unused") // API
-  @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
-  public static class Builder extends AbstractLootModifierBuilder<Builder> {
-    private final List<ILootModifierCondition> modifierConditions = new ArrayList<>();
-    private final LootPoolEntryContainer entry;
-    private final List<LootItemFunction> functions = new ArrayList<>();
-
-    /**
-     * Adds a loot entry condition to the builder
-     */
-    public Builder addCondition(ILootModifierCondition condition) {
-      modifierConditions.add(condition);
-      return this;
-    }
-
-    /**
-     * Adds a loot function to the builder
-     */
-    public Builder addFunction(LootItemFunction function) {
-      functions.add(function);
-      return this;
-    }
-
-    /** Builds the final modifier */
-    @CheckReturnValue
-    public AddEntryLootModifier build() {
-      return new AddEntryLootModifier(getConditions(), modifierConditions, entry, List.copyOf(functions));
-    }
   }
 }

@@ -1,13 +1,11 @@
 package slimeknights.mantle.loot;
 
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import com.google.errorprone.annotations.CheckReturnValue;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
+import net.minecraft.core.Holder;
 import net.minecraft.world.item.ItemStack;
+import java.util.Optional;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
@@ -25,9 +23,9 @@ import java.util.function.BiFunction;
 /** Loot modifier to replace an item with another */
 public class ReplaceItemLootModifier extends LootModifier {
   public static final MapCodec<ReplaceItemLootModifier> CODEC = RecordCodecBuilder.mapCodec(inst -> codecStart(inst).and(inst.group(
-    Ingredient.CODEC.fieldOf("original").forGetter(m -> m.original),
+    new slimeknights.mantle.data.loadable.LoadableCodec<>(slimeknights.mantle.data.loadable.common.IngredientLoadable.DISALLOW_EMPTY).fieldOf("original").forGetter(m -> m.original),
     ItemOutput.REQUIRED_STACK_CODEC.fieldOf("replacement").forGetter(m -> m.replacement),
-    LootItemFunctions.ROOT_CODEC.listOf().optionalFieldOf("functions", List.of()).forGetter(m -> m.functions)
+    LootItemFunctions.CODEC.listOf().optionalFieldOf("functions", List.of()).forGetter(m -> m.functions)
   )).apply(inst, ReplaceItemLootModifier::new));
 
   /** Ingredient to test for the original item */
@@ -35,21 +33,16 @@ public class ReplaceItemLootModifier extends LootModifier {
   /** Item for the replacement */
   private final ItemOutput replacement;
   /** Functions to apply to the replacement */
-  private final List<LootItemFunction> functions;
+  private final List<Holder<LootItemFunction>> functions;
   /** Functions merged into a single function for ease of use */
   private final BiFunction<ItemStack, LootContext, ItemStack> combinedFunctions;
 
-  protected ReplaceItemLootModifier(LootItemCondition[] conditionsIn, Ingredient original, ItemOutput replacement, List<LootItemFunction> functions) {
-    super(conditionsIn);
+  protected ReplaceItemLootModifier(Optional<Holder<LootItemCondition>> condition, int priority, Ingredient original, ItemOutput replacement, List<Holder<LootItemFunction>> functions) {
+    super(condition, priority);
     this.original = original;
     this.replacement = replacement;
     this.functions = functions;
-    this.combinedFunctions = LootItemFunctions.compose(functions);
-  }
-
-  /** Creates a builder to create a loot modifier */
-  public static Builder builder(Ingredient original, ItemOutput replacement) {
-    return new Builder(original, replacement);
+    this.combinedFunctions = AddEntryLootModifier.compose(functions);
   }
 
   @Nonnull
@@ -69,29 +62,5 @@ public class ReplaceItemLootModifier extends LootModifier {
   @Override
   public MapCodec<ReplaceItemLootModifier> codec() {
     return CODEC;
-  }
-
-  /** Logic to build this modifier for datagen */
-  @CanIgnoreReturnValue
-  @SuppressWarnings("unused") // API
-  @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
-  public static class Builder extends AbstractLootModifierBuilder<Builder> {
-    private final Ingredient input;
-    private final ItemOutput replacement;
-    private final List<LootItemFunction> functions = new ArrayList<>();
-
-    /**
-     * Adds a loot function to the builder
-     */
-    public Builder addFunction(LootItemFunction function) {
-      functions.add(function);
-      return this;
-    }
-
-    /** Builds the final modifier */
-    @CheckReturnValue
-    public ReplaceItemLootModifier build() {
-      return new ReplaceItemLootModifier(getConditions(), input, replacement, functions);
-    }
   }
 }

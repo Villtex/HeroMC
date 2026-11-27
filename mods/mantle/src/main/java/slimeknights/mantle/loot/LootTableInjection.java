@@ -39,10 +39,19 @@ public record LootTableInjection(Identifier name, List<LootPoolInjection> pools)
     public void inject(LootTable table) {
       LootPool pool = table.getPool(name);
       if (pool != null) {
-        List<LootPoolEntryContainer> entries = new ArrayList<>(pool.entries.size() + this.entries.size());
-        entries.addAll(pool.entries);
-        entries.addAll(this.entries);
-        pool.entries = List.copyOf(entries);
+        // Port: LootPool#entries is private final in 26.3, set it by reflection (Mojang names at runtime)
+        try {
+          java.lang.reflect.Field field = LootPool.class.getDeclaredField("entries");
+          field.setAccessible(true);
+          @SuppressWarnings("unchecked")
+          List<LootPoolEntryContainer> old = (List<LootPoolEntryContainer>) field.get(pool);
+          List<LootPoolEntryContainer> entries = new ArrayList<>(old.size() + this.entries.size());
+          entries.addAll(old);
+          entries.addAll(this.entries);
+          field.set(pool, List.copyOf(entries));
+        } catch (ReflectiveOperationException e) {
+          Mantle.logger.error("Failed to inject loot into {} pool {}", table.getLootTableId(), name, e);
+        }
       } else {
         Mantle.logger.warn("Failed to inject loot into {} pool {}", table.getLootTableId(), name);
       }

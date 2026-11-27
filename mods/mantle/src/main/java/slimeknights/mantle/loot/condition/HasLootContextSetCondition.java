@@ -2,32 +2,31 @@ package slimeknights.mantle.loot.condition;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParam;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSet;
+import net.minecraft.util.context.ContextKey;
+import net.minecraft.util.context.ContextKeySet;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 import org.jetbrains.annotations.ApiStatus.Internal;
 import slimeknights.mantle.loot.MantleLoot;
 
 /** Loot condition that only runs if all required values in the given loot context set are present. Good heuristic for using that set. */
-public record HasLootContextSetCondition(LootContextParamSet set) implements LootItemCondition {
+public record HasLootContextSetCondition(ContextKeySet set) implements LootItemCondition {
   public static final MapCodec<HasLootContextSetCondition> CODEC = LootContextParamSets.CODEC.fieldOf("set").xmap(HasLootContextSetCondition::new, HasLootContextSetCondition::set);
 
   /** Creates a new builder instance */
-  public static Builder builder(LootContextParamSet set) {
+  public static Builder builder(ContextKeySet set) {
     return new Builder(set);
   }
 
   @Override
-  public LootItemConditionType getType() {
-    return MantleLoot.HAS_CONTEXT_SET.value();
+  public MapCodec<HasLootContextSetCondition> codec() {
+    return CODEC;
   }
 
   @Override
   public boolean test(LootContext context) {
-    for (LootContextParam<?> param : set.getRequired()) {
-      if (!context.hasParam(param)) {
+    for (ContextKey<?> param : set.required()) {
+      if (!context.hasParameter(param)) {
         return false;
       }
     }
@@ -35,8 +34,8 @@ public record HasLootContextSetCondition(LootContextParamSet set) implements Loo
   }
 
   /** Builder logic for this condition */
-  public record Builder(LootContextParamSet set) implements LootItemCondition.Builder {
-    /** @apiNote use {@link #builder(LootContextParamSet)} */
+  public record Builder(ContextKeySet set) implements LootItemCondition.Builder {
+    /** @apiNote use {@link #builder(ContextKeySet)} */
     @Internal
     public Builder {}
 

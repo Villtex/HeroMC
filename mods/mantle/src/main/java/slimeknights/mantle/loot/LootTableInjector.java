@@ -7,7 +7,7 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.LootTableLoadEvent;
-import net.neoforged.neoforge.registries.DataPackRegistryEvent;
+import net.neoforged.neoforge.registries.NewDatapackRegistryEvent;
 import net.neoforged.neoforge.registries.callback.BakeCallback;
 import slimeknights.mantle.Mantle;
 import slimeknights.mantle.loot.LootTableInjection.LootPoolInjection;
@@ -29,7 +29,7 @@ public enum LootTableInjector implements BakeCallback<LootTableInjection> {
 
   /** Initializes the loot table injector */
   public static void init(IEventBus modBus) {
-    modBus.addListener(DataPackRegistryEvent.NewRegistry.class, INSTANCE::addRegistries);
+    modBus.addListener(NewDatapackRegistryEvent.class, INSTANCE::addRegistries);
     NeoForge.EVENT_BUS.addListener(LootTableLoadEvent.class, INSTANCE::lootTableLoad);
   }
 
@@ -40,10 +40,9 @@ public enum LootTableInjector implements BakeCallback<LootTableInjection> {
    * Called to register the injector as a data registry
    * Needed to ensure it loads before loot tables which are a reloadable registry.
    */
-  private void addRegistries(DataPackRegistryEvent.NewRegistry event) {
-    event.dataPackRegistry(REGISTRY_KEY, LootTableInjection.CODEC, null, builder -> {
-      builder.onBake(this);
-    });
+  private void addRegistries(NewDatapackRegistryEvent event) {
+    // Port: world (not reloadable) registry, so it is loaded before the reloadable loot tables like in 1.20.1
+    event.<LootTableInjection>worldRegistry(builder -> builder.key(REGISTRY_KEY).codec(LootTableInjection.CODEC).configurator(registry -> registry.onBake(this)));
   }
 
   @Override
