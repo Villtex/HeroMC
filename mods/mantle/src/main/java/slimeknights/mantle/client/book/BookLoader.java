@@ -24,7 +24,7 @@ import slimeknights.mantle.client.book.data.content.ContentPadding;
 import slimeknights.mantle.client.book.data.content.ContentShowcase;
 import slimeknights.mantle.client.book.data.content.ContentSmelting;
 import slimeknights.mantle.client.book.data.content.ContentSmithing;
-// TODO 27c structure pages
+import slimeknights.mantle.client.book.data.content.ContentStructure;
 import slimeknights.mantle.client.book.data.content.ContentText;
 import slimeknights.mantle.client.book.data.content.ContentTextImage;
 import slimeknights.mantle.client.book.data.content.ContentTextLeftImage;
@@ -81,7 +81,7 @@ public class BookLoader implements ResourceManagerReloadListener {
     registerPageType(ContentSmelting.ID, ContentSmelting.class);
     registerPageType(ContentSmithing.ID, ContentSmithing.class);
     registerPageType(ContentBlockInteraction.ID, ContentBlockInteraction.class);
-    // registerPageType(ContentStructure.ID, ContentStructure.class);
+    registerPageType(ContentStructure.ID, ContentStructure.class);
     registerPageType(ContentIndex.ID, ContentIndex.class);
     registerPageType(ContentShowcase.ID, ContentShowcase.class);
 

@@ -1,6 +1,6 @@
 ---
 name: tinkers3-263
-description: Beim Arbeiten an Tinkers' Construct 3.12.1 und Mantle (mods/tconstruct3, mods/mantle, Teile 27a–27k) benutzen – Mod-ID tconstruct3 neben 1.4.3 (tconstruct), Quellen vom Tag holen, Daten-Konverter convert_data.py und sein Bericht, Daten ordnerweise einschalten (data-enabled.txt), Welttyp-Regel (1.4.3 nur Hexxit Legacy, 3.12.1 nur Integrated) in Daten und Code über worldgen152:world_type und HexxitWorldType, Assets aus dem Tag mit umbenanntem Namensraum.
+description: Beim Arbeiten an Tinkers' Construct 3.12.1 und Mantle (mods/tconstruct3, mods/mantle, Teile 27a–27k) benutzen – Mod-ID tconstruct3 neben 1.4.3 (tconstruct), Quellen vom Tag holen, Daten-Konverter convert_data.py und sein Bericht, Daten ordnerweise einschalten (data-enabled.txt), Welttyp-Regel (1.4.3 nur Hexxit Legacy, 3.12.1 nur Integrated) in Daten und Code über worldgen152:world_type und HexxitWorldType, Assets aus dem Tag mit umbenanntem Namensraum. Auch für Client-Code von Mantle/Tinkers auf 26.3: GUI-Umbau (tools/gui_to_extract.py), Bildschirme, Handbücher, Modell-Lader und Blockstate-Modelle, Flüssigkeits-Modelle, Block-Renderer mit Submit-Pipeline.
 ---
 
 # Tinkers' Construct 3.12.1 + Mantle auf 26.3 (Teil 27)
@@ -114,3 +114,32 @@ Mantle-Ersatz für weggefallene 26.3-APIs (Tinkers benutzt diese):
   Entflammbarkeit `neoforge:flammable`; Schilder hängen an den Vanilla-Typen (`BlockEntityTypeAddBlocksEvent`).
 - Tooltips: `TooltipItem`/`BlockTooltipItem` rufen die 1.20.1-Form `appendHoverText(stack, level, List, flag)` auf,
   Unterklassen überschreiben weiter diese.
+
+## Client 26.3 (seit 27c, Mantle-Client; gilt für Tinkers 27f–27k)
+
+- **GUI:** nach `forge_to_neo.py` noch `python3 tools/gui_to_extract.py <dir>` (blit nach Argumentzahl, extract-Methoden,
+  Maus/Tasten-Records, 2D-Pose). Danach von Hand: `setColor`/`setShaderColor` → Farbe als letztes `blit`-Argument
+  (`ARGB.colorFromFloat`), `RenderSystem` weg, Tooltips sind `setTooltipForNextFrame` in **Bildschirm**koordinaten
+  (`pose().transformPosition`). **Textfarbe ohne Alpha wird nicht gezeichnet** (`0x404040`, Farben aus Daten):
+  `TextDataRenderer.opaque(c)`. Bildschirmgröße/Slots ändern: Access Transformer von Mantle gilt auch für `tconstruct3`.
+- **Module-Bildschirme:** `ModuleScreen.extractBackground` ist leer (kein Abdunkeln je Modul), Slot-Hover über
+  `MultiModuleScreen.isHoveringSlot`.
+- **Bücher:** Items `{"type":"forge:nbt","item","nbt"}` → `IngredientData.nbtStackFactory` (in 27d für `Material` auf die
+  Tinkers-Komponente setzen). Rezeptseiten brauchen Rezepte am Client: Typen mit `OnDatapackSyncEvent#sendRecipes`.
+- **Block-Renderer:** `BlockEntityRenderer<T,S>` mit Render-State; Items mit `RenderingHelper.resolveItem` im Extract,
+  `renderItem(pose, collector, state, renderItem, light)` im Submit; Flüssigkeiten mit `FluidRenderer.renderCuboids/
+  renderScaledCuboid(pose, SubmitNodeCollector, …)` (intern `submitCustomGeometry`, Typ `MantleRenderTypes.FLUID`).
+- **Flüssigkeits-Texturen/Tönung** kommen aus `FluidModel` (`FluidRenderer.getModel/getStillSprite/getColor`), nicht aus
+  `IClientFluidTypeExtensions`. Mantle registriert Modelle für alle Fluid-Typen mit `mantle/fluid_texture`-JSON.
+- **Modelle:** eigene Lader = `UnbakedModelLoader` (NeoForge `ModelEvent.RegisterLoaders`), Vanilla-Teil lesen mit
+  `ColoredBlockModel.readVanilla(json, ctx)`, Geometrie als `ExtendedUnbakedGeometry`. Alles, was Welt/Blockentity braucht,
+  ist ein Blockstate-Modell (`RegisterBlockStateModels`, `"type"` im Blockstate); der Asset-Import setzt `"type"` für die
+  Lader in `ImportTagAssets.BLOCKSTATE_LOADERS` – neue Tinkers-Lader mit Weltbezug (Tank, fluid_texture) dort eintragen.
+  Texturwechsel zur Laufzeit: Flächen beim Laden einzeln backen, dann `QuadRetexture.addSwapped` (Vorbild
+  `RetexturedModel`, `ConnectedBlockStateModel`). Item-Quads aus Sprites: `MantleItemLayerModel.getQuadsForSprite`.
+- **Item-Modelle:** 26.3 braucht `assets/<ns>/items/<id>.json` je Item; Varianten über `minecraft:select`/`condition`,
+  dynamische Modelle als eigenes `ItemModel.Unbaked` (`RegisterItemModelsEvent`). Die 1.20.1-Assets haben keine.
+- **Fallen** (alle in 27c gefunden): `ItemStack` in statischen Initialisierern von Client-Klassen („Components not bound
+  yet“); leere `Ingredient` verboten → `IngredientLoadable.empty()` (`mantle:empty`); eigene Brigadier-Argumente
+  registrieren (`ArgumentTypeDeferredRegister`), sonst trennt der Server beim Beitritt („Invalid player data“);
+  Entities nie `move()` auf dem Client. Client-Probleme zeigen sich nur im echten Client (Skill `headless-client`).

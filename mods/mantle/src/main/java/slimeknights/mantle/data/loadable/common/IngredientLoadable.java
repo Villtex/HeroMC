@@ -21,9 +21,9 @@ public enum IngredientLoadable implements Loadable<Ingredient> {
   ALLOW_EMPTY,
   DISALLOW_EMPTY;
 
-  /** Port: 26.3 ingredients are never empty in JSON; an empty ingredient is an ingredient without items */
+  /** Port: 26.3 refuses ingredients without items, an empty ingredient is {@code mantle:empty} (matches nothing) */
   public static Ingredient empty() {
-    return Ingredient.of(Stream.<ItemLike>empty());
+    return slimeknights.mantle.recipe.ingredient.EmptyIngredient.ingredient();
   }
 
   @Override

@@ -140,7 +140,7 @@ public class TextComponentDataRenderer {
       }
 
       if (atY >= y + boxHeight) {
-        graphics.text(fr, "...", atX, atY, 0, item.dropShadow);
+        graphics.text(fr, "...", atX, atY, 0xFF000000, item.dropShadow);
         break;
       }
 
@@ -201,7 +201,7 @@ public class TextComponentDataRenderer {
     poseStack.translate(x, y);
     poseStack.scale(scale, scale);
 
-    graphics.text(font, Language.getInstance().getVisualOrder(textComponent), 0, 0, 0, dropShadow);
+    graphics.text(font, Language.getInstance().getVisualOrder(textComponent), 0, 0, 0xFF000000, dropShadow);
     poseStack.popMatrix();
   }
 }

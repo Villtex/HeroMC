@@ -1,7 +1,7 @@
-# Mantle 1.11.117 auf 26.3 – Stand nach Teil 27b
+# Mantle 1.11.117 auf 26.3 – Stand nach Teil 27c
 
-Stand: Kern portiert und baut (`mods/mantle/src/main`). Die Client-Quellen liegen umbenannt (`tools/forge_to_neo.py`
-ist gelaufen) in `mods/mantle/todo-27c/` (27c), gestrichene Klassen in `mods/mantle/todo/dropped/`. Beides wird nicht kompiliert. Vorgehen je Paket: nach `src/main/java` verschieben, kompilieren,
+Stand: Kern (27b) und Client (27c) portiert und bauen (`mods/mantle/src/main`). Was noch nicht portiert ist, liegt in
+`mods/mantle/todo-27k/` (Bauwerk-Vorschau der Bücher, Extra-Herzen), gestrichene Klassen in `mods/mantle/todo/dropped/`. Beides wird nicht kompiliert. Vorgehen je Paket: nach `src/main/java` verschieben, kompilieren,
 `python3 tools/fix_by_errors.py <log>` laufen lassen, Rest von Hand (Skill `tinkers3-263`, Abschnitt „Port-Werkzeuge“).
 
 ## Fertig (src/main)
@@ -53,9 +53,26 @@ ist gelaufen) in `mods/mantle/todo-27c/` (27c), gestrichene Klassen in `mods/man
 - **Lebensmittel-Effekte** kommen aus der Komponente `minecraft:consumable` (`ContainerFoodItem.getEffects`), Tinkers'
   `TinkerFood` (27g) muss Effekte als `ApplyStatusEffectsConsumeEffect` setzen.
 
-## Für 27c (todo-27c/)
-- Buch-Pakete (`network/packet/*Book*`, `*Page*`) in `MantleNetwork.registerPackets` eintragen; `fluid/texture`,
-  `fluid/tooltip`, `TextureFluidType`, `InvertedFluidType`, `command/client`.
+## 27c erledigt (Client)
+- Bildschirm-Hilfen, Handbuch-Engine (Bücher, Seiten-Typen, Buch-Pakete und -Items, `/mantle book open`),
+  Flüssigkeits-Tooltips/-Texturen, Render-Helfer (Submit-Pipeline), Modell-Lader, HUD (Nebenhand-Angriff, Gauge).
+- Einzelheiten und Entscheidungen: `docs/PLAN.md`, Teil 27c – Stand; Muster im Skill `tinkers3-263` („Client 26.3“).
+
+## Offen aus 27c (für 27k bzw. die Tinkers-Teile)
+- **Bauwerk-Vorschau in Büchern** (`ContentStructure`, `StructureElement`, `client/book/structure`, in `todo-27k/`):
+  braucht einen eigenen Picture-in-Picture-Renderer (`RegisterPictureInPictureRenderersEvent`) mit einer Template-Welt;
+  bis dahin zeigt `mantle:structure` Titel und Text. Tinkers nutzt es auf 2 Seiten (Schmelzerei, Gießerei).
+- **Extra-Herzen** (`ExtraHeartRenderHandler`, in `todo-27k/`): nur in Integrated zeichnen (Legacy hat die Herzen von
+  Tinkers 1.4.3), Vanilla-Herz-Sprites `hud/heart/*` statt `icons.png`. Bis dahin zeichnet Vanilla.
+- **Item-Modelle**: 26.3 braucht `assets/<ns>/items/<id>.json`. Für Tische mit Holztextur (`mantle:retextured` am
+  Item), `mantle:nbt_key` (Varianten über `minecraft:select` auf einer Komponente) und alle Tinkers-Items legen 27f–27h
+  die Item-Definitionen an; die Modell-Lader backen bis dahin das Standard-Aussehen.
+- **Buch-Export** (`/mantle book export_images|export_html`) gestrichen (Entwickler-Werkzeug, offscreen Framebuffer).
+- **Mantle-Shader** (Nebel-Fix, Fullbright) gestrichen; `MantleRenderTypes` nimmt Vanilla-Typen.
+- **Effekt-Tönung von Item-Symbolen** in Buch-Auswahlseiten (gesperrte Abschnitte) nur als Farbfläche (kein globaler
+  Shader-Farbwert in 26.3).
+- **Im Client prüfen, sobald Tinkers-Blöcke existieren (27g/27i):** verbundenes Glas, Tische mit Holz, Flüssigkeiten in
+  Tanks, Gauge-Tooltip, Nebenhand-Anzeige.
 
 ## Hinweise für Tinkers (27d–27h)
 - Konverter: `"neoforge:ingredient_type": "mantle:tag"/"mantle:set"/... sind Mantle-**Prädikate** (Schlüssel

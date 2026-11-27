@@ -131,7 +131,9 @@ public class BombEntity extends Entity implements net.minecraft.world.entity.pro
         if (this.level().isClientSide()) {
             this.level().addParticle(ParticleTypes.SMOKE, this.getX(), this.getY() + 0.6, this.getZ(), 0.0, 0.0, 0.0);
         }
+        // 26.3: only the server may move a tracked entity (the client gets the position from packets)
         Vec3 m = this.getDeltaMovement();
+        if (!this.level().isClientSide()) {
         m = m.add(0.0, -0.04F, 0.0);
         float friction = 0.98F;
         if (this.onGround()) {
@@ -142,6 +144,7 @@ public class BombEntity extends Entity implements net.minecraft.world.entity.pro
         this.setDeltaMovement(m);
         if (this.getVehicle() == null) {
             this.move(MoverType.SELF, m);
+        }
         }
         if (!this.primed) {
             this.primed = true;

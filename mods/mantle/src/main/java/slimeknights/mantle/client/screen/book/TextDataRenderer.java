@@ -174,7 +174,7 @@ public class TextDataRenderer {
       }
 
       if (atY >= y + boxHeight) {
-        graphics.text(fr, "...", atX, atY, 0, item.dropshadow);
+        graphics.text(fr, "...", atX, atY, 0xFF000000, item.dropshadow);
         break;
       }
       y = atY;
@@ -247,6 +247,14 @@ public class TextDataRenderer {
     return cropStringBySize(s, modifiers, width, Short.MAX_VALUE, width - fr.width(prefix), fr, 1.0f).length;
   }
 
+  /**
+   * Port (Teil 27c): 1.20.1 fonts drew colours without alpha as opaque ({@code Font#adjustColor}), 26.3 skips them.
+   * Book data gives colours like {@code 000000}, so text colours go through this.
+   */
+  public static int opaque(int color) {
+    return (color & 0xFC000000) == 0 ? color | 0xFF000000 : color;
+  }
+
   //BEGIN METHODS FROM GUI
   //TODO: does this exist elsewhere now?
   public static void drawScaledString(GuiGraphicsExtractor graphics, Font font, String text, float x, float y, int color, boolean dropShadow, float scale) {
@@ -255,7 +263,7 @@ public class TextDataRenderer {
     poseStack.translate(x, y);
     poseStack.scale(scale, scale);
 
-    graphics.text(font, text, 0, 0, color, dropShadow);
+    graphics.text(font, text, 0, 0, opaque(color), dropShadow);
 
     poseStack.popMatrix();
   }

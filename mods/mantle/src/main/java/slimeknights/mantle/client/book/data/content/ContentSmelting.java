@@ -43,7 +43,8 @@ import static slimeknights.mantle.client.screen.book.Textures.TEX_SMELTING;
 public class ContentSmelting extends PageContent {
   public static final Identifier ID = Mantle.getResource("smelting");
 
-  private static final NonNullList<ItemStack> FUELS;
+  /** Port: built on first use, item stacks cannot be created while the class loads during a reload (26.3) */
+  private static NonNullList<ItemStack> FUELS;
 
   public static final transient int TEX_SIZE = 128;
   public static final transient ImageData IMG_SMELTING = new ImageData(TEX_SMELTING, 0, 0, 110, 114, TEX_SIZE, TEX_SIZE);
@@ -102,6 +103,9 @@ public class ContentSmelting extends PageContent {
       return this.fuel.getItems();
     }
 
+    if (FUELS == null) {
+      FUELS = createFuels();
+    }
     return FUELS;
   }
 
@@ -138,8 +142,8 @@ public class ContentSmelting extends PageContent {
     );
   }
 
-  static {
-    FUELS = NonNullList.of(ItemStack.EMPTY,
+  private static NonNullList<ItemStack> createFuels() {
+    return NonNullList.of(ItemStack.EMPTY,
       new ItemStack(Blocks.OAK_SLAB),
       new ItemStack(Blocks.SPRUCE_SLAB),
       new ItemStack(Blocks.BIRCH_SLAB),

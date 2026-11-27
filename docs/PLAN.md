@@ -81,7 +81,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 26f | Integrated F: Test mit fremden 26.3-Mods, Gesamtprüfung | – | 26a–26e | Opus 5.5, mittel | ✅ erledigt |
 | 27a | Tinkers 3 A: Zwei-Versionen-Schalter (Welttyp am Client, Bedingungen, Ausblenden), Quellen, Daten-Konverter, Gerüst `mantle`/`tconstruct3` | – | 26 | Opus 5.5, hoch | ✅ erledigt |
 | 27b | Tinkers 3 B: Mantle-Kern (Datenlader, JSON-Helfer, Rezepte, Flüssigkeiten, Registrierung, Netzwerk, Befehle) | ~33.000 | 27a | Opus 5.5, hoch | ✅ erledigt |
-| 27c | Tinkers 3 C: Mantle-Client (Modell-Lader, Bildschirme, Handbuch-Engine) | ~17.000 | 27b | Fable 5.2, hoch | offen |
+| 27c | Tinkers 3 C: Mantle-Client (Modell-Lader, Bildschirme, Handbuch-Engine) | ~17.000 | 27b | Fable 5.2, hoch | ✅ erledigt |
 | 27d | Tinkers 3 D: Werkzeug-Datenmodell (Materialien, Stats, Werkzeugdaten als Komponenten, Definitionen, Teile, JSON-Variablen) | ~35.000 | 27b | Fable 5.2, hoch | offen |
 | 27e | Tinkers 3 E: Modifikator-System (Hooks, Module, Flüssigkeits-Effekte, Modifikator-Rezepte) | ~30.000 | 27d | Opus 5.5, hoch | offen |
 | 27f | Tinkers 3 F: Rezept-Typen (Gießen, Schmelzen, Legieren, Teile-Bau, Tüftlertisch) und Client der Bibliothek (Material-/Werkzeugmodelle, Paletten-Texturen) | ~35.000 | 27e, 27c | Fable 5.2, hoch | offen |
@@ -2439,6 +2439,49 @@ Welttyp-Bedingung. `datagen` entfällt (Daten kommen aus dem Konverter).
 `client`: Modell-Lader (Connected/Retextured/Fluid-Textur-Modelle, `ColoredBlockModel`, `NBTKeyModel`), Bildschirm-
 Hilfen, die Handbuch-Engine (`client/book`, Seiten-Typen, Bücher als Daten). 26.3-Render-Weg wie im Skill
 `client-render-263`; kein Mixin in den Renderer.
+
+#### Teil 27c – Stand (✅ erledigt)
+- **Werkzeug** `tools/gui_to_extract.py` (nach `forge_to_neo.py`, auch für Tinkers 27f–27i): `GuiGraphics` →
+  `GuiGraphicsExtractor`, `blit` nach Argumentzahl auf `RenderPipelines.GUI_TEXTURED`, Text/Item/Tooltip-Aufrufe,
+  `render`/`renderBg`/`renderLabels` → `extract…` (Hintergrund mit `super.extractBackground`), Maus-/Tasten-Ereignisse
+  auf die 26.3-Records, `PoseStack` aus `graphics.pose()` → `Matrix3x2fStack`. `forge_to_neo.py` kann jetzt auch
+  Vertex-Ketten, `mulPose(Axis…)`, GLFW-Tasten, `readItem`/`writeItem`, `setScreen`, Atlas-Zugriffe.
+- **Access Transformer** pro Mod (`src/main/resources/META-INF/accesstransformer.cfg`, Build nimmt ihn selbst mit,
+  auch für Mods mit `mod_requires`): Mantle öffnet `AbstractContainerScreen` (Größe, Position), `Slot.x/y`,
+  `Font.provider`, `TextureSlots$Reference/$Value`.
+- **Bildschirme:** `ElementScreen`, `ModuleScreen`, `MultiModuleScreen` (Module ohne eigenen Hintergrund;
+  `isHovering(Slot)` ist privat → `isHoveringSlot`), Slider, Tabs, `BackgroundContainerScreen`. Farbtönung über die
+  Farbe im `blit`-Aufruf (kein `setColor` mehr).
+- **Handbuch-Engine:** Daten, Lader, Seiten-Typen, `BookScreen` (Schriften `uniform`/`alt` über den Font-Provider,
+  Fortschritte direkt aus `ClientAdvancements`), Tooltips in Bildschirmkoordinaten, Buch-Items und -Pakete,
+  Seitenstand in der Komponente `mantle:book_page`. Rezept-Seiten lesen `RecipeDisplay`; Mantle lässt sich Crafting-
+  und Ofen-Rezepte vom Server schicken. Items im Format `forge:nbt` (97× in den Tinkers-Büchern) über
+  `IngredientData.nbtStackFactory` (Tinkers ersetzt die Fabrik in 27d für `Material`). Text ohne Alpha wird deckend
+  (`TextDataRenderer.opaque`). `/mantle book open` geht; Export-Befehle gestrichen.
+- **Flüssigkeiten:** Texturen/Tönung sind in 26.3 `FluidModel`s: `FluidTextureManager.registerModels`
+  (`RegisterFluidModelsEvent`) baut sie aus `mantle/fluid_texture`; `ClientTextureFluidType` nur noch Kamera-Overlay
+  und Nebel; `FluidRenderer.getModel/getStillSprite/getColor`.
+- **Render-Helfer:** `FluidRenderer` (Normale/Overlay je Vertex, Submit-Formen mit `SubmitNodeCollector`),
+  `RenderingHelper.resolveItem/renderItem`, `InventoryBlockEntityRenderer` mit Render-State, `MantleRenderTypes` auf
+  Vanilla-Typen (eigene Shader gestrichen).
+- **Modelle:** Lader `mantle:connected`, `retextured`, `colored_block`, `item_layer`, `nbt_key` als NeoForge
+  `UnbakedModelLoader` (Vanilla-`CuboidModel` + Zusatzdaten). Welt-Abhängiges geht in 26.3 nur über Blockstate-Modelle:
+  `mantle:connected` und `mantle:retextured` als `CustomUnbakedBlockStateModel`; die Flächen mit wechselnder Textur
+  werden beim Laden einzeln gebacken, zur Laufzeit wird nur das Sprite getauscht (`QuadRetexture`). Der Asset-Import
+  (`ImportTagAssets`) setzt `"type"` in jedem Blockstate, dessen Modell (oder Elternteil) diese Lader nutzt (59 bei
+  Tinkers), und benennt `forge:item/…`-Eltern und `forge:`-Lader in `neoforge:` um. `MantleItemLayerModel.getQuadsForSprite`
+  (für Tinkers' Werkzeugmodelle) auf `QuadBakingVertexConsumer` umgestellt. `fallback` gestrichen (ungenutzt).
+- **HUD:** Nebenhand-Angriffsanzeige und Gauge-Tooltip als GUI-Ebenen (`MantleHud`).
+- **Fehler aus 27b, erst mit echtem Client gefunden:** Argumenttyp `mantle:resource_or_tag_key` war nicht registriert
+  (Beitritt scheiterte mit „Invalid player data“); leere Zutaten sind in 26.3 verboten → `mantle:empty`
+  (`EmptyIngredient`); `ItemStack` im statischen Initialisierer (`ContentSmelting`). Nebenbei: LegendGear-Bombe bewegte
+  sich auf dem Client (Absturz beim Betreten der Welt).
+- **Geprüft:** `CI=true ./gradlew pack` grün; Testserver (Integrated, Seed 1234) bis `Done`, 0 ERROR; kopfloser Client:
+  Modelle backen ohne Mantle-Fehler (nur die Tinkers-Lader von 27f fehlen), Welt betreten, `/mantle book open
+  mantle:test`: Einband, Inhaltsverzeichnis, Text-, Bild- und automatisch befüllte Rezeptseiten werden gezeichnet.
+- **Offen** (Liste in `mods/mantle/TODO.md`): Bauwerk-Vorschau im Buch und Extra-Herzen (beide 27k, Quellen in
+  `mods/mantle/todo-27k/`), Item-Definitionen `items/*.json` für retextured/nbt_key-Items (27f–27h), Client-Prüfung
+  von Glas, Tischen, Tanks, sobald die Blöcke existieren (27g/27i).
 
 ### Teil 27d – Werkzeug-Datenmodell
 `library/materials`, `library/tools` (`ToolStack`, `nbt` → Datenkomponenten `tconstruct3:…`, `definition`, `stat`,

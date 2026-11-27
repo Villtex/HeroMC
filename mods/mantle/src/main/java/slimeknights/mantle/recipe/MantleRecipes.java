@@ -44,6 +44,7 @@ public class MantleRecipes {
   // ingredients
   public static final DeferredHolder<IngredientType<?>, IngredientType<PotionIngredient>> POTION_INGREDIENT = INGREDIENTS.register("potion", () -> new IngredientType<>(PotionIngredient.CODEC, PotionIngredient.STREAM_CODEC));
   public static final DeferredHolder<IngredientType<?>, IngredientType<PotionDisplayIngredient>> POTION_DISPLAY_INGREDIENT = INGREDIENTS.register("potion_display", () -> new IngredientType<>(PotionDisplayIngredient.CODEC, PotionDisplayIngredient.STREAM_CODEC));
+  public static final DeferredHolder<IngredientType<?>, IngredientType<slimeknights.mantle.recipe.ingredient.EmptyIngredient>> EMPTY_INGREDIENT = INGREDIENTS.register("empty", () -> new IngredientType<>(slimeknights.mantle.recipe.ingredient.EmptyIngredient.CODEC, slimeknights.mantle.recipe.ingredient.EmptyIngredient.STREAM_CODEC));
   public static final DeferredHolder<IngredientType<?>, IngredientType<FluidContainerIngredient>> FLUID_CONTAINER_INGREDIENT = INGREDIENTS.register("fluid_container", () -> new IngredientType<>(FluidContainerIngredient.CODEC, FluidContainerIngredient.STREAM_CODEC));
 
   // conditions

@@ -111,6 +111,9 @@ Logik nur `!level.isClientSide()`. Entitäten: `PlayerInteractEvent.EntityIntera
 
 ## Stolperfallen
 
+- Große GUI-Ports (1.20.1 `GuiGraphics`): erst `tools/gui_to_extract.py`, Details im Skill `tinkers3-263` („Client 26.3“).
+  Textfarben ohne Alpha (`0x404040`) zeichnet 26.3 nicht – immer `0xFF……` bzw. `ARGB.opaque`.
+
 - Rüstungsmodell mit Animation je Träger (Rucksackdeckel, Vorlage `mods/betterstorage/client/BackpackArmorModel`):
   `registerEntityModifier(new TypeToken<LivingEntityRenderer<LivingEntity, LivingEntityRenderState, ?>>(){}, …)` setzt
   Render-Data, die `HumanoidModel.setupAnim` liest. `render(0.05F)` des Originals: `PartPose.ZERO.withScale(...)` am Kind-Teil.

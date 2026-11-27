@@ -46,6 +46,7 @@ public final class MantleClient {
     bus.addListener(RegisterFluidModelsEvent.class, FluidTextureManager::registerModels);
     bus.addListener(RegisterClientExtensionsEvent.class, MantleClient::registerClientExtensions);
     bus.addListener(ModelEvent.RegisterLoaders.class, MantleClient::registerModelLoaders);
+    MantleHud.register(bus);
     bus.addListener(RegisterBlockStateModels.class, MantleClient::registerBlockStateModels);
   }
 

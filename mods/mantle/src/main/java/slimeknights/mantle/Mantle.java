@@ -91,6 +91,11 @@ public class Mantle {
     FluidContainerTransferManager.TRANSFER_LOADERS.registerDeserializer(FillFluidWithNBTTransfer.ID, FillFluidWithNBTTransfer.DESERIALIZER);
     FluidContainerTransferManager.TRANSFER_LOADERS.registerDeserializer(EmptyPotionTransfer.ID, EmptyPotionTransfer.DESERIALIZER);
     registerPredicates();
+    // Port (found in Teil 27c with a real client): the argument type must be registered, else sending the command tree
+    // to a joining player fails ("Invalid player data")
+    slimeknights.mantle.registration.deferred.ArgumentTypeDeferredRegister arguments = new slimeknights.mantle.registration.deferred.ArgumentTypeDeferredRegister(modId);
+    arguments.register("resource_or_tag_key", slimeknights.mantle.command.argument.ResourceOrTagKeyArgument.class, slimeknights.mantle.command.argument.ResourceOrTagKeyArgument.Info::new);
+    arguments.register(bus);
     // Port (Teil 27c): book pages show crafting and cooking recipes; 26.3 only sends recipe types a mod asks for
     net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(net.neoforged.neoforge.event.OnDatapackSyncEvent.class,
       event -> event.sendRecipes(net.minecraft.world.item.crafting.RecipeType.CRAFTING, net.minecraft.world.item.crafting.RecipeType.SMELTING,
