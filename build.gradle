@@ -17,6 +17,8 @@ allprojects {
     tasks.withType(JavaCompile).configureEach {
         options.encoding = 'UTF-8'
         options.release = 25
+        // show all errors of a port at once (javac stops at 100 by default)
+        options.compilerArgs += ['-Xmaxerrs', '100000']
     }
 
     neoForge {
@@ -66,6 +68,14 @@ subprojects {
         required.each { implementation project(":${it}") }
         // every mod may bring a JEI plugin; JEI itself is only on the runtime classpath of the pack runs
         compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
+    }
+    // "mod_uses_lombok=true": original sources written with Lombok and JSR-305 annotations (Teil 27: Mantle, Tinkers 3)
+    if ((findProperty('mod_uses_lombok') ?: 'false').toBoolean()) {
+        dependencies {
+            compileOnly "org.projectlombok:lombok:${lombok_version}"
+            annotationProcessor "org.projectlombok:lombok:${lombok_version}"
+            compileOnly 'com.google.code.findbugs:jsr305:3.0.2'
+        }
     }
     // "mod_uses_terrablender=true": the mod registers biome regions with TerraBlender (a library mod of the pack)
     def usesTerraBlender = (findProperty('mod_uses_terrablender') ?: 'false').toBoolean()
