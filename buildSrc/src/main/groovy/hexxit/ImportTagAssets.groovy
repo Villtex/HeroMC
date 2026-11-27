@@ -106,6 +106,83 @@ abstract class ImportTagAssets extends DefaultTask {
                 count++
             }
         }
-        logger.lifecycle("${url.get()} @ ${ref.get()}: ${count} files")
+        int states = rewriteBlockstates(out.resolve('assets'))
+        logger.lifecycle("${url.get()} @ ${ref.get()}: ${count} files, ${states} blockstates with Mantle block state models")
+    }
+
+    /** Forge model namespaces of 1.20.1 that NeoForge 26.3 ships as neoforge: (parents item/default..., loader composite) */
+    private static String forgeToNeo(String text) {
+        return text.replace('"forge:item/', '"neoforge:item/').replace('"forge:block/', '"neoforge:block/')
+                   .replaceAll(/("loader"\s*:\s*")forge:/, '$1neoforge:')
+    }
+
+    /** Model loaders whose blocks need a world-aware block state model in 26.3 (Mantle, Teil 27c) */
+    private static final Set<String> BLOCKSTATE_LOADERS = ['mantle:connected', 'mantle:retextured'] as Set
+
+    /**
+     * 26.3 only lets block state models see the world (neighbours, block entity data). Every block state variant whose
+     * model (or a parent) uses one of {@link #BLOCKSTATE_LOADERS} gets {@code "type": <loader>}, so Mantle's block state
+     * model of the same name renders it. Also renames forge: model references, see {@link #forgeToNeo}.
+     */
+    private static int rewriteBlockstates(Path assets) {
+        if (!Files.isDirectory(assets)) {
+            return 0
+        }
+        def slurper = new groovy.json.JsonSlurper()
+        // model id -> [loader, parent]
+        Map<String, List<String>> models = [:]
+        Files.walk(assets).filter { Files.isRegularFile(it) && it.toString().endsWith('.json') }.each { Path file ->
+            String text = Files.readString(file, StandardCharsets.UTF_8)
+            String fixed = forgeToNeo(text)
+            if (fixed != text) {
+                Files.writeString(file, fixed, StandardCharsets.UTF_8)
+            }
+            def parts = assets.relativize(file).toString().replace('\\', '/').split('/', 3)
+            if (parts.length == 3 && parts[1] == 'models') {
+                try {
+                    def json = slurper.parseText(fixed)
+                    if (json instanceof Map) {
+                        def loader = json.loader instanceof Map ? json.loader.id : json.loader
+                        models["${parts[0]}:${parts[2].replaceAll(/\.json$/, '')}".toString()] = [loader as String, json.parent as String]
+                    }
+                } catch (Exception ignored) {}
+            }
+        }
+        def loaderOf
+        loaderOf = { String id, int depth ->
+            if (id == null || depth > 32) return null
+            String full = id.contains(':') ? id : 'minecraft:' + id
+            def entry = models[full]
+            if (entry == null) return null
+            if (entry[0] != null) return entry[0]
+            return loaderOf(entry[1], depth + 1)
+        }
+        int changed = 0
+        Files.walk(assets).filter { Files.isRegularFile(it) && it.toString().endsWith('.json') && it.parent.fileName.toString() == 'blockstates' }.each { Path file ->
+            def json
+            try {
+                json = slurper.parseText(Files.readString(file, StandardCharsets.UTF_8))
+            } catch (Exception ignored) {
+                return
+            }
+            boolean dirty = false
+            def visit = { model ->
+                if (model instanceof Map && model.model != null && model.type == null) {
+                    String loader = loaderOf(model.model as String, 0)
+                    if (loader in BLOCKSTATE_LOADERS) {
+                        model.type = loader
+                        dirty = true
+                    }
+                }
+            }
+            def visitAll = { value -> value instanceof List ? value.each(visit) : visit(value) }
+            if (json.variants instanceof Map) json.variants.values().each(visitAll)
+            if (json.multipart instanceof List) json.multipart.each { visitAll(it.apply) }
+            if (dirty) {
+                Files.writeString(file, groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(json)), StandardCharsets.UTF_8)
+                changed++
+            }
+        }
+        return changed
     }
 }
