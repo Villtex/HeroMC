@@ -55,7 +55,7 @@ public record PotionFluidEffect(float scale, TagPredicate predicate) implements 
             }
           } else {
             // if the potion already exists, we scale up the existing time
-            MobEffectInstance existingEffect = target.getEffect(net.minecraft.core.registries.BuiltInRegistries.MOB_EFFECT.wrapAsHolder(effect));
+            MobEffectInstance existingEffect = target.getEffect(effect);
             int duration;
             if (existingEffect != null && existingEffect.getAmplifier() >= instance.getAmplifier()) {
               // if the existing level is larger, just skip, would be a cheese to increase said level
@@ -78,7 +78,7 @@ public record PotionFluidEffect(float scale, TagPredicate predicate) implements 
               duration = (int) (instance.getDuration() * scale * used);
             }
             if (action.execute()) {
-              target.addEffect(new MobEffectInstance(net.minecraft.core.registries.BuiltInRegistries.MOB_EFFECT.wrapAsHolder(effect), duration, instance.getAmplifier(), instance.isAmbient(), instance.isVisible(), instance.showIcon()), effectSource);
+              target.addEffect(new MobEffectInstance(effect, duration, instance.getAmplifier(), instance.isAmbient(), instance.isVisible(), instance.showIcon()), effectSource);
             }
           }
         }

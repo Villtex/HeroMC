@@ -58,7 +58,7 @@ public class ModifierCrystalItem extends Item {
       } else {
         modifierName = Component.translatable(Util.makeTranslationKey("modifier", id));
       }
-      return Component.translatable(getDescriptionId(stack) + ".format", modifierName).setStyle(modifierName.getStyle());
+      return Component.translatable(getDescriptionId() + ".format", modifierName).setStyle(modifierName.getStyle());
     }
     return super.getName(stack);
   }
@@ -96,7 +96,7 @@ public class ModifierCrystalItem extends Item {
     // see also - modifier adding command
 
     // must be op or in creative, right-clicking onto a modifiable slot
-    if (action == ClickAction.SECONDARY && slot.allowModification(player) && CreativeSlotItem.canApply(player)) {
+    if (action == ClickAction.SECONDARY && slot.allowModification(player) && (player.isCreative() || (slimeknights.tconstruct.common.config.Config.COMMON.quickApplyToolModifiersSurvival.get() && MantleCommand.hasPermission(player, MantleCommand.PERMISSION_GAME_COMMANDS)))) {
       ModifierId modifier = getModifier(stack);
       ItemStack toolItem = slot.getItem();
       // slot must have a tool, NBT must be valid
@@ -130,7 +130,7 @@ public class ModifierCrystalItem extends Item {
     // see also - modifier removal command
 
     // must be op or in creative, right-clicking onto a modifiable slot with a tool
-    if (action == ClickAction.SECONDARY && slot.allowModification(player) && !toolItem.isEmpty() && toolItem.is(TinkerTags.Items.MODIFIABLE) && (player.isCreative() || player.hasPermissions(MantleCommand.PERMISSION_GAME_COMMANDS))) {
+    if (action == ClickAction.SECONDARY && slot.allowModification(player) && !toolItem.isEmpty() && toolItem.is(TinkerTags.Items.MODIFIABLE) && (player.isCreative() || MantleCommand.hasPermission(player, MantleCommand.PERMISSION_GAME_COMMANDS))) {
       // NBT must be valid
       ModifierId modifier = getModifier(stack);
       if (modifier != null) {
@@ -181,7 +181,7 @@ public class ModifierCrystalItem extends Item {
   /** Creates a stack with the given modifier */
   public static ItemStack withModifier(ModifierId modifier, int count) {
     ItemStack stack = new ItemStack(TinkerModifiers.modifierCrystal.get(), count);
-    stack.getOrCreateTag().putString(TAG_MODIFIER, modifier.toString());
+    slimeknights.mantle.util.ItemNbt.update(stack, tag -> tag.putString(TAG_MODIFIER, modifier.toString()));
     return stack;
   }
 
@@ -193,9 +193,9 @@ public class ModifierCrystalItem extends Item {
   /** Gets the modifier stored on this stack */
   @Nullable
   public static ModifierId getModifier(ItemStack stack) {
-    CompoundTag tag = stack.getTag();
+    CompoundTag tag = slimeknights.mantle.util.ItemNbt.getTag(stack);
     if (tag != null) {
-      return ModifierId.tryParse(tag.getString(TAG_MODIFIER));
+      return ModifierId.tryParse(tag.getStringOr(TAG_MODIFIER, ""));
     }
     return null;
   }

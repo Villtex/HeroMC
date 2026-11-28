@@ -248,7 +248,7 @@ public class TankModule implements HookProvider, FluidModifierHook, VolatileData
     if (player.containerMenu.getCarried() == held) {
       player.containerMenu.setCarried(slimeknights.mantle.fluid.FluidTransferHelper.getOrTransferFilled(player, held, result));
     } else if (!player.getInventory().add(result)) {
-      player.drop(result, false);
+      player.drop(result, false, net.minecraft.util.Prediction.NONE);
     }
   }
 }

@@ -54,6 +54,18 @@ public class MantleCommand {
     return Commands.hasPermission(check).test(source);
   }
 
+  /** Port: permission level check for a player (1.20.1 {@code Player#hasPermissions(level)}), works on both sides */
+  public static boolean hasPermission(net.minecraft.world.entity.player.Player player, int level) {
+    PermissionCheck check = switch (level) {
+      case 0 -> Commands.LEVEL_ALL;
+      case 1 -> Commands.LEVEL_MODERATORS;
+      case 2 -> Commands.LEVEL_GAMEMASTERS;
+      case 3 -> Commands.LEVEL_ADMINS;
+      default -> Commands.LEVEL_OWNERS;
+    };
+    return check.check(player.permissions());
+  }
+
   public static void init() {
     RegistryArgument.registerSuggestions();
     VALID_TAGS = RegistryArgument.TAG;

@@ -126,9 +126,9 @@ public interface CounterModule extends ModifierModule, OnAttackedModifierHook, C
     // holder must be using an item with shield block in the same hand as the slot
     return slotType.getType() == Type.HAND && holder.isUsingItem()
       && Util.getSlotType(holder.getUsedItemHand()) == slotType
-      && ModifierUtil.canPerformAction(tool, ItemAbilities.SHIELD_BLOCK)
+      && ModifierUtil.canPerformAction(tool, ModifierUtil.SHIELD_BLOCK)
       // not sure whether its a modifier or a bow blocking, so we do end up creating a second tool stack to check use duration; luckily needs no modifier list parse
-      && holder.getItemBySlot(slotType).getUseDuration() - holder.getUseItemRemainingTicks() >= 5;
+      && holder.getItemBySlot(slotType).getUseDuration(holder) - holder.getUseItemRemainingTicks() >= 5;
   }
 
   /** Gets the scaled level of the modifier, doubling for shields that are blocking */

@@ -63,7 +63,7 @@ public class FluidEffectManager extends JsonReloadListener {
 
   /** Adds the managers as datapack listeners */
   private void addDataPackListeners(final AddServerReloadListenersEvent event) {
-    event.addListener(this);
+    event.addListener(TConstruct.getResource("fluid_effects"), this);
     conditionContext = event.getConditionContext();
   }
 

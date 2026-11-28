@@ -144,8 +144,8 @@ public class InventoryModule implements ModifierModule, InventoryModifierHook, V
       ListTag list = tool.getPersistentData().get(key, GET_COMPOUND_LIST);
       for (int i = 0; i < list.size(); i++) {
         CompoundTag compound = list.getCompoundOrEmpty(i);
-        if (compound.getInt(TAG_SLOT) == slot) {
-          return ItemStack.of(compound);
+        if (compound.getIntOr(TAG_SLOT, 0) == slot) {
+          return slimeknights.mantle.util.ItemNbt.read(compound);
         }
       }
     }
@@ -170,7 +170,7 @@ public class InventoryModule implements ModifierModule, InventoryModifierHook, V
             if (stack.isEmpty()) {
               list.remove(i);
             } else {
-              compound.getAllKeys().clear();
+              for (String k : java.util.List.copyOf(compound.keySet())) { compound.remove(k); }
               writeStack(stack, slot, compound);
             }
             return;
@@ -221,11 +221,11 @@ public class InventoryModule implements ModifierModule, InventoryModifierHook, V
           BitSet freeSlots = new BitSet(maxSlots);
           freeSlots.set(0, maxSlots, true);
           for (int i = 0; i < listNBT.size(); i++) {
-            freeSlots.set(listNBT.getCompound(i).getInt(TAG_SLOT), false);
+            freeSlots.set(listNBT.getCompoundOrEmpty(i).getIntOr(TAG_SLOT, 0), false);
           }
           for (int i = 0; i < listNBT.size(); i++) {
             CompoundTag compoundNBT = listNBT.getCompoundOrEmpty(i);
-            if (compoundNBT.getInt(TAG_SLOT) >= maxSlots) {
+            if (compoundNBT.getIntOr(TAG_SLOT, 0) >= maxSlots) {
               int free = freeSlots.stream().findFirst().orElse(-1);
               if (free == -1) {
                 return HAS_ITEMS;
@@ -266,7 +266,7 @@ public class InventoryModule implements ModifierModule, InventoryModifierHook, V
    * @return Tag written to, same as {@code compound}.
    */
   public static CompoundTag writeStack(ItemStack stack, int slot, CompoundTag compound) {
-    stack.save(compound);
+    slimeknights.mantle.util.ItemNbt.save(stack, compound);
     compound.putInt(TAG_SLOT, slot);
     return compound;
   }
@@ -286,7 +286,7 @@ public class InventoryModule implements ModifierModule, InventoryModifierHook, V
           // slot must be valid
           int slot = compound.getIntOr(TAG_SLOT, 0);
           if (slot < max) {
-            ItemStack stack = ItemStack.of(compound);
+            ItemStack stack = slimeknights.mantle.util.ItemNbt.read(compound);
             if (!stack.isEmpty() && predicate.test(stack)) {
               return new StackMatch(stack, slot);
             }
@@ -314,7 +314,7 @@ public class InventoryModule implements ModifierModule, InventoryModifierHook, V
           // slot must be valid
           int slot = compound.getIntOr(TAG_SLOT, 0);
           if (slot < max) {
-            parsed[slot] = ItemStack.of(compound);
+            parsed[slot] = slimeknights.mantle.util.ItemNbt.read(compound);
           }
         }
         // add stacks into the list
