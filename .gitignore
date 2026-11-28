@@ -1,6 +1,9 @@
 # Gradle / IDE
 .gradle/
-build/
+# Gradle-Ausgaben (nicht 'build/' allgemein: Java-Pakete heißen auch build)
+/build/
+/buildSrc/build/
+/mods/*/build/
 run/
 runs/
 out/
