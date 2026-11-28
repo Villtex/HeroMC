@@ -132,6 +132,7 @@ side="BOTH"
             toNamespace = mod_id
             cloneDir = rootProject.file(".reference/tc3/${tag_assets_dir}")
             outputDir = layout.buildDirectory.dir('generated/tag-assets')
+            itemDefinitions = (findProperty('tag_assets_item_definitions') ?: 'false').toBoolean()
         }
         sourceSets.main.resources.srcDir(importTagAssets.flatMap { it.outputDir })
     }

@@ -1,0 +1,85 @@
+package slimeknights.tconstruct.library.client.modifiers.model;
+
+import com.mojang.math.Transformation;
+import net.minecraft.client.resources.model.geometry.BakedQuad;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.resources.model.sprite.Material;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.inventory.InventoryMenu;
+import net.minecraft.world.level.material.Fluid;
+import net.neoforged.neoforge.fluids.FluidStack;
+import org.joml.Vector3f;
+import slimeknights.mantle.client.model.util.ColoredBlockModel;
+import slimeknights.mantle.data.loadable.record.RecordLoadable;
+import slimeknights.mantle.util.ItemLayerPixels;
+import slimeknights.tconstruct.TConstruct;
+import slimeknights.tconstruct.library.client.TinkerSprites;
+import slimeknights.tconstruct.library.modifiers.ModifierEntry;
+import slimeknights.tconstruct.library.tools.capability.fluid.ToolTankHelper;
+import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+
+import javax.annotation.Nullable;
+import java.util.Collection;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+
+/** Model for a fluid in a tool. */
+public record FluidModifierModel(@Nullable Material small, @Nullable Material large, ToolTankHelper tankHelper) implements SimpleModifierModel {
+  public static final RecordLoadable<FluidModifierModel> LOADER = RecordLoadable.create(
+    ModifierModel.MATERIAL_LOADABLE.nullableField("mask", FluidModifierModel::small),
+    ModifierModel.MATERIAL_LOADABLE.nullableField("mask_large", FluidModifierModel::large),
+    ToolTankHelper.LOADABLE.defaultField("tank_helper", ToolTankHelper.TANK_HELPER, false, FluidModifierModel::tankHelper),
+    FluidModifierModel::new);
+
+  /** Location used for baking dynamic models, name does not matter so just using a constant */
+  private static final Identifier BAKE_LOCATION = TConstruct.getResource("dynamic_fluid_model");
+  /**
+   * The vanilla model bakery uses an orgin of 0.5,0.5,0.5, and forges dynamic fluid code uses the vanilla model bakery. (see{@link net.minecraft.client.renderer.block.model.FaceBakery} {@code #rotateVertexBy()} for vanilla bakery)
+   * However, item layer wants an origin of 0,0,0, which is what we expect in our tool models. So cancel out the origin.
+   */
+  private static final Vector3f ORIGIN = new Vector3f(-0.5f, -0.5f, -0.5f);
+
+  /** Instance with default tank helper */
+  public FluidModifierModel(@Nullable Material small, @Nullable Material large) {
+    this(small, large, ToolTankHelper.TANK_HELPER);
+  }
+
+  /** Cache key for {@link #getCacheKey(IToolStackView, ModifierEntry)} */
+  private record CacheKey(Fluid fluid, net.minecraft.core.component.DataComponentPatch components) {}
+
+  @Nullable
+  @Override
+  public Object getCacheKey(IToolStackView tool, ModifierEntry modifier) {
+    FluidStack fluid = tankHelper().getFluid(tool);
+    if (!fluid.isEmpty()) {
+      return new CacheKey(fluid.getFluid(), fluid.getComponentsPatch());
+    }
+    return null;
+  }
+
+  @Override
+  public RecordLoadable<FluidModifierModel> getLoader() {
+    return LOADER;
+  }
+
+  @Override
+  public void addQuads(IToolStackView tool, ModifierEntry modifier, Function<Material, TextureAtlasSprite> spriteGetter, Transformation transforms, boolean isLarge, int startTintIndex, Consumer<Collection<BakedQuad>> quadConsumer, @Nullable ItemLayerPixels pixels) {
+    // ensure template exists
+    Material template = isLarge ? large() : small();
+    if (template != null) {
+      // ensure we have fluid
+      FluidStack fluid = tankHelper().getFluid(tool);
+      if (!fluid.isEmpty()) {
+        addQuads(fluid, template, spriteGetter, transforms, quadConsumer);
+      }
+    }
+  }
+
+  /** Adds quads for the given fluid */
+  public static void addQuads(FluidStack fluid, Material template, Function<Material,TextureAtlasSprite> spriteGetter, Transformation transforms, Consumer<Collection<BakedQuad>> quadConsumer) {
+    // Port (Teil 27f2): fluid in the shape of the mask, see TinkerSprites#fluidQuads (color, light and sprite from Mantle)
+    quadConsumer.accept(TinkerSprites.fluidQuads(fluid, spriteGetter.apply(template), transforms, null));
+  }
+}

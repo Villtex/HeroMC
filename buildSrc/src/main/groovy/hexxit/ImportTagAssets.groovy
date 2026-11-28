@@ -48,6 +48,11 @@ abstract class ImportTagAssets extends DefaultTask {
     @OutputDirectory
     abstract DirectoryProperty getOutputDir()
 
+    /** If true, writes 26.3 item model definitions ({@code items/<id>.json}) for the item models, see {@link #writeItemDefinitions} */
+    @Input
+    @org.gradle.api.tasks.Optional
+    abstract Property<Boolean> getItemDefinitions()
+
     private static final Set<String> TEXT = ['json', 'mcmeta', 'txt', 'md', 'properties', 'fsh', 'vsh', 'glsl'] as Set
 
     @TaskAction
@@ -107,7 +112,8 @@ abstract class ImportTagAssets extends DefaultTask {
             }
         }
         int states = rewriteBlockstates(out.resolve('assets'))
-        logger.lifecycle("${url.get()} @ ${ref.get()}: ${count} files, ${states} blockstates with Mantle block state models")
+        int items = itemDefinitions.getOrElse(false) ? writeItemDefinitions(out.resolve('assets'), to) : 0
+        logger.lifecycle("${url.get()} @ ${ref.get()}: ${count} files, ${states} blockstates with Mantle block state models, ${items} item definitions")
     }
 
     /** Forge model namespaces of 1.20.1 that NeoForge 26.3 ships as neoforge: (parents item/default..., loader composite) */
@@ -184,5 +190,84 @@ abstract class ImportTagAssets extends DefaultTask {
             }
         }
         return changed
+    }
+
+    /** Item model types for 1.20.1 model loaders (Tinkers 3.12.1, Teil 27f2), every other model is {@code minecraft:model} */
+    private static final Map<String, String> ITEM_MODEL_TYPES = [
+        'tconstruct3:tool': 'tconstruct3:tool',
+        'tconstruct3:material': 'tconstruct3:material',
+        'tconstruct3:fluid_container': 'tconstruct3:fluid_container',
+    ]
+
+    /**
+     * 26.3 draws an item only with an item model definition {@code assets/<ns>/items/<id>.json}; the 1.20.1 assets have
+     * none. For every top-level item model {@code models/item/<id>.json} of the namespace this writes one: the model
+     * itself ({@code minecraft:model}, or the Tinkers type of its loader, {@link #ITEM_MODEL_TYPES}), and for each
+     * 1.20.1 {@code overrides} entry a {@code minecraft:condition} on {@code tconstruct3:predicate} (true when every
+     * property is at least the given value). The last override is checked first, as the last matching one won in 1.20.1.
+     * Item colors of 1.20.1 (tints) are not known here; those items get their definition by hand with their part.
+     */
+    private static int writeItemDefinitions(Path assets, String namespace) {
+        Path models = assets.resolve(namespace).resolve('models')
+        if (!Files.isDirectory(models)) {
+            return 0
+        }
+        def slurper = new groovy.json.JsonSlurper()
+        // model id -> [loader, parent]
+        Map<String, List<String>> chain = [:]
+        Files.walk(assets).filter { Files.isRegularFile(it) && it.toString().endsWith('.json') }.each { Path file ->
+            def parts = assets.relativize(file).toString().replace('\\', '/').split('/', 3)
+            if (parts.length == 3 && parts[1] == 'models') {
+                try {
+                    def json = slurper.parseText(Files.readString(file, StandardCharsets.UTF_8))
+                    if (json instanceof Map) {
+                        def loader = json.loader instanceof Map ? json.loader.id : json.loader
+                        chain["${parts[0]}:${parts[2].replaceAll(/\.json$/, '')}".toString()] = [loader as String, json.parent as String]
+                    }
+                } catch (Exception ignored) {}
+            }
+        }
+        def full = { String id -> id.contains(':') ? id : 'minecraft:' + id }
+        def typeOf
+        typeOf = { String id, int depth ->
+            if (id == null || depth > 32) return 'minecraft:model'
+            def entry = chain[full(id)]
+            if (entry == null) return 'minecraft:model'
+            if (entry[0] != null && ITEM_MODEL_TYPES.containsKey(entry[0])) return ITEM_MODEL_TYPES[entry[0]]
+            return typeOf(entry[1], depth + 1)
+        }
+        def modelFor = { String id -> [type: typeOf(id, 0), model: full(id)] }
+        Path items = assets.resolve(namespace).resolve('items')
+        int written = 0
+        Path itemModels = models.resolve('item')
+        if (!Files.isDirectory(itemModels)) {
+            return 0
+        }
+        Files.list(itemModels).filter { Files.isRegularFile(it) && it.toString().endsWith('.json') }.sorted().each { Path file ->
+            String name = file.fileName.toString().replaceAll(/\.json$/, '')
+            Path dst = items.resolve(name + '.json')
+            if (Files.exists(dst)) {
+                return
+            }
+            def json
+            try {
+                json = slurper.parseText(Files.readString(file, StandardCharsets.UTF_8))
+            } catch (Exception ignored) {
+                return
+            }
+            def model = modelFor("${namespace}:item/${name}".toString())
+            if (json instanceof Map && json.overrides instanceof List) {
+                json.overrides.each { override ->
+                    if (override instanceof Map && override.model != null && override.predicate instanceof Map) {
+                        model = [type: 'minecraft:condition', property: 'tconstruct3:predicate', predicate: override.predicate,
+                                 on_true: modelFor(override.model as String), on_false: model]
+                    }
+                }
+            }
+            Files.createDirectories(items)
+            Files.writeString(dst, groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson([model: model])), StandardCharsets.UTF_8)
+            written++
+        }
+        return written
     }
 }

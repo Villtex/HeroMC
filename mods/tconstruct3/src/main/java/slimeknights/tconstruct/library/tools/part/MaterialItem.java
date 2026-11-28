@@ -107,10 +107,13 @@ public class MaterialItem extends Item implements IMaterialItem {
 
   @Override
   public Component getName(ItemStack stack) {
-    return getName(this, stack);
+    // Port (Teil 27f2): 26.3 colors the name by the rarity component only, the material rarity is applied here
+    Rarity rarity = getRarity(stack);
+    Component name = getName(this, stack);
+    return rarity == Rarity.COMMON ? name : name.copy().withStyle(rarity.getStyleModifier());
   }
 
-  /** Rarity of the material (26.3: items have a rarity component; TODO 27f: show it in the name color) */
+  /** Rarity of the material (26.3: items have a rarity component, the name gets its color in {@link #getName(ItemStack)}) */
   public Rarity getRarity(ItemStack stack) {
     return MaterialRegistry.getMaterial(getMaterial(stack).getId()).getRarity();
   }
@@ -177,7 +180,7 @@ public class MaterialItem extends Item implements IMaterialItem {
     }
   }
 
-  /** Resolves material redirects of the stack (1.20.1 verifyTagAfterLoad; TODO 27f: call it when stacks load) */
+  /** Resolves material redirects of the stack (1.20.1 verifyTagAfterLoad; 26.3 has no hook when stacks load, TODO 27h: call it where tools are read, e.g. the tinker station) */
   public static void verifyTag(ItemStack stack) {
     // if the material exists and was changed, update it
     MaterialVariantId id = getMaterialId(stack);

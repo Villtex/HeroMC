@@ -110,6 +110,7 @@ public final class TConstruct {
         });
         if (FMLEnvironment.getDist() == Dist.CLIENT) {
             modBus.addListener(AddClientReloadListenersEvent.class, MaterialTooltipCache::init);
+            slimeknights.tconstruct.library.client.LibraryClientEvents.init(modBus);
         }
     }
 
