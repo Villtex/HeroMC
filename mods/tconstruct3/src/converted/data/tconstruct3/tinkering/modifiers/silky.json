@@ -12,7 +12,7 @@
       "level": 1,
       "name": "minecraft:silk_touch",
       "tool": {
-        "neoforge:ingredient_type": "mantle:tag",
+        "type": "mantle:tag",
         "tag": "tconstruct3:modifiable/harvest"
       }
     },
@@ -27,7 +27,7 @@
         "head"
       ],
       "tool": {
-        "neoforge:ingredient_type": "mantle:tag",
+        "type": "mantle:tag",
         "tag": "tconstruct3:modifiable/armor/worn"
       }
     }

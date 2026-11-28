@@ -69,7 +69,7 @@
     },
     {
       "type": "tconstruct3:attribute",
-      "attribute": "minecraft:generic.armor_toughness",
+      "attribute": "minecraft:armor_toughness",
       "formula": [
         "$max_durability",
         0.5,
@@ -84,7 +84,7 @@
         2.0,
         "*"
       ],
-      "operation": "addition",
+      "operation": "add_value",
       "slots": [
         "mainhand",
         "offhand",
@@ -94,7 +94,7 @@
         "head"
       ],
       "tool": {
-        "neoforge:ingredient_type": "mantle:tag",
+        "type": "mantle:tag",
         "tag": "tconstruct3:modifiable/armor"
       },
       "variables": {

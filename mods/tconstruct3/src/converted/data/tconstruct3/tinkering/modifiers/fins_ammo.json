@@ -13,7 +13,7 @@
       "level": 1,
       "name": "tconstruct3:fins",
       "tool": {
-        "neoforge:ingredient_type": "mantle:tag",
+        "type": "mantle:tag",
         "tag": "tconstruct3:modifiable/ammo"
       }
     }

@@ -36,12 +36,17 @@ import java.util.function.Predicate;
  * @param durabilityUsage      Amount of extra durability consumed when using this module.
  * @param checkStandardArrows  If true, won't fire infinite arrows if there are standard arrows.
  */
-public record InfinityModule(ItemStack ammo, String variantTag, int durabilityUsage, boolean checkStandardArrows) implements ModifierModule, BowAmmoModifierHook, ModifierRemovalHook, ProjectileLaunchModifierHook.NoShooter {
+public record InfinityModule(slimeknights.mantle.recipe.helper.ItemOutput ammoOutput, String variantTag, int durabilityUsage, boolean checkStandardArrows) implements ModifierModule, BowAmmoModifierHook, ModifierRemovalHook, ProjectileLaunchModifierHook.NoShooter {
+  /** Port (Teil 27e): the stack is made on first use, 26.3 has no item components while data loads */
+  public ItemStack ammo() {
+    return ammoOutput.get();
+  }
+
   /** NBT marking the stack as infinity to set arrow pickup */
   private static final String INFINITY = "tic_infinity";
   private static final List<ModuleHook<?>> DEFAULT_HOOKS = HookProvider.<InfinityModule>defaultHooks(ModifierHooks.BOW_AMMO, ModifierHooks.PROJECTILE_LAUNCH, ModifierHooks.PROJECTILE_SHOT, ModifierHooks.REMOVE);
   public static final RecordLoadable<InfinityModule> LOADER = RecordLoadable.create(
-    ItemStackLoadable.REQUIRED_ITEM_NBT.requiredField("ammo", InfinityModule::ammo),
+    slimeknights.mantle.recipe.helper.ItemOutput.Loadable.REQUIRED_ITEM.requiredField("ammo", InfinityModule::ammoOutput),
     StringLoadable.DEFAULT.defaultField("variant_tag", "", InfinityModule::variantTag),
     IntLoadable.FROM_ZERO.requiredField("durability_usage", InfinityModule::durabilityUsage),
     BooleanLoadable.INSTANCE.defaultField("check_standard_arrows", true, InfinityModule::checkStandardArrows),
@@ -65,7 +70,7 @@ public record InfinityModule(ItemStack ammo, String variantTag, int durabilityUs
     }
     // our available count is based on how many arrows we can create from the remaining durability, though round up to be nice
     int count = durabilityUsage <= 0 ? 64 : Math.min(64, (tool.getCurrentDurability() + durabilityUsage - 1) / durabilityUsage);
-    ItemStack ammo = this.ammo.copyWithCount(count);
+    ItemStack ammo = this.ammo().copyWithCount(count);
     CompoundTag tag = new CompoundTag(); // 26.3: written back below through ItemNbt
     // mark the arrow as infinity for the projectile launch hook
     tag.putBoolean(INFINITY, true);

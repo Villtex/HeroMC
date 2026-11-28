@@ -23,7 +23,7 @@
       "operation": "add",
       "stat": "tconstruct3:durability",
       "tool": {
-        "neoforge:ingredient_type": "mantle:tag",
+        "type": "mantle:tag",
         "tag": "tconstruct3:modifiable/armor"
       }
     },
@@ -60,7 +60,7 @@
       "type": "tconstruct3:volatile_flag",
       "flag": "tconstruct3:diamond_armor",
       "tool": {
-        "neoforge:ingredient_type": "mantle:tag",
+        "type": "mantle:tag",
         "tag": "tconstruct3:modifiable/armor/worn"
       }
     }

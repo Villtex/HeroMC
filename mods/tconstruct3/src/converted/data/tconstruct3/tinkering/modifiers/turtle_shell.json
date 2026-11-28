@@ -13,14 +13,14 @@
       "attribute": "neoforge:swim_speed",
       "each_level": 0.1,
       "held_tag": "tconstruct3:modifiable/held",
-      "operation": "multiply_total"
+      "operation": "add_multiplied_total"
     },
     {
       "type": "tconstruct3:protection",
       "damage_source": "mantle:can_protect",
       "each_level": 2.5,
       "tool": {
-        "neoforge:ingredient_type": "mantle:or",
+        "type": "mantle:or",
         "predicates": [
           {
             "type": "mantle:tag",
@@ -39,7 +39,7 @@
       "damage_source": "mantle:can_protect",
       "each_level": 2.5,
       "tool": {
-        "neoforge:ingredient_type": "mantle:or",
+        "type": "mantle:or",
         "predicates": [
           {
             "type": "mantle:tag",

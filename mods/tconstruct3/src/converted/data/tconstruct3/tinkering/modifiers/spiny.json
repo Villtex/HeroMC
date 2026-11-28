@@ -19,7 +19,7 @@
       "operation": "add",
       "stat": "tconstruct3:projectile_damage",
       "tool": {
-        "neoforge:ingredient_type": "mantle:tag",
+        "type": "mantle:tag",
         "tag": "tconstruct3:modifiable/ammo/thrown"
       }
     },

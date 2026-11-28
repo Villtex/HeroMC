@@ -11,7 +11,7 @@
       "type": "tconstruct3:weapon_looting",
       "level": 1,
       "tool": {
-        "neoforge:ingredient_type": "mantle:or",
+        "type": "mantle:or",
         "predicates": [
           {
             "type": "mantle:set",
@@ -36,7 +36,7 @@
         "head"
       ],
       "tool": {
-        "neoforge:ingredient_type": "mantle:tag",
+        "type": "mantle:tag",
         "tag": "tconstruct3:modifiable/armor/worn"
       }
     }

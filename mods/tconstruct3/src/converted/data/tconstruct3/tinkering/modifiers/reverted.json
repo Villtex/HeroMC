@@ -17,7 +17,7 @@
       "flat": 1,
       "name": "upgrades",
       "tool": {
-        "neoforge:ingredient_type": "mantle:inverted",
+        "type": "mantle:inverted",
         "inverted_type": "mantle:set",
         "items": [
           "tconstruct3:slime_wings"
@@ -29,7 +29,7 @@
       "flat": -1,
       "name": "abilities",
       "tool": {
-        "neoforge:ingredient_type": "mantle:inverted",
+        "type": "mantle:inverted",
         "inverted_type": "mantle:set",
         "items": [
           "tconstruct3:slime_wings"
@@ -42,7 +42,7 @@
       "level": 1,
       "name": "tconstruct3:pocket",
       "tool": {
-        "neoforge:ingredient_type": "mantle:set",
+        "type": "mantle:set",
         "items": [
           "tconstruct3:slime_leggings"
         ]

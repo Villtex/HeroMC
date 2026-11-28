@@ -32,22 +32,22 @@
     },
     {
       "type": "tconstruct3:attribute",
-      "attribute": "minecraft:generic.attack_speed",
+      "attribute": "minecraft:attack_speed",
       "each_level": -0.1,
-      "operation": "multiply_total",
+      "operation": "add_multiplied_total",
       "slots": [
         "offhand"
       ],
       "tool": {
-        "neoforge:ingredient_type": "mantle:tag",
+        "type": "mantle:tag",
         "tag": "tconstruct3:modifiable/armor/held"
       }
     },
     {
       "type": "tconstruct3:attribute",
-      "attribute": "minecraft:generic.movement_speed",
+      "attribute": "minecraft:movement_speed",
       "each_level": -0.1,
-      "operation": "multiply_total",
+      "operation": "add_multiplied_total",
       "slots": [
         "feet",
         "legs",
@@ -59,7 +59,7 @@
       "type": "tconstruct3:attribute",
       "attribute": "minecraft:gravity",
       "each_level": 0.1,
-      "operation": "multiply_total",
+      "operation": "add_multiplied_total",
       "slots": [
         "mainhand",
         "offhand",

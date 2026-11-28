@@ -84,23 +84,16 @@ umsetzen können oder nur vorläufig umgesetzt; die Teile 27b–27k arbeiten die
 - `c:coins/electrum`
 - … und 402 weitere
 
-## custom ingredient types (port in 27b-27f) (204)
+## custom ingredient types (port in 27b-27f) (133)
 
 - 87× `tconstruct3:material`
-- 49× `mantle:tag`
 - 20× `tconstruct3:no_container`
 - 10× `tconstruct3:material_value`
 - 9× `tconstruct3:instrument`
-- 7× `mantle:inverted`
-- 6× `tconstruct3:has_modifier`
-- 4× `mantle:or`
-- 3× `mantle:set`
 - 2× `mantle:fluid_container`
 - 2× `mantle:potion_display`
 - 2× `tconstruct3:tool_hook`
-- `mantle:and`
 - `tconstruct3:block_tag`
-- `tconstruct3:has_persistent_key`
 
 ## custom item predicates as item sub predicates (register in 27d/27e) (126)
 

@@ -12,7 +12,7 @@
       "attribute": "tconstruct3:generic.chrysophilite",
       "each_level": 1.0,
       "flat": 1.0,
-      "operation": "addition"
+      "operation": "add_value"
     },
     {
       "type": "tconstruct3:volatile_flag",

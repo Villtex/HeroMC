@@ -11,7 +11,7 @@
       "type": "tconstruct3:attribute",
       "attribute": "tconstruct3:player.critical_damage",
       "each_level": 0.1,
-      "operation": "addition",
+      "operation": "add_value",
       "slots": [
         "mainhand",
         "offhand",
@@ -26,7 +26,7 @@
       "type": "tconstruct3:attribute",
       "attribute": "tconstruct3:generic.safe_fall_distance",
       "each_level": 2.0,
-      "operation": "addition",
+      "operation": "add_value",
       "slots": [
         "mainhand",
         "offhand",

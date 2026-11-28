@@ -27,9 +27,9 @@
     },
     {
       "type": "tconstruct3:attribute",
-      "attribute": "minecraft:generic.knockback_resistance",
+      "attribute": "minecraft:knockback_resistance",
       "each_level": 0.1,
-      "operation": "multiply_base",
+      "operation": "add_multiplied_base",
       "slots": [
         "mainhand",
         "offhand",
@@ -39,16 +39,16 @@
         "head"
       ],
       "tool": {
-        "neoforge:ingredient_type": "mantle:inverted",
+        "type": "mantle:inverted",
         "inverted_type": "mantle:tag",
         "tag": "tconstruct3:modifiable/armor"
       }
     },
     {
       "type": "tconstruct3:attribute",
-      "attribute": "minecraft:generic.movement_speed",
+      "attribute": "minecraft:movement_speed",
       "each_level": -0.1,
-      "operation": "multiply_base",
+      "operation": "add_multiplied_base",
       "slots": [
         "mainhand",
         "offhand",
@@ -62,7 +62,7 @@
       "type": "tconstruct3:attribute",
       "attribute": "minecraft:gravity",
       "each_level": 0.05,
-      "operation": "multiply_total",
+      "operation": "add_multiplied_total",
       "slots": [
         "mainhand",
         "offhand",

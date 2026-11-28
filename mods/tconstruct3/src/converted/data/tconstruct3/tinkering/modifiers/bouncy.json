@@ -11,7 +11,7 @@
       "type": "tconstruct3:attribute",
       "attribute": "tconstruct3:generic.bouncy",
       "flat": 1.0,
-      "operation": "addition",
+      "operation": "add_value",
       "slots": [
         "mainhand",
         "offhand",

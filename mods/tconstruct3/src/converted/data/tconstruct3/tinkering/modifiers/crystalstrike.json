@@ -9,9 +9,9 @@
   "modules": [
     {
       "type": "tconstruct3:attribute",
-      "attribute": "minecraft:generic.attack_speed",
+      "attribute": "minecraft:attack_speed",
       "each_level": 0.05,
-      "operation": "multiply_total",
+      "operation": "add_multiplied_total",
       "slots": [
         "mainhand",
         "offhand",
@@ -26,7 +26,7 @@
       "type": "tconstruct3:attribute",
       "attribute": "tconstruct3:generic.bad_effect_duration_multiplier",
       "each_level": 0.05,
-      "operation": "multiply_total",
+      "operation": "add_multiplied_total",
       "slots": [
         "mainhand",
         "offhand",

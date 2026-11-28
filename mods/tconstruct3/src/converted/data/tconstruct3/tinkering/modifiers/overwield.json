@@ -23,7 +23,7 @@
       "percent": true,
       "require_effective": true,
       "tool": {
-        "neoforge:ingredient_type": "mantle:inverted",
+        "type": "mantle:inverted",
         "inverted_type": "mantle:tag",
         "tag": "tconstruct3:modifiable/broad"
       },
@@ -43,7 +43,7 @@
       "owner": "tconstruct3:overslime",
       "run_before": true,
       "tool": {
-        "neoforge:ingredient_type": "mantle:and",
+        "type": "mantle:and",
         "predicates": [
           {
             "type": "mantle:tag",
@@ -77,7 +77,7 @@
       "percent": true,
       "require_effective": true,
       "tool": {
-        "neoforge:ingredient_type": "mantle:tag",
+        "type": "mantle:tag",
         "tag": "tconstruct3:modifiable/broad"
       },
       "variables": {
@@ -96,13 +96,13 @@
       "owner": "tconstruct3:overslime",
       "run_before": true,
       "tool": {
-        "neoforge:ingredient_type": "mantle:tag",
+        "type": "mantle:tag",
         "tag": "tconstruct3:modifiable/broad"
       }
     },
     {
       "type": "tconstruct3:attribute",
-      "attribute": "minecraft:generic.attack_speed",
+      "attribute": "minecraft:attack_speed",
       "formula": [
         "$overslime",
         "$level",
@@ -110,7 +110,7 @@
         0.15,
         "*"
       ],
-      "operation": "multiply_total",
+      "operation": "add_multiplied_total",
       "slots": [
         "mainhand"
       ],
@@ -183,7 +183,7 @@
       },
       "owner": "tconstruct3:overslime",
       "tool": {
-        "neoforge:ingredient_type": "mantle:tag",
+        "type": "mantle:tag",
         "tag": "tconstruct3:modifiable/ranged"
       }
     }

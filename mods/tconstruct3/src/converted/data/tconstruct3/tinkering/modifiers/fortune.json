@@ -12,7 +12,7 @@
       "level": 1,
       "name": "minecraft:fortune",
       "tool": {
-        "neoforge:ingredient_type": "mantle:tag",
+        "type": "mantle:tag",
         "tag": "tconstruct3:modifiable/harvest"
       }
     },
@@ -27,7 +27,7 @@
         "head"
       ],
       "tool": {
-        "neoforge:ingredient_type": "mantle:tag",
+        "type": "mantle:tag",
         "tag": "tconstruct3:modifiable/armor/worn"
       }
     },
@@ -39,9 +39,9 @@
     },
     {
       "type": "tconstruct3:attribute",
-      "attribute": "minecraft:generic.luck",
+      "attribute": "minecraft:luck",
       "each_level": 1.0,
-      "operation": "addition",
+      "operation": "add_value",
       "slots": [
         "mainhand",
         "offhand",
@@ -51,7 +51,7 @@
         "head"
       ],
       "tool": {
-        "neoforge:ingredient_type": "mantle:tag",
+        "type": "mantle:tag",
         "tag": "tconstruct3:modifiable/armor/worn"
       }
     }

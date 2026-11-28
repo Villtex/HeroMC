@@ -24,15 +24,15 @@
       "damage_source": "mantle:can_protect",
       "each_level": 1.25,
       "tool": {
-        "neoforge:ingredient_type": "mantle:tag",
+        "type": "mantle:tag",
         "tag": "tconstruct3:modifiable/armor"
       }
     },
     {
       "type": "tconstruct3:attribute",
-      "attribute": "minecraft:generic.movement_speed",
+      "attribute": "minecraft:movement_speed",
       "each_level": -0.1,
-      "operation": "multiply_base",
+      "operation": "add_multiplied_base",
       "slots": [
         "mainhand",
         "offhand",
@@ -46,7 +46,7 @@
       "type": "tconstruct3:attribute",
       "attribute": "minecraft:gravity",
       "each_level": 0.05,
-      "operation": "multiply_total",
+      "operation": "add_multiplied_total",
       "slots": [
         "mainhand",
         "offhand",

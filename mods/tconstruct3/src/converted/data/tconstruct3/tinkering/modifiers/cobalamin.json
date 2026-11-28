@@ -9,9 +9,9 @@
   "modules": [
     {
       "type": "tconstruct3:attribute",
-      "attribute": "minecraft:generic.attack_speed",
+      "attribute": "minecraft:attack_speed",
       "each_level": 0.05,
-      "operation": "multiply_total",
+      "operation": "add_multiplied_total",
       "slots": [
         "mainhand",
         "offhand",
@@ -26,7 +26,7 @@
       "type": "tconstruct3:attribute",
       "attribute": "tconstruct3:player.use_item_speed",
       "each_level": 0.1,
-      "operation": "addition",
+      "operation": "add_value",
       "slots": [
         "mainhand",
         "offhand",
@@ -41,7 +41,7 @@
       "type": "tconstruct3:attribute",
       "attribute": "tconstruct3:player.mining_speed_multiplier",
       "each_level": 0.15,
-      "operation": "multiply_total",
+      "operation": "add_multiplied_total",
       "slots": [
         "mainhand",
         "offhand",

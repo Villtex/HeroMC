@@ -11,7 +11,7 @@
       "type": "tconstruct3:attribute",
       "attribute": "tconstruct3:generic.knockback_multiplier",
       "each_level": 0.2,
-      "operation": "multiply_base",
+      "operation": "add_multiplied_base",
       "slots": [
         "mainhand",
         "offhand",

@@ -9,9 +9,9 @@
   "modules": [
     {
       "type": "tconstruct3:attribute",
-      "attribute": "minecraft:generic.max_health",
+      "attribute": "minecraft:max_health",
       "each_level": 2.0,
-      "operation": "addition",
+      "operation": "add_value",
       "slots": [
         "mainhand",
         "offhand",

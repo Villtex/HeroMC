@@ -314,12 +314,15 @@ def stack(o, where):
     return o
 
 
-def recipe_like(o, where, key=None):
-    """Generic walk over recipe-shaped data: ingredient keys -> ingredients, output keys -> stacks."""
+def recipe_like(o, where, key=None, predicates=frozenset()):
+    """Generic walk over recipe-shaped data: ingredient keys -> ingredients, output keys -> stacks.
+    Keys in predicates hold Mantle/Tinkers predicates (never ingredients) and are left alone."""
     if isinstance(o, dict):
         out = {}
         for k, v in o.items():
-            if k == 'key' and isinstance(v, dict):
+            if k in predicates:
+                out[k] = recipe_like(v, where, k, predicates) if not isinstance(v, dict) or 'type' not in v and 'tag' not in v and 'item' not in v else v
+            elif k == 'key' and isinstance(v, dict):
                 out[k] = {s: ingredient(i, where) for s, i in v.items()}
             elif k in ING_KEYS and isinstance(v, (dict, list)) and not (isinstance(v, list) and v and isinstance(v[0], str)):
                 out[k] = ingredient(v, where)
@@ -328,10 +331,32 @@ def recipe_like(o, where, key=None):
             elif k == 'results' and isinstance(v, dict):
                 out[k] = {rk: stack(rv, where) for rk, rv in v.items()}
             else:
-                out[k] = recipe_like(v, where, k)
+                out[k] = recipe_like(v, where, k, predicates)
         return out
     if isinstance(o, list):
-        return [recipe_like(v, where, key) for v in o]
+        return [recipe_like(v, where, key, predicates) for v in o]
+    return o
+
+
+# Teil 27e: in Tinkers data, "tool" and "match" are item predicates (mantle:tag, mantle:inverted, has_modifier ...)
+TINKERING_PREDICATE_KEYS = frozenset({'tool', 'match'})
+# 26.3 names of attribute operations and of the vanilla attributes (1.20.1 "generic." / "player." prefixes)
+ATTRIBUTE_OPERATIONS = {'addition': 'add_value', 'multiply_base': 'add_multiplied_base', 'multiply_total': 'add_multiplied_total'}
+
+
+def attributes_263(o):
+    """Attribute IDs and operation names of 1.20.1 -> 26.3, for Tinkers data (modules, tool definitions)."""
+    if isinstance(o, dict):
+        out = {}
+        for k, v in o.items():
+            if k == 'operation' and 'attribute' in o and isinstance(v, str) and v in ATTRIBUTE_OPERATIONS:
+                v = ATTRIBUTE_OPERATIONS[v]
+            elif k == 'attribute' and isinstance(v, str) and re.match(r'^minecraft:(generic|player|zombie|horse)\.', v):
+                v = 'minecraft:' + v.split('.', 1)[1]
+            out[k] = attributes_263(v)
+        return out
+    if isinstance(o, list):
+        return [attributes_263(v) for v in o]
     return o
 
 
@@ -739,7 +764,7 @@ def convert(o, cat, rest, where):
     elif cat == 'loot_modifier':
         o = loot_modifier(o, where)
     elif cat in ('tinkering', 'mantle'):
-        o = recipe_like(o, where)
+        o = attributes_263(recipe_like(o, where, predicates=TINKERING_PREDICATE_KEYS if cat == 'tinkering' else frozenset()))
         if rest.startswith('mantle/loot_injectors') or rest.startswith('mantle/loot'):
             for pool in o.get('pools', []) if isinstance(o, dict) else []:
                 pool['entries'] = [loot_entry(e, where) for e in pool.get('entries', [])]

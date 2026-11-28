@@ -10,10 +10,10 @@
     {
       "type": "tconstruct3:max_armor_attribute",
       "allow_broken": false,
-      "attribute": "minecraft:generic.knockback_resistance",
+      "attribute": "minecraft:knockback_resistance",
       "each_level": 0.05,
       "held_tag": "tconstruct3:modifiable/held",
-      "operation": "addition"
+      "operation": "add_value"
     },
     {
       "type": "tconstruct3:protection",

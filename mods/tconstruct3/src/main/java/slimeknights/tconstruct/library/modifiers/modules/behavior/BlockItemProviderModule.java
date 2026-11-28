@@ -27,16 +27,15 @@ import java.util.List;
  * @param damage The amount of damage it takes to provide one block (can be 0)
  * @param condition Other conditions that you might want to condition the providing on, such as only happening on certain tool types.
  */
-public record BlockItemProviderModule(ItemStack item, int damage, ModifierCondition<IToolStackView> condition) implements ModifierModule, BlockItemProviderModifierHook, ModifierCondition.ConditionalModule<IToolStackView> {
+public record BlockItemProviderModule(slimeknights.mantle.recipe.helper.ItemOutput itemOutput, int damage, ModifierCondition<IToolStackView> condition) implements ModifierModule, BlockItemProviderModifierHook, ModifierCondition.ConditionalModule<IToolStackView> {
+  /** Port (Teil 27e): the stack is made on first use, 26.3 has no item components while data loads */
+  public ItemStack item() {
+    return itemOutput.get();
+  }
+
     private static final List<ModuleHook<?>> DEFAULT_HOOKS = List.of(ModifierHooks.BLOCK_ITEM_PROVIDER);
     public static final RecordLoadable<BlockItemProviderModule> LOADER = RecordLoadable.create(
-      ItemStackLoadable.REQUIRED_ITEM_NBT.validate((stack, error) -> {
-        Item item = stack.getItem();
-        if (item instanceof BlockItem) {
-          return stack;
-        }
-        throw error.create(String.format("Expected item %s to be instance of BlockItem, but was %s instead", Loadables.ITEM.getKey(item), item.getClass().getName()));
-      }).requiredField("item", BlockItemProviderModule::item),
+      slimeknights.mantle.recipe.helper.ItemOutput.Loadable.REQUIRED_ITEM.requiredField("item()", BlockItemProviderModule::itemOutput),
       IntLoadable.FROM_ZERO.defaultField("tool_damage", 1, BlockItemProviderModule::damage),
       ModifierCondition.TOOL_FIELD,
       BlockItemProviderModule::new);
@@ -53,13 +52,13 @@ public record BlockItemProviderModule(ItemStack item, int damage, ModifierCondit
 
     @Override
     public ItemStack getBlockItemStack(IToolStackView tool, ModifierEntry modifier, @Nullable LivingEntity entity) {
-        return !tool.isBroken() && condition.matches(tool, modifier) ? item : ItemStack.EMPTY;
+        return !tool.isBroken() && condition.matches(tool, modifier) ? item() : ItemStack.EMPTY;
     }
 
     @Override
     public boolean consumeBlockItem(IToolStackView tool, ModifierEntry modifier, ItemStack backingStack, @Nullable LivingEntity entity) {
-        // if this is not our item, then we did not provide it so we should avoid consuming
-        if (item != backingStack) return false;
+        // if this is not our item(), then we did not provide it so we should avoid consuming
+        if (item() != backingStack) return false;
 
         // we did provide it, so damage and show animation if possible
         if (damage > 0) {

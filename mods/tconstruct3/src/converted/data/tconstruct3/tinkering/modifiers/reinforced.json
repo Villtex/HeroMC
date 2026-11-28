@@ -27,7 +27,7 @@
         "max": 5
       },
       "tool": {
-        "neoforge:ingredient_type": "tconstruct3:has_modifier",
+        "type": "tconstruct3:has_modifier",
         "check": "all",
         "level": 0,
         "modifier": {
@@ -49,7 +49,7 @@
         "min": 6
       },
       "tool": {
-        "neoforge:ingredient_type": "tconstruct3:has_modifier",
+        "type": "tconstruct3:has_modifier",
         "check": "all",
         "level": 0,
         "modifier": {

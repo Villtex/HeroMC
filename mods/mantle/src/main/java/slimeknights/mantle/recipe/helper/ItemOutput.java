@@ -183,6 +183,36 @@ public abstract class ItemOutput implements Supplier<ItemStack> {
     }
   }
 
+  /** Port: output whose stack is made on first use, see {@link Loadable} */
+  private static class OfLazy extends ItemOutput {
+    private final Supplier<ItemStack> factory;
+    private final int count;
+    private ItemStack cachedStack;
+
+    private OfLazy(Supplier<ItemStack> factory, int count) {
+      this.factory = factory;
+      this.count = count;
+    }
+
+    @Override
+    public ItemStack get() {
+      if (cachedStack == null) {
+        cachedStack = factory.get();
+      }
+      return cachedStack;
+    }
+
+    @Override
+    public int getCount() {
+      return cachedStack != null ? cachedStack.getCount() : count;
+    }
+
+    @Override
+    public JsonElement serialize(boolean writeCount) {
+      return writeCount ? ItemStackLoadable.OPTIONAL_STACK_NBT.serialize(get()) : ItemStackLoadable.OPTIONAL_ITEM_NBT.serialize(get());
+    }
+  }
+
   /** Class for an output that is just a stack */
   @RequiredArgsConstructor
   private static class OfStack extends ItemOutput {
@@ -291,7 +321,33 @@ public abstract class ItemOutput implements Supplier<ItemStack> {
         }
         return fromTag(tag, count, NBTLoadable.ALLOW_STRING.getOrDefault(json, "nbt", null));
       }
-      return fromStack(stack.deserialize(json, context));
+      return lazy(json, context);
+    }
+
+    /**
+     * Port: 26.3 item stacks need bound components, which are not there while data loads ("Components not bound
+     * yet"). The item is checked now, the stack is made on first use.
+     */
+    private ItemOutput lazy(JsonElement element, TypedMap context) {
+      String key = null;
+      if (element.isJsonPrimitive()) {
+        key = element.getAsString();
+      } else if (element.isJsonObject()) {
+        JsonObject json = element.getAsJsonObject();
+        JsonElement id = json.has("id") ? json.get("id") : json.get("item");
+        if (id != null && id.isJsonPrimitive()) {
+          key = id.getAsString();
+        }
+      }
+      if (key != null) {
+        net.minecraft.resources.Identifier location = net.minecraft.resources.Identifier.tryParse(key);
+        if (location == null || !net.minecraft.core.registries.BuiltInRegistries.ITEM.containsKey(location)) {
+          throw new com.google.gson.JsonSyntaxException("Unable to parse item as registry minecraft:item does not contain ID " + key);
+        }
+      }
+      JsonElement copy = element.deepCopy();
+      int count = readCount && copy.isJsonObject() ? GsonHelper.getAsInt(copy.getAsJsonObject(), "count", 1) : 1;
+      return new OfLazy(() -> copy.isJsonPrimitive() ? stack.convert(copy, "result", context) : stack.deserialize(copy.getAsJsonObject(), context), count);
     }
 
     @Override
@@ -299,7 +355,7 @@ public abstract class ItemOutput implements Supplier<ItemStack> {
       // if it's a primitive, parse it directly with the stack logic
       // that handles single items and ensures both count and non-empty
       if (element.isJsonPrimitive()) {
-        return fromStack(stack.convert(element, key, context));
+        return lazy(element, context);
       }
       return deserialize(GsonHelper.convertToJsonObject(element, key), context);
     }

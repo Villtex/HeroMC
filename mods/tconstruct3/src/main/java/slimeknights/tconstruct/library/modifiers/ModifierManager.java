@@ -215,8 +215,17 @@ public class ModifierManager extends JsonReloadListener {
     this.enchantmentTagMap = new LinkedHashMap<>();
     for (Resource resource : pResourceManager.getResourceStack(ENCHANTMENT_MAP)) {
       JsonObject enchantmentJson = JsonHelper.getJson(resource, ENCHANTMENT_MAP);
+      // port (Teil 27e): leave out files whose "neoforge:conditions" fail (world type), and skip the key itself
+      String conditionsKey = net.neoforged.neoforge.common.conditions.ConditionalOps.DEFAULT_CONDITIONS_KEY;
+      if (enchantmentJson != null && enchantmentJson.has(conditionsKey)
+          && !slimeknights.mantle.util.CraftingHelper.processConditions(GsonHelper.getAsJsonArray(enchantmentJson, conditionsKey), slimeknights.mantle.data.listener.JsonReloadListener.currentConditionContext())) {
+        continue;
+      }
       if (enchantmentJson != null) {
         for (Entry<String,JsonElement> entry : enchantmentJson.entrySet()) {
+          if (entry.getKey().equals(conditionsKey)) {
+            continue;
+          }
           try {
             // parse the modifier first, its the same in both cases
             String key = entry.getKey();

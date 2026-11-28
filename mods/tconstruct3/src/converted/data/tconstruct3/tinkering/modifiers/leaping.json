@@ -11,7 +11,7 @@
       "type": "tconstruct3:attribute",
       "attribute": "tconstruct3:generic.jump_boost",
       "each_level": 1.0,
-      "operation": "addition",
+      "operation": "add_value",
       "slots": [
         "mainhand",
         "offhand",
@@ -25,7 +25,7 @@
       "type": "tconstruct3:attribute",
       "attribute": "tconstruct3:generic.safe_fall_distance",
       "each_level": 1.0,
-      "operation": "addition",
+      "operation": "add_value",
       "slots": [
         "mainhand",
         "offhand",

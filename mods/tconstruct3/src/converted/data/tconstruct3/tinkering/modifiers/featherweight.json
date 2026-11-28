@@ -24,15 +24,15 @@
       "damage_source": "mantle:can_protect",
       "each_level": -0.625,
       "tool": {
-        "neoforge:ingredient_type": "mantle:tag",
+        "type": "mantle:tag",
         "tag": "tconstruct3:modifiable/armor"
       }
     },
     {
       "type": "tconstruct3:attribute",
-      "attribute": "minecraft:generic.movement_speed",
+      "attribute": "minecraft:movement_speed",
       "each_level": 0.05,
-      "operation": "multiply_base",
+      "operation": "add_multiplied_base",
       "slots": [
         "mainhand",
         "offhand",
@@ -42,7 +42,7 @@
         "head"
       ],
       "tool": {
-        "neoforge:ingredient_type": "mantle:tag",
+        "type": "mantle:tag",
         "tag": "tconstruct3:modifiable/armor"
       }
     },
@@ -50,7 +50,7 @@
       "type": "tconstruct3:attribute",
       "attribute": "tconstruct3:player.use_item_speed",
       "each_level": 0.05,
-      "operation": "addition",
+      "operation": "add_value",
       "slots": [
         "mainhand",
         "offhand",
@@ -60,7 +60,7 @@
         "head"
       ],
       "tool": {
-        "neoforge:ingredient_type": "mantle:tag",
+        "type": "mantle:tag",
         "tag": "tconstruct3:modifiable/armor"
       },
       "tooltip_style": "percent"

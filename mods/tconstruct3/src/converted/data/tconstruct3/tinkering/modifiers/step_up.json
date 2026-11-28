@@ -11,7 +11,7 @@
       "type": "tconstruct3:attribute",
       "attribute": "minecraft:step_height",
       "each_level": 0.5,
-      "operation": "addition",
+      "operation": "add_value",
       "slots": [
         "feet",
         "legs",

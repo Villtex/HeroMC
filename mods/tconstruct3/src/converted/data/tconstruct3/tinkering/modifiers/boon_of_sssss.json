@@ -12,7 +12,7 @@
       "attribute": "tconstruct3:generic.good_effect_duration_multiplier",
       "each_level": 0.1,
       "flat": 0.15,
-      "operation": "multiply_base",
+      "operation": "add_multiplied_base",
       "slots": [
         "mainhand",
         "offhand",

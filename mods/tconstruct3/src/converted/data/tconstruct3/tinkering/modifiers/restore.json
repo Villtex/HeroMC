@@ -26,7 +26,7 @@
         "flat": 0.25
       },
       "tool": {
-        "neoforge:ingredient_type": "mantle:tag",
+        "type": "mantle:tag",
         "tag": "tconstruct3:modifiable/armor"
       }
     }

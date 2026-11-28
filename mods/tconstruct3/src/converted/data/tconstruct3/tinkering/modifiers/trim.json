@@ -15,7 +15,7 @@
       "each_level": 1,
       "name": "defense",
       "tool": {
-        "neoforge:ingredient_type": "mantle:inverted",
+        "type": "mantle:inverted",
         "hook": "tconstruct3:trim_trait",
         "inverted_type": "tconstruct3:has_hook"
       }

@@ -12,7 +12,7 @@
       "expanded": 1.0,
       "per_level": 1.0,
       "tool": {
-        "neoforge:ingredient_type": "tconstruct3:has_modifier",
+        "type": "tconstruct3:has_modifier",
         "check": "all",
         "modifier": {
           "type": "tconstruct3:single",

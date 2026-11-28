@@ -15,7 +15,7 @@
       },
       "each_level": 3.0,
       "tool": {
-        "neoforge:ingredient_type": "tconstruct3:has_modifier",
+        "type": "tconstruct3:has_modifier",
         "check": "all",
         "level": 0,
         "modifier": {

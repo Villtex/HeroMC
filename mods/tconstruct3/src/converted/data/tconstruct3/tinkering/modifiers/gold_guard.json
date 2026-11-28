@@ -9,10 +9,10 @@
   "modules": [
     {
       "type": "tconstruct3:golden_attribute",
-      "attribute": "minecraft:generic.max_health",
+      "attribute": "minecraft:max_health",
       "each_level": 4.0,
       "flat": 4.0,
-      "operation": "addition"
+      "operation": "add_value"
     },
     {
       "type": "tconstruct3:volatile_flag",

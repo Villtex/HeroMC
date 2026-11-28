@@ -18,7 +18,7 @@
       ],
       "slots": 1,
       "tool": {
-        "neoforge:ingredient_type": "mantle:tag",
+        "type": "mantle:tag",
         "tag": "tconstruct3:modifiable/ancient"
       }
     },
@@ -28,7 +28,7 @@
       "match": "abilities",
       "slots": -1,
       "tool": {
-        "neoforge:ingredient_type": "mantle:inverted",
+        "type": "mantle:inverted",
         "inverted_type": "mantle:tag",
         "tag": "tconstruct3:modifiable/ancient"
       }
@@ -39,7 +39,7 @@
       "match": "abilities",
       "slots": -1,
       "tool": {
-        "neoforge:ingredient_type": "mantle:tag",
+        "type": "mantle:tag",
         "tag": "tconstruct3:modifiable/ancient"
       }
     },
