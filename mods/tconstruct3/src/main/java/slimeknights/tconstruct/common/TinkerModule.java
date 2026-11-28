@@ -105,7 +105,7 @@ public abstract class TinkerModule {
     LOOT_CONDITIONS.register(bus);
     LOOT_FUNCTIONS.register(bus);
     LOOT_ENTRIES.register(bus);
-    // TODO 27f: TinkerRecipeTypes.init(bus);
+    slimeknights.tconstruct.library.recipe.TinkerRecipeTypes.init(bus); // Teil 27e: modifier recipe types (TODO 27f: casting, melting, ...)
   }
 
   /**

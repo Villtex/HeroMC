@@ -64,6 +64,16 @@ public final class TConstruct {
         // modules (Teil 27d: only the tool parts; 1.20.1 registered all Tinker* modules here)
         new TinkerCommons(modBus);
         new TinkerToolParts();
+        new slimeknights.tconstruct.tools.TinkerModifiers(modBus);
+        // Teil 27e: modifier library (1.20.1 TinkerModifiers constructor and TinkerTools#commonSetup)
+        slimeknights.tconstruct.library.modifiers.util.DynamicModifier.init();
+        slimeknights.tconstruct.library.modifiers.fluid.FluidEffectManager.INSTANCE.init();
+        slimeknights.tconstruct.library.tools.capability.ToolCapabilityProvider.register(slimeknights.tconstruct.library.tools.capability.fluid.ToolFluidCapability.Provider::new);
+        slimeknights.tconstruct.library.tools.capability.ToolCapabilityProvider.register(slimeknights.tconstruct.library.tools.capability.inventory.ToolInventoryCapability.Provider::new);
+        slimeknights.tconstruct.library.tools.capability.ToolCapabilityProvider.register((stack, tool) -> new slimeknights.tconstruct.library.tools.capability.ToolEnergyCapability.Provider(tool));
+        slimeknights.tconstruct.library.tools.capability.ToolCapabilityProvider.registerCapability(net.neoforged.neoforge.capabilities.Capabilities.Fluid.ITEM);
+        slimeknights.tconstruct.library.tools.capability.ToolCapabilityProvider.registerCapability(net.neoforged.neoforge.capabilities.Capabilities.Item.ITEM);
+        slimeknights.tconstruct.library.tools.capability.ToolCapabilityProvider.registerCapability(net.neoforged.neoforge.capabilities.Capabilities.Energy.ITEM);
         modBus.register(new TinkerAttributes(modBus));
         modBus.addListener(net.neoforged.neoforge.registries.RegisterEvent.class, slimeknights.tconstruct.tools.TinkerTools::registerSerializers);
         modBus.addListener(net.neoforged.neoforge.registries.RegisterEvent.class, TinkerCommons::registerSerializers);

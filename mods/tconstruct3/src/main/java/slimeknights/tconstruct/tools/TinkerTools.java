@@ -71,7 +71,14 @@ public final class TinkerTools {
   /** Teil 27d: the loaders of the tool definition modules, AOE iterators and tool predicates (1.20.1 TinkerTools#registerRecipeSerializers) */
   public static void registerSerializers(RegisterEvent event) {
     if (event.getRegistryKey() == Registries.RECIPE_SERIALIZER) {
-      // TODO 27e/27f: tool stats of modules (overslime, tank, energy, edible), ToolHookIngredient, MeltingFluidEffectiveModule
+      // Teil 27e: tool stats of the modifier modules (TODO 27f: ToolHookIngredient, MeltingFluidEffectiveModule)
+      slimeknights.tconstruct.library.tools.stat.ToolStats.register(slimeknights.tconstruct.library.modifiers.modules.capacity.OverslimeModule.OVERSLIME_STAT);
+      slimeknights.tconstruct.library.tools.stat.ToolStats.register(slimeknights.tconstruct.library.tools.capability.fluid.ToolTankHelper.CAPACITY_STAT);
+      slimeknights.tconstruct.library.tools.stat.ToolStats.register(slimeknights.tconstruct.library.tools.capability.ToolEnergyCapability.MAX_STAT);
+      slimeknights.tconstruct.library.tools.stat.ToolStats.registerConditional(slimeknights.tconstruct.library.modifiers.modules.interaction.edible.EdibleModule.HUNGER);
+      slimeknights.tconstruct.library.tools.stat.ToolStats.registerConditional(slimeknights.tconstruct.library.modifiers.modules.interaction.edible.EdibleModule.SATURATION);
+      slimeknights.tconstruct.library.tools.stat.ToolStats.register(slimeknights.tconstruct.library.modifiers.modules.interaction.edible.EdibleModule.EAT_DURATION);
+      slimeknights.tconstruct.library.tools.stat.ToolStats.registerConditional(slimeknights.tconstruct.library.modifiers.modules.interaction.edible.EdibleModule.COUNTER_CHANCE);
       ToolModule.LOADER.register(TConstruct.getResource("empty"), ToolModule.EMPTY.getLoader());
       // tool definition components
       ToolModule.LOADER.register(TConstruct.getResource("base_stats"), SetStatsModule.LOADER);

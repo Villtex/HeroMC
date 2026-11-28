@@ -87,8 +87,8 @@ public class TinkerNetwork extends NetworkWrapper {
     // TODO 27g/27h/27i: instance.registerPacket(TinkerControlPacket.class, TinkerControlPacket::read, NetworkDirection.PLAY_TO_SERVER);
     // TODO 27g/27h/27i: instance.registerPacket(InteractWithAirPacket.class, InteractWithAirPacket::read, NetworkDirection.PLAY_TO_SERVER);
     instance.registerPacket(UpdateModifiersPacket.class, UpdateModifiersPacket::new, NetworkDirection.PLAY_TO_CLIENT);
-    // TODO 27e: instance.registerPacket(UpdateFluidEffectsPacket.class, UpdateFluidEffectsPacket::decode, NetworkDirection.PLAY_TO_CLIENT);
-    // TODO 27g/27h/27i: instance.registerPacket(PushBlockRowPacket.class, PushBlockRowPacket::new, NetworkDirection.PLAY_TO_CLIENT);
+    instance.registerPacket(slimeknights.tconstruct.library.modifiers.fluid.UpdateFluidEffectsPacket.class, slimeknights.tconstruct.library.modifiers.fluid.UpdateFluidEffectsPacket::decode, NetworkDirection.PLAY_TO_CLIENT);
+    instance.registerPacket(slimeknights.tconstruct.tools.network.PushBlockRowPacket.class, slimeknights.tconstruct.tools.network.PushBlockRowPacket::new, NetworkDirection.PLAY_TO_CLIENT);
 
     // smeltery
     // TODO 27g/27h/27i: instance.registerPacket(FluidUpdatePacket.class, FluidUpdatePacket::new, NetworkDirection.PLAY_TO_CLIENT);

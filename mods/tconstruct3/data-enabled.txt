@@ -4,7 +4,9 @@
 # Teil 27d: materials (definitions, stats, traits) and their tags, tool definitions.
 # Station layouts (data/tconstruct3/tinkering/station_layouts/) come with the tables in 27g: three of them filter
 # on the item tag tconstruct3:modifiable, whose items come in 27h.
-# Modifiers (data/tconstruct3/tinkering/modifiers/) need the modifier modules of 27e.
 data/tconstruct3/tinkering/materials/
 data/tconstruct3/tinkering/tags/materials/
 data/tconstruct3/tinkering/tool_definitions/
+# Teil 27e: modifiers and fluid effects (! lines: modifiers whose modules or items come in later parts).
+data/tconstruct3/tinkering/modifiers/
+data/tconstruct3/tinkering/fluid_effects/

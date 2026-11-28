@@ -138,14 +138,18 @@ side="BOTH"
 
     // Data converted from a newer original (Teil 27, mods/tconstruct3/tools/convert_data.py writes src/converted/):
     // only the paths listed in data-enabled.txt (prefixes such as data/tconstruct3/tinkering/materials/, one per
-    // line, # comments) go into the jar, so data whose loaders and registry entries are not ported yet stays out.
+    // line, # comments, !path excludes) go into the jar, so data whose loaders and registry entries are not ported yet stays out.
     if (file('src/converted').isDirectory()) {
         def enabled = file('data-enabled.txt').exists()
                 ? file('data-enabled.txt').readLines()*.trim().findAll { it && !it.startsWith('#') } : []
         def convertedData = tasks.register('convertedData', Sync) {
             inputs.property('enabled', enabled)
+            // a line starting with ! excludes a path again (data of an enabled folder that needs a later part)
+            def included = enabled.findAll { !it.startsWith('!') }
+            def excluded = enabled.findAll { it.startsWith('!') }.collect { it.substring(1).trim() }
             from('src/converted') {
-                include(enabled.isEmpty() ? ['nothing-enabled'] : enabled.collect { it.endsWith('/') ? it + '**' : it })
+                include(included.isEmpty() ? ['nothing-enabled'] : included.collect { it.endsWith('/') ? it + '**' : it })
+                exclude(excluded.collect { it.endsWith('/') ? it + '**' : it })
             }
             into layout.buildDirectory.dir('generated/converted-data')
         }
