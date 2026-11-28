@@ -136,6 +136,23 @@ RULES = [
     (r'\bimport net\.minecraft\.world\.level\.storage\.loot\.parameters\.LootContextParam;', 'import net.minecraft.util.context.ContextKey;'),
     (r'\bLootContextParam<', 'ContextKey<'),
     (r'\bEntityType\.([A-Z][A-Z_0-9]+)\b', r'EntityTypes.\1'),  # vanilla entity type constants moved to EntityTypes
+    (r'\bFMLLoader\.isProduction\(\)', 'net.neoforged.fml.loading.FMLEnvironment.isProduction()'),
+    (r'\bModLoader\.get\(\)\.', 'ModLoader.'),
+    # harvest tiers: Tinkers 3 keeps its own Tier/TierSortingRegistry (26.3 has neither)
+    (r'\bimport net\.minecraft\.world\.item\.Tiers?;', 'import slimeknights.tconstruct.library.utils.Tier;'),
+    (r'\bimport net\.neoforged\.neoforge\.common\.TierSortingRegistry;', 'import slimeknights.tconstruct.library.utils.TierSortingRegistry;'),
+    (r'\bTiers\.([A-Z]+)\b', r'Tier.\1'),
+    (r'\bimport net\.minecraft\.advancements\.CriteriaTriggers;', 'import net.minecraft.advancements.triggers.CriteriaTriggers;'),
+    (r'\.getFilterFlag\(\)', '.getId()'),  # EquipmentSlot: same numbers 0-5, 26.3 adds BODY 6 and SADDLE 7
+    # attribute modifiers (26.3: ids instead of UUIDs, renamed operations)
+    (r'\bOperation\.ADDITION\b', 'Operation.ADD_VALUE'),
+    (r'\bOperation\.MULTIPLY_BASE\b', 'Operation.ADD_MULTIPLIED_BASE'),
+    (r'\bOperation\.MULTIPLY_TOTAL\b', 'Operation.ADD_MULTIPLIED_TOTAL'),
+    (r'\bItem\.BASE_ATTACK_DAMAGE_UUID\b', 'Item.BASE_ATTACK_DAMAGE_ID'),
+    (r'\bItem\.BASE_ATTACK_SPEED_UUID\b', 'Item.BASE_ATTACK_SPEED_ID'),
+    (r'\bItemStack\.ATTRIBUTE_MODIFIER_FORMAT\b', 'net.minecraft.world.item.component.ItemAttributeModifiers.ATTRIBUTE_MODIFIER_FORMAT'),
+    (r'\boperation\.toValue\(\)', 'operation.id()'),
+    (r'\bItemAbilities\.SHIELD_BLOCK\b', 'ItemAbilities.SHIELD_BLOCK'),
     # LazyOptional is gone in NeoForge 26.3; Tinkers 3 keeps it as its own stand-in (Teil 27d)
     (r'\bnet\.minecraftforge\.common\.util\.LazyOptional\b', 'slimeknights.tconstruct.library.utils.LazyOptional'),
     (r'\bnet\.minecraftforge\.common\.util\.', 'net.neoforged.neoforge.common.util.'),

@@ -514,7 +514,7 @@ public class TinkerTags {
     public static final TagKey<Item> RANGED_QUICK_CHARGE = local("modifiable/ranged/quick_charge");
     /** Ranged items supporting the bounce upgrade */
     public static final TagKey<Item> RANGED_BOUNCE = local("modifiable/ranged/bounce");
-    /** Bows supporting the ballista modifier. In code, only {@link slimeknights.tconstruct.library.tools.item.ranged.ModifiableBowItem} implements this functionality. */
+    /** Bows supporting the ballista modifier. In code, only {@code slimeknights.tconstruct.library.tools.item.ranged.ModifiableBowItem} implements this functionality. */
     public static final TagKey<Item> BALLISTAS = local("modifiable/ranged/ballistas");
     // book
     /** Ranged tools to show in materials and you and the encyclopedia. */

@@ -156,28 +156,25 @@ public class MaterialIdNBT {
    * @return  MaterialNBT instance
    */
   public static MaterialIdNBT from(ItemStack stack) {
-    CompoundTag nbt = stack.getTag();
-    if (nbt != null) {
-      return readFromNBT(slimeknights.mantle.util.TagHelper.getList(nbt, ToolStack.TAG_MATERIALS, Tag.TAG_STRING));
+    MaterialNBT materials = stack.get(ToolDataComponents.MATERIALS.get());
+    if (materials != null) {
+      return readFromNBT(materials.serializeToNBT());
     }
     return EMPTY;
   }
 
   /** Helper to quickly fetch a single material ID from a stack. Use {@link #from(ItemStack)} and {@link #getMaterial(int)} instead if you need to parse multiple. */
   public static MaterialVariantId getMaterial(ItemStack stack, int index) {
-    CompoundTag nbt = stack.getTag();
-    if (nbt != null) {
-      ListTag list = slimeknights.mantle.util.TagHelper.getList(nbt, ToolStack.TAG_MATERIALS, Tag.TAG_STRING);
-      if (index < list.size()) {
-        return tryParse(list.getStringOr(index, ""));
-      }
+    MaterialNBT materials = stack.get(ToolDataComponents.MATERIALS.get());
+    if (materials != null && index < materials.size()) {
+      return materials.get(index).getVariant();
     }
     return MaterialId.UNKNOWN;
   }
 
   /** Writes this material list to the given stack */
   public ItemStack updateStack(ItemStack stack) {
-    stack.getOrCreateTag().put(ToolStack.TAG_MATERIALS, serializeToNBT());
+    stack.set(ToolDataComponents.MATERIALS.get(), MaterialNBT.readFromNBT(serializeToNBT()));
     return stack;
   }
 

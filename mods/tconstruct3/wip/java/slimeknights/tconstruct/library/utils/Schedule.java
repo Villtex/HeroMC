@@ -89,7 +89,7 @@ public class Schedule {
 
     /** Deserializes an entry from NBT */
     public static ScheduleEntry deserialize(CompoundTag nbt) {
-      return new ScheduleEntry(nbt.getIntOr("task", 0), nbt.getInt("time"));
+      return new ScheduleEntry(nbt.getIntOr("task", 0), nbt.getIntOr("time", 0));
     }
   }
 

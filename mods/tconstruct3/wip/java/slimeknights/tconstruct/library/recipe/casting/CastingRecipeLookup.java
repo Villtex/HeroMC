@@ -3,7 +3,6 @@ package slimeknights.tconstruct.library.recipe.casting;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
-import slimeknights.mantle.recipe.data.ItemNameOutput;
 import slimeknights.mantle.recipe.helper.ItemOutput;
 import slimeknights.mantle.util.RegistryHelper;
 import slimeknights.tconstruct.common.recipe.RecipeCacheInvalidator;
@@ -57,8 +56,7 @@ public class CastingRecipeLookup {
     TagKey<Item> tag = output.getTag();
     if (tag != null) {
       registerCastable(tag);
-    // item name output fails here, but that only happens at datagen so just ignore that
-    } else if (!output.isEmpty() && output.getClass() != ItemNameOutput.class) {
+    } else if (!output.isEmpty()) {
       registerCastable(output.get().getItem());
     }
   }

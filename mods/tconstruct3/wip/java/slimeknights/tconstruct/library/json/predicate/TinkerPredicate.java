@@ -21,7 +21,6 @@ import slimeknights.mantle.data.predicate.item.ItemPredicate;
 import slimeknights.tconstruct.library.modifiers.hook.armor.OnAttackedModifierHook;
 import slimeknights.tconstruct.library.recipe.casting.CastingRecipeLookup;
 import slimeknights.tconstruct.library.recipe.melting.MeltingRecipeLookup;
-import slimeknights.tconstruct.library.tools.item.ModifiableItem;
 
 import javax.annotation.Nullable;
 
@@ -37,7 +36,7 @@ public class TinkerPredicate {
   /** Players that are targeting a block */
   public static LivingEntityPredicate TARGETING_BLOCK = LivingEntityPredicate.simple(living -> {
     if (living instanceof Player player) {
-      return ModifiableItem.blockRayTrace(living.level(), player, ClipContext.Fluid.NONE).getType() == Type.BLOCK;
+      return net.minecraft.world.item.Item.getPlayerPOVHitResult(living.level(), player, ClipContext.Fluid.NONE).getType() == Type.BLOCK;
     }
     return false;
   });

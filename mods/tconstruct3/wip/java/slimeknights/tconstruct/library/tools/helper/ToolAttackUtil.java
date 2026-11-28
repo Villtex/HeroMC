@@ -1,5 +1,7 @@
 package slimeknights.tconstruct.library.tools.helper;
 
+import net.minecraft.core.Holder;
+
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.game.ClientboundSetEntityMotionPacket;
@@ -51,7 +53,7 @@ import java.util.function.DoubleSupplier;
 
 public class ToolAttackUtil {
   private static final float DEGREE_TO_RADIANS = (float)Math.PI / 180F;
-  private static final AttributeModifier ANTI_KNOCKBACK_MODIFIER = new AttributeModifier(TConstruct.MOD_ID + ".anti_knockback", 1f, Operation.ADDITION);
+  private static final AttributeModifier ANTI_KNOCKBACK_MODIFIER = new AttributeModifier(TConstruct.getResource("anti_knockback"), 1f, Operation.ADD_VALUE);
   /** @deprecated new default for {@link ToolAttackContext.Builder} */
   @Deprecated(forRemoval = true)
   public static final DoubleSupplier NO_COOLDOWN = () -> 1.0;
@@ -66,7 +68,7 @@ public class ToolAttackUtil {
    * @param attribute  Attribute to fetch
    * @return  Base value of the attribute
    */
-  public static float getToolAttribute(IToolStackView tool, LivingEntity holder, Attribute attribute, float toolValue) {
+  public static float getToolAttribute(IToolStackView tool, LivingEntity holder, Holder<Attribute> attribute, float toolValue) {
     // fetch attribute instance
     AttributeInstance instance = holder.getAttribute(attribute);
     if (instance == null) {
@@ -83,16 +85,18 @@ public class ToolAttackUtil {
     // remove mainhand attributes
     ItemStack mainStack = CombatHelper.getMainhandAttributeStack(holder);
     if (!mainStack.isEmpty()) {
-      for (AttributeModifier modifier : mainStack.getAttributeModifiers(EquipmentSlot.MAINHAND).get(attribute)) {
-        modifiers.get(modifier.getOperation()).remove(modifier);
-      }
+      mainStack.forEachModifier(EquipmentSlot.MAINHAND, (check, modifier) -> {
+        if (check.equals(attribute)) {
+          modifiers.get(modifier.operation()).remove(modifier);
+        }
+      });
     }
 
     // start adding in "mainhand" attributes for the given slot and attribute
-    BiConsumer<Attribute, AttributeModifier> attributeConsumer = (check, modifier) -> {
-      if (check == attribute) {
+    BiConsumer<Holder<Attribute>,AttributeModifier> attributeConsumer = (check, modifier) -> {
+      if (check.equals(attribute)) {
         // this will remove duplicates due to AttributeModifier equals only checking UUID
-        modifiers.get(modifier.getOperation()).add(modifier);
+        modifiers.get(modifier.operation()).add(modifier);
       }
     };
     for (ModifierEntry entry : tool.getModifierList()) {
@@ -111,12 +115,8 @@ public class ToolAttackUtil {
 
     float criticalModifier = isCritical ? 1.5f : 1.0f;
     if (attackerPlayer != null) {
-      CriticalHitEvent hitResult = CommonHooks.getCriticalHit(attackerPlayer, target, isCritical, criticalModifier);
-      if (hitResult != null) {
-        criticalModifier = hitResult.getDamageModifier();
-      } else {
-        criticalModifier = 1;
-      }
+      CriticalHitEvent hitResult = CommonHooks.fireCriticalHit(attackerPlayer, target, isCritical, criticalModifier);
+      criticalModifier = hitResult.isCriticalHit() ? hitResult.getDamageMultiplier() : 1;
     }
     return criticalModifier;
   }
@@ -237,7 +237,8 @@ public class ToolAttackUtil {
 
     // removed: sword special attack check and logic, replaced by this
     Entity targetEntity = context.getTarget();
-    boolean didHit = targetEntity.hurt(context.makeDamageSource(), damage);
+    DamageSource attackSource = context.makeDamageSource();
+    boolean didHit = hurt(targetEntity, attackSource, damage);
 
     // reset hand to make sure we don't mess with vanilla tools
     ModifierLootingHandler.setLootingSlot(attackerLiving, EquipmentSlot.MAINHAND);
@@ -272,7 +273,7 @@ public class ToolAttackUtil {
     // apply knockback
     if (knockback > 0) {
       if (targetLiving != null) {
-        targetLiving.knockback(knockback, Mth.sin(attackerLiving.getYRot() * DEGREE_TO_RADIANS), -Mth.cos(attackerLiving.getYRot() * DEGREE_TO_RADIANS));
+        targetLiving.knockback(knockback, Mth.sin(attackerLiving.getYRot() * DEGREE_TO_RADIANS), -Mth.cos(attackerLiving.getYRot() * DEGREE_TO_RADIANS), attackSource, damageDealt);
       } else {
         targetEntity.push(-Mth.sin(attackerLiving.getYRot() * DEGREE_TO_RADIANS) * knockback, 0.1d, Mth.cos(attackerLiving.getYRot() * DEGREE_TO_RADIANS) * knockback);
       }
@@ -310,8 +311,8 @@ public class ToolAttackUtil {
 
     // deal attacker thorns damage
     attackerLiving.setLastHurtMob(targetEntity);
-    if (targetLiving != null) {
-      EnchantmentHelper.doPostHurtEffects(targetLiving, attackerLiving);
+    if (targetLiving != null && level instanceof ServerLevel serverLevel) {
+      EnchantmentHelper.doPostAttackEffects(serverLevel, targetLiving, attackSource);
     }
 
     // apply modifier effects
@@ -323,8 +324,8 @@ public class ToolAttackUtil {
     // hurt resistance adjustment for high speed weapons
     float speed = tool.getStats().get(ToolStats.ATTACK_SPEED);
     int time = Math.round(20f / speed);
-    if (time < targetEntity.invulnerableTime) {
-      targetEntity.invulnerableTime = (targetEntity.invulnerableTime + time) / 2;
+    if (time < targetEntity.getInvulnerableTime()) {
+      targetEntity.setInvulnerableTime((targetEntity.getInvulnerableTime() + time) / 2);
     }
 
     // final attack hooks
@@ -391,7 +392,7 @@ public class ToolAttackUtil {
   public static AttributeInstance disableKnockback(@Nullable LivingEntity living) {
     if (living != null) {
       AttributeInstance instance = living.getAttribute(Attributes.KNOCKBACK_RESISTANCE);
-      if (instance != null && !instance.hasModifier(ANTI_KNOCKBACK_MODIFIER)) {
+      if (instance != null && !instance.hasModifier(ANTI_KNOCKBACK_MODIFIER.id())) {
         instance.addTransientModifier(ANTI_KNOCKBACK_MODIFIER);
         return instance;
       }
@@ -420,11 +421,11 @@ public class ToolAttackUtil {
     float oldLastDamage = living == null ? 0 : living.lastHurt;
 
     // set hurt resistance time to 0 because we always want to deal damage in traits
-    int lastInvulnerableTime = target.invulnerableTime;
-    target.invulnerableTime = 0;
-    boolean hit = target.hurt(source, damage);
+    int lastInvulnerableTime = target.getInvulnerableTime();
+    target.setInvulnerableTime(0);
+    boolean hit = hurt(target, source, damage);
     // reset to the old time so bows work right
-    target.invulnerableTime = lastInvulnerableTime;
+    target.setInvulnerableTime(lastInvulnerableTime);
     // set total received damage, important for AI and stuff
     if (living != null) {
       living.lastHurt += oldLastDamage;
@@ -494,10 +495,10 @@ public class ToolAttackUtil {
   }
 
   /**
-   * @deprecated use {@link #getToolAttribute(IToolStackView, LivingEntity, Attribute, float)}
+   * @deprecated use {@link #getToolAttribute(IToolStackView, LivingEntity, Holder, float)}
    */
   @Deprecated(forRemoval = true)
-  public static float getSlotAttribute(IToolStackView tool, LivingEntity holder, EquipmentSlot slotType, Attribute attribute, float toolValue) {
+  public static float getSlotAttribute(IToolStackView tool, LivingEntity holder, EquipmentSlot slotType, Holder<Attribute> attribute, float toolValue) {
     if (slotType == EquipmentSlot.MAINHAND) {
       return (float) holder.getAttributeValue(attribute);
     }
@@ -512,7 +513,7 @@ public class ToolAttackUtil {
    * @param holder   Entity holding the tool
    * @param slotType Slot with tool
    * @return  Attack damage
-   * @deprecated use {@link #getSlotAttribute(IToolStackView, LivingEntity, EquipmentSlot, Attribute, float)}
+   * @deprecated use {@link #getSlotAttribute(IToolStackView, LivingEntity, EquipmentSlot, Holder, float)}
    */
   @Deprecated(forRemoval = true)
   public static float getAttributeAttackDamage(IToolStackView tool, LivingEntity holder, EquipmentSlot slotType) {
@@ -527,9 +528,9 @@ public class ToolAttackUtil {
   @Deprecated(forRemoval = true)
   public static boolean dealDefaultDamage(LivingEntity attacker, Entity target, float damage) {
     if (attacker instanceof Player player) {
-      return target.hurt(attacker.damageSources().playerAttack(player), damage);
+      return hurt(target, attacker.damageSources().playerAttack(player), damage);
     }
-    return target.hurt(attacker.damageSources().mobAttack(attacker), damage);
+    return hurt(target, attacker.damageSources().mobAttack(attacker), damage);
   }
 
   /** @deprecated use {@link #performAttack(IToolStackView, ToolAttackContext)} */
@@ -579,5 +580,10 @@ public class ToolAttackUtil {
   @Deprecated(forRemoval = true)
   public static boolean extraEntityAttack(IToolStackView tool, LivingEntity attackerLiving, InteractionHand hand, Entity targetEntity) {
     return attackEntity(tool, attackerLiving, hand, targetEntity, NO_COOLDOWN, true);
+  }
+
+  /** Damages an entity, true if it was damaged (26.3: only the server deals damage, {@code hurt} returns nothing) */
+  public static boolean hurt(Entity target, DamageSource source, float damage) {
+    return target.level() instanceof ServerLevel server && target.hurtServer(server, source, damage);
   }
 }

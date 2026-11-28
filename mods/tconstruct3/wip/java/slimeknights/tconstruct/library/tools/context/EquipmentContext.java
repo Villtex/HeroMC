@@ -29,16 +29,16 @@ public class EquipmentContext {
   @Getter
   private final LivingEntity entity;
   /** Determines if the tool in the given slot was fetched */
-  protected final boolean[] fetchedTool = new boolean[6];
+  protected final boolean[] fetchedTool = new boolean[8] /* 26.3: EquipmentSlot ids 0-7 incl. BODY, SADDLE */;
   /** Array of tools currently on the entity */
-  protected final IToolStackView[] toolsInSlots = new IToolStackView[6];
+  protected final IToolStackView[] toolsInSlots = new IToolStackView[8];
   /** Cached tinker data capability, saves capability lookup times slightly */
   private LazyOptional<TinkerDataCapability.Holder> tinkerData = null;
 
   /** Creates a context with an existing tool instance */
   public static EquipmentContext withTool(LivingEntity living, IToolStackView tool, EquipmentSlot slot) {
     EquipmentContext context = new EquipmentContext(living);
-    int index = slot.getFilterFlag();
+    int index = slot.getId();
     context.toolsInSlots[index] = tool;
     context.fetchedTool[index] = true;
     return context;
@@ -65,7 +65,7 @@ public class EquipmentContext {
    */
   @Nullable
   public IToolStackView getToolInSlot(EquipmentSlot slotType) {
-    int index = slotType.getFilterFlag();
+    int index = slotType.getId();
     if (!fetchedTool[index]) {
       toolsInSlots[index] = getToolStackIfModifiable(entity.getItemBySlot(slotType));
       fetchedTool[index] = true;

@@ -107,10 +107,7 @@ public abstract class LayoutIcon {
     public JsonObject toJson() {
       JsonObject json = new JsonObject();
       json.add("item", Loadables.ITEM.serialize(stack.getItem()));
-      CompoundTag tag = stack.getTag();
-      if (tag != null) {
-        json.addProperty("nbt", tag.toString());
-      }
+      // 26.3: components are not written (only used by the removed datagen)
       return json;
     }
   }

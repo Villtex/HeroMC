@@ -19,6 +19,7 @@ allprojects {
         options.release = 25
         // show all errors of a port at once (javac stops at 100 by default)
         options.compilerArgs += ['-Xmaxerrs', '100000']
+        if (rootProject.hasProperty('javacRounds')) { options.compilerArgs += ['-XprintRounds'] }
     }
 
     neoForge {

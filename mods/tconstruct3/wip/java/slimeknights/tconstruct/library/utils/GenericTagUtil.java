@@ -24,12 +24,18 @@ public class GenericTagUtil {
   private GenericTagUtil() {}
 
   /** Converts the results of the loader into a map from tag keys to lists */
-  public static <T> Map<TagKey<T>,List<T>> mapLoaderResults(ResourceKey<? extends Registry<T>> registry, Map<Identifier,Collection<T>> map) {
+  public static <T> Map<TagKey<T>,List<T>> mapLoaderResults(ResourceKey<? extends Registry<T>> registry, Map<Identifier,? extends Collection<T>> map) {
     return map.entrySet().stream().collect(Collectors.toUnmodifiableMap(entry -> TagKey.create(registry, entry.getKey()), entry -> List.copyOf(entry.getValue())));
   }
 
+  /** Loads tags of a non-registry type (materials, modifiers) from the given folder; 26.3 {@code TagLoader} needs load and build separately */
+  public static <T> Map<Identifier,List<T>> loadTags(net.minecraft.server.packs.resources.ResourceManager manager, String folder, Function<Identifier,java.util.Optional<? extends T>> lookup) {
+    net.minecraft.tags.TagLoader<T> loader = new net.minecraft.tags.TagLoader<>((id, required) -> lookup.apply(id), folder);
+    return loader.build(loader.load(manager));
+  }
+
   /** Creates a map of reverse tags for the given map of tags */
-  public static <T, I extends Identifier> Map<I,Set<TagKey<T>>> reverseTags(Function<T,I> keyMapper, Map<TagKey<T>,? extends Collection<T>> tags) {
+  public static <T, I> Map<I,Set<TagKey<T>>> reverseTags(Function<T,I> keyMapper, Map<TagKey<T>,? extends Collection<T>> tags) {
     Map<I,ImmutableSet.Builder<TagKey<T>>> reverseTags = new HashMap<>();
     Function<I,Builder<TagKey<T>>> makeSet = id -> ImmutableSet.builder();
     for (Entry<TagKey<T>,? extends Collection<T>> entry : tags.entrySet()) {

@@ -4,14 +4,15 @@ import lombok.Getter;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
-import slimeknights.tconstruct.library.tools.definition.ModifiableArmorMaterial;
 
 import javax.annotation.Nullable;
 
 /** Helper class to keep track the max modifier level in a modifier, floats, keeps track of max slot, and tracks all 6 slots */
 public class ModifierMaxLevel {
+  /** Armor slots, in the order of 1.20.1 {@code ModifiableArmorMaterial.ARMOR_SLOTS} */
+  private static final EquipmentSlot[] ARMOR_SLOTS = {EquipmentSlot.FEET, EquipmentSlot.LEGS, EquipmentSlot.CHEST, EquipmentSlot.HEAD};
   /** Level for each slot */
-  private final float[] levels = new float[6];
+  private final float[] levels = new float[8] /* 26.3: EquipmentSlot ids 0-7 */;
   /** Max level across all slots */
   @Getter
   private float max = 0;
@@ -21,10 +22,10 @@ public class ModifierMaxLevel {
 
   /** Sets the given value in the structure */
   public void set(EquipmentSlot slot, float level) {
-    float oldLevel = levels[slot.getFilterFlag()];
+    float oldLevel = levels[slot.getId()];
     if (level != oldLevel) {
       // first, update level
-      levels[slot.getFilterFlag()] = level;
+      levels[slot.getId()] = level;
       // if larger than max, new max
       if (level >= max) {
         max = level;
@@ -32,8 +33,8 @@ public class ModifierMaxLevel {
       } else if (slot == maxSlot) {
         // if the old level was max, find new max
         max = 0;
-        for (EquipmentSlot armorSlot : ModifiableArmorMaterial.ARMOR_SLOTS) {
-          float value = levels[armorSlot.getFilterFlag()];
+        for (EquipmentSlot armorSlot : ARMOR_SLOTS) {
+          float value = levels[armorSlot.getId()];
           if (value > max) {
             max = value;
             maxSlot = armorSlot;

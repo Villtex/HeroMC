@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.enchantment.Enchantment;
 import slimeknights.mantle.network.NetworkEvent.Context;
@@ -34,7 +35,7 @@ public class UpdateModifiersPacket implements IThreadsafePacket {
   /** Map of modifier redirect ID pairs */
   private Map<ModifierId,ModifierId> redirects;
   /** Map of enchantment to modifier pair */
-  private final Map<Enchantment,Modifier> enchantmentMap;
+  private final Map<ResourceKey<Enchantment>,Modifier> enchantmentMap;
   /** Collection of all enchantment tag mappings */
   private final Map<TagKey<Enchantment>, Modifier> enchantmentTagMappings;
 
@@ -100,11 +101,11 @@ public class UpdateModifiersPacket implements IThreadsafePacket {
     this.tags = GenericTagUtil.decodeTags(buffer, ModifierManager.REGISTRY_KEY, id -> getModifier(modifiers, new ModifierId(id)));
 
     // read in enchantment to modifier mapping
-    ImmutableMap.Builder<Enchantment,Modifier> enchantmentBuilder = ImmutableMap.builder();
+    ImmutableMap.Builder<ResourceKey<Enchantment>,Modifier> enchantmentBuilder = ImmutableMap.builder();
     size = buffer.readVarInt();
     for (int i = 0; i < size; i++) {
       enchantmentBuilder.put(
-        buffer.readRegistryIdUnsafe(BuiltInRegistries.ENCHANTMENT),
+        ResourceKey.create(Registries.ENCHANTMENT, buffer.readIdentifier()),
         getModifier(modifiers, new ModifierId(buffer.readIdentifier())));
     }
     enchantmentMap = enchantmentBuilder.build();
@@ -140,18 +141,18 @@ public class UpdateModifiersPacket implements IThreadsafePacket {
       buffer.writeIdentifier(entry.getKey());
       buffer.writeIdentifier(entry.getValue());
     }
-    GenericTagUtil.encodeTags(buffer, Modifier::getId, this.tags);
+    GenericTagUtil.encodeTags(buffer, modifier -> modifier.getId().location(), this.tags);
 
     // enchantment mapping
     buffer.writeVarInt(enchantmentMap.size());
-    for (Entry<Enchantment,Modifier> entry : enchantmentMap.entrySet()) {
-      buffer.writeRegistryIdUnsafe(BuiltInRegistries.ENCHANTMENT, entry.getKey());
-      buffer.writeIdentifier(entry.getValue().getId());
+    for (Entry<ResourceKey<Enchantment>,Modifier> entry : enchantmentMap.entrySet()) {
+      buffer.writeIdentifier(entry.getKey().identifier());
+      buffer.writeIdentifier(entry.getValue().getId().location());
     }
     buffer.writeVarInt(enchantmentTagMappings.size());
     for (Entry<TagKey<Enchantment>, Modifier> entry : enchantmentTagMappings.entrySet()) {
       buffer.writeIdentifier(entry.getKey().location());
-      buffer.writeIdentifier(entry.getValue().getId());
+      buffer.writeIdentifier(entry.getValue().getId().location());
     }
   }
 

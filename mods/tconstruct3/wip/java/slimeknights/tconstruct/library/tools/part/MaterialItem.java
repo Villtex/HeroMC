@@ -51,7 +51,13 @@ public class MaterialItem extends Item implements IMaterialItem {
 
   @Override
   public MaterialVariantId getMaterial(ItemStack stack) {
-    return getMaterialId(stack.getTag());
+    return getMaterialId(stack);
+  }
+
+  /** Gets the material ID of the given stack (26.3: data component tconstruct3:material) */
+  public static MaterialVariantId getMaterialId(ItemStack stack) {
+    MaterialVariantId id = stack.get(slimeknights.tconstruct.library.tools.nbt.ToolDataComponents.MATERIAL.get());
+    return id == null ? MaterialId.UNKNOWN : id;
   }
 
   @Nullable

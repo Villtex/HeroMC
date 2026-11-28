@@ -28,6 +28,7 @@ import java.util.function.Function;
  *   <li>{@link #PERSISTENT_DATA} {@code tconstruct3:persistent_data} ({@code tic_persistent}),
  *       {@link #VOLATILE_DATA} {@code tconstruct3:volatile_data} ({@code tic_volatile_data}): modifier data</li>
  *   <li>{@link #BROKEN} {@code tconstruct3:broken} ({@code tic_broken}); damage is {@code minecraft:damage}</li>
+ *   <li>{@link #DISPLAY} {@code tconstruct3:display}: display only tool or part ({@code tic_display})</li>
  *   <li>{@link #MATERIAL} {@code tconstruct3:material}: material of a part or material item ({@code Material})</li>
  * </ul>
  * Components are immutable: {@link ToolStack} writes them back after each change.
@@ -45,6 +46,8 @@ public final class ToolDataComponents {
   public static final DeferredHolder<DataComponentType<?>, DataComponentType<CompoundTag>> PERSISTENT_DATA = REGISTER.registerComponentType("persistent_data", builder -> builder.persistent(CompoundTag.CODEC).networkSynchronized(ByteBufCodecs.COMPOUND_TAG));
   public static final DeferredHolder<DataComponentType<?>, DataComponentType<CompoundTag>> VOLATILE_DATA = REGISTER.registerComponentType("volatile_data", builder -> builder.persistent(CompoundTag.CODEC).networkSynchronized(ByteBufCodecs.COMPOUND_TAG));
   public static final DeferredHolder<DataComponentType<?>, DataComponentType<Unit>> BROKEN = REGISTER.registerComponentType("broken", builder -> builder.persistent(Unit.CODEC).networkSynchronized(net.minecraft.network.codec.StreamCodec.unit(Unit.INSTANCE)));
+  /** Marks a tool or part only shown in a book or JEI, never used ({@code tic_display}): its stats are not rebuilt */
+  public static final DeferredHolder<DataComponentType<?>, DataComponentType<Unit>> DISPLAY = REGISTER.registerComponentType("display", builder -> builder.persistent(Unit.CODEC).networkSynchronized(net.minecraft.network.codec.StreamCodec.unit(Unit.INSTANCE)));
   public static final DeferredHolder<DataComponentType<?>, DataComponentType<MaterialVariantId>> MATERIAL = REGISTER.registerComponentType("material", builder -> builder.persistent(MaterialVariantId.CODEC).networkSynchronized(ByteBufCodecs.fromCodec(MaterialVariantId.CODEC)));
 
   /** Registers the components */

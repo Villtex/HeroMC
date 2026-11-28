@@ -6,15 +6,11 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.ItemLike;
 import slimeknights.tconstruct.TConstruct;
 import slimeknights.tconstruct.library.modifiers.modules.build.RarityModule;
-import slimeknights.tconstruct.library.tools.IndestructibleItemEntity;
 import slimeknights.tconstruct.library.tools.definition.ToolDefinition;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
 
 /** Base interface for all tools that can receive modifiers */
 public interface IModifiable extends ItemLike {
-  /** @deprecated use {@link IndestructibleItemEntity#INDESTRUCTIBLE_ENTITY} */
-  @Deprecated(forRemoval = true)
-  Identifier INDESTRUCTIBLE_ENTITY = IndestructibleItemEntity.INDESTRUCTIBLE_ENTITY;
   /** Volatile boolean key to make a tool spawn an indestructable entity */
   Identifier SHINY = TConstruct.getResource("shiny");
   /** Volatile int key to increase a tool's range */

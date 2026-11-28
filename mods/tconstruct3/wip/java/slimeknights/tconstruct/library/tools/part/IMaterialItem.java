@@ -36,8 +36,8 @@ public interface IMaterialItem extends ItemLike, IMaterialUser {
 
   /** Sets the material on the existing stack, bypassing the valid material check. */
   default ItemStack setMaterialForced(ItemStack stack, MaterialVariantId material) {
-    // FIXME: it is odd that we assume the NBT format in this method but not in getMaterial, should be consistent in the implementation location
-    stack.getOrCreateTag().putString(MATERIAL_TAG, material.toString());
+    // 26.3: data component tconstruct3:material (1.20.1 NBT key "Material")
+    stack.set(slimeknights.tconstruct.library.tools.nbt.ToolDataComponents.MATERIAL.get(), material);
     return stack;
   }
 

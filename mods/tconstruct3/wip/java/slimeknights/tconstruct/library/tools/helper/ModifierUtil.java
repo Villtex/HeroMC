@@ -28,9 +28,10 @@ import slimeknights.tconstruct.library.modifiers.ModifierId;
 import slimeknights.tconstruct.library.modifiers.hook.build.ConditionalStatModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.interaction.GeneralInteractionModifierHook;
 import slimeknights.tconstruct.library.tools.definition.module.ToolHooks;
-import slimeknights.tconstruct.library.tools.item.ranged.ModifiableLauncherItem;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolStack;
+import slimeknights.tconstruct.library.tools.nbt.ToolDataComponents;
+import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import slimeknights.tconstruct.tools.TinkerTools;
 
@@ -44,6 +45,11 @@ import java.util.function.Consumer;
 /** Generic modifier hooks that don't quite fit elsewhere */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ModifierUtil {
+  /** Shield blocking, a Forge tool action of 1.20.1 that NeoForge 26.3 no longer defines */
+  public static final net.neoforged.neoforge.common.ItemAbility SHIELD_BLOCK = net.neoforged.neoforge.common.ItemAbility.get("shield_block");
+  /** Persistent data key of the ammo drawn back by a launcher ({@code ModifiableLauncherItem.KEY_DRAWBACK_AMMO}, 27h) */
+  private static final net.minecraft.resources.Identifier KEY_DRAWBACK_AMMO = slimeknights.tconstruct.TConstruct.getResource("drawback_ammo");
+
   /** Drops an item at the given position */
   public static void dropItem(Level level, double x, double y, double z, ItemStack stack) {
     if (!stack.isEmpty() && !level.isClientSide()) {
@@ -113,19 +119,9 @@ public final class ModifierUtil {
    */
   public static int getModifierLevel(ItemStack stack, ModifierId modifier) {
     if (!stack.isEmpty() && stack.is(TinkerTags.Items.MODIFIABLE)) {
-      CompoundTag nbt = stack.getTag();
-      if (nbt != null && slimeknights.mantle.util.TagHelper.contains(nbt, ToolStack.TAG_MODIFIERS, Tag.TAG_LIST)) {
-        ListTag list = slimeknights.mantle.util.TagHelper.getList(nbt, ToolStack.TAG_MODIFIERS, Tag.TAG_COMPOUND);
-        int size = list.size();
-        if (size > 0) {
-          String key = modifier.toString();
-          for (int i = 0; i < size; i++) {
-            CompoundTag entry = list.getCompoundOrEmpty(i);
-            if (key.equals(entry.getString(ModifierEntry.TAG_MODIFIER))) {
-              return entry.getIntOr(ModifierEntry.TAG_LEVEL, 0);
-            }
-          }
-        }
+      ModifierNBT modifiers = stack.get(ToolDataComponents.MODIFIERS.get());
+      if (modifiers != null) {
+        return modifiers.getLevel(modifier);
       }
     }
     return 0;
@@ -134,8 +130,8 @@ public final class ModifierUtil {
   /** Checks if the given stack has upgrades */
   public static boolean hasUpgrades(ItemStack stack) {
     if (!stack.isEmpty() && stack.is(TinkerTags.Items.MODIFIABLE)) {
-      CompoundTag nbt = stack.getTag();
-      return nbt != null && !slimeknights.mantle.util.TagHelper.getList(nbt, ToolStack.TAG_UPGRADES, Tag.TAG_COMPOUND).isEmpty();
+      ModifierNBT upgrades = stack.get(ToolDataComponents.UPGRADES.get());
+      return upgrades != null && !upgrades.isEmpty();
     }
     return false;
   }
@@ -150,53 +146,47 @@ public final class ModifierUtil {
     return slot.isArmor() || tool.hasTag(TinkerTags.Items.HELD);
   }
 
+  /** Volatile data of the stack, empty if none (26.3: data component) */
+  private static CompoundTag volatileData(ItemStack stack) {
+    CompoundTag tag = stack.get(ToolDataComponents.VOLATILE_DATA.get());
+    return tag == null ? new CompoundTag() : tag;
+  }
+
+  /** Persistent data of the stack, empty if none (26.3: data component) */
+  private static CompoundTag persistentData(ItemStack stack) {
+    CompoundTag tag = stack.get(ToolDataComponents.PERSISTENT_DATA.get());
+    return tag == null ? new CompoundTag() : tag;
+  }
+
   /** Shortcut to get a volatile flag when the tool stack is not needed otherwise */
   public static boolean checkVolatileFlag(ItemStack stack, Identifier flag) {
-    CompoundTag nbt = stack.getTag();
-    if (nbt != null && slimeknights.mantle.util.TagHelper.contains(nbt, ToolStack.TAG_VOLATILE_MOD_DATA, Tag.TAG_COMPOUND)) {
-      return nbt.getCompound(ToolStack.TAG_VOLATILE_MOD_DATA).getBoolean(flag.toString());
-    }
-    return false;
+    return volatileData(stack).getBooleanOr(flag.toString(), false);
   }
 
   /** Shortcut to get a persistent flag when the tool stack is not needed otherwise */
   public static boolean checkPersistentPresent(ItemStack stack, Identifier key) {
-    CompoundTag nbt = stack.getTag();
-    if (nbt != null && slimeknights.mantle.util.TagHelper.contains(nbt, ToolStack.TAG_VOLATILE_MOD_DATA, Tag.TAG_COMPOUND)) {
-      return nbt.getCompound(ToolStack.TAG_VOLATILE_MOD_DATA).contains(key.toString());
-    }
-    return false;
+    // note: 1.20.1 checked the volatile data here as well
+    return volatileData(stack).contains(key.toString());
   }
 
   /** Shortcut to get a volatile int value when the tool stack is not needed otherwise */
   public static int getVolatileInt(ItemStack stack, Identifier flag) {
-    CompoundTag nbt = stack.getTag();
-    if (nbt != null && slimeknights.mantle.util.TagHelper.contains(nbt, ToolStack.TAG_VOLATILE_MOD_DATA, Tag.TAG_COMPOUND)) {
-      return nbt.getCompound(ToolStack.TAG_VOLATILE_MOD_DATA).getInt(flag.toString());
-    }
-    return 0;
+    return volatileData(stack).getIntOr(flag.toString(), 0);
   }
 
   /** Shortcut to get a volatile int value when the tool stack is not needed otherwise */
   public static int getPersistentInt(ItemStack stack, Identifier flag, int defealtValue) {
-    CompoundTag nbt = stack.getTag();
-    if (nbt != null && slimeknights.mantle.util.TagHelper.contains(nbt, ToolStack.TAG_PERSISTENT_MOD_DATA, Tag.TAG_COMPOUND)) {
-      CompoundTag persistent = nbt.getCompoundOrEmpty(ToolStack.TAG_PERSISTENT_MOD_DATA);
-      String flagString = flag.toString();
-      if (persistent.contains(flagString, Tag.TAG_INT)) {
-        return persistent.getIntOr(flagString, 0);
-      }
+    CompoundTag persistent = persistentData(stack);
+    String flagString = flag.toString();
+    if (slimeknights.mantle.util.TagHelper.contains(persistent, flagString, Tag.TAG_INT)) {
+      return persistent.getIntOr(flagString, 0);
     }
     return defealtValue;
   }
 
   /** Shortcut to get a persistent string value when the tool stack is not needed otherwise */
   public static String getPersistentString(ItemStack stack, Identifier flag) {
-    CompoundTag nbt = stack.getTag();
-    if (nbt != null && slimeknights.mantle.util.TagHelper.contains(nbt, ToolStack.TAG_PERSISTENT_MOD_DATA, Tag.TAG_COMPOUND)) {
-      return nbt.getCompound(ToolStack.TAG_PERSISTENT_MOD_DATA).getString(flag.toString());
-    }
-    return "";
+    return persistentData(stack).getStringOr(flag.toString(), "");
   }
 
   /** Checks if a tool can perform the given action */
@@ -220,7 +210,7 @@ public final class ModifierUtil {
    * Allows your tool to block while charging up.
    */
   public static ItemUseAnimation blockWhileCharging(IToolStackView tool, ItemUseAnimation fallback) {
-    return canPerformAction(tool, ItemAbilities.SHIELD_BLOCK) ? ItemUseAnimation.BLOCK : fallback;
+    return canPerformAction(tool, slimeknights.tconstruct.library.tools.helper.ModifierUtil.SHIELD_BLOCK) ? ItemUseAnimation.BLOCK : fallback;
   }
 
   /** Calculates inaccuracy from the conditional tool stat. */
@@ -237,7 +227,7 @@ public final class ModifierUtil {
   /** Checks if this modifier is the one actively being used. Used for failure sound effects. */
   public static boolean isActiveModifier(IToolStackView tool, ModifierEntry modifier, ModifierEntry activeModifier) {
     // active modifier being us, or a bow is firing and no drawback ammo
-    return modifier == activeModifier || (activeModifier.getLevel() == 0 && !tool.getPersistentData().contains(ModifiableLauncherItem.KEY_DRAWBACK_AMMO));
+    return modifier == activeModifier || (activeModifier.getLevel() == 0 && !tool.getPersistentData().contains(KEY_DRAWBACK_AMMO));
   }
 
   /**

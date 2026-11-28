@@ -1,5 +1,7 @@
 package slimeknights.tconstruct.library.modifiers.modules.behavior;
 
+import net.minecraft.core.Holder;
+
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import net.minecraft.network.chat.Component;
@@ -79,7 +81,7 @@ public record AttributeModule(String unique, Attribute attribute, Operation oper
   public static UUID[] slotsToUUIDs(String name, Collection<EquipmentSlot> slots) {
     UUID[] slotUUIDs = new UUID[6];
     for (EquipmentSlot slot : slots) {
-      slotUUIDs[slot.getFilterFlag()] = getUUID(name, slot);
+      slotUUIDs[slot.getId()] = getUUID(name, slot);
     }
     return slotUUIDs;
   }
@@ -88,7 +90,7 @@ public record AttributeModule(String unique, Attribute attribute, Operation oper
   public static Set<EquipmentSlot> uuidsToSlots(UUID[] uuids) {
     Set<EquipmentSlot> set = EnumSet.noneOf(EquipmentSlot.class);
     for (EquipmentSlot slot : EquipmentSlot.values()) {
-      if (uuids[slot.getFilterFlag()] != null) {
+      if (uuids[slot.getId()] != null) {
         set.add(slot);
       }
     }
@@ -102,7 +104,7 @@ public record AttributeModule(String unique, Attribute attribute, Operation oper
   /** Gets the UUID for this slot */
   @Nullable
   private UUID getUUID(EquipmentSlot slot) {
-    return slotUUIDs[slot.getFilterFlag()];
+    return slotUUIDs[slot.getId()];
   }
 
   /** Creates an attribute for the given slot */
@@ -116,7 +118,7 @@ public record AttributeModule(String unique, Attribute attribute, Operation oper
   }
 
   @Override
-  public void addAttributes(IToolStackView tool, ModifierEntry modifier, EquipmentSlot slot, BiConsumer<Attribute,AttributeModifier> consumer) {
+  public void addAttributes(IToolStackView tool, ModifierEntry modifier, EquipmentSlot slot, BiConsumer<Holder<Attribute>,AttributeModifier> consumer) {
     if (condition.matches(tool, modifier)) {
       AttributeModifier attributeModifier = createModifier(tool, modifier, slot);
       if (attributeModifier != null) {

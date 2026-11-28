@@ -1,6 +1,6 @@
 package slimeknights.tconstruct.library.tools.helper;
 
-import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.advancements.triggers.CriteriaTriggers;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -29,7 +29,7 @@ public class ToolDamageUtil {
    * @param stack  Tool stack
    */
   public static void breakTool(ItemStack stack) {
-    stack.getOrCreateTag().putBoolean(ToolStack.TAG_BROKEN, true);
+    stack.set(slimeknights.tconstruct.library.tools.nbt.ToolDataComponents.BROKEN.get(), net.minecraft.util.Unit.INSTANCE);
   }
 
   /**
@@ -38,8 +38,7 @@ public class ToolDamageUtil {
    * @return  True if broken
    */
   public static boolean isBroken(ItemStack stack) {
-    CompoundTag nbt = stack.getTag();
-    return nbt != null && nbt.getBoolean(ToolStack.TAG_BROKEN);
+    return stack.has(slimeknights.tconstruct.library.tools.nbt.ToolDataComponents.BROKEN.get());
   }
 
   /**

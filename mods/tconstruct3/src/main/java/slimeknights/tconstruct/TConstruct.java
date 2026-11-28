@@ -33,4 +33,46 @@ public final class TConstruct {
     public static Identifier getResource(String name) {
         return Identifier.fromNamespaceAndPath(MOD_ID, name);
     }
+
+    /** Returns the given resource prefixed with the Tinkers namespace */
+    public static String resourceString(String res) {
+        return MOD_ID + ':' + res;
+    }
+
+    /** Prefixes the given unlocalized name with the Tinkers prefix */
+    public static String prefix(String name) {
+        return MOD_ID + "." + name.toLowerCase(Locale.US);
+    }
+
+    /** Makes a Tinker's description ID */
+    public static String makeDescriptionId(String type, String name) {
+        return type + "." + MOD_ID + "." + name;
+    }
+
+    /** Makes a translation key for the given name, such as {@code gui.tconstruct3.name} */
+    public static String makeTranslationKey(String base, String name) {
+        return net.minecraft.util.Util.makeDescriptionId(base, getResource(name));
+    }
+
+    /** Makes a translation text component for the given name */
+    public static MutableComponent makeTranslation(String base, String name) {
+        return Component.translatable(makeTranslationKey(base, name));
+    }
+
+    /** Makes a translation text component; arguments other than text, numbers and booleans become strings (26.3 rejects them) */
+    public static MutableComponent makeTranslation(String base, String name, Object... arguments) {
+        Object[] args = new Object[arguments.length];
+        for (int i = 0; i < arguments.length; i++) {
+            args[i] = TranslationHelper.arg(arguments[i]);
+        }
+        return Component.translatable(makeTranslationKey(base, name), args);
+    }
+
+    /** Called in the constructor of internal classes that addons should not extend */
+    public static void sealTinkersClass(Object self, String base, String solution) {
+        String name = self.getClass().getName();
+        if (!name.startsWith("slimeknights.tconstruct.")) {
+            throw new IllegalStateException(base + " being extended from invalid package " + name + ". " + solution);
+        }
+    }
 }
