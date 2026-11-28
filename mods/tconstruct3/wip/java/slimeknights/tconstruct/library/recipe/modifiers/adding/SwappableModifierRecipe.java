@@ -92,7 +92,7 @@ public class SwappableModifierRecipe extends ModifierRecipe {
     }
 
     // do not allow adding the modifier if this variant is already present
-    if (level > 0 && tool.getPersistentData().getString(modifier).equals(value)) {
+    if (level > 0 && tool.getPersistentData().getString(modifier.location()).equals(value)) {
       return RecipeResult.failure(ALREADY_PRESENT, result.get().getDisplayName(), variant);
     }
 
@@ -107,7 +107,7 @@ public class SwappableModifierRecipe extends ModifierRecipe {
     }
 
     // set the new value to the modifier
-    persistentData.putString(modifier, value);
+    persistentData.putString(modifier.location(), value);
 
     // add modifier if needed
     if (needsModifier) {
@@ -160,7 +160,7 @@ public class SwappableModifierRecipe extends ModifierRecipe {
       return checkSlots(tool, getSlots());
     }
     // if we already have it, ensure the variant is changing
-    if (tool.getPersistentData().getString(result).equals(value)) {
+    if (tool.getPersistentData().getString(result.location()).equals(value)) {
       return Component.translatable(ALREADY_PRESENT, this.result.get().getDisplayName(), variant);
     }
     return null;
@@ -174,7 +174,7 @@ public class SwappableModifierRecipe extends ModifierRecipe {
       super.applyModifier(tool);
     }
     // apply the variant
-    tool.getPersistentData().putString(result, value);
+    tool.getPersistentData().putString(result.location(), value);
   }
 
   /** Methods of formatting the variant string */

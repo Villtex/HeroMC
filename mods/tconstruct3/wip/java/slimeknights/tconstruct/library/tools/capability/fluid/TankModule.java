@@ -27,7 +27,6 @@ import slimeknights.tconstruct.library.tools.capability.fluid.ToolFluidCapabilit
 import slimeknights.tconstruct.library.tools.nbt.IToolContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ToolDataNBT;
-import slimeknights.tconstruct.smeltery.item.TankItem;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -197,7 +196,7 @@ public class TankModule implements HookProvider, FluidModifierHook, VolatileData
   public boolean overrideStackedOnOther(IToolStackView heldTool, ModifierEntry modifier, Slot slot, Player player) {
     ItemStack slotStack = slot.getItem();
     // must have something with possible fluid in the slot
-    if (!slotStack.isEmpty() && TankItem.mayHaveFluid(slotStack)) {
+    if (!slotStack.isEmpty() && mayHaveFluid(slotStack)) {
       // target must be stack size 1, if not then its not safe to modify it
       if (slotStack.getCount() == 1) {
         FluidTank tank = getTank(heldTool);
@@ -219,7 +218,7 @@ public class TankModule implements HookProvider, FluidModifierHook, VolatileData
   @Override
   public boolean overrideOtherStackedOnMe(IToolStackView slotTool, ModifierEntry modifier, ItemStack held, Slot slot, Player player, SlotAccess access) {
     // must have something with possible fluid held
-    if (!held.isEmpty() && TankItem.mayHaveFluid(held)) {
+    if (!held.isEmpty() && mayHaveFluid(held)) {
       FluidTank tank = getTank(slotTool);
       TransferResult result = FluidTransferHelper.interactWithStack(tank, held, TransferDirection.AUTO);
       // update tank if something happened
@@ -229,11 +228,27 @@ public class TankModule implements HookProvider, FluidModifierHook, VolatileData
         }
         helper.setFluid(slotTool, tank.getFluid());
         // update held item, assuming its actually held
-        TankItem.updateHeldItem(player, held, result.stack());
+        updateHeldItem(player, held, result.stack());
       }
 
       return true;
     }
     return false;
+  }
+
+  /* Teil 27e: from 1.20.1 TankItem (smeltery, Teil 27i), which calls these */
+
+  /** Checks if the stack may hold fluid for transfer */
+  public static boolean mayHaveFluid(ItemStack stack) {
+    return slimeknights.mantle.fluid.transfer.FluidContainerTransferManager.INSTANCE.mayHaveTransfer(stack) || slimeknights.mantle.fluid.compat.FluidHandlers.getItemHandler(stack).isPresent();
+  }
+
+  /** Updates the held item after a fluid transfer in a menu */
+  public static void updateHeldItem(net.minecraft.world.entity.player.Player player, ItemStack held, ItemStack result) {
+    if (player.containerMenu.getCarried() == held) {
+      player.containerMenu.setCarried(slimeknights.mantle.fluid.FluidTransferHelper.getOrTransferFilled(player, held, result));
+    } else if (!player.getInventory().add(result)) {
+      player.drop(result, false);
+    }
   }
 }

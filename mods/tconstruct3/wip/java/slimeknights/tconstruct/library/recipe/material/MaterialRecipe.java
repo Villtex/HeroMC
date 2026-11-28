@@ -90,7 +90,7 @@ public class MaterialRecipe implements ICustomOutputRecipe<ISingleStackContainer
 
   @Override
   public ItemStack getToastSymbol() {
-    return new ItemStack(TinkerTables.partBuilder);
+    return new ItemStack(TinkerTables.partBuilder.get());
   }
 
   @Override

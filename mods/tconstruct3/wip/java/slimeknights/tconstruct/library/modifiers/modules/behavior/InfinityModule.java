@@ -4,7 +4,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
-import net.minecraft.world.entity.projectile.AbstractArrow.Pickup;
+import net.minecraft.world.entity.projectile.arrow.AbstractArrow.Pickup;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import slimeknights.mantle.data.loadable.common.ItemStackLoadable;

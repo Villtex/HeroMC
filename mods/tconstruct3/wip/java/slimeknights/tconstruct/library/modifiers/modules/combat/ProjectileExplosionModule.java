@@ -30,7 +30,6 @@ import slimeknights.mantle.util.CombatHelper;
 import slimeknights.tconstruct.TConstruct;
 import slimeknights.tconstruct.common.TinkerDamageTypes;
 import slimeknights.tconstruct.common.TinkerTags;
-import slimeknights.tconstruct.gadgets.entity.EFLNExplosion;
 import slimeknights.tconstruct.library.json.LevelingValue;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
@@ -120,9 +119,10 @@ public record ProjectileExplosionModule(LevelingValue radius, float eflnBonus, L
         // controlled by persistent data so another modifier can set this, we use fins
         CustomExplosion explosion;
         if (persistentData.getBoolean(EFLN)) {
-          explosion = new EFLNExplosion(
-            world, location, radius + eflnBonus, projectile,
-            power, damageSource, knockback.computeForScale(level),
+          // TODO 27j: EFLNExplosion (spherical block pattern, gadgets); until then a normal explosion with the bonus
+          explosion = new CustomExplosion(
+            world, location, radius + eflnBonus, projectile, null,
+            power, damageSource, knockback.computeForScale(level), null,
             placeFire, blockInteraction
           );
         } else {

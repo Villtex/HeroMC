@@ -12,13 +12,15 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
-import net.neoforged.neoforge.common.capabilities.Capability;
-import net.neoforged.neoforge.common.capabilities.ForgeCapabilities;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.ItemCapability;
+import net.neoforged.neoforge.transfer.access.ItemAccess;
+import slimeknights.tconstruct.library.tools.capability.ToolAccessHandlers;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 import slimeknights.tconstruct.library.utils.LazyOptional;
 import slimeknights.mantle.inventory.compat.IItemHandler;
 import slimeknights.mantle.inventory.compat.IItemHandlerModifiable;
 import slimeknights.mantle.inventory.compat.ItemHandlerHelper;
-import net.neoforged.neoforge.network.NetworkHooks;
 import slimeknights.mantle.inventory.EmptyItemHandler;
 import slimeknights.tconstruct.TConstruct;
 import slimeknights.tconstruct.common.TinkerTags;
@@ -34,7 +36,6 @@ import slimeknights.tconstruct.library.tools.definition.module.display.ToolNameH
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.nbt.ModDataNBT;
-import slimeknights.tconstruct.tools.menu.ToolContainerMenu;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -492,25 +493,21 @@ public class ToolInventoryCapability extends InventoryModifierHookIterator<Modif
 
   /** Provider for an inventory tool capability */
   public static class Provider implements IToolCapabilityProvider {
-    private final LazyOptional<ToolInventoryCapability> handler;
     @SuppressWarnings("unused")
-    public Provider(ItemStack stack, Supplier<? extends IToolStackView> tool) {
-      handler = LazyOptional.of(() -> new ToolInventoryCapability(tool));
-    }
+    public Provider(ItemStack stack, Supplier<? extends IToolStackView> tool) {}
 
+    /** Teil 27e: {@code Capabilities.Item.ITEM} through {@link ToolAccessHandlers.Inventory} */
+    @Nullable
     @Override
-    public <T> LazyOptional<T> getCapability(IToolStackView tool, Capability<T> cap) {
-      if (cap == ForgeCapabilities.ITEM_HANDLER && tool.getVolatileData().getInt(TOTAL_SLOTS) > 0) {
-        return handler.cast();
+    @SuppressWarnings("unchecked")
+    public <T,C> T getCapability(IToolStackView tool, ItemCapability<T,C> cap, C context) {
+      if (cap == Capabilities.Item.ITEM && context instanceof ItemAccess access && tool.getVolatileData().getInt(TOTAL_SLOTS) > 0) {
+        return (T) new ToolAccessHandlers.Inventory(access);
       }
-      return LazyOptional.empty();
-    }
-
-    @Override
-    public void clearCache() {
-      handler.ifPresent(ToolInventoryCapability::clearCache);
+      return null;
     }
   }
+
 
 
   /* Helpers */
@@ -521,6 +518,15 @@ public class ToolInventoryCapability extends InventoryModifierHookIterator<Modif
   }
 
 
+  /** Factory of the tool inventory menu (Teil 27h: {@code ToolContainerMenu::new}) */
+  @FunctionalInterface
+  public interface MenuFactory {
+    net.minecraft.world.inventory.AbstractContainerMenu create(int id, Inventory inventory, ItemStack stack, IItemHandler handler, int slotIndex);
+  }
+  /** Set by the tool menu, null until then */
+  @Nullable
+  public static MenuFactory menuFactory = null;
+
   /** Opens the tool inventory container if an inventory is present on the given tool */
   public static InteractionResult tryOpenContainer(ItemStack stack, IToolStackView tool, Player player, EquipmentSlot slotType) {
     return tryOpenContainer(stack, tool, tool.getDefinition(), player, slotType);
@@ -530,7 +536,7 @@ public class ToolInventoryCapability extends InventoryModifierHookIterator<Modif
   public static InteractionResult tryOpenContainer(ItemStack stack, @Nullable IToolStackView tool, ToolDefinition definition, Player player, EquipmentSlot slotType) {
     return tryOpenContainer(stack, tool, definition, player, switch (slotType) {
       // mainhand is the hotbar selected slot
-      case MAINHAND -> player.getInventory().selected;
+      case MAINHAND -> player.getInventory().getSelectedSlot();
       // offhand is its own slot
       case OFFHAND -> Inventory.SLOT_OFFHAND;
       // armor starts from the end of inventory
@@ -540,12 +546,16 @@ public class ToolInventoryCapability extends InventoryModifierHookIterator<Modif
 
   /** Opens the tool inventory container if an inventory is present on the given tool */
   public static InteractionResult tryOpenContainer(ItemStack stack, @Nullable IToolStackView tool, ToolDefinition definition, Player player, int slotIndex) {
-    IItemHandler handler = stack.getCapability(ForgeCapabilities.ITEM_HANDLER).filter(cap -> cap instanceof IItemHandlerModifiable).orElse(EmptyItemHandler.INSTANCE);
+    // 26.3: the item capability only works on copies, the menu changes the live stack directly
+    IItemHandler handler = ModifierUtil.getVolatileInt(stack, TOTAL_SLOTS) > 0 ? new ToolInventoryCapability(() -> ToolStack.from(stack)) : EmptyItemHandler.INSTANCE;
     // open if we have any slots or we have a crafting table
     if (handler.getSlots() > 0 || ModifierUtil.checkVolatileFlag(stack, CRAFTING_TABLE) || ModifierUtil.checkVolatileFlag(stack, INVENTORY_CRAFTING)) {
       if (player instanceof ServerPlayer serverPlayer) {
-        NetworkHooks.openScreen(serverPlayer, new SimpleMenuProvider(
-          (id, inventory, p) -> new ToolContainerMenu(id, inventory, stack, handler, slotIndex),
+        if (menuFactory == null) {
+          return InteractionResult.PASS; // TODO 27h: ToolContainerMenu sets the factory
+        }
+        serverPlayer.openMenu(new SimpleMenuProvider(
+          (id, inventory, p) -> menuFactory.create(id, inventory, stack, handler, slotIndex),
           ToolNameHook.getName(definition, stack, tool)
         ), buf -> {
           buf.writeVarInt(slotIndex);
@@ -560,7 +570,7 @@ public class ToolInventoryCapability extends InventoryModifierHookIterator<Modif
           }
         });
       }
-      return InteractionResult.sidedSuccess(player.level().isClientSide());
+      return InteractionResult.SUCCESS;
     }
     return InteractionResult.PASS;
   }
@@ -568,7 +578,8 @@ public class ToolInventoryCapability extends InventoryModifierHookIterator<Modif
   /** Called when a tool item entity is destroyed to drop its inventory items. */
   public static void onDestroyed(ItemEntity entity) {
     if (!entity.level().isClientSide()) {
-      IItemHandler handler = entity.getItem().getCapability(ForgeCapabilities.ITEM_HANDLER).orElse(EmptyItemHandler.INSTANCE);
+      ItemStack stack = entity.getItem();
+      IItemHandler handler = ModifierUtil.getVolatileInt(stack, TOTAL_SLOTS) > 0 ? new ToolInventoryCapability(() -> ToolStack.from(stack)) : EmptyItemHandler.INSTANCE;
       if (handler.getSlots() > 0) {
         ItemUtils.onContainerDestroyed(entity, IntStream.range(0, handler.getSlots()).mapToObj(handler::getStackInSlot).filter(stack -> !stack.isEmpty()));
       }

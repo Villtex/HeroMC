@@ -16,9 +16,7 @@ import slimeknights.tconstruct.library.module.ModuleHook;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
 import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability.TinkerDataKey;
 import slimeknights.tconstruct.library.tools.context.EquipmentChangeContext;
-import slimeknights.tconstruct.library.tools.definition.ModifiableArmorMaterial;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
-import slimeknights.tconstruct.tools.logic.InteractionHandler;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -113,14 +111,14 @@ public record SlotInChargeModule(TinkerDataKey<SlotInCharge> key, @Nullable TagK
       totalLevel -= levels[index];
       levels[index] = 0;
       // prioritize armor slots
-      for (EquipmentSlot armorSlot : ModifiableArmorMaterial.ARMOR_SLOTS) {
+      for (EquipmentSlot armorSlot : new EquipmentSlot[] {EquipmentSlot.FEET, EquipmentSlot.LEGS, EquipmentSlot.CHEST, EquipmentSlot.HEAD}) {
         if (levels[armorSlot.getId()] > 0) {
           inCharge = armorSlot;
           return;
         }
       }
       // if none, find a hand slot
-      for (EquipmentSlot hand : InteractionHandler.HAND_SLOTS) {
+      for (EquipmentSlot hand : new EquipmentSlot[] {EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND}) {
         if (levels[hand.getId()] > 0) {
           inCharge = hand;
           return;

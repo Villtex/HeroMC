@@ -122,7 +122,7 @@ public record AttributeModule(String unique, Attribute attribute, Operation oper
     if (condition.matches(tool, modifier)) {
       AttributeModifier attributeModifier = createModifier(tool, modifier, slot);
       if (attributeModifier != null) {
-        consumer.accept(attribute, attributeModifier);
+        consumer.accept(net.minecraft.core.registries.BuiltInRegistries.ATTRIBUTE.wrapAsHolder(attribute), attributeModifier);
       }
     }
   }
@@ -132,7 +132,7 @@ public record AttributeModule(String unique, Attribute attribute, Operation oper
   @Override
   public void onEquip(IToolStackView tool, ModifierEntry modifier, EquipmentChangeContext context) {
     if (condition.matches(tool, modifier)) {
-      AttributeInstance instance = context.getEntity().getAttribute(attribute);
+      AttributeInstance instance = context.getEntity().getAttribute(net.minecraft.core.registries.BuiltInRegistries.ATTRIBUTE.wrapAsHolder(attribute));
       if (instance != null) {
         AttributeModifier attributeModifier = createModifier(tool, modifier, context.getChangedSlot());
         if (attributeModifier != null) {
@@ -149,7 +149,7 @@ public record AttributeModule(String unique, Attribute attribute, Operation oper
     if (condition.matches(tool, modifier)) {
       UUID uuid = getUUID(context.getChangedSlot());
       if (uuid != null) {
-        AttributeInstance instance = context.getEntity().getAttribute(attribute);
+        AttributeInstance instance = context.getEntity().getAttribute(net.minecraft.core.registries.BuiltInRegistries.ATTRIBUTE.wrapAsHolder(attribute));
         if (instance != null) {
           instance.removeModifier(uuid);
         }
@@ -160,7 +160,7 @@ public record AttributeModule(String unique, Attribute attribute, Operation oper
   /** Adds the tooltip for the given attribute */
   public static void addTooltip(Modifier modifier, Attribute attribute, Operation operation, TooltipStyle tooltipStyle, float amount, @Nullable UUID uuid, @Nullable Player player, List<Component> tooltip) {
     switch (tooltipStyle) {
-      case ATTRIBUTE -> TooltipUtil.addAttribute(attribute, operation, amount, uuid, player, tooltip);
+      case ATTRIBUTE -> TooltipUtil.addAttribute(net.minecraft.core.registries.BuiltInRegistries.ATTRIBUTE.wrapAsHolder(attribute), operation, amount, uuid, player, tooltip);
       case BOOST -> TooltipModifierHook.addFlatBoost(modifier, Component.translatable(attribute.getDescriptionId()), amount, tooltip);
       case PERCENT -> TooltipModifierHook.addPercentBoost(modifier, Component.translatable(attribute.getDescriptionId()), amount, tooltip);
     }

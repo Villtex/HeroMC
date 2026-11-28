@@ -4,7 +4,6 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.alchemy.PotionUtils;
 import net.neoforged.neoforge.fluids.FluidStack;
 import slimeknights.mantle.fluid.compat.IFluidHandler.FluidAction;
 import slimeknights.mantle.data.loadable.primitive.FloatLoadable;
@@ -32,8 +31,9 @@ public record PotionFluidEffect(float scale, TagPredicate predicate) implements 
   public float apply(FluidStack fluid, EffectLevel level, FluidEffectContext.Entity context, FluidAction action) {
     LivingEntity target = context.getLivingTarget();
     // must match the tag predicate
-    if (target != null && predicate.test(fluid.getTag())) {
-      List<MobEffectInstance> effects = PotionUtils.getPotion(fluid.getTag()).getEffects();
+    if (target != null && predicate.test(fluid)) {
+      List<MobEffectInstance> effects = new java.util.ArrayList<>();
+      fluid.getOrDefault(net.minecraft.core.component.DataComponents.POTION_CONTENTS, net.minecraft.world.item.alchemy.PotionContents.EMPTY).forEachEffect(effects::add, 1);
       if (!effects.isEmpty()) {
         LivingEntity attacker = context.getEntity();
         Entity directSource = context.getDirectSource();
@@ -53,7 +53,7 @@ public record PotionFluidEffect(float scale, TagPredicate predicate) implements 
             }
           } else {
             // if the potion already exists, we scale up the existing time
-            MobEffectInstance existingEffect = target.getEffect(effect);
+            MobEffectInstance existingEffect = target.getEffect(net.minecraft.core.registries.BuiltInRegistries.MOB_EFFECT.wrapAsHolder(effect));
             int duration;
             if (existingEffect != null && existingEffect.getAmplifier() >= instance.getAmplifier()) {
               // if the existing level is larger, just skip, would be a cheese to increase said level
@@ -76,7 +76,7 @@ public record PotionFluidEffect(float scale, TagPredicate predicate) implements 
               duration = (int) (instance.getDuration() * scale * used);
             }
             if (action.execute()) {
-              target.addEffect(new MobEffectInstance(effect, duration, instance.getAmplifier(), instance.isAmbient(), instance.isVisible(), instance.showIcon()), effectSource);
+              target.addEffect(new MobEffectInstance(net.minecraft.core.registries.BuiltInRegistries.MOB_EFFECT.wrapAsHolder(effect), duration, instance.getAmplifier(), instance.isAmbient(), instance.isVisible(), instance.showIcon()), effectSource);
             }
           }
         }

@@ -124,6 +124,7 @@ RULES = [
     (r'\bimport net\.minecraft\.world\.item\.ArmorItem\.Type;', 'import net.minecraft.world.item.equipment.ArmorType;'),
     (r'\bArmorItem\.Type\b', 'ArmorType'),
     (r'\bimport net\.minecraft\.world\.entity\.projectile\.AbstractArrow;', 'import net.minecraft.world.entity.projectile.arrow.AbstractArrow;'),
+    (r'\bnet\.minecraft\.world\.entity\.projectile\.AbstractArrow\.', 'net.minecraft.world.entity.projectile.arrow.AbstractArrow.'),
     (r'\bimport net\.minecraft\.world\.item\.UseAnim;', 'import net.minecraft.world.item.ItemUseAnimation;'),
     (r'\bUseAnim\b', 'ItemUseAnimation'),
     (r'\bimport net\.neoforged\.neoforge\.event\.AddReloadListenerEvent;', 'import net.neoforged.neoforge.event.AddServerReloadListenersEvent;'),

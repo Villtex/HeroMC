@@ -73,7 +73,7 @@ public record MeleeAttributeModule(String unique, Attribute attribute, UUID uuid
     if (condition.matches(tool, modifier)) {
       LivingEntity target = context.getLivingTarget();
       if (target != null) {
-        AttributeInstance instance = target.getAttribute(attribute);
+        AttributeInstance instance = target.getAttribute(net.minecraft.core.registries.BuiltInRegistries.ATTRIBUTE.wrapAsHolder(attribute));
         if (instance != null) {
           // ensure we don't already have the modifier from someone misusing melee hooks or simultaneous attacks
           instance.removeModifier(uuid);
@@ -86,7 +86,7 @@ public record MeleeAttributeModule(String unique, Attribute attribute, UUID uuid
 
   private void removeAttribute(@Nullable LivingEntity target) {
     if (target != null) {
-      AttributeInstance instance = target.getAttribute(attribute);
+      AttributeInstance instance = target.getAttribute(net.minecraft.core.registries.BuiltInRegistries.ATTRIBUTE.wrapAsHolder(attribute));
       if (instance != null) {
         instance.removeModifier(uuid);
       }

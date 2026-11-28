@@ -238,11 +238,11 @@ public interface MobEffectModule extends ModifierModule, ConditionalModule<ITool
       }
       float duration = this.time.computeValue(scaledLevel);
       if (duration > 0) {
-        MobEffectInstance instance = new MobEffectInstance(effect, (int)duration, level);
+        MobEffectInstance instance = new MobEffectInstance(net.minecraft.core.registries.BuiltInRegistries.MOB_EFFECT.wrapAsHolder(effect), (int)duration, level);
         if (curativeItems != null) {
           instance.setCurativeItems(curativeItems.stream().map(ItemStack::new).collect(Collectors.toList()));
         }
-        target.addEffect(new MobEffectInstance(effect, (int)duration, level), cause);
+        target.addEffect(new MobEffectInstance(net.minecraft.core.registries.BuiltInRegistries.MOB_EFFECT.wrapAsHolder(effect), (int)duration, level), cause);
       }
     }
 

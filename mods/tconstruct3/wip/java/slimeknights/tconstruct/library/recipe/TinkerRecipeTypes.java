@@ -4,18 +4,11 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.neoforge.registries.DeferredRegister;
+import slimeknights.mantle.registration.deferred.SynchronizedDeferredRegister;
 import slimeknights.mantle.registration.RegistryObject;
 import slimeknights.tconstruct.TConstruct;
-import slimeknights.tconstruct.library.recipe.alloying.AlloyRecipe;
-import slimeknights.tconstruct.library.recipe.casting.ICastingRecipe;
-import slimeknights.tconstruct.library.recipe.entitymelting.EntityMeltingRecipe;
-import slimeknights.tconstruct.library.recipe.fuel.MeltingFuel;
 import slimeknights.tconstruct.library.recipe.material.MaterialRecipe;
-import slimeknights.tconstruct.library.recipe.melting.IMeltingRecipe;
 import slimeknights.tconstruct.library.recipe.modifiers.severing.SeveringRecipe;
-import slimeknights.tconstruct.library.recipe.molding.MoldingRecipe;
-import slimeknights.tconstruct.library.recipe.partbuilder.IPartBuilderRecipe;
 import slimeknights.tconstruct.library.recipe.tinkerstation.ITinkerStationRecipe;
 import slimeknights.tconstruct.library.recipe.worktable.IModifierWorktableRecipe;
 
@@ -24,24 +17,24 @@ import slimeknights.tconstruct.library.recipe.worktable.IModifierWorktableRecipe
  */
 public class TinkerRecipeTypes {
   /** Deferred instance */
-  private static final DeferredRegister<RecipeType<?>> TYPES = DeferredRegister.create(Registries.RECIPE_TYPE, TConstruct.MOD_ID);
+  private static final SynchronizedDeferredRegister<RecipeType<?>> TYPES = SynchronizedDeferredRegister.create(Registries.RECIPE_TYPE, TConstruct.MOD_ID);
 
-  public static final RegistryObject<RecipeType<IPartBuilderRecipe>> PART_BUILDER = register("part_builder");
+  // TODO 27f: public static final RegistryObject<RecipeType<IPartBuilderRecipe>> PART_BUILDER = register("part_builder");
   public static final RegistryObject<RecipeType<MaterialRecipe>> MATERIAL = register("material");
   public static final RegistryObject<RecipeType<ITinkerStationRecipe>> TINKER_STATION = register("tinker_station");
   public static final RegistryObject<RecipeType<IModifierWorktableRecipe>> MODIFIER_WORKTABLE = register("modifier_worktable");
 
   // casting
-  public static final RegistryObject<RecipeType<ICastingRecipe>> CASTING_BASIN = register("casting_basin");
-  public static final RegistryObject<RecipeType<ICastingRecipe>> CASTING_TABLE = register("casting_table");
-  public static final RegistryObject<RecipeType<MoldingRecipe>> MOLDING_TABLE = register("molding_table");
-  public static final RegistryObject<RecipeType<MoldingRecipe>> MOLDING_BASIN = register("molding_basin");
+  // TODO 27f: public static final RegistryObject<RecipeType<ICastingRecipe>> CASTING_BASIN = register("casting_basin");
+  // TODO 27f: public static final RegistryObject<RecipeType<ICastingRecipe>> CASTING_TABLE = register("casting_table");
+  // TODO 27f: public static final RegistryObject<RecipeType<MoldingRecipe>> MOLDING_TABLE = register("molding_table");
+  // TODO 27f: public static final RegistryObject<RecipeType<MoldingRecipe>> MOLDING_BASIN = register("molding_basin");
 
   // smeltery
-  public static final RegistryObject<RecipeType<IMeltingRecipe>> MELTING = register("melting");
-  public static final RegistryObject<RecipeType<EntityMeltingRecipe>> ENTITY_MELTING = register("entity_melting");
-  public static final RegistryObject<RecipeType<MeltingFuel>> FUEL = register("fuel");
-  public static final RegistryObject<RecipeType<AlloyRecipe>> ALLOYING = register("alloying");
+  // TODO 27f: public static final RegistryObject<RecipeType<IMeltingRecipe>> MELTING = register("melting");
+  // TODO 27f: public static final RegistryObject<RecipeType<EntityMeltingRecipe>> ENTITY_MELTING = register("entity_melting");
+  // TODO 27f: public static final RegistryObject<RecipeType<MeltingFuel>> FUEL = register("fuel");
+  // TODO 27f: public static final RegistryObject<RecipeType<AlloyRecipe>> ALLOYING = register("alloying");
 
   // modifiers
   public static final RegistryObject<RecipeType<SeveringRecipe>> SEVERING = register("severing");

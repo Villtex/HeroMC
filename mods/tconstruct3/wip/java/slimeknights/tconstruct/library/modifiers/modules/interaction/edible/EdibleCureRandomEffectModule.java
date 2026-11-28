@@ -16,7 +16,6 @@ import slimeknights.tconstruct.library.modifiers.modules.util.ModifierCondition.
 import slimeknights.tconstruct.library.module.HookProvider;
 import slimeknights.tconstruct.library.module.ModuleHook;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
-import slimeknights.tconstruct.shared.item.CheeseItem;
 
 import java.util.List;
 
@@ -44,7 +43,19 @@ public record EdibleCureRandomEffectModule(IJsonPredicate<LivingEntity> holder, 
   @Override
   public void onToolEaten(IToolStackView tool, ModifierEntry modifier, Player player, EquipmentSlot eatenSlot, int hunger, float saturation, List<ItemStack> representativeItems) {
     if (condition.matches(tool, modifier) && holder.matches(player)) {
-      CheeseItem.removeRandomEffect(player);
+      removeRandomEffect(player);
+    }
+  }
+
+  /** 1.20.1 CheeseItem#removeRandomEffect (Teil 27g): removes a random effect that milk cures */
+  public static void removeRandomEffect(net.minecraft.world.entity.LivingEntity living) {
+    if (!living.level().isClientSide()) {
+      java.util.List<net.minecraft.core.Holder<net.minecraft.world.effect.MobEffect>> removable = living.getActiveEffects().stream()
+        .filter(effect -> effect.getCures().contains(net.neoforged.neoforge.common.EffectCures.MILK))
+        .map(net.minecraft.world.effect.MobEffectInstance::getEffect).toList();
+      if (!removable.isEmpty()) {
+        living.removeEffect(removable.get(living.getRandom().nextInt(removable.size())));
+      }
     }
   }
 }

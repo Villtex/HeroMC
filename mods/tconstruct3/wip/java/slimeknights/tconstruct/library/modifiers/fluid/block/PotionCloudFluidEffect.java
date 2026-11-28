@@ -4,7 +4,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.AreaEffectCloud;
 import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.alchemy.PotionUtils;
 import net.neoforged.neoforge.fluids.FluidStack;
 import slimeknights.mantle.fluid.compat.IFluidHandler.FluidAction;
 import slimeknights.mantle.data.loadable.primitive.FloatLoadable;
@@ -30,10 +29,9 @@ public record PotionCloudFluidEffect(float scale, TagPredicate predicate) implem
 
   @Override
   public float apply(FluidStack fluid, EffectLevel level, FluidEffectContext.Block context, FluidAction action) {
-    CompoundTag tag = fluid.getTag();
-    if (predicate.test(tag) && context.isOffsetReplaceable()) {
-      Potion potion = PotionUtils.getPotion(fluid.getTag());
-      List<MobEffectInstance> effects = potion.getEffects();
+    if (predicate.test(fluid) && context.isOffsetReplaceable()) {
+      List<MobEffectInstance> effects = new java.util.ArrayList<>();
+      fluid.getOrDefault(net.minecraft.core.component.DataComponents.POTION_CONTENTS, net.minecraft.world.item.alchemy.PotionContents.EMPTY).forEachEffect(effects::add, 1);
       if (!effects.isEmpty()) {
         float scale = level.value();
         if (action.execute()) {
