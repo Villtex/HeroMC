@@ -175,7 +175,8 @@ public class ModifierManager extends JsonReloadListener {
     this.dynamicModifiers.putAll(resolvedRedirects);
 
     // validate required modifiers
-    for (ModifierId id : expectedDynamicModifiers) {
+    // port (Teil 27e): in Hexxit Legacy all modifier data is off (world type condition), nothing is expected there
+    for (ModifierId id : modifierSize == 0 ? java.util.Set.<ModifierId>of() : expectedDynamicModifiers) {
       if (!dynamicModifiers.containsKey(id)) {
         log.error("Missing expected modifier '{}'", id);
       }

@@ -83,7 +83,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 27b | Tinkers 3 B: Mantle-Kern (Datenlader, JSON-Helfer, Rezepte, Flüssigkeiten, Registrierung, Netzwerk, Befehle) | ~33.000 | 27a | Opus 5.5, hoch | ✅ erledigt |
 | 27c | Tinkers 3 C: Mantle-Client (Modell-Lader, Bildschirme, Handbuch-Engine) | ~17.000 | 27b | Fable 5.2, hoch | ✅ erledigt |
 | 27d | Tinkers 3 D: Werkzeug-Datenmodell (Materialien, Stats, Werkzeugdaten als Komponenten, Definitionen, Teile, JSON-Variablen) | ~35.000 | 27b | Fable 5.2, hoch | ✅ erledigt |
-| 27e | Tinkers 3 E: Modifikator-System (Hooks, Module, Flüssigkeits-Effekte, Modifikator-Rezepte) | ~30.000 | 27d | Opus 5.5, hoch | offen |
+| 27e | Tinkers 3 E: Modifikator-System (Hooks, Module, Flüssigkeits-Effekte, Modifikator-Rezepte) | ~30.000 | 27d | Opus 5.5, hoch | ✅ erledigt |
 | 27f | Tinkers 3 F: Rezept-Typen (Gießen, Schmelzen, Legieren, Teile-Bau, Tüftlertisch) und Client der Bibliothek (Material-/Werkzeugmodelle, Paletten-Texturen) | ~35.000 | 27e, 27c | Fable 5.2, hoch | offen |
 | 27g | Tinkers 3 G: Tische und Menüs, gemeinsame Blöcke/Items, Flüssigkeiten | ~28.000 | 27f | Opus 5.5, mittel | offen |
 | 27h | Tinkers 3 H: Werkzeuge, Waffen, Fernkampf, Rüstung, Modifikator-Umsetzungen | ~28.000 | 27f | Opus 5.5, hoch | offen |
@@ -2527,6 +2527,46 @@ Weitere; Werkzeuge müssen sich am Server bauen und speichern lassen (Komponente
 ### Teil 27e – Modifikator-System
 `library/modifiers` (Hooks, Module, `fluid`, `util`), `library/recipe/modifiers`. Mit Server-Test: Modifikator
 anbringen, Stufen, Plätze, Wirkung eines einfachen Moduls.
+
+#### Teil 27e – Stand (✅ erledigt)
+- **Fehler aus 27d behoben:** `.gitignore` schloss jedes Verzeichnis `build/` aus, also auch die Java-Pakete
+  `library/modifiers/hook/build`, `library/modifiers/modules/build` und `library/tools/definition/module/build`. Sie
+  waren nie im Repo, ein frischer Checkout baute nicht. Jetzt sind nur Gradle-Ausgaben ausgeschlossen (`/build/`,
+  `/buildSrc/build/`, `/mods/*/build/`), die drei Pakete sind neu portiert.
+- **Umfang:** `library/modifiers/{modules,fluid}` (alle Module der Bibliothek: Kampf, Rüstung, Verhalten, Anzeige,
+  Interaktion/Essen, Abbau, Technik, Kapazität), `library/recipe/modifiers` (Hinzufügen, Stufen, Tauschen,
+  Overslime, Bergung, Köpfen), dazu `recipe/tinkerstation` (Schnittstellen), `recipe/material` (Material-Rezept und
+  -Werte), `recipe/worktable`, `recipe/display`, `TinkerRecipeTypes` (nur die Typen der Modifikatoren und Materialien,
+  Gießen/Schmelzen in 27f), `library/tools/capability/{fluid,inventory,ToolEnergyCapability}`. Kleine Abhängigkeiten
+  aus späteren Paketen mitgenommen: `CounterModule`, `OvergrowthModule`, `PushBlockRowPacket`, `OverslimeModifier`,
+  `ModifierCrystalItem` (Item `tconstruct3:modifier_crystal`). Platzhalter `tools/TinkerModifiers` (Lader der
+  Bibliotheks-Module, Flüssigkeits-Effekte, Stufen-Anzeigen, Rezept-Serializer, `overslime`, `edible`) und
+  `tables/TinkerTables` (nur Verweise) – 27h/27g ergänzen sie aus dem Original.
+- **26.3-Ersatz:** Werkzeug-Tanks/-Inventare/-Energie als `Capabilities.Fluid/Item/Energy.ITEM` über
+  `ToolAccessHandlers` (Kopie im `ItemAccess` ändern, in der Transaktion zurücktauschen); `CustomExplosion` auf
+  `ServerExplosion` mit eigenem `ExplosionDamageCalculator` (EFLN-Kugel in 27j); Heilen mit Items (`EffectCures`:
+  Verbrauchs-Effekte `clear_all_effects`/`remove_effects`, 26.3 hat keine „curative items“); Attribut-Modifikatoren
+  über `AttributeIds.of(uuid)`; Tränke in Flüssigkeiten als `minecraft:potion_contents` (`TagPredicate.legacyTag`);
+  Verzauberungen als `ResourceKey`, Schutz über `modifyDamageProtection`; Item-NBT über Mantle `ItemNbt`
+  (`custom_data`, Stapel mit dem 26.3-Codec); Rechte über `MantleCommand.hasPermission(Player, level)`;
+  Zutaten aus Tags in statischen Feldern über Mantle `LazyTagHolderSet` (26.3 wirft vor dem Binden der Tags).
+- **Datenladen:** Mantle `ItemOutput` baut den Stapel erst beim Gebrauch (26.3: keine Item-Komponenten während des
+  Reloads); Module mit `ItemStack`-Feldern (Essen, Unendlich, Heilen, Block-Lieferant) halten ein `ItemOutput`.
+  Konverter: `tool`/`match` in Tinkers-Daten sind Prädikate (keine Zutaten), Attribut-IDs (`generic.` weg) und
+  Attribut-Operationen auf 26.3. `data-enabled.txt` kennt Ausschlüsse (`!pfad`). Die Verzauberungs-Zuordnung
+  beachtet `neoforge:conditions`.
+- **Daten an:** `tinkering/modifiers/` (200 Modifikatoren, 4 Weiterleitungen) und `tinkering/fluid_effects/`,
+  `tinkering/enchantments_to_modifiers.json`. 114 Dateien ausgeschlossen (Liste mit Grund in `data-enabled.txt`):
+  86 brauchen Werkzeug-Module aus 27h, 13 Tinkers-Effekte (27h), 13 Items/Blöcke aus 27g–27j, 2 Weiterleitungen.
+- **Geprüft:** `CI=true ./gradlew clean pack` grün; Testserver Integrated und Legacy (Seed 1234) bis `Done`, 0 ERROR (Legacy: 0 Modifikatoren, die Prüfung auf erwartete Modifikatoren entfällt dort). Mit einem
+  temporären Testbefehl (nicht committet) und einem Test-Datapack (`minecraft:stick` in `tconstruct3:modifiable/*`):
+  Spitzhacke aus Kobalt/Holz/Eisen hat 3 Upgrade-Plätze und die Material-Traits; `sharpness` Stufe 1/2 → Schaden
+  2,75 → 3,5 → 4,25, Entfernen einer Stufe → 3,5; `writable` → 4 Plätze; `aqua_affinity` → Verzauberungsstufe 1.
+- **Offen:** Modifikator-Rezepte im Spiel (brauchen Tüftlertisch 27g und Werkzeuge 27h, Rezeptdaten noch aus);
+  Modifikator-Tags (`tinkering/tags/modifiers/`, nennen Werkzeug-Modifikatoren, 27h); 16 Verzauberungs-Zuordnungen
+  auf Modifikatoren aus 27h melden sich als INFO; Werkzeug-Menü (`ToolInventoryCapability.menuFactory`, 27h);
+  `IDisplayCraftingTinkering`/`VanillaFilteredRecipe` (JEI, 27k) und die Werkbank-Rezepte für Materialien (27f) in
+  `todo`; Client-Prüfung (Modifikator-Kristall, Tooltips). Liste in `mods/tconstruct3/TODO.md`.
 
 ### Teil 27f – Rezept-Typen und Client der Bibliothek
 `library/recipe` (Gießen, Schmelzen, Legieren, Brennstoffe, Teile-Bau, Tüftlertisch, Material-Rezepte, Zutaten),

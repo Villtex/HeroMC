@@ -1,6 +1,6 @@
 # Tinkers' Construct 3.12.1 – offen (Teil 27)
 
-Stand nach 27d (Werkzeug-Datenmodell). Ausführlich: Skill `tinkers3-263`, Bericht des Konverters `tools/convert_report.md`.
+Stand nach 27e (Modifikator-System). Ausführlich: Skill `tinkers3-263`, Bericht des Konverters `tools/convert_report.md`.
 
 ## Wo der Code liegt
 
@@ -14,15 +14,12 @@ Stand nach 27d (Werkzeug-Datenmodell). Ausführlich: Skill `tinkers3-263`, Beric
 
 ## Für die nächsten Teile
 
-- **27e (Modifikatoren):** `todo/.../library/modifiers/{modules,fluid}` (ohne die schon portierten `modules/build`,
-  `modules/util`, `modules/capacity/{Overslime,DurabilityShield,CapacityBar,CapacityBarValidator}`); Werkzeug-
-  Fähigkeiten `library/tools/capability/{fluid/ToolFluidCapability,TankModule,FluidModifierHookIterator,
-  inventory/*,ToolEnergyCapability,CompoundIndexHookIterator}` auf NeoForge-Item-Capabilities mit `ItemAccess`
-  (Transfer-API) – Rahmen steht: `ToolCapabilityProvider.register(...)`, `registerCapability(...)`,
-  `registerItems(event, items...)`. Modifikator-Daten einschalten (`data/tconstruct3/tinkering/modifiers/`).
-  `EnchantmentModule.Protection`: Schutzwert des Enchantments abziehen (26.3: Effekt-Komponente).
-  Looting-Bonus (`ModifierLootingHandler.onLooting.txt`): 26.3 hat kein `LootingLevelEvent`.
-  Statische Modifikatoren (`TinkerModifiers`, 27h) haben IDs schon in `tools/data/ModifierIds` (`overslime` …).
+- **Aus 27e offen:** Modifikator-Daten, die `data-enabled.txt` mit `!` ausschließt (je Teil wieder freischalten,
+  Grund steht dabei), `tinkering/tags/modifiers/`, Modifikator-Rezepte (Rezeptdaten aus, brauchen 27g/27h),
+  `ToolInventoryCapability.menuFactory = ToolContainerMenu::new` (27h), EFLN-Explosion (27j, `ProjectileExplosionModule`),
+  Flasche/Bottle der Trank-Flüssigkeiten in `TagPredicate.legacyTag` (27g), `LayoutIcon` baut beim Laden einen
+  `ItemStack` (vor dem Einschalten der Tisch-Layouts in 27g auf `ItemOutput` umstellen), BlockItem-Prüfung von
+  `BlockItemProviderModule` (entfiel mit `ItemOutput`), `TinkerModifiers`/`TinkerTables` aus dem Original ergänzen.
 - **27f (Rezepte):** `MaterialCastingLookup`, `MaterialRecipeCache`, `MeltingFuelLookup`, `ModifierRecipeLookup`
   (liegen in `todo`, brauchen die Rezeptklassen), dann Material-Prädikate `castable`/`composite`, Fluid-Prädikat
   `fuel`, `SlotTypeModifierPredicate`, `RandomMaterial.RandomVariant` (Varianten aus Material-Rezepten),

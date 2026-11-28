@@ -1,6 +1,6 @@
 ---
 name: tinkers3-263
-description: Beim Arbeiten an Tinkers' Construct 3.12.1 und Mantle (mods/tconstruct3, mods/mantle, Teile 27a–27k) benutzen – Mod-ID tconstruct3 neben 1.4.3 (tconstruct), Quellen vom Tag holen, Daten-Konverter convert_data.py und sein Bericht, Daten ordnerweise einschalten (data-enabled.txt), Welttyp-Regel (1.4.3 nur Hexxit Legacy, 3.12.1 nur Integrated) in Daten und Code über worldgen152:world_type und HexxitWorldType, Assets aus dem Tag mit umbenanntem Namensraum. Ab 27d: Werkzeugdaten als Datenkomponenten (ToolStack, ToolDataComponents), Tinkers-IDs als ResourceId mit .location(), Ersatz für LazyOptional/Tier/Capabilities, Platzhalter TinkerTools/TinkerCommons, große Ports stufenweise mit -Pwip und die Lombok-Falle bei Fehlern im Klassenkopf. Auch für Client-Code von Mantle/Tinkers auf 26.3: GUI-Umbau (tools/gui_to_extract.py), Bildschirme, Handbücher, Modell-Lader und Blockstate-Modelle, Flüssigkeits-Modelle, Block-Renderer mit Submit-Pipeline.
+description: Beim Arbeiten an Tinkers' Construct 3.12.1 und Mantle (mods/tconstruct3, mods/mantle, Teile 27a–27k) benutzen – Mod-ID tconstruct3 neben 1.4.3 (tconstruct), Quellen vom Tag holen, Daten-Konverter convert_data.py und sein Bericht, Daten ordnerweise einschalten (data-enabled.txt), Welttyp-Regel (1.4.3 nur Hexxit Legacy, 3.12.1 nur Integrated) in Daten und Code über worldgen152:world_type und HexxitWorldType, Assets aus dem Tag mit umbenanntem Namensraum. Ab 27d: Werkzeugdaten als Datenkomponenten (ToolStack, ToolDataComponents), Tinkers-IDs als ResourceId mit .location(), Ersatz für LazyOptional/Tier/Capabilities, Platzhalter TinkerTools/TinkerCommons, große Ports stufenweise mit -Pwip und die Lombok-Falle bei Fehlern im Klassenkopf. Ab 27e: Modifikator-Module, Werkzeug-Capabilities über ItemAccess, keine ItemStacks beim Datenladen (ItemOutput, LazyTagHolderSet), Ausschlüsse in data-enabled.txt. Auch für Client-Code von Mantle/Tinkers auf 26.3: GUI-Umbau (tools/gui_to_extract.py), Bildschirme, Handbücher, Modell-Lader und Blockstate-Modelle, Flüssigkeits-Modelle, Block-Renderer mit Submit-Pipeline.
 ---
 
 # Tinkers' Construct 3.12.1 + Mantle auf 26.3 (Teil 27)
@@ -67,6 +67,9 @@ Regel ändern → Skript laufen lassen → `git diff --stat` und Bericht ansehen
 (Build-Task `convertedData`). Ein Teil schaltet ein, was sein Code liest **und** wofür alle Registry-Einträge
 existieren – sonst bricht der Serverstart in Integrated ab (unbekannte Items in Rezepten/Tags). Tags erst einschalten,
 wenn alle genannten Items/Blöcke registriert sind (Tags kennen keine Bedingung).
+Zeilen mit `!pfad` schließen Dateien eines eingeschalteten Ordners wieder aus (seit 27e: Modifikatoren, deren Module
+oder Items erst später kommen; Grund als Kommentar). Liste erzeugen: Server starten, `Failed to load … tconstruct3:x`
+aus dem Log sammeln, nach Ursache gruppieren (unbekannter Loader → Teil des Loaders, fehlendes Item → dessen Teil).
 
 ## Prüfen
 
@@ -99,6 +102,23 @@ wenn alle genannten Items/Blöcke registriert sind (Tags kennen keine Bedingung)
   durch das volle Original und behält die 26.3-Teile daraus.
 - **Testen ohne Werkzeug-Items:** temporärer Befehl mit `ToolDefinition.create(id)` (vor dem Datenladen) und
   `ToolStack.createTool(Items.STICK, definition, MaterialNBT.of(...))`, Stack in eine Kiste, `save-all`, Neustart.
+
+## 26.3-Muster aus 27e (Modifikatoren)
+
+- **Kein `ItemStack` beim Datenladen** („Components not bound yet“, Serverstart bricht ab): Felder als Mantle
+  `ItemOutput` (baut den Stapel beim ersten `get()`), nie `ItemStackLoadable` in Daten-Records. Tags in statischen
+  Zutaten: `LazyTagHolderSet.ingredient(tag)` statt `Ingredient.of(tag)` (`forge_to_neo.py` stellt um).
+- **Item-Capabilities von Werkzeugen** bekommen einen `ItemAccess`: `ToolAccessHandlers` ändert eine Kopie und
+  tauscht sie per `access.exchange(..., transaction)` zurück. Menüs/Code mit dem echten Stapel nutzen direkt
+  `new ToolInventoryCapability(() -> ToolStack.from(stack))`.
+- **Ersatz:** Heilen `EffectCures`, Attribut-Modifikatoren `AttributeIds.of(uuid)`, Item-NBT Mantle `ItemNbt`,
+  Rechte `MantleCommand.hasPermission(player, 2)`, Explosionen `CustomExplosion` (Rechner statt Unterklasse).
+- **Rezepte:** `RecipeType getType()`/`RecipeSerializer getSerializer()` als Rohtyp (`fix_by_errors.py`), Werkbank-
+  Rezepte mit `CraftingInput`, `CustomRecipe()` ohne Argumente, ID selbst halten.
+- **Konverter:** `tool`/`match` in `tinkering/**` sind Prädikate; Attribut-IDs/-Operationen auf 26.3 (nur in
+  Objekten mit `attribute`, Tinkers-Stat-Operationen behalten `multiply_base`).
+- **Testen ohne Werkzeuge:** Stat-Boni greifen nur bei Items in `tconstruct3:modifiable/*` – im Test einen Welt-
+  Datapack mit `minecraft:stick` in diesen Tags anlegen (`datapack enable "file/…"`, `reload`).
 
 ## Große Ports in Stufen (seit 27d)
 
