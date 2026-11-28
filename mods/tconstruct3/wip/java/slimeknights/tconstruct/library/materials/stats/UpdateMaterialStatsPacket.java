@@ -42,7 +42,7 @@ public class UpdateMaterialStatsPacket implements IThreadsafePacket {
         Identifier statId = null;
         try {
           MaterialStatType<?> statType = statTypeLoader.decode(buffer);
-          statId = statType.getId();
+          statId = statType.getId().location();
           statList.add(statType.getLoadable().decode(buffer, TypedMapBuilder.builder().put(MaterialStatType.CONTEXT_KEY, statType).build()));
         } catch (RuntimeException e) {
           log.error("Could not deserialize stat {} for material {}. Are client and server in sync?", statId, id, e);
@@ -57,7 +57,7 @@ public class UpdateMaterialStatsPacket implements IThreadsafePacket {
   public void encode(FriendlyByteBuf buffer) {
     buffer.writeInt(materialToStats.size());
     materialToStats.forEach((materialId, stats) -> {
-      buffer.writeIdentifier(materialId);
+      buffer.writeIdentifier(materialId.location());
       buffer.writeInt(stats.size());
       for (IMaterialStats stat : stats) {
         encodeStat(buffer, stat, stat.getType(), materialId);

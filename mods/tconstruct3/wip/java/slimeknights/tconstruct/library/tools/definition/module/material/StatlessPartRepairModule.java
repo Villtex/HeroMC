@@ -68,7 +68,7 @@ public record StatlessPartRepairModule(int partIndex, int repairAmount) implemen
 
     /** Sets the durability for the piece based on the given factor */
     public ArmorBuilder durabilityFactor(float maxDamageFactor) {
-      for (ArmorType slotType : slimeknights.tconstruct.tools.modules.ArmorModuleBuilder.TYPES) {
+      for (ArmorType slotType : slimeknights.tconstruct.tools.modules.ArmorModuleBuilder.ARMOR_TYPES) {
         int index = slotType.ordinal();
         durability[index] = (int)(ArmorModuleBuilder.MAX_DAMAGE_ARRAY[index] * maxDamageFactor);
       }

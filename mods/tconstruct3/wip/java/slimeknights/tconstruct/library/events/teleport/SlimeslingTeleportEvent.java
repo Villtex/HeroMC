@@ -11,7 +11,7 @@ public class SlimeslingTeleportEvent extends EntityTeleportEvent {
   @Getter
   private final ItemStack sling;
   public SlimeslingTeleportEvent(Entity entity, double targetX, double targetY, double targetZ, ItemStack sling) {
-    super(entity, targetX, targetY, targetZ);
+    super(entity, (net.minecraft.server.level.ServerLevel) entity.level(), targetX, targetY, targetZ);
     this.sling = sling;
   }
 }

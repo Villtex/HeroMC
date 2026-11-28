@@ -105,7 +105,6 @@ public class Modifier {  // 26.3: not IdAwareObject, its ID is a ModifierId (Res
     this.id = name;
   }
 
-  @Override
   public ModifierId getId() {
     return Objects.requireNonNull(id, "Modifier has null registry name");
   }

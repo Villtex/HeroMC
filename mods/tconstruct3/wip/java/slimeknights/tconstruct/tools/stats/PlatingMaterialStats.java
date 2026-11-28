@@ -99,7 +99,7 @@ public record PlatingMaterialStats(MaterialStatType<?> getType, int durability, 
 
     /** Sets the durability for the piece based on the given factor */
     public Builder durabilityFactor(float maxDamageFactor) {
-      for (ArmorType slotType : slimeknights.tconstruct.tools.modules.ArmorModuleBuilder.TYPES) {
+      for (ArmorType slotType : slimeknights.tconstruct.tools.modules.ArmorModuleBuilder.ARMOR_TYPES) {
         int index = slotType.ordinal();
         durability[index] = (int)(ArmorModuleBuilder.MAX_DAMAGE_ARRAY[index] * maxDamageFactor);
       }

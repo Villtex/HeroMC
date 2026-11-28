@@ -119,8 +119,8 @@ public class TooltipUtil {
   /** Gets the display name from the given tool */
   public static String getDisplayName(ItemStack tool) {
     // only a name set on this stack, not the default item name
-    java.util.Optional<? extends Component> name = tool.getComponentsPatch().get(DataComponents.ITEM_NAME);
-    return name != null && name.isPresent() ? name.get().getString() : "";
+    Component name = tool.getComponentsPatch().getPatch(DataComponents.ITEM_NAME);
+    return name != null ? name.getString() : "";
   }
 
   /**

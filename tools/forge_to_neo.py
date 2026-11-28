@@ -153,6 +153,11 @@ RULES = [
     (r'\bItemStack\.ATTRIBUTE_MODIFIER_FORMAT\b', 'net.minecraft.world.item.component.ItemAttributeModifiers.ATTRIBUTE_MODIFIER_FORMAT'),
     (r'\boperation\.toValue\(\)', 'operation.id()'),
     (r'\bItemAbilities\.SHIELD_BLOCK\b', 'ItemAbilities.SHIELD_BLOCK'),
+    # NBT (26.3): keys, numbers and strings of tags
+    (r'\.getAllKeys\(\)', '.keySet()'),
+    (r'(\(\(NumericTag\) ?\w+\))\.getAsFloat\(\)', r'\1.floatValue()'),
+    (r'(\(\(NumericTag\) ?\w+\))\.getAsInt\(\)', r'\1.intValue()'),
+    (r'(\(\(NumericTag\) ?\w+\))\.getAsDouble\(\)', r'\1.doubleValue()'),
     # LazyOptional is gone in NeoForge 26.3; Tinkers 3 keeps it as its own stand-in (Teil 27d)
     (r'\bnet\.minecraftforge\.common\.util\.LazyOptional\b', 'slimeknights.tconstruct.library.utils.LazyOptional'),
     (r'\bnet\.minecraftforge\.common\.util\.', 'net.neoforged.neoforge.common.util.'),

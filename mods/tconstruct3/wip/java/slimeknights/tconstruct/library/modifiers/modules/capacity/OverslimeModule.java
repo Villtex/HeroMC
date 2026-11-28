@@ -36,7 +36,7 @@ public class OverslimeModule extends CapacityBarHook.PersistentDataCapacityBar {
   };
 
   private OverslimeModule() {
-    super(ModifierIds.overslime);
+    super(ModifierIds.overslime.location());
   }
 
   @Override

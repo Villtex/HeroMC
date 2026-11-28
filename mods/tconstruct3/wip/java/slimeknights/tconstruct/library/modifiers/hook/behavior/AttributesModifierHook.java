@@ -20,6 +20,8 @@ import slimeknights.tconstruct.library.tools.nbt.StatsNBT;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
 import java.util.Collection;
+import net.minecraft.resources.Identifier;
+import slimeknights.tconstruct.TConstruct;
 import java.util.UUID;
 import java.util.function.BiConsumer;
 
@@ -28,7 +30,8 @@ import java.util.function.BiConsumer;
  */
 public interface AttributesModifierHook {
   /** UUIDs for armor attributes on held tools */
-  UUID[] HELD_ARMOR_UUID = new UUID[]{UUID.fromString("00a1a5fe-43b5-4849-8660-de9aa497736a"), UUID.fromString("6776fd7e-4b22-4cdf-a0bc-bb8d2ad1f0bf")};
+  /** 26.3: modifier IDs instead of UUIDs, main hand and off hand */
+  Identifier[] HELD_ARMOR_UUID = new Identifier[]{TConstruct.getResource("held_armor_mainhand"), TConstruct.getResource("held_armor_offhand")};
 
   /**
    * Adds attributes from this modifier's effect. Called whenever the item stack refreshes attributes, typically on equipping and unequipping.
@@ -57,26 +60,26 @@ public interface AttributesModifierHook {
       // base melee stats - skip if not melee
       StatsNBT statsNBT = tool.getStats();
       if (slot == EquipmentSlot.MAINHAND && EntityInteractionModifierHook.isMeleeWeapon(tool)) {
-        builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(Item.BASE_ATTACK_DAMAGE_ID, "tconstruct.tool.attack_damage", statsNBT.get(ToolStats.ATTACK_DAMAGE), AttributeModifier.Operation.ADD_VALUE));
+        builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(Item.BASE_ATTACK_DAMAGE_ID, statsNBT.get(ToolStats.ATTACK_DAMAGE), AttributeModifier.Operation.ADD_VALUE));
         // base attack speed is 4, but our numbers start from 4
-        builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(Item.BASE_ATTACK_SPEED_ID, "tconstruct.tool.attack_speed", statsNBT.get(ToolStats.ATTACK_SPEED) - 4d, AttributeModifier.Operation.ADD_VALUE));
+        builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(Item.BASE_ATTACK_SPEED_ID, statsNBT.get(ToolStats.ATTACK_SPEED) - 4d, AttributeModifier.Operation.ADD_VALUE));
       }
 
       if (slot.getType() == Type.HAND) {
         // shields and slimestaffs can get armor
         if (tool.hasTag(TinkerTags.Items.ARMOR)) {
-          UUID uuid = HELD_ARMOR_UUID[slot.getIndex()];
+          Identifier uuid = HELD_ARMOR_UUID[slot.getIndex()];
           double value = statsNBT.get(ToolStats.ARMOR);
           if (value != 0) {
-            builder.put(Attributes.ARMOR, new AttributeModifier(uuid, "tconstruct.held.armor", value, AttributeModifier.Operation.ADD_VALUE));
+            builder.put(Attributes.ARMOR, new AttributeModifier(uuid, value, AttributeModifier.Operation.ADD_VALUE));
           }
           value = statsNBT.get(ToolStats.ARMOR_TOUGHNESS);
           if (value != 0) {
-            builder.put(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(uuid, "tconstruct.held.toughness", value, AttributeModifier.Operation.ADD_VALUE));
+            builder.put(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(uuid, value, AttributeModifier.Operation.ADD_VALUE));
           }
           value = statsNBT.get(ToolStats.KNOCKBACK_RESISTANCE);
           if (value != 0) {
-            builder.put(Attributes.KNOCKBACK_RESISTANCE, new AttributeModifier(uuid, "tconstruct.held.knockback_resistance", value, AttributeModifier.Operation.ADD_VALUE));
+            builder.put(Attributes.KNOCKBACK_RESISTANCE, new AttributeModifier(uuid, value, AttributeModifier.Operation.ADD_VALUE));
           }
         }
 

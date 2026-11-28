@@ -10,7 +10,7 @@ import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 public class ModifierTeleportEvent extends EntityTeleportEvent {
   private final ModifierEntry modifier;
   public ModifierTeleportEvent(Entity entity, double targetX, double targetY, double targetZ, ModifierEntry modifier) {
-    super(entity, targetX, targetY, targetZ);
+    super(entity, (net.minecraft.server.level.ServerLevel) entity.level(), targetX, targetY, targetZ);
     this.modifier = modifier;
   }
 }

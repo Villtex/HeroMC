@@ -62,11 +62,11 @@ public class TinkerAttributes {
   @SubscribeEvent
   void addAttributes(EntityAttributeModificationEvent event) {
     // player attributes
-    event.add(EntityTypes.PLAYER, USE_ITEM_SPEED.get());
-    event.add(EntityTypes.PLAYER, CRITICAL_DAMAGE.get());
-    event.add(EntityTypes.PLAYER, MINING_SPEED_MULTIPLIER.get());
-    event.add(EntityTypes.PLAYER, EXPERIENCE_MULTIPLIER.get());
-    event.add(EntityTypes.PLAYER, JUMP_COUNT.get());
+    event.add(EntityTypes.PLAYER, net.minecraft.core.registries.BuiltInRegistries.ATTRIBUTE.wrapAsHolder(USE_ITEM_SPEED.get()));
+    event.add(EntityTypes.PLAYER, net.minecraft.core.registries.BuiltInRegistries.ATTRIBUTE.wrapAsHolder(CRITICAL_DAMAGE.get()));
+    event.add(EntityTypes.PLAYER, net.minecraft.core.registries.BuiltInRegistries.ATTRIBUTE.wrapAsHolder(MINING_SPEED_MULTIPLIER.get()));
+    event.add(EntityTypes.PLAYER, net.minecraft.core.registries.BuiltInRegistries.ATTRIBUTE.wrapAsHolder(EXPERIENCE_MULTIPLIER.get()));
+    event.add(EntityTypes.PLAYER, net.minecraft.core.registries.BuiltInRegistries.ATTRIBUTE.wrapAsHolder(JUMP_COUNT.get()));
     // general attributes
     addToAll(event, BOUNCY);
     addToAll(event, PROTECTION_CAP);
@@ -84,7 +84,7 @@ public class TinkerAttributes {
     event.enqueueWork(() -> {
       // make knockback resistance syncable, as we need that info clientside
       if (Config.COMMON.syncKnockbackResistance.get()) {
-        Attributes.KNOCKBACK_RESISTANCE.setSyncable(true);
+        Attributes.KNOCKBACK_RESISTANCE.value().setSyncable(true);
       }
     });
   }
@@ -93,7 +93,7 @@ public class TinkerAttributes {
   private static void addToAll(EntityAttributeModificationEvent event, RegistryObject<Attribute> attribute, double defaultValue) {
     Attribute attr = attribute.get();
     for (EntityType<? extends LivingEntity> entity : event.getTypes()) {
-      event.add(entity, attr, defaultValue);
+      event.add(entity, net.minecraft.core.registries.BuiltInRegistries.ATTRIBUTE.wrapAsHolder(attr), defaultValue);
     }
   }
 

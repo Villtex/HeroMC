@@ -87,7 +87,7 @@ public class MobEquipmentManager extends JsonReloadListener {
             // need to use the condition context to fetch tag values as they are not yet in the mananger
             TagKey<EntityType<?>> tag = Loadables.ENTITY_TYPE_TAG.parseString(type.substring(1), "entity");
             for (Holder<EntityType<?>> holder : context.getTag(tag)) {
-              parsed.computeIfAbsent(holder.get(), ifAbsent).addAll(equipment);
+              parsed.computeIfAbsent(holder.value(), ifAbsent).addAll(equipment);
             }
           } else {
             parsed.computeIfAbsent(Loadables.ENTITY_TYPE.parseString(type, "entity"), ifAbsent).addAll(equipment);
@@ -125,7 +125,7 @@ public class MobEquipmentManager extends JsonReloadListener {
 
   /** Adds the managers as datapack listeners */
   private void addDataPackListeners(AddServerReloadListenersEvent event) {
-    event.addListener(this);
+    event.addListener(slimeknights.tconstruct.TConstruct.getResource("mob_equipment"), this);
     context = event.getConditionContext();
   }
 

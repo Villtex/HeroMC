@@ -128,7 +128,7 @@ public class MaterialIdNBT {
       return EMPTY;
     }
     ListTag list = (ListTag) nbt;
-    if (list.getElementType() != Tag.TAG_STRING) {
+    if (!list.isEmpty() && list.get(0).getId() != Tag.TAG_STRING) {
       return EMPTY;
     }
     List<MaterialVariantId> materials = new ArrayList<>(list.size());

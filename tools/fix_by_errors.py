@@ -82,9 +82,33 @@ def fix_optional(line, col, msg):
     return None
 
 
+EXPR = re.compile(r'(?:new \w+\([^()]*\)|[\w.]+(?:\([^()]*\))?(?:\.\w+(?:\([^()]*\))?)*)')
+# Tinkers 3 IDs that wrap an Identifier in 26.3 (ResourceId), see Teil 27d
+RESOURCE_IDS = ('MaterialId', 'MaterialStatsId', 'ModifierId', 'ToolStatId', 'Pattern', 'MaterialVariantId')
+# built-in registry entries that 26.3 wants as Holder
+HOLDER_REGISTRIES = {'MobEffect': 'MOB_EFFECT', 'Attribute': 'ATTRIBUTE', 'Potion': 'POTION', 'EntityType<?>': 'ENTITY_TYPE'}
+
+
+def expr_at(line, col):
+    """span of the expression javac points at (col is 1-based)"""
+    m = EXPR.match(line, max(0, col - 1))
+    return (m.start(), m.end()) if m and m.end() > m.start() else None
+
+
 def fix_line(line, col, msg, extra):
     if msg.startswith('incompatible types: Optional<'):
         return fix_optional(line, col, msg)
+    m = re.match(r'incompatible types: (\w+) cannot be converted to Identifier$', msg)
+    if m and m.group(1) in RESOURCE_IDS:
+        span = expr_at(line, col)
+        if span:
+            return line[:span[1]] + '.location()' + line[span[1]:]
+    m = re.match(r'incompatible types: ([\w<>?]+) cannot be converted to Holder<', msg)
+    if m and m.group(1) in HOLDER_REGISTRIES:
+        span = expr_at(line, col)
+        if span:
+            reg = HOLDER_REGISTRIES[m.group(1)]
+            return line[:span[0]] + f'net.minecraft.core.registries.BuiltInRegistries.{reg}.wrapAsHolder(' + line[span[0]:span[1]] + ')' + line[span[1]:]
     if msg == 'cannot find symbol':
         sym = extra.get('symbol', '')
         loc = extra.get('location', '')

@@ -64,7 +64,7 @@ public class LayoutSlot {
     int y = buffer.readVarInt();
     Ingredient ingredient = null;
     if (buffer.readBoolean()) {
-      ingredient = Ingredient.fromNetwork(buffer);
+      ingredient = slimeknights.mantle.data.loadable.common.IngredientLoadable.DISALLOW_EMPTY.decode(buffer, slimeknights.mantle.util.typed.TypedMap.EMPTY);
     }
     return new LayoutSlot(pattern, name, x, y, ingredient);
   }
@@ -73,7 +73,7 @@ public class LayoutSlot {
   public void write(FriendlyByteBuf buffer) {
     if (icon != null) {
       buffer.writeBoolean(true);
-      buffer.writeIdentifier(icon);
+      buffer.writeIdentifier(icon.location());
     } else {
       buffer.writeBoolean(false);
     }
@@ -82,7 +82,7 @@ public class LayoutSlot {
     buffer.writeVarInt(y);
     if (filter != null) {
       buffer.writeBoolean(true);
-      filter.toNetwork(buffer);
+      slimeknights.mantle.data.loadable.common.IngredientLoadable.DISALLOW_EMPTY.encode(buffer, filter);
     } else {
       buffer.writeBoolean(false);
     }

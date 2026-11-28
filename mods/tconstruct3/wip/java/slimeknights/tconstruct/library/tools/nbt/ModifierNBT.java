@@ -32,6 +32,8 @@ import java.util.stream.Collectors;
 @EqualsAndHashCode
 @RequiredArgsConstructor
 public class ModifierNBT implements Iterable<ModifierEntry> {
+  /** Codec in the NBT form of 1.20.1 (list of modifier entries), for attachments */
+  public static final com.mojang.serialization.Codec<ModifierNBT> CODEC = ToolDataComponents.nbtCodec(ModifierNBT::readFromNBT, ModifierNBT::serializeToNBT);
 
   /** Instance containing no modifiers */
   public static final ModifierNBT EMPTY = new ModifierNBT(Collections.emptyList());
@@ -229,7 +231,7 @@ public class ModifierNBT implements Iterable<ModifierEntry> {
     }
 
     ListTag listNBT = (ListTag)inbt;
-    if (listNBT.getElementType() != Tag.TAG_COMPOUND) {
+    if (!listNBT.isEmpty() && listNBT.get(0).getId() != Tag.TAG_COMPOUND) {
       return EMPTY;
     }
 

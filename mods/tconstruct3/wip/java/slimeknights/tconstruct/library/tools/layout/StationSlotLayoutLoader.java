@@ -135,7 +135,7 @@ public class StationSlotLayoutLoader extends JsonReloadListener {
 
   /** Adds the managers as datapack listeners */
   private void addDataPackListeners(final AddServerReloadListenersEvent event) {
-    event.addListener(this);
+    event.addListener(slimeknights.tconstruct.TConstruct.getResource("station_slot_layouts"), this);
     conditionContext = event.getConditionContext();
   }
 
@@ -157,12 +157,12 @@ public class StationSlotLayoutLoader extends JsonReloadListener {
   private static class IngredientSerializer implements JsonSerializer<Ingredient>, JsonDeserializer<Ingredient> {
     @Override
     public Ingredient deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-      return Ingredient.fromJson(json);
+      return slimeknights.mantle.data.loadable.common.IngredientLoadable.DISALLOW_EMPTY.convert(json, "filter", slimeknights.mantle.util.typed.TypedMap.EMPTY);
     }
 
     @Override
     public JsonElement serialize(Ingredient ingredient, Type typeOfSrc, JsonSerializationContext context) {
-      return ingredient.toJson();
+      return slimeknights.mantle.data.loadable.common.IngredientLoadable.DISALLOW_EMPTY.serialize(ingredient);
     }
   }
 }

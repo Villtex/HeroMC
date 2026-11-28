@@ -83,7 +83,7 @@ public class UpdateModifiersPacket implements IThreadsafePacket {
     for (int i = 0; i < size; i++) {
       ModifierId id = new ModifierId(buffer.readUtf(Short.MAX_VALUE));
       try {
-        Modifier modifier = ComposableModifier.LOADER.decode(buffer, ModifierManager.contextBuilder(id).build());
+        Modifier modifier = ComposableModifier.LOADER.decode(buffer, ModifierManager.contextBuilder(id.location()).build());
         modifier.setId(id);
         modifiers.put(id, modifier);
       } catch (RuntimeException e) {
@@ -125,7 +125,7 @@ public class UpdateModifiersPacket implements IThreadsafePacket {
     // write modifiers
     buffer.writeVarInt(modifiers.size());
     for (ComposableModifier modifier : modifiers) {
-      Identifier id = modifier.getId();
+      Identifier id = modifier.getId().location();
       buffer.writeIdentifier(id);
       try {
         ComposableModifier.LOADER.encode(buffer, modifier);
@@ -138,8 +138,8 @@ public class UpdateModifiersPacket implements IThreadsafePacket {
     // write redirects
     buffer.writeVarInt(redirects.size());
     for (Entry<ModifierId,ModifierId> entry : redirects.entrySet()) {
-      buffer.writeIdentifier(entry.getKey());
-      buffer.writeIdentifier(entry.getValue());
+      buffer.writeIdentifier(entry.getKey().location());
+      buffer.writeIdentifier(entry.getValue().location());
     }
     GenericTagUtil.encodeTags(buffer, modifier -> modifier.getId().location(), this.tags);
 

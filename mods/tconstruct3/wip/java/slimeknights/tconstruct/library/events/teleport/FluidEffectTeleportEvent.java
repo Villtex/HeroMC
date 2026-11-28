@@ -9,6 +9,6 @@ public class FluidEffectTeleportEvent extends EntityTeleportEvent {
   public static final ITeleportEventFactory TELEPORT_FACTORY = FluidEffectTeleportEvent::new;
 
   public FluidEffectTeleportEvent(Entity entity, double targetX, double targetY, double targetZ) {
-    super(entity, targetX, targetY, targetZ);
+    super(entity, (net.minecraft.server.level.ServerLevel) entity.level(), targetX, targetY, targetZ);
   }
 }

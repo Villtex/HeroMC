@@ -65,7 +65,7 @@ public record CircleWeaponAttack(LevelingValue diameters) implements MeleeHitToo
         if (aoeTarget != attacker && aoeTarget != target && !attacker.isAlliedTo(aoeTarget) && ToolAttackUtil.isAttackable(attacker, aoeTarget)
             && !(aoeTarget instanceof ArmorStand stand && stand.isMarker()) && target.distanceToSqr(aoeTarget) < rangeSq) {
           float angle = attacker.getYRot() * ((float)Math.PI / 180F);
-          aoeTarget.knockback(0.4F, Mth.sin(angle), -Mth.cos(angle));
+          aoeTarget.knockback(0.4F, Mth.sin(angle), -Mth.cos(angle), context.makeDamageSource(), 0);
           // TODO: do we want to bring back the behavior where circle returns success if any AOE target is hit?
           ToolAttackUtil.performAttack(tool, context.withAOETarget(aoeTarget));
         }
@@ -73,8 +73,11 @@ public record CircleWeaponAttack(LevelingValue diameters) implements MeleeHitToo
 
       level.playSound(null, attacker.getX(), attacker.getY(), attacker.getZ(), SoundEvents.PLAYER_ATTACK_SWEEP, attacker.getSoundSource(), 1.0F, 1.0F);
       Player player = context.getPlayerAttacker();
-      if (!context.isProjectile() && player != null) {
-        player.sweepAttack();
+      // 26.3: Player#sweepAttack is gone, the sweep particles of Player#doSweepAttack
+      if (!context.isProjectile() && player != null && level instanceof net.minecraft.server.level.ServerLevel serverLevel) {
+        double dx = -Mth.sin(player.getYRot() * ((float) Math.PI / 180F));
+        double dz = Mth.cos(player.getYRot() * ((float) Math.PI / 180F));
+        serverLevel.sendParticles(net.minecraft.core.particles.ParticleTypes.SWEEP_ATTACK, player.getX() + dx, player.getY(0.5), player.getZ() + dz, 0, dx, 0.0, dz, 0.0);
       }
     }
   }

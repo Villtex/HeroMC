@@ -82,6 +82,11 @@ public class Util {
    * @param name  Object name
    * @return  Translation key
    */
+  /** Makes a translation key for a Tinkers ID (26.3: those are no Identifiers) */
+  public static String makeTranslationKey(String base, @Nullable ResourceId name) {
+    return makeTranslationKey(base, name == null ? null : name.location());
+  }
+
   public static String makeTranslationKey(String base, @Nullable Identifier name) {
     return net.minecraft.util.Util.makeDescriptionId(base, name);
   }

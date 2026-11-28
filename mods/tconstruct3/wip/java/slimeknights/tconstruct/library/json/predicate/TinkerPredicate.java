@@ -54,7 +54,7 @@ public class TinkerPredicate {
 
   /** @deprecated use {@link BlockPredicate#BLOCKS_MOTION} */
   @Deprecated
-  public static BlockPredicate BLOCKS_MOTION = BlockPredicate.simple(BlockStateBase::blocksMotion);
+  public static BlockPredicate BLOCKS_MOTION = BlockPredicate.simple(state -> state.isSolid());  // 26.3: blocksMotion is gone, isSolid is the same test
   /** @deprecated use {@link BlockPredicate#CAN_BE_REPLACED} */
   @Deprecated
   public static BlockPredicate CAN_BE_REPLACED = BlockPredicate.simple(BlockStateBase::canBeReplaced);

@@ -32,7 +32,12 @@ public class Material implements IMaterial {
    */
   @Internal
   public Material(Identifier identifier, int tier, int order, Rarity rarity, boolean craftable, boolean hidden) {
-    this.identifier = new MaterialId(identifier);
+    this(new MaterialId(identifier), tier, order, rarity, craftable, hidden);
+  }
+
+  /** 26.3: material IDs are no Identifiers */
+  public Material(MaterialId identifier, int tier, int order, Rarity rarity, boolean craftable, boolean hidden) {
+    this.identifier = identifier;
     this.tier = tier;
     this.sortOrder = order;
     this.rarity = rarity;
@@ -47,6 +52,10 @@ public class Material implements IMaterial {
   }
 
   protected Material(Identifier identifier, boolean craftable, boolean hidden) {
+    this(identifier, 0, -1, Rarity.COMMON, craftable, hidden);
+  }
+
+  protected Material(MaterialId identifier, boolean craftable, boolean hidden) {
     this(identifier, 0, -1, Rarity.COMMON, craftable, hidden);
   }
 

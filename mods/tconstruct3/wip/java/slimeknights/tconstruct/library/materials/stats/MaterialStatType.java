@@ -17,7 +17,7 @@ import java.util.function.Function;
  * <p>Each instance of this class should be unique. If two instances with the same id exist, internal systems might break.</p>
  */
 @Getter
-public class MaterialStatType<T extends IMaterialStats> implements IdAwareObject {
+public class MaterialStatType<T extends IMaterialStats> {  // 26.3: not IdAwareObject, its ID is a MaterialStatsId
   /** Context key to use if you want the recipe serializer passed into your recipe */
   public static final ContextKey<MaterialStatType<?>> CONTEXT_KEY = new ContextKey<>("material_stat_type");
 

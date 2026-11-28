@@ -94,7 +94,8 @@ public class ToolHarvestLogic {
     ServerLevel world = context.getWorld();
     BlockPos pos = context.getPos();
     if (removed == null) {
-      removed = state.onDestroyedByPlayer(world, pos, context.getPlayer(), context.canHarvest(), world.getFluidState(pos));
+      net.minecraft.world.entity.player.Player harvester = context.getPlayer();
+      removed = state.onDestroyedByPlayer(world, pos, harvester, harvester != null ? harvester.getMainHandItem() : ItemStack.EMPTY, context.canHarvest(), world.getFluidState(pos));
     }
     // if removed by anything, finally destroy it
     if (removed) {
@@ -129,10 +130,11 @@ public class ToolHarvestLogic {
     ServerLevel world = context.getWorld();
     BlockPos pos = context.getPos();
     GameType type = player.gameMode.getGameModeForPlayer();
-    int exp = useLastXP ? BlockSideHitListener.getLastXP(player) : CommonHooks.onBlockBreakEvent(world, type, player, pos);
-    if (exp == -1) {
+    // 26.3: the break event has no experience; the block drops its experience through the drops event (BlockDropsEvent)
+    if (!useLastXP && CommonHooks.fireBlockBreak(world, type, player, pos, world.getBlockState(pos)).isCanceled()) {
       return false;
     }
+    int exp = 0;
     // checked after the Forge hook, so we have to recheck
     // TODO: is this needed? Seems its called inside CommonHooks.onBlockBreakEvent
     if (player.blockActionRestricted(world, pos, type)) {
@@ -246,7 +248,7 @@ public class ToolHarvestLogic {
     // if broken, clear the item stack temporarily then break
     ToolStack tool = ToolStack.from(stack);
     Direction sideHit = BlockSideHitListener.getSideHit(player);
-    ServerLevel world = serverPlayer.serverLevel();
+    ServerLevel world = serverPlayer.level();
     BlockState state = world.getBlockState(pos);
     if (tool.isBroken()) {
       // no harvest context
@@ -273,7 +275,7 @@ public class ToolHarvestLogic {
    */
   public static int runBlockBreak(ItemStack stack, IToolStackView tool, BlockState state, BlockPos pos, Direction sideHit, ServerPlayer player, @Nullable Projectile projectile) {
     // create contexts
-    ServerLevel world = player.serverLevel();
+    ServerLevel world = player.level();
 
     // add in harvest info
     // must not be broken, and the tool definition must be effective
@@ -286,7 +288,7 @@ public class ToolHarvestLogic {
     }
     // let armor change enchantments
     // TODO: should we have a hook for non-enchantment armor responses?
-    ListTag originalEnchantments = HarvestEnchantmentsModifierHook.updateHarvestEnchantments(tool, stack, context);
+    net.minecraft.world.item.enchantment.ItemEnchantments originalEnchantments = HarvestEnchantmentsModifierHook.updateHarvestEnchantments(tool, stack, context);
     // need to calculate the iterator before we break the block, as we need the reference hardness from the center
     UseOnContext useContext = new UseOnContext(world, player, InteractionHand.MAIN_HAND, stack, Util.createTraceResult(pos, sideHit, false));
     Iterable<BlockPos> extraBlocks = context.isEffective() ? tool.getHook(ToolHooks.AOE_ITERATOR).getBlocks(tool, useContext, state, AOEMatchType.BREAKING) : Collections.emptyList();

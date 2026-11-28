@@ -55,7 +55,7 @@ public class UpdateMaterialsPacket implements IThreadsafePacket {
   public void encode(FriendlyByteBuf buffer) {
     buffer.writeInt(this.materials.size());
     for (IMaterial material : this.materials.values()) {
-      buffer.writeIdentifier(material.getIdentifier());
+      buffer.writeIdentifier(material.getIdentifier().location());
       buffer.writeVarInt(material.getTier());
       buffer.writeVarInt(material.getSortOrder());
       buffer.writeEnum(material.getRarity());
@@ -67,7 +67,7 @@ public class UpdateMaterialsPacket implements IThreadsafePacket {
       buffer.writeUtf(entry.getKey().toString());
       buffer.writeUtf(entry.getValue().toString());
     }
-    GenericTagUtil.encodeTags(buffer, IMaterial::getIdentifier, this.tags);
+    GenericTagUtil.encodeTags(buffer, material -> material.getIdentifier().location(), this.tags);
   }
 
   @Override

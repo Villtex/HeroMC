@@ -64,7 +64,7 @@ public sealed interface BreakSpeedContext {
       modifier *= 1.0F + (MobEffectUtil.getDigSpeedAmplification(entity) + 1) * 0.2f;
     }
     // mining fatigue
-    MobEffectInstance miningFatigue = entity.getEffect(MobEffects.DIG_SLOWDOWN);
+    MobEffectInstance miningFatigue = entity.getEffect(MobEffects.MINING_FATIGUE);
     if (miningFatigue != null) {
       switch (miningFatigue.getAmplifier()) {
         case 0 -> modifier *= 0.3F;
@@ -74,8 +74,9 @@ public sealed interface BreakSpeedContext {
       }
     }
     // water
-    if (entity.isEyeInFluid(FluidTags.WATER) && !EnchantmentHelper.hasAquaAffinity(entity)) {
-      modifier /= 5.0F;
+    // 26.3: aqua affinity is the submerged mining speed attribute (vanilla 0.2, aqua affinity 1)
+    if (entity.isEyeInFluid(FluidTags.WATER)) {
+      modifier *= (float) entity.getAttributeValue(net.minecraft.world.entity.ai.attributes.Attributes.SUBMERGED_MINING_SPEED);
     }
     if (!entity.onGround()) {
       modifier /= 5.0F;

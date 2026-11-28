@@ -116,7 +116,7 @@ public class ToolDefinitionLoader extends JsonReloadListener {
 
   /** Adds the managers as datapack listeners */
   private void addDataPackListeners(final AddServerReloadListenersEvent event) {
-    event.addListener(this);
+    event.addListener(slimeknights.tconstruct.TConstruct.getResource("tool_definitions"), this);
     conditionContext = event.getConditionContext();
   }
 

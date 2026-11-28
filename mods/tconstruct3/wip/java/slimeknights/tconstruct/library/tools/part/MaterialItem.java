@@ -85,7 +85,7 @@ public class MaterialItem extends Item implements IMaterialItem {
   public static Component getName(IMaterialItem self, ItemStack stack) {
     // if no material, return part name directly
     MaterialVariantId material = self.getMaterial(stack);
-    String key = self.asItem().getDescriptionId(stack);
+    String key = self.asItem().getDescriptionId();
     if (material.equals(MaterialId.UNKNOWN)) {
       return Component.translatable(key);
     }
@@ -110,7 +110,7 @@ public class MaterialItem extends Item implements IMaterialItem {
     return getName(this, stack);
   }
 
-  @Override
+  /** Rarity of the material (26.3: items have a rarity component; TODO 27f: show it in the name color) */
   public Rarity getRarity(ItemStack stack) {
     return MaterialRegistry.getMaterial(getMaterial(stack).getId()).getRarity();
   }
@@ -131,6 +131,14 @@ public class MaterialItem extends Item implements IMaterialItem {
   }
 
   @Override
+  public void appendHoverText(ItemStack stack, TooltipContext context, net.minecraft.world.item.component.TooltipDisplay display, java.util.function.Consumer<Component> tooltip, TooltipFlag flag) {
+    List<Component> lines = new java.util.ArrayList<>();
+    appendHoverText(stack, context.level(), lines, flag);
+    lines.forEach(tooltip);
+    super.appendHoverText(stack, context, display, tooltip, flag);
+  }
+
+  /** 1.20.1 tooltip form, kept for subclasses */
   public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flag) {
     appendHoverText(this, stack, tooltip, flag);
   }
@@ -151,7 +159,7 @@ public class MaterialItem extends Item implements IMaterialItem {
 
   @Nullable
   @Override
-  public String getCreatorModId(ItemStack stack) {
+  public String getCreatorModId(net.minecraft.core.HolderLookup.Provider registries, ItemStack stack) {
     return getCreatorModId(this, stack);
   }
 
@@ -169,20 +177,16 @@ public class MaterialItem extends Item implements IMaterialItem {
     }
   }
 
-  public static void verifyTag(CompoundTag nbt) {
+  /** Resolves material redirects of the stack (1.20.1 verifyTagAfterLoad; TODO 27f: call it when stacks load) */
+  public static void verifyTag(ItemStack stack) {
     // if the material exists and was changed, update it
-    MaterialVariantId id = getMaterialId(nbt);
+    MaterialVariantId id = getMaterialId(stack);
     if (!id.equals(MaterialId.UNKNOWN)) {
       MaterialId original = id.getId();
       MaterialId resolved = MaterialRegistry.getInstance().resolve(original);
       if (original != resolved) {
-        nbt.putString(MATERIAL_TAG, MaterialVariantId.create(resolved, id.getVariant()).toString());
+        stack.set(slimeknights.tconstruct.library.tools.nbt.ToolDataComponents.MATERIAL.get(), MaterialVariantId.create(resolved, id.getVariant()));
       }
     }
-  }
-
-  @Override
-  public void verifyTagAfterLoad(CompoundTag nbt) {
-    verifyTag(nbt);
   }
 }

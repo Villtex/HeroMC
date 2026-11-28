@@ -6,6 +6,6 @@ import net.neoforged.neoforge.event.entity.EntityTeleportEvent;
 /** Event fired when {@link slimeknights.tconstruct.shared.TinkerEffects#returning} teleport triggers */
 public class ReturningTeleportEvent extends EntityTeleportEvent {
   public ReturningTeleportEvent(LivingEntity entity, double targetX, double targetY, double targetZ) {
-    super(entity, targetX, targetY, targetZ);
+    super(entity, (net.minecraft.server.level.ServerLevel) entity.level(), targetX, targetY, targetZ);
   }
 }

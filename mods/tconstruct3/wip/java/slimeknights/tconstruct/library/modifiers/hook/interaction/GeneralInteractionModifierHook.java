@@ -120,7 +120,7 @@ public interface GeneralInteractionModifierHook {
 
   /** Causes cooldown on the given tool based on its draw speed stat. */
   static void addCooldown(IToolStackView tool, Player player, float speedFactor) {
-    player.getCooldowns().addCooldown(tool.getItem(), getDrawtime(tool, player, speedFactor));
+    player.getCooldowns().addCooldown(net.minecraft.core.registries.BuiltInRegistries.ITEM.getKey(tool.getItem()), getDrawtime(tool, player, speedFactor)); // default cooldown group is the item ID
   }
 
   /**

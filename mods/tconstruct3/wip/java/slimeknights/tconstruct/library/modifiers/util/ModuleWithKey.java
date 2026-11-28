@@ -24,7 +24,7 @@ public interface ModuleWithKey {
     if (key != null) {
       return key;
     }
-    return modifier.getId();
+    return modifier.getId().location();
   }
 
   /** Gets the key for the module */
@@ -33,7 +33,7 @@ public interface ModuleWithKey {
     if (key != null) {
       return key;
     }
-    return modifier.getId();
+    return modifier.getId().location();
   }
 
   /** Gets the key field from the record */

@@ -75,7 +75,7 @@ public class MultiplierNBT {
     // simply try each key as a tool stat
     Builder builder = builder();
     CompoundTag nbt = (CompoundTag)inbt;
-    for (String key : nbt.getAllKeys()) {
+    for (String key : nbt.keySet()) {
       if (slimeknights.mantle.util.TagHelper.contains(nbt, key, slimeknights.mantle.util.TagHelper.TAG_ANY_NUMERIC) && StatsNBT.readStatIdFromNBT(key) instanceof INumericToolStat<?> stat) {
         builder.set(stat, nbt.getFloatOr(key, 0f));
       }

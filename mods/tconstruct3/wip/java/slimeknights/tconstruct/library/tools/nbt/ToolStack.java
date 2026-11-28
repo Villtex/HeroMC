@@ -283,8 +283,8 @@ public class ToolStack implements IToolStackView {
   private static void copyComponents(ItemStack from, ItemStack to) {
     DataComponentPatch patch = from.getComponentsPatch();
     // reset what the source does not change, then apply its changes
-    for (DataComponentType<?> type : to.getComponentsPatch().entrySet().stream().map(java.util.Map.Entry::getKey).toList()) {
-      if (patch.get(type) == null) {
+    for (DataComponentType<?> type : java.util.List.copyOf(to.getComponentsPatch().keySet())) {
+      if (!patch.isPatched(type)) {
         Object prototype = to.getPrototype().get(type);
         if (prototype != null) {
           to.set((DataComponentType) type, prototype);

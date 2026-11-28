@@ -48,7 +48,7 @@ public abstract class LayoutIcon {
 
   /** Creates a stack icon */
   public static LayoutIcon ofItem(ItemStack stack) {
-    return new ItemStackIcon(stack);
+    return new ItemStackIcon(() -> stack);
   }
 
   /** Creates an icon from a pattern */
@@ -67,7 +67,7 @@ public abstract class LayoutIcon {
       case EMPTY: return EMPTY;
       case ITEM: {
         ItemStack stack = ItemStack.OPTIONAL_STREAM_CODEC.decode((net.minecraft.network.RegistryFriendlyByteBuf) buffer);
-        return new ItemStackIcon(stack);
+        return new ItemStackIcon(() -> stack);
       }
       case PATTERN: {
         Pattern pattern = new Pattern(buffer.readIdentifier());
@@ -84,15 +84,20 @@ public abstract class LayoutIcon {
   public abstract JsonObject toJson();
 
   /** Icon drawing an item stack */
-  @RequiredArgsConstructor @VisibleForTesting
+  @VisibleForTesting
   protected static class ItemStackIcon extends LayoutIcon {
-    private final ItemStack stack;
+    /** 26.3: built on first use, item stacks cannot be made while the data loads (components are not bound yet) */
+    private final net.neoforged.neoforge.common.util.Lazy<ItemStack> lazyStack;
+
+    protected ItemStackIcon(java.util.function.Supplier<ItemStack> stack) {
+      this.lazyStack = net.neoforged.neoforge.common.util.Lazy.of(stack);
+    }
 
     @SuppressWarnings("unchecked")
     @Override
     public <T> T getValue(Class<T> clazz) {
       if (clazz == ItemStack.class) {
-        return (T) stack;
+        return (T) lazyStack.get();
       }
       return null;
     }
@@ -100,13 +105,13 @@ public abstract class LayoutIcon {
     @Override
     public void write(FriendlyByteBuf buffer) {
       buffer.writeEnum(Type.ITEM);
-      ItemStack.OPTIONAL_STREAM_CODEC.encode((net.minecraft.network.RegistryFriendlyByteBuf) buffer, stack);
+      ItemStack.OPTIONAL_STREAM_CODEC.encode((net.minecraft.network.RegistryFriendlyByteBuf) buffer, lazyStack.get());
     }
 
     @Override
     public JsonObject toJson() {
       JsonObject json = new JsonObject();
-      json.add("item", Loadables.ITEM.serialize(stack.getItem()));
+      json.add("item", Loadables.ITEM.serialize(lazyStack.get().getItem()));
       // 26.3: components are not written (only used by the removed datagen)
       return json;
     }
@@ -129,7 +134,7 @@ public abstract class LayoutIcon {
     @Override
     public void write(FriendlyByteBuf buffer) {
       buffer.writeEnum(Type.PATTERN);
-      buffer.writeIdentifier(pattern);
+      buffer.writeIdentifier(pattern.location());
     }
 
     @Override
@@ -157,8 +162,8 @@ public abstract class LayoutIcon {
         return new PatternIcon(pattern);
       }
       if (object.has("item")) {
-        ItemStack stack = CraftingHelper.getItemStack(object, true);
-        return new ItemStackIcon(stack);
+        JsonObject itemJson = object.deepCopy();
+        return new ItemStackIcon(() -> slimeknights.mantle.data.loadable.common.ItemStackLoadable.REQUIRED_ITEM_NBT.convert(itemJson, "icon", slimeknights.mantle.util.typed.TypedMap.EMPTY));
       }
       // not sure why this would be needed, but might as well
       if (object.entrySet().isEmpty()) {

@@ -67,7 +67,7 @@ public record SweepWeaponAttack(LevelingValue ranges) implements MeleeHitToolHoo
     // sweep code from Player#attack(Entity)
     // basically: no crit, no sprinting and has to stand on the ground for sweep. Also has to move regularly slowly
     LivingEntity attacker = context.getAttacker();
-    if (context.isFullyCharged() && !attacker.isSprinting() && !context.isCritical() && !context.isProjectile() && attacker.onGround() && (attacker.walkDist - attacker.walkDistO) < attacker.getSpeed()) {
+    if (context.isFullyCharged() && !attacker.isSprinting() && !context.isCritical() && !context.isProjectile() && attacker.onGround() && attacker.getKnownMovement().horizontalDistanceSqr() < net.minecraft.util.Mth.square(attacker.getSpeed() * 2.5)) {
       // loop through all nearby entities
       double range = this.ranges.compute(tool.getVolatileData().getInt(IModifiable.EXPANDED));
       double rangeSq = (2 + range); // TODO: why do we add 2 here? should that not be defined in the datagen?
@@ -81,14 +81,18 @@ public record SweepWeaponAttack(LevelingValue ranges) implements MeleeHitToolHoo
         if (aoeTarget != attacker && aoeTarget != target && !attacker.isAlliedTo(aoeTarget)
             && !(aoeTarget instanceof ArmorStand armorStand && armorStand.isMarker()) && attacker.distanceToSqr(aoeTarget) < rangeSq) {
           float angle = attacker.getYRot() * ((float) Math.PI / 180F);
-          aoeTarget.knockback(0.4F, Mth.sin(angle), -Mth.cos(angle));
-          aoeTarget.hurt(source, sweepDamage);
+          if (slimeknights.tconstruct.library.tools.helper.ToolAttackUtil.hurt(aoeTarget, source, sweepDamage)) {
+            aoeTarget.knockback(0.4F, Mth.sin(angle), -Mth.cos(angle), source, sweepDamage);
+          }
         }
       }
 
       level.playSound(null, attacker.getX(), attacker.getY(), attacker.getZ(), SoundEvents.PLAYER_ATTACK_SWEEP, attacker.getSoundSource(), 1.0F, 1.0F);
-      if (attacker instanceof Player player) {
-        player.sweepAttack();
+      // 26.3: Player#sweepAttack is gone, the sweep particles of Player#doSweepAttack
+      if (level instanceof net.minecraft.server.level.ServerLevel serverLevel) {
+        double dx = -Mth.sin(attacker.getYRot() * ((float) Math.PI / 180F));
+        double dz = Mth.cos(attacker.getYRot() * ((float) Math.PI / 180F));
+        serverLevel.sendParticles(net.minecraft.core.particles.ParticleTypes.SWEEP_ATTACK, attacker.getX() + dx, attacker.getY(0.5), attacker.getZ() + dz, 0, dx, 0.0, dz, 0.0);
       }
     }
   }

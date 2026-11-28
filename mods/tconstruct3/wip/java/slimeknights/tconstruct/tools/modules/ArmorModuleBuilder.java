@@ -14,7 +14,7 @@ public interface ArmorModuleBuilder<T> {
    */
   int[] MAX_DAMAGE_ARRAY = {11, 16, 15, 13};
   /** The four armor pieces in the order of {@link #MAX_DAMAGE_ARRAY} (26.3 {@link ArmorType#values()} also has the animal armor {@code BODY}) */
-  ArmorType[] TYPES = {ArmorType.HELMET, ArmorType.CHESTPLATE, ArmorType.LEGGINGS, ArmorType.BOOTS};
+  ArmorType[] ARMOR_TYPES = {ArmorType.HELMET, ArmorType.CHESTPLATE, ArmorType.LEGGINGS, ArmorType.BOOTS};
   /** Factor for use alongside {@link #MAX_DAMAGE_ARRAY} for shields. */
   int SHIELD_DAMAGE = 22;
 

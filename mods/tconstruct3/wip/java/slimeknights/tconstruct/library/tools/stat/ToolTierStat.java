@@ -65,7 +65,7 @@ public class ToolTierStat implements IToolStat<Tier> {
   @Override
   public Tier read(Tag tag) {
     if (tag.getId() == Tag.TAG_STRING) {
-      Identifier tierId = Identifier.tryParse(tag.getAsString());
+      Identifier tierId = Identifier.tryParse(tag.asString().orElse(""));
       if (tierId != null) {
         return TierSortingRegistry.byName(tierId);
       }

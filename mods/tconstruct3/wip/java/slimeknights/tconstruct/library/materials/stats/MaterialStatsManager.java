@@ -12,7 +12,7 @@ import net.minecraft.util.GsonHelper;
 import org.apache.logging.log4j.Level;
 import slimeknights.mantle.data.listener.MergingJsonDataLoader;
 import slimeknights.mantle.data.loadable.field.ContextKey;
-import slimeknights.mantle.data.registry.IdAwareComponentRegistry;
+import slimeknights.mantle.data.registry.NamedComponentRegistry;
 import slimeknights.mantle.util.JsonHelper;
 import slimeknights.mantle.util.typed.TypedMapBuilder;
 import slimeknights.tconstruct.library.materials.definition.MaterialId;
@@ -55,7 +55,7 @@ public class MaterialStatsManager extends MergingJsonDataLoader<Map<Identifier,J
    * It is not cleared on reload, since it does not represent loaded data. Think of it as a GSON type adapter.
    */
   @Getter
-  private final IdAwareComponentRegistry<MaterialStatType<?>> statTypes = new IdAwareComponentRegistry<>("Unknown Material Stat Type");
+  private final NamedComponentRegistry<MaterialStatType<?>> statTypes = new NamedComponentRegistry<>("Unknown Material Stat Type");  // 26.3: stat types are no IdAwareObject
 
   /** Final map of material ID to material stat ID to material stats */
   private Map<MaterialId, Map<MaterialStatsId, IMaterialStats>> materialToStatsPerType = Collections.emptyMap();
@@ -70,7 +70,7 @@ public class MaterialStatsManager extends MergingJsonDataLoader<Map<Identifier,J
    * @param type   Type object
    */
   public <T extends IMaterialStats> void registerStatType(MaterialStatType<T> type) {
-    statTypes.register(type);
+    statTypes.register(type.getId().location(), type);
   }
 
   /** Gets a lit of all material stat IDs */
@@ -86,7 +86,7 @@ public class MaterialStatsManager extends MergingJsonDataLoader<Map<Identifier,J
   @SuppressWarnings("unchecked")
   @Nullable
   public <T extends IMaterialStats> MaterialStatType<T> getStatType(MaterialStatsId id) {
-    return (MaterialStatType<T>) statTypes.getValue(id);
+    return (MaterialStatType<T>) statTypes.getValue(id.location());
   }
 
   /**

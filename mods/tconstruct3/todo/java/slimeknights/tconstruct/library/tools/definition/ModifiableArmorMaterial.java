@@ -36,7 +36,7 @@ public class ModifiableArmorMaterial extends DummyArmorMaterial {
 
   /** Creates a modifiable armor material, creates tool definition for all four armor slots */
   public static ModifiableArmorMaterial create(Identifier id, SoundEvent equipSound) {
-    return create(id, equipSound, slimeknights.tconstruct.tools.modules.ArmorModuleBuilder.TYPES);
+    return create(id, equipSound, slimeknights.tconstruct.tools.modules.ArmorModuleBuilder.ARMOR_TYPES);
   }
 
   /**
