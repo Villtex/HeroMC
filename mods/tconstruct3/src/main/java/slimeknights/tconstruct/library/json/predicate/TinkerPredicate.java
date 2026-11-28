@@ -66,7 +66,7 @@ public class TinkerPredicate {
   public static ItemPredicate CAN_MELT_ITEM = ItemPredicate.simple(MeltingRecipeLookup::canMelt);
 
   /** Predicate matching fluids registered as a smeltery fuel */
-  // TODO 27f (MeltingFuelLookup): public static FluidPredicate FUEL = FluidPredicate.simple(MeltingFuelLookup::isFuel);
+  public static FluidPredicate FUEL = FluidPredicate.simple(slimeknights.tconstruct.library.recipe.fuel.MeltingFuelLookup::isFuel);
 
   /** Helper for dealing with the common case of nullable entities, often used when they are entity but not living. */
   public static boolean matches(IJsonPredicate<LivingEntity> predicate, @Nullable LivingEntity entity) {

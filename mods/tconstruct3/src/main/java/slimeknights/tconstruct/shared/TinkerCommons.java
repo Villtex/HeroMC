@@ -54,7 +54,9 @@ public final class TinkerCommons extends TinkerModule {
   /** Teil 27d: loaders of the predicates the library data uses (1.20.1 TinkerCommons and TinkerMaterials #registerSerializers) */
   public static void registerSerializers(RegisterEvent event) {
     if (event.getRegistryKey() == Registries.RECIPE_SERIALIZER) {
-      // TODO 27f: material predicates castable and composite (MaterialCastingLookup), fluid predicate fuel (MeltingFuelLookup), ingredients
+      MaterialPredicate.LOADER.register(TConstruct.getResource("castable"), MaterialPredicate.CASTABLE.getLoader());
+      MaterialPredicate.LOADER.register(TConstruct.getResource("composite"), MaterialPredicate.COMPOSITE.getLoader());
+      slimeknights.mantle.data.predicate.fluid.FluidPredicate.LOADER.register(TConstruct.getResource("fuel"), TinkerPredicate.FUEL.getLoader());
       MaterialPredicate.LOADER.register(TConstruct.getResource("variant"), MaterialVariantPredicate.LOADER);
       MaterialPredicate.LOADER.register(TConstruct.getResource("id"), MaterialIdPredicate.LOADER);
       MaterialPredicate.LOADER.register(TConstruct.getResource("has_part"), MaterialHasPartPredicate.LOADER);

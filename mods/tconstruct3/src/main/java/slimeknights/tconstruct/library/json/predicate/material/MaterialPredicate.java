@@ -35,9 +35,9 @@ public interface MaterialPredicate extends IJsonPredicate<MaterialVariantId> {
   /* Singleton */
 
   /** Matches any materials that have a casting recipe */
-  // TODO 27f (MaterialCastingLookup): MaterialPredicate CASTABLE = simple(material -> !MaterialCastingLookup.getCastingFluids(material).isEmpty());
+  MaterialPredicate CASTABLE = simple(material -> !slimeknights.tconstruct.library.recipe.casting.material.MaterialCastingLookup.getCastingFluids(material).isEmpty());
   /** Matches any materials that have a composite recipe */
-  // TODO 27f (MaterialCastingLookup): MaterialPredicate COMPOSITE = simple(material -> !MaterialCastingLookup.getCompositeFluids(material).isEmpty());
+  MaterialPredicate COMPOSITE = simple(material -> !slimeknights.tconstruct.library.recipe.casting.material.MaterialCastingLookup.getCompositeFluids(material).isEmpty());
 
   /** Creates a new simple predicate */
   static MaterialPredicate simple(Predicate<MaterialVariantId> predicate) {

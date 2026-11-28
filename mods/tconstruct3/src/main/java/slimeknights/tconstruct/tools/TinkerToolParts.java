@@ -54,6 +54,8 @@ public final class TinkerToolParts extends TinkerModule {
                                        .build());
 
   // rock
+  /** Teil 27f: reference for the repair recipes; the item ({@code RepairKitItem}) comes with Teil 27h */
+  public static final slimeknights.mantle.registration.RegistryObject<net.minecraft.world.item.Item> repairKit = slimeknights.mantle.registration.RegistryObject.create(TConstruct.getResource("repair_kit"), net.minecraft.core.registries.Registries.ITEM);
   public static final ItemObject<ToolPartItem> pickHead = ITEMS.register("pick_head", () -> new ToolPartItem(ITEM_PROPS, HeadMaterialStats.ID));
   public static final ItemObject<ToolPartItem> hammerHead = ITEMS.register("hammer_head", () -> new ToolPartItem(ITEM_PROPS, HeadMaterialStats.ID));
   // axe

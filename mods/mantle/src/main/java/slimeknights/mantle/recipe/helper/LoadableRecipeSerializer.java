@@ -32,6 +32,8 @@ public final class LoadableRecipeSerializer {
   public static final ContextKey<RecipeSerializer<?>> SERIALIZER = new ContextKey<>("serializer");
   /** Context key to use if you want the recipe type passed into your recipe, requires {@link #of(RecordLoadable, Supplier)} for your serializer. */
   public static final ContextKey<RecipeType<?>> TYPE = new ContextKey<>("type");
+  /** Context key for the {@link TypeAwareRecipeSerializer} of the recipe, requires {@link #of(RecordLoadable, Supplier)} for your serializer. */
+  public static final ContextKey<TypeAwareRecipeSerializer<?>> TYPED_SERIALIZER = new ContextKey<>("typed_serializer");
   /** Field for a group key in a recipe (common requirement) */
   public static final LoadableField<String,Recipe<?>> RECIPE_GROUP = StringLoadable.DEFAULT.defaultField("group", "", Recipe::group);
 
@@ -44,7 +46,10 @@ public final class LoadableRecipeSerializer {
 
   /** Creates a type aware serializer from a loadable */
   public static <T extends R, R extends Recipe<?>> RecipeSerializer<T> of(RecordLoadable<T> loadable, Supplier<? extends RecipeType<R>> type) {
-    return create(loadable, builder -> builder.put(TYPE, type.get()));
+    TypeAwareRecipeSerializer<T> typed = new TypeAwareRecipeSerializer<>(type);
+    RecipeSerializer<T> serializer = create(loadable, builder -> builder.put(TYPE, type.get()).put(TYPED_SERIALIZER, typed));
+    typed.setSerializer(serializer);
+    return serializer;
   }
 
   /** Creates a serializer for a deprecated recipe format */

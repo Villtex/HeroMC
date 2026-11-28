@@ -39,7 +39,7 @@ public record SkullStats(int durability, int armor) implements IRepairableMateri
 
   @Override
   public List<Component> getLocalizedInfo(float scale) {
-    Component durability = IToolStat.formatNumber(RepairStats.REPAIR_KEY, ToolStats.DURABILITY.getColor(), (int)(this.durability / 3f /* MaterialRecipe.INGOTS_PER_REPAIR, TODO 27f */));
+    Component durability = IToolStat.formatNumber(RepairStats.REPAIR_KEY, ToolStats.DURABILITY.getColor(), (int)(this.durability / slimeknights.tconstruct.library.recipe.material.MaterialRecipe.INGOTS_PER_REPAIR));
     if (armor > 0) {
       return List.of(durability, ToolStats.ARMOR.formatValue(this.armor * scale));
     }

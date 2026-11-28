@@ -65,6 +65,10 @@ public final class TConstruct {
         new TinkerCommons(modBus);
         new TinkerToolParts();
         new slimeknights.tconstruct.tools.TinkerModifiers(modBus);
+        // Teil 27f: recipe serializers of the tables and the smeltery (placeholders until 27g/27i)
+        slimeknights.tconstruct.tables.TinkerTables.init();
+        slimeknights.tconstruct.smeltery.TinkerSmeltery.init();
+        slimeknights.tconstruct.library.recipe.ingredient.TinkerIngredients.init(modBus);
         // Teil 27e: modifier library (1.20.1 TinkerModifiers constructor and TinkerTools#commonSetup)
         slimeknights.tconstruct.library.modifiers.util.DynamicModifier.init();
         slimeknights.tconstruct.library.modifiers.fluid.FluidEffectManager.INSTANCE.init();

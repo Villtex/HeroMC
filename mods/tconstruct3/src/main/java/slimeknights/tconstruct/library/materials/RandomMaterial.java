@@ -260,8 +260,7 @@ public abstract class RandomMaterial implements IHaveLoader {
           if (registry.getMaterialStats(id, statType).isEmpty()) {
             return List.<MaterialVariantId>of();
           }
-          // TODO 27f: MaterialRecipeCache.getVariants(id) (variants known from material recipes); until then the base variant
-          return java.util.stream.Stream.<MaterialVariantId>of(id).filter(this.material::matches).toList();
+          return slimeknights.tconstruct.library.recipe.material.MaterialRecipeCache.getVariants(id).stream().filter(this.material::matches).toList();
         })
         .filter(list -> !list.isEmpty())
         .toList();

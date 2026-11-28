@@ -30,6 +30,11 @@ public final class EmptyIngredient implements ICustomIngredient {
     return new Ingredient(INSTANCE);
   }
 
+  /** Port: replaces comparisons with 1.20.1 {@code Ingredient.EMPTY} */
+  public static boolean isEmpty(Ingredient ingredient) {
+    return ingredient.isCustom() && ingredient.getCustomIngredient() == INSTANCE;
+  }
+
   @Override
   public boolean test(ItemStack stack) {
     return false;

@@ -71,7 +71,7 @@ public final class TinkerTools {
   /** Teil 27d: the loaders of the tool definition modules, AOE iterators and tool predicates (1.20.1 TinkerTools#registerRecipeSerializers) */
   public static void registerSerializers(RegisterEvent event) {
     if (event.getRegistryKey() == Registries.RECIPE_SERIALIZER) {
-      // Teil 27e: tool stats of the modifier modules (TODO 27f: ToolHookIngredient, MeltingFluidEffectiveModule)
+      // Teil 27e: tool stats of the modifier modules (ToolHookIngredient: TinkerIngredients; TODO 27h: MeltingFluidEffectiveModule)
       slimeknights.tconstruct.library.tools.stat.ToolStats.register(slimeknights.tconstruct.library.modifiers.modules.capacity.OverslimeModule.OVERSLIME_STAT);
       slimeknights.tconstruct.library.tools.stat.ToolStats.register(slimeknights.tconstruct.library.tools.capability.fluid.ToolTankHelper.CAPACITY_STAT);
       slimeknights.tconstruct.library.tools.stat.ToolStats.register(slimeknights.tconstruct.library.tools.capability.ToolEnergyCapability.MAX_STAT);
