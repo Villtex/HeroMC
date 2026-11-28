@@ -27,7 +27,7 @@ import java.util.function.Function;
 public record TagCombinationCondition<T>(List<TagKey<T>> match, @Nullable TagKey<T> ignore) implements ICondition {
   public static final MapCodec<TagCombinationCondition<?>> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
     MantleCodecs.REGISTRY_FIELD.forGetter(c -> c.match.getFirst().registry()),
-    Identifier.CODEC.listOf().fieldOf("match").forGetter(c -> c.match.stream().map(TagKey::location).toList()),
+    net.minecraft.util.ExtraCodecs.compactListCodec(Identifier.CODEC).fieldOf("match").forGetter(c -> c.match.stream().map(TagKey::location).toList()),
     Identifier.CODEC.optionalFieldOf("ignore").forGetter(c -> c.ignore != null ? Optional.of(c.ignore.location()) : Optional.empty())
   ).apply(instance, TagCombinationCondition::of));
 

@@ -79,7 +79,7 @@ public class SizedIngredient implements Predicate<ItemStack> {
    * @return  Sized ingredient matching any size
    */
   public static SizedIngredient fromTag(TagKey<Item> tag, int amountNeeded) {
-    return of(Ingredient.of(net.minecraft.core.registries.BuiltInRegistries.ITEM.getOrThrow(tag)), amountNeeded);
+    return of(slimeknights.mantle.util.LazyTagHolderSet.ingredient(tag), amountNeeded);
   }
 
   /**

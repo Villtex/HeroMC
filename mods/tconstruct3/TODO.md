@@ -1,6 +1,6 @@
 # Tinkers' Construct 3.12.1 – offen (Teil 27)
 
-Stand nach 27e (Modifikator-System). Ausführlich: Skill `tinkers3-263`, Bericht des Konverters `tools/convert_report.md`.
+Stand nach 27f (Rezept-Typen). Ausführlich: Skill `tinkers3-263`, Bericht des Konverters `tools/convert_report.md`.
 
 ## Wo der Code liegt
 
@@ -20,12 +20,14 @@ Stand nach 27e (Modifikator-System). Ausführlich: Skill `tinkers3-263`, Bericht
   Flasche/Bottle der Trank-Flüssigkeiten in `TagPredicate.legacyTag` (27g), `LayoutIcon` baut beim Laden einen
   `ItemStack` (vor dem Einschalten der Tisch-Layouts in 27g auf `ItemOutput` umstellen), BlockItem-Prüfung von
   `BlockItemProviderModule` (entfiel mit `ItemOutput`), `TinkerModifiers`/`TinkerTables` aus dem Original ergänzen.
-- **27f (Rezepte):** `MaterialCastingLookup`, `MaterialRecipeCache`, `MeltingFuelLookup`, `ModifierRecipeLookup`
-  (liegen in `todo`, brauchen die Rezeptklassen), dann Material-Prädikate `castable`/`composite`, Fluid-Prädikat
-  `fuel`, `SlotTypeModifierPredicate`, `RandomMaterial.RandomVariant` (Varianten aus Material-Rezepten),
-  `MaterialRecipe.INGOTS_PER_REPAIR` in `RepairStats`/`SkullStats`, `TinkerRecipeTypes.init` in `TinkerModule`,
-  `ModifierSets` ↔ `ModifierSetWorktableRecipe`. Rarität und Materialname der Teile (`MaterialItem.getRarity`,
-  Komponente `minecraft:rarity`), Weiterleitungen beim Laden (`MaterialItem.verifyTag`, `ToolStack.verifyTag`).
+- **27f2 (Client):** `library/client` ohne `book` (27k) und `armor` (27h) – siehe `docs/PLAN.md`, Teil 27f „Offen“.
+  Material-Texturen liegen fertig vor (Dateinamen mit Suffix `_tconstruct_<material>`, Namensraum jetzt `tconstruct3`),
+  `items/*.json` fehlen für alle Items, `TinkerNetwork`: `GeneratePartTexturesPacket`. `MaterialItem`: Rarität und
+  Namensfarbe, `verifyTag` beim Laden von Stapeln.
+- **Rezept-Daten:** eingeschaltet ist nur `recipe/tools/materials/` (47 Dateien mit `!` aus, Items/Flüssigkeiten von
+  27g–27j). Mit jedem Teil die passenden Rezept-Ordner einschalten und die Ausschlüsse abbauen: Server starten,
+  `>> Errors in element …` unter `Registry loading errors` im Log sammeln (26.3 bricht sonst den Start ab).
+  `IDisplayCraftingTinkering`/`VanillaFilteredRecipe` sind portiert, aber ohne JEI-Plugin (27k).
 - **27g:** Tische und `station_layouts` einschalten (3 Layouts filtern auf das Item-Tag `tconstruct3:modifiable`, das
   erst mit 27h gefüllt ist); `InventorySlotSyncPacket` (todo), `TinkerCommons` vervollständigen (Platzhalter mit
   den Bedingungen und Prädikat-Ladern), `FluidDeferredRegisterExtension` (braucht `SlimeFluidType`).

@@ -10,6 +10,7 @@ import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.fluids.FluidStack;
 import slimeknights.mantle.data.loadable.Loadables;
 import slimeknights.mantle.data.loadable.common.FluidStackLoadable;
+import slimeknights.mantle.data.loadable.common.ItemStackLoadable;
 import slimeknights.mantle.data.loadable.common.NBTLoadable;
 import slimeknights.mantle.data.loadable.field.LoadableField;
 import slimeknights.mantle.data.loadable.primitive.IntLoadable;
@@ -159,6 +160,33 @@ public abstract class FluidOutput implements Supplier<FluidStack> {
     }
   }
 
+  /** Port: output built on first use from fluid, amount and components (see {@link Loadable#deserialize}) */
+  @RequiredArgsConstructor
+  private static class OfComponents extends FluidOutput {
+    private final Fluid fluid;
+    @Getter
+    private final int amount;
+    private final net.minecraft.core.component.DataComponentPatch components;
+    private FluidStack cachedStack;
+
+    @Override
+    public FluidStack get() {
+      if (cachedStack == null) {
+        cachedStack = new FluidStack(fluid.builtInRegistryHolder(), amount, components);
+      }
+      return cachedStack;
+    }
+
+    @Override
+    public void serialize(JsonObject json) {
+      json.add("fluid", Loadables.FLUID.serialize(this.fluid));
+      json.addProperty("amount", amount);
+      if (!components.isEmpty()) {
+        json.add("components", ItemStackLoadable.COMPONENT_PATCH.serialize(components));
+      }
+    }
+  }
+
   /** Class for an output that is just a stack */
   @RequiredArgsConstructor
   private static class OfStack extends FluidOutput {
@@ -248,7 +276,16 @@ public abstract class FluidOutput implements Supplier<FluidStack> {
           IntLoadable.FROM_ONE.getIfPresent(json, "amount", context),
           NBTLoadable.ALLOW_STRING.getOrDefault(json, "nbt", null));
       }
-      return fromStack(stack.deserialize(json, context));
+      // Port: 26.3 fluid stacks need bound components, which are not there during a data reload; build the stack on first use
+      Fluid fluid = nonEmpty ? Loadables.FLUID.getIfPresent(json, "fluid", context) : Loadables.FLUID.getOrDefault(json, "fluid", net.minecraft.world.level.material.Fluids.EMPTY, context);
+      int amount = (nonEmpty ? IntLoadable.FROM_ONE : IntLoadable.FROM_ZERO).getIfPresent(json, "amount", context);
+      if (fluid == net.minecraft.world.level.material.Fluids.EMPTY || amount <= 0) {
+        if (nonEmpty) {
+          throw new com.google.gson.JsonSyntaxException("FluidStack cannot be empty");
+        }
+        return EMPTY;
+      }
+      return new OfComponents(fluid, amount, FluidStackLoadable.readComponents(json, context));
     }
 
     @Override

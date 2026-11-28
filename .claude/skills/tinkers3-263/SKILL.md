@@ -1,6 +1,6 @@
 ---
 name: tinkers3-263
-description: Beim Arbeiten an Tinkers' Construct 3.12.1 und Mantle (mods/tconstruct3, mods/mantle, Teile 27a–27k) benutzen – Mod-ID tconstruct3 neben 1.4.3 (tconstruct), Quellen vom Tag holen, Daten-Konverter convert_data.py und sein Bericht, Daten ordnerweise einschalten (data-enabled.txt), Welttyp-Regel (1.4.3 nur Hexxit Legacy, 3.12.1 nur Integrated) in Daten und Code über worldgen152:world_type und HexxitWorldType, Assets aus dem Tag mit umbenanntem Namensraum. Ab 27d: Werkzeugdaten als Datenkomponenten (ToolStack, ToolDataComponents), Tinkers-IDs als ResourceId mit .location(), Ersatz für LazyOptional/Tier/Capabilities, Platzhalter TinkerTools/TinkerCommons, große Ports stufenweise mit -Pwip und die Lombok-Falle bei Fehlern im Klassenkopf. Ab 27e: Modifikator-Module, Werkzeug-Capabilities über ItemAccess, keine ItemStacks beim Datenladen (ItemOutput, LazyTagHolderSet), Ausschlüsse in data-enabled.txt. Auch für Client-Code von Mantle/Tinkers auf 26.3: GUI-Umbau (tools/gui_to_extract.py), Bildschirme, Handbücher, Modell-Lader und Blockstate-Modelle, Flüssigkeits-Modelle, Block-Renderer mit Submit-Pipeline.
+description: Beim Arbeiten an Tinkers' Construct 3.12.1 und Mantle (mods/tconstruct3, mods/mantle, Teile 27a–27k) benutzen – Mod-ID tconstruct3 neben 1.4.3 (tconstruct), Quellen vom Tag holen, Daten-Konverter convert_data.py und sein Bericht, Daten ordnerweise einschalten (data-enabled.txt), Welttyp-Regel (1.4.3 nur Hexxit Legacy, 3.12.1 nur Integrated) in Daten und Code über worldgen152:world_type und HexxitWorldType, Assets aus dem Tag mit umbenanntem Namensraum. Ab 27d: Werkzeugdaten als Datenkomponenten (ToolStack, ToolDataComponents), Tinkers-IDs als ResourceId mit .location(), Ersatz für LazyOptional/Tier/Capabilities, Platzhalter TinkerTools/TinkerCommons, große Ports stufenweise mit -Pwip und die Lombok-Falle bei Fehlern im Klassenkopf. Ab 27e: Modifikator-Module, Werkzeug-Capabilities über ItemAccess, keine ItemStacks beim Datenladen (ItemOutput, LazyTagHolderSet), Ausschlüsse in data-enabled.txt. Auch für Client-Code von Mantle/Tinkers auf 26.3: GUI-Umbau (tools/gui_to_extract.py), Bildschirme, Handbücher, Modell-Lader und Blockstate-Modelle, Flüssigkeits-Modelle, Block-Renderer mit Submit-Pipeline. Ab 27f: Rezept-Typen (Serializer mit Typ, eigene Zutaten als ICustomIngredient, Werkbank-Rezepte mit Codec, fehlende Tags/Items brechen das Laden ab).
 ---
 
 # Tinkers' Construct 3.12.1 + Mantle auf 26.3 (Teil 27)
@@ -119,6 +119,31 @@ aus dem Log sammeln, nach Ursache gruppieren (unbekannter Loader → Teil des Lo
   Objekten mit `attribute`, Tinkers-Stat-Operationen behalten `multiply_base`).
 - **Testen ohne Werkzeuge:** Stat-Boni greifen nur bei Items in `tconstruct3:modifiable/*` – im Test einen Welt-
   Datapack mit `minecraft:stick` in diesen Tags anlegen (`datapack enable "file/…"`, `reload`).
+
+## 26.3-Muster aus 27f (Rezept-Typen)
+
+- **Typ je Serializer:** Mantle `TypeAwareRecipeSerializer` ist ein Handle neben dem 26.3-`RecipeSerializer` (Record):
+  `LoadableRecipeSerializer.of(loader, type)` legt es unter `TYPED_SERIALIZER` in den Kontext; das Rezept gibt
+  `serializer.serializer()` aus `getSerializer()` zurück. Lombok-Felder `RecipeType`/`RecipeSerializer` als Rohtyp.
+- **Eigene Zutaten** = `ICustomIngredient` + `RecordLoadable`, Typen in `library/recipe/ingredient/TinkerIngredients`
+  (JSON `{"neoforge:ingredient_type": "tconstruct3:material", …}`, verschachtelt über `"match"` oder `"item"`/`"tag"`).
+  `Ingredient.EMPTY` → `IngredientLoadable.empty()`, Vergleich `EmptyIngredient.isEmpty(i)`; `instanceof X` →
+  `i.isCustom() && i.getCustomIngredient() instanceof X`; `Ingredient.of(tag)` → `LazyTagHolderSet.ingredient(tag)`.
+- **Werkbank-Rezepte mit Zusatzfeldern** (`ShapedMaterialsRecipe`): eigener `MapCodec` aus `Recipe.CommonInfo`,
+  `CraftingRecipe.CraftingBookInfo`, `ShapedRecipePattern.Data` (Tasten für `"parts"`), `ItemStackTemplate` plus
+  `StreamCodec`; Speichern als JSON nicht nötig (kein Datagen). `getSerializer()` als Roh-Cast.
+- **26.3 bricht das ganze Laden ab**, wenn ein Rezept ein unbekanntes Item, eine unbekannte Flüssigkeit oder ein
+  Tag nennt, das niemand anlegt (`Registry loading errors` im Log, Server stoppt). Mantles `IngredientLoadable` macht
+  `"#tag"` deshalb lazy (auch in Listen, `neoforge:difference/intersection/compound`). Unbekannte Items/Fluide: Datei
+  mit `!` in `data-enabled.txt` ausschließen; Liste aus dem Log (`>> Errors in element …`) erzeugen.
+- **Auch `FluidStack` nicht beim Laden bauen** („Components not bound yet“): Mantle `FluidOutput` baut ihn beim ersten
+  `get()`. Flüssigkeits-NBT → Komponenten: `ICastingContainer.getFluidComponents()`, Tränke über `PotionContents`
+  (`PotionCastingRecipe.potionComponents/potionId`).
+- **Rezepte sind in 26.3 eine Daten-Registry** und entstehen vor allen Reload-Listenern. Caches, die Rezept-
+  Konstruktoren füllen (`DuelSidedListener` in `RecipeCacheInvalidator`), leeren sich deshalb nur vorgemerkt beim
+  ersten Rezept des nächsten Ladens; sofort leeren (wie 1.20.1 am Server) löscht die frischen Einträge.
+- **Platzhalter** `smeltery/TinkerSmeltery`, `tables/TinkerTables` registrieren alle Serializer der Bibliothek und
+  verweisen auf Blöcke/Items späterer Teile per `RegistryObject.create` (`.get()` beim `new ItemStack`).
 
 ## Große Ports in Stufen (seit 27d)
 

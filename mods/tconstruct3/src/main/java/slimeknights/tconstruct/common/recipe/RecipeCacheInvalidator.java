@@ -70,13 +70,9 @@ public class RecipeCacheInvalidator implements IEarlySafeManagerReloadListener {
     @Override
     public void accept(boolean client) {
       // client side event runs at the end of recipe loading
-      // server side runs at the start
-      // so queue client side to run at the beginning of the next recipe list
-      if (client) {
-        clearQueued = true;
-      } else {
-        clearCache();
-      }
+      // Port: in 26.3 recipes are a data registry, built before any reload listener runs, so the server side also
+      // runs after the recipes filled the cache: queue the clear for the beginning of the next recipe list on both sides
+      clearQueued = true;
     }
 
     /**

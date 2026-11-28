@@ -74,6 +74,11 @@ public class FluidStackLoadable {
 
   /* Helpers */
 
+  /** Port: reads {@code "components"} (or legacy {@code "nbt"}) without building a stack, for lazy outputs */
+  public static DataComponentPatch readComponents(JsonObject json, TypedMap context) {
+    return NBT.get(json, context);
+  }
+
   /** Makes an item stack from the given parameters */
   private static FluidStack makeStack(Fluid fluid, int amount, DataComponentPatch components) {
     if (fluid == Fluids.EMPTY || amount <= 0) {

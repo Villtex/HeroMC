@@ -12,6 +12,57 @@ data/tconstruct3/tinkering/modifiers/
 data/tconstruct3/tinkering/fluid_effects/
 # data/tconstruct3/tinkering/tags/modifiers/ (27h: the tags name modifiers of the tools)
 data/tconstruct3/tinkering/enchantments_to_modifiers.json
+# Teil 27f: material recipes (tconstruct3:material, material_fluid, material_melting); ! lines below
+data/tconstruct3/recipe/tools/materials/
+# Teil 27f: material recipes with items of later parts (27g-27j)
+!data/tconstruct3/recipe/tools/materials/blazewood.json
+!data/tconstruct3/recipe/tools/materials/blazing_bone.json
+!data/tconstruct3/recipe/tools/materials/cheese_block.json
+!data/tconstruct3/recipe/tools/materials/cheese_ingot.json
+!data/tconstruct3/recipe/tools/materials/dragon_scale.json
+!data/tconstruct3/recipe/tools/materials/earthslime.json
+!data/tconstruct3/recipe/tools/materials/enderslime.json
+!data/tconstruct3/recipe/tools/materials/enderslime_vine.json
+!data/tconstruct3/recipe/tools/materials/ichor.json
+!data/tconstruct3/recipe/tools/materials/nahuatl.json
+!data/tconstruct3/recipe/tools/materials/obsidian_pane.json
+!data/tconstruct3/recipe/tools/materials/scorched_stone/brick.json
+!data/tconstruct3/recipe/tools/materials/seared_stone/brick.json
+!data/tconstruct3/recipe/tools/materials/skyslime.json
+!data/tconstruct3/recipe/tools/materials/skyslime_vine.json
+!data/tconstruct3/recipe/tools/materials/slimewood/bloodshroom_planks.json
+!data/tconstruct3/recipe/tools/materials/slimewood/enderbark_planks.json
+!data/tconstruct3/recipe/tools/materials/slimewood/greenheart_planks.json
+!data/tconstruct3/recipe/tools/materials/slimewood/skyroot_planks.json
+!data/tconstruct3/recipe/tools/materials/venombone.json
+!data/tconstruct3/recipe/tools/materials/scorched_stone/block.json
+!data/tconstruct3/recipe/tools/materials/seared_stone/block.json
+!data/tconstruct3/recipe/tools/materials/slimewood/bloodshroom_logs.json
+!data/tconstruct3/recipe/tools/materials/slimewood/enderbark_logs.json
+!data/tconstruct3/recipe/tools/materials/slimewood/greenheart_logs.json
+!data/tconstruct3/recipe/tools/materials/slimewood/skyroot_logs.json
+# Teil 27f: material recipes with fluids of Tinkers (27g)
+!data/tconstruct3/recipe/tools/materials/melting/ancient_hide.json
+!data/tconstruct3/recipe/tools/materials/melting/cinderslime.json
+!data/tconstruct3/recipe/tools/materials/melting/clay.json
+!data/tconstruct3/recipe/tools/materials/melting/darkthread.json
+!data/tconstruct3/recipe/tools/materials/melting/enderslime.json
+!data/tconstruct3/recipe/tools/materials/melting/fiery.json
+!data/tconstruct3/recipe/tools/materials/melting/glass.json
+!data/tconstruct3/recipe/tools/materials/melting/ichor.json
+!data/tconstruct3/recipe/tools/materials/melting/jeweled_hide.json
+!data/tconstruct3/recipe/tools/materials/melting/knightmetal.json
+!data/tconstruct3/recipe/tools/materials/melting/knightslime.json
+!data/tconstruct3/recipe/tools/materials/melting/nahuatl.json
+!data/tconstruct3/recipe/tools/materials/melting/obsidian.json
+!data/tconstruct3/recipe/tools/materials/melting/pig_iron.json
+!data/tconstruct3/recipe/tools/materials/melting/queens_slime.json
+!data/tconstruct3/recipe/tools/materials/melting/scorched_stone.json
+!data/tconstruct3/recipe/tools/materials/melting/seared_stone.json
+!data/tconstruct3/recipe/tools/materials/melting/skyslime.json
+!data/tconstruct3/recipe/tools/materials/melting/slimesteel.json
+!data/tconstruct3/recipe/tools/materials/melting/steeleaf.json
+!data/tconstruct3/recipe/tools/materials/melting/venom.json
 # Teil 27e: excluded until their part (generated from the test server log)
 # effects of Tinkers (27h)
 !data/tconstruct3/tinkering/fluid_effects/ender_slime.json

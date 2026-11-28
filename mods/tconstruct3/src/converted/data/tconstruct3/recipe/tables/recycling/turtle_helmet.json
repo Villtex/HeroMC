@@ -9,7 +9,7 @@
   "pattern": "tconstruct3:venom_bottle",
   "results": {
     "tconstruct3:scale": {
-      "id": "minecraft:scute",
+      "id": "minecraft:turtle_scute",
       "count": 5
     }
   },

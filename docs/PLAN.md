@@ -84,7 +84,8 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 27c | Tinkers 3 C: Mantle-Client (Modell-Lader, Bildschirme, Handbuch-Engine) | ~17.000 | 27b | Fable 5.2, hoch | ✅ erledigt |
 | 27d | Tinkers 3 D: Werkzeug-Datenmodell (Materialien, Stats, Werkzeugdaten als Komponenten, Definitionen, Teile, JSON-Variablen) | ~35.000 | 27b | Fable 5.2, hoch | ✅ erledigt |
 | 27e | Tinkers 3 E: Modifikator-System (Hooks, Module, Flüssigkeits-Effekte, Modifikator-Rezepte) | ~30.000 | 27d | Opus 5.5, hoch | ✅ erledigt |
-| 27f | Tinkers 3 F: Rezept-Typen (Gießen, Schmelzen, Legieren, Teile-Bau, Tüftlertisch) und Client der Bibliothek (Material-/Werkzeugmodelle, Paletten-Texturen) | ~35.000 | 27e, 27c | Fable 5.2, hoch | offen |
+| 27f | Tinkers 3 F: Rezept-Typen (Gießen, Schmelzen, Legieren, Teile-Bau, Tüftlertisch) | ~18.000 | 27e | Opus 5.5, hoch | ✅ erledigt |
+| 27f2 | Tinkers 3 F2: Client der Bibliothek (Material-/Werkzeugmodelle als 26.3-Item-Modelle, `items/*.json`, Modifikator-Modelle, Render-Infos) | ~10.000 | 27f, 27c | Fable 5.2, hoch | offen |
 | 27g | Tinkers 3 G: Tische und Menüs, gemeinsame Blöcke/Items, Flüssigkeiten | ~28.000 | 27f | Opus 5.5, mittel | offen |
 | 27h | Tinkers 3 H: Werkzeuge, Waffen, Fernkampf, Rüstung, Modifikator-Umsetzungen | ~28.000 | 27f | Opus 5.5, hoch | offen |
 | 27i | Tinkers 3 I: Schmelzerei und Gießerei (Multiblöcke, Abfluss, Hahn, Gussbecken, Renderer) | ~20.000 | 27g | Opus 5.5, hoch | offen |
@@ -2573,6 +2574,56 @@ anbringen, Stufen, Plätze, Wirkung eines einfachen Moduls.
 `library/client` (Material-/Werkzeugmodelle, Render-Materialien mit Paletten-Texturen, Modifikator-Modelle, Rüstung,
 Bücher-Inhalte). Werkzeug-Texturen werden in 3.12.1 zur Laufzeit aus Graustufen + Palette erzeugt: auf den 26.3-
 Atlas-Weg bringen.
+
+#### Teil 27f – Stand (Rezepte ✅ erledigt, Client offen → Teil 27f2)
+- **Umfang Rezepte:** ganz `library/recipe` (Gießen inkl. Material-/Komposit-/Werkzeug-/Trank-/Behälter-Gießen,
+  Schmelzen inkl. Erz/Schaden/Material/Entity, Legieren, Brennstoffe, Formen, Teile-Bau und Recycling, Tüftlertisch
+  mit Werkzeug-Bau, Material-Tausch und Reparatur, Material-Rezepte und Werkbank-Rezepte mit Materialien) und
+  `tables/recipe` (Tüftlertisch-Reparatur, Teile-Tausch, Schaden, Werkzeug-Recycling, Reparatur-Kit in der Werkbank).
+  Rezept-Typen in `TinkerRecipeTypes`, Serializer in den Platzhaltern `smeltery/TinkerSmeltery` und `tables/TinkerTables`
+  (27i/27g ersetzen sie durch das Original), Reparatur-Serializer in `TinkerModifiers`. Datagen-Builder entfallen.
+- **26.3-Ersatz:** Mantle `TypeAwareRecipeSerializer` als Handle neben dem Record-Serializer (Typ je Tisch/Becken);
+  eigene Zutaten (`material`, `material_value`, `no_container`, `block_tag`, `instrument`, `tool_hook`) als
+  `ICustomIngredient` in `TinkerIngredients`; Werkbank-Rezepte mit Materialien über eigene Codecs auf
+  `ShapedRecipe`/`ShapelessRecipe`; Flüssigkeits-NBT als Komponenten (`ICastingContainer.getFluidComponents`, Tränke
+  über `PotionContents`); Behälter füllen über Mantle `FluidHandlers`; Anzeige-Stapel mit Werkzeug-Komponenten.
+- **Mantle-Korrekturen beim Laden:** 26.3 bricht das ganze Datenladen ab, wenn ein Rezept ein Tag nennt, das niemand
+  anlegt. `IngredientLoadable` liest `"#tag"` (auch in Listen, `neoforge:difference/intersection/compound`) jetzt lazy
+  wie 1.20.1; `FluidOutput` baut den `FluidStack` erst beim Gebrauch (sonst „Components not bound yet“);
+  `SizedIngredient.fromTag` lazy; `mantle:tag_combination_filled` nimmt `"match"` auch als einzelnen Wert.
+- **Daten an:** `recipe/tools/materials/` (Material-Rezepte, Material-Gießen und -Schmelzen); 47 Dateien mit Items
+  oder Flüssigkeiten späterer Teile ausgeschlossen (Liste in `data-enabled.txt`). Konverter: Umbenennung
+  `minecraft:scute` → `turtle_scute`, `minecraft:grass` → `short_grass`.
+- **Prädikate aus 27d nachgetragen:** Material `castable`/`composite`, Flüssigkeit `fuel`, Zufallsmaterial mit
+  Varianten aus Material-Rezepten, Reparaturwert über `MaterialRecipe.INGOTS_PER_REPAIR`.
+- **Fehler aus 27b–27e behoben:** Rezepte sind in 26.3 eine Daten-Registry und entstehen vor allen Reload-Listenern;
+  `RecipeCacheInvalidator` leerte die von Rezept-Konstruktoren gefüllten Caches (Material-, Gieß-, Schmelz-,
+  Modifikator-Rezepte) am Server danach sofort wieder. Jetzt wird das Leeren wie am Client vorgemerkt.
+- **Geprüft:** `CI=true ./gradlew pack` grün; Testserver Integrated (Seed 1234) bis `Done`, 0 ERROR, 160 Material-,
+  60 Material-Gieß- und 19 Material-Schmelz-Rezepte geladen. Mit temporärem Testbefehl (nicht committet) über den
+  `MaterialRecipeCache`: Eisenbarren → `tconstruct3:iron` Wert 1, Eisenblock 9, Eisennugget 1/9, Eichenbretter →
+  Holz 1, Stock 1/2, Feuerstein → Feuerstein, Ziegenhorn → Horn 4 (Instrument-Zutat), Erde → nichts; Holz-Varianten
+  aus den Rezepten (`wood`, `wood#crimson`, `wood#warped`); nach `/reload` unverändert 160 Einträge.
+  Legacy-Welt (`level-type=hexxit\:legacy`): bis `Done`, 0 ERROR, kein 3.12.1-Material-Rezept geladen.
+- **Offen (Client, eigener Teil 27f2):** `library/client` ist noch nicht portiert. Befund: die Material-Texturen der
+  Teile und Werkzeuge liegen schon fertig im Original (`src/generated`, 10.808 Bilder, kommen über den Asset-Import ins
+  Jar); die Erzeugung zur Laufzeit (`data/spritetransformer`, `GeneratePartTexturesCommand`) braucht es nur für fremde
+  Materialien und kann als 26.3-Sprite-Quelle (wie Vanillas `paletted_permutations`) nachkommen. Zu tun:
+  `MaterialRenderInfo(Loader)` (Suffix `tconstruct_<material>` der Dateinamen beibehalten, Namensraum ist jetzt
+  `tconstruct3`), Material- und Werkzeugmodell als 26.3-`ItemModel.Unbaked` (Quads lazy je Material über den
+  `AtlasManager`, Varianten wie geladen/gebrochen über `items/*.json` mit `minecraft:condition`/`select`),
+  `items/*.json` für alle Tinkers-Items im Asset-Import erzeugen (die 1.20.1-Assets haben keine), Modifikator-Modelle
+  und -Icons, `ModelProperties`/`TinkerItemProperties`, Flüssigkeits-Behälter- und Tank-Modelle (Weltbezug →
+  `ImportTagAssets.BLOCKSTATE_LOADERS`). Bücher-Inhalte (`library/client/book`) mit den Handbüchern in 27k, Rüstungs-
+  Modelle (`library/client/armor`) mit der Rüstung in 27h. Außerdem `MaterialItem` Rarität/Namensfarbe und
+  `verifyTag` beim Laden von Stapeln.
+
+### Teil 27f2 – Client der Bibliothek
+`library/client` ohne Bücher und Rüstung (siehe „Offen“ bei 27f): Render-Infos der Materialien, Material- und
+Werkzeugmodelle als 26.3-Item-Modelle mit `items/*.json` aus dem Asset-Import, Modifikator-Modelle und -Icons,
+Item-Eigenschaften, Flüssigkeits-Behälter- und Tank-Modelle. Prüfen im echten Client (Skill `headless-client`) mit
+einem temporären Befehl, der Teile und Werkzeuge mit Materialien ins Inventar legt (die Werkzeug-Items selbst kommen
+erst in 27h: bis dahin Teile und `ToolStack.createTool` auf einem Test-Item).
 
 ### Teil 27g – Tische, gemeinsame Inhalte, Flüssigkeiten
 `tables` (Teilebauer, Tüftlertisch, Tüftler-Amboss, Werkzeugschmiede, Muster-/Teile-Truhen, Menüs, Bildschirme; Skill

@@ -3,7 +3,7 @@
   "biomes": "#tconstruct3:islands/clay",
   "grasses": [
     {
-      "data": "minecraft:grass",
+      "data": "minecraft:short_grass",
       "weight": 7
     },
     {

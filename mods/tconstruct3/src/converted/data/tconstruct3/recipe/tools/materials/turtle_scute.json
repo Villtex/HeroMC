@@ -6,7 +6,7 @@
     }
   ],
   "type": "tconstruct3:material",
-  "ingredient": "minecraft:scute",
+  "ingredient": "minecraft:turtle_scute",
   "material": "tconstruct3:turtle",
   "needed": 1,
   "value": 1

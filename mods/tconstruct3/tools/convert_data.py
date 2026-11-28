@@ -93,10 +93,14 @@ def forge_tag(path):
 
 
 C_TAGS_USED = collections.Counter()
+# vanilla ids renamed between 1.20.1 and 26.3 (whole strings only)
+VANILLA_RENAME = {'minecraft:scute': 'minecraft:turtle_scute', 'minecraft:grass': 'minecraft:short_grass'}
 
 
 def fix_str(s, where=''):
     """Renames inside one string: tconstruct: ids, forge: ids and forge: tags."""
+    if s in VANILLA_RENAME:
+        return VANILLA_RENAME[s]
     if 'forge:' in s:
         if s in FORGE_IDS:
             return FORGE_IDS[s]
