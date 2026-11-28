@@ -125,7 +125,7 @@ public class SwappableModifierRecipe extends ModifierRecipe {
   }
 
   @Override
-  public RecipeSerializer<?> getSerializer() {
+  public RecipeSerializer getSerializer() {
     return TinkerModifiers.swappableModifierSerializer.get();
   }
 
@@ -135,7 +135,7 @@ public class SwappableModifierRecipe extends ModifierRecipe {
   @Override
   public List<ItemStack> getToolWithModifier() {
     if (toolWithModifier == null) {
-      Identifier id = result.getId();
+      Identifier id = result.getId().location();
       ModifierEntry result = getDisplayResult();
       toolWithModifier = getToolInputs().stream().map(stack -> withModifiers(stack, maxToolSize, modifiersForResult(result, result), data -> data.putString(id, value))).collect(Collectors.toList());
     }
@@ -145,7 +145,7 @@ public class SwappableModifierRecipe extends ModifierRecipe {
   @Override
   public List<SlotCount> getResultSlots() {
     if (resultSlots == null) {
-      ItemStack[] tools = toolRequirement.getItems();
+      ItemStack[] tools = toolRequirement.items().map(net.minecraft.world.item.ItemStack::new).toArray(net.minecraft.world.item.ItemStack[]::new);
       resultSlots = getResultSlots(getDisplayResult(), tools.length > 0 ? tools[0].getItem() : Items.AIR, value);
     }
     return resultSlots;

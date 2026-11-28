@@ -21,7 +21,7 @@ import java.util.List;
  */
 public interface IModifierWorktableRecipe extends ICommonRecipe<ITinkerableContainer> {
   @Override
-  default RecipeType<?> getType() {
+  default RecipeType getType() {
     return TinkerRecipeTypes.MODIFIER_WORKTABLE.get();
   }
 

@@ -109,6 +109,11 @@ def fix_line(line, col, msg, extra):
         if span:
             reg = HOLDER_REGISTRIES[m.group(1)]
             return line[:span[0]] + f'net.minecraft.core.registries.BuiltInRegistries.{reg}.wrapAsHolder(' + line[span[0]:span[1]] + ')' + line[span[1]:]
+    # Teil 27e: recipes in 26.3 want RecipeType<? extends Recipe<C>>; the raw type is return-type-substitutable
+    if re.match(r'getType\(\) in \w+ (cannot implement|clashes with) getType\(\) in Recipe', msg):
+        return line.replace('RecipeType<?> getType()', 'RecipeType getType()', 1)
+    if re.match(r'getSerializer\(\) in \w+ (cannot implement|clashes with) getSerializer\(\) in Recipe', msg):
+        return re.sub(r'RecipeSerializer<[^()]*> getSerializer\(\)', 'RecipeSerializer getSerializer()', line, count=1)
     if msg == 'cannot find symbol':
         sym = extra.get('symbol', '')
         loc = extra.get('location', '')
@@ -118,6 +123,14 @@ def fix_line(line, col, msg, extra):
                 idx = line.find('.location()')
             if idx >= 0:
                 return line[:idx] + '.identifier()' + line[idx + len('.location()'):]
+        if sym == 'method getItems()' and 'Ingredient' in loc:
+            return line.replace('.getItems()', '.items().map(net.minecraft.world.item.ItemStack::new).toArray(net.minecraft.world.item.ItemStack[]::new)', 1)
+        if sym == 'method isInstantenous()':
+            return line.replace('.isInstantenous()', '.isInstantaneous()')
+        if sym.startswith('method setSecondsOnFire('):
+            return line.replace('.setSecondsOnFire(', '.igniteForSeconds(')
+        if sym == 'method isFluidEqual(FluidStack)':
+            return re.sub(r'([\w.()]+?)\.isFluidEqual\(', r'net.neoforged.neoforge.fluids.FluidStack.isSameFluidSameComponents(\1, ', line, count=1)
         if sym.startswith('method getHolder(') and 'Registry' in loc:
             return line.replace('.getHolder(', '.get(', 1)
         if sym.startswith('method getHolderOrThrow(') :

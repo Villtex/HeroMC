@@ -156,7 +156,7 @@ public class IncrementalModifierRecipe extends AbstractModifierRecipe {
   }
 
   @Override
-  public RecipeSerializer<?> getSerializer() {
+  public RecipeSerializer getSerializer() {
     return TinkerModifiers.incrementalModifierSerializer.get();
   }
 
@@ -177,7 +177,7 @@ public class IncrementalModifierRecipe extends AbstractModifierRecipe {
       ImmutableList.Builder<List<ItemStack>> builder = ImmutableList.builder();
 
       // fill extra item slots
-      List<ItemStack> items = Arrays.asList(input.getItems());
+      List<ItemStack> items = Arrays.asList(input.items().map(net.minecraft.world.item.ItemStack::new).toArray(net.minecraft.world.item.ItemStack[]::new));
       int maxStackSize = items.stream().mapToInt(ItemStack::getMaxStackSize).min().orElse(64);
 
       // split the stacks out if we need more than 1

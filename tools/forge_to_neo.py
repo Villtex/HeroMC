@@ -14,6 +14,8 @@ from pathlib import Path
 
 # (regex, replacement) applied in order to the whole file text
 RULES = [
+    # Teil 27e: Ingredient.of(TagKey) is not lazy in 26.3 (built-in registries throw before tags are bound)
+    (r'\bIngredient\.of\(((?:\w+\.)*\w*Tags\.(?:\w+\.)*[A-Z_]+)\)', r'slimeknights.mantle.util.LazyTagHolderSet.ingredient(\1)'),
     # --- Minecraft renames (1.20.1 -> 26.3) ---
     (r'\bnet\.minecraft\.resources\.ResourceLocation\b', 'net.minecraft.resources.Identifier'),
     (r'\bnew ResourceLocation\(([^(),]+(?:\([^()]*\))?),\s*', r'Identifier.fromNamespaceAndPath(\1, '),

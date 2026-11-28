@@ -35,7 +35,7 @@ import java.util.function.Predicate;
  */
 public class CustomExplosion {
   /** Default predicate for which entities to match */
-  public static final Predicate<Entity> DEFAULT_ENTITY_PREDICATE = entity -> entity != null && entity.isAlive() && !entity.ignoreExplosion() && !entity.isSpectator();
+  public static final Predicate<Entity> DEFAULT_ENTITY_PREDICATE = entity -> entity != null && entity.isAlive() && !entity.isSpectator();
 
   protected final Level level;
   protected final Vec3 location;

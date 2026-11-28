@@ -26,7 +26,7 @@ import java.util.List;
  */
 @RequiredArgsConstructor
 public abstract class AbstractWorktableRecipe implements IModifierWorktableRecipe {
-  public static final Ingredient DEFAULT_TOOLS = Ingredient.of(TinkerTags.Items.MODIFIABLE);
+  public static final Ingredient DEFAULT_TOOLS = slimeknights.mantle.util.LazyTagHolderSet.ingredient(TinkerTags.Items.MODIFIABLE);
   protected static final LoadableField<Ingredient,AbstractWorktableRecipe> TOOL_FIELD = IngredientLoadable.DISALLOW_EMPTY.defaultField("tools", DEFAULT_TOOLS, true, r -> r.toolRequirement);
   protected static final LoadableField<List<SizedIngredient>,AbstractWorktableRecipe> INPUTS_FIELD = SizedIngredient.LOADABLE.list(1).requiredField("inputs", r -> r.inputs);
 
@@ -40,7 +40,7 @@ public abstract class AbstractWorktableRecipe implements IModifierWorktableRecip
   protected List<ItemStack> tools;
 
   public AbstractWorktableRecipe(Identifier id, List<SizedIngredient> inputs) {
-    this(id, Ingredient.of(TinkerTags.Items.MODIFIABLE), inputs);
+    this(id, slimeknights.mantle.util.LazyTagHolderSet.ingredient(TinkerTags.Items.MODIFIABLE), inputs);
   }
 
   @Override
@@ -71,7 +71,7 @@ public abstract class AbstractWorktableRecipe implements IModifierWorktableRecip
   @Override
   public List<ItemStack> getInputTools() {
     if (tools == null) {
-      tools = Arrays.stream(toolRequirement.getItems()).map(stack -> IModifiableDisplay.getDisplayStack(stack.getItem())).toList();
+      tools = Arrays.stream(toolRequirement.items().map(net.minecraft.world.item.ItemStack::new).toArray(net.minecraft.world.item.ItemStack[]::new)).map(stack -> IModifiableDisplay.getDisplayStack(stack.getItem())).toList();
     }
     return tools;
   }

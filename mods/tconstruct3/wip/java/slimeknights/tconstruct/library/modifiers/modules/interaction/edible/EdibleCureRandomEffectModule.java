@@ -47,11 +47,11 @@ public record EdibleCureRandomEffectModule(IJsonPredicate<LivingEntity> holder, 
     }
   }
 
-  /** 1.20.1 CheeseItem#removeRandomEffect (Teil 27g): removes a random effect that milk cures */
+  /** 1.20.1 CheeseItem#removeRandomEffect (Teil 27g): removes a random effect that milk cures (26.3: every effect) */
   public static void removeRandomEffect(net.minecraft.world.entity.LivingEntity living) {
     if (!living.level().isClientSide()) {
       java.util.List<net.minecraft.core.Holder<net.minecraft.world.effect.MobEffect>> removable = living.getActiveEffects().stream()
-        .filter(effect -> effect.getCures().contains(net.neoforged.neoforge.common.EffectCures.MILK))
+        .filter(effect -> slimeknights.tconstruct.library.utils.EffectCures.isCuredBy(effect, new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.MILK_BUCKET)))
         .map(net.minecraft.world.effect.MobEffectInstance::getEffect).toList();
       if (!removable.isEmpty()) {
         living.removeEffect(removable.get(living.getRandom().nextInt(removable.size())));

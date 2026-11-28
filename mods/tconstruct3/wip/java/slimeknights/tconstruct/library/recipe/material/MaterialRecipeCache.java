@@ -49,7 +49,7 @@ public class MaterialRecipeCache {
   /** Map from material variant ID to item stack list for display */
   private static final SimpleCache<MaterialVariantId, List<ItemStack>> ITEMS_BY_MATERIAL = new SimpleCache<>(variant ->
     getRecipes(variant).stream().flatMap(r -> {
-      Stream<ItemStack> stacks = Arrays.stream(r.getIngredient().getItems());
+      Stream<ItemStack> stacks = Arrays.stream(r.getIngredient().items().map(net.minecraft.world.item.ItemStack::new).toArray(net.minecraft.world.item.ItemStack[]::new));
       // if we need multiple, increase the stack size of the display stacks
       if (r.needed > r.value) {
         int size = (r.needed + r.value - 1) / r.value;
@@ -154,7 +154,7 @@ public class MaterialRecipeCache {
   public static void addItems(MaterialVariantId variant, int cost, List<ItemStack> items) {
     for (MaterialRecipe recipe : getRecipes(variant)) {
       int count = recipe.getItemsUsed(cost);
-      ItemStack[] stacks = recipe.getIngredient().getItems();
+      ItemStack[] stacks = recipe.getIngredient().items().map(net.minecraft.world.item.ItemStack::new).toArray(net.minecraft.world.item.ItemStack[]::new);
       if (count == 1) {
         Collections.addAll(items, stacks);
       } else {

@@ -54,9 +54,7 @@ public record FluidMobEffect(MobEffect effect, int time, int level, @Nullable Li
   /** Creates the final effect */
   public MobEffectInstance effectWithTime(int time) {
     MobEffectInstance instance = new MobEffectInstance(net.minecraft.core.registries.BuiltInRegistries.MOB_EFFECT.wrapAsHolder(effect), time, this.level - 1);
-    if (curativeItems != null) {
-      instance.setCurativeItems(curativeItems.stream().map(ItemStack::new).collect(Collectors.toList()));
-    }
+    // 26.3: no curative items on effects (milk clears all); "curative_items" is read but unused
     return instance;
   }
 

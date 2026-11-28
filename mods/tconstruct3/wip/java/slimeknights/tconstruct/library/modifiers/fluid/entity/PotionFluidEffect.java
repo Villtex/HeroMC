@@ -39,17 +39,19 @@ public record PotionFluidEffect(float scale, TagPredicate predicate) implements 
         Entity directSource = context.getDirectSource();
         Entity effectSource = context.getEffectSource();
         // prevent effects like instant damage from hitting hurt resistance
-        int oldInvulnerableTime = target.invulnerableTime;
+        int oldInvulnerableTime = target.getInvulnerableTime();
         // report whichever effect used the most
         float used = 0;
         for (MobEffectInstance instance : effects) {
-          MobEffect effect = instance.getEffect();
-          if (effect.isInstantenous()) {
+          net.minecraft.core.Holder<MobEffect> effect = instance.getEffect();
+          if (effect.value().isInstantaneous()) {
             // instant effects just apply full value always
             used = level.value();
             if (action.execute()) {
-              target.invulnerableTime = 0;
-              effect.applyInstantenousEffect(directSource, attacker, target, instance.getAmplifier(), used * scale);
+              target.setInvulnerableTime(0);
+              if (target.level() instanceof net.minecraft.server.level.ServerLevel serverLevel) {
+                effect.value().applyInstantaneousEffect(serverLevel, directSource, attacker, target, instance.getAmplifier(), used * scale);
+              }
             }
           } else {
             // if the potion already exists, we scale up the existing time
@@ -80,7 +82,7 @@ public record PotionFluidEffect(float scale, TagPredicate predicate) implements 
             }
           }
         }
-        target.invulnerableTime = oldInvulnerableTime;
+        target.setInvulnerableTime(oldInvulnerableTime);
         return used;
       }
     }

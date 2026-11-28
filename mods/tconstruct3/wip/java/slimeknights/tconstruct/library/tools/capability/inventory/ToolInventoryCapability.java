@@ -127,7 +127,7 @@ public class ToolInventoryCapability extends InventoryModifierHookIterator<Modif
 
   /** If true, the given stack is blacklisted from being stored in a tool */
   public static boolean isBlacklisted(ItemStack stack) {
-    return !stack.getItem().canFitInsideContainerItems() || stack.is(TinkerTags.Items.TOOL_INVENTORY_BLACKLIST) || stack.getCapability(ForgeCapabilities.ITEM_HANDLER).isPresent();
+    return !stack.getItem().canFitInsideContainerItems() || stack.is(TinkerTags.Items.TOOL_INVENTORY_BLACKLIST) || net.neoforged.neoforge.transfer.access.ItemAccess.forStack(stack).getCapability(net.neoforged.neoforge.capabilities.Capabilities.Item.ITEM) != null;
   }
 
   @Override
@@ -581,7 +581,7 @@ public class ToolInventoryCapability extends InventoryModifierHookIterator<Modif
       ItemStack stack = entity.getItem();
       IItemHandler handler = ModifierUtil.getVolatileInt(stack, TOTAL_SLOTS) > 0 ? new ToolInventoryCapability(() -> ToolStack.from(stack)) : EmptyItemHandler.INSTANCE;
       if (handler.getSlots() > 0) {
-        ItemUtils.onContainerDestroyed(entity, IntStream.range(0, handler.getSlots()).mapToObj(handler::getStackInSlot).filter(stack -> !stack.isEmpty()));
+        ItemUtils.onContainerDestroyed(entity, IntStream.range(0, handler.getSlots()).mapToObj(handler::getStackInSlot).filter(item -> !item.isEmpty()));
       }
     }
   }

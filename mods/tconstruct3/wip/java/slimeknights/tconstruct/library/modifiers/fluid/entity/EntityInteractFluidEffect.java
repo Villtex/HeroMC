@@ -63,7 +63,7 @@ public enum EntityInteractFluidEffect implements FluidEffect<FluidEffectContext.
         // long range arm swinging
         if (result != InteractionResult.PASS) {
           if (result.consumesAction()) {
-            player.swing(hand, true);
+            player.swing(hand, net.minecraft.world.item.component.SwingAnimation.DEFAULT, true);
             return 1;
           }
           return 0; // failure exits the loop

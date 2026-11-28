@@ -65,7 +65,7 @@ public record SlotInChargeModule(TinkerDataKey<SlotInCharge> key, @Nullable TagK
 
   /** Checks if the given slot is in charge */
   public static boolean isInCharge(LazyOptional<TinkerDataCapability.Holder> capability, TinkerDataKey<SlotInCharge> key, EquipmentSlot slot) {
-    TinkerDataCapability.Holder data = LogicHelper.orElseNull(capability);
+    TinkerDataCapability.Holder data = capability.orElse(null);
     if (data != null) {
       SlotInCharge inCharge = data.get(key);
       return inCharge != null && inCharge.inCharge == slot;
@@ -75,7 +75,7 @@ public record SlotInChargeModule(TinkerDataKey<SlotInCharge> key, @Nullable TagK
 
   /** Gets the total level if the passed slot is in charge. */
   public static int getLevel(LazyOptional<TinkerDataCapability.Holder> capability, TinkerDataKey<SlotInCharge> key, EquipmentSlot slot) {
-    TinkerDataCapability.Holder data = LogicHelper.orElseNull(capability);
+    TinkerDataCapability.Holder data = capability.orElse(null);
     if (data != null) {
       SlotInCharge inCharge = data.get(key);
       return inCharge != null && inCharge.inCharge == slot ? inCharge.totalLevel : 0;

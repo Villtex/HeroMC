@@ -84,7 +84,7 @@ public class MaterialRecipe implements ICustomOutputRecipe<ISingleStackContainer
   /* Basic */
 
   @Override
-  public RecipeType<?> getType() {
+  public RecipeType getType() {
     return TinkerRecipeTypes.MATERIAL.get();
   }
 
@@ -94,7 +94,7 @@ public class MaterialRecipe implements ICustomOutputRecipe<ISingleStackContainer
   }
 
   @Override
-  public RecipeSerializer<?> getSerializer() {
+  public RecipeSerializer getSerializer() {
     return TinkerTables.materialRecipeSerializer.get();
   }
 
@@ -129,9 +129,9 @@ public class MaterialRecipe implements ICustomOutputRecipe<ISingleStackContainer
   public List<ItemStack> getDisplayItems() {
     if (displayItems == null) {
       if (needed > 1) {
-        displayItems = Arrays.stream(ingredient.getItems()).map(stack -> ItemHandlerHelper.copyStackWithSize(stack, needed)).toList();
+        displayItems = Arrays.stream(ingredient.items().map(net.minecraft.world.item.ItemStack::new).toArray(net.minecraft.world.item.ItemStack[]::new)).map(stack -> ItemHandlerHelper.copyStackWithSize(stack, needed)).toList();
       } else {
-        displayItems = List.of(ingredient.getItems());
+        displayItems = List.of(ingredient.items().map(net.minecraft.world.item.ItemStack::new).toArray(net.minecraft.world.item.ItemStack[]::new));
       }
     }
     return displayItems;

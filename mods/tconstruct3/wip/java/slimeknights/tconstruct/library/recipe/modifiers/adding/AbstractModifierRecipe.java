@@ -131,7 +131,7 @@ public abstract class AbstractModifierRecipe implements ITinkerStationRecipe, ID
   /** Gets or builds the list of tool inputs */
   protected List<ItemStack> getToolInputs() {
     if (toolInputs == null) {
-      Stream<ItemStack> stream = Arrays.stream(this.toolRequirement.getItems());
+      Stream<ItemStack> stream = Arrays.stream(this.toolRequirement.items().map(net.minecraft.world.item.ItemStack::new).toArray(net.minecraft.world.item.ItemStack[]::new));
       // if we check the trait level, then filter out any tools that would never be able to use this recipe
       if (checkTraitLevel) {
         ModifierId result = this.result.getId();
@@ -202,7 +202,7 @@ public abstract class AbstractModifierRecipe implements ITinkerStationRecipe, ID
     // add variant info for the sake of rebalanced
     ModDataNBT persistentData = new ModDataNBT();
     if (!variant.isEmpty()) {
-      persistentData.putString(result.getId(), variant);
+      persistentData.putString(result.getId().location(), variant);
     }
     // build volatile data, will read that for slot info
     ToolDataNBT volatileData = new ToolDataNBT();
@@ -221,7 +221,7 @@ public abstract class AbstractModifierRecipe implements ITinkerStationRecipe, ID
     if (resultSlots == null) {
       // we need to decide a tool for the dummy stack. Could just use air, but might as well use a tool that shows up
       // on the odd chance the behavior differs per tool this might be wrong, but practically that just affects ancient tools on input right now
-      ItemStack[] tools = toolRequirement.getItems();
+      ItemStack[] tools = toolRequirement.items().map(net.minecraft.world.item.ItemStack::new).toArray(net.minecraft.world.item.ItemStack[]::new);
       resultSlots = getResultSlots(getDisplayResult(), tools.length > 0 ? tools[0].getItem() : Items.AIR, "");
     }
     return resultSlots;

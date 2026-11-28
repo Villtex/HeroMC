@@ -42,7 +42,7 @@ public class OverslimeModifierRecipe implements ITinkerStationRecipe, IDisplayMo
   private static final String KEY_AMOUNT = TConstruct.makeTranslationKey("recipe", "modifier.amount");
   public static final RecordLoadable<OverslimeModifierRecipe> LOADER = RecordLoadable.create(
     ContextKey.ID.requiredField(),
-    IngredientLoadable.DISALLOW_EMPTY.defaultField("tools", Ingredient.of(TinkerTags.Items.DURABILITY), true, r -> r.tools),
+    IngredientLoadable.DISALLOW_EMPTY.defaultField("tools", slimeknights.mantle.util.LazyTagHolderSet.ingredient(TinkerTags.Items.DURABILITY), true, r -> r.tools),
     IngredientLoadable.DISALLOW_EMPTY.requiredField("ingredient", r -> r.ingredient),
     IntLoadable.FROM_ONE.requiredField("restore_amount", r -> r.restoreAmount),
     OverslimeModifierRecipe::new);
@@ -68,7 +68,7 @@ public class OverslimeModifierRecipe implements ITinkerStationRecipe, IDisplayMo
   /** @deprecated use {@link #OverslimeModifierRecipe(Identifier, Ingredient, Ingredient, int)} */
   @Deprecated(forRemoval = true)
   public OverslimeModifierRecipe(Identifier id, Ingredient ingredient, int restoreAmount) {
-    this(id, Ingredient.of(TinkerTags.Items.DURABILITY), ingredient, restoreAmount);
+    this(id, slimeknights.mantle.util.LazyTagHolderSet.ingredient(TinkerTags.Items.DURABILITY), ingredient, restoreAmount);
   }
 
   @Override
@@ -118,7 +118,7 @@ public class OverslimeModifierRecipe implements ITinkerStationRecipe, IDisplayMo
   }
 
   @Override
-  public RecipeSerializer<?> getSerializer() {
+  public RecipeSerializer getSerializer() {
     return TinkerModifiers.overslimeSerializer.get();
   }
 
@@ -143,7 +143,7 @@ public class OverslimeModifierRecipe implements ITinkerStationRecipe, IDisplayMo
   @Override
   public List<ItemStack> getDisplayItems(int slot) {
     if (slot == 0) {
-      return List.of(ingredient.getItems());
+      return List.of(ingredient.items().map(net.minecraft.world.item.ItemStack::new).toArray(net.minecraft.world.item.ItemStack[]::new));
     }
     return List.of();
   }
@@ -158,7 +158,7 @@ public class OverslimeModifierRecipe implements ITinkerStationRecipe, IDisplayMo
     if (toolWithoutModifier == null) {
       // ensure tools are the proper stack size for without
       int maxSize = shrinkToolSlotBy();
-      toolWithoutModifier = Arrays.stream(this.tools.getItems()).map(MAP_TOOL_STACK_FOR_RENDERING).map(stack -> {
+      toolWithoutModifier = Arrays.stream(this.tools.items().map(net.minecraft.world.item.ItemStack::new).toArray(net.minecraft.world.item.ItemStack[]::new)).map(MAP_TOOL_STACK_FOR_RENDERING).map(stack -> {
         // only copy if something changes
         int stackMax = stack.getMaxStackSize();
         if (stackMax > 1) {

@@ -239,9 +239,7 @@ public interface MobEffectModule extends ModifierModule, ConditionalModule<ITool
       float duration = this.time.computeValue(scaledLevel);
       if (duration > 0) {
         MobEffectInstance instance = new MobEffectInstance(net.minecraft.core.registries.BuiltInRegistries.MOB_EFFECT.wrapAsHolder(effect), (int)duration, level);
-        if (curativeItems != null) {
-          instance.setCurativeItems(curativeItems.stream().map(ItemStack::new).collect(Collectors.toList()));
-        }
+        // 26.3: no curative items on effects (milk clears all); "curative_items" is read but unused
         target.addEffect(new MobEffectInstance(net.minecraft.core.registries.BuiltInRegistries.MOB_EFFECT.wrapAsHolder(effect), (int)duration, level), cause);
       }
     }

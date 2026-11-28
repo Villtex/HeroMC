@@ -108,7 +108,7 @@ public enum BlockInteractFluidEffect implements FluidEffect<FluidEffectContext.B
           // if successful, swing hand
           if (event.getCancellationResult().consumesAction()) {
             if (entity != null) {
-              entity.swing(hand, true);
+              entity.swing(hand, net.minecraft.world.item.component.SwingAnimation.DEFAULT, true);
             }
             return 1;
           }
@@ -126,7 +126,7 @@ public enum BlockInteractFluidEffect implements FluidEffect<FluidEffectContext.B
         if (result != InteractionResult.PASS) {
           if (result.consumesAction()) {
             if (entity != null) {
-              entity.swing(hand, true);
+              entity.swing(hand, net.minecraft.world.item.component.SwingAnimation.DEFAULT, true);
             }
             damageIfNeeded(useContext);
             return 1;
@@ -143,7 +143,7 @@ public enum BlockInteractFluidEffect implements FluidEffect<FluidEffectContext.B
           if (player instanceof ServerPlayer serverPlayer) {
             CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, original);
           }
-          player.swing(hand, true);
+          player.swing(hand, net.minecraft.world.item.component.SwingAnimation.DEFAULT, true);
           return 1;
         }
       }
@@ -165,7 +165,7 @@ public enum BlockInteractFluidEffect implements FluidEffect<FluidEffectContext.B
               CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, heldItem);
             }
             if (entity != null) {
-              entity.swing(hand, true);
+              entity.swing(hand, net.minecraft.world.item.component.SwingAnimation.DEFAULT, true);
             }
             return 1;
           }

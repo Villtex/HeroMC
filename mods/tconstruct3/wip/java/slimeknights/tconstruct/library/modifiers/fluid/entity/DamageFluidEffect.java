@@ -56,10 +56,10 @@ public record DamageFluidEffect(float damage, @Nullable DamageTypePair damageTyp
     if (damageType != null) {
       if (projectile != null) {
         // endermen with enderference will cancel projectile damage, so switch to melee damage
-        ResourceKey<DamageType> type = TinkerEffects.needsEnderferenceOverride(context.getLivingTarget()) ? damageType.melee : damageType.ranged;
+        ResourceKey<DamageType> type = TinkerEffects.needsEnderferenceOverride(context.getLivingTarget()) ? damageType.melee() : damageType.ranged();
         source = TinkerDamageTypes.source(context.getLevel().registryAccess(), type, projectile, entity);
       } else {
-        source = TinkerDamageTypes.source(context.getLevel().registryAccess(), damageType.melee, entity);
+        source = TinkerDamageTypes.source(context.getLevel().registryAccess(), damageType.melee(), entity);
       }
     } else {
       source = context.createDamageSource();
@@ -72,7 +72,7 @@ public record DamageFluidEffect(float damage, @Nullable DamageTypePair damageTyp
   public Component getDescription(RegistryAccess registryAccess) {
     String translationKey = FluidEffect.getTranslationKey(getLoader());
     if (this.damageType != null) {
-      DamageType damageType = registryAccess.lookupOrThrow(Registries.DAMAGE_TYPE).getValue(this.damageType.melee);
+      DamageType damageType = registryAccess.lookupOrThrow(Registries.DAMAGE_TYPE).getValue(this.damageType.melee());
       if (damageType != null) {
         translationKey += '.' + damageType.msgId();
       }

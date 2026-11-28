@@ -122,7 +122,7 @@ public class TankModule implements HookProvider, FluidModifierHook, VolatileData
         return Math.min(resource.getAmount(), capacity);
       }
       // if the fluid matches and we have space, update
-      if (current.getAmount() < capacity && current.isFluidEqual(resource)) {
+      if (current.getAmount() < capacity && net.neoforged.neoforge.fluids.FluidStack.isSameFluidSameComponents(current, resource)) {
         int filled = Math.min(resource.getAmount(), capacity - current.getAmount());
         if (filled > 0 && action.execute()) {
           current.grow(filled);
@@ -140,9 +140,9 @@ public class TankModule implements HookProvider, FluidModifierHook, VolatileData
     if (!resource.isEmpty()) {
       // ensure we have something and it matches the request
       FluidStack current = helper.getFluid(tool);
-      if (!current.isEmpty() && current.isFluidEqual(resource)) {
+      if (!current.isEmpty() && net.neoforged.neoforge.fluids.FluidStack.isSameFluidSameComponents(current, resource)) {
         // create the drained stack
-        FluidStack drained = new FluidStack(current, Math.min(current.getAmount(), resource.getAmount()));
+        FluidStack drained = current.copyWithAmount(Math.min(current.getAmount(), resource.getAmount()));
         // if executing, removing it
         if (action.execute()) {
           if (drained.getAmount() == current.getAmount()) {
@@ -166,7 +166,7 @@ public class TankModule implements HookProvider, FluidModifierHook, VolatileData
       FluidStack current = helper.getFluid(tool);
       if (!current.isEmpty()) {
         // create the drained stack
-        FluidStack drained = new FluidStack(current, Math.min(current.getAmount(), maxDrain));
+        FluidStack drained = current.copyWithAmount(Math.min(current.getAmount(), maxDrain));
         // if executing, removing it
         if (action.execute()) {
           if (drained.getAmount() == current.getAmount()) {
