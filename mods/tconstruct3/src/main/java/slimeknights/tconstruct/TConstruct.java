@@ -7,7 +7,37 @@ import slimeknights.mantle.util.TranslationHelper;
 import java.util.Locale;
 import java.util.Random;
 import net.neoforged.bus.api.IEventBus;
+import net.minecraft.world.entity.projectile.Projectile;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.fml.loading.FMLEnvironment;
+import net.neoforged.neoforge.client.event.AddClientReloadListenersEvent;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.AddServerReloadListenersEvent;
+import slimeknights.tconstruct.common.TinkerModule;
+import slimeknights.tconstruct.common.TinkerTags;
+import slimeknights.tconstruct.common.config.Config;
+import slimeknights.tconstruct.common.network.TinkerNetwork;
+import slimeknights.tconstruct.common.recipe.RecipeCacheInvalidator;
+import slimeknights.tconstruct.library.client.materials.MaterialTooltipCache;
+import slimeknights.tconstruct.library.json.predicate.tool.ToolStackItemPredicate;
+import slimeknights.tconstruct.library.materials.MaterialRegistry;
+import slimeknights.tconstruct.library.modifiers.ModifierManager;
+import slimeknights.tconstruct.library.tools.capability.BlockItemProviderCapability;
+import slimeknights.tconstruct.library.tools.capability.EntityModifierCapability;
+import slimeknights.tconstruct.library.tools.capability.PersistentDataCapability;
+import slimeknights.tconstruct.library.tools.capability.TinkerDataCapability;
+import slimeknights.tconstruct.library.tools.definition.ToolDefinitionLoader;
+import slimeknights.tconstruct.library.tools.helper.ModifierLootingHandler;
+import slimeknights.tconstruct.library.tools.layout.StationSlotLayoutLoader;
+import slimeknights.tconstruct.library.tools.nbt.ToolDataComponents;
+import slimeknights.tconstruct.library.utils.BlockSideHitListener;
+import slimeknights.tconstruct.library.utils.SlimeBounceHandler;
+import slimeknights.tconstruct.shared.TinkerAttributes;
+import slimeknights.tconstruct.shared.TinkerCommons;
+import slimeknights.tconstruct.tools.TinkerToolParts;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,8 +47,9 @@ import org.slf4j.LoggerFactory;
  * the world type decides which one is active (data with the load condition {@code worldgen152:world_type},
  * code through {@code hexxit.worldgen152.HexxitWorldType}).
  *
- * <p>Teil 27a: only the mod, its assets (from the release tag, namespace renamed at build time) and the converted
- * data (tools/convert_data.py, switched on per folder in data-enabled.txt once the code that reads it exists).
+ * <p>Teil 27a: the mod, its assets (from the release tag, namespace renamed at build time) and the converted data
+ * (tools/convert_data.py, switched on per folder in data-enabled.txt once the code that reads it exists).
+ * Teil 27d: the tool library (materials, modifier core, tool data as components, definitions, layouts) and the tool parts.
  */
 @Mod(TConstruct.MOD_ID)
 public final class TConstruct {
@@ -26,7 +57,56 @@ public final class TConstruct {
     public static final Logger LOG = LoggerFactory.getLogger("TConstruct3");
     public static final Random RANDOM = new Random();
 
-    public TConstruct(IEventBus modBus) {
+    public TConstruct(IEventBus modBus, ModContainer container) {
+        Config.init(container);
+        MaterialRegistry.init();
+
+        // modules (Teil 27d: only the tool parts; 1.20.1 registered all Tinker* modules here)
+        new TinkerCommons(modBus);
+        new TinkerToolParts();
+        modBus.register(new TinkerAttributes(modBus));
+        modBus.addListener(net.neoforged.neoforge.registries.RegisterEvent.class, slimeknights.tconstruct.tools.TinkerTools::registerSerializers);
+        modBus.addListener(net.neoforged.neoforge.registries.RegisterEvent.class, TinkerCommons::registerSerializers);
+        slimeknights.tconstruct.library.materials.RandomMaterial.init();
+        modBus.addListener(FMLCommonSetupEvent.class, event -> {
+            slimeknights.tconstruct.library.modifiers.ModifierHooks.init();
+            slimeknights.tconstruct.library.tools.definition.module.ToolHooks.init();
+        });
+
+        // init deferred registers
+        TinkerModule.initRegisters(modBus);
+        TinkerNetwork.setup();
+        TinkerTags.init();
+
+        // tool library (1.20.1 in TinkerModifiers, TinkerTools and TinkerCommons, which come in 27e-27h)
+        ToolDataComponents.register(modBus);
+        TinkerDataCapability.register(modBus);
+        PersistentDataCapability.register();
+        EntityModifierCapability.registerEntityPredicate(entity -> entity instanceof Projectile);
+        BlockItemProviderCapability.register(modBus);
+        ToolStackItemPredicate.register(modBus);
+        ModifierManager.INSTANCE.init(modBus);
+        NeoForge.EVENT_BUS.addListener(AddServerReloadListenersEvent.class, RecipeCacheInvalidator::onReloadListenerReload);
+        SlimeBounceHandler.init();
+        BlockSideHitListener.init();
+        ModifierLootingHandler.init();
+        modBus.addListener(FMLCommonSetupEvent.class, event -> {
+            ToolDefinitionLoader.init();
+            StationSlotLayoutLoader.init();
+        });
+        if (FMLEnvironment.getDist() == Dist.CLIENT) {
+            modBus.addListener(AddClientReloadListenersEvent.class, MaterialTooltipCache::init);
+        }
+    }
+
+    /** Gets a data key for the capability, mainly used for modifier markers */
+    public static <T> TinkerDataCapability.TinkerDataKey<T> createKey(String name) {
+        return TinkerDataCapability.TinkerDataKey.of(getResource(name));
+    }
+
+    /** Gets a data key for the capability that can compute a missing value */
+    public static <T> TinkerDataCapability.ComputableDataKey<T> createKey(String name, java.util.function.Supplier<T> constructor) {
+        return TinkerDataCapability.ComputableDataKey.of(getResource(name), constructor);
     }
 
     /** An identifier in the namespace of the mod. */

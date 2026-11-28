@@ -229,7 +229,8 @@ public class MaterialManager extends JsonReloadListener {
 
 
     // load modifier tags
-    this.tags = GenericTagUtil.mapLoaderResults(REGISTRY_KEY, GenericTagUtil.<IMaterial>loadTags(resourceManagerIn, TAG_FOLDER, id -> getMaterial(new MaterialId(id))));
+    // Hexxit: in a world type without Tinkers 3 data (Legacy) no material loads, the tags would only log missing references
+    this.tags = materials.isEmpty() ? java.util.Map.of() : GenericTagUtil.mapLoaderResults(REGISTRY_KEY, GenericTagUtil.<IMaterial>loadTags(resourceManagerIn, TAG_FOLDER, id -> getMaterial(new MaterialId(id))));
     this.reverseTags = GenericTagUtil.reverseTags(IMaterial::getIdentifier, tags);
     log.info("Loaded {} material tags for {} materials in {} ms", tags.size(), reverseTags.size(), (System.nanoTime() - timeStep) / 1000000f);
   }

@@ -161,7 +161,7 @@ public abstract class LayoutIcon {
         Pattern pattern = new Pattern(JsonHelper.getResourceLocation(object, "pattern"));
         return new PatternIcon(pattern);
       }
-      if (object.has("item")) {
+      if (object.has("item") || object.has("id")) {  // 26.3 stacks use "id"
         JsonObject itemJson = object.deepCopy();
         return new ItemStackIcon(() -> slimeknights.mantle.data.loadable.common.ItemStackLoadable.REQUIRED_ITEM_NBT.convert(itemJson, "icon", slimeknights.mantle.util.typed.TypedMap.EMPTY));
       }

@@ -197,7 +197,8 @@ public class ModifierManager extends JsonReloadListener {
     time = timeStep;
 
     // load modifier tags
-    this.tags = GenericTagUtil.mapLoaderResults(REGISTRY_KEY, GenericTagUtil.<Modifier>loadTags(pResourceManager, TAG_FOLDER, id -> {
+    // Hexxit: in a world type without Tinkers 3 data (Legacy) no dynamic modifier loads, the tags would only log missing references
+    this.tags = dynamicModifiers.isEmpty() ? java.util.Map.of() : GenericTagUtil.mapLoaderResults(REGISTRY_KEY, GenericTagUtil.<Modifier>loadTags(pResourceManager, TAG_FOLDER, id -> {
       Modifier modifier = ModifierManager.getValue(new ModifierId(id));
       // only allow the default modifier if it's explicitly set to empty
       if (modifier == defaultValue && !id.equals(EMPTY)) {

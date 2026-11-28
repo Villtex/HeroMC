@@ -1,6 +1,6 @@
 ---
 name: tinkers3-263
-description: Beim Arbeiten an Tinkers' Construct 3.12.1 und Mantle (mods/tconstruct3, mods/mantle, Teile 27a–27k) benutzen – Mod-ID tconstruct3 neben 1.4.3 (tconstruct), Quellen vom Tag holen, Daten-Konverter convert_data.py und sein Bericht, Daten ordnerweise einschalten (data-enabled.txt), Welttyp-Regel (1.4.3 nur Hexxit Legacy, 3.12.1 nur Integrated) in Daten und Code über worldgen152:world_type und HexxitWorldType, Assets aus dem Tag mit umbenanntem Namensraum. Auch für Client-Code von Mantle/Tinkers auf 26.3: GUI-Umbau (tools/gui_to_extract.py), Bildschirme, Handbücher, Modell-Lader und Blockstate-Modelle, Flüssigkeits-Modelle, Block-Renderer mit Submit-Pipeline.
+description: Beim Arbeiten an Tinkers' Construct 3.12.1 und Mantle (mods/tconstruct3, mods/mantle, Teile 27a–27k) benutzen – Mod-ID tconstruct3 neben 1.4.3 (tconstruct), Quellen vom Tag holen, Daten-Konverter convert_data.py und sein Bericht, Daten ordnerweise einschalten (data-enabled.txt), Welttyp-Regel (1.4.3 nur Hexxit Legacy, 3.12.1 nur Integrated) in Daten und Code über worldgen152:world_type und HexxitWorldType, Assets aus dem Tag mit umbenanntem Namensraum. Ab 27d: Werkzeugdaten als Datenkomponenten (ToolStack, ToolDataComponents), Tinkers-IDs als ResourceId mit .location(), Ersatz für LazyOptional/Tier/Capabilities, Platzhalter TinkerTools/TinkerCommons, große Ports stufenweise mit -Pwip und die Lombok-Falle bei Fehlern im Klassenkopf. Auch für Client-Code von Mantle/Tinkers auf 26.3: GUI-Umbau (tools/gui_to_extract.py), Bildschirme, Handbücher, Modell-Lader und Blockstate-Modelle, Flüssigkeits-Modelle, Block-Renderer mit Submit-Pipeline.
 ---
 
 # Tinkers' Construct 3.12.1 + Mantle auf 26.3 (Teil 27)
@@ -51,8 +51,8 @@ geschrieben) und den Bericht `mods/tconstruct3/tools/convert_report.md`. Regeln 
   (nur unter den Schlüsseln `ING_KEYS`). Flüssigkeits-/Mengen-Objekte (`fluid`, `amount`, `amount_needed`) bleiben in
   Mantle-Form → die Mantle-Lader (27b) lesen sie so.
 - Ausgaben `{"item","count","nbt"}` → `{"id","count","components"}`; Tag-Ausgaben `{"tag",…}` bleiben (Mantle `ItemOutput`).
-- NBT → Komponenten über `nbt_to_components` (vorläufige Namen `tconstruct3:materials`, `:display`, `:tank`,
-  `:material`; **27d legt die echten fest und passt die Tabelle an**), Unbekanntes → `minecraft:custom_data` + Bericht.
+- NBT → Komponenten über `nbt_to_components` (`tic_*` → Werkzeug-Komponenten von 27d, `Material` → `tconstruct3:material`,
+  `tic_display`/`tic_broken` → `{}`; `tank` noch vorläufig, 27i), Unbekanntes → `minecraft:custom_data` + Bericht.
 - Beute/Fortschritte/Prädikate im 26.3-Format (`condition`/`modifier`/`type`, `minecraft:entity_type` …); eigene
   Item-Prädikate (`tconstruct:tool_stack`) → `"predicates": {"tconstruct3:tool_stack": …}` (als Item-Sub-Prädikat
   registrieren, 27d/27e).
@@ -74,6 +74,39 @@ wenn alle genannten Items/Blöcke registriert sind (Tags kennen keine Bedingung)
 - Rezept da/nicht da: Crafter + RCON (Skill `server-tests-263`), z. B. 1.4.3 `tconstruct:alubrass_ingot` aus 9
   `tconstruct:alubrass_nugget`: in Legacy ein Barren, in Integrated nichts.
 - Log: `grep -c "worldgen152:world_type\|Couldn't parse" run/server/logs/latest.log` – keine Fehler der Bedingung.
+
+## Tinkers-Bibliothek (seit 27d, `mods/tconstruct3/src/main/java/slimeknights/tconstruct/library`)
+
+- **Werkzeugdaten = Komponenten** (`library/tools/nbt/ToolDataComponents`): `tconstruct3:materials|upgrades|modifiers|
+  stats|multipliers|persistent_data|volatile_data|broken|display|material`, Werte in der NBT-Form von 1.20.1. `ToolStack`
+  hält den `ItemStack` (`ToolStack.from(stack)` schreibt direkt hinein, `copyFrom`/`createTool` auf einer Kopie);
+  `getPersistentData()` ist eine Kopie mit Änderungs-Hörer → nach `put…` steht es im Stack. Listen, die man aus
+  den Daten holt und **in place** ändert, werden nicht zurückgeschrieben: wieder `put` aufrufen. Nie `stack.getTag()`
+  – Schnellzugriffe ohne ToolStack in `ModifierUtil` (`getModifierLevel`, `checkVolatileFlag` …).
+- **IDs:** `MaterialId`, `ModifierId`, `ToolStatId`, `MaterialStatsId`, `Pattern` sind `ResourceId` (hüllt einen
+  `Identifier`, der in 26.3 final ist): `.location()` für Registries/Pakete/`Util.makeTranslationKey`;
+  `fix_by_errors.py` setzt es von selbst. `Modifier`/`MaterialStatType` sind kein `IdAwareObject` mehr.
+- **Ersatz für Weggefallenes:** `library.utils.LazyOptional` (forge_to_neo stellt um), `library.utils.Tier` +
+  `TierSortingRegistry` (Ernte-Stufen über `incorrect_for_*_tool`-Tags), Entity-Daten als Attachments
+  (`TinkerDataCapability.get(entity)` statt `getCapability(CAPABILITY)`, Register `ATTACHMENT_TYPES`),
+  Werkzeug-Capabilities `ToolCapabilityProvider` mit `ItemCapability` (Provider + `registerCapability` +
+  `registerItems` in `RegisterCapabilitiesEvent`), Enchantments in Hooks als `ResourceKey<Enchantment>`
+  (`EnchantmentModifierHook.toMap/setEnchantments`), Attribute als `Holder<Attribute>`, Schaden über
+  `ToolAttackUtil.hurt(entity, source, dmg)` (26.3 `hurt` ist void), `ModifierUtil.SHIELD_BLOCK`,
+  `ModifierSets.isInSet`, `ArmorModuleBuilder.ARMOR_TYPES` (die vier Rüstungsteile; `ArmorType.values()` hat BODY).
+- **Platzhalter:** `tools/TinkerTools`, `shared/TinkerCommons`, `shared/TinkerEffects` enthalten nur, was die
+  Bibliothek braucht (Verweise per `RegistryObject.create`, Lader-Registrierungen). Der jeweilige Teil ersetzt sie
+  durch das volle Original und behält die 26.3-Teile daraus.
+- **Testen ohne Werkzeug-Items:** temporärer Befehl mit `ToolDefinition.create(id)` (vor dem Datenladen) und
+  `ToolStack.createTool(Items.STICK, definition, MaterialNBT.of(...))`, Stack in eine Kiste, `save-all`, Neustart.
+
+## Große Ports in Stufen (seit 27d)
+
+- Unfertiges nach `mods/<mod>/wip/java`: nur `./gradlew :<mod>:compileJava -Pwip` kompiliert es, der normale Build
+  bleibt grün und Zwischenstände lassen sich pushen. Fertig → nach `src/main/java` verschieben.
+- **Lombok läuft gar nicht, solange es Fehler im Klassenkopf gibt** (`cannot inherit from final`, fehlende Klassen in
+  `extends`/`implements`/Importen): dann fehlen alle generierten Konstruktoren/Getter und es gibt Hunderte
+  Folgefehler. Erst diese Fehler beheben (`-XprintRounds` über `-PjavacRounds` zeigt, ob Runden laufen).
 
 ## Port-Werkzeuge Forge 1.20.1 → NeoForge 26.3 (seit 27b, auch für Tinkers-Code)
 

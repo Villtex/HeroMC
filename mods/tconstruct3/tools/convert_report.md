@@ -116,49 +116,10 @@ umsetzen können oder nur vorläufig umgesetzt; die Teile 27b–27k arbeiten die
 - 3× `3 alternatives`
 - `4 alternatives`
 
-## item NBT converted to provisional tconstruct3 components (27d decides) (51)
+## item NBT tank converted to provisional component tconstruct3:tank (27i decides) (12)
 
 - 9× `tank  (tconstruct/advancements/foundry/blaze.json)`
 - 3× `tank  (tconstruct/advancements/foundry/manyullyn_lanterns.json)`
-- `Damage,tic_broken,tic_display,tic_materials  (tconstruct/advancements/foundry/plate_armor.json)`
-- `Damage,tic_broken,tic_display,tic_materials  (tconstruct/advancements/smeltery/tool_forge.json)`
-- `Damage,tic_broken,tic_display,tic_materials  (tconstruct/advancements/tools/tinker_tool.json)`
-- `Damage,tic_broken,tic_display,tic_materials  (tconstruct/advancements/tools/tool_smith.json)`
-- `Damage,tic_broken,tic_display,tic_materials  (tconstruct/advancements/tools/travelers_gear.json)`
-- `Damage,tic_broken,tic_display,tic_materials  (tconstruct/advancements/world/ancient_tools.json)`
-- `Damage,tic_broken,tic_display,tic_materials  (tconstruct/tinkering/station_layouts/broad_axe.json)`
-- `Damage,tic_broken,tic_display,tic_materials  (tconstruct/tinkering/station_layouts/cleaver.json)`
-- `Damage,tic_broken,tic_display,tic_materials  (tconstruct/tinkering/station_layouts/crossbow.json)`
-- `Damage,tic_broken,tic_display,tic_materials  (tconstruct/tinkering/station_layouts/dagger.json)`
-- `Damage,tic_broken,tic_display,tic_materials  (tconstruct/tinkering/station_layouts/excavator.json)`
-- `Damage,tic_broken,tic_display,tic_materials  (tconstruct/tinkering/station_layouts/fishing_rod.json)`
-- `Damage,tic_broken,tic_display,tic_materials  (tconstruct/tinkering/station_layouts/hand_axe.json)`
-- `Damage,tic_broken,tic_display,tic_materials  (tconstruct/tinkering/station_layouts/javelin.json)`
-- `Damage,tic_broken,tic_display,tic_materials  (tconstruct/tinkering/station_layouts/kama.json)`
-- `Damage,tic_broken,tic_display,tic_materials  (tconstruct/tinkering/station_layouts/longbow.json)`
-- `Damage,tic_broken,tic_display,tic_materials  (tconstruct/tinkering/station_layouts/mattock.json)`
-- `Damage,tic_broken,tic_display,tic_materials  (tconstruct/tinkering/station_layouts/pickadze.json)`
-- `Damage,tic_broken,tic_display,tic_materials  (tconstruct/tinkering/station_layouts/pickaxe.json)`
-- `Damage,tic_broken,tic_display,tic_materials  (tconstruct/tinkering/station_layouts/scythe.json)`
-- `Damage,tic_broken,tic_display,tic_materials  (tconstruct/tinkering/station_layouts/sledge_hammer.json)`
-- `Damage,tic_broken,tic_display,tic_materials  (tconstruct/tinkering/station_layouts/sword.json)`
-- `Damage,tic_broken,tic_display,tic_materials  (tconstruct/tinkering/station_layouts/vein_hammer.json)`
-- `Damage,tic_broken,tic_materials  (tconstruct/advancements/world/slimeskull.json)`
-- `Damage,tic_broken,tic_materials  (tconstruct/advancements/world/slimesuit.json)`
-- `Material  (tconstruct/advancements/tools/make_part.json)`
-- `Material  (tconstruct/recipes/smeltery/casting/metal/netherite/ancient_repair_kit_gold_cast.json)`
-- `Material  (tconstruct/recipes/smeltery/casting/metal/netherite/ancient_repair_kit_sand_cast.json)`
-- `Potion  (mantle/mantle/fluid_transfer/potion/fill_water.json)`
-- `Potion  (mantle/mantle/fluid_transfer/potion/lingering/fill_water.json)`
-- `Potion  (mantle/mantle/fluid_transfer/potion/splash/fill_water.json)`
-- `Potion  (tconstruct/recipes/smeltery/casting/water/bottle.json)`
-- `Potion  (tconstruct/recipes/smeltery/casting/water/lingering.json)`
-- `Potion  (tconstruct/recipes/smeltery/casting/water/splash.json)`
-- `display  (tconstruct/recipes/tables/scorched_forge.json)`
-- `display  (tconstruct/recipes/tables/scorched_forge_material.json)`
-- `display  (tconstruct/recipes/tables/seared_forge_material.json)`
-- `display  (tconstruct/recipes/tables/tinkers_forge.json)`
-- `tic_display,tic_materials  (tconstruct/tinkering/station_layouts/arrow.json)`
 
 ## loot functions on NBT (rewrite as copy_components/set_components when the block entity is ported) (19)
 

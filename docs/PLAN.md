@@ -82,7 +82,7 @@ Was sich nur im Client prüfen lässt (Modelle, GUIs, Render), wird als „Clien
 | 27a | Tinkers 3 A: Zwei-Versionen-Schalter (Welttyp am Client, Bedingungen, Ausblenden), Quellen, Daten-Konverter, Gerüst `mantle`/`tconstruct3` | – | 26 | Opus 5.5, hoch | ✅ erledigt |
 | 27b | Tinkers 3 B: Mantle-Kern (Datenlader, JSON-Helfer, Rezepte, Flüssigkeiten, Registrierung, Netzwerk, Befehle) | ~33.000 | 27a | Opus 5.5, hoch | ✅ erledigt |
 | 27c | Tinkers 3 C: Mantle-Client (Modell-Lader, Bildschirme, Handbuch-Engine) | ~17.000 | 27b | Fable 5.2, hoch | ✅ erledigt |
-| 27d | Tinkers 3 D: Werkzeug-Datenmodell (Materialien, Stats, Werkzeugdaten als Komponenten, Definitionen, Teile, JSON-Variablen) | ~35.000 | 27b | Fable 5.2, hoch | offen |
+| 27d | Tinkers 3 D: Werkzeug-Datenmodell (Materialien, Stats, Werkzeugdaten als Komponenten, Definitionen, Teile, JSON-Variablen) | ~35.000 | 27b | Fable 5.2, hoch | ✅ erledigt |
 | 27e | Tinkers 3 E: Modifikator-System (Hooks, Module, Flüssigkeits-Effekte, Modifikator-Rezepte) | ~30.000 | 27d | Opus 5.5, hoch | offen |
 | 27f | Tinkers 3 F: Rezept-Typen (Gießen, Schmelzen, Legieren, Teile-Bau, Tüftlertisch) und Client der Bibliothek (Material-/Werkzeugmodelle, Paletten-Texturen) | ~35.000 | 27e, 27c | Fable 5.2, hoch | offen |
 | 27g | Tinkers 3 G: Tische und Menüs, gemeinsame Blöcke/Items, Flüssigkeiten | ~28.000 | 27f | Opus 5.5, mittel | offen |
@@ -2487,6 +2487,42 @@ Hilfen, die Handbuch-Engine (`client/book`, Seiten-Typen, Bücher als Daten). 26
 `library/materials`, `library/tools` (`ToolStack`, `nbt` → Datenkomponenten `tconstruct3:…`, `definition`, `stat`,
 `part`, `layout`, `capability`, `helper`, `context`), `library/json` (Variablen, Prädikate, Mathe). Grundlage für alles
 Weitere; Werkzeuge müssen sich am Server bauen und speichern lassen (Komponenten überleben Speichern/Laden).
+
+#### Teil 27d – Stand (✅ erledigt)
+- **Umfang:** ~43.000 Zeilen in `mods/tconstruct3/src/main/java`: `library/{json,utils,module,materials,tools,events}`,
+  Modifikator-Kern (`Modifier`, `ModifierEntry`, `ModifierHooks`, `ModifierManager`, alle `hook`s, `impl`, `util`,
+  `data`, `entity`, dazu die Module `build`, `util` und vier aus `capacity`, weil Werkzeug-Definitionen sie brauchen),
+  `common` (Konfiguration, Netzwerk, Tags, Klänge, Schadensarten, Registrierungs-Hilfen), `tools/stats`,
+  `TinkerToolParts` (alle 26 Teile, Tab, Beute-Eintrag `tool_part`). Platzhalter mit nur dem, was die Bibliothek
+  braucht: `tools/TinkerTools` (Lader der Definitionsmodule, Verweise auf Entities), `shared/TinkerCommons`
+  (Bedingung `tconstruct3:config`, Beute-Bedingungen, Prädikat-Lader), `shared/TinkerEffects`. Noch nicht
+  portierte Quellen in `mods/tconstruct3/todo` (Plan je Teil in `mods/tconstruct3/TODO.md`).
+- **Werkzeugdaten als Komponenten** (`ToolDataComponents`): `tconstruct3:materials`, `upgrades`, `modifiers`, `stats`,
+  `multipliers`, `persistent_data`, `volatile_data`, `broken`, `display`, für Teile `material`; Schaden
+  `minecraft:damage`, Haltbarkeit zusätzlich `minecraft:max_damage`. Werte in der NBT-Form von 1.20.1 (Codec über
+  `ExtraCodecs.NBT`), der Konverter übersetzt `tic_*` eins zu eins. `ToolStack` hält den `ItemStack` und schreibt jede
+  Änderung sofort zurück (Modifikator-Daten über einen Änderungs-Hörer), `updateStack` kopiert den Komponenten-Patch.
+- **26.3-Ersatz:** `ResourceId` (Material-, Modifikator-, Stat-IDs, Muster) hüllt einen `Identifier` ein (der ist
+  final), `.location()` wo ein `Identifier` gebraucht wird; eigener `Tier`/`TierSortingRegistry` (Tags
+  `incorrect_for_*_tool`, Kupfer zwischen Stein und Eisen); `LazyOptional` als eigene Klasse; Entity-Daten
+  (`TinkerDataCapability`, `PersistentDataCapability`, `EntityModifierCapability`) als Attachments;
+  Werkzeug-Capabilities über `ItemCapability`; Item-Sub-Prädikat `tconstruct3:tool_stack` als
+  `DataComponentPredicate`; Enchantment-Hooks mit `ResourceKey<Enchantment>`; Attribute als `Holder`; Kampf
+  (`ToolAttackUtil`, Schwung-/Kreisangriff) und Abbau (`ToolHarvestLogic`) auf die 26.3-API.
+- **Daten an:** `tinkering/materials/`, `tinkering/tags/materials/`, `tinkering/tool_definitions/`. Mantles
+  `MergingJsonDataLoader` prüft jetzt `neoforge:conditions` (Statistiken und Traits bleiben in Legacy aus).
+- **Geprüft:** `CI=true ./gradlew clean pack` grün. Testserver Integrated (Seed 1234): 90 Materialien, 556 Statistiken,
+  623 Traits, 0 ERROR; Legacy: 0 Materialien/Statistiken/Traits. Teil `tconstruct3:pick_head` mit
+  `tconstruct3:material="tconstruct3:cobalt"` heißt „Cobalt Pick Head“ und übersteht Speichern/Neustart. Mit einem
+  temporären Testbefehl (nicht committet) eine Spitzhacke aus Kobalt/Holz/Eisen per `ToolStack.createTool` gebaut:
+  Haltbarkeit 800, Abbau 6,5, Angriff 2,75, Stufe Diamant; Materialien, Upgrades, Schaden, Modifikator-Daten und Stats
+  sind nach `save-all` und Neustart unverändert.
+- **Werkzeuge:** `build.gradle`-Schalter `-Pwip` (Ordner `mods/<mod>/wip/java` nur damit kompiliert, für große Ports
+  in Stufen); `forge_to_neo.py` neu: typisierte NBT-Abfragen über Mantle `TagHelper.contains/getList`, `ArmorItem.Type`
+  → `ArmorType`, `ItemUseAnimation`, Tick-/Spawn-Ereignisse, Entity-Sync-Felder, Attribut-Operationen,
+  `getAllKeys`, `NumericTag`; `fix_by_errors.py` neu: Tinkers-IDs → `.location()`, Effekt/Attribut → `wrapAsHolder`.
+- **Offen** (Liste in `mods/tconstruct3/TODO.md`): Werkzeug-Item `ModifiableItem` und alle Werkzeuge (27h),
+  Werkzeug-Tanks/-Inventare/-Energie (27e), Material-/Rezept-Caches (27f), Tisch-Layouts (27g).
 
 ### Teil 27e – Modifikator-System
 `library/modifiers` (Hooks, Module, `fluid`, `util`), `library/recipe/modifiers`. Mit Server-Test: Modifikator

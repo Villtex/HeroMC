@@ -64,6 +64,10 @@ public abstract class MergingJsonDataLoader<B> implements ResourceManagerReloadL
           JsonElement json = GsonHelper.fromJson(gson, reader, JsonElement.class);
           if (json == null) {
             log.error("Couldn't load data file {} from {} in data pack {} as its null or empty", id, filePath, resource.sourcePackId());
+          } else if (json instanceof com.google.gson.JsonObject object && object.has(net.neoforged.neoforge.common.conditions.ConditionalOps.DEFAULT_CONDITIONS_KEY)
+                     && !slimeknights.mantle.util.CraftingHelper.processConditions(GsonHelper.getAsJsonArray(object, net.neoforged.neoforge.common.conditions.ConditionalOps.DEFAULT_CONDITIONS_KEY), JsonReloadListener.currentConditionContext())) {
+            // port (Teil 27d): files whose "neoforge:conditions" fail are left out, like in JsonReloadListener (context of the running server reload)
+            continue;
           } else {
             B builder = map.computeIfAbsent(id, builderConstructor);
             parse(builder, id, json);

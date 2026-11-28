@@ -58,7 +58,7 @@
     "icon": {
       "id": "tconstruct3:battlesign",
       "components": {
-        "tconstruct3:display": true,
+        "tconstruct3:display": {},
         "tconstruct3:materials": [
           "tconstruct3:ui_render#head",
           "tconstruct3:ui_render#handle",

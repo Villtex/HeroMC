@@ -213,6 +213,12 @@ class Snbt:
 
 
 # provisional component names of Tinkers' item data (Teil 27d decides the final ones and fixes this table)
+# tool NBT of 1.20.1 -> data components of Teil 27d (slimeknights.tconstruct.library.tools.nbt.ToolDataComponents)
+TOOL_COMPONENTS = {'tic_materials': 'materials', 'tic_upgrades': 'upgrades', 'tic_modifiers': 'modifiers',
+                   'tic_stats': 'stats', 'tic_multipliers': 'multipliers', 'tic_persistent': 'persistent_data',
+                   'tic_volatile_data': 'volatile_data'}
+
+
 def nbt_to_components(nbt, where):
     if isinstance(nbt, str):
         nbt = Snbt(nbt).value()
@@ -223,12 +229,12 @@ def nbt_to_components(nbt, where):
                 comps['minecraft:damage'] = v
         elif k == 'tic_broken':
             if v:
-                rest[k] = v
-        elif k == 'tic_materials':
-            comps[f'{NS_NEW}:materials'] = v
+                comps[f'{NS_NEW}:broken'] = {}  # unit component
+        elif k in TOOL_COMPONENTS:
+            comps[f'{NS_NEW}:{TOOL_COMPONENTS[k]}'] = v  # same NBT shape as 1.20.1 (ToolDataComponents)
         elif k == 'tic_display':
             if v:
-                comps[f'{NS_NEW}:display'] = True
+                comps[f'{NS_NEW}:display'] = {}  # unit component
         elif k == 'tank' and isinstance(v, dict) and set(v) <= {'Amount', 'FluidName'}:
             comps[f'{NS_NEW}:tank'] = {'id': v.get('FluidName'), 'amount': v.get('Amount', 0)}
         elif k == 'Material':
@@ -242,7 +248,8 @@ def nbt_to_components(nbt, where):
     if rest:
         comps['minecraft:custom_data'] = rest
         note('item NBT kept as minecraft:custom_data (no component known)', json.dumps(rest), where)
-    note('item NBT converted to provisional tconstruct3 components (27d decides)', ','.join(sorted(nbt)), where)
+    if 'tank' in nbt:
+        note('item NBT tank converted to provisional component tconstruct3:tank (27i decides)', ','.join(sorted(nbt)), where)
     return comps
 
 
@@ -906,7 +913,7 @@ def convert_nbt(src, dst):
     nbt_write(out, 8, name)
     nbt_write(out, t, root)
     os.makedirs(os.path.dirname(dst), exist_ok=True)
-    with gzip.open(dst, 'wb') as f:
+    with open(dst, 'wb') as raw, gzip.GzipFile(fileobj=raw, mode='wb', mtime=0) as f:  # mtime 0: same bytes on every run
         f.write(out.getvalue())
 
 
