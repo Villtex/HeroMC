@@ -112,7 +112,7 @@ public record AttributeModule(String unique, Attribute attribute, Operation oper
   private AttributeModifier createModifier(IToolStackView tool, ModifierEntry modifier, EquipmentSlot slot) {
     UUID uuid = getUUID(slot);
     if (uuid != null) {
-      return new AttributeModifier(uuid, unique + "." + slot.getName(), formula.apply(tool, modifier), operation);
+      return new AttributeModifier(slimeknights.tconstruct.library.utils.AttributeIds.of(uuid), formula.apply(tool, modifier), operation);
     }
     return null;
   }
@@ -137,7 +137,7 @@ public record AttributeModule(String unique, Attribute attribute, Operation oper
         AttributeModifier attributeModifier = createModifier(tool, modifier, context.getChangedSlot());
         if (attributeModifier != null) {
           // for safety, remove it already there
-          instance.removeModifier(attributeModifier.getId());
+          instance.removeModifier(attributeModifier.id());
           instance.addTransientModifier(attributeModifier);
         }
       }
@@ -151,7 +151,7 @@ public record AttributeModule(String unique, Attribute attribute, Operation oper
       if (uuid != null) {
         AttributeInstance instance = context.getEntity().getAttribute(net.minecraft.core.registries.BuiltInRegistries.ATTRIBUTE.wrapAsHolder(attribute));
         if (instance != null) {
-          instance.removeModifier(uuid);
+          instance.removeModifier(slimeknights.tconstruct.library.utils.AttributeIds.of(uuid));
         }
       }
     }
@@ -160,7 +160,7 @@ public record AttributeModule(String unique, Attribute attribute, Operation oper
   /** Adds the tooltip for the given attribute */
   public static void addTooltip(Modifier modifier, Attribute attribute, Operation operation, TooltipStyle tooltipStyle, float amount, @Nullable UUID uuid, @Nullable Player player, List<Component> tooltip) {
     switch (tooltipStyle) {
-      case ATTRIBUTE -> TooltipUtil.addAttribute(net.minecraft.core.registries.BuiltInRegistries.ATTRIBUTE.wrapAsHolder(attribute), operation, amount, uuid, player, tooltip);
+      case ATTRIBUTE -> TooltipUtil.addAttribute(net.minecraft.core.registries.BuiltInRegistries.ATTRIBUTE.wrapAsHolder(attribute), operation, amount, slimeknights.tconstruct.library.utils.AttributeIds.of(uuid), player, tooltip);
       case BOOST -> TooltipModifierHook.addFlatBoost(modifier, Component.translatable(attribute.getDescriptionId()), amount, tooltip);
       case PERCENT -> TooltipModifierHook.addPercentBoost(modifier, Component.translatable(attribute.getDescriptionId()), amount, tooltip);
     }

@@ -51,14 +51,11 @@ public enum EntityInteractFluidEffect implements FluidEffect<FluidEffectContext.
         Vec3 hit = context.getLocation().subtract(target.position());
 
         // check if forge wants to override
-        InteractionResult result = CommonHooks.onInteractEntityAt(player, target, hit, hand);
+        InteractionResult result = CommonHooks.onInteractEntity(player, target, hand, hit);
         // skipped: never spectator mode if we made it this far
         if (result == null) {
           // no forge override, so find first success from vanilla hooks
-          result = target.interactAt(player, hit, hand);
-          if (!result.consumesAction()) {
-            result = player.interactOn(context.getTarget(), hand);
-          }
+          result = player.interactOn(target, hand, hit);
         }
         // long range arm swinging
         if (result != InteractionResult.PASS) {

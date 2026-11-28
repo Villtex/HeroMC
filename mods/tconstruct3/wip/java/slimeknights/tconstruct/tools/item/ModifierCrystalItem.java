@@ -33,7 +33,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 /** Dynamic item holding a modifier */
-public class ModifierCrystalItem extends Item {
+public class ModifierCrystalItem extends slimeknights.mantle.item.TooltipItem {
   private static final Component TOOLTIP_MISSING = TConstruct.makeTranslation("item", "modifier_crystal.missing").withStyle(ChatFormatting.GRAY);
   private static final Component TOOLTIP_APPLY = TConstruct.makeTranslation("item", "modifier_crystal.tooltip").withStyle(ChatFormatting.GRAY);
   private static final String MODIFIER_KEY = TConstruct.makeTranslationKey("item", "modifier_crystal.modifier_id");
@@ -81,7 +81,7 @@ public class ModifierCrystalItem extends Item {
 
   @Nullable
   @Override
-  public String getCreatorModId(ItemStack stack) {
+  public String getCreatorModId(net.minecraft.core.HolderLookup.Provider registries, ItemStack stack) {
     ModifierId modifier = getModifier(stack);
     if (modifier != null) {
       return modifier.getNamespace();
@@ -101,7 +101,7 @@ public class ModifierCrystalItem extends Item {
       ItemStack toolItem = slot.getItem();
       // slot must have a tool, NBT must be valid
       if (modifier != null && !toolItem.isEmpty() && toolItem.is(TinkerTags.Items.MODIFIABLE)) {
-        if (!player.level().isClientSide() || (player.isCreative() && player.containerMenu.menuType == null)) {
+        if (!player.level().isClientSide() || (player.isCreative() && player.containerMenu.getType() == null)) {
           ToolStack tool = ToolStack.copyFrom(toolItem);
 
           // add modifier
@@ -134,7 +134,7 @@ public class ModifierCrystalItem extends Item {
       // NBT must be valid
       ModifierId modifier = getModifier(stack);
       if (modifier != null) {
-        if (!player.level().isClientSide() || (player.isCreative() && player.containerMenu.menuType == null)) {
+        if (!player.level().isClientSide() || (player.isCreative() && player.containerMenu.getType() == null)) {
           ToolStack original = ToolStack.from(toolItem);
           ToolStack tool = original.copy();
 

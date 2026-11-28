@@ -74,7 +74,7 @@ public interface BlockTransformModule extends ModifierModule, BlockInteractionMo
       // if the tool breaks or it was a campfire, we are done
       if (ToolDamageUtil.damage(tool, 1, player, stack, modifier.getId())) {
         if (player != null) {
-          player.broadcastBreakEvent(slotType);
+          player.onEquippedItemBroken(stack, slotType);
         }
         return InteractionResult.CONSUME;
       }
@@ -110,7 +110,7 @@ public interface BlockTransformModule extends ModifierModule, BlockInteractionMo
             // stop if the tool broke
             if (ToolDamageUtil.damage(tool, 1, player, stack, modifier.getId())) {
               if (player != null) {
-                player.broadcastBreakEvent(context.getHand());
+                player.onEquippedItemBroken(stack, context.getHand().asEquipmentSlot());
               }
               break;
             }
@@ -119,7 +119,12 @@ public interface BlockTransformModule extends ModifierModule, BlockInteractionMo
 
         // sweep attack if we transformed any
         if (totalTransformed > 0 && player != null) {
-          player.sweepAttack();
+          // 26.3: Player#sweepAttack is gone, spawn the sweep particle like it did
+          if (world instanceof net.minecraft.server.level.ServerLevel server) {
+            double x = -net.minecraft.util.Mth.sin(player.getYRot() * ((float)Math.PI / 180F));
+            double z = net.minecraft.util.Mth.cos(player.getYRot() * ((float)Math.PI / 180F));
+            server.sendParticles(net.minecraft.core.particles.ParticleTypes.SWEEP_ATTACK, player.getX() + x, player.getY(0.5), player.getZ() + z, 0, x, 0, z, 0);
+          }
         }
       }
     }

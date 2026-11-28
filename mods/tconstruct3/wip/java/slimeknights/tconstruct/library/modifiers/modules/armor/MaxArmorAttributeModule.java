@@ -78,10 +78,10 @@ public record MaxArmorAttributeModule(String unique, Attribute attribute, Operat
   public void updateValue(IToolStackView tool, ModifierEntry modifier, EquipmentChangeContext context, Holder data, float newLevel, float oldLevel) {
     AttributeInstance instance = context.getEntity().getAttribute(net.minecraft.core.registries.BuiltInRegistries.ATTRIBUTE.wrapAsHolder(attribute));
     if (instance != null) {
-      instance.removeModifier(uuid);
+      instance.removeModifier(slimeknights.tconstruct.library.utils.AttributeIds.of(uuid));
       float attributeValue = amount.computeForLevel(newLevel);
       if (attributeValue != 0) {
-        instance.addTransientModifier(new AttributeModifier(uuid, unique, attributeValue, operation));
+        instance.addTransientModifier(new AttributeModifier(slimeknights.tconstruct.library.utils.AttributeIds.of(uuid), attributeValue, operation));
       }
     }
   }

@@ -31,7 +31,7 @@ import java.util.List;
 public class MaterialRecipe implements ICustomOutputRecipe<ISingleStackContainer>, IMaterialValue, IDisplayMaterialRecipe {
   /** Empty material instance for the cache */
   @SuppressWarnings("removal")
-  public static final MaterialRecipe EMPTY = new MaterialRecipe(Identifier.parse("missingno"), "", Ingredient.EMPTY, 0, 0, MaterialId.UNKNOWN, ItemOutput.EMPTY);
+  public static final MaterialRecipe EMPTY = new MaterialRecipe(Identifier.parse("missingno"), "", slimeknights.mantle.recipe.ingredient.EmptyIngredient.ingredient(), 0, 0, MaterialId.UNKNOWN, ItemOutput.EMPTY);
   public static final RecordLoadable<MaterialRecipe> LOADER = RecordLoadable.create(
     ContextKey.ID.requiredField(),
     LoadableRecipeSerializer.RECIPE_GROUP,
@@ -88,7 +88,7 @@ public class MaterialRecipe implements ICustomOutputRecipe<ISingleStackContainer
     return TinkerRecipeTypes.MATERIAL.get();
   }
 
-  @Override
+  /** 1.20.1 recipe toast icon, no longer used by 26.3 */
   public ItemStack getToastSymbol() {
     return new ItemStack(TinkerTables.partBuilder.get());
   }
@@ -118,7 +118,7 @@ public class MaterialRecipe implements ICustomOutputRecipe<ISingleStackContainer
 
   @Override
   public NonNullList<Ingredient> getIngredients() {
-    return NonNullList.of(Ingredient.EMPTY, ingredient);
+    return NonNullList.of(slimeknights.mantle.recipe.ingredient.EmptyIngredient.ingredient(), ingredient);
   }
 
   /** Cache of the display items list */

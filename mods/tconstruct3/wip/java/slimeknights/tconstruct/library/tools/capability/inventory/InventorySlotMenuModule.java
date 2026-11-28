@@ -60,7 +60,7 @@ public enum InventorySlotMenuModule implements ModifierModule, SlotStackModifier
   @SuppressWarnings("deprecation")
   public static boolean isValidContainer(AbstractContainerMenu menu) {
     // player inventory has a null type, which throws when used through the getter
-    if (menu.menuType == null) {
+    if (menu.getType() == null) {
       return true;
     }
     // because vanilla set the throw precedent, add protection for other cases, just in case

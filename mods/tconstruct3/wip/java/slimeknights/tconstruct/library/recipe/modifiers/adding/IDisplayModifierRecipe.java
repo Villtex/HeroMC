@@ -215,15 +215,10 @@ public interface IDisplayModifierRecipe extends IModifierRecipe, IDisplayTinkerS
   /* Gets a copy of the stack with the given modifiers */
   static ItemStack withModifiers(ItemStack stack, int maxSize, List<ModifierEntry> modifierList, Consumer<ModDataNBT> persistentDataConsumer) {
     ItemStack output = stack.copyWithCount(Math.min(stack.getMaxStackSize(), maxSize));
-    CompoundTag nbt = output.getOrCreateTag();
-
-    // build modifiers list
-    // go through the builder to ensure they are merged properly
-    // TODO 1.21: this should maybe just take a modifier NBT argument?
+    // 26.3: tool data are components (ToolDataComponents)
     ModifierNBT modifiers = ModifierNBT.builder().add(modifierList).build();
-    ListTag list = modifiers.serializeToNBT();
-    nbt.put(ToolStack.TAG_UPGRADES, list);
-    nbt.put(ToolStack.TAG_MODIFIERS, list);
+    output.set(slimeknights.tconstruct.library.tools.nbt.ToolDataComponents.UPGRADES.get(), modifiers);
+    output.set(slimeknights.tconstruct.library.tools.nbt.ToolDataComponents.MODIFIERS.get(), modifiers);
 
     // build persistent and volatile NBT
     CompoundTag persistentNBT = new CompoundTag();
@@ -235,8 +230,8 @@ public interface IDisplayModifierRecipe extends IModifierRecipe, IDisplayTinkerS
     for (ModifierEntry entry : modifiers.getModifiers()) {
       entry.getHook(ModifierHooks.VOLATILE_DATA).addVolatileData(context, entry, volatileData);
     }
-    nbt.put(ToolStack.TAG_VOLATILE_MOD_DATA, volatileNBT);
-    nbt.put(ToolStack.TAG_PERSISTENT_MOD_DATA, persistentNBT);
+    output.set(slimeknights.tconstruct.library.tools.nbt.ToolDataComponents.VOLATILE_DATA.get(), volatileNBT);
+    output.set(slimeknights.tconstruct.library.tools.nbt.ToolDataComponents.PERSISTENT_DATA.get(), persistentNBT);
 
     return output;
   }
