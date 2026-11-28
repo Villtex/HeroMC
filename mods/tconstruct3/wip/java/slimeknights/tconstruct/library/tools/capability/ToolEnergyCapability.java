@@ -2,10 +2,11 @@ package slimeknights.tconstruct.library.tools.capability;
 
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
-import net.neoforged.neoforge.common.capabilities.Capability;
-import net.neoforged.neoforge.common.capabilities.ForgeCapabilities;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.ItemCapability;
+import net.neoforged.neoforge.transfer.access.ItemAccess;
+import javax.annotation.Nullable;
 import slimeknights.tconstruct.library.utils.LazyOptional;
-import net.minecraftforge.energy.IEnergyStorage;
 import slimeknights.tconstruct.TConstruct;
 import slimeknights.tconstruct.library.modifiers.modules.ModifierModule;
 import slimeknights.tconstruct.library.modifiers.modules.build.ModifierTraitModule;
@@ -18,7 +19,7 @@ import slimeknights.tconstruct.tools.data.ModifierIds;
 import java.util.function.Supplier;
 
 /** Standard implementation of energy capability on a tool. Not currently used in the mod directly, but should help addons have more unity. */
-public record ToolEnergyCapability(Supplier<? extends IToolStackView> tool) implements IEnergyStorage {
+public record ToolEnergyCapability(Supplier<? extends IToolStackView> tool) {
   /** Format string to display energy amounts, used internally by the stat */
   public static final String ENERGY_FORMAT = TConstruct.makeDescriptionId("tool_stat", "energy");
   /** Stat marking the max capacity */
@@ -72,7 +73,6 @@ public record ToolEnergyCapability(Supplier<? extends IToolStackView> tool) impl
     }
   }
 
-  @Override
   public int receiveEnergy(int maxReceive, boolean simulate) {
     if (maxReceive <= 0) {
       return 0;
@@ -86,7 +86,6 @@ public record ToolEnergyCapability(Supplier<? extends IToolStackView> tool) impl
     return filled;
   }
 
-  @Override
   public int extractEnergy(int maxExtract, boolean simulate) {
     if (maxExtract <= 0) {
       return 0;
@@ -106,39 +105,34 @@ public record ToolEnergyCapability(Supplier<? extends IToolStackView> tool) impl
     return drained;
   }
 
-  @Override
   public int getEnergyStored() {
     return getEnergy(tool.get());
   }
 
-  @Override
   public int getMaxEnergyStored() {
     return getMaxEnergy(tool.get());
   }
 
-  @Override
   public boolean canExtract() {
     return true;
   }
 
-  @Override
   public boolean canReceive() {
     return true;
   }
 
-  /** Provider instance for a fluid cap */
+  /** Provider of the energy capability ({@code Capabilities.Energy.ITEM}, Teil 27e: through {@link ToolAccessHandlers.Energy}) */
   public static class Provider implements IToolCapabilityProvider {
-    private final LazyOptional<IEnergyStorage> energyCap;
-    public Provider(Supplier<? extends IToolStackView> toolStack) {
-      this.energyCap = LazyOptional.of(() -> new ToolEnergyCapability(toolStack));
-    }
+    public Provider(Supplier<? extends IToolStackView> toolStack) {}
 
+    @Nullable
     @Override
-    public <T> LazyOptional<T> getCapability(IToolStackView tool, Capability<T> cap) {
-      if (cap == ForgeCapabilities.ENERGY && tool.getStats().getInt(MAX_STAT) > 0) {
-        return energyCap.cast();
+    @SuppressWarnings("unchecked")
+    public <T,C> T getCapability(IToolStackView tool, ItemCapability<T,C> cap, C context) {
+      if (cap == Capabilities.Energy.ITEM && context instanceof ItemAccess access && tool.getStats().getInt(MAX_STAT) > 0) {
+        return (T) new ToolAccessHandlers.Energy(access);
       }
-      return LazyOptional.empty();
+      return null;
     }
   }
 }

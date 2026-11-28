@@ -4,8 +4,10 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.neoforge.common.capabilities.Capability;
-import net.neoforged.neoforge.common.capabilities.ForgeCapabilities;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.ItemCapability;
+import net.neoforged.neoforge.transfer.access.ItemAccess;
+import slimeknights.tconstruct.library.tools.capability.ToolAccessHandlers;
 import slimeknights.tconstruct.library.utils.LazyOptional;
 import net.neoforged.neoforge.fluids.FluidStack;
 import slimeknights.mantle.fluid.compat.IFluidHandlerItem;
@@ -316,19 +318,18 @@ public class ToolFluidCapability extends FluidModifierHookIterator<ModifierEntry
     }
   }
 
-  /** Provider instance for a fluid cap */
+  /** Provider of the fluid capability ({@code Capabilities.Fluid.ITEM}, Teil 27e: through {@link ToolAccessHandlers.Fluid}) */
   public static class Provider implements IToolCapabilityProvider {
-    private final LazyOptional<IFluidHandlerItem> fluidCap;
-    public Provider(ItemStack stack, Supplier<? extends IToolStackView> toolStack) {
-      this.fluidCap = LazyOptional.of(() -> new ToolFluidCapability(stack, toolStack));
-    }
+    public Provider(ItemStack stack, Supplier<? extends IToolStackView> toolStack) {}
 
+    @Nullable
     @Override
-    public <T> LazyOptional<T> getCapability(IToolStackView tool, Capability<T> cap) {
-      if (cap == ForgeCapabilities.FLUID_HANDLER_ITEM && tool.getVolatileData().getInt(TOTAL_TANKS) > 0) {
-        return fluidCap.cast();
+    @SuppressWarnings("unchecked")
+    public <T,C> T getCapability(IToolStackView tool, ItemCapability<T,C> cap, C context) {
+      if (cap == Capabilities.Fluid.ITEM && context instanceof ItemAccess access && tool.getVolatileData().getInt(TOTAL_TANKS) > 0) {
+        return (T) new ToolAccessHandlers.Fluid(access);
       }
-      return LazyOptional.empty();
+      return null;
     }
   }
 }
